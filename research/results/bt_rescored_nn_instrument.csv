@@ -1,0 +1,90 @@
+dataset,pos,arm,precU_arm,precU_v4,precU_v6,erosionU_v4,retainedU_v6,precE_arm,precE_v4,precE_v6,erosionE_v4,retainedE_v6,n_neighbours_arm,n_neighbours_v4,len_arm,len_v4,len_v6,weak_paxpU_v4,weak_paxpU_v6,sr_conds_unmatched,baseline_note,wf_arm,wf_v4,wf_v6
+cancer,163,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,151.0,151,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,163,shap,,57.8,57.8,,,,100.0,100.0,,,,60,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,68.75,50.0,50.0
+cancer,163,lime,,58.5,58.5,,,,100.0,100.0,,,,78,,3,3,False,False,0,arm term not stored; needs arm_term() re-run,56.25,65.63,65.63
+cancer,28,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,213.0,213,3.0,3,3,False,False,0,,100.0,100.0,100.0
+cancer,28,shap,,58.5,58.5,,,,100.0,100.0,,,,176,,3,3,False,False,0,arm term not stored; needs arm_term() re-run,65.62,59.37,59.37
+cancer,28,lime,,57.8,57.8,,,,100.0,97.08,,,,154,,3,2,False,False,0,arm term not stored; needs arm_term() re-run,53.12,62.5,62.5
+cancer,6,pyxai_sr,53.9,46.8,53.9,7.1,100.0,0.0,0.0,0.0,0.0,,11.0,69,10.0,9,10,False,False,0,,100.0,43.76,43.77
+cancer,6,shap,,59.9,66.7,,,,,,,,,0,,8,18,False,False,0,arm term not stored; needs arm_term() re-run,50.01,37.5,50.0
+cancer,6,lime,,59.9,65.3,,,,100.0,,,,,2,,7,14,False,False,0,arm term not stored; needs arm_term() re-run,12.5,50.0,34.38
+cancer,189,pyxai_sr,53.2,80.2,53.2,-27.0,100.0,100.0,100.0,100.0,0.0,100.0,62.0,8,8.0,8,8,False,False,0,,100.0,40.63,40.65
+cancer,189,shap,,80.2,73.4,,,,100.0,,,,,73,,6,16,False,False,0,arm term not stored; needs arm_term() re-run,62.51,46.88,46.88
+cancer,189,lime,,41.5,80.2,,,,100.0,,,,,3,,9,18,False,False,0,arm term not stored; needs arm_term() re-run,81.25,40.63,34.38
+cancer,70,pyxai_sr,37.4,37.4,37.4,0.0,100.0,100.0,100.0,100.0,0.0,100.0,220.0,220,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,70,shap,,41.5,41.5,,,,100.0,100.0,,,,9,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,50.0,40.63,40.63
+cancer,70,lime,,41.5,41.5,,,,99.17,99.17,,,,121,,3,3,False,False,0,arm term not stored; needs arm_term() re-run,46.87,40.63,40.63
+cancer,62,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,213.0,213,3.0,3,3,False,False,0,,100.0,100.0,100.0
+cancer,62,shap,,58.5,58.5,,,,100.0,96.92,,,,176,,3,2,False,False,0,arm term not stored; needs arm_term() re-run,68.75,59.37,59.37
+cancer,62,lime,,58.5,58.5,,,,100.0,93.27,,,,188,,2,2,False,False,0,arm term not stored; needs arm_term() re-run,65.62,59.37,59.38
+cancer,57,pyxai_sr,65.3,75.7,65.3,-10.4,100.0,100.0,100.0,100.0,0.0,100.0,96.0,9,10.0,10,10,False,False,0,,100.0,65.63,62.6
+cancer,57,shap,,75.7,75.7,,,,100.0,,,,,1,,9,14,False,False,0,arm term not stored; needs arm_term() re-run,75.0,50.0,50.0
+cancer,57,lime,,75.7,65.3,,,,100.0,100.0,,,,18,,5,12,False,False,0,arm term not stored; needs arm_term() re-run,75.0,53.12,65.62
+cancer,35,pyxai_sr,37.4,37.4,37.4,0.0,100.0,100.0,100.0,100.0,0.0,100.0,220.0,220,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,35,shap,,41.5,41.5,,,,100.0,100.0,,,,140,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,50.0,40.63,40.63
+cancer,35,lime,,41.5,41.5,,,,100.0,100.0,,,,148,,3,4,False,False,0,arm term not stored; needs arm_term() re-run,50.0,40.63,46.88
+cancer,188,pyxai_sr,37.4,37.4,37.4,0.0,100.0,100.0,100.0,100.0,0.0,100.0,220.0,220,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,188,shap,,41.5,41.5,,,,100.0,100.0,,,,194,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,50.0,43.75,43.75
+cancer,188,lime,,42.9,42.9,,,,100.0,100.0,,,,201,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,43.75,43.75,43.75
+cancer,26,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,151.0,151,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,26,shap,,57.8,57.8,,,,100.0,100.0,,,,41,,4,4,False,False,0,arm term not stored; needs arm_term() re-run,68.75,50.0,50.0
+cancer,26,lime,,59.9,58.5,,,,100.0,89.36,,,,26,,4,2,False,False,0,arm term not stored; needs arm_term() re-run,62.5,56.25,59.38
+cancer,173,pyxai_sr,61.8,75.7,61.8,-13.9,100.0,100.0,100.0,100.0,0.0,100.0,78.0,19,10.0,10,10,False,False,0,,100.0,62.5,62.54
+cancer,173,shap,,75.7,75.7,,,,100.0,100.0,,,,52,,8,16,False,False,0,arm term not stored; needs arm_term() re-run,75.0,50.0,50.0
+cancer,173,lime,,57.8,57.8,,,,100.0,100.0,,,,74,,7,15,False,False,0,arm term not stored; needs arm_term() re-run,75.0,62.5,56.25
+cancer,139,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,151.0,151,4.0,4,4,False,False,0,,100.0,100.0,100.0
+cancer,139,shap,,57.8,57.8,,,,100.0,97.08,,,,41,,4,2,False,False,0,arm term not stored; needs arm_term() re-run,68.75,62.5,62.5
+cancer,139,lime,,59.9,58.5,,,,100.0,100.0,,,,47,,4,3,False,False,0,arm term not stored; needs arm_term() re-run,62.5,68.75,65.63
+cancer,22,pyxai_sr,53.2,55.7,53.2,-2.5,100.0,100.0,100.0,100.0,0.0,100.0,62.0,8,8.0,8,8,False,False,0,,100.0,40.63,40.65
+cancer,22,shap,,61.2,54.4,,,,100.0,100.0,,,,4,,9,18,False,False,0,arm term not stored; needs arm_term() re-run,62.51,46.88,46.88
+cancer,22,lime,,41.5,34.7,,,,100.0,100.0,,,,5,,5,17,False,False,0,arm term not stored; needs arm_term() re-run,62.5,40.63,40.63
+cancer,151,pyxai_sr,53.2,41.5,53.2,11.7,100.0,100.0,100.0,100.0,0.0,100.0,62.0,20,8.0,8,8,False,False,0,,100.0,40.63,40.65
+cancer,151,shap,,34.7,34.7,,,,100.0,100.0,,,,39,,9,18,False,False,0,arm term not stored; needs arm_term() re-run,75.0,46.88,46.88
+cancer,151,lime,,41.5,41.5,,,,95.83,100.0,,,,48,,10,16,False,False,0,arm term not stored; needs arm_term() re-run,75.0,40.63,46.88
+cancer,108,pyxai_sr,58.5,58.5,58.5,0.0,100.0,100.0,100.0,100.0,0.0,100.0,213.0,213,3.0,3,3,False,False,0,,100.0,100.0,100.0
+cancer,108,shap,,58.5,58.5,,,,100.0,96.92,,,,176,,3,2,False,False,0,arm term not stored; needs arm_term() re-run,65.62,59.38,59.37
+cancer,108,lime,,58.5,58.5,,,,89.36,89.36,,,,141,,2,2,False,False,0,arm term not stored; needs arm_term() re-run,56.25,59.38,59.38
+diabetes,57,pyxai_sr,49.1,49.1,49.1,0.0,100.0,,,,,,0.0,0,13.0,13,13,False,False,0,,100.0,47.63,47.63
+diabetes,57,shap,,51.6,47.4,,,,,0.0,,,,0,,8,6,False,False,0,arm term not stored; needs arm_term() re-run,35.94,47.64,47.64
+diabetes,57,lime,,43.0,43.0,,,,,,,,,0,,9,8,False,False,0,arm term not stored; needs arm_term() re-run,46.88,46.08,47.64
+diabetes,12,pyxai_sr,48.0,46.4,48.0,1.6,100.0,100.0,,100.0,,100.0,4.0,0,7.0,7,7,False,False,0,,100.0,53.04,53.32
+diabetes,12,shap,,49.7,51.1,,,,100.0,,,,,4,,6,8,False,False,0,arm term not stored; needs arm_term() re-run,52.73,52.75,52.75
+diabetes,12,lime,,51.6,51.6,,,,100.0,,,,,4,,8,8,False,False,0,arm term not stored; needs arm_term() re-run,59.94,52.75,52.75
+diabetes,140,pyxai_sr,48.8,43.5,48.8,5.3,100.0,100.0,100.0,100.0,0.0,100.0,5.0,3,7.0,6,7,False,False,0,,100.0,61.29,71.45
+diabetes,140,shap,,57.7,57.7,,,,,25.71,,,,0,,8,7,False,False,0,arm term not stored; needs arm_term() re-run,61.01,50.4,50.5
+diabetes,140,lime,,57.7,56.3,,,,,55.13,,,,0,,11,6,False,False,0,arm term not stored; needs arm_term() re-run,61.01,53.72,53.53
+diabetes,125,pyxai_sr,52.8,45.3,52.8,7.5,100.0,100.0,100.0,100.0,0.0,100.0,7.0,4,8.0,7,8,False,False,0,,100.0,47.64,87.5
+diabetes,125,shap,,43.8,43.9,,,,100.0,100.0,,,,4,,7,8,False,False,0,arm term not stored; needs arm_term() re-run,41.05,48.52,46.86
+diabetes,125,lime,,44.8,43.9,,,,100.0,100.0,,,,4,,11,8,False,False,0,arm term not stored; needs arm_term() re-run,48.08,48.43,46.96
+diabetes,114,pyxai_sr,53.6,52.6,53.6,1.0,100.0,100.0,100.0,100.0,0.0,100.0,3.0,7,9.0,8,9,False,False,0,,100.0,62.5,75.0
+diabetes,114,shap,,51.2,51.1,,,,,,,,,0,,7,8,False,False,0,arm term not stored; needs arm_term() re-run,40.65,47.64,47.64
+diabetes,114,lime,,51.9,51.1,,,,70.0,,,,,10,,5,8,False,False,0,arm term not stored; needs arm_term() re-run,48.08,48.86,47.64
+diabetes,71,pyxai_sr,52.0,53.1,52.0,-1.1,100.0,0.0,0.0,0.0,0.0,,5.0,7,9.0,8,9,False,False,0,,100.0,58.94,53.32
+diabetes,71,shap,,51.1,51.2,,,,0.0,0.0,,,,6,,8,7,False,False,0,arm term not stored; needs arm_term() re-run,53.0,52.17,52.17
+diabetes,71,lime,,51.1,53.1,,,,0.0,,,,,6,,8,9,False,False,0,arm term not stored; needs arm_term() re-run,60.13,52.64,58.33
+diabetes,52,pyxai_sr,49.1,46.7,49.1,2.4,100.0,100.0,,100.0,,100.0,41.0,0,8.0,8,8,False,False,0,,100.0,53.98,81.98
+diabetes,52,shap,,47.2,49.2,,,,,0.0,,,,0,,7,6,False,False,0,arm term not stored; needs arm_term() re-run,58.98,56.69,51.61
+diabetes,279,pyxai_sr,51.2,52.1,51.2,-0.9,100.0,,,,,,0.0,0,14.0,13,14,False,False,0,,100.0,52.88,52.88
+diabetes,279,shap,,51.3,51.3,,,,9.52,9.52,,,,42,,8,8,False,False,0,arm term not stored; needs arm_term() re-run,44.14,55.2,55.2
+diabetes,279,lime,,51.3,52.4,,,,9.52,,,,,42,,8,11,False,False,0,arm term not stored; needs arm_term() re-run,53.91,55.2,55.2
+diabetes,44,pyxai_sr,50.8,50.9,50.8,-0.1,100.0,,,,,,0.0,0,14.0,12,14,False,False,0,,100.0,47.35,47.58
+diabetes,44,shap,,51.0,59.7,,,,17.65,33.33,,,,17,,8,7,False,False,0,arm term not stored; needs arm_term() re-run,57.03,48.68,47.74
+diabetes,44,lime,,52.1,52.1,,,,,0.0,,,,0,,9,8,False,False,0,arm term not stored; needs arm_term() re-run,48.34,48.86,48.86
+diabetes,216,pyxai_sr,48.8,48.8,48.8,0.0,100.0,100.0,100.0,100.0,0.0,100.0,72.0,72,7.0,7,7,False,False,0,,100.0,53.12,53.12
+diabetes,216,shap,,47.3,47.3,,,,100.0,53.85,,,,3,,8,7,False,False,0,arm term not stored; needs arm_term() re-run,53.0,52.75,52.75
+diabetes,216,lime,,50.7,47.3,,,,40.0,100.0,,,,5,,11,7,False,False,0,arm term not stored; needs arm_term() re-run,59.94,51.38,52.75
+diabetes,16,pyxai_sr,46.9,46.9,46.9,0.0,100.0,100.0,100.0,100.0,0.0,100.0,28.0,28,5.0,5,5,False,False,0,,100.0,62.89,62.89
+diabetes,16,shap,,49.1,49.1,,,,,,,,,0,,8,8,False,False,0,arm term not stored; needs arm_term() re-run,51.92,52.36,52.36
+diabetes,16,lime,,49.6,47.7,,,,,84.14,,,,0,,10,3,False,False,0,arm term not stored; needs arm_term() re-run,51.92,51.97,52.36
+diabetes,15,pyxai_sr,53.2,53.2,53.2,0.0,100.0,100.0,100.0,100.0,0.0,100.0,2.0,2,6.0,6,6,False,False,0,,100.0,62.74,62.74
+diabetes,15,shap,,60.2,60.1,,,,100.0,100.0,,,,2,,8,9,False,False,0,arm term not stored; needs arm_term() re-run,56.3,61.71,55.11
+diabetes,15,lime,,59.0,59.0,,,,100.0,100.0,,,,2,,7,7,False,False,0,arm term not stored; needs arm_term() re-run,56.3,47.64,47.64
+diabetes,47,pyxai_sr,50.9,50.9,50.9,0.0,100.0,100.0,100.0,100.0,0.0,100.0,11.0,11,5.0,5,5,False,False,0,,100.0,62.45,62.45
+diabetes,47,shap,,54.4,53.2,,,,100.0,12.12,,,,4,,7,6,False,False,0,arm term not stored; needs arm_term() re-run,55.07,53.89,47.45
+diabetes,47,lime,,55.0,57.8,,,,,,,,,0,,12,12,False,False,0,arm term not stored; needs arm_term() re-run,55.07,45.89,44.52
+diabetes,111,pyxai_sr,53.6,53.6,53.6,0.0,100.0,100.0,100.0,100.0,0.0,100.0,3.0,3,9.0,9,9,False,False,0,,100.0,75.0,75.0
+diabetes,111,shap,,51.3,51.2,,,,100.0,100.0,,,,3,,7,8,False,False,0,arm term not stored; needs arm_term() re-run,40.65,57.07,57.07
+diabetes,111,lime,,51.2,52.6,,,,100.0,42.86,,,,3,,8,6,False,False,0,arm term not stored; needs arm_term() re-run,46.11,57.07,56.97
+diabetes,119,pyxai_sr,51.2,52.9,51.2,-1.7,100.0,,100.0,,,,0.0,1,9.0,7,9,False,False,0,,100.0,42.58,43.46
+diabetes,119,shap,,57.0,52.7,,,,,,,,,0,,8,8,False,False,0,arm term not stored; needs arm_term() re-run,41.14,47.64,48.86
+diabetes,119,lime,,56.4,51.4,,,,,0.0,,,,0,,11,7,False,False,0,arm term not stored; needs arm_term() re-run,48.91,47.11,47.64

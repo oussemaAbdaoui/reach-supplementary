@@ -1,0 +1,568 @@
+dataset,llm,instance,arm,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+cancer,deepcogito/cogito-v2-1-671b,163,cop_k,1,15,86.0,False,46.0,86.0,86.0,86.0,False,False,False,2,15,15,13,0,0,0,0,0,0,0,3,"[46.0, 86.0, 46.0, 86.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b1 = 0  (concavity_mean in [0.05063, 0.1235) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  symmetry_mean_b1 = 0  (symmetry_mean in [0.1721, 0.1928) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this tumor is benign (class 1) based on two key measurements from the tumor cells. First, the average concavity of the cell nuclei is in the lowest range (between 0 and 0.05063), which is associated with benign tumors. Second, the worst concavity measurement is also in the lowest range (between 0 and 0.189), which again points to a benign tumor. While many other measurements were considered, these two specific low concavity readings were the main factors that led to the benign prediction.","Based on the medical data, this case is predicted to be benign (non-cancerous) because:
+
+1. The concavity of the cell nuclei is very low (between 0 and 0.05063)
+2. The worst concavity is also very low (between 0 and 0.189)
+
+Additionally, the following measurements are not in concerning ranges:
+- Smoothness is not in the highest range
+- The cell nuclei are not moderately concave
+- The symmetry of the cells is not in the middle range
+- The area under the curve is not in the lowest or highest ranges
+- The symmetry of the outer layer is not in the lowest range
+- The worst radius is not in the highest range
+- The worst area is not in the lowest or highest ranges
+- The worst concavity is not in the highest range
+- The worst concave points are not in the highest range
+- The worst fractal dimension is not in the middle range
+
+These factors together suggest a benign diagnosis.","1. The average smoothness is not between 0.1034 and 0.1634, which is true for this case.
+2. The average concavity is between 0 and 0.05063, which is true for this case.
+3. The average concavity is not between 0.05063 and 0.1235, which is true for this case.
+4. The average concavity is not between 0.1235 and 0.4264, which is true for this case.
+5. The average symmetry is not between 0.1721 and 0.1928, which is true for this case.
+6. The standard error of the area is not between 6.802 and 21.83, which is true for this case.
+7. The standard error of the area is not between 49.7 and 542.2, which is true for this case.
+8. The standard error of the symmetry is not between 0.007882 and 0.01623, which is true for this case.
+9. The worst radius is not between 18.55 and 36.04, which is true for this case.
+10. The worst area is not between 185.2 and 622.9, which is true for this case.
+11. The worst area is not between 1050 and 4254, which is true for this case.
+12. The worst concavity is between 0 and 0.189, which is true for this case.
+13. The worst concavity is not between 0.3744 and 1.17, which is true for this case.
+14. The worst concave points are not between 0.1625 and 0.291, which is true for this case.
+15. The worst fractal dimension is not between 0.07587 and 0.08999, which is true for this case.","['concavity_mean_b0 > 0.5', 'concavity_worst_b0 > 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b1 < 0.5', 'concavity_mean_b2 < 0.5', 'symmetry_mean_b1 < 0.5', 'area_se_b0 < 0.5', 'area_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'radius_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 18, 19, 20, 25, 39, 41, 54, 62, 69, 71, 78, 80, 83, 88]","[18, 78]","[14, 18, 19, 20, 25, 39, 41, 54, 62, 69, 71, 78, 80, 83, 88]","[14, 18, 19, 20, 25, 39, 41, 54, 62, 69, 71, 78, 80, 83, 88]",0.4042,FEASIBLE,cop@15,0.405
+cancer,deepcogito/cogito-v2-1-671b,28,cop_k,1,18,94.3,False,73.9,94.3,94.3,94.3,False,False,False,14,18,18,4,0,0,0,0,0,0,0,3,"[73.9, 94.3, 94.3, 94.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b0 = 1  (smoothness_mean in [0.06576, 0.09168) — holds)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  compactness_worst_b0 = 1  (compactness_worst in [0.02729, 0.1924) — holds)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b0 = 1  (concave_points_worst in [0, 0.086) — holds)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b0 = 1  (fractal_dimension_worst in [0.05504, 0.07587) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this tumor is benign (class 1) based on several key measurements:
+
+The smoothness of the tumor cells is in a lower range (0.06576 to 0.09168), which is associated with benign tumors. It is not in the higher range (0.1034 to 0.1634).
+
+The concavity (how much the tumor surface curves inward) is in a lower range (0 to 0.05063) rather than a higher range (0.1235 to 0.4264), which is typical of benign tumors.
+
+The area under the curve of the tumor is between 6.802 and 21.83, which is a moderate size associated with benign tumors.
+
+The symmetry of the tumor cells is in a lower range (0.007882 to 0.01623) rather than a higher range (0.02137 to 0.06146), which is typical of benign tumors.
+
+The compactness (how closely packed the cells are) is in a lower range (0.02729 to 0.1924), which is associated with benign tumors.
+
+The worst concavity measurement is in a lower range (0 to 0.189) rather than a higher range (0.3744 to 1.17), which is typical of benign tumors.
+
+The worst measurement of concave points (indentations in the tumor) is in a lower range (0 to 0.086) rather than a higher range (0.1625 to 0.291), which is typical of benign tumors.
+
+The worst fractal dimension (how complex the tumor shape is) is in a lower range (0.05504 to 0.07587) rather than a higher range (0.07587 to 0.08999), which is typical of benign tumors.
+
+All these measurements together point to a benign tumor rather than a malignant one.","Based on the medical data, this case is predicted to be benign (non-cancerous) because:
+
+The tumor's smoothness is in the low to medium range (0.06576 to 0.09168), not in the higher range (0.1034 to 0.1634). The concavity of the cells is in the lowest range (0 to 0.05063), not in the higher range (0.1235 to 0.4264). The variation in cell area is in the lower range (6.802 to 21.83). The symmetry of the cells is in the lowest range (0.007882 to 0.01623), not in the higher range (0.02137 to 0.06146). The worst radius is not in the highest range (18.55 to 36.04). The worst texture is not in the highest range (29.02 to 47.16). The worst perimeter is not in the highest range (126.9 to 251.2). The worst smoothness is not in the highest range (0.1417 to 0.2184). The worst compactness is in the lower range (0.02729 to 0.1924). The worst concavity is in the lowest range (0 to 0.189), not in the higher range (0.3744 to 1.17). The worst concave points are in the lowest range (0 to 0.086), not in the higher range (0.1625 to 0.291). The worst fractal dimension is in the lowest range (0.05504 to 0.07587), not in the medium range (0.07587 to 0.08999).","1. The average smoothness is between 0.06576 and 0.09168, which is true here.
+2. The average smoothness is not between 0.1034 and 0.1634, which is true here.
+3. The average concavity is between 0 and 0.05063, which is true here.
+4. The average concavity is not between 0.1235 and 0.4264, which is true here.
+5. The standard error of the area is between 6.802 and 21.83, which is true here.
+6. The standard error of the symmetry is between 0.007882 and 0.01623, which is true here.
+7. The standard error of the symmetry is not between 0.02137 and 0.06146, which is true here.
+8. The worst radius is not between 18.55 and 36.04, which is true here.
+9. The worst texture is not between 29.02 and 47.16, which is true here.
+10. The worst perimeter is not between 126.9 and 251.2, which is true here.
+11. The worst smoothness is not between 0.1417 and 0.2184, which is true here.
+12. The worst compactness is between 0.02729 and 0.1924, which is true here.
+13. The worst concavity is between 0 and 0.189, which is true here.
+14. The worst concavity is not between 0.3744 and 1.17, which is true here.
+15. The worst concave points are between 0 and 0.086, which is true here.
+16. The worst concave points are not between 0.1625 and 0.291, which is true here.
+17. The worst fractal dimension is between 0.05504 and 0.07587, which is true here.
+18. The worst fractal dimension is not between 0.07587 and 0.08999, which is true here.","['smoothness_mean_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b0 > 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","['smoothness_mean_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b0 > 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[12, 14, 18, 20, 39, 54, 56, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87, 88]","[12, 14, 18, 20, 39, 54, 56, 75, 78, 80, 81, 83, 87, 88]","[12, 14, 18, 20, 39, 54, 56, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87, 88]","[12, 14, 18, 20, 39, 54, 56, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87, 88]",0.4068,FEASIBLE,cop@18,0.407
+cancer,deepcogito/cogito-v2-1-671b,6,cop_k,1,17,83.9,False,83.9,48.4,83.9,83.9,False,False,False,17,4,17,0,0,13,0,0,0,0,0,3,"[83.9, 48.4, 83.9, 48.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 0  (concavity_mean in [0, 0.05063) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b0 = 1  (texture_worst in [12.02, 23.31) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","This prediction of a benign tumor (class 1) was based on four key measurements that were within specific ranges:
+
+1. The area standard error was between 6.8 and 21.8
+2. The symmetry standard error was between 0.0079 and 0.0162
+3. The worst texture reading was between 12.0 and 23.3
+4. The worst fractal dimension was between 0.0759 and 0.0900
+
+All other measurements in the model were not in the ranges that would have suggested a malignant tumor. For example, the smoothness mean was not in the range of 0.1034 to 0.1634, the concavity mean was not in the range of 0 to 0.0506, and so on for the other measurements.","The model classified this case as benign (class 1) based on the following key measurements:
+
+1. The area standard error falls within the range of 6.8 to 21.8
+2. The symmetry standard error is between 0.0079 and 0.0162
+3. The worst texture measurement is between 12.0 and 23.3
+4. The worst fractal dimension is between 0.0759 and 0.0900
+
+Additionally, the model considered that several other measurements were not in concerning ranges, including smoothness, concavity, radius, and other tumor characteristics.","1. The smoothness mean is not between 0.1034 and 0.1634, which is consistent with the prediction.
+2. The concavity mean is not between 0 and 0.05063, which is consistent with the prediction.
+3. The concavity mean is not between 0.1235 and 0.4264, which is consistent with the prediction.
+4. The standard error of the radius is not between 0.5115 and 2.873, which is consistent with the prediction.
+5. The standard error of the area is between 6.802 and 21.83, which is true here and supports the prediction.
+6. The standard error of the area is not between 49.7 and 542.2, which is consistent with the prediction.
+7. The standard error of the symmetry is between 0.007882 and 0.01623, which is true here and supports the prediction.
+8. The standard error of the symmetry is not between 0.02137 and 0.06146, which is consistent with the prediction.
+9. The worst radius is not between 18.55 and 36.04, which is consistent with the prediction.
+10. The worst texture is between 12.02 and 23.31, which is true here and supports the prediction.
+11. The worst texture is not between 29.02 and 47.16, which is consistent with the prediction.
+12. The worst area is not between 185.2 and 622.9, which is consistent with the prediction.
+13. The worst area is not between 1050 and 4254, which is consistent with the prediction.
+14. The worst concavity is not between 0 and 0.189, which is consistent with the prediction.
+15. The worst concavity is not between 0.3744 and 1.17, which is consistent with the prediction.
+16. The worst concave points are not between 0.1625 and 0.291, which is consistent with the prediction.
+17. The worst fractal dimension is between 0.07587 and 0.08999, which is true here and supports the prediction.","['area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b0 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b2 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 > 0.5', 'area_se_b2 < 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[14, 18, 20, 32, 39, 41, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[14, 18, 20, 32, 39, 41, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[39, 54, 63, 88]","[14, 18, 20, 32, 39, 41, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]",0.4054,FEASIBLE,cop@17,0.406
+cancer,deepcogito/cogito-v2-1-671b,189,cop_k,0,7,89.7,False,80.4,89.7,89.7,89.7,False,False,False,2,7,7,5,0,0,0,0,0,0,0,3,"[80.4, 89.7, 80.4, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b1 = 0  (concavity_worst in [0.189, 0.3744) — does NOT hold)
+  concavity_worst_b2 = 1  (concavity_worst in [0.3744, 1.17) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this case is malignant (class 0) based on two key measurements. First, the worst texture reading was between 29.02 and 47.16. Second, the worst concavity reading was between 0.3744 and 1.17. These two conditions together were sufficient for the model to make its prediction of malignancy. The other measurements were not relevant to this particular prediction.","The model predicts this tumor is malignant (class 0) because:
+
+1. The texture of the worst tumor cells falls within the range of 29.02 to 47.16
+2. The concavity of the worst tumor cells is 0.3744 or higher
+3. The smoothness of the average tumor cells is not between 0.1034 and 0.1634
+4. The area under the curve of tumor cell nuclei is not between 6.802 and 21.83
+5. The concavity of the worst tumor cells is not less than 0.189
+6. The concavity of the worst tumor cells is not between 0.189 and 0.3744
+7. The fractal dimension of the worst tumor cells is not between 0.07587 and 0.08999","1. The mean smoothness measurement is not between 0.1034 and 0.1634, which is consistent with this prediction.
+2. The standard error of the area measurement is not between 6.802 and 21.83, which is consistent with this prediction.
+3. The worst texture reading is between 29.02 and 47.16, which is true here.
+4. The worst concavity reading is not between 0 and 0.189, which is consistent with this prediction.
+5. The worst concavity reading is not between 0.189 and 0.3744, which is consistent with this prediction.
+6. The worst concavity reading is between 0.3744 and 1.17, which is true here.
+7. The worst fractal dimension measurement is not between 0.07587 and 0.08999, which is consistent with this prediction.","['texture_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5']","['smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 > 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b1 < 0.5', 'concavity_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 39, 65, 78, 79, 80, 88]","[65, 80]","[14, 39, 65, 78, 79, 80, 88]","[14, 39, 65, 78, 79, 80, 88]",0.5696,FEASIBLE,cop@7,0.594
+cancer,deepcogito/cogito-v2-1-671b,70,cop_k,0,10,94.8,False,94.8,94.8,94.8,94.5,False,False,False,10,10,9,0,0,0,0,1,0,0,0,3,"[94.8, 94.5, 72.8, 94.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  perimeter_mean_b0 = 0  (perimeter_mean in [43.79, 82.69) — does NOT hold)
+  perimeter_mean_b2 = 1  (perimeter_mean in [106.3, 188.5) — holds)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  smoothness_se_b1 = 0  (smoothness_se in [0.005627, 0.007571) — does NOT hold)
+  radius_worst_b0 = 0  (radius_worst in [7.93, 14.23) — does NOT hold)
+  perimeter_worst_b0 = 0  (perimeter_worst in [50.41, 92.74) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concave_points_worst_b0 = 0  (concave_points_worst in [0, 0.086) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this is a malignant tumor (class 0) based on one key factor: the perimeter of the tumor is between 106.3 and 188.5 units. All other measurements were not in the ranges that would suggest a benign tumor. Specifically, the tumor's perimeter is not between 43.79 and 82.69 units, the radius variation is not between 0.5115 and 2.873 units, the area variation is not between 6.802 and 21.83 square units, the smoothness variation is not between 0.005627 and 0.007571, the worst radius is not between 7.93 and 14.23 units, the worst perimeter is not between 50.41 and 92.74 units, the worst concavity is not between 0 and 0.189, the worst concave points are not between 0 and 0.086, and the worst fractal dimension is not between 0.07587 and 0.08999.","Le modèle prédit une tumeur maligne (classe 0) pour ce cas car :
+
+1. Le périmètre moyen est dans la plage élevée [106.3, 188.5)
+2. Le rayon moyen n'est pas dans la plage [43.79, 82.69)
+3. La variation du rayon n'est pas dans la plage [0.5115, 2.873)
+4. La surface n'est pas dans la plage [6.802, 21.83)
+5. La régularité n'est pas dans la plage [0.005627, 0.007571)
+6. Le pire rayon n'est pas dans la plage [7.93, 14.23)
+7. Le pire périmètre n'est pas dans la plage [50.41, 92.74)
+8. La concavité maximale n'est pas dans la plage [0, 0.189)
+9. Les points concaves maximaux ne sont pas dans la plage [0, 0.086)
+10. La dimension fractale maximale n'est pas dans la plage [0.07587, 0.08999)","1. The average perimeter measurement is between 106.3 and 188.5, which is true here.
+2. The standard error of the radius is not between 0.5115 and 2.873, which is true here.
+3. The standard error of the area is not between 6.802 and 21.83, which is true here.
+4. The standard error of the smoothness is not between 0.005627 and 0.007571, which is true here.
+5. The worst radius measurement is not between 7.93 and 14.23, which is true here.
+6. The worst perimeter measurement is not between 50.41 and 92.74, which is true here.
+7. The worst concavity measurement is not between 0 and 0.189, which is true here.
+8. The worst concave points measurement is not between 0 and 0.086, which is true here.
+9. The worst fractal dimension measurement is not between 0.07587 and 0.08999, which is true here.","['perimeter_mean_b2 > 0.5', 'perimeter_mean_b0 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 < 0.5', 'smoothness_se_b1 < 0.5', 'radius_worst_b0 < 0.5', 'perimeter_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['perimeter_mean_b2 > 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 < 0.5', 'smoothness_se_b1 < 0.5', 'radius_worst_b0 < 0.5', 'perimeter_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[6, 8, 32, 39, 43, 60, 66, 78, 81, 88]","[6, 8, 32, 39, 43, 60, 66, 78, 81, 88]","[6, 8, 32, 39, 43, 60, 66, 78, 81, 88]","[8, 32, 39, 43, 60, 66, 78, 81, 88]",0.5814,FEASIBLE,cop@10,0.5934
+cancer,deepcogito/cogito-v2-1-671b,62,cop_k,1,14,55.5,False,46.9,55.5,55.5,55.5,False,False,False,7,14,14,7,0,0,0,0,0,0,0,3,"[46.9, 50.5, 46.9, 55.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  compactness_mean_b2 = 0  (compactness_mean in [0.1304, 0.3114) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  texture_worst_b0 = 0  (texture_worst in [12.02, 23.31) — does NOT hold)
+  texture_worst_b1 = 0  (texture_worst in [23.31, 29.02) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b1 = 1  (concavity_worst in [0.189, 0.3744) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","This prediction of a benign tumor (class 1) was made based on several key measurements from the medical scan:
+
+1. The area of abnormal cells is between 185.2 and 622.9 units (this condition holds)
+2. The worst texture measurement is between 29.0 and 47.2 (this condition holds)
+3. The concavity (how deeply the edges curve inward) is between 0.189 and 0.374 (this condition holds)
+4. The fractal dimension (complexity of the tumor border) is between 0.0759 and 0.0899 (this condition holds)
+5. The area of abnormal cells in the standard error is between 6.8 and 21.8 (this condition holds)
+
+Several other measurements were checked but did not meet the conditions that would have suggested a malignant tumor. For example, the compactness was not in the range of 0.1304 to 0.3114, and the perimeter was not in the range of 126.9 to 251.2.
+
+The model concluded the tumor is benign because all the conditions that needed to be true for this prediction were met, while none of the conditions that would have suggested malignancy were present.","The model predicts this tumor is benign (class 1) based on the following measurements:
+
+- The compactness is not in the medium range (0.1304 to 0.3114)
+- The area under the curve is between 6.802 and 21.83
+- The area under the curve is not in the high range (49.7 to 542.2)
+- The worst texture is between 29.02 and 47.16
+- The worst texture is not in the low range (12.02 to 23.31)
+- The worst texture is not in the medium range (23.31 to 29.02)
+- The worst perimeter is not in the high range (126.9 to 251.2)
+- The worst area is between 185.2 and 622.9
+- The worst area is not in the high range (1050 to 4254)
+- The worst smoothness is not in the high range (0.1417 to 0.2184)
+- The worst concavity is between 0.189 and 0.3744
+- The worst concavity is not in the low range (0 to 0.189)
+- The worst concavity is not in the high range (0.3744 to 1.17)
+- The worst fractal dimension is between 0.07587 and 0.08999","1. The average compactness is not between 0.1304 and 0.3114, which is true for this case.
+2. The standard error of the area is between 6.802 and 21.83, which is true for this case.
+3. The standard error of the area is not between 49.7 and 542.2, which is true for this case.
+4. The worst texture reading is not between 12.02 and 23.31, which is true for this case.
+5. The worst texture reading is not between 23.31 and 29.02, which is true for this case.
+6. The worst texture reading is between 29.02 and 47.16, which is true for this case.
+7. The worst perimeter reading is not between 126.9 and 251.2, which is true for this case.
+8. The worst area reading is between 185.2 and 622.9, which is true for this case.
+9. The worst area reading is not between 1050 and 4254, which is true for this case.
+10. The worst smoothness reading is not between 0.1417 and 0.2184, which is true for this case.
+11. The worst concavity reading is not between 0 and 0.189, which is true for this case.
+12. The worst concavity reading is between 0.189 and 0.3744, which is true for this case.
+13. The worst concavity reading is not between 0.3744 and 1.17, which is true for this case.
+14. The worst fractal dimension reading is between 0.07587 and 0.08999, which is true for this case.","['area_worst_b0 > 0.5', 'texture_worst_b2 > 0.5', 'concavity_worst_b1 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'area_se_b0 > 0.5', 'compactness_mean_b2 < 0.5', 'perimeter_worst_b2 < 0.5']","['compactness_mean_b2 < 0.5', 'area_se_b0 > 0.5', 'area_se_b2 < 0.5', 'texture_worst_b0 < 0.5', 'texture_worst_b1 < 0.5', 'texture_worst_b2 > 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b1 > 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[17, 39, 41, 63, 64, 65, 68, 69, 71, 74, 78, 79, 80, 88]","[17, 39, 65, 68, 69, 79, 88]","[17, 39, 41, 63, 64, 65, 68, 69, 71, 74, 78, 79, 80, 88]","[17, 39, 41, 63, 64, 65, 68, 69, 71, 74, 78, 79, 80, 88]",0.3982,FEASIBLE,cop@14,0.3994
+cancer,deepcogito/cogito-v2-1-671b,57,cop_k,1,18,70.3,False,35.4,46.6,61.8,70.3,False,False,False,2,5,18,16,0,13,0,0,0,0,0,3,"[35.4, 61.8, 54.9, 46.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  texture_mean_b2 = 0  (texture_mean in [21.51, 39.28) — does NOT hold)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  compactness_mean_b2 = 0  (compactness_mean in [0.1304, 0.3114) — does NOT hold)
+  concavity_mean_b1 = 0  (concavity_mean in [0.05063, 0.1235) — does NOT hold)
+  symmetry_mean_b1 = 1  (symmetry_mean in [0.1721, 0.1928) — holds)
+  symmetry_mean_b2 = 0  (symmetry_mean in [0.1928, 0.2743) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b0 = 1  (texture_worst in [12.02, 23.31) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this tumor is benign (class 1) based on two key measurements from the tumor cells:
+
+1. The symmetry of the tumor cells (average measurement) falls between 0.172 and 0.1928, which suggests more regular, organized cell growth typical of benign tumors.
+
+2. The worst texture reading (measuring cell pattern variation) is between 12.0 and 23.3, indicating relatively uniform cell patterns that are more common in benign growths.
+
+All other measurements were either not in concerning ranges or did not meet the thresholds that would have suggested malignancy. For example, the model checked but did not find evidence of high compactness, concavity, or other irregular features that are typical of malignant tumors.","The model predicted this tumor is benign (class 1) because:
+
+1. The symmetry of the tumor is in the medium range (between 0.1721 and 0.1928)
+2. The texture of the tumor's outer surface is in the lowest range (between 12.02 and 23.31)
+3. The texture of the tumor's outer surface is not in the highest range (not between 29.02 and 47.16)
+4. The texture of the tumor's inner tissue is not in the highest range (not between 21.51 and 39.28)
+5. The symmetry of the tumor is not in the highest range (not between 0.1928 and 0.2743)","1. The average texture measurement is not between 21.5 and 39.3, which is true here.
+2. The average smoothness measurement is not between 0.103 and 0.163, which is true here.
+3. The average compactness measurement is not between 0.130 and 0.311, which is true here.
+4. The average concavity measurement is not between 0.0506 and 0.124, which is true here.
+5. The average symmetry measurement is between 0.172 and 0.193, which is true here.
+6. The average symmetry measurement is not between 0.193 and 0.274, which is true here.
+7. The standard error of the radius measurement is not between 0.512 and 2.87, which is true here.
+8. The standard error of the symmetry measurement is not between 0.00788 and 0.0162, which is true here.
+9. The standard error of the symmetry measurement is not between 0.0214 and 0.0615, which is true here.
+10. The worst radius measurement is not between 18.6 and 36.0, which is true here.
+11. The worst texture measurement is between 12.0 and 23.3, which is true here.
+12. The worst texture measurement is not between 29.0 and 47.2, which is true here.
+13. The worst area measurement is not between 185 and 623, which is true here.
+14. The worst area measurement is not between 1050 and 4254, which is true here.
+15. The worst concavity measurement is not between 0 and 0.189, which is true here.
+16. The worst concavity measurement is not between 0.374 and 1.17, which is true here.
+17. The worst concave points measurement is not between 0.163 and 0.291, which is true here.
+18. The worst fractal dimension measurement is not between 0.0759 and 0.0900, which is true here.","['symmetry_mean_b1 > 0.5', 'texture_worst_b0 > 0.5']","['texture_mean_b2 < 0.5', 'smoothness_mean_b2 < 0.5', 'compactness_mean_b2 < 0.5', 'concavity_mean_b1 < 0.5', 'symmetry_mean_b1 > 0.5', 'symmetry_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[5, 14, 17, 19, 25, 26, 32, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[25, 63]","[5, 25, 26, 63, 65]","[5, 14, 17, 19, 25, 26, 32, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]",0.4032,FEASIBLE,cop@18,0.4036
+cancer,deepcogito/cogito-v2-1-671b,35,cop_k,0,8,82.1,False,79.2,79.2,82.1,82.1,False,False,False,2,2,8,6,0,6,0,0,0,0,0,3,"[79.2, 82.1, 82.1, 79.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 1  (concave_points_worst in [0.1625, 0.291) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted a malignant tumor based on two key measurements from the test results. First, the symmetry of the tumor cells in the standard error measurement fell within a specific low range (between 0.007882 and 0.01623). Second, the worst measurement of concave points in the tumor (which describes the severity of indentations in the tumor's outline) was in a higher range (between 0.1625 and 0.291). These two specific measurements together were sufficient for the model to classify this as a malignant case. The model did not rely on other measurements like smoothness, area, texture, concavity, or fractal dimension in making this particular decision.","Based on the medical data, this case is classified as malignant (class 0) because:
+
+The symmetry of the tumor cells is within the normal range (between 0.0079 and 0.0162), and the contour irregularity of the most prominent mass is in the higher range (between 0.1625 and 0.291). These two factors together indicate a higher likelihood of malignancy.
+
+The other measurements, while present in the analysis, did not contribute to this particular classification decision.","1. The average smoothness measurement is not between 0.1034 and 0.1634, which supports the prediction of a malignant tumor.
+
+2. The standard error of the area measurement is not between 6.802 and 21.83, which supports the prediction of a malignant tumor.
+
+3. The standard error of the symmetry measurement is between 0.007882 and 0.01623, which supports the prediction of a malignant tumor.
+
+4. The worst texture measurement is not between 29.02 and 47.16, which supports the prediction of a malignant tumor.
+
+5. The worst concavity measurement is not between 0 and 0.189, which supports the prediction of a malignant tumor.
+
+6. The worst concavity measurement is not between 0.3744 and 1.17, which supports the prediction of a malignant tumor.
+
+7. The worst concave points measurement is between 0.1625 and 0.291, which supports the prediction of a malignant tumor.
+
+8. The worst fractal dimension measurement is not between 0.07587 and 0.08999, which supports the prediction of a malignant tumor.","['symmetry_se_b0 > 0.5', 'concave_points_worst_b2 > 0.5']","['smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 39, 54, 65, 78, 80, 83, 88]","[54, 83]","[54, 83]","[14, 39, 54, 65, 78, 80, 83, 88]",0.583,FEASIBLE,cop@8,0.5876
+cancer,deepcogito/cogito-v2-1-671b,188,cop_k,0,9,90.7,False,85.9,86.5,86.5,90.7,False,False,False,6,6,9,3,0,3,0,0,0,0,0,3,"[85.9, 73.4, 85.9, 86.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b1 = 1  (area_worst in [622.9, 1050) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  compactness_worst_b0 = 0  (compactness_worst in [0.02729, 0.1924) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concave_points_worst_b0 = 0  (concave_points_worst in [0, 0.086) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this is a malignant tumor (class 0) based primarily on one key factor: the worst area measurement falls between 622.9 and 1050. Several other measurements were also considered but did not meet concerning thresholds. Specifically, the worst texture was not between 29.02 and 47.16, the worst compactness was not below 0.1924, the worst concavity was not below 0.189, the worst concave points were not below 0.086, and the worst fractal dimension was not between 0.07587 and 0.08999. The combination of these factors, particularly the large tumor area, led to the malignant classification.","Based on the medical data, this case is classified as malignant (cancerous) because the area of the worst tumor region falls within the range of 622.9 to 1050 square units. The classification is further supported by several other measurements being outside concerning ranges, including the area of the worst tumor region not being in the very high range (1050 to 4254 square units), the compactness of the worst tumor region not being in the lowest range, the concavity of the worst tumor region not being in the mildest range, the concave points of the worst tumor region not being in the mildest range, and the fractal dimension of the worst tumor region not being in the middle range.","1. The standard error of the area measurement is not between 6.802 and 21.83, which is consistent with this prediction.
+2. The worst texture reading is not between 29.02 and 47.16, which is consistent with this prediction.
+3. The worst area measurement is not between 185.2 and 622.9, which is consistent with this prediction.
+4. The worst area measurement is between 622.9 and 1050, which is true here and supports this prediction.
+5. The worst area measurement is not between 1050 and 4254, which is consistent with this prediction.
+6. The worst compactness reading is not between 0.02729 and 0.1924, which is consistent with this prediction.
+7. The worst concavity reading is not between 0 and 0.189, which is consistent with this prediction.
+8. The worst concave points reading is not between 0 and 0.086, which is consistent with this prediction.
+9. The worst fractal dimension reading is not between 0.07587 and 0.08999, which is consistent with this prediction.","['area_worst_b1 > 0.5', 'texture_worst_b2 < 0.5', 'compactness_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['area_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b1 > 0.5', 'area_worst_b2 < 0.5', 'compactness_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[39, 65, 69, 70, 71, 75, 78, 81, 88]","[65, 70, 75, 78, 81, 88]","[70, 71, 75, 78, 81, 88]","[39, 65, 69, 70, 71, 75, 78, 81, 88]",0.5558,FEASIBLE,cop@9,0.5786
+cancer,deepcogito/cogito-v2-1-671b,26,cop_k,1,14,77.9,False,37.5,77.9,84.2,77.9,False,False,False,3,14,14,11,0,0,0,0,0,0,0,3,"[37.5, 84.2, 37.5, 77.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  perimeter_mean_b2 = 0  (perimeter_mean in [106.3, 188.5) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b1 = 0  (area_se in [21.83, 49.7) — does NOT hold)
+  smoothness_se_b2 = 0  (smoothness_se in [0.007571, 0.03113) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  compactness_worst_b0 = 1  (compactness_worst in [0.02729, 0.1924) — holds)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this tumor is benign (non-cancerous) based on three key measurements:
+
+1. The symmetry of the tumor's cells in their early stages is between 0.007882 and 0.01623
+2. The compactness of the tumor's worst cells is between 0.02729 and 0.1924
+3. The concavity (how much the tumor's worst cells curve inward) is between 0 and 0.189
+
+All other measurements were not in the concerning ranges that would suggest a malignant tumor. For example, the perimeter, radius, area, and other features were not in the higher ranges that typically indicate cancer.","The model predicts this tumor is benign (class 1) because:
+
+1. The symmetry of the tumor's surface is low (between 0.007882 and 0.01623)
+2. The tumor's compactness is low (between 0.02729 and 0.1924)
+3. The tumor's concavity is low (between 0 and 0.189)
+
+Additionally, the tumor does not show concerning characteristics in:
+- Perimeter (not between 106.3 and 188.5)
+- Radius variation (not between 0.5115 and 2.873)
+- Area variation (not between 21.83 and 49.7)
+- Smoothness variation (not between 0.007571 and 0.03113)
+- Higher symmetry values (not between 0.02137 and 0.06146)
+- Worst radius (not between 18.55 and 36.04)
+- Worst texture (not between 29.02 and 47.16)
+- Worst perimeter (not between 126.9 and 251.2)
+- Worst area (not between 1050 and 4254)
+- Higher concavity values (not between 0.3744 and 1.17)
+- Fractal dimension (not between 0.07587 and 0.08999)","1. The average perimeter measurement is not between 106.3 and 188.5, which supports the benign classification.
+2. The standard error of the radius measurement is not between 0.5115 and 2.873, which supports the benign classification.
+3. The standard error of the area measurement is not between 21.83 and 49.7, which supports the benign classification.
+4. The standard error of the smoothness measurement is not between 0.007571 and 0.03113, which supports the benign classification.
+5. The standard error of the symmetry measurement is between 0.007882 and 0.01623, which supports the benign classification.
+6. The standard error of the symmetry measurement is not between 0.02137 and 0.06146, which supports the benign classification.
+7. The worst radius measurement is not between 18.55 and 36.04, which supports the benign classification.
+8. The worst texture measurement is not between 29.02 and 47.16, which supports the benign classification.
+9. The worst perimeter measurement is not between 126.9 and 251.2, which supports the benign classification.
+10. The worst area measurement is not between 1050 and 4254, which supports the benign classification.
+11. The worst compactness measurement is between 0.02729 and 0.1924, which supports the benign classification.
+12. The worst concavity measurement is between 0 and 0.189, which supports the benign classification.
+13. The worst concavity measurement is not between 0.3744 and 1.17, which supports the benign classification.
+14. The worst fractal dimension measurement is not between 0.07587 and 0.08999, which supports the benign classification.","['symmetry_se_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5']","['perimeter_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b1 < 0.5', 'smoothness_se_b2 < 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[8, 32, 40, 44, 54, 56, 62, 65, 68, 71, 75, 78, 80, 88]","[54, 75, 78]","[8, 32, 40, 44, 54, 56, 62, 65, 68, 71, 75, 78, 80, 88]","[8, 32, 40, 44, 54, 56, 62, 65, 68, 71, 75, 78, 80, 88]",0.4032,FEASIBLE,cop@14,0.4048
+cancer,deepcogito/cogito-v2-1-671b,173,cop_k,1,14,70.6,False,39.0,45.7,70.6,39.0,False,False,False,2,5,2,12,0,9,0,12,0,0,0,3,"[39.0, 70.6, 61.5, 45.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b1 = 1  (area_se in [21.83, 49.7) — holds)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  smoothness_se_b2 = 0  (smoothness_se in [0.007571, 0.03113) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  compactness_worst_b2 = 0  (compactness_worst in [0.3309, 0.9379) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b1 = 0  (concavity_worst in [0.189, 0.3744) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted this is a benign tumor (class 1) based on two key measurements:
+
+1. The area of the tumor cells is between 21.83 and 49.7 (this condition holds true)
+2. The concavity (how much the cell contours curve inward) in the worst part of the tumor is between 0 and 0.189 (this condition holds true)
+
+All other measurements in the analysis did not meet the specific conditions the model was looking for to make a different prediction.","The model predicts this tumor is benign (class 1) because:
+
+1. The area under the curve (area_se) is between 21.83 and 49.7
+2. The concavity of the worst cells (concavity_worst) is less than 0.189
+3. The area under the curve (area_se) is not between 6.802 and 21.83
+4. The symmetry of the cells (symmetry_se) is not between 0.007882 and 0.01623
+5. The concavity of the worst cells (concavity_worst) is not between 0.3744 and 1.17","1. The standard error of the area measurement is between 21.83 and 49.7, which is true here.
+2. The worst concavity measurement is between 0 and 0.189, which is true here.","['area_se_b1 > 0.5', 'concavity_worst_b0 > 0.5']","['area_se_b1 > 0.5', 'concavity_worst_b0 > 0.5']","[39, 40, 41, 44, 54, 56, 62, 65, 68, 77, 78, 79, 80, 88]","[40, 78]","[39, 40, 54, 78, 80]","[40, 78]",0.3944,FEASIBLE,cop@14,0.3966
+cancer,deepcogito/cogito-v2-1-671b,139,cop_k,1,13,89.7,False,47.5,89.7,89.7,89.7,False,False,False,3,13,13,10,0,0,0,0,0,0,0,3,"[47.5, 89.7, 47.5, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  perimeter_mean_b2 = 0  (perimeter_mean in [106.3, 188.5) — does NOT hold)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b1 = 1  (symmetry_se in [0.01623, 0.02137) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b1 = 0  (area_worst in [622.9, 1050) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","The model predicted this is a benign tumor (class 1) based on three key measurements:
+
+1. The symmetry of the tumor cells (standard error) is between 0.01623 and 0.02137, which suggests the cells are relatively uniform in shape.
+
+2. The total tumor area is between 185.2 and 622.9 square millimeters, which is a smaller size.
+
+3. The complexity of the tumor's outer surface (fractal dimension) is between 0.07587 and 0.08999, indicating a relatively simple structure.
+
+These measurements together point toward a benign growth rather than cancer. The model also considered several other measurements, but they didn't provide strong evidence either way in this case.","The model predicted this tumor as benign (class 1) because:
+
+1. The symmetry of the tumor cells (symmetry_se) falls between 0.01623 and 0.02137
+2. The total tumor area (area_worst) is between 185.2 and 622.9
+3. The complexity of the tumor's outline (fractal_dimension_worst) is between 0.07587 and 0.08999
+
+Additionally, the model considered that:
+- The perimeter is not between 106.3 and 188.5
+- The smoothness is not between 0.1034 and 0.1634
+- The concavity is not between 0.1235 and 0.4264
+- The symmetry is not between 0.007882 and 0.01623
+- The symmetry is not between 0.02137 and 0.06146
+- The texture is not between 29.02 and 47.16
+- The area is not between 622.9 and 1050
+- The area is not between 1050 and 4254
+- The worst concavity is not between 0.3744 and 1.17
+- The worst concave points are not between 0.1625 and 0.291","1. The average perimeter measurement is not between 106.3 and 188.5, which is true for this case.
+2. The average smoothness measurement is not between 0.1034 and 0.1634, which is true for this case.
+3. The average concavity measurement is not between 0.1235 and 0.4264, which is true for this case.
+4. The standard error of symmetry is not between 0.007882 and 0.01623, which is true for this case.
+5. The standard error of symmetry is between 0.01623 and 0.02137, which is true for this case.
+6. The standard error of symmetry is not between 0.02137 and 0.06146, which is true for this case.
+7. The worst texture reading is not between 29.02 and 47.16, which is true for this case.
+8. The worst area measurement is between 185.2 and 622.9, which is true for this case.
+9. The worst area measurement is not between 622.9 and 1050, which is true for this case.
+10. The worst area measurement is not between 1050 and 4254, which is true for this case.
+11. The worst concavity measurement is not between 0.3744 and 1.17, which is true for this case.
+12. The worst concave points measurement is not between 0.1625 and 0.291, which is true for this case.
+13. The worst fractal dimension measurement is between 0.07587 and 0.08999, which is true for this case.","['symmetry_se_b1 > 0.5', 'area_worst_b0 > 0.5', 'fractal_dimension_worst_b1 > 0.5']","['perimeter_mean_b2 < 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b1 > 0.5', 'symmetry_se_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b1 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[8, 14, 20, 54, 55, 56, 65, 69, 70, 71, 80, 83, 88]","[55, 69, 88]","[8, 14, 20, 54, 55, 56, 65, 69, 70, 71, 80, 83, 88]","[8, 14, 20, 54, 55, 56, 65, 69, 70, 71, 80, 83, 88]",0.3978,FEASIBLE,cop@13,0.4008
+cancer,deepcogito/cogito-v2-1-671b,22,cop_k,0,9,96.4,True,74.5,96.4,96.4,96.4,False,True,True,1,9,9,8,0,0,0,0,0,0,0,1,"[74.5, 96.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_mean_b0 = 0  (area_mean in [143.5, 512) — does NOT hold)
+  concavity_mean_b0 = 0  (concavity_mean in [0, 0.05063) — does NOT hold)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concave_points_worst_b0 = 0  (concave_points_worst in [0, 0.086) — does NOT hold)
+  concave_points_worst_b1 = 0  (concave_points_worst in [0.086, 0.1625) — does NOT hold)
+  concave_points_worst_b2 = 1  (concave_points_worst in [0.1625, 0.291) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)",The model predicted this is a malignant tumor (class 0) based on one key measurement: the worst concave points value is between 0.1625 and 0.291. This was the only measurement that matched the pattern the model associates with malignant tumors. All other measurements did not match the ranges that would have suggested a benign tumor.,"The model predicted this tumor is malignant (class 0) because the concave points worst measurement falls in the range of 0.1625 to 0.291. Additionally, the following measurements were not in concerning ranges: the area mean was not between 143.5 and 512, the concavity mean was not below 0.05063, the symmetry standard error was not between 0.02137 and 0.06146, the radius worst was not between 18.55 and 36.04, the concavity worst was not below 0.189, the concave points worst was not below 0.086, and the fractal dimension worst was not between 0.07587 and 0.08999.","1. The average area measurement is not between 143.5 and 512, which is true here.
+2. The average concavity measurement is not between 0 and 0.05063, which is true here.
+3. The standard error of symmetry measurement is not between 0.02137 and 0.06146, which is true here.
+4. The worst radius measurement is not between 18.55 and 36.04, which is true here.
+5. The worst concavity measurement is not between 0 and 0.189, which is true here.
+6. The worst concave points measurement is not between 0 and 0.086, which is true here.
+7. The worst concave points measurement is not between 0.086 and 0.1625, which is true here.
+8. The worst concave points measurement is between 0.1625 and 0.291, which is true here.
+9. The worst fractal dimension measurement is not between 0.07587 and 0.08999, which is true here.",['concave_points_worst_b2 > 0.5'],"['area_mean_b0 < 0.5', 'concavity_mean_b0 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'concave_points_worst_b1 < 0.5', 'concave_points_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[9, 18, 56, 62, 78, 81, 82, 83, 88]",[83],"[9, 18, 56, 62, 78, 81, 82, 83, 88]","[9, 18, 56, 62, 78, 81, 82, 83, 88]",0.5678,FEASIBLE,cop@9,0.5952
+cancer,deepcogito/cogito-v2-1-671b,151,cop_k,0,8,97.6,True,79.5,97.6,97.6,79.5,False,True,False,2,8,2,6,0,0,0,6,0,0,0,1,"[79.5, 97.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b2 = 1  (area_se in [49.7, 542.2) — holds)
+  symmetry_se_b1 = 0  (symmetry_se in [0.01623, 0.02137) — does NOT hold)
+  radius_worst_b0 = 0  (radius_worst in [7.93, 14.23) — does NOT hold)
+  texture_worst_b0 = 0  (texture_worst in [12.02, 23.31) — does NOT hold)
+  texture_worst_b1 = 0  (texture_worst in [23.31, 29.02) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)","The model predicted this is a malignant tumor (class 0) based on two key measurements from the tumor:
+
+1. The area of the tumor's cells falls within a higher range (between 49.7 and 542.2)
+2. The worst texture measurement of the tumor is in a higher range (between 29.02 and 47.16)
+
+These two factors together were sufficient for the model to make its prediction, even though other measurements were not in their typical ranges for this type of tumor. The model determined that these two high-range measurements were the most important indicators in this case.","The model predicts this tumor is malignant (class 0) because of two key measurements: the area under the standard error curve is between 49.7 and 542.2, and the texture in the worst case is between 29.02 and 47.16. Additionally, the model considers the absence of certain conditions: the area under the standard error curve is not between 6.802 and 21.83, the symmetry standard error is not between 0.01623 and 0.02137, the worst radius is not between 7.93 and 14.23, the worst texture is not between 12.02 and 23.31, the worst texture is also not between 23.31 and 29.02, and the worst concavity is not between 0 and 0.189.","1. The standard error of the area is between 49.7 and 542.2, which is true here.
+2. The worst texture reading is between 29.0 and 47.2, which is true here.","['area_se_b2 > 0.5', 'texture_worst_b2 > 0.5']","['area_se_b2 > 0.5', 'texture_worst_b2 > 0.5']","[39, 41, 55, 60, 63, 64, 65, 78]","[41, 65]","[39, 41, 55, 60, 63, 64, 65, 78]","[41, 65]",0.5834,FEASIBLE,cop@8,0.6106
+cancer,deepcogito/cogito-v2-1-671b,108,cop_k,1,18,98.8,True,60.2,90.8,90.8,98.8,False,False,True,6,12,18,12,0,6,0,0,0,0,0,3,"[60.2, 90.8, 71.9, 90.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 1  (symmetry_se in [0.02137, 0.06146) — holds)
+  texture_worst_b0 = 0  (texture_worst in [12.02, 23.31) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  smoothness_worst_b0 = 0  (smoothness_worst in [0.07117, 0.1247) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b0 = 0  (fractal_dimension_worst in [0.05504, 0.07587) — does NOT hold)","This prediction of a benign tumor (class 1) was based on several key measurements from the medical scan:
+
+The model found that the average concavity was in the lowest range (0 to 0.0506), which suggests the tumor has smoother, less irregular indentations. The area variation in the tumor cells was in the smallest range (6.8 to 21.8), indicating more uniform cell sizes. The symmetry measurement was in a higher range (0.0214 to 0.0615), showing the tumor has more balanced growth patterns. The worst texture reading was in a higher range (29.0 to 47.2), meaning the tissue appeared more varied in the most abnormal areas. The total tumor area was in a smaller range (185.2 to 622.9), and the worst concavity measurement was in the lowest range (0 to 0.189), again indicating smoother contours in the most irregular parts.
+
+Several other measurements did not match the typical patterns the model looks for, but the combination of these specific measurements - particularly the smoother concavity, smaller area, and more uniform cell patterns - led to the benign prediction.","The model predicts this is a benign tumor (class 1) based on several key measurements:
+
+1. The concavity of the tumor cells is in the low range (0 to 0.05063)
+2. The area of the tumor is in the low range (6.802 to 21.83)
+3. The symmetry of the tumor cells is in the high range (0.02137 to 0.06146)
+4. The texture of the tumor is in the high range (29.02 to 47.16)
+5. The overall area of the tumor is in the low range (185.2 to 622.9)
+6. The concavity of the tumor's worst parts is in the low range (0 to 0.189)
+
+Additionally, the model considered that:
+- The concavity of the tumor cells is not in the medium-high range (0.1235 to 0.4264)
+- The radius of the tumor is not in the high range (0.5115 to 2.873)
+- The perimeter of the tumor is not in the high range (126.9 to 251.2)
+- The smoothness of the tumor's worst parts is not in the high range (0.1417 to 0.2184)
+- The concave points of the tumor's worst parts are not in the high range (0.1625 to 0.291)
+- The fractal dimension of the tumor's worst parts is not in the low range (0.05504 to 0.07587)
+
+These measurements together suggest the tumor is more likely to be benign.","1. The average smoothness is not between 0.1034 and 0.1634, which is true here.
+2. The average concavity is between 0 and 0.05063, which is true here.
+3. The average concavity is not between 0.1235 and 0.4264, which is true here.
+4. The standard error of the radius is not between 0.5115 and 2.873, which is true here.
+5. The standard error of the area is between 6.802 and 21.83, which is true here.
+6. The standard error of the symmetry is not between 0.007882 and 0.01623, which is true here.
+7. The standard error of the symmetry is between 0.02137 and 0.06146, which is true here.
+8. The worst texture reading is not between 12.02 and 23.31, which is true here.
+9. The worst texture reading is between 29.02 and 47.16, which is true here.
+10. The worst perimeter is not between 126.9 and 251.2, which is true here.
+11. The worst area is between 185.2 and 622.9, which is true here.
+12. The worst area is not between 1050 and 4254, which is true here.
+13. The worst smoothness is not between 0.07117 and 0.1247, which is true here.
+14. The worst smoothness is not between 0.1417 and 0.2184, which is true here.
+15. The worst concavity is between 0 and 0.189, which is true here.
+16. The worst concavity is not between 0.3744 and 1.17, which is true here.
+17. The worst concave points are not between 0.1625 and 0.291, which is true here.
+18. The worst fractal dimension is not between 0.05504 and 0.07587, which is true here.","['concavity_mean_b0 > 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b2 > 0.5', 'texture_worst_b2 > 0.5', 'area_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 > 0.5', 'texture_worst_b0 < 0.5', 'texture_worst_b2 > 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b0 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 < 0.5']","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]","[18, 39, 56, 65, 69, 78]","[18, 20, 32, 39, 56, 65, 68, 69, 74, 78, 83, 87]","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]",0.4074,FEASIBLE,cop@18,0.4076

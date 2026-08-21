@@ -1,0 +1,19 @@
+Full console log -> research/results/logs/cancer_nn_llama33_newprompts_20260819_161400_12568.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop] base=68.5% v4=68.5% v5=68.5% v6=68.5% (len 5, om_v5=0)
+  [lmpaxp] base=98.0% v4=70.0% v5=98.0% v6=98.0% (len 15, om_v5=0)
+  [anchors] base=47.7% v4=31.9% v5=47.7% v6=31.9% (len 2, om_v5=0)
+  [shap] base=96.3% v4=68.5% v5=70.0% v6=73.5% (len 15, om_v5=9)
+  [lime] base=97.6% v4=32.5% v5=43.1% v6=33.1% (len 15, om_v5=11)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop] base=44.5% v4=44.5% v5=44.5% v6=44.5% (len 7, om_v5=0)
+  [lmpaxp] base=97.4% v4=80.4% v5=79.4% v6=97.4% (len 18, om_v5=7)
+  [anchors] base=36.0% v4=36.0% v5=36.0% v6=38.7% (len 2, om_v5=0)
+  [shap] base=90.0% v4=69.5% v5=85.4% v6=85.9% (len 18, om_v5=9)
+  [lime] base=95.9% v4=33.2% v5=44.7% v6=44.7% (len 18, om_v5=10)
+[003/15] instance 6 (pred=1, k_ref=17)
+  [network: Connection error.] retry in 10s
+  [network: Connection error.] retry in 20s
+  [network: Connection error.] retry in 30s
+  [cop] base=17.2% v4=17.2% v5=31.9% v6=17.2% (len 6, om_v5=2)

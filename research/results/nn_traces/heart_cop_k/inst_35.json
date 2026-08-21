@@ -1,0 +1,13 @@
+{
+  "instance_id": 35,
+  "dataset": "heart",
+  "llm": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "arms": {
+    "cop_k": {
+      "dataset": "heart",
+      "instance": 35,
+      "arm": "cop_k",
+      "error": "Connection error."
+    }
+  }
+}

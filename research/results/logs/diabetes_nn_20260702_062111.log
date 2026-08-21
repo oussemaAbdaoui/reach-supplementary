@@ -1,0 +1,44 @@
+Full console log -> research/results/logs/diabetes_nn_20260702_062111.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] base=94.3% v4=68.0% v5=79.4% v6=94.3% (len 9, om_v5=4)
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] base=95.2% v4=46.1% v5=95.2% v6=95.2% (len 6, om_v5=0)
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop_k] base=95.4% v4=78.2% v5=90.1% v6=95.4% (len 7, om_v5=2)
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop_k] base=91.7% v4=63.5% v5=86.2% v6=63.5% (len 7, om_v5=1)
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] base=95.4% v4=64.8% v5=87.8% v6=95.4% (len 5, om_v5=1)
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] base=90.7% v4=52.6% v5=96.0% v6=90.7% (len 9, om_v5=3)
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] base=91.4% v4=68.9% v5=87.5% v6=91.4% (len 9, om_v5=1)
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] base=89.6% v4=63.3% v5=61.4% v6=89.6% (len 7, om_v5=4)
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] base=89.9% v4=62.5% v5=59.7% v6=89.9% (len 9, om_v5=5)
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] base=86.9% v4=59.3% v5=86.9% v6=86.9% (len 8, om_v5=0)
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop_k] base=87.0% v4=40.5% v5=87.0% v6=87.0% (len 11, om_v5=0)
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] base=98.7% v4=83.8% v5=64.1% v6=98.7% (len 9, om_v5=7)
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] base=95.6% v4=80.5% v5=85.2% v6=89.6% (len 7, om_v5=2)
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] base=93.7% v4=83.4% v5=93.7% v6=93.7% (len 5, om_v5=0)
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop_k] base=98.0% v4=78.4% v5=78.3% v6=98.0% (len 6, om_v5=2)
+
+saved -> research/results/diabetes_nn_comparison_cop_k.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k        7.6                92.9     66.25     82.57          89.03     90.62
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.4          0.13

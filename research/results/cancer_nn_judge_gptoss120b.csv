@@ -1,0 +1,12 @@
+dataset,instance,arm,strategy,pass,judge_model,provider,parse_ok,faithfulness,coherence,completeness,halluc_risk,raw
+cancer,163,cop,v4,3,llama-3.3-70b-versatile,groq,1,80,90,70,20,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 70, ""halluc_risk"": 20}"
+cancer,163,cop,v4,2,llama-3.3-70b-versatile,groq,1,80,90,70,20,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 70, ""halluc_risk"": 20}"
+cancer,163,cop,v5,1,llama-3.3-70b-versatile,groq,1,80,90,70,10,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 70, ""halluc_risk"": 10}"
+cancer,163,cop,v4,1,llama-3.3-70b-versatile,groq,1,0,90,20,80,"{""faithfulness"": 0, ""coherence"": 90, ""completeness"": 20, ""halluc_risk"": 80}"
+cancer,163,cop,v5,2,llama-3.3-70b-versatile,groq,1,80,90,70,10,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 70, ""halluc_risk"": 10}"
+cancer,163,cop,v6,2,llama-3.3-70b-versatile,groq,1,80,90,60,0,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 60, ""halluc_risk"": 0}"
+cancer,163,cop,v6,1,llama-3.3-70b-versatile,groq,1,80,90,60,0,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 60, ""halluc_risk"": 0}"
+cancer,163,lmpaxp,v4,2,llama-3.3-70b-versatile,groq,1,80,95,70,5,"{""faithfulness"": 80, ""coherence"": 95, ""completeness"": 70, ""halluc_risk"": 5}"
+cancer,163,cop,v5,3,llama-3.3-70b-versatile,groq,1,80,90,70,10,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 70, ""halluc_risk"": 10}"
+cancer,163,lmpaxp,v4,3,llama-3.3-70b-versatile,groq,1,80,95,70,5,"{""faithfulness"": 80, ""coherence"": 95, ""completeness"": 70, ""halluc_risk"": 5}"
+cancer,163,cop,v6,3,llama-3.3-70b-versatile,groq,1,80,90,60,0,"{""faithfulness"": 80, ""coherence"": 90, ""completeness"": 60, ""halluc_risk"": 0}"

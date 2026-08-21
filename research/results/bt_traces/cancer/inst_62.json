@@ -1,0 +1,287 @@
+{
+  "instance_id": 62,
+  "dataset": "cancer",
+  "llm": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "arms": {
+    "pyxai_sr": {
+      "pos": 62,
+      "arm": "pyxai_sr",
+      "arm_baseline_score": 100.0,
+      "target": 1,
+      "class_pred": 1,
+      "n_rules_v4": 3,
+      "n_rules_v6": 3,
+      "n_sr_conds": 3,
+      "rules_v4": [
+        "perimeter_worst <= 106.199997",
+        "concave_points_worst <= 0.1357",
+        "area_worst <= 768.900024"
+      ],
+      "rules_v6": [
+        "perimeter_worst <= 106.199997",
+        "concave_points_worst <= 0.1357",
+        "area_worst <= 768.900024"
+      ],
+      "sr_conds": [
+        "perimeter_worst <= 106.199997",
+        "concave_points_worst <= 0.1357",
+        "area_worst <= 768.900024"
+      ],
+      "explanation_v4": "The model predicted that the cancer is benign because the perimeter of the worst area is within a certain limit, specifically it is less than or equal to 106.199997, and the concave points of the worst area are also limited, being less than or equal to 0.1357. Additionally, the area of the worst part is less than or equal to 768.900024, which together with the other conditions, led the model to classify the cancer as benign.",
+      "explanation_v5": "The model predicted that the cancer is benign because the perimeter of the worst area is within a certain limit, specifically it is less than or equal to 106.199997, and the concave points of the worst area are also limited, being less than or equal to 0.1357. Additionally, the area of the worst part is less than or equal to 768.900024, which together with the other conditions, led the model to classify the cancer as benign.",
+      "explanation_v6": "1. The model predicts the cancer to be benign (class 1) because the perimeter_worst is 82.28, which is less than or equal to 106.199997.\n2. The model predicts the cancer to be benign (class 1) because the concave_points_worst is 0.0965, which is less than or equal to 0.1357.\n3. The model predicts the cancer to be benign (class 1) because the area_worst is 474.2, which is less than or equal to 768.900024.",
+      "bina_v4": [
+        -1,
+        -2,
+        -12
+      ],
+      "bina_v5": [
+        -1,
+        -2,
+        -12
+      ],
+      "bina_v6": [
+        -1,
+        -2,
+        -12
+      ],
+      "lits_v4": 3,
+      "lits_v6": 3,
+      "score_v4": 100.0,
+      "score_v5": 100.0,
+      "score_v5_best": 100.0,
+      "score_v5_filtered": 100.0,
+      "score_v6": 100.0,
+      "v5_scores": [
+        100.0
+      ],
+      "v5_rounds": 0,
+      "delta_v5": 0.0,
+      "delta_v6": 0.0,
+      "n_omissions": 0,
+      "n_commissions": 0,
+      "n_redundant": 0,
+      "omission_feats": [],
+      "commission_feats": [],
+      "eps_sr": 0.0,
+      "n_sr_neighbors": 213,
+      "eps_v4": 0.0,
+      "n_v4_neighbors": 213,
+      "eps_v5": 0.0,
+      "n_v5_neighbors": 213,
+      "eps_v6": 0.0,
+      "n_v6_neighbors": 213,
+      "div_v4": 0.0,
+      "div_v5": 0.0,
+      "div_v6": 0.0,
+      "orthogonality_ok": true,
+      "eps_oracle_sr": null,
+      "n_oracle_sr": null,
+      "pac_bound_sr": null,
+      "eps_oracle_v6": null,
+      "n_oracle_v6": null,
+      "pac_bound_v6": null,
+      "cp1_sweep": [],
+      "cp1_k100": null,
+      "cp1_score_at_sr": null,
+      "cp3_sweep_v5": [],
+      "cp3_k80_v5": null,
+      "cp3_k90_v5": null,
+      "cp3_k100_v5": null,
+      "cp3_score_at_sr_v5": null,
+      "cp3_sweep_v6": [],
+      "cp3_k80_v6": null,
+      "cp3_k90_v6": null,
+      "cp3_k100_v6": null,
+      "cp3_score_at_sr_v6": null
+    },
+    "shap": {
+      "pos": 62,
+      "arm": "shap",
+      "arm_baseline_score": 68.75,
+      "target": 1,
+      "class_pred": 1,
+      "n_rules_v4": 3,
+      "n_rules_v6": 3,
+      "n_sr_conds": 1,
+      "rules_v4": [
+        "area_worst > 0.5",
+        "concave_points_mean > 0.5",
+        "concave_points_worst > 0.5"
+      ],
+      "rules_v6": [
+        "area_worst <= 509.83",
+        "concave_points_mean > 0.5",
+        "concave_points_worst > 0.5"
+      ],
+      "sr_conds": [
+        "concave_points_mean <= 0.04835"
+      ],
+      "explanation_v4": "The model predicted that the cancer is benign, or class 1, because of the characteristics of the tumor. The tumor has a relatively high area, and the number of concave points is higher than average in some areas, and also has a high mean number of concave points. These features all contributed to the prediction, with the mean number of concave points having the largest impact, followed by the area and then the worst number of concave points.",
+      "explanation_v5": "Le mod\u00e8le de classification binaire pr\u00e9dit que le type de cancer diagnostiqu\u00e9 est b\u00e9nigne (classe 1) en fonction des caract\u00e9ristiques de l'instance, notamment l'area_worst, les concave_points_mean et les concave_points_worst. Les valeurs \u00e9lev\u00e9es de ces caract\u00e9ristiques contribuent \u00e0 cette pr\u00e9diction, avec les concave_points_mean ayant la contribution la plus importante \u00e0 43%, suivies par l'area_worst \u00e0 34,7% et les concave_points_worst \u00e0 22,3%.",
+      "explanation_v6": "1. The model objective is to predict whether a diagnosed cancer is maligne (classe 0) or b\u00e9nigne (classe 1).\n2. The instance to be classified has the following features: {'area_worst': 474.2, 'concave_points_mean': 0.0411, 'concave_points_worst': 0.0965}.\n3. The model predicts that the cancer is b\u00e9nigne, which corresponds to the predicted class 1.\n4. The SHAP feature importance indicates that the concave_points_mean feature contributes 43.0% to the prediction, with a positive contribution.\n5. The area_worst feature contributes 34.7% to the prediction, with a positive contribution.\n6. The concave_points_worst feature contributes 22.3% to the prediction, with a positive contribution.",
+      "bina_v4": [
+        28,
+        41,
+        15
+      ],
+      "bina_v5": [
+        28,
+        41,
+        15
+      ],
+      "bina_v6": [
+        41,
+        15
+      ],
+      "lits_v4": 3,
+      "lits_v6": 2,
+      "score_v4": 59.37,
+      "score_v5": 59.37,
+      "score_v5_best": 59.37,
+      "score_v5_filtered": 59.37,
+      "score_v6": 59.37,
+      "v5_scores": [
+        59.37,
+        59.37,
+        59.37,
+        59.37
+      ],
+      "v5_rounds": 3,
+      "delta_v5": 0.0,
+      "delta_v6": 0.0,
+      "n_omissions": 3,
+      "n_commissions": 0,
+      "n_redundant": 3,
+      "omission_feats": [
+        "concave_points_mean"
+      ],
+      "commission_feats": [],
+      "eps_sr": 0.0871,
+      "n_sr_neighbors": 241,
+      "eps_v4": 0.9712,
+      "n_v4_neighbors": 243,
+      "eps_v5": 0.9712,
+      "n_v5_neighbors": 243,
+      "eps_v6": 0.9269,
+      "n_v6_neighbors": 260,
+      "div_v4": 56.49,
+      "div_v5": 56.49,
+      "div_v6": 52.06,
+      "orthogonality_ok": false,
+      "eps_oracle_sr": null,
+      "n_oracle_sr": null,
+      "pac_bound_sr": null,
+      "eps_oracle_v6": null,
+      "n_oracle_v6": null,
+      "pac_bound_v6": null,
+      "cp1_sweep": [],
+      "cp1_k100": null,
+      "cp1_score_at_sr": null,
+      "cp3_sweep_v5": [],
+      "cp3_k80_v5": null,
+      "cp3_k90_v5": null,
+      "cp3_k100_v5": null,
+      "cp3_score_at_sr_v5": null,
+      "cp3_sweep_v6": [],
+      "cp3_k80_v6": null,
+      "cp3_k90_v6": null,
+      "cp3_k100_v6": null,
+      "cp3_score_at_sr_v6": null
+    },
+    "lime": {
+      "pos": 62,
+      "arm": "lime",
+      "arm_baseline_score": 65.62,
+      "target": 1,
+      "class_pred": 1,
+      "n_rules_v4": 4,
+      "n_rules_v6": 4,
+      "n_sr_conds": 1,
+      "rules_v4": [
+        "area_worst < 0.5",
+        "concave_points_mean > 0.5",
+        "concave_points_mean < 0.5",
+        "texture_worst > 30.50"
+      ],
+      "rules_v6": [
+        "area_worst <= 547.60",
+        "concave_points_mean >= 0.02",
+        "concave_points_mean <= 0.05",
+        "texture_worst > 30.50"
+      ],
+      "sr_conds": [
+        "area_worst <= 760.200012"
+      ],
+      "explanation_v4": "The model predicted this instance as benign, or class 1, for a few key reasons. The area of the worst part of the tumor is relatively small, which supports this prediction. Additionally, the mean number of concave points is between 0.02 and 0.05, which also supports the prediction of a benign tumor. However, the texture of the worst part of the tumor is rougher than 30.50, which actually opposes the prediction of it being benign, but this factor was outweighed by the other two.",
+      "explanation_v5": "The model predicts this instance as b\u00e9nigne (classe 1) because it has a concave points mean between 0.02 and 0.05 and an area worst less than or equal to 547.60, which both support the prediction. However, the texture worst being greater than 30.50 opposes the prediction.",
+      "explanation_v6": "1. The model predicts that the cancer is b\u00e9nigne (classe 1) for this instance, which has an area_worst of 474.2, a concave_points_mean of 0.0411, and a texture_worst of 37.16.\n2. The predicted class is 1, indicating that the model believes the cancer is likely to be b\u00e9nigne.\n3. The LIME local explanation provides insights into the model's decision, with the feature texture_worst having a weight of -0.2063 when its value is greater than 30.50.\n4. The feature concave_points_mean has a weight of +0.1936 when its value falls within the range of 0.02 and 0.05, supporting the prediction of classe 1.\n5. The area_worst feature has a weight of +0.1423 when its value is less than or equal to 547.60, which also supports the prediction of classe 1.",
+      "bina_v4": [
+        -28,
+        41
+      ],
+      "bina_v5": [
+        41,
+        -22
+      ],
+      "bina_v6": [
+        41,
+        -22
+      ],
+      "lits_v4": 2,
+      "lits_v6": 2,
+      "score_v4": 59.37,
+      "score_v5": 59.38,
+      "score_v5_best": 59.38,
+      "score_v5_filtered": 59.38,
+      "score_v6": 59.38,
+      "v5_scores": [
+        59.37,
+        59.38,
+        59.38,
+        59.38
+      ],
+      "v5_rounds": 3,
+      "delta_v5": 0.0,
+      "delta_v6": 0.0,
+      "n_omissions": 3,
+      "n_commissions": 0,
+      "n_redundant": 2,
+      "omission_feats": [
+        "area_worst"
+      ],
+      "commission_feats": [],
+      "eps_sr": 0.0517,
+      "n_sr_neighbors": 232,
+      "eps_v4": 0.1786,
+      "n_v4_neighbors": 28,
+      "eps_v5": 0.3478,
+      "n_v5_neighbors": 23,
+      "eps_v6": 0.3478,
+      "n_v6_neighbors": 23,
+      "div_v4": 22.77,
+      "div_v5": 5.84,
+      "div_v6": 5.84,
+      "orthogonality_ok": false,
+      "eps_oracle_sr": null,
+      "n_oracle_sr": null,
+      "pac_bound_sr": null,
+      "eps_oracle_v6": null,
+      "n_oracle_v6": null,
+      "pac_bound_v6": null,
+      "cp1_sweep": [],
+      "cp1_k100": null,
+      "cp1_score_at_sr": null,
+      "cp3_sweep_v5": [],
+      "cp3_k80_v5": null,
+      "cp3_k90_v5": null,
+      "cp3_k100_v5": null,
+      "cp3_score_at_sr_v5": null,
+      "cp3_sweep_v6": [],
+      "cp3_k80_v6": null,
+      "cp3_k90_v6": null,
+      "cp3_k100_v6": null,
+      "cp3_score_at_sr_v6": null
+    }
+  }
+}

@@ -1,0 +1,34 @@
+Full console log -> research/results/logs/cancer_nn_dsv4flash_20260818_202220_12008.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=68.5% v4=47.7% v5=68.5% v6=68.5% (len 5, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [lmpaxp] base=98.0% v4=97.1% v5=98.0% v6=98.0% (len 15, om_v5=0)
+  [anchors] base=44.2% v4=44.2% v5=44.2% v6=44.2% (len 2, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [shap] base=95.8% v4=73.3% v5=95.8% v6=73.3% (len 15, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [lime] base=97.6% v4=59.6% v5=97.6% v6=42.8% (len 15, om_v5=0)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=51.4% v4=43.9% v5=51.4% v6=51.4% (len 7, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [lmpaxp] base=97.4% v4=97.4% v5=97.4% v6=67.9% (len 18, om_v5=0)
+  [anchors] ERROR Connection error.
+  [shap] ERROR Connection error.
+  [lime] ERROR Connection error.
+[003/15] instance 6 (pred=1, k_ref=17)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192

@@ -1,0 +1,33 @@
+Full console log -> research/results/logs/cancer_nn_20260817_195607.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+resume: 12 instances already done (60 rows) -> 3 to go
+[013/15] instance 22 (pred=0, k_ref=9)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] base=98.1% v4=98.1% v5=98.1% v6=93.0% (len 9, om_v5=0)
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+[014/15] instance 151 (pred=0, k_ref=8)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] base=99.4% v4=99.4% v5=99.4% v6=97.7% (len 8, om_v5=0)
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+[015/15] instance 108 (pred=1, k_ref=18)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] ERROR 'NoneType' object has no attribute 'strip'
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+
+saved -> research/results/cancer_nn_comparison_inkling_small.csv
+
+=== per-arm means ===
+      len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                             
+shap       10.5                97.3     95.15     95.15          95.15     84.35
+
+WeakPAXp pass rates (baseline / v5):
+     baseline_weak_paxp weak_paxp_v5
+arm                                 
+shap               0.75         0.75

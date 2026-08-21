@@ -1,0 +1,44 @@
+Full console log -> research/results/logs/cancer_nn_cogito671b_20260820_035516_15524.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop] base=58.1% v4=41.8% v5=58.1% v6=58.1% (len 7, om_v5=0)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop] base=61.9% v4=61.9% v5=61.9% v6=61.9% (len 7, om_v5=0)
+[003/15] instance 6 (pred=1, k_ref=17)
+  [cop] base=50.8% v4=50.8% v5=50.8% v6=50.8% (len 7, om_v5=0)
+[004/15] instance 189 (pred=0, k_ref=7)
+  [cop] base=88.6% v4=88.6% v5=80.4% v6=88.6% (len 5, om_v5=3)
+[005/15] instance 70 (pred=0, k_ref=10)
+  [cop] base=78.0% v4=78.0% v5=78.0% v6=78.0% (len 5, om_v5=0)
+[006/15] instance 62 (pred=1, k_ref=14)
+  [cop] base=58.8% v4=58.8% v5=54.9% v6=58.8% (len 7, om_v5=1)
+[007/15] instance 57 (pred=1, k_ref=18)
+  [cop] base=60.9% v4=53.1% v5=60.9% v6=60.9% (len 7, om_v5=0)
+[008/15] instance 35 (pred=0, k_ref=8)
+  [cop] base=92.3% v4=92.3% v5=92.3% v6=92.3% (len 5, om_v5=0)
+[009/15] instance 188 (pred=0, k_ref=9)
+  [cop] base=94.2% v4=94.2% v5=94.2% v6=94.2% (len 5, om_v5=0)
+[010/15] instance 26 (pred=1, k_ref=14)
+  [cop] base=58.6% v4=58.6% v5=58.6% v6=58.6% (len 4, om_v5=0)
+[011/15] instance 173 (pred=1, k_ref=14)
+  [cop] base=57.2% v4=57.2% v5=57.2% v6=57.2% (len 7, om_v5=0)
+[012/15] instance 139 (pred=1, k_ref=13)
+  [cop] base=59.5% v4=59.5% v5=59.5% v6=59.5% (len 6, om_v5=0)
+[013/15] instance 22 (pred=0, k_ref=9)
+  [cop] base=82.7% v4=86.2% v5=87.8% v6=82.7% (len 7, om_v5=2)
+[014/15] instance 151 (pred=0, k_ref=8)
+  [cop] base=96.3% v4=94.0% v5=96.3% v6=96.3% (len 6, om_v5=0)
+[015/15] instance 108 (pred=1, k_ref=18)
+  [cop] base=53.8% v4=38.8% v5=53.8% v6=53.8% (len 7, om_v5=0)
+
+saved -> research/results/cancer_nn_comparison_cop_cogito671b.csv
+
+=== per-arm means ===
+     len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                            
+cop       6.13               70.11     67.59     69.65          70.45     70.11
+
+WeakPAXp pass rates (baseline / v5):
+     baseline_weak_paxp  weak_paxp_v5
+arm                                  
+cop                0.07          0.07

@@ -1,0 +1,23 @@
+Full console log -> research/results/logs/cancer_nn_20260817_192010.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+resume: 3 instances already done (15 rows) -> 12 to go
+[004/15] instance 189 (pred=0, k_ref=7)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] base=97.1% v4=97.1% v5=97.1% v6=91.3% (len 7, om_v5=0)
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+[005/15] instance 70 (pred=0, k_ref=10)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] ERROR 'NoneType' object has no attribute 'strip'
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+[006/15] instance 62 (pred=1, k_ref=14)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'
+  [lmpaxp] ERROR 'NoneType' object has no attribute 'strip'
+  [anchors] ERROR 'NoneType' object has no attribute 'strip'
+  [shap] ERROR 'NoneType' object has no attribute 'strip'
+  [lime] ERROR 'NoneType' object has no attribute 'strip'
+[007/15] instance 57 (pred=1, k_ref=18)
+  [cop] ERROR 'NoneType' object has no attribute 'strip'

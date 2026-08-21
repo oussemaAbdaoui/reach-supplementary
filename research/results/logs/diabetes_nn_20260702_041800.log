@@ -1,0 +1,112 @@
+Full console log -> research/results/logs/diabetes_nn_20260702_041800.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop] base=67.7% v4=67.7% v5=67.7% v6=67.7% (len 1, om_v5=0)
+  [lmpaxp] base=97.6% v4=73.6% v5=97.6% v6=97.6% (len 9, om_v5=0)
+  [anchors] base=83.4% v4=83.4% v5=83.4% v6=83.4% (len 3, om_v5=0)
+  [shap] base=100.0% v4=95.5% v5=99.9% v6=100.0% (len 9, om_v5=1)
+  [lime] base=67.8% v4=84.2% v5=67.8% v6=55.2% (len 9, om_v5=0)
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop] base=77.3% v4=77.3% v5=77.3% v6=77.3% (len 2, om_v5=0)
+  [lmpaxp] base=96.0% v4=71.4% v5=96.0% v6=96.0% (len 6, om_v5=0)
+  [anchors] base=87.0% v4=87.0% v5=87.0% v6=87.0% (len 5, om_v5=0)
+  [shap] base=63.7% v4=59.0% v5=29.6% v6=43.6% (len 6, om_v5=4)
+  [lime] base=69.7% v4=50.7% v5=58.0% v6=69.7% (len 6, om_v5=4)
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop] base=78.5% v4=78.5% v5=78.5% v6=78.5% (len 2, om_v5=0)
+  [lmpaxp] base=95.3% v4=59.3% v5=95.3% v6=93.7% (len 7, om_v5=0)
+  [anchors] base=93.9% v4=93.9% v5=93.9% v6=93.9% (len 6, om_v5=0)
+  [shap] base=52.4% v4=52.4% v5=54.2% v6=52.9% (len 7, om_v5=3)
+  [lime] base=36.7% v4=35.8% v5=67.9% v6=44.9% (len 7, om_v5=4)
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop] base=70.5% v4=70.5% v5=70.5% v6=70.5% (len 1, om_v5=0)
+  [lmpaxp] base=98.0% v4=73.5% v5=98.0% v6=98.0% (len 7, om_v5=0)
+  [anchors] base=97.2% v4=55.6% v5=97.2% v6=97.2% (len 9, om_v5=0)
+  [shap] base=88.8% v4=56.7% v5=56.7% v6=56.7% (len 7, om_v5=3)
+  [lime] base=30.9% v4=13.2% v5=18.5% v6=13.2% (len 7, om_v5=4)
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop] base=65.5% v4=65.5% v5=65.5% v6=65.5% (len 1, om_v5=0)
+  [lmpaxp] base=97.6% v4=67.9% v5=86.9% v6=97.6% (len 5, om_v5=1)
+  [anchors] base=86.3% v4=86.3% v5=86.3% v6=86.3% (len 4, om_v5=0)
+  [shap] base=97.6% v4=97.6% v5=97.6% v6=74.0% (len 5, om_v5=0)
+  [lime] base=61.7% v4=23.0% v5=23.0% v6=52.1% (len 5, om_v5=3)
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop] base=80.0% v4=80.0% v5=80.0% v6=80.0% (len 2, om_v5=0)
+  [lmpaxp] base=96.0% v4=48.8% v5=96.0% v6=96.0% (len 9, om_v5=0)
+  [anchors] base=85.0% v4=85.0% v5=85.0% v6=85.0% (len 4, om_v5=0)
+  [shap] base=88.6% v4=54.6% v5=88.6% v6=65.0% (len 9, om_v5=0)
+  [lime] base=84.4% v4=87.7% v5=58.0% v6=37.1% (len 9, om_v5=7)
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop] base=74.2% v4=74.2% v5=74.2% v6=74.2% (len 2, om_v5=0)
+  [lmpaxp] base=96.3% v4=86.8% v5=78.7% v6=96.3% (len 9, om_v5=2)
+  [anchors] base=79.3% v4=79.3% v5=79.3% v6=79.3% (len 3, om_v5=0)
+  [shap] base=89.9% v4=67.3% v5=70.9% v6=70.9% (len 9, om_v5=4)
+  [lime] base=70.4% v4=50.8% v5=70.5% v6=31.6% (len 9, om_v5=4)
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop] base=77.3% v4=77.3% v5=77.3% v6=77.3% (len 2, om_v5=0)
+  [lmpaxp] base=95.7% v4=59.6% v5=95.7% v6=95.7% (len 7, om_v5=0)
+  [anchors] base=87.8% v4=82.4% v5=87.8% v6=87.8% (len 5, om_v5=0)
+  [shap] base=42.5% v4=31.4% v5=42.5% v6=48.6% (len 7, om_v5=0)
+  [lime] base=38.7% v4=47.3% v5=41.6% v6=47.3% (len 7, om_v5=2)
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop] base=61.8% v4=53.6% v5=61.8% v6=61.8% (len 2, om_v5=0)
+  [lmpaxp] base=94.5% v4=68.0% v5=94.5% v6=94.5% (len 9, om_v5=0)
+  [anchors] base=66.8% v4=48.6% v5=46.8% v6=66.8% (len 4, om_v5=3)
+  [shap] base=24.5% v4=63.0% v5=24.1% v6=30.1% (len 9, om_v5=3)
+  [lime] base=21.2% v4=35.5% v5=17.0% v6=35.5% (len 9, om_v5=7)
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop] base=69.4% v4=69.4% v5=69.4% v6=69.4% (len 1, om_v5=0)
+  [lmpaxp] base=99.1% v4=65.1% v5=99.1% v6=99.1% (len 8, om_v5=0)
+  [anchors] base=91.9% v4=91.9% v5=91.9% v6=91.9% (len 5, om_v5=0)
+  [shap] base=96.6% v4=70.2% v5=96.6% v6=70.2% (len 8, om_v5=0)
+  [lime] base=51.9% v4=31.1% v5=50.2% v6=17.3% (len 8, om_v5=2)
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop] base=61.2% v4=61.2% v5=61.2% v6=61.2% (len 1, om_v5=0)
+  [lmpaxp] base=95.5% v4=73.5% v5=95.5% v6=95.5% (len 11, om_v5=0)
+  [anchors] base=71.5% v4=59.4% v5=62.5% v6=71.5% (len 4, om_v5=2)
+  [shap] base=27.5% v4=26.2% v5=71.0% v6=24.0% (len 11, om_v5=3)
+  [lime] base=36.4% v4=46.0% v5=16.2% v6=61.7% (len 11, om_v5=8)
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop] base=71.3% v4=71.3% v5=71.3% v6=71.3% (len 1, om_v5=0)
+  [lmpaxp] base=100.0% v4=78.6% v5=100.0% v6=100.0% (len 9, om_v5=0)
+  [anchors] base=84.2% v4=84.2% v5=84.2% v6=84.2% (len 3, om_v5=0)
+  [shap] base=100.0% v4=99.4% v5=100.0% v6=99.9% (len 9, om_v5=0)
+  [lime] base=99.4% v4=99.6% v5=99.4% v6=87.2% (len 9, om_v5=0)
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop] base=73.7% v4=73.7% v5=73.7% v6=73.7% (len 1, om_v5=0)
+  [lmpaxp] base=95.2% v4=74.1% v5=95.2% v6=95.2% (len 7, om_v5=0)
+  [anchors] base=92.6% v4=92.6% v5=92.6% v6=92.6% (len 5, om_v5=0)
+  [shap] base=88.9% v4=94.4% v5=71.0% v6=57.8% (len 7, om_v5=2)
+  [lime] base=95.0% v4=81.0% v5=95.0% v6=81.0% (len 7, om_v5=0)
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop] base=61.7% v4=61.7% v5=61.7% v6=61.7% (len 1, om_v5=0)
+  [lmpaxp] base=98.0% v4=70.6% v5=88.9% v6=98.0% (len 5, om_v5=1)
+  [anchors] base=95.2% v4=95.2% v5=95.2% v6=95.2% (len 5, om_v5=0)
+  [shap] base=98.0% v4=98.0% v5=98.0% v6=77.1% (len 5, om_v5=0)
+  [lime] base=63.4% v4=24.7% v5=32.0% v6=24.7% (len 5, om_v5=2)
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop] base=73.2% v4=73.2% v5=73.2% v6=73.2% (len 1, om_v5=0)
+  [lmpaxp] base=97.1% v4=61.4% v5=97.1% v6=97.1% (len 6, om_v5=0)
+  [anchors] base=90.8% v4=90.8% v5=90.8% v6=90.8% (len 4, om_v5=0)
+  [shap] base=100.0% v4=100.0% v5=100.0% v6=100.0% (len 6, om_v5=0)
+  [lime] base=95.9% v4=96.5% v5=95.9% v6=72.4% (len 6, om_v5=0)
+
+saved -> research/results/diabetes_nn_comparison.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors        4.6               86.19     81.04     84.26          84.38     86.19
+cop            1.4               70.89     70.34     70.89          70.89     70.89
+lime           7.6               61.57     53.81     54.07          63.79     48.73
+lmpaxp         7.6               96.79     68.81     94.30          94.84     96.69
+shap           7.6               77.27     71.05     73.38          83.09     64.72
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.13          0.13
+cop                    0.00          0.00
+lime                   0.20          0.20
+lmpaxp                 0.93          0.73
+shap                   0.40          0.40

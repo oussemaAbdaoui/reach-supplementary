@@ -1,0 +1,44 @@
+judge = openai/gpt-oss-120b via together
+[cancer] judging stored explanations ...
+  generator deepcogito/cogito-v2-1-671b | judge openai/gpt-oss-120b
+  resuming: 530 already judged
+  675 judgements over 3 pass(es) (145 to run, 530 already done)
+    10/145 judged
+    20/145 judged
+    30/145 judged
+    40/145 judged
+    50/145 judged
+    60/145 judged
+    70/145 judged
+    80/145 judged
+    90/145 judged
+    100/145 judged
+    110/145 judged
+    120/145 judged
+    130/145 judged
+    140/145 judged
+  wrote research\results\cancer_nn_judge_cogito671b.csv (+145 rows)
+
+=== judge = openai/gpt-oss-120b | 225 judgements, parse ok 97.8% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               41.94      78.75         43.54        34.38
+v5               41.49      71.62         41.89        31.82
+v6               29.53      72.57         32.30        30.88
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   24.67  26.67  30.33
+cop       42.31  40.67  29.33
+lime      39.67  37.86  28.67
+lmpaxp    61.33  62.33  29.29
+shap      41.79  39.67  30.00
+
+test-retest on 225 repeated judgements, mean |pass1-pass2|:
+  faithfulness   7.49
+  coherence      5.64
+  completeness   6.85
+  halluc_risk    14.89

@@ -1,0 +1,14 @@
+Full console log → research/results/logs/cancer_bt_20260620_160942.log
+Loaded 1 API key(s)
+Loading distillation cache from _bt_cache_cancer.pkl — skipping distillation.
+I_P (rectified PyXAI tree vs BT on test set): 100.00%  (215/215)
+bina entries: 13  |  X_test: 215 instances
+=== XAI_WHITEBOX (no LLM): leak-free context + mapper self-test ===
+  [PASS] pyxai_sr context contains tree thresholds (expected)
+  [PASS] shap context contains NO tree thresholds (leak-free)
+  [PASS] shap context is importance%% + direction
+  [PASS] lime context is LIME descriptors (weight=)
+  [PASS] placeholder maps to instance-nearest split (perimeter_worst)
+  [PASS] real threshold maps (EPSILON path)
+=== WHITEBOX: ALL PASS ===
+Warning: no variables in this model (and so, no generated file)!

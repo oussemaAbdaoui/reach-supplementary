@@ -1,0 +1,28 @@
+Full console log → research/results/logs/cancer_bt_20260620_161018.log
+Loaded 1 API key(s)
+Loading distillation cache from _bt_cache_cancer.pkl — skipping distillation.
+I_P (rectified PyXAI tree vs BT on test set): 100.00%  (215/215)
+bina entries: 13  |  X_test: 215 instances
+=== XAI_FORMAL_CHECK (no LLM): per-instance, arms=['pyxai_sr', 'shap', 'lime'] ===
+ pos 163 (pred=1, k_ref=4):
+    pyxai_sr   |term|= 4  baseline_score=100.00  roundtrip=100.00  CP2_eps=0.0 (n=151)
+    shap       |term|= 4  baseline_score= 68.75  roundtrip= 59.38  CP2_eps=0.067 (n=223)
+    lime       |term|= 4  baseline_score= 56.25  roundtrip= 56.25  CP2_eps=0.439 (n=214)
+ pos  28 (pred=1, k_ref=3):
+    pyxai_sr   |term|= 3  baseline_score=100.00  roundtrip=100.00  CP2_eps=0.0 (n=213)
+    shap       |term|= 3  baseline_score= 65.62  roundtrip= 59.37  CP2_eps=0.052 (n=232)
+    lime       |term|= 3  baseline_score= 68.75  roundtrip= 59.38  CP2_eps=0.087 (n=241)
+ pos   6 (pred=0, k_ref=21):
+    pyxai_sr   |term|=21  baseline_score=100.00  roundtrip= 43.77  CP2_eps=0.0 (n=11)
+    shap       |term|=21  baseline_score= 50.01  roundtrip= 50.00  CP2_eps=None (n=0)
+    lime       |term|=21  baseline_score= 12.50  roundtrip= 31.25  CP2_eps=None (n=0)
+ pos 189 (pred=0, k_ref=21):
+    pyxai_sr   |term|=21  baseline_score=100.00  roundtrip= 40.65  CP2_eps=0.0 (n=62)
+    shap       |term|=21  baseline_score= 75.00  roundtrip= 40.63  CP2_eps=0.0 (n=3)
+    lime       |term|=21  baseline_score= 75.00  roundtrip= 46.88  CP2_eps=0.0 (n=3)
+ pos  70 (pred=0, k_ref=4):
+    pyxai_sr   |term|= 4  baseline_score=100.00  roundtrip=100.00  CP2_eps=0.0 (n=220)
+    shap       |term|= 4  baseline_score= 50.00  roundtrip= 40.63  CP2_eps=0.075 (n=253)
+    lime       |term|= 4  baseline_score= 50.00  roundtrip= 40.63  CP2_eps=0.075 (n=253)
+Expected: pyxai_sr baseline=100 & roundtrip=100 & eps=0; others lower.
+Warning: no variables in this model (and so, no generated file)!

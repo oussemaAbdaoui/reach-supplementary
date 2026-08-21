@@ -1,0 +1,80 @@
+dataset,llm,instance,arm,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,lime,1,15,97.6,True,50.5,82.9,90.4,49.2,False,False,False,5,11,7,10,0,4,0,8,0,3,9,3,"[50.5, 90.4, 59.6, 82.9]",0.0429,"LIME local explanation (linear approximation weights):
+  concavity_worst_b0: weight=+0.1761 (supports the prediction)
+  area_se_b0: weight=-0.1552 (opposes the prediction)
+  texture_worst_b2: weight=+0.1462 (supports the prediction)
+  fractal_dimension_worst_b1: weight=-0.1431 (opposes the prediction)
+  symmetry_se_b0: weight=+0.1352 (supports the prediction)
+  smoothness_mean_b2: weight=+0.1336 (supports the prediction)
+  radius_se_b2: weight=+0.1322 (supports the prediction)
+  texture_worst_b0: weight=+0.1313 (supports the prediction)
+  concave_points_worst_b2: weight=+0.1301 (supports the prediction)
+  concavity_worst_b2: weight=+0.1301 (supports the prediction)
+  area_se_b2: weight=+0.1287 (supports the prediction)
+  concave_points_worst_b0: weight=+0.1286 (supports the prediction)
+  compactness_worst_b0: weight=+0.1285 (supports the prediction)
+  texture_mean_b2: weight=+0.1191 (supports the prediction)
+  concavity_mean_b2: weight=+0.1179 (supports the prediction)","The model predicted that the cancer is benign. This decision was supported by several factors, including the concavity of the worst case, which pushed the prediction towards benign. The worst texture reading also supported this prediction, as did the symmetry and smoothness of the tumor. Additionally, the compactness and concave points of the worst case, as well as the fractal dimension not opposing the prediction as much as other factors supported it, contributed to the decision. On the other hand, the area of the tumor in one measurement opposed the prediction, but not enough to change the outcome. Overall, the combination of these factors led the model to predict that the cancer is benign.","The model predicts this cancer to be benign. The features that support this prediction are the concavity of the worst area, with the model giving it a weight of +0.1761, the texture of the worst area, the symmetry of the tumor, and the smoothness and radius of the tumor. 
+
+The features that oppose this prediction are the area of the tumor and the fractal dimension of the worst area. 
+
+The model also considered the compactness, concave points, and texture of the tumor, all of which support the prediction of a benign cancer. 
+
+Additionally, the model took into account the following conditions: the texture is not between 21.51 and 39.28, the smoothness is not between 0.1034 and 0.1634, the concavity is not between 0.1235 and 0.4264, the radius is not between 0.5115 and 2.873, the area is not between 6.802 and 21.83 and also not between 49.7 and 542.2, the symmetry is not between 0.007882 and 0.01623, the worst texture is not between 29.02 and 47.16, the worst concavity is not between 0.3744 and 1.17, the worst concave points are not between 0.1625 and 0.291, and the worst fractal dimension is not between 0.07587 and 0.08999.","1. The model predicted that the cancer is benign, which is represented by the class label 1.
+2. The texture of the tumor, on average, is not particularly relevant in this case, but the fact that the texture mean is indicated as 0 does not provide a specific range to evaluate.
+3. The smoothness of the tumor, on average, is not particularly relevant in this case, but the fact that the smoothness mean is indicated as 0 does not provide a specific range to evaluate.
+4. The concavity of the tumor, on average, is not particularly relevant in this case, but the fact that the concavity mean is indicated as 0 does not provide a specific range to evaluate.
+5. The radius of the tumor, on average, is not particularly relevant in this case, but the fact that the radius standard error is indicated as 0 does not provide a specific range to evaluate.
+6. The area of the tumor, when considering the standard error, has a weight that opposes the prediction, meaning that the area standard error pushed the prediction away from this class.
+7. The area of the tumor, when considering the standard error, has a weight that supports the prediction, meaning that the area standard error pushed the prediction towards this class.
+8. The symmetry of the tumor, when considering the standard error, has a weight that supports the prediction, meaning that the symmetry standard error pushed the prediction towards this class.
+9. The worst texture reading pushed the prediction towards this class.
+10. The worst texture reading pushed the prediction towards this class.
+11. The worst compactness reading pushed the prediction towards this class.
+12. The worst concavity reading pushed the prediction towards this class.
+13. The worst concavity reading did not push the prediction towards this class as much as other factors.
+14. The worst number of concave points reading pushed the prediction towards this class.
+15. The worst number of concave points reading did not push the prediction towards this class as much as other factors.
+16. The fractal dimension of the tumor, when considering the worst reading, has a weight that opposes the prediction, meaning that the fractal dimension worst reading pushed the prediction away from this class.
+17. The concavity of the tumor, when considering the worst reading, has a weight that supports the prediction, meaning that the concavity worst reading pushed the prediction towards this class.
+18. The smoothness of the tumor, on average, has a weight that supports the prediction, meaning that the smoothness mean pushed the prediction towards this class.
+19. The radius of the tumor, when considering the standard error, has a weight that supports the prediction, meaning that the radius standard error pushed the prediction towards this class.
+20. The texture of the tumor, when considering the worst reading, has a weight that supports the prediction, meaning that the texture worst reading pushed the prediction towards this class.
+21. The concave points of the tumor, when considering the worst reading, has a weight that supports the prediction, meaning that the concave points worst reading pushed the prediction towards this class.
+22. The compactness of the tumor, when considering the worst reading, has a weight that supports the prediction, meaning that the compactness worst reading pushed the prediction towards this class.
+23. The texture of the tumor, on average, has a weight that supports the prediction, meaning that the texture mean pushed the prediction towards this class.
+24. The concavity of the tumor, on average, has a weight that supports the prediction, meaning that the concavity mean pushed the prediction towards this class.","['concavity_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'compactness_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'area_se_b0 < 0.5']","['area_se_b0 < 0.5', 'area_se_b2 > 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b2 > 0.5', 'concave_points_worst_b0 > 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5', 'concavity_worst_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'radius_se_b2 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b2 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_mean_b2 > 0.5', 'concavity_mean_b2 > 0.5']","[5, 14, 20, 32, 39, 41, 54, 63, 65, 75, 78, 80, 81, 83, 88]","[39, 63, 75, 78, 81]","[5, 14, 20, 32, 39, 41, 54, 65, 80, 83, 88]","[39, 63, 75, 78, 81, 83, 88]"
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,shap,1,15,97.5,True,68.2,48.1,68.2,79.0,False,False,False,6,6,8,9,0,9,0,7,0,3,7,3,"[68.2, 54.7, 45.7, 48.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  concavity_worst_b0: 14.3% (supports the prediction)
+  compactness_worst_b0: 7.9% (supports the prediction)
+  texture_worst_b0: 7.8% (supports the prediction)
+  concave_points_worst_b0: 7.5% (supports the prediction)
+  smoothness_worst_b0: 6.8% (supports the prediction)
+  concavity_mean_b0: 6.8% (supports the prediction)
+  concavity_worst_b2: 6.2% (supports the prediction)
+  smoothness_mean_b2: 5.9% (supports the prediction)
+  area_worst_b2: 5.8% (supports the prediction)
+  texture_worst_b2: 5.4% (supports the prediction)
+  texture_se_b1: 5.3% (opposes the prediction)
+  radius_se_b2: 5.3% (supports the prediction)
+  concavity_mean_b2: 5.2% (supports the prediction)
+  fractal_dimension_worst_b0: 4.9% (opposes the prediction)
+  texture_mean_b0: 4.8% (supports the prediction)","The model predicted that the cancer is benign. This decision was mainly supported by several measurements, including the worst concavity, which contributed the most to this prediction. The compactness, worst texture, and number of concave points also played a significant role in supporting this prediction. Additionally, the smoothness, mean concavity, and texture mean all contributed to the model's decision. The worst smoothness and fractal dimension, however, slightly opposed this prediction, but not enough to change the outcome. The radius, area, and texture measurements in other aspects also had some supporting effect, although to a lesser extent. Overall, the combination of these measurements led the model to predict that the cancer is benign.","The model predicts this cancer to be benign. Several factors support this prediction, including the tumor's concavity, compactness, texture, and smoothness. The tumor's concavity and compactness are within normal ranges, and its texture is not overly aggressive. The smoothness of the tumor also suggests it is benign. Additionally, the number of concave points on the tumor is low, which further supports the prediction of a benign tumor. The fractal dimension, which measures the complexity of the tumor's shape, is also within a range that suggests the tumor is benign. 
+
+The tumor's size and area are not overly large, which also supports the prediction of a benign tumor. The texture of the tumor is somewhat irregular, but not to the extent that would suggest it is malignant. The radius of the tumor is also within a range that is consistent with benign tumors. 
+
+The conditions that support this prediction include the smoothness of the tumor being between 0.07117 and 0.1247, the concavity being between 0 and 0.189, the number of concave points being between 0 and 0.086, and the fractal dimension being between 0.05504 and 0.07587. The texture is also between 12.02 and 23.31, and the irregularity of the texture is between 0.9644 and 1.332.","1. The concavity of the worst case pushed the prediction towards this class, with a contribution of 14.3% to the final decision.
+2. The compactness of the worst case pushed the prediction towards this class, with a contribution of 7.9% to the final decision.
+3. The worst texture reading pushed the prediction towards this class, with a contribution of 7.8% to the final decision.
+4. The number of concave points in the worst case pushed the prediction towards this class, with a contribution of 7.5% to the final decision.
+5. The smoothness of the worst case pushed the prediction towards this class, with a contribution of 6.8% to the final decision.
+6. The average concavity pushed the prediction towards this class, with a contribution of 6.8% to the final decision.
+7. The absence of concavity in the worst case pushed the prediction towards this class, with a contribution of 6.2% to the final decision.
+8. The average smoothness pushed the prediction towards this class, with a contribution of 5.9% to the final decision.
+9. The area of the worst case pushed the prediction towards this class, with a contribution of 5.8% to the final decision.
+10. The worst texture reading, when considered from a different perspective, pushed the prediction towards this class, with a contribution of 5.4% to the final decision.
+11. The variation in texture pushed against the prediction, with a contribution of 5.3% to the final decision.
+12. The variation in radius pushed the prediction towards this class, with a contribution of 5.3% to the final decision.
+13. The average concavity, when considered from a different perspective, pushed the prediction towards this class, with a contribution of 5.2% to the final decision.
+14. The fractal dimension of the worst case pushed against the prediction, with a contribution of 4.9% to the final decision.
+15. The average texture pushed the prediction towards this class, with a contribution of 4.8% to the final decision.","['concavity_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'smoothness_worst_b0 < 0.5', 'concavity_mean_b0 > 0.5', 'texture_mean_b0 > 0.5', 'smoothness_worst_b0 < 0.5', 'fractal_dimension_worst_b0 < 0.5']","['concavity_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'smoothness_worst_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'smoothness_mean_b2 > 0.5', 'area_worst_b2 > 0.5', 'texture_worst_b2 > 0.5', 'texture_se_b1 < 0.5', 'radius_se_b2 > 0.5', 'concavity_mean_b2 > 0.5', 'fractal_dimension_worst_b0 < 0.5', 'texture_mean_b0 > 0.5']","[3, 14, 18, 20, 32, 34, 63, 65, 71, 72, 75, 78, 80, 81, 87]","[3, 18, 63, 75, 78, 81]","[34, 63, 72, 78, 81, 87]","[3, 18, 63, 72, 75, 78, 80, 81]"

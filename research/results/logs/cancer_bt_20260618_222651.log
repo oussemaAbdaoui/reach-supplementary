@@ -1,0 +1,440 @@
+Full console log → research/results/logs/cancer_bt_20260618_222651.log
+Loaded 1 API key(s)
+Loading distillation cache from _bt_cache_cancer.pkl — skipping distillation.
+I_P (rectified PyXAI tree vs BT on test set): 100.00%  (215/215)
+bina entries: 13  |  X_test: 215 instances
+[01/15] instance 163
+    pyxai_sr   base=100.0%  v4=59.4%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's outer edge is not too long, its area is not too large, its texture is not too rough, and its shape i…
+   │      rules: ['perimeter_worst < 0.5', 'area_worst < 0.5', 'texture_worst < 0.5', 'concave_points_worst < 0.5', 'concavity_worst < 0.5']
+   │ [v5] v5=100.0%  expl: The predicted class is 1, indicating the cancer is likely to be benign. This prediction is based on several key features, including the mean and worst values of certain characteristics. Specifically, the model considered the concave points …
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter_worst is less than or equal to 106.199997. 2. The model predicts the cancer as bénigne (class 1) because the area_worst is less than or equal to 768.900024. 3. The …
+   │      rules: ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   └─ v5 trajectory=[59.38, 100.0]  rounds=1
+    shap       base=68.8%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04304']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because the average number of concave points in the tumor was relatively low, specifically less than or equal to 0.04304. This single feature was enough to guarantee the predi…
+   │      rules: ['concave_points_mean <= 0.04304']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer diagnosis as benign (class 1) because the mean number of concave points is less than or equal to 0.04304. Additionally, the fractal dimension mean of 0.059 and the standard error of concave points of 0.009 also…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer to be benign (class 1) because the mean of concave points is less than or equal to 0.04304.
+   │      rules: ['concave_points_mean <= 0.04304']
+   └─ v5 trajectory=[59.38, 62.5, 62.5, 62.5]  rounds=3
+    lime       base=56.2%  v4=56.2%  v5=50.0% (best=56.2%)  v6=56.2%  rnds=3
+   ┌─ arm=lime  baseline=56.2%
+   │ SR/context conds : ['texture_worst > 20.49', 'texture_worst <= 27.280001']
+   │ [v4] v4=56.25%  expl: The model predicted that the cancer is benign, or non-cancerous, because of the texture of the tumor. Specifically, the texture measurement, referred to as texture_worst, fell within a certain range, between 20.49 and 27.28. This range is a…
+   │      rules: ['texture_worst >= 20.49', 'texture_worst <= 27.28']
+   │ [v5] v5=50.0%  expl: The model predicted the cancer as benign, class 1, due to the texture_worst value being greater than 20.49 and less than or equal to 27.280001. Additionally, the concave_points_mean, fractal_dimension_mean, concave_points_se, perimeter_wors…
+   │ [v6] v6=56.25%  expl: 1. The model predicts the cancer to be benign (class 1) because the texture_worst value is greater than 20.49, which is a key factor in this prediction. 2. The model also predicts the cancer to be benign (class 1) because the texture_worst …
+   │      rules: ['texture_worst > 20.49', 'texture_worst <= 27.280001']
+   └─ v5 trajectory=[56.25, 50.0, 50.0, 50.0]  rounds=3
+[02/15] instance 28
+    pyxai_sr   base=100.0%  v4=62.5%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   │ [v4] v4=62.5%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's perimeter, which is the distance around the edge of the tumor, is relatively small, at 88.18 units, …
+   │      rules: ['perimeter_worst < 106.20', 'concave_points_worst < 0.14', 'area_worst < 88.18']
+   │ [v5] v5=100.0%  expl: The model predicted the cancer as benign, class 1, based on several key features. The perimeter of the worst region was less than or equal to 106.199997, and the number of concave points in this region was less than or equal to 0.1357. Addi…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter of the worst tumor is less than or equal to 106.199997. 2. The model predicts the cancer as bénigne (class 1) because the number of concave points in the worst tumo…
+   │      rules: ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   └─ v5 trajectory=[62.5, 100.0]  rounds=1
+    shap       base=65.6%  v4=59.4%  v5=59.4% (best=59.4%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=65.6%
+   │ SR/context conds : ['area_worst <= 760.200012']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, or non-cancerous, because one key factor stood out - the size of the tumor, specifically the area of the worst part, was relatively small, at or below a certain threshold of 760.20. This single…
+   │      rules: ['area_worst <= 760.20']
+   │ [v5] v5=59.38%  expl: The model predicted the tumor as benign, class 1, due to a combination of factors. The mean concave points and standard error of concave points were both low, at 0.0019, indicating a relatively smooth shape. The fractal dimension mean was 0…
+   │ [v6] v6=59.37%  expl: 1. The model predicts the cancer to be benign (class 1) because the condition area_worst <= 760.200012 is met, which is a key factor in the decision-making process of the model.
+   │      rules: ['area_worst <= 760.200012']
+   └─ v5 trajectory=[59.37, 59.38, 59.38, 59.38]  rounds=3
+    lime       base=68.8%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=lime  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04835']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, which is class 1, because the average number of concave points in the tumor is very low, specifically less than or equal to 0.04835. This single feature is enough to guarantee the prediction of…
+   │      rules: ['concave_points_mean <= 0.04835']
+   │ [v5] v5=62.5%  expl: The model predicted the cancer as benign, class 1, due to several key features. The mean of concave points, with a value of 0.0019, was less than or equal to 0.04835, which is a crucial condition for this prediction. Additionally, the fract…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer to be benign (class 1) because the mean of concave points is less than or equal to 0.04835.
+   │      rules: ['concave_points_mean <= 0.04835']
+   └─ v5 trajectory=[59.38, 62.5, 62.5, 62.5]  rounds=3
+[03/15] instance 6
+    pyxai_sr   base=100.0%  v4=40.6%  v5=43.8% (best=50.0%)  v6=43.8%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04938', 'concavity_worst > 0.2702', 'concave_points_worst > 0.1424', 'perimeter_worst <= 117.699997', 'concavity_mean > 0.07293', 'area_worst > 728.299988', 'radius_worst > 14.84', 'radius_mean > 13.2', 'compactness_mean <= 0.1339']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant due to a combination of factors related to the shape and size of the tumor. Specifically, the tumor's perimeter, concavity, and concave points are outside of the typical range for benign tumo…
+   │      rules: ['perimeter_worst > 0.5', 'concavity_worst > 0.5', 'concave_points_worst > 0.5', 'area_worst > 0.5', 'radius_worst > 0.5', 'compactness_mean > 0.5']
+   │ [v5] v5=43.77%  expl: The model predicted the cancer as malignant due to several key factors. The perimeter of the worst case was greater than 106.199997 and less than or equal to 117.699997, indicating a potentially abnormal size. The mean of concave points was…
+   │ [v6] v6=43.77%  expl: 1. The model predicted the cancer as maligne (class 0) because the perimeter_worst value of 108.6 is greater than 106.199997. 2. The model predicted the cancer as maligne (class 0) because the concave_points_mean value of 0.0553 is greater …
+   │      rules: ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04938', 'concavity_worst > 0.2702', 'concave_points_worst > 0.1424', 'perimeter_worst <= 117.699997', 'concavity_mean > 0.07293', 'area_worst > 728.299988', 'radius_worst > 14.84', 'radius_mean > 13.2', 'compactness_mean <= 0.1339']
+   └─ v5 trajectory=[40.63, 43.77, 50.0, 43.77]  rounds=3
+    shap       base=50.0%  v4=37.5%  v5=37.5% (best=37.5%)  v6=37.5%  rnds=3
+   ┌─ arm=shap  baseline=50.0%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'perimeter_worst <= 117.699997', 'texture_worst <= 20.49', 'concave_points_mean > 0.04938', 'concave_points_mean <= 0.05778', 'concave_points_worst > 0.1563']
+   │ [v4] v4=37.5%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the shape and texture of the tumor. Specifically, the tumor's perimeter is within a certain range, between 106.2 and 117.7, and its texture is n…
+   │      rules: ['perimeter_worst >= 106.2', 'perimeter_worst <= 117.7', 'texture_worst <= 20.49', 'concave_points_mean > 0.5', 'concave_points_worst > 0.5']
+   │ [v5] v5=37.5%  expl: The model predicts a maligne cancer diagnosis, class 0, based on several key conditions. The perimeter of the worst case is within a specific range, greater than 106.199997 and less than or equal to 117.699997. Additionally, the texture of …
+   │ [v6] v6=37.5%  expl: 1. The model predicts the cancer to be maligne (class 0) because the perimeter_worst value is greater than 106.199997. 2. The model also predicts the cancer to be maligne (class 0) because the perimeter_worst value is less than or equal to …
+   │      rules: ['perimeter_worst > 106.199997', 'perimeter_worst <= 117.699997', 'texture_worst <= 20.49', 'concave_points_mean > 0.04938', 'concave_points_mean <= 0.05778', 'concave_points_worst > 0.1563']
+   └─ v5 trajectory=[37.5, 37.5, 37.5, 37.5]  rounds=3
+    lime       base=12.5%  v4=34.4%  v5=31.2% (best=34.4%)  v6=31.2%  rnds=3
+   ┌─ arm=lime  baseline=12.5%
+   │ SR/context conds : ['concave_points_mean > 0.04938', 'concave_points_mean <= 0.05778', 'texture_worst <= 20.49', 'area_worst <= 768.900024', 'area_worst > 760.200012', 'radius_worst > 15.75']
+   │ [v4] v4=34.38%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the shape and texture of the tumor. Specifically, the average number of concave points was within a certain range, indicating a somewhat irregul…
+   │      rules: ['concave_points_mean >= 0.05', 'concave_points_mean <= 0.12', 'texture_worst <= 25.41', 'area_worst <= 550.12', 'radius_worst <= 17.42']
+   │ [v5] v5=31.25%  expl: The predicted class of 0, indicating a malignant cancer diagnosis, can be attributed to several key factors. The mean number of concave points is between 0.04938 and 0.05778, which is a significant indicator. Additionally, the worst texture…
+   │ [v6] v6=31.25%  expl: 1. The model predicts the cancer as maligne (class 0) because the concave_points_mean is greater than 0.04938, which is a key factor in this prediction. 2. The prediction of maligne (class 0) is also due to the concave_points_mean being les…
+   │      rules: ['concave_points_mean > 0.04938', 'concave_points_mean <= 0.05778', 'texture_worst <= 20.49', 'area_worst <= 768.900024', 'area_worst > 760.200012', 'radius_worst > 15.75']
+   └─ v5 trajectory=[34.38, 31.25, 31.25, 31.25]  rounds=3
+[04/15] instance 189
+    pyxai_sr   base=100.0%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the tumor has certain characteristics that are commonly associated with malignant tumors. Specifically, the tumor has a high number of concave points, a high level of concavity, and a…
+   │      rules: ['concave_points_mean > 0.5', 'concavity_mean > 0.5', 'concave_points_worst > 0.5', 'concavity_worst > 0.5', 'texture_mean > 0.5', 'texture_worst > 0.5', 'symmetry_worst < 0.5']
+   │ [v5] v5=40.65%  expl: The predicted class of 0, indicating a malignant cancer diagnosis, can be attributed to several key factors. The instance's concave points worst value exceeds 0.1424, and its concave points mean value is greater than 0.04938, suggesting a h…
+   │ [v6] v6=40.65%  expl: 1. The model predicted the cancer as maligne (class 0) because the value of concave_points_worst is greater than 0.1424. 2. The prediction of maligne (class 0) is also supported by the fact that concave_points_mean is greater than 0.04938. …
+   │      rules: ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   └─ v5 trajectory=[40.63, 40.65, 40.65, 40.65]  rounds=3
+    shap       base=62.5%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=shap  baseline=62.5%
+   │ SR/context conds : ['area_worst > 959.5', 'concave_points_se <= 0.008799', 'concave_points_mean > 0.05778', 'texture_worst > 29.25', 'texture_worst <= 34.270001']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant due to a combination of factors related to the tumor's shape and texture. Specifically, the tumor's worst area is quite large, exceeding 959.5, and its texture is somewhat irregular, with a w…
+   │      rules: ['area_worst > 959.5', 'texture_worst >= 29.25', 'texture_worst <= 34.27', 'concave_points_mean > 0.05778', 'concave_points_se <= 0.008799']
+   │ [v5] v5=40.63%  expl: The model predicts a maligne cancer diagnosis, class 0, due to several key factors. The area of the worst case is greater than 959.5, indicating a potentially larger tumor size. The standard error of concave points is less than or equal to …
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer as malignant (class 0) because the area of the worst tumor is greater than 959.5. 2. The prediction of malignant cancer is also guaranteed since the standard error of the concave points is less than or equal…
+   │      rules: ['area_worst > 959.5', 'concave_points_se <= 0.008799', 'concave_points_mean > 0.05778', 'texture_worst > 29.25', 'texture_worst <= 34.270001']
+   └─ v5 trajectory=[40.63, 40.62, 40.62, 40.63]  rounds=3
+    lime       base=75.0%  v4=40.6%  v5=46.9% (best=46.9%)  v6=46.9%  rnds=3
+   ┌─ arm=lime  baseline=75.0%
+   │ SR/context conds : ['concave_points_mean > 0.05778', 'area_worst > 959.5', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concave_points_se <= 0.009536']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the tumor has certain characteristics that are commonly associated with malignant tumors. Specifically, the average number of concave points is higher than usual, the worst-case area …
+   │      rules: ['concave_points_mean > 0.5', 'area_worst > 0.5', 'texture_worst > 0.5', 'concave_points_se < 0.5']
+   │ [v5] v5=46.87%  expl: The predicted class of 0, indicating a malignant cancer diagnosis, can be attributed to several key factors. The mean of concave points is greater than 0.05778, which is a significant indicator. Additionally, the worst-case area is greater …
+   │ [v6] v6=46.88%  expl: 1. The model predicts the cancer as maligne (class 0) because the mean of concave points is greater than 0.05778, which is a characteristic often associated with malignant tumors. 2. The prediction of maligne (class 0) is also guaranteed by…
+   │      rules: ['concave_points_mean > 0.05778', 'area_worst > 959.5', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concave_points_se <= 0.009536']
+   └─ v5 trajectory=[40.63, 46.88, 46.88, 46.87]  rounds=3
+[05/15] instance 70
+    pyxai_sr   base=100.0%  v4=40.6%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the shape and texture of the tumor. Specifically, the tumor's perimeter is larger than usual, its concave points are more pronounced on average,…
+   │      rules: ['perimeter_worst > 0.5', 'concave_points_mean > 0.5', 'concavity_worst > 0.5', 'texture_worst > 0.5']
+   │ [v5] v5=100.0%  expl: The model predicts a maligne cancer diagnosis, class 0, based on several key features. The perimeter_worst must be greater than 106.199997 and the texture_worst must be greater than 20.49. Additionally, the concave_points_mean is greater th…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer to be maligne (class 0) because the perimeter_worst is greater than 106.199997, which is a key factor in this prediction. 2. The model's decision to classify the cancer as maligne (class 0) is also influence…
+   │      rules: ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   └─ v5 trajectory=[40.63, 100.0]  rounds=1
+    shap       base=50.0%  v4=40.6%  v5=46.9% (best=46.9%)  v6=40.6%  rnds=3
+   ┌─ arm=shap  baseline=50.0%
+   │ SR/context conds : ['concave_points_mean > 0.04938']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the average number of concave points in the tumor is greater than 0.04938. This single feature is enough to guarantee the prediction of a malignant cancer, according to the model. In …
+   │      rules: ['concave_points_mean > 0.04938']
+   │ [v5] v5=46.88%  expl: The model predicts the cancer type as maligne (class 0) due to the presence of several key features. The mean of concave points is greater than 0.04938, which is a significant indicator. Additionally, the worst-case scenario values, such as…
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer to be maligne (class 0) because the mean of concave points is greater than 0.04938.
+   │      rules: ['concave_points_mean > 0.04938']
+   └─ v5 trajectory=[40.63, 46.88, 46.88, 46.88]  rounds=3
+    lime       base=50.0%  v4=40.6%  v5=46.9% (best=46.9%)  v6=40.6%  rnds=3
+   ┌─ arm=lime  baseline=50.0%
+   │ SR/context conds : ['concave_points_mean > 0.04938']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the average number of concave points in the tumor is greater than 0.04938. This feature is particularly important in distinguishing between malignant and benign tumors, and in this ca…
+   │      rules: ['concave_points_mean > 0.04938']
+   │ [v5] v5=46.88%  expl: The model predicted the cancer as malignant due to the presence of several key features. The mean of concave points is greater than 0.04938, which is a strong indicator of malignancy. Additionally, the worst-case scenario values for radius,…
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer to be maligne (class 0) because the mean of concave points is greater than 0.04938.
+   │      rules: ['concave_points_mean > 0.04938']
+   └─ v5 trajectory=[40.63, 46.88, 46.88, 46.88]  rounds=3
+[06/15] instance 62
+    pyxai_sr   base=100.0%  v4=75.0%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   │ [v4] v4=75.0%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's perimeter, which is the distance around the edge of the tumor, is relatively small, at 82.28 units, …
+   │      rules: ['perimeter_worst < 106.20', 'concave_points_worst < 0.1357', 'area_worst < 82.28']
+   │ [v5] v5=100.0%  expl: The model predicted the cancer as benign, class 1, based on several key features. The perimeter of the worst case was less than or equal to 106.199997, and the number of concave points in the worst case was less than or equal to 0.1357. Add…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter_worst is less than or equal to 106.199997, which is a characteristic that contributes to this classification decision. 2. The prediction of the cancer as bénigne (c…
+   │      rules: ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   └─ v5 trajectory=[75.0, 100.0]  rounds=1
+    shap       base=68.8%  v4=59.4%  v5=59.4% (best=59.4%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04835']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because the average number of concave points in the tumor was relatively low, specifically less than or equal to 0.04835. This single feature was enough to guarantee the predi…
+   │      rules: ['concave_points_mean <= 0.04835']
+   │ [v5] v5=59.38%  expl: The model predicted the tumor as benign, class 1, based on several key features. The mean of concave points, with a value of 0.0411, is less than or equal to 0.04835, which is a crucial factor in this prediction. Additionally, the worst-cas…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer as bénigne (class 1) because the mean of concave points is less than or equal to 0.04835.
+   │      rules: ['concave_points_mean <= 0.04835']
+   └─ v5 trajectory=[59.38, 59.38, 59.38, 59.38]  rounds=3
+    lime       base=65.6%  v4=59.4%  v5=59.4% (best=59.4%)  v6=59.4%  rnds=3
+   ┌─ arm=lime  baseline=65.6%
+   │ SR/context conds : ['area_worst <= 760.200012']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, or non-cancerous, because one key factor stood out - the area of the tumor was relatively small, specifically less than or equal to 760.20. This single condition was enough to guarantee the pre…
+   │      rules: ['area_worst <= 760.20']
+   │ [v5] v5=59.37%  expl: The model predicted the tumor as benign, class 1, due to several key factors. The mean number of concave points was relatively low at 0.0411, and the standard error of concave points was 0.0127, indicating a low variability in the concavity…
+   │ [v6] v6=59.37%  expl: 1. The model predicts the cancer to be bénigne (class 1) because the condition area_worst <= 760.200012 is met, which suggests that the tumor's characteristics are more likely to be non-malignant when this threshold is not exceeded.
+   │      rules: ['area_worst <= 760.200012']
+   └─ v5 trajectory=[59.37, 59.38, 59.37, 59.37]  rounds=3
+[07/15] instance 57
+    pyxai_sr   base=100.0%  v4=65.6%  v5=62.6% (best=65.6%)  v6=62.6%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1096', 'fractal_dimension_se > 0.001356', 'concave_points_mean <= 0.04304', 'texture_mean <= 18.799999', 'concavity_worst <= 0.2623', 'radius_worst <= 16.57', 'area_worst <= 959.5', 'concavity_mean <= 0.1201', 'fractal_dimension_mean > 0.05623']
+   │ [v4] v4=65.63%  expl: The model predicted that the cancer is benign, or non-cancerous, based on several key factors. The tumor's size and shape characteristics, such as its perimeter, radius, and area, were within certain limits that are more commonly associated…
+   │      rules: ['perimeter_worst < 107.26', 'concave_points_worst <= 0.1184', 'texture_mean >= 14.99', 'texture_worst <= 24.36', 'fractal_dimension_mean < 0.0656', 'fractal_dimension_se > 0.0079', 'area_worst <= 648.24', 'radius_worst < 17.06', 'concavity_mean < 0.184', 'concavity_worst <= 0.272']
+   │ [v5] v5=62.6%  expl: The predicted class of 1, indicating a bénigne cancer diagnosis, can be attributed to several key factors. The perimeter of the worst case was less than or equal to 106.199997, and the concave points in the worst case were less than or equa…
+   │ [v6] v6=62.6%  expl: 1. The model predicts a class of 1 because the perimeter_worst is less than or equal to 106.199997. 2. The model predicts a class of 1 because the concave_points_worst is less than or equal to 0.1096. 3. The model predicts a class of 1 beca…
+   │      rules: ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1096', 'fractal_dimension_se > 0.001356', 'concave_points_mean <= 0.04304', 'texture_mean <= 18.799999', 'concavity_worst <= 0.2623', 'radius_worst <= 16.57', 'area_worst <= 959.5', 'concavity_mean <= 0.1201', 'fractal_dimension_mean > 0.05623']
+   └─ v5 trajectory=[65.63, 62.6, 62.6, 62.6]  rounds=3
+    shap       base=75.0%  v4=59.4%  v5=62.5% (best=62.5%)  v6=62.5%  rnds=3
+   ┌─ arm=shap  baseline=75.0%
+   │ SR/context conds : ['area_worst <= 728.299988', 'concave_points_mean <= 0.04304', 'texture_worst <= 20.49']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's worst area is relatively small, the average number of concave points is low, and the texture of the …
+   │      rules: ['area_worst < 0.5', 'concave_points_mean < 0.5', 'texture_worst < 0.5']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer type as bénigne (class 1) because the instance satisfies the following conditions:  the area_worst is less than or equal to 728.299988,  the concave_points_mean is less than or equal to 0.04304,  and the textur…
+   │ [v6] v6=62.5%  expl: 1. The model predicts the cancer to be benign (class 1) because the area of the worst tumor is less than or equal to 728.299988. 2. The model predicts the cancer to be benign (class 1) because the mean number of concave points is less than …
+   │      rules: ['area_worst <= 728.299988', 'concave_points_mean <= 0.04304', 'texture_worst <= 20.49']
+   └─ v5 trajectory=[59.37, 62.5, 62.5, 62.5]  rounds=3
+    lime       base=68.8%  v4=62.5%  v5=62.5% (best=62.5%)  v6=62.5%  rnds=3
+   ┌─ arm=lime  baseline=68.8%
+   │ SR/context conds : ['texture_worst <= 20.49', 'concave_points_mean <= 0.04304', 'concave_points_se <= 0.008799', 'area_worst <= 760.200012']
+   │ [v4] v4=62.5%  expl: The model predicted that the cancer is benign, or non-cancerous, because of a combination of factors related to the tumor's characteristics. Specifically, the tumor's texture was not too rough, with a worst-case texture measurement of less …
+   │      rules: ['texture_worst <= 20.49', 'concave_points_mean <= 0.04304', 'concave_points_se <= 0.008799', 'area_worst <= 760.20']
+   │ [v5] v5=62.5%  expl: The model predicted the cancer as benign, class 1, due to several key conditions being met. The texture of the worst area was relatively smooth, with a texture worst value of 19.64, which is less than or equal to 20.49. Additionally, the me…
+   │ [v6] v6=62.5%  expl: 1. The model predicts the cancer as bénigne (class 1) because the texture_worst value is less than or equal to 20.49. 2. The prediction of the cancer as bénigne (class 1) is also guaranteed by the condition that the concave_points_mean valu…
+   │      rules: ['texture_worst <= 20.49', 'concave_points_mean <= 0.04304', 'concave_points_se <= 0.008799', 'area_worst <= 760.200012']
+   └─ v5 trajectory=[62.5, 62.5, 62.5, 62.5]  rounds=3
+[08/15] instance 35
+    pyxai_sr   base=100.0%  v4=62.5%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   │ [v4] v4=62.5%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the tumor's shape and texture. Specifically, the tumor's perimeter is larger than usual, its concave points are more pronounced on average, its …
+   │      rules: ['perimeter_worst > 106', 'concave_points_mean > 0.048', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   │ [v5] v5=100.0%  expl: The model predicts a maligne cancer diagnosis, class 0, for this instance due to several key factors. The perimeter of the worst case is greater than 106.199997, indicating a larger size which is often associated with maligne tumors. Additi…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer to be maligne (class 0) because the perimeter_worst value of 161.2 is greater than 106.199997, which is a key factor in this prediction. 2. The prediction of maligne (class 0) is also supported by the fact t…
+   │      rules: ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   └─ v5 trajectory=[62.5, 100.0]  rounds=1
+    shap       base=50.0%  v4=40.6%  v5=43.8% (best=43.8%)  v6=40.6%  rnds=3
+   ┌─ arm=shap  baseline=50.0%
+   │ SR/context conds : ['concave_points_mean > 0.04938']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the average number of concave points in the tumor is higher than a certain threshold, specifically 0.04938. This single feature is enough to guarantee the prediction of a malignant ca…
+   │      rules: ['concave_points_mean > 0.04938']
+   │ [v5] v5=43.75%  expl: The model predicts a maligne cancer diagnosis, classified as 0, due to the presence of specific conditions in the input features. The mean of concave points is greater than 0.04938, which is a key factor in this prediction. Additionally, th…
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer to be maligne (class 0) because the mean of concave points is greater than 0.04938.
+   │      rules: ['concave_points_mean > 0.04938']
+   └─ v5 trajectory=[40.63, 43.75, 40.63, 43.75]  rounds=3
+    lime       base=46.9%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=lime  baseline=46.9%
+   │ SR/context conds : ['area_worst > 959.5']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant, which is class 0, because the area of the worst part of the tumor is greater than 959.5. This single feature is enough to guarantee the prediction of a malignant cancer, according to the mod…
+   │      rules: ['area_worst > 959.5']
+   │ [v5] v5=40.63%  expl: The model predicts a maligne cancer diagnosis, classified as 0, due to the combination of several features. The area_worst being greater than 959.5 is a key factor, as stated in the formal sufficient reason. Additionally, the high value of …
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer to be maligne (class 0) because the condition area_worst > 959.5 is met, indicating a strong correlation between large tumor area and malignant diagnosis.
+   │      rules: ['area_worst > 959.5']
+   └─ v5 trajectory=[40.63, 40.63, 40.63, 40.63]  rounds=3
+[09/15] instance 188
+    pyxai_sr   base=100.0%  v4=62.5%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   │ [v4] v4=62.5%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the tumor's shape and texture. Specifically, the tumor's perimeter is larger than usual, and it has a higher number of concave points on average…
+   │      rules: ['perimeter_worst > 106', 'concave_points_mean > 0.048', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   │ [v5] v5=100.0%  expl: The model predicted the cancer as maligne (class 0) due to several key factors. The perimeter of the worst dimension was greater than 106.199997, indicating a larger tumor size. Additionally, the mean number of concave points was greater th…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer to be maligne (class 0) because the perimeter_worst is greater than 106.199997, which is a key factor in this prediction. 2. The prediction of maligne (class 0) is also due to the fact that the concave_point…
+   │      rules: ['perimeter_worst > 106.199997', 'concave_points_mean > 0.04846', 'concavity_worst > 0.221', 'texture_worst > 20.49']
+   └─ v5 trajectory=[62.5, 100.0]  rounds=1
+    shap       base=43.8%  v4=43.8%  v5=37.5% (best=43.8%)  v6=43.8%  rnds=3
+   ┌─ arm=shap  baseline=43.8%
+   │ SR/context conds : ['perimeter_worst > 106.199997', 'perimeter_worst <= 117.699997']
+   │ [v4] v4=43.75%  expl: The model predicted that the cancer is malignant because the perimeter of the tumor at its worst point is within a specific range, between 106.2 and 117.7. This range is associated with a higher likelihood of the cancer being malignant, whi…
+   │      rules: ['perimeter_worst >= 106.2', 'perimeter_worst <= 117.7']
+   │ [v5] v5=37.5%  expl: The model predicted the cancer as maligne (classe 0) due to the perimeter_worst being greater than 106.199997 and less than or equal to 117.699997. Additionally, the concave_points_mean of 0.0507, fractal_dimension_mean of 0.0657, and conca…
+   │ [v6] v6=43.75%  expl: 1. The model predicts the cancer to be maligne (class 0) because the perimeter_worst value of 110.3 is greater than 106.199997, which is a key factor in this prediction. 2. The model also predicts the cancer to be maligne (class 0) because …
+   │      rules: ['perimeter_worst > 106.199997', 'perimeter_worst <= 117.699997']
+   └─ v5 trajectory=[43.75, 37.5, 37.5, 37.5]  rounds=3
+    lime       base=43.8%  v4=43.8%  v5=50.0% (best=50.0%)  v6=43.8%  rnds=3
+   ┌─ arm=lime  baseline=43.8%
+   │ SR/context conds : ['texture_worst > 20.49', 'texture_worst <= 27.280001']
+   │ [v4] v4=43.75%  expl: The model predicted that the cancer is malignant because the texture of the tumor at its worst point is within a specific range. Specifically, the texture is greater than 20.49 and less than or equal to 27.28. This range is associated with …
+   │      rules: ['texture_worst > 20.49', 'texture_worst <= 27.28']
+   │ [v5] v5=50.0%  expl: The model predicts a maligne cancer diagnosis, class 0, due to the texture_worst value being greater than 20.49 and less than or equal to 27.280001. Additionally, the concave_points_mean is 0.0507, the fractal_dimension_mean is 0.0657, and …
+   │ [v6] v6=43.75%  expl: 1. The model predicts the cancer to be maligne (class 0) because the texture_worst value is greater than 20.49, which is a key factor in this prediction. 2. The model also predicts the cancer to be maligne (class 0) because the texture_wors…
+   │      rules: ['texture_worst > 20.49', 'texture_worst <= 27.280001']
+   └─ v5 trajectory=[43.75, 50.0, 50.0, 50.0]  rounds=3
+[10/15] instance 26
+    pyxai_sr   base=100.0%  v4=59.4%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign because the tumor's characteristics, such as its perimeter, area, texture, and concavity, are within certain limits. Specifically, the tumor's perimeter is relatively small, its area is not too …
+   │      rules: ['perimeter_worst < 0.5', 'area_worst < 0.5', 'texture_worst < 0.5', 'concavity_worst < 0.5']
+   │ [v5] v5=100.0%  expl: The model predicted the cancer as benign, class 1, based on several key features. The concave points mean was 0.018, the fractal dimension mean was 0.0554, the concave points standard error was 0.0058, and the radius worst was 13.8. Additio…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter_worst is less than or equal to 106.199997, which is a characteristic that contributes to this classification decision. 2. The prediction of the cancer as bénigne (c…
+   │      rules: ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   └─ v5 trajectory=[59.38, 100.0]  rounds=1
+    shap       base=68.8%  v4=59.4%  v5=56.2% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04304']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because the average number of concave points in the tumor was relatively low, specifically less than or equal to 0.04304. This single feature was enough to guarantee the predi…
+   │      rules: ['concave_points_mean <= 0.04304']
+   │ [v5] v5=56.25%  expl: The model predicted the tumor as benign, class 1, due to several key features. The mean of concave points, at 0.018, was below the threshold of 0.04304, which is a strong indicator of a benign tumor. Additionally, the fractal dimension mean…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer to be benign (class 1) because the mean of concave points is less than or equal to 0.04304.
+   │      rules: ['concave_points_mean <= 0.04304']
+   └─ v5 trajectory=[59.38, 62.5, 62.5, 56.25]  rounds=3
+    lime       base=62.5%  v4=62.5%  v5=62.5% (best=62.5%)  v6=62.5%  rnds=3
+   ┌─ arm=lime  baseline=62.5%
+   │ SR/context conds : ['texture_worst <= 20.49']
+   │ [v4] v4=62.5%  expl: The model predicted that the cancer is benign, or non-cancerous, because the texture of the tumor, specifically the worst-case texture, was relatively low at 20.14. This value is below a certain threshold of 20.49, which is the key factor t…
+   │      rules: ['texture_worst < 20.49']
+   │ [v5] v5=62.5%  expl: The model predicted the tumor as benign, class 1, due to several key features. The mean concave points were relatively low at 0.018, and the mean fractal dimension was 0.0554, indicating a less complex tumor shape. The standard error of con…
+   │ [v6] v6=62.5%  expl: 1. The model predicts the cancer to be benign (class 1) because the condition texture_worst <= 20.49 is met, with the given texture_worst value being 20.14, which is less than or equal to 20.49.
+   │      rules: ['texture_worst <= 20.49']
+   └─ v5 trajectory=[62.5, 62.5, 62.5, 62.5]  rounds=3
+[11/15] instance 173
+    pyxai_sr   base=100.0%  v4=59.4%  v5=62.5% (best=62.5%)  v6=62.5%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'texture_worst <= 27.280001', 'concave_points_worst <= 0.1096', 'concave_points_mean <= 0.04562', 'concavity_worst <= 0.2623', 'texture_mean <= 20.200001', 'concavity_mean <= 0.07293', 'symmetry_worst <= 0.292', 'radius_mean <= 15.05', 'radius_worst <= 16.35']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, or non-cancerous, because several key features of the tumor fell within certain ranges. Specifically, the tumor's texture, shape, and size were within relatively normal limits. For example, the…
+   │      rules: ['concave_points_mean > 0.5', 'concave_points_se < 0.5', 'concavity_mean < 0.5', 'concavity_worst > 0.5', 'fractal_dimension_mean < 0.5', 'perimeter_worst < 0.5', 'radius_mean < 0.5', 'radius_worst < 0.5', 'symmetry_worst > 0.5', 'texture_mean < 0.5', 'texture_worst < 0.5']
+   │ [v5] v5=62.54%  expl: The model predicts the cancer type as benign, class 1, based on several key features. The perimeter of the worst case should be less than or equal to 106.199997, and the texture in the worst case should be less than or equal to 27.280001. A…
+   │ [v6] v6=62.54%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter_worst is less than or equal to 106.199997. 2. The model predicts the cancer as bénigne (class 1) because the texture_worst is less than or equal to 27.280001. 3. Th…
+   │      rules: ['perimeter_worst <= 106.199997', 'texture_worst <= 27.280001', 'concave_points_worst <= 0.1096', 'concave_points_mean <= 0.04562', 'concavity_worst <= 0.2623', 'texture_mean <= 20.200001', 'concavity_mean <= 0.07293', 'symmetry_worst <= 0.292', 'radius_mean <= 15.05', 'radius_worst <= 16.35']
+   └─ v5 trajectory=[59.37, 62.54, 62.54, 62.54]  rounds=3
+    shap       base=75.0%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=75.0%
+   │ SR/context conds : ['perimeter_worst <= 101.699997', 'concave_points_mean <= 0.04304', 'area_worst <= 728.299988']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's perimeter is relatively small, at 86.82, which is less than the threshold of 101.7. Additionally, th…
+   │      rules: ['perimeter_worst < 101.7', 'concave_points_mean < 0.043', 'area_worst < 728.3']
+   │ [v5] v5=62.5%  expl: The model predicted the cancer as benign, class 1, based on several key factors. The perimeter of the worst-case scenario was relatively small, at 86.82, which is less than or equal to 101.699997. Additionally, the mean number of concave po…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter of the worst tumor is less than or equal to 101.699997. 2. The prediction of bénigne (class 1) is also guaranteed by the condition that the mean of concave points i…
+   │      rules: ['perimeter_worst <= 101.699997', 'concave_points_mean <= 0.04304', 'area_worst <= 728.299988']
+   └─ v5 trajectory=[59.38, 62.5, 62.5, 62.5]  rounds=3
+    lime       base=75.0%  v4=59.4%  v5=62.5% (best=62.5%)  v6=56.2%  rnds=3
+   ┌─ arm=lime  baseline=75.0%
+   │ SR/context conds : ['concave_points_mean <= 0.04304', 'concave_points_se <= 0.008799', 'texture_worst > 20.49', 'texture_worst <= 26.200001', 'area_worst <= 760.200012']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, or non-cancerous, because of a combination of factors related to the tumor's shape and texture. Specifically, the tumor has a relatively low number of concave points on average and a small vari…
+   │      rules: ['concave_points_mean < 0.5', 'concave_points_se < 0.5', 'texture_worst > 0.5', 'area_worst < 0.5']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer type as benign, class 1, due to several key conditions being met. The mean of concave points is less than or equal to 0.04304, and the standard error of concave points is less than or equal to 0.008799, indicat…
+   │ [v6] v6=56.25%  expl: 1. The model predicts the cancer as bénigne (class 1) because the mean of concave points is less than or equal to 0.04304. 2. The prediction of the model is also guaranteed by the condition that the standard error of concave points is less …
+   │      rules: ['concave_points_mean <= 0.04304', 'concave_points_se <= 0.008799', 'texture_worst > 20.49', 'texture_worst <= 26.200001', 'area_worst <= 760.200012']
+   └─ v5 trajectory=[59.37, 56.25, 62.5, 62.5]  rounds=3
+[12/15] instance 139
+    pyxai_sr   base=100.0%  v4=59.4%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's perimeter, or outline, is relatively small, its area is not too large, its texture is not too rough,…
+   │      rules: ['perimeter_worst < 0.5', 'area_worst < 0.5', 'texture_worst < 0.5', 'concavity_worst < 0.5']
+   │ [v5] v5=100.0%  expl: The model predicted the tumor as benign, class 1, based on several key features. The perimeter of the worst tumor was less than or equal to 106.199997, which is a significant factor in this prediction. Additionally, the area of the worst tu…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter_worst is less than or equal to 106.199997. 2. The model predicts the cancer as bénigne (class 1) because the area_worst is less than or equal to 768.900024. 3. The …
+   │      rules: ['perimeter_worst <= 106.199997', 'area_worst <= 768.900024', 'texture_worst <= 27.57', 'concavity_worst <= 0.2623']
+   └─ v5 trajectory=[59.38, 100.0]  rounds=1
+    shap       base=68.8%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04304']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because the average number of concave points in the tumor was relatively low, specifically less than or equal to 0.04304. This single feature was enough to guarantee the predi…
+   │      rules: ['concave_points_mean <= 0.04304']
+   │ [v5] v5=62.5%  expl: The model predicted the tumor as benign, class 1, due to several key factors. The mean of concave points, which is a measure of the tumor's shape irregularity, was less than or equal to 0.04304, indicating a relatively smooth shape. Additio…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer to be benign (class 1) because the mean of concave points is less than or equal to 0.04304.
+   │      rules: ['concave_points_mean <= 0.04304']
+   └─ v5 trajectory=[59.38, 62.5, 56.25, 62.5]  rounds=3
+    lime       base=68.8%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=lime  baseline=68.8%
+   │ SR/context conds : ['concave_points_mean <= 0.04304']
+   │ [v4] v4=59.38%  expl: The model predicted that the cancer is benign, or non-cancerous, because the average number of concave points in the tumor was relatively low, specifically less than or equal to 0.04304. This single feature was enough to guarantee the predi…
+   │      rules: ['concave_points_mean <= 0.04304']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer diagnosis as benign (class 1) due to the combination of several key features. The mean of concave points is less than or equal to 0.04304, which is a crucial factor in this prediction. Additionally, the fractal…
+   │ [v6] v6=59.38%  expl: 1. The model predicts the cancer as bénigne (class 1) because the mean of concave points is less than or equal to 0.04304, which is a key factor in this classification decision.
+   │      rules: ['concave_points_mean <= 0.04304']
+   └─ v5 trajectory=[59.38, 62.5, 62.5, 62.5]  rounds=3
+[13/15] instance 22
+    pyxai_sr   base=100.0%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant due to a combination of factors related to the shape and texture of the tumor. Specifically, the tumor has a high number of concave points, indicating irregularities in its shape, and a high …
+   │      rules: ['concave_points_worst > 0.5', 'concavity_worst > 0.5', 'texture_worst > 0.5', 'smoothness_worst < 0.5', 'radius_worst > 0.5', 'perimeter_worst > 0.5']
+   │ [v5] v5=40.65%  expl: The model predicts a maligne cancer diagnosis, class 0, due to the combination of several key factors. The presence of a high number of concave points in the worst case, with concave_points_worst greater than 0.1424, and a mean concave poin…
+   │ [v6] v6=40.65%  expl: 1. The model predicted the cancer as maligne (class 0) because the value of concave_points_worst is greater than 0.1424. 2. The prediction of maligne (class 0) was also influenced by the fact that concave_points_mean is greater than 0.04938…
+   │      rules: ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   └─ v5 trajectory=[40.63, 40.65, 40.65, 40.65]  rounds=3
+    shap       base=75.0%  v4=40.6%  v5=46.9% (best=46.9%)  v6=40.6%  rnds=3
+   ┌─ arm=shap  baseline=75.0%
+   │ SR/context conds : ['area_worst > 959.5', 'concave_points_se <= 0.008799', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concave_points_mean > 0.05778']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the tumor's shape and texture. Specifically, the tumor's worst area is quite large, exceeding 959.5, and its texture is somewhat irregular, with…
+   │      rules: ['area_worst > 959.5', 'texture_worst >= 29.25', 'texture_worst <= 34.27', 'concave_points_mean > 0.05778', 'concave_points_se <= 0.008799']
+   │ [v5] v5=46.88%  expl: The model predicted the cancer as malignant due to several key factors. The area of the worst case was greater than 959.5, indicating a potentially larger tumor size. The standard error of concave points was less than or equal to 0.008799, …
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer to be maligne (class 0) because the area_worst is greater than 959.5. 2. The model predicts the cancer to be maligne (class 0) because the concave_points_se is less than or equal to 0.008799. 3. The model pr…
+   │      rules: ['area_worst > 959.5', 'concave_points_se <= 0.008799', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concave_points_mean > 0.05778']
+   └─ v5 trajectory=[40.63, 46.88, 46.88, 46.88]  rounds=3
+    lime       base=75.0%  v4=40.6%  v5=46.9% (best=46.9%)  v6=40.6%  rnds=3
+   ┌─ arm=lime  baseline=75.0%
+   │ SR/context conds : ['texture_worst > 29.25', 'texture_worst <= 34.270001', 'area_worst > 959.5', 'concave_points_se <= 0.008799', 'concave_points_mean > 0.05778']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the tumor's texture, size, and shape. Specifically, the tumor's texture is somewhat rough, with a texture score between 29.25 and 34.27. The tum…
+   │      rules: ['texture_worst >= 29.25', 'texture_worst <= 34.27', 'area_worst > 959.5', 'concave_points_se <= 0.008799', 'concave_points_mean > 0.05778']
+   │ [v5] v5=46.88%  expl: The model predicts a malignant cancer diagnosis due to the combination of several key factors. The texture of the worst area is greater than 29.25 and less than or equal to 34.27, indicating a potentially abnormal cell structure. Additional…
+   │ [v6] v6=40.63%  expl: 1. The model predicts the cancer as maligne (class 0) because the texture_worst value is greater than 29.25. 2. The model also predicts the cancer as maligne (class 0) because the texture_worst value is less than or equal to 34.270001. 3. A…
+   │      rules: ['texture_worst > 29.25', 'texture_worst <= 34.270001', 'area_worst > 959.5', 'concave_points_se <= 0.008799', 'concave_points_mean > 0.05778']
+   └─ v5 trajectory=[40.63, 46.88, 46.88, 46.88]  rounds=3
+[14/15] instance 151
+    pyxai_sr   base=100.0%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because it identified a combination of characteristics in the tumor that are commonly associated with malignant cancers. Specifically, the tumor has a high number of concave points, a high le…
+   │      rules: ['concave_points_mean > 0.5', 'concavity_mean > 0.5', 'concave_points_worst > 0.5', 'texture_mean > 0.5', 'texture_worst > 0.5', 'symmetry_worst < 0.5']
+   │ [v5] v5=40.65%  expl: The predicted class of 0, indicating a malignant cancer diagnosis, can be attributed to several key factors. The presence of a high number of concave points in the worst case, with a value greater than 0.1424, suggests a more irregular shap…
+   │ [v6] v6=40.65%  expl: 1. The model predicts the cancer as maligne (class 0) because the value of concave_points_worst is greater than 0.1424. 2. The prediction of maligne (class 0) is also supported by the fact that concave_points_mean is greater than 0.04938. 3…
+   │      rules: ['concave_points_worst > 0.1424', 'concave_points_mean > 0.04938', 'concavity_worst > 0.3201', 'texture_worst > 26.200001', 'smoothness_worst > 0.1357', 'texture_mean > 18.799999', 'concavity_mean > 0.07293', 'symmetry_worst > 0.2964']
+   └─ v5 trajectory=[40.63, 40.65, 40.65, 40.65]  rounds=3
+    shap       base=75.0%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=shap  baseline=75.0%
+   │ SR/context conds : ['concave_points_mean > 0.05778', 'area_worst > 959.5', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concavity_worst > 0.2299']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because of a combination of factors related to the shape and texture of the tumor. Specifically, the tumor has a high number of concave points on average, a large area, a rough texture, and a…
+   │      rules: ['concave_points_mean > 0.5', 'area_worst > 0.5', 'texture_worst > 0.5', 'concavity_worst > 0.5', 'texture_worst < 0.5']
+   │ [v5] v5=40.63%  expl: The predicted class of 0, indicating a malignant cancer diagnosis, can be attributed to several key factors. The mean number of concave points is greater than 0.05778, which is a significant indicator. Additionally, the worst-case area is g…
+   │ [v6] v6=40.63%  expl: 1. The model predicted the cancer as maligne (class 0) because the mean number of concave points is greater than 0.05778, which is a characteristic often associated with malignant tumors. 2. The prediction of maligne (class 0) is also guara…
+   │      rules: ['concave_points_mean > 0.05778', 'area_worst > 959.5', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'concavity_worst > 0.2299']
+   └─ v5 trajectory=[40.63, 40.63, 40.63, 40.63]  rounds=3
+    lime       base=75.0%  v4=40.6%  v5=40.6% (best=40.6%)  v6=40.6%  rnds=3
+   ┌─ arm=lime  baseline=75.0%
+   │ SR/context conds : ['concave_points_mean > 0.05778', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'area_worst > 959.5', 'concavity_worst > 0.2299']
+   │ [v4] v4=40.63%  expl: The model predicted that the cancer is malignant because the tumor has certain characteristics that are commonly associated with malignant cancers. Specifically, the tumor has a high number of concave points on average, a rough texture, and…
+   │      rules: ['concave_points_mean > 0.5', 'texture_worst > 0.5', 'area_worst > 0.5', 'concavity_worst > 0.5']
+   │ [v5] v5=40.63%  expl: The predicted class is 0, indicating a malignant cancer diagnosis, due to the following conditions:  the mean number of concave points is greater than 0.05778,  the worst texture value is greater than 29.25 and less than or equal to 34.2700…
+   │ [v6] v6=40.63%  expl: 1. The model predicted the cancer as maligne (class 0) because the mean of concave points is greater than 0.05778, which is a characteristic often associated with malignant tumors. 2. The model's decision to classify the cancer as maligne (…
+   │      rules: ['concave_points_mean > 0.05778', 'texture_worst > 29.25', 'texture_worst <= 34.270001', 'area_worst > 959.5', 'concavity_worst > 0.2299']
+   └─ v5 trajectory=[40.63, 40.63, 40.63, 40.63]  rounds=3
+[15/15] instance 108
+    pyxai_sr   base=100.0%  v4=75.0%  v5=100.0% (best=100.0%)  v6=100.0%  rnds=1
+   ┌─ arm=pyxai_sr  baseline=100.0%
+   │ SR/context conds : ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   │ [v4] v4=75.0%  expl: The model predicted that the cancer is benign, or non-cancerous, because of certain characteristics of the tumor. Specifically, the tumor's perimeter, or outer edge, is relatively small, measuring less than 106.2 units. Additionally, the tu…
+   │      rules: ['perimeter_worst < 106.2', 'concave_points_worst < 0.14', 'area_worst < 768.9']
+   │ [v5] v5=100.0%  expl: The model predicts the cancer diagnosis as benign, class 1, due to the combination of several key features. The perimeter of the worst tumor is less than or equal to 106.199997, and the number of concave points in the worst tumor is less th…
+   │ [v6] v6=100.0%  expl: 1. The model predicts the cancer as bénigne (class 1) because the perimeter of the worst tumor is less than or equal to 106.199997. 2. The prediction of the model is also guaranteed by the condition that the number of concave points in the …
+   │      rules: ['perimeter_worst <= 106.199997', 'concave_points_worst <= 0.1357', 'area_worst <= 768.900024']
+   └─ v5 trajectory=[75.0, 100.0]  rounds=1
+    shap       base=65.6%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=shap  baseline=65.6%
+   │ SR/context conds : ['area_worst <= 760.200012']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, which is represented by class 1. The main reason for this prediction is that the area of the worst part of the tumor is relatively small, specifically less than or equal to 760.20. This conditi…
+   │      rules: ['area_worst <= 760.20']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer diagnosis as benign (class 1) due to several key factors. The mean concave points and concave points standard error are both 0.0, indicating a lack of concavity in the tumor. The fractal dimension mean is 0.072…
+   │ [v6] v6=59.37%  expl: 1. The model predicts the cancer to be benign (class 1) because the condition area_worst <= 760.200012 is met, which is a key factor in this prediction.
+   │      rules: ['area_worst <= 760.200012']
+   └─ v5 trajectory=[59.37, 62.5, 62.5, 62.5]  rounds=3
+    lime       base=53.1%  v4=59.4%  v5=62.5% (best=62.5%)  v6=59.4%  rnds=3
+   ┌─ arm=lime  baseline=53.1%
+   │ SR/context conds : ['concave_points_se <= 0.008799']
+   │ [v4] v4=59.37%  expl: The model predicted that the cancer is benign, which is class 1, because one of the key features, the standard error of concave points, was very low, specifically less than or equal to 0.008799. This single condition was enough to guarantee…
+   │      rules: ['concave_points_se <= 0.008799']
+   │ [v5] v5=62.5%  expl: The model predicts the cancer diagnosis as benign (class 1) due to several key factors. The mean concave points and concave points worst are both 0.0, indicating a lack of concave points in the tumor, which is a characteristic often associa…
+   │ [v6] v6=59.37%  expl: 1. The model predicts the cancer to be benign (class 1) because the standard error of the concave points is less than or equal to 0.008799.
+   │      rules: ['concave_points_se <= 0.008799']
+   └─ v5 trajectory=[59.37, 62.5, 62.5, 62.5]  rounds=3
+
+Dataset: cancer  |  LLM: meta-llama/Llama-3.3-70B-Instruct-Turbo  |  Model: BT→DT (distillation+rectification)
+I_P (rectified DT fidelity to BT): 100.00%   [reliability of the explained surrogate vs the boosted tree]
+Instances evaluated: 15/15   (arm-runs: 45 across 3 arms)
+
+arm           baseline   v4 (SR)  v5 final   v5 best  v6 struct   n
+------------------------------------------------------------------------------
+pyxai_sr        100.00     56.25     79.39     80.01      79.39   15
+shap             64.17     50.63     52.09     52.92      50.84   15
+lime             59.79     50.63     52.50     53.13      50.63   15
+------------------------------------------------------------------------------
+baseline = explanation method fidelity (Comparison A); v4/v5/v6 = LLM fidelity per strategy
+
+Results saved to research/results/cancer_bt_comparison.csv
+Warning: no variables in this model (and so, no generated file)!

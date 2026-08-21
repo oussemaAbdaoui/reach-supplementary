@@ -1,0 +1,55 @@
+dataset,llm,instance,arm,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,error
+heart,meta-llama/Llama-3.3-70B-Instruct-Turbo,81,cop_k,1.0,4.0,97.0,True,71.9,97.0,97.0,97.0,False,True,True,2.0,4.0,4.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,"[71.9, 78.7, 71.9, 97.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b2 = 0  (ejection_fraction in [40, 70) — does NOT hold)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient would not survive because the patient had a low ejection fraction, as indicated by ejection_fraction_b2 being 0, and the patient's time indicator time_b0 was 1, which means the patient's time fell within a certain range.","Le modèle prédit la mortalité par insuffisance cardiaque avec une valeur de 1 si le patient est mort et 0 s'il a survécu. La règle apprise par optimisation des contraintes indique que le patient est mort si l'ejection fraction est inférieure à 40 ou supérieure ou égale à 70, ce qui n'est pas le cas ici puisque ejection_fraction_b2 vaut 0, indiquant que l'ejection fraction est comprise entre 40 et 70. De plus, le patient est mort si le temps est compris entre 4 et 67, ce qui est le cas ici puisque time_b0 vaut 1. Le patient n'est pas mort si le temps est compris entre 67 et 172, ce qui n'est pas le cas ici puisque time_b1 vaut 0, et de même le patient n'est pas mort si le temps est compris entre 172 et 285, ce qui n'est pas le cas ici puisque time_b2 vaut 0.","1. The model predicted a class of 1, indicating that the patient is likely to have died from heart failure, based on the given features, including 'ejection_fraction_b2', 'time_b0', 'time_b1', and 'time_b2'.
+2. The 'ejection_fraction_b2' feature is 0, indicating that the patient's ejection fraction is not in the range [40, 70).
+3. The 'time_b0' feature is 1, indicating that the time is in the range [4, 67).
+4. The 'time_b1' feature is 0, indicating that the time is not in the range [67, 172).
+5. The 'time_b2' feature is 0, indicating that the time is not in the range [172, 285).","['ejection_fraction_b2 < 0.5', 'time_b0 > 0.5']","['ejection_fraction_b2 < 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[10, 23, 24, 25]","[10, 23]","[10, 23, 24, 25]","[10, 23, 24, 25]",0.339,FEASIBLE,cop@4,0.399,
+heart,meta-llama/Llama-3.3-70B-Instruct-Turbo,14,cop_k,1.0,12.0,11.7,False,32.0,11.7,32.0,11.7,False,False,False,4.0,12.0,12.0,8.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,"[32.0, 11.7, 11.7, 11.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  ejection_fraction_b2 = 1  (ejection_fraction in [40, 70) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b2 = 0  (serum_creatinine in [1.3, 9) — does NOT hold)
+  serum_sodium_b0 = 1  (serum_sodium in [116, 135) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that the patient would not survive due to several factors. The patient had a normal platelet count and a normal serum sodium level, which are indicated by platelets_b0 and serum_sodium_b0 being 1. Additionally, the patient's ejection fraction was within a certain range, as indicated by ejection_fraction_b2 being 1, and they had been followed for a certain amount of time, as indicated by time_b2 being 1. These factors combined led the model to predict a low chance of survival, resulting in a predicted class of 1, meaning the patient did not survive.","The patient's predicted class is 1, indicating mortality due to heart failure. The conditions that support this prediction include ejection_fraction_b2 being 1, indicating an ejection fraction in the range of 40 to 70, platelets_b0 being 1, indicating platelets in the range of 4.7e+04 to 2.25e+05, serum_sodium_b0 being 1, indicating serum sodium in the range of 116 to 135, and time_b2 being 1, indicating time in the range of 172 to 285. Additionally, creatinine_phosphokinase_b0 being 0 indicates creatinine phosphokinase below 23 or above 157, ejection_fraction_b0 being 0 indicates ejection fraction below 15 or above 30, platelets_b2 being 0 indicates platelets below 2.73e+05 or above 7.42e+05, serum_creatinine_b0 being 0 indicates serum creatinine below 0.5 or above 1, serum_creatinine_b2 being 0 indicates serum creatinine below 1.3 or above 9, serum_sodium_b1 being 0 indicates serum sodium below 135 or above 138, time_b0 being 0 indicates time below 4 or above 67, and time_b1 being 0 indicates time below 67 or above 172.","1. The indicator 'creatinine_phosphokinase_b0' is 0, indicating that the creatinine phosphokinase level is not in the range [23, 157).
+2. The indicator 'ejection_fraction_b0' is 0, indicating that the ejection fraction is not in the range [15, 30).
+3. The indicator 'ejection_fraction_b2' is 1, indicating that the ejection fraction is in the range [40, 70).
+4. The indicator 'platelets_b0' is 1, indicating that the platelets level is in the range [4.7e+04, 2.25e+05).
+5. The indicator 'platelets_b2' is 0, indicating that the platelets level is not in the range [2.73e+05, 7.42e+05).
+6. The indicator 'serum_creatinine_b0' is 0, indicating that the serum creatinine level is not in the range [0.5, 1).
+7. The indicator 'serum_creatinine_b2' is 0, indicating that the serum creatinine level is not in the range [1.3, 9).
+8. The indicator 'serum_sodium_b0' is 1, indicating that the serum sodium level is in the range [116, 135).
+9. The indicator 'serum_sodium_b1' is 0, indicating that the serum sodium level is not in the range [135, 138).
+10. The indicator 'time_b0' is 0, indicating that the time is not in the range [4, 67).
+11. The indicator 'time_b1' is 0, indicating that the time is not in the range [67, 172).
+12. The indicator 'time_b2' is 1, indicating that the time is in the range [172, 285).","['platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'ejection_fraction_b2 > 0.5', 'time_b2 > 0.5']","['creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'platelets_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b0 < 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5']","[4, 8, 10, 12, 14, 15, 17, 18, 19, 23, 24, 25]","[10, 12, 18, 25]","[4, 8, 10, 12, 14, 15, 17, 18, 19, 23, 24, 25]","[4, 8, 10, 12, 14, 15, 17, 18, 19, 23, 24, 25]",0.417,FEASIBLE,cop@12,0.4168,
+heart,meta-llama/Llama-3.3-70B-Instruct-Turbo,3,cop_k,0.0,4.0,92.5,False,68.5,92.5,92.5,92.5,False,False,False,2.0,4.0,4.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,"[68.5, 68.0, 92.5, 92.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that the patient survived because the patient is male, as indicated by the sex feature, and the time feature falls within a certain range, as indicated by time_b1 being 1.","Le modèle de classification binaire prédit la mortalité par insuffisance cardiaque avec une valeur de 1 indiquant le décès et une valeur de 0 indiquant la survie. Dans cet exemple, le patient a survécu, comme indiqué par la classe prédite 0. La règle apprise par optimisation de contrainte est en accord avec le modèle pour cette instance. Les conditions de cette règle incluent le sexe, qui est masculin, indiqué par sex_b0 = 1, et le temps, qui se situe dans l'intervalle [67, 172), indiqué par time_b1 = 1. De plus, le sodium sérique ne se situe pas dans l'intervalle [116, 135), indiqué par serum_sodium_b0 = 0, et le temps ne se situe pas dans l'intervalle [4, 67), indiqué par time_b0 = 0.","1. The model predicts a class of 0, indicating that the patient has survived, based on the given features, including serum_sodium_b0, sex_b0, time_b0, and time_b1.
+2. The serum_sodium_b0 feature is 0, indicating that the patient's serum sodium level is not in the range [116, 135).
+3. The sex_b0 feature is 1, indicating that the patient is male.
+4. The time_b0 feature is 0, indicating that the patient's time is not in the range [4, 67).
+5. The time_b1 feature is 1, indicating that the patient's time is in the range [67, 172).","['sex_b0 > 0.5', 'time_b1 > 0.5']","['serum_sodium_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[18, 21, 23, 24]","[21, 24]","[18, 21, 23, 24]","[18, 21, 23, 24]",0.52,FEASIBLE,cop@4,0.5832,
+heart,,94,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,35,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,31,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,28,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,17,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,13,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,86,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,114,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,69,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,11,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,75,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.
+heart,,54,cop_k,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Connection error.

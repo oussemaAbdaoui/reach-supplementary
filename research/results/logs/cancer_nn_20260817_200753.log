@@ -1,0 +1,23 @@
+Full console log -> research/results/logs/cancer_nn_20260817_200753.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] ERROR Connection error.
+  [lmpaxp] ERROR Connection error.
+  [empty content, finish=length] raising max_tokens to 4096
+  [anchors] base=41.7% v4=41.7% v5=41.7% v6=41.7% (len 2, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [shap] base=99.5% v4=99.5% v5=99.5% v6=73.5% (len 15, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [lime] base=97.6% v4=42.8% v5=42.8% v6=42.8% (len 15, om_v5=9)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096

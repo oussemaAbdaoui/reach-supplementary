@@ -1,0 +1,12 @@
+Full console log -> research/results/logs/cancer_nn_dsv4flash_20260818_194811_12724.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=68.5% v4=68.5% v5=68.5% v6=68.5% (len 5, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 4096
+  [lmpaxp] base=98.0% v4=97.1% v5=97.1% v6=98.0% (len 15, om_v5=1)

@@ -1,0 +1,5 @@
+Full console log -> research/results/logs/cancer_nn_mistral24b_20260819_023347_15384.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop] ERROR Error code: 400 - {'id': 'owkt4z6-2kFHot-a2d5134aade7958f', 'error': {'message': 'Unable to access non-serverless model mistralai/Mistral-Small-24B-Instruct-2501. Please visit https://api.together.ai/models/mistralai/Mistral-Small-24B-Instruct-2501 to create and start a new dedicated endpoint for th
+  [lmpaxp] ERROR Error code: 400 - {'id': 'owkt5RQ-2kFHot-a2d51354197cf8b3', 'error': {'message': 'Unable to access non-serverless model mistralai/Mistral-Small-24B-Instruct-2501. Please visit https://api.together.ai/models/mistralai/Mistral-Small-24B-Instruct-2501 to create and start a new dedicated endpoint for th

@@ -1,0 +1,68 @@
+dataset,instance,arm,error,llm,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,anchor_prec
+cancer,163,cop,Connection error.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+cancer,163,lmpaxp,Connection error.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+cancer,163,anchors,,thinkingmachines/Inkling-Small,1.0,2.0,41.7,False,41.7,41.7,41.7,41.7,False,False,False,2.0,2.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,"[41.7, 41.7, 41.7, 41.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF symmetry_worst_b1 = 1 AND concavity_worst_b0 = 1 THEN class 1","The model predicted class 1 because both symmetry_worst_b1 is 1 and concavity_worst_b0 is 1, which satisfies the anchor rule that predicts benign with 98% precision when these two indicators are present together.","The binary classifier predicts benign cancer (class 1) because symmetry_worst_b1 equals 1 and concavity_worst_b0 equals 1, which satisfies the anchor rule with estimated precision 0.98.","1. The binary indicator concavity_worst_b0 equals 1 for this instance.
+2. The binary indicator symmetry_worst_b1 equals 1 for this instance.
+3. The model’s predicted class is 1, indicating a benign cancer diagnosis.
+4. The anchor rule is IF symmetry_worst_b1 = 1 AND concavity_worst_b0 = 1 THEN class 1 with estimated precision 0.98.","['symmetry_worst_b1 > 0.5', 'concavity_worst_b0 > 0.5']","['concavity_worst_b0 > 0.5', 'symmetry_worst_b1 > 0.5']","[78, 85]","[78, 85]","[78, 85]","[78, 85]",0.980209545983702
+cancer,163,shap,,thinkingmachines/Inkling-Small,1.0,15.0,99.5,True,99.5,99.5,99.5,73.5,True,True,False,15.0,15.0,7.0,0.0,0.0,0.0,0.0,8.0,0.0,0.0,8.0,0.0,[99.5],0.0429,"SHAP feature importance (contribution to this prediction):
+  concavity_worst_b0: 13.6% (supports the prediction)
+  texture_worst_b0: 8.9% (supports the prediction)
+  concave_points_worst_b0: 7.9% (supports the prediction)
+  compactness_worst_b0: 7.7% (supports the prediction)
+  concavity_mean_b0: 6.7% (supports the prediction)
+  texture_mean_b2: 6.1% (supports the prediction)
+  texture_mean_b0: 6.0% (supports the prediction)
+  smoothness_worst_b0: 5.9% (supports the prediction)
+  texture_worst_b2: 5.7% (supports the prediction)
+  concavity_worst_b2: 5.5% (supports the prediction)
+  smoothness_mean_b2: 5.4% (supports the prediction)
+  fractal_dimension_worst_b0: 5.3% (opposes the prediction)
+  radius_se_b2: 5.2% (supports the prediction)
+  symmetry_se_b0: 5.1% (supports the prediction)
+  concavity_mean_b2: 5.0% (supports the prediction)","The model predicts benign (class 1) mainly because concavity_worst_b0 contributes the most support (13.6%), followed by texture_worst_b0 (8.9%), concave_points_worst_b0 (7.9%), compactness_worst_b0 (7.7%), and concavity_mean_b0 (6.7%), with additional support from texture_mean_b2 (6.1%), texture_mean_b0 (6.0%), smoothness_worst_b0 (5.9%), texture_worst_b2 (5.7%), concavity_worst_b2 (5.5%), smoothness_mean_b2 (5.4%), radius_se_b2 (5.2%), symmetry_se_b0 (5.1%), and concavity_mean_b2 (5.0%). The only opposing factor is fractal_dimension_worst_b0 (5.3%). In this instance, texture_mean_b0, concavity_mean_b0, texture_worst_b0, smoothness_worst_b0, compactness_worst_b0, concavity_worst_b0, concave_points_worst_b0, and fractal_dimension_worst_b0 are active (1), while the others are inactive (0). Because the combined supporting contributions clearly outweigh the single opposing influence, the result is a benign classification.","The model predicts benign (class 1) mainly because concavity_worst_b0 contributes the most support (13.6%), followed by texture_worst_b0 (8.9%), concave_points_worst_b0 (7.9%), compactness_worst_b0 (7.7%), and concavity_mean_b0 (6.7%), with additional support from texture_mean_b2 (6.1%), texture_mean_b0 (6.0%), smoothness_worst_b0 (5.9%), texture_worst_b2 (5.7%), concavity_worst_b2 (5.5%), smoothness_mean_b2 (5.4%), radius_se_b2 (5.2%), symmetry_se_b0 (5.1%), and concavity_mean_b2 (5.0%). The only opposing factor is fractal_dimension_worst_b0 (5.3%). In this instance, texture_mean_b0, concavity_mean_b0, texture_worst_b0, smoothness_worst_b0, compactness_worst_b0, concavity_worst_b0, concave_points_worst_b0, and fractal_dimension_worst_b0 are active (1), while the others are inactive (0). Because the combined supporting contributions clearly outweigh the single opposing influence, the result is a benign classification.","1. The indicator concavity_worst_b0 contributes 13.6% and supports the prediction of class 1.
+2. The indicator texture_worst_b0 contributes 8.9% and supports the prediction of class 1.
+3. The indicator concave_points_worst_b0 contributes 7.9% and supports the prediction of class 1.
+4. The indicator compactness_worst_b0 contributes 7.7% and supports the prediction of class 1.
+5. The indicator concavity_mean_b0 contributes 6.7% and supports the prediction of class 1.
+6. The indicator texture_mean_b2 contributes 6.1% and supports the prediction of class 1.
+7. The indicator texture_mean_b0 contributes 6.0% and supports the prediction of class 1.
+8. The indicator smoothness_worst_b0 contributes 5.9% and supports the prediction of class 1.
+9. The indicator texture_worst_b2 contributes 5.7% and supports the prediction of class 1.
+10. The indicator concavity_worst_b2 contributes 5.5% and supports the prediction of class 1.
+11. The indicator smoothness_mean_b2 contributes 5.4% and supports the prediction of class 1.
+12. The indicator fractal_dimension_worst_b0 contributes 5.3% and opposes the prediction of class 1.
+13. The indicator radius_se_b2 contributes 5.2% and supports the prediction of class 1.
+14. The indicator symmetry_se_b0 contributes 5.1% and supports the prediction of class 1.
+15. The indicator concavity_mean_b2 contributes 5.0% and supports the prediction of class 1.","['concavity_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'texture_mean_b2 < 0.5', 'texture_mean_b0 > 0.5', 'smoothness_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'smoothness_mean_b2 < 0.5', 'fractal_dimension_worst_b0 > 0.5', 'radius_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'concavity_mean_b2 < 0.5']","['concavity_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'texture_mean_b2 > 0.5', 'texture_mean_b0 > 0.5', 'smoothness_worst_b0 > 0.5', 'texture_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'smoothness_mean_b2 > 0.5', 'fractal_dimension_worst_b0 < 0.5', 'radius_se_b2 > 0.5', 'symmetry_se_b0 > 0.5', 'concavity_mean_b2 > 0.5']","[3, 5, 14, 18, 20, 32, 54, 63, 65, 72, 75, 78, 80, 81, 87]","[3, 5, 14, 18, 20, 32, 54, 63, 65, 72, 75, 78, 80, 81, 87]","[3, 5, 14, 18, 20, 32, 54, 63, 65, 72, 75, 78, 80, 81, 87]","[3, 18, 63, 72, 75, 78, 81]",
+cancer,163,lime,,thinkingmachines/Inkling-Small,1.0,15.0,97.6,True,42.8,42.8,42.8,42.8,False,False,False,6.0,6.0,6.0,9.0,0.0,9.0,0.0,9.0,0.0,9.0,9.0,3.0,"[42.8, 42.8, 42.8, 42.8]",0.0429,"LIME local explanation (linear approximation weights):
+  concavity_worst_b0: weight=+0.1761 (supports the prediction)
+  area_se_b0: weight=-0.1552 (opposes the prediction)
+  texture_worst_b2: weight=+0.1462 (supports the prediction)
+  fractal_dimension_worst_b1: weight=-0.1431 (opposes the prediction)
+  symmetry_se_b0: weight=+0.1352 (supports the prediction)
+  smoothness_mean_b2: weight=+0.1336 (supports the prediction)
+  radius_se_b2: weight=+0.1322 (supports the prediction)
+  texture_worst_b0: weight=+0.1313 (supports the prediction)
+  concave_points_worst_b2: weight=+0.1301 (supports the prediction)
+  concavity_worst_b2: weight=+0.1301 (supports the prediction)
+  area_se_b2: weight=+0.1287 (supports the prediction)
+  concave_points_worst_b0: weight=+0.1286 (supports the prediction)
+  compactness_worst_b0: weight=+0.1285 (supports the prediction)
+  texture_mean_b2: weight=+0.1191 (supports the prediction)
+  concavity_mean_b2: weight=+0.1179 (supports the prediction)","The model predicts benign (class 1) because the active indicators—concavity_worst_b0, texture_worst_b0, compactness_worst_b0, and concave_points_worst_b0—have positive LIME weights supporting this class, with concavity_worst_b0 being the strongest at +0.1761. Additional positive weights from texture_worst_b2, symmetry_se_b0, smoothness_mean_b2, radius_se_b2, concave_points_worst_b2, concavity_worst_b2, area_se_b2, texture_mean_b2, and concavity_mean_b2 also favor class 1. The opposing weights belong to area_se_b0 (-0.1552) and fractal_dimension_worst_b1 (-0.1431), but both are 0 in this instance, so they do not counter the supporting evidence.","Le modèle prédit la classe 1 (bénin). Les poids LIME positifs de concavity_worst_b0, texture_worst_b0, compactness_worst_b0, concave_points_worst_b0, texture_mean_b2, smoothness_mean_b2, concavity_mean_b2, radius_se_b2, area_se_b2, symmetry_se_b0, texture_worst_b2, concavity_worst_b2 et concave_points_worst_b2 soutiennent cette prédiction, tandis que ceux négatifs de area_se_b0 et fractal_dimension_worst_b1 s'y opposent.","1. The indicator concavity_worst_b0 has a LIME weight of +0.1761, which supports the prediction of class 1.
+2. The indicator area_se_b0 has a LIME weight of -0.1552, which opposes the prediction of class 1.
+3. The indicator texture_worst_b2 has a LIME weight of +0.1462, which supports the prediction of class 1.
+4. The indicator fractal_dimension_worst_b1 has a LIME weight of -0.1431, which opposes the prediction of class 1.
+5. The indicator symmetry_se_b0 has a LIME weight of +0.1352, which supports the prediction of class 1.
+6. The indicator smoothness_mean_b2 has a LIME weight of +0.1336, which supports the prediction of class 1.
+7. The indicator radius_se_b2 has a LIME weight of +0.1322, which supports the prediction of class 1.
+8. The indicator texture_worst_b0 has a LIME weight of +0.1313, which supports the prediction of class 1.
+9. The indicator concave_points_worst_b2 has a LIME weight of +0.1301, which supports the prediction of class 1.
+10. The indicator concavity_worst_b2 has a LIME weight of +0.1301, which supports the prediction of class 1.
+11. The indicator area_se_b2 has a LIME weight of +0.1287, which supports the prediction of class 1.
+12. The indicator concave_points_worst_b0 has a LIME weight of +0.1286, which supports the prediction of class 1.
+13. The indicator compactness_worst_b0 has a LIME weight of +0.1285, which supports the prediction of class 1.
+14. The indicator texture_mean_b2 has a LIME weight of +0.1191, which supports the prediction of class 1.
+15. The indicator concavity_mean_b2 has a LIME weight of +0.1179, which supports the prediction of class 1.","['concavity_worst_b0 > 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5', 'symmetry_se_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'radius_se_b2 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'area_se_b2 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_mean_b2 > 0.5', 'concavity_mean_b2 > 0.5']","['concavity_worst_b0 > 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5', 'symmetry_se_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'radius_se_b2 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'area_se_b2 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_mean_b2 > 0.5', 'concavity_mean_b2 > 0.5']","[5, 14, 20, 32, 39, 41, 54, 63, 65, 75, 78, 80, 81, 83, 88]","[39, 63, 75, 78, 81, 88]","[39, 63, 75, 78, 81, 88]","[39, 63, 75, 78, 81, 88]",

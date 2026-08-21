@@ -1,0 +1,35 @@
+# Versions of the environment that produced every result in results/.
+# Pinned rather than ranged: several of these are version-sensitive
+# (numpy/matplotlib ABI, pysat solver bindings, ortools CP-SAT behaviour).
+#
+#   python -m venv .venv && . .venv/bin/activate
+#   pip install -r requirements.txt
+
+numpy==2.4.6
+pandas==2.2.2
+scikit-learn==1.7.2
+joblib==1.5.2
+PyYAML==6.0.2
+
+# formal / solver layer
+ortools==9.15.6755          # CP-SAT, the COP explainer
+python-sat==1.9.dev2        # CNF/DNF encodings, MUS extraction
+
+# heuristic explainers used as contexts
+shap==0.51.0
+lime==0.2.0.1
+anchor-exp==0.0.2.0
+
+# LLM providers (only the ones a given run actually calls are required)
+openai==2.30.0              # also serves OpenAI-compatible endpoints
+anthropic==0.103.1
+python-dotenv==1.2.1
+
+# --- optional, not exercised by the runs in results/ ------------------------
+# google-generativeai        # only if a Gemini generator is configured
+# pyxai                      # only for the decision-tree tier's native SR path
+
+# --- external binaries, not pip-installable --------------------------------
+# bin/d4_static   knowledge compiler, used only by my_tree.heatmap_sufficients();
+#                 point $D4_BINARY at it if you need that path. Nothing in
+#                 results/ depends on it.

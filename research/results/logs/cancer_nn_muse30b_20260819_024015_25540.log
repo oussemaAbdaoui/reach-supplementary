@@ -1,0 +1,10 @@
+Full console log -> research/results/logs/cancer_nn_muse30b_20260819_024015_25540.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=68.5% v4=68.5% v5=68.5% v6=68.5% (len 5, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
