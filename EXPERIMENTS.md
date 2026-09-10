@@ -185,6 +185,11 @@ leave 0.0–1.3 conditions unstated under structured generation, attribution arm
 
 **5 — the refit is not a fixed point.** See `METHODS_NOTES.md` §4.
 
-**Still open.** The refit covers `cancer` only. The other four datasets remain
-fitted under `U`, including two below-chance instances (*employee* 49.0,
-*heart* 48.2). Solver-side only, no API cost.
+**Since closed.** E9 above ran on `cancer` alone, and at the time the other four
+datasets were still fitted under `U`, carrying two below-chance instances
+(*employee* 49.0, *heart* 48.2). The refit was extended to all five datasets
+under Llama-3.3-70B, the generator carrying the length-optimised variant; the
+superseded `U`-fitted grids are kept as `_superseded_*_Ufitcop_*`. Across all 75
+instances nothing now falls below 50 — the worst instance is **56.8** at free
+length and **59.5** at matched length — and those are the figures the paper
+reports. The two below-chance instances were artifacts of the `U` fit.
