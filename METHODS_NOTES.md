@@ -106,8 +106,14 @@ disagreements of up to **5 points**:
 
 The trend is stable across both — monotone increase, plateau near 85, never
 reaching the certified 96.4 — but no single per-*k* figure should be read as a
-measurement until the sweep is repeated under a pinned seed. The paper reports
-5 points as the working bound on solver variation for this reason.
+measurement until the sweep is repeated under a pinned seed.
+
+Those four values understate it in turn. Across the full nine-length sweep the
+two invocations disagree on **49 of 90 cells**, mean absolute difference
+**2.6**, maximum **31.5**, at effectively the same mean objective (0.4358 vs
+0.4359) — equal-loss rules differing in precision, not in configuration. Those
+are the figures the paper reports, and they are why it reads per-*k* curves as
+a trend only.
 
 ---
 

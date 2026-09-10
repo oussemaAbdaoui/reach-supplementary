@@ -9,10 +9,10 @@ free-tier scoring.
 |---|---|---|
 | E1 | Reader-facing prompts, four silent-failure fixes | See `METHODS_NOTES.md` §2–3 |
 | E2 | Second generator (Cogito-671B) | Both headline findings reproduce; erosion *magnitude* is model-dependent |
-| E3 | Judge / coherence axis | The proposed safeguard is blind within a context and penalises the repair by 34 points |
+| E3 | Judge / coherence axis | The proposed safeguard is blind within a context and penalises the repair by 25.4 points |
 | E4 | Cost model from measured traffic | 280 in / 92 out tokens per request; 44 calls per instance |
 | E5 | COP sampler probe (8 instances) | The below-chance tail looks like a fitting artifact |
-| E6 | COP length sweep under `V` (k = 1…18) | Best-length COP stays 13–15 points short; two sweeps disagree by up to 5 at the same k |
+| E6 | COP length sweep under `V` (k = 1…18) | Best-length COP stays 13–15 points short; two sweeps disagree on 49 of 90 cells at the same k, mean 2.6, maximum 31.5 |
 | E7 | `cop_best` arm | Length maximising precision, re-certified |
 | E8 | Full V-fitted COP refit, both generators | Both COP arms refitted and merged: 75 → 90 rows per grid |
 | E9 | V re-scoring of both per-model grids | Confirms E5 at full scale; the gap survives but moves from tail to median |
