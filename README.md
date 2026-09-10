@@ -54,22 +54,32 @@ tried and broke every path.
 
 ## Where each claim in the paper comes from
 
+Every figure in the paper is re-derived by `research/audit_numbers.py`, which
+reads only the files below and checks each value against the number as printed.
+It reports `238 pass, 0 fail`. Run it first; it needs no API key.
+
+The paper reports six generators, written here as the tags the result files use:
+`gridllama33` (Llama-3.3-70B), `gptoss120b`, `gpt56` (gpt-5.6-terra),
+`grok420`, `sonnet5` (Claude Sonnet 5) and `glm52` (GLM-5.2). Five datasets:
+`cancer`, `compas`, `diabetes`, `employee`, `heart`.
+
 | Paper | Claim | File |
 |---|---|---|
-| §4.1, Tab. 2 | Instrument validated against exact ground truth | `research/results/nn_calibration_cancer*.csv` |
-| §4.2 | Uniform sampler scores a *sufficient* reason at chance | `research/rescore_bt_nn_instrument.py`, `research/results/bt_rescored_nn_instrument.csv` |
-| §4.3, Tab. 3 | Erosion by context; certified loses 14.3 | `research/results/*_nn_comparison.csv` |
-| §4.4 | Recovery to 100%; shape decides | same, `score_v6` columns |
-| §4.5, Tab. 4 | Accessibility–fidelity frontier | same, `len_*` columns |
-| §4.6, Tab. 5(a) | Regimes, rule fitted under `U` | `research/results/nn_feasible_sampling_cop_k.csv` |
-| §4.6, Tab. 5(b) | Regimes, rule refitted under `V` | `research/results/nn_feasible_sampling_{cogito671b,llama33_newprompts}.csv` |
-| §4.6 | Length sweep plateaus near 85, never reaches 96.4 | `research/results/cancer_cop_sweep_V18.csv` |
-| §4.7 | Same explanations under the structural metric | `research/results/bt_rescored_nn_instrument.csv` |
-| §4.8 | Judge blind within a context; −34 on the repair | `research/results/cancer_nn_judge_cogito671b.csv` |
-| §4.9, Tab. 6 | Two generators | `research/results/nn_feasible_sampling_*.csv` |
-| §6.2 | Solver variation, 0.2 to 5 points | `cancer_cop_sweep_V.csv` vs `cancer_cop_sweep_V18.csv` |
+| Sec. 4.1, Tab. 2 | Instrument validated against exact ground truth | `nn_calibration_cancer.csv` (under U), `nn_calibration_cancer_V.csv` (under V) |
+| Sec. 4.2 | Uniform sampler scores a *sufficient* reason at chance | the same five grids, `V_*` against `score_*` columns |
+| Sec. 4.3, Tab. 3 | Erosion by context; certified loses 0.49 | `<ds>_nn_comparison_gridllama33.csv` for the five datasets, joined to `nn_feasible_gridllama33.csv` |
+| Sec. 4.4 | Recovery by structured generation; shape decides | same files, `V_v4` / `V_v5` / `V_v6` columns |
+| Sec. 4.5, Tab. 4 | Accessibility-fidelity frontier | same files, `len_S_arm` column |
+| Sec. 4.6, Tab. 5 | Guarantee regimes, Llama-3.3-70B alone, rule refitted under V | `nn_feasible_gridllama33.csv` with the same five grids |
+| Sec. 4.6 | Length sweep plateaus, never reaches the single-pass figure | `cancer_cop_sweep_V18.csv` |
+| Sec. 4.7 | The same explanations under the earlier structural metric | `research/rescore_bt_nn_instrument.py`, which writes `bt_rescored_nn_instrument.csv`. This section is the one the audit does not cover; re-run the script to reproduce it |
+| Sec. 4.8 | Judge axis; the judge penalizes the repair | `<ds>_nn_judge_<tag>.csv` for `gridllama33`, `gpt56`, `grok420`, `sonnet5`, joined to `nn_feasible_<tag>.csv` |
+| Sec. 4.9, Tab. 6 | Across six generators | `research/build_tab_models.py`, over `nn_feasible_<tag>.csv` and `<ds>_nn_comparison_<tag>.csv` for all six tags; paired statistics from `research/stats_paired.py` |
+| Sec. 6.2 | Solver variation across COP lengths | `cancer_cop_sweep_V18.csv`, the k=18 sweep; the shorter `cancer_cop_sweep_V.csv` is the earlier range |
 
----
+`research/results/MANIFEST.md` classifies every result file in this tree, so it
+is always clear which runs are behind the paper and which are kept only for
+provenance.
 
 ## Reproducing
 
@@ -122,11 +132,17 @@ non-reasoning mode unless you mean not to.
 
 ## Two things to know before reading the results
 
-**Two prompt generations exist and are not text-comparable.** The five-dataset
-grid was produced when explanations were written in internal bin identifiers.
-Everything tagged `_cogito671b` or `_llama33_newprompts` uses the reader-facing
-prompts described in the paper's §3.5. No table in the paper mixes them; see
-`METHODS_NOTES.md` §2.
+**Three generations of result file exist and are not text-comparable.** The
+paper reports the third alone: the six-generator grid tagged `_gridllama33`,
+`_gptoss120b`, `_gpt56`, `_grok420`, `_sonnet5` and `_glm52`, run in September
+on the reader-facing prompts of the paper's Sec. 3.5, reseeded so every
+generator sees identical contexts. The untagged `{dataset}_nn_comparison.csv`
+files are from July, when explanations were written in internal bin
+identifiers. The files tagged `_cogito671b` and `_llama33_newprompts` are from
+August, the first runs on reader-facing prompts; Cogito-671B stopped being
+served and was superseded by the six-generator grid rather than extended.
+The first two generations are kept for provenance and are cited nowhere in the
+paper. No table mixes generations; see `METHODS_NOTES.md` Sec. 2.
 
 **Superseded files are not shipped.** Where a result was recomputed, only the
 current version is here. The one case where both versions matter — COP fitted

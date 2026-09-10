@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+# HISTORICAL. This records the COP re-run as it was executed in August, against
+# two generator tags that the paper does not report: cogito671b, which stopped
+# being served, and llama33_newprompts. The grids the paper reports are the six
+# September runs (gridllama33, gptoss120b, gpt56, grok420, sonnet5, glm52);
+# their COP arms were produced the same way, one tag at a time, and merged with
+# research/merge_cop_arm.py. Kept as the worked example of the arm-merge
+# procedure, not as a script to run as-is. See research/results/MANIFEST.md.
+#
 # Re-run the COP arms on V-fitted rules, merge each back into its model's grid,
 # then extend the k-sweep past the certified lengths so cop_best can pick a k*
 # that is not capped below the range every other arm uses.

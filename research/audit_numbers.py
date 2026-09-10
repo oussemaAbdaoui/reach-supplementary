@@ -166,113 +166,113 @@ claim('intro', 'learned rule reaches 96.88 [Llama]', 96.88,
 claim('intro', 'at 8.6 conditions [Llama]', 8.6,
       lambda: raw()[raw().arm == 'cop_best'].len_S_arm.mean(), 0.05)
 
-# ---- 5.3 erosion (pooled) -------------------------------------------------
-claim('5.3', 'losses run from 0.28 for the free learned rule', 0.233,
+# ---- 4.3 erosion (pooled) -------------------------------------------------
+claim('4.3', 'losses run from 0.28 for the free learned rule', 0.233,
       lambda: arm(pooled(), 'cop', 'V_arm') - arm(pooled(), 'cop', 'V_v4'), 0.02)
-claim('5.3', 'to 7.45 for LIME', 7.246,
+claim('4.3', 'to 7.45 for LIME', 7.246,
       lambda: arm(pooled(), 'lime', 'V_arm') - arm(pooled(), 'lime', 'V_v4'), 0.02)
-claim('5.3', 'certified loses 0.49', 0.439,
+claim('4.3', 'certified loses 0.49', 0.439,
       lambda: arm(pooled(), 'lmpaxp', 'V_arm') - arm(pooled(), 'lmpaxp', 'V_v4'), 0.02)
-claim('5.3', 'certified erodes on 28 of 450 model-instances', 25,
+claim('4.3', 'certified erodes on 28 of 450 model-instances', 25,
       lambda: (lambda a, b: int((a['lmpaxp'] > b['lmpaxp']).sum()))(
           pooled().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm'),
           pooled().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_v4')), 0)
-claim('5.3', 'four contexts length-matched at 7.0', 7.0,
+claim('4.3', 'four contexts length-matched at 7.0', 7.0,
       lambda: pooled_raw()[pooled_raw().arm == 'lmpaxp'].len_S_arm.mean(), 0.05)
-claim('5.3', 'length correlates with erosion at 0.01', -0.016,
+claim('4.3', 'length correlates with erosion at 0.01', -0.016,
       lambda: (lambda a, t: np.corrcoef(
           t.groupby('arm').len_S_arm.mean(),
           a.groupby('arm').apply(lambda x: x.V_arm.mean() - x.V_v4.mean(),
                                  include_groups=False))[0, 1])(pooled(), pooled_raw()), 0.02)
 
-# ---- 5.4 recovery (pooled) ------------------------------------------------
-claim('5.4', 'structured returns the certified context to 96.5', 96.695,
+# ---- 4.4 recovery (pooled) ------------------------------------------------
+claim('4.4', 'structured returns the certified context to 96.5', 96.695,
       lambda: arm(pooled(), 'lmpaxp', 'V_v6'), 0.05)
-claim('5.4', 'that is 99.5% of where it started', 99.740,
+claim('4.4', 'that is 99.5% of where it started', 99.740,
       lambda: 100 * arm(pooled(), 'lmpaxp', 'V_v6') / arm(pooled(), 'lmpaxp', 'V_arm'), 0.05)
-claim('5.4', 'sufficiency 0.72 single', 0.72,
+claim('4.4', 'sufficiency 0.72 single', 0.72,
       lambda: arm(pooled(), 'lmpaxp', 'Vwp_v4'), 0.01)
-claim('5.4', 'sufficiency 0.73 structured', 0.740,
+claim('4.4', 'sufficiency 0.73 structured', 0.740,
       lambda: arm(pooled(), 'lmpaxp', 'Vwp_v6'), 0.01)
-claim('5.4', 'sufficiency 0.75 context', 0.75,
+claim('4.4', 'sufficiency 0.75 context', 0.75,
       lambda: arm(pooled(), 'lmpaxp', 'Vwp_arm'), 0.01)
-claim('5.4', 'dialogue reaches 95.9', 96.864,
+claim('4.4', 'dialogue reaches 95.9', 96.864,
       lambda: arm(pooled(), 'lmpaxp', 'V_v5'), 0.05)
-claim('5.4', 'free COP returns 99.8% from 85.1', 85.222,
+claim('4.4', 'free COP returns 99.8% from 85.1', 85.222,
       lambda: arm(pooled(), 'cop', 'V_arm'), 0.05)
-claim('5.4', 'SHAP retains 95.9%', 95.808,
+claim('4.4', 'SHAP retains 95.9%', 95.808,
       lambda: 100 * arm(pooled(), 'shap', 'V_v6') / arm(pooled(), 'shap', 'V_arm'), 0.05)
-claim('5.4', 'LIME retains 88.8%', 88.8,
+claim('4.4', 'LIME retains 88.8%', 88.8,
       lambda: 100 * arm(pooled(), 'lime', 'V_v6') / arm(pooled(), 'lime', 'V_arm'), 0.05)
-claim('5.4', 'Anchors sits between at 92.1%', 91.934,
+claim('4.4', 'Anchors sits between at 92.1%', 91.934,
       lambda: 100 * arm(pooled(), 'anchors', 'V_v6') / arm(pooled(), 'anchors', 'V_arm'), 0.05)
-claim('5.4', 'attribution retention reaches 312.2%', 312.2,
+claim('4.4', 'attribution retention reaches 312.2%', 312.2,
       lambda: (lambda a: (100 * a[a.arm.isin(ATTR)].V_v6
                           / a[a.arm.isin(ATTR)].V_arm).max())(pooled()), 0.1)
-claim('5.4', 'attribution exceeds 100 on 120 of 900', 114,
+claim('4.4', 'attribution exceeds 100 on 120 of 900', 114,
       lambda: (lambda a: int(((100 * a[a.arm.isin(ATTR)].V_v6
                                / a[a.arm.isin(ATTR)].V_arm) > 100).sum()))(pooled()), 0)
-claim('5.4', 'rule exceeds 100 on 2 of 1350', 2,
+claim('4.4', 'rule exceeds 100 on 2 of 1350', 2,
       lambda: (lambda a: int(((100 * a[a.arm.isin(RULE6)].V_v6
                                / a[a.arm.isin(RULE6)].V_arm) > 100).sum()))(pooled()), 0)
-claim('5.4', 'rule omissions low 0.10', 0.10,
+claim('4.4', 'rule omissions low 0.10', 0.10,
       lambda: pooled_raw()[pooled_raw().arm.isin(RULE6)].groupby('arm').om_v6.mean().min(), 0.02)
-claim('5.4', 'rule omissions high 0.19', 0.19,
+claim('4.4', 'rule omissions high 0.19', 0.19,
       lambda: pooled_raw()[pooled_raw().arm.isin(RULE6)].groupby('arm').om_v6.mean().max(), 0.02)
-claim('5.4', 'attribution contradictions high 3.49', 3.49,
+claim('4.4', 'attribution contradictions high 3.49', 3.49,
       lambda: pooled_raw()[pooled_raw().arm.isin(ATTR)].groupby('arm').contradictions_v6.mean().max(), 0.02)
 
-# ---- 5.5 frontier ---------------------------------------------------------
-claim('5.5', 'LmPAXp structured reaches 96.9 at 7.0 conditions',
+# ---- 4.5 frontier ---------------------------------------------------------
+claim('4.5', 'LmPAXp structured reaches 96.9 at 7.0 conditions',
       6.96, lambda: raw()[raw().arm == 'lmpaxp'].len_v6.mean(), 0.05)
-claim('5.5', 'SHAP single gives 89.5 at 3.8 conditions',
+claim('4.5', 'SHAP single gives 89.5 at 3.8 conditions',
       89.5, lambda: arm(grid(), 'shap', 'V_v4'), 0.05)
-claim('5.5', 'Anchors structured 83.3 at 2.4', 83.3,
+claim('4.5', 'Anchors structured 83.3 at 2.4', 83.3,
       lambda: arm(grid(), 'anchors', 'V_v6'), 0.05)
-claim('5.5', 'COP@k* structured 8.5 conditions for 96.0', 96.0,
+claim('4.5', 'COP@k* structured 8.5 conditions for 96.0', 96.0,
       lambda: arm(grid(), 'cop_best', 'V_v6'), 0.05)
-claim('5.5', 'the same rule one stage earlier: 6.5 conditions for 96.1', 96.1,
+claim('4.5', 'the same rule one stage earlier: 6.5 conditions for 96.1', 96.1,
       lambda: arm(grid(), 'cop_best', 'V_v4'), 0.05)
-claim('5.5', 'single-pass yields 96.4 from a certified rule', 96.4,
+claim('4.5', 'single-pass yields 96.4 from a certified rule', 96.4,
       lambda: arm(grid(), 'lmpaxp', 'V_v4'), 0.05)
-claim('5.5', 'and 74.3 from a LIME ranking', 74.3,
+claim('4.5', 'and 74.3 from a LIME ranking', 74.3,
       lambda: arm(grid(), 'lime', 'V_v4'), 0.05)
 
-# ---- 5.6 regimes ----------------------------------------------------------
-claim('5.6', 'pinned rule behind by 5.4 on the mean', 5.4,
+# ---- 4.6 regimes ----------------------------------------------------------
+claim('4.6', 'pinned rule behind by 5.4 on the mean', 5.4,
       lambda: (lambda p: (p['lmpaxp'] - p['cop_k']).dropna().mean())(
           grid().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm')), 0.05)
-claim('5.6', 'behind on 45 of 75 instances', 45,
+claim('4.6', 'behind on 45 of 75 instances', 45,
       lambda: (lambda p: int(((p['lmpaxp'] - p['cop_k']).dropna() > 0).sum()))(
           grid().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm')), 0)
-claim('5.6', 'sufficiency 0.40 against 0.75', 0.40,
+claim('4.6', 'sufficiency 0.40 against 0.75', 0.40,
       lambda: arm(grid(), 'cop_k', 'Vwp_arm'), 0.005)
-claim('5.6', 'floor 59.5 against 83.7', 59.5,
+claim('4.6', 'floor 59.5 against 83.7', 59.5,
       lambda: (lambda p: p['cop_k'].min())(
           grid().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm')), 0.05)
-claim('5.6', 'certified floor 83.7', 83.7,
+claim('4.6', 'certified floor 83.7', 83.7,
       lambda: (lambda p: p['lmpaxp'].min())(
           grid().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm')), 0.05)
-claim('5.6', 'ahead on 33, behind 18, tied 24', 33,
+claim('4.6', 'ahead on 33, behind 18, tied 24', 33,
       lambda: (lambda p: int(((p['cop_best'] - p['lmpaxp']).dropna() > 0).sum()))(
           grid().pivot_table(index=['dataset', 'instance'], columns='arm', values='V_arm')), 0)
-claim('5.6', 'higher sufficiency 0.79', 0.79,
+claim('4.6', 'higher sufficiency 0.79', 0.79,
       lambda: arm(grid(), 'cop_best', 'Vwp_arm'), 0.005)
 
-claim('5.6', 'free-length worst instance now 56.8', 56.8,
+claim('4.6', 'free-length worst instance now 56.8', 56.8,
       lambda: grid()[grid().arm == 'cop'].V_arm.min(), 0.05)
-claim('5.6', 'matched-length worst instance now 59.5', 59.5,
+claim('4.6', 'matched-length worst instance now 59.5', 59.5,
       lambda: grid()[grid().arm == 'cop_k'].V_arm.min(), 0.05)
-claim('5.6', 'nothing anywhere falls below 50', 0,
+claim('4.6', 'nothing anywhere falls below 50', 0,
       lambda: int((grid()[grid().arm.isin(['cop', 'cop_k', 'cop_best'])].V_arm < 50).sum()), 0)
-claim('5.6', 'panel (b) COP@k erodes 1.2', 1.2,
+claim('4.6', 'panel (b) COP@k erodes 1.2', 1.2,
       lambda: arm(grid(), 'cop_k', 'V_arm') - arm(grid(), 'cop_k', 'V_v4'), 0.05)
-claim('5.6', 'panel (b) LmPAXp erodes 0.5', 0.5,
+claim('4.6', 'panel (b) LmPAXp erodes 0.5', 0.5,
       lambda: arm(grid(), 'lmpaxp', 'V_arm') - arm(grid(), 'lmpaxp', 'V_v4'), 0.05)
-claim('5.6', 'the refit covers all five datasets', 5,
+claim('4.6', 'the refit covers all five datasets', 5,
       lambda: grid()[grid().arm == 'cop'].dataset.nunique(), 0)
 
-# ---- 5.9 across models ----------------------------------------------------
+# ---- 4.9 across models ----------------------------------------------------
 CONSTR = ['lmpaxp', 'cop_k', 'cop']     # rule contexts built to a precision
                                         # target; excludes Anchors, whose
                                         # precision is sampled, and cop_best,
@@ -334,68 +334,68 @@ def _ppd(arm):
     return x.loss.mean() / x.dropped.mean()
 
 
-claim('5.9', 'intact restatements number 1,635', 1635,
+claim('4.9', 'intact restatements number 1,635', 1635,
       lambda: int((_joined().dropped == 0).sum()), 0)
-claim('5.9', 'loss on intact restatement is exactly zero', 0,
+claim('4.9', 'loss on intact restatement is exactly zero', 0,
       lambda: int((_joined().query('dropped == 0').loss.abs() > 1e-9).sum()), 0)
-claim('5.9', 'rule intact low end 57.3', 57.3,
+claim('4.9', 'rule intact low end 57.3', 57.3,
       lambda: min(_intact(CONSTR + ['anchors'])), 0.1)
-claim('5.9', 'rule intact high end 96.0', 96.0,
+claim('4.9', 'rule intact high end 96.0', 96.0,
       lambda: max(_intact(CONSTR + ['anchors'])), 0.1)
-claim('5.9', 'attribution intact low end 9.3', 9.3,
+claim('4.9', 'attribution intact low end 9.3', 9.3,
       lambda: min(_intact(ATTR)), 0.1)
-claim('5.9', 'attribution intact high end 38.7', 38.7,
+claim('4.9', 'attribution intact high end 38.7', 38.7,
       lambda: max(_intact(ATTR)), 0.1)
-claim('5.9', 'bands separated by more than eighteen points', 18.6,
+claim('4.9', 'bands separated by more than eighteen points', 18.6,
       lambda: min(_intact(CONSTR + ['anchors'])) - max(_intact(ATTR)), 0.1)
-claim('5.9', 'Anchors intact low end 57.3', 57.3,
+claim('4.9', 'Anchors intact low end 57.3', 57.3,
       lambda: min(_intact(['anchors'])), 0.1)
-claim('5.9', 'Anchors intact high end 82.7', 82.7,
+claim('4.9', 'Anchors intact high end 82.7', 82.7,
       lambda: max(_intact(['anchors'])), 0.1)
-claim('5.9', 'Anchors erodes 5.5, more than SHAP 4.8', 5.578,
+claim('4.9', 'Anchors erodes 5.5, more than SHAP 4.8', 5.578,
       lambda: arm(pooled(), 'anchors', 'V_arm') - arm(pooled(), 'anchors', 'V_v4'), 0.05)
-claim('5.9', 'SHAP erodes 4.8', 4.715,
+claim('4.9', 'SHAP erodes 4.8', 4.715,
       lambda: arm(pooled(), 'shap', 'V_arm') - arm(pooled(), 'shap', 'V_v4'), 0.05)
-claim('5.9', 'a dropped Anchors condition costs 6.79', 6.79,
+claim('4.9', 'a dropped Anchors condition costs 6.79', 6.79,
       lambda: _ppd('anchors'), 0.02)
-claim('5.9', 'constructed cost per condition low 0.39', 0.39,
+claim('4.9', 'constructed cost per condition low 0.39', 0.39,
       lambda: min(_ppd(a) for a in CONSTR), 0.02)
-claim('5.9', 'constructed cost per condition high 0.87', 0.87,
+claim('4.9', 'constructed cost per condition high 0.87', 0.87,
       lambda: max(_ppd(a) for a in CONSTR), 0.02)
-claim('5.9', 'attribution cost per condition low 1.21', 1.21,
+claim('4.9', 'attribution cost per condition low 1.21', 1.21,
       lambda: min(_ppd(a) for a in ATTR), 0.02)
-claim('5.9', 'attribution cost per condition high 1.47', 1.47,
+claim('4.9', 'attribution cost per condition high 1.47', 1.47,
       lambda: max(_ppd(a) for a in ATTR), 0.02)
-claim('5.9', 'free learned rule is 3.8 conditions', 3.82,
+claim('4.9', 'free learned rule is 3.8 conditions', 3.82,
       lambda: pooled_raw()[pooled_raw().arm == 'cop'].len_S_arm.mean(), 0.02)
-claim('5.9', 'certified erosion band low 0.0', 0.0,
+claim('4.9', 'certified erosion band low 0.0', 0.0,
       lambda: min(_band(['lmpaxp'])), 0.05)
-claim('5.9', 'certified erosion band high 1.1', 1.1,
+claim('4.9', 'certified erosion band high 1.1', 1.1,
       lambda: max(_band(['lmpaxp'])), 0.05)
-claim('5.9', 'constructed rule erosion low end 0.09', 0.09,
+claim('4.9', 'constructed rule erosion low end 0.09', 0.09,
       lambda: min(_band(CONSTR)), 0.02)
-claim('5.9', 'constructed rule erosion high end 1.37', 1.37,
+claim('4.9', 'constructed rule erosion high end 1.37', 1.37,
       lambda: max(_band(CONSTR)), 0.02)
-claim('5.9', 'attribution erosion low end 3.35', 3.35,
+claim('4.9', 'attribution erosion low end 3.35', 3.35,
       lambda: min(_band(ATTR)), 0.02)
-claim('5.9', 'attribution erosion high end 7.79', 7.79,
+claim('4.9', 'attribution erosion high end 7.79', 7.79,
       lambda: max(_band(ATTR)), 0.02)
-claim('5.9', 'uniform reports 2.74 for the certified context', 2.618,
+claim('4.9', 'uniform reports 2.74 for the certified context', 2.618,
       lambda: arm(pooled(), 'lmpaxp', 'U_arm') - arm(pooled(), 'lmpaxp', 'U_v4'), 0.02)
-claim('5.9', 'against 0.49 under V, over five times', 5.961,
+claim('4.9', 'against 0.49 under V, over five times', 5.961,
       lambda: (arm(pooled(), 'lmpaxp', 'U_arm') - arm(pooled(), 'lmpaxp', 'U_v4'))
       / (arm(pooled(), 'lmpaxp', 'V_arm') - arm(pooled(), 'lmpaxp', 'V_v4')), 0.1)
-claim('5.9', 'gpt-oss-120b SHAP retained 96.3', 96.3,
+claim('4.9', 'gpt-oss-120b SHAP retained 96.3', 96.3,
       lambda: 100 * arm(grid('gptoss120b'), 'shap', 'V_v6')
       / arm(grid('gptoss120b'), 'shap', 'V_arm'), 0.05)
-claim('5.9', 'gpt-oss-120b COP@k retained 96.2', 96.2,
+claim('4.9', 'gpt-oss-120b COP@k retained 96.2', 96.2,
       lambda: 100 * arm(grid('gptoss120b'), 'cop_k', 'V_v6')
       / arm(grid('gptoss120b'), 'cop_k', 'V_arm'), 0.05)
-claim('5.9', 'gpt-oss-120b SHAP intact 37.3', 37.3,
+claim('4.9', 'gpt-oss-120b SHAP intact 37.3', 37.3,
       lambda: (lambda d: 100 * (d[(d.arm == 'shap') & (d.m == 'O')].dropped == 0).mean())(_joined()), 0.1)
-claim('5.9', 'gpt-oss-120b COP@k intact 64.0', 64.0,
+claim('4.9', 'gpt-oss-120b COP@k intact 64.0', 64.0,
       lambda: (lambda d: 100 * (d[(d.arm == 'cop_k') & (d.m == 'O')].dropped == 0).mean())(_joined()), 0.1)
-claim('5.9', 'every model contributes 75 instances per arm', 75,
+claim('4.9', 'every model contributes 75 instances per arm', 75,
       lambda: int(pooled().groupby(['dataset', 'arm']).size().max()) * 5, 0)
 
 
@@ -449,7 +449,7 @@ claim('7.2', 'certified ranks first at every stage and subset', 9,
                   for c in ('V_arm', 'V_v4', 'V_v6')), 0)
 
 
-# ---- 5.1 the instrument, checked against exact ground truth ---------------
+# ---- 4.1 the instrument, checked against exact ground truth ---------------
 def _calib(which='V'):
     f = 'nn_calibration_cancer_V.csv' if which == 'V' else 'nn_calibration_cancer.csv'
     return pd.read_csv(os.path.join(R, f))
@@ -471,37 +471,37 @@ def _delta(a, matched=False):
     return (x.precision_V.mean() - x.precision_U.mean()) * 100
 
 
-claim('5.1', 'bench is 100 instances x 8 arms', 800, lambda: len(_calib('V')), 0)
-claim('5.1', 'inside the half-width on 99.9% of rows under U', 99.875,
+claim('4.1', 'bench is 100 instances x 8 arms', 800, lambda: len(_calib('V')), 0)
+claim('4.1', 'inside the half-width on 99.9% of rows under U', 99.875,
       lambda: 100 * (_dev('U') <= _calib('U').half_width * 100).mean(), 0.01)
-claim('5.1', 'inside the half-width on 99.9% of rows under V', 99.875,
+claim('4.1', 'inside the half-width on 99.9% of rows under V', 99.875,
       lambda: 100 * (_dev('V') <= _calib('V').half_width * 100).mean(), 0.01)
-claim('5.1', 'mean absolute deviation 0.6 under U', 0.62, lambda: _dev('U').mean(), 0.02)
-claim('5.1', 'mean absolute deviation 0.5 under V', 0.50, lambda: _dev('V').mean(), 0.02)
-claim('5.1', 'the exceeding row misses by 4.6 under U', 4.61, lambda: _dev('U').max(), 0.02)
-claim('5.1', 'the exceeding row misses by 4.5 under V', 4.45, lambda: _dev('V').max(), 0.02)
-claim('5.1', 'half-width is 4.3 points', 4.29,
+claim('4.1', 'mean absolute deviation 0.6 under U', 0.62, lambda: _dev('U').mean(), 0.02)
+claim('4.1', 'mean absolute deviation 0.5 under V', 0.50, lambda: _dev('V').mean(), 0.02)
+claim('4.1', 'the exceeding row misses by 4.6 under U', 4.61, lambda: _dev('U').max(), 0.02)
+claim('4.1', 'the exceeding row misses by 4.5 under V', 4.45, lambda: _dev('V').max(), 0.02)
+claim('4.1', 'half-width is 4.3 points', 4.29,
       lambda: _calib('V').half_width.mean() * 100, 0.02)
-claim('5.1', 'a root-to-leaf path scores exactly 100 everywhere', 100.0,
+claim('4.1', 'a root-to-leaf path scores exactly 100 everywhere', 100.0,
       lambda: _calib('V').query("arm == 'tree_path'").precision.min() * 100, 0.001)
-claim('5.1', 'five arms identical on every instance', 5,
+claim('4.1', 'five arms identical on every instance', 5,
       lambda: (lambda m: sum(int((m[m.arm == a].len_S_U == m[m.arm == a].len_S_V).all())
                              for a in m.arm.unique()))(
           _calib('U').merge(_calib('V'), on=['instance', 'arm'], suffixes=('_U', '_V'))), 0)
-claim('5.1', 'the most precise attribution gains 2.7', 2.70, lambda: _delta('shap'), 0.02)
-claim('5.1', 'the certified arm gains 0.5', 0.52, lambda: _delta('lmpaxp'), 0.02)
-claim('5.1', 'the heuristic rule loses 0.6 on its unchanged instances', -0.59,
+claim('4.1', 'the most precise attribution gains 2.7', 2.70, lambda: _delta('shap'), 0.02)
+claim('4.1', 'the certified arm gains 0.5', 0.52, lambda: _delta('lmpaxp'), 0.02)
+claim('4.1', 'the heuristic rule loses 0.6 on its unchanged instances', -0.59,
       lambda: _delta('anchors', matched=True), 0.02)
-claim('5.1', 'Anchors unchanged on 91 of 100', 91,
+claim('4.1', 'Anchors unchanged on 91 of 100', 91,
       lambda: (lambda m: int((m[m.arm == 'anchors'].len_S_U == m[m.arm == 'anchors'].len_S_V).sum()))(
           _calib('U').merge(_calib('V'), on=['instance', 'arm'], suffixes=('_U', '_V'))), 0)
-claim('5.1', 'a 3.3-point spread', 3.29,
+claim('4.1', 'a 3.3-point spread', 3.29,
       lambda: _delta('shap') - _delta('anchors', matched=True), 0.02)
-claim('5.1', 'the COP arms appear to gain 3.1', 3.14, lambda: _delta('cop'), 0.02)
-claim('5.1', 'and 22.5 points', 22.50, lambda: _delta('cop_sat'), 0.02)
+claim('4.1', 'the COP arms appear to gain 3.1', 3.14, lambda: _delta('cop'), 0.02)
+claim('4.1', 'and 22.5 points', 22.50, lambda: _delta('cop_sat'), 0.02)
 
 
-# ---- 5.2 sampler correction ----------------------------------------------
+# ---- 4.2 sampler correction ----------------------------------------------
 def _ero(a, sampler):
     p = pooled()
     x = p[p.arm == a]
@@ -518,16 +518,16 @@ claim('intro', 'contribution 1 quotes 2.62 under U', 2.618,
               arm(pooled(), 'lmpaxp', 'U_arm') - arm(pooled(), 'lmpaxp', 'U_v4'), 0.05)
 claim('intro', 'contribution 1 quotes 0.44 under V', 0.439,
       lambda: arm(pooled(), 'lmpaxp', 'V_arm') - arm(pooled(), 'lmpaxp', 'V_v4'), 0.05)
-claim('5.2', 'certified erodes 2.74 under U', 2.618, lambda: _ero('lmpaxp', 'U'), 0.02)
-claim('5.2', 'certified erodes 0.49 under V', 0.439, lambda: _ero('lmpaxp', 'V'), 0.02)
-claim('5.2', 'certified erodes 0.26 under E', 0.26, lambda: _ero('lmpaxp', 'E'), 0.02)
-claim('5.2', 'every arm erodes under all three samplers', 18,
+claim('4.2', 'certified erodes 2.74 under U', 2.618, lambda: _ero('lmpaxp', 'U'), 0.02)
+claim('4.2', 'certified erodes 0.49 under V', 0.439, lambda: _ero('lmpaxp', 'V'), 0.02)
+claim('4.2', 'certified erodes 0.26 under E', 0.26, lambda: _ero('lmpaxp', 'E'), 0.02)
+claim('4.2', 'every arm erodes under all three samplers', 18,
       lambda: sum(int(_ero(a, s) > 0) for a in SIX for s in ('U', 'V', 'E')), 0)
-claim('5.2', 'overstatement factor low end 1.10 (Anchors aside)', 1.10,
+claim('4.2', 'overstatement factor low end 1.10 (Anchors aside)', 1.10,
       lambda: min(v for a, v in _ratios().items() if a != 'anchors'), 0.02)
-claim('5.2', 'overstatement factor high end 5.59', 5.961,
+claim('4.2', 'overstatement factor high end 5.59', 5.961,
       lambda: max(v for a, v in _ratios().items() if a != 'anchors'), 0.02)
-claim('5.2', 'Anchors is understated at 0.72', 0.72, lambda: _ratios()['anchors'], 0.02)
+claim('4.2', 'Anchors is understated at 0.72', 0.72, lambda: _ratios()['anchors'], 0.02)
 
 
 # ---- conclusion -----------------------------------------------------------
@@ -567,7 +567,7 @@ claim('6.4', 'a gap of 18.2 points', 17.997,
       lambda: arm(pooled(), 'lmpaxp', 'V_v4') - arm(pooled(), 'lime', 'V_v4'), 0.05)
 
 
-# ---- 5.8 the judge --------------------------------------------------------
+# ---- 4.8 the judge --------------------------------------------------------
 JGEN = ['gridllama33', 'gpt56', 'grok420', 'sonnet5']
 
 
@@ -608,43 +608,43 @@ def _by_strategy(col, st, a=None):
     return d[d.strategy == st][col].mean()
 
 
-claim('5.8', 'judgements number 16,432', 16875, lambda: len(_judge_raw()), 0)
-claim('5.8', 'explanations number 5,258', 5392, lambda: len(_judge()), 0)
-claim('5.8', 'parse rate 98.3%', 98.121, lambda: 100 * _judge_raw().parse_ok.mean(), 0.05)
-claim('5.8', 'four generators, five datasets', 20,
+claim('4.8', 'judgements number 16,432', 16875, lambda: len(_judge_raw()), 0)
+claim('4.8', 'explanations number 5,258', 5392, lambda: len(_judge()), 0)
+claim('4.8', 'parse rate 98.3%', 98.121, lambda: 100 * _judge_raw().parse_ok.mean(), 0.05)
+claim('4.8', 'four generators, five datasets', 20,
       lambda: _judge().groupby(['m', 'dataset']).ngroups, 0)
-claim('5.8', 'certified rated highest at 48.4', 48.4,
+claim('4.8', 'certified rated highest at 48.4', 48.4,
       lambda: _judge().groupby('arm').faithfulness.mean()['lmpaxp'], 0.05)
-claim('5.8', 'free learned rule rated lowest at 31.0', 30.224,
+claim('4.8', 'free learned rule rated lowest at 31.0', 30.224,
       lambda: _judge().groupby('arm').faithfulness.mean()['cop'], 0.05)
-claim('5.8', 'ratings and precisions rank together at 0.77', 0.77,
+claim('4.8', 'ratings and precisions rank together at 0.77', 0.77,
       lambda: (lambda g: g.faithfulness.corr(g.fid, method='spearman'))(
           _judge().groupby('arm').agg(faithfulness=('faithfulness', 'mean'),
                                       fid=('fid', 'mean'))), 0.02)
-claim('5.8', 'pooled correlation +0.14', 0.151,
+claim('4.8', 'pooled correlation +0.14', 0.151,
       lambda: _judge().faithfulness.corr(_judge().fid), 0.01)
-claim('5.8', 'within-arm correlation floor -0.02', -0.059,
+claim('4.8', 'within-arm correlation floor -0.02', -0.059,
       lambda: min(_judge()[_judge().arm == a].faithfulness.corr(_judge()[_judge().arm == a].fid)
                   for a in SIX), 0.01)
-claim('5.8', 'within-arm correlation ceiling +0.17', 0.168,
+claim('4.8', 'within-arm correlation ceiling +0.17', 0.168,
       lambda: max(_judge()[_judge().arm == a].faithfulness.corr(_judge()[_judge().arm == a].fid)
                   for a in SIX), 0.01)
-claim('5.8', 'certified dialogue fidelity 95.7', 96.876,
+claim('4.8', 'certified dialogue fidelity 95.7', 96.876,
       lambda: _by_strategy('fid', 'v5', 'lmpaxp'), 0.05)
-claim('5.8', 'certified structured fidelity 96.9', 96.9,
+claim('4.8', 'certified structured fidelity 96.9', 96.9,
       lambda: _by_strategy('fid', 'v6', 'lmpaxp'), 0.05)
-claim('5.8', 'verifier rates it 56.4 then 31.6', 25.362,
+claim('4.8', 'verifier rates it 56.4 then 31.6', 25.362,
       lambda: _by_strategy('faithfulness', 'v5', 'lmpaxp')
       - _by_strategy('faithfulness', 'v6', 'lmpaxp'), 0.05)
-claim('5.8', 'faithfulness 44.5 single to 29.2 structured', 44.390,
+claim('4.8', 'faithfulness 44.5 single to 29.2 structured', 44.390,
       lambda: _by_strategy('faithfulness', 'v4'), 0.05)
-claim('5.8', 'completeness 40.6 to 28.5', 28.394,
+claim('4.8', 'completeness 40.6 to 28.5', 28.394,
       lambda: _by_strategy('completeness', 'v6'), 0.05)
-claim('5.8', 'coherence 75.5 to 63.9', 63.88,
+claim('4.8', 'coherence 75.5 to 63.9', 63.88,
       lambda: _by_strategy('coherence', 'v6'), 0.05)
-claim('5.8', 'hallucination risk rises 34.0 to 40.0', 40.002,
+claim('4.8', 'hallucination risk rises 34.0 to 40.0', 40.002,
       lambda: _by_strategy('halluc_risk', 'v6'), 0.05)
-claim('5.8', 'three passes span 13.0 points', 13.127,
+claim('4.8', 'three passes span 13.0 points', 13.127,
       lambda: (lambda g: (g['max'] - g['min'])[g['count'] == 3].mean())(
           _judge_raw().query('parse_ok == True').groupby(
               ['m', 'dataset', 'instance', 'arm', 'strategy']).faithfulness.agg(

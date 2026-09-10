@@ -58,11 +58,18 @@ on `cancer` / instance 163:
 | fidelity | 98.0 | 98.0 |
 | certified arm, single pass | 70.0 | 98.0 |
 
-**Consequence.** The five-dataset grid (375 arm-runs) predates this change and
-is not text-comparable to anything produced after it. Files tagged
-`_cogito671b` or `_llama33_newprompts` are on the current prompts; the plain
-`{dataset}_nn_comparison.csv` files are on the earlier ones. No table in the
-paper mixes them.
+**Consequence.** Three generations of result file exist, and they are not
+text-comparable to each other. The paper reports the third alone.
+
+| files | prompts | reported |
+|---|---|---|
+| `{dataset}_nn_comparison.csv` (2026-07) | internal bin identifiers | no |
+| `*_cogito671b`, `*_llama33_newprompts` (2026-08) | first reader-facing prompts | no |
+| `{dataset}_nn_comparison_{tag}.csv` for the six tags (2026-09) | reader-facing prompts, reseeded so every generator sees identical contexts | **yes** |
+
+The first two are kept for provenance, not cited. Cogito-671B was dropped when
+it stopped being served, and its runs were superseded by the six-generator grid
+rather than extended. No table in the paper mixes generations.
 
 This change also broke the judge, which had been handed bare bin identifiers as
 its "valid indicator" vocabulary while explanations had moved to prose — making
