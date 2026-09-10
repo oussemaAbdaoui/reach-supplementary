@@ -809,9 +809,15 @@ class decision_tree:
             query.write("m" + str(l) + ' 0\n')
         query.close()
 
-        # call d4
+        # call d4. The binary was hardcoded to one machine's home directory,
+        # which broke this function everywhere else and put a path naming a
+        # third party into a bundle meant to be anonymous. Resolve it from the
+        # environment, falling back to the copy shipped in bin/.
+        d4 = os.environ.get(
+            "D4_BINARY",
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "bin", "d4_static"))
         try:
-            p = subprocess.run([os.environ.get("D4_BINARY", os.path.join("bin", "d4_static")), "-m", "ddnnf-compiler", "-i",
+            p = subprocess.run([d4, "-m", "ddnnf-compiler", "-i",
                                 f"/tmp/heat-{hash}.cnf", "--query", f"/tmp/heat-{hash}.query"], timeout=time_out,
                                capture_output=True, text=True)
         except subprocess.TimeoutExpired:

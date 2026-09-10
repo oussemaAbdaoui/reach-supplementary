@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/employee_nn_sonnet5_20260831_022313_15492.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop_k] base=91.0% v4=91.0% v5=86.4% v6=91.0% (len 6, om_v5=2)
+  [spend] claude-sonnet-5: 5 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 5 calls, 2,402 in / 305 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop_k] base=70.7% v4=54.9% v5=53.7% v6=70.7% (len 5, om_v5=2)
+  [spend] claude-sonnet-5: 10 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,630 in / 555 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop_k] base=65.9% v4=65.9% v5=65.9% v6=65.9% (len 3, om_v5=0)
+  [spend] claude-sonnet-5: 15 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 15 calls, 6,539 in / 710 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop_k] base=64.5% v4=65.6% v5=71.3% v6=64.5% (len 4, om_v5=2)
+  [spend] claude-sonnet-5: 20 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,647 in / 945 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop_k] base=84.0% v4=84.0% v5=65.1% v6=84.0% (len 6, om_v5=1)
+  [spend] claude-sonnet-5: 25 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 25 calls, 11,190 in / 1,265 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop_k] base=70.2% v4=70.2% v5=70.2% v6=70.2% (len 4, om_v5=0)
+  [spend] claude-sonnet-5: 30 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 13,162 in / 1,460 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop_k] base=77.3% v4=56.5% v5=77.3% v6=77.3% (len 7, om_v5=0)
+  [spend] claude-sonnet-5: 35 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 15,914 in / 1,820 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop_k] base=81.9% v4=81.9% v5=62.0% v6=81.9% (len 6, om_v5=2)
+  [spend] claude-sonnet-5: 40 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 18,458 in / 2,130 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop_k] base=89.1% v4=68.5% v5=68.5% v6=89.1% (len 7, om_v5=1)
+  [spend] claude-sonnet-5: 45 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 21,238 in / 2,505 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop_k] base=67.8% v4=67.8% v5=70.9% v6=67.8% (len 4, om_v5=1)
+  [spend] claude-sonnet-5: 50 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 23,335 in / 2,740 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop_k] base=87.9% v4=87.8% v5=87.8% v6=87.9% (len 7, om_v5=1)
+  [spend] claude-sonnet-5: 55 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 55 calls, 26,060 in / 3,115 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop_k] base=88.6% v4=88.6% v5=74.1% v6=88.6% (len 8, om_v5=1)
+  [spend] claude-sonnet-5: 60 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 60 calls, 29,077 in / 3,555 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop_k] base=91.0% v4=72.2% v5=72.2% v6=91.0% (len 7, om_v5=1)
+  [spend] claude-sonnet-5: 65 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 65 calls, 31,806 in / 3,920 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop_k] base=81.4% v4=81.4% v5=81.4% v6=81.4% (len 8, om_v5=0)
+  [spend] claude-sonnet-5: 70 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 70 calls, 34,951 in / 4,365 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop_k] base=98.8% v4=62.9% v5=98.8% v6=98.8% (len 7, om_v5=0)
+  [spend] claude-sonnet-5: 73 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 73 calls, 36,771 in / 4,580 out
+
+saved -> research/results/employee_nn_comparison_cop_k_sonnet5.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       5.93               80.67     73.28     73.71          81.33     80.67
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07

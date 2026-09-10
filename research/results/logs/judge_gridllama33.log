@@ -1,0 +1,207 @@
+judge = openai/gpt-oss-120b via together
+[cancer] judging stored explanations ...
+  generator meta-llama/Llama-3.3-70B-Instruct-Turbo | judge openai/gpt-oss-120b
+  resuming: 630 already judged
+  945 judgements over 3 pass(es) (315 to run, 630 already done)
+    10/315 judged
+    20/315 judged
+    30/315 judged
+    40/315 judged
+    50/315 judged
+    60/315 judged
+    70/315 judged
+    80/315 judged
+    90/315 judged
+    100/315 judged
+    110/315 judged
+    120/315 judged
+    130/315 judged
+    140/315 judged
+    150/315 judged
+    160/315 judged
+    170/315 judged
+    180/315 judged
+    190/315 judged
+    200/315 judged
+    210/315 judged
+    220/315 judged
+    230/315 judged
+    240/315 judged
+    250/315 judged
+    260/315 judged
+    270/315 judged
+    280/315 judged
+    290/315 judged
+    300/315 judged
+    310/315 judged
+  wrote research\results\cancer_nn_judge_gridllama33.csv (+315 rows)
+[compas] judging stored explanations ...
+  generator meta-llama/Llama-3.3-70B-Instruct-Turbo | judge openai/gpt-oss-120b
+  resuming: 630 already judged
+  945 judgements over 3 pass(es) (315 to run, 630 already done)
+    10/315 judged
+    20/315 judged
+    30/315 judged
+    40/315 judged
+    50/315 judged
+    60/315 judged
+    70/315 judged
+    80/315 judged
+    90/315 judged
+    100/315 judged
+    110/315 judged
+    120/315 judged
+    130/315 judged
+    140/315 judged
+    150/315 judged
+    160/315 judged
+    170/315 judged
+    180/315 judged
+    190/315 judged
+    200/315 judged
+    210/315 judged
+    220/315 judged
+    230/315 judged
+    240/315 judged
+    250/315 judged
+    260/315 judged
+    270/315 judged
+    280/315 judged
+    290/315 judged
+    300/315 judged
+    310/315 judged
+  wrote research\results\compas_nn_judge_gridllama33.csv (+315 rows)
+[diabetes] judging stored explanations ...
+  generator meta-llama/Llama-3.3-70B-Instruct-Turbo | judge openai/gpt-oss-120b
+  resuming: 630 already judged
+  945 judgements over 3 pass(es) (315 to run, 630 already done)
+    10/315 judged
+    20/315 judged
+    30/315 judged
+    40/315 judged
+    50/315 judged
+    60/315 judged
+    70/315 judged
+    80/315 judged
+    90/315 judged
+    100/315 judged
+    110/315 judged
+    120/315 judged
+    130/315 judged
+    140/315 judged
+    150/315 judged
+    160/315 judged
+    170/315 judged
+    180/315 judged
+    190/315 judged
+    200/315 judged
+    210/315 judged
+    220/315 judged
+    230/315 judged
+    240/315 judged
+    250/315 judged
+    260/315 judged
+    270/315 judged
+    280/315 judged
+    290/315 judged
+    300/315 judged
+    310/315 judged
+  wrote research\results\diabetes_nn_judge_gridllama33.csv (+315 rows)
+[employee] judging stored explanations ...
+  generator meta-llama/Llama-3.3-70B-Instruct-Turbo | judge openai/gpt-oss-120b
+  resuming: 630 already judged
+  945 judgements over 3 pass(es) (315 to run, 630 already done)
+    10/315 judged
+    20/315 judged
+    30/315 judged
+    40/315 judged
+    50/315 judged
+    60/315 judged
+    70/315 judged
+    80/315 judged
+    90/315 judged
+    100/315 judged
+    110/315 judged
+    120/315 judged
+    130/315 judged
+    140/315 judged
+    150/315 judged
+    160/315 judged
+    170/315 judged
+    180/315 judged
+    190/315 judged
+    200/315 judged
+    210/315 judged
+    220/315 judged
+    230/315 judged
+    240/315 judged
+    250/315 judged
+    260/315 judged
+    270/315 judged
+    280/315 judged
+    290/315 judged
+    300/315 judged
+    310/315 judged
+  wrote research\results\employee_nn_judge_gridllama33.csv (+315 rows)
+[heart] judging stored explanations ...
+  generator meta-llama/Llama-3.3-70B-Instruct-Turbo | judge openai/gpt-oss-120b
+  resuming: 630 already judged
+  945 judgements over 3 pass(es) (315 to run, 630 already done)
+    10/315 judged
+    20/315 judged
+    30/315 judged
+    40/315 judged
+    50/315 judged
+    60/315 judged
+    70/315 judged
+    80/315 judged
+    90/315 judged
+    100/315 judged
+    110/315 judged
+    120/315 judged
+    130/315 judged
+    140/315 judged
+    150/315 judged
+    160/315 judged
+    170/315 judged
+    180/315 judged
+    190/315 judged
+    200/315 judged
+    210/315 judged
+    220/315 judged
+    230/315 judged
+    240/315 judged
+    250/315 judged
+    260/315 judged
+    270/315 judged
+    280/315 judged
+    290/315 judged
+    300/315 judged
+    310/315 judged
+  wrote research\results\heart_nn_judge_gridllama33.csv (+315 rows)
+
+=== judge = openai/gpt-oss-120b | 1575 judgements, parse ok 97.8% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               43.28      71.50         39.55        36.18
+v5               40.16      64.46         37.54        43.03
+v6               30.68      63.20         31.76        48.86
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   32.64  30.95  30.93
+cop       32.07  33.00  22.80
+cop_best  54.47  50.52  30.61
+cop_k     44.59  47.76  29.27
+lime      38.36  30.41  29.19
+lmpaxp    59.27  59.52  34.00
+shap      42.19  30.93  38.04
+
+test-retest on 1575 repeated judgements, mean |pass1-pass2|:
+  faithfulness   7.98
+  coherence      6.76
+  completeness   6.52
+  halluc_risk    12.89

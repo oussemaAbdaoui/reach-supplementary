@@ -1,0 +1,248 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+heart,openai/gpt-oss-20b,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die.  
+This decision is based on two facts that the model found important:  
+
+1. The patient’s sex falls into the first category (the model’s “sex_b0” flag is 1).  
+2. The patient’s time value is between 4 and 67 (the model’s “time_b0” flag is 1).  
+
+Because these two conditions are true, the model’s rule says the patient is likely to die. The other time ranges (between 67 and 172, and between 172 and 285) do not apply to this patient, so they do not influence the prediction.","The model predicts that the patient died because the patient is male and has been in the hospital for 4 to 67 days. The time since admission is not between 67 and 172 days, nor between 172 and 285 days.","1. The patient's sex is between 0 and 1, which is true here.  
+2. The patient's time is between 4 and 67, which is true here.  
+3. The patient's time is between 67 and 172, which is false here.  
+4. The patient's time is between 172 and 285, which is false here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501
+heart,openai/gpt-oss-20b,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,87.4,False,87.4,87.4,87.4,87.4,False,False,False,12,12,12,0,0,0,0,0,0,0,0,3,"[87.4, 87.4, 87.4, 87.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted death because the patient shows several risk factors that the rule highlights. Anaemia is present, diabetes is present, high blood pressure is present, the platelet count is between 47 000 and 225 000, the patient is female, and the patient smokes. These conditions all hold. In contrast, the ejection fraction does not fall in the 30–40 range, the platelet count does not fall in the 225 000–273 000 range, it also does not fall in the 273 000–742 000 range, the serum creatinine does not fall in the 0.5–1 range, the serum sodium does not fall in the 135–138 range, and the time is not between 67 and 172. The combination of the present risk factors and the absence of the protective ranges led the model to predict mortality.","The model predicts that this patient died.  
+The rule that explains this prediction is based on the following facts about the patient:
+
+- The patient has anaemia (the anaemia indicator is 1, meaning the value is between 0 and 1).  
+- The patient has diabetes (the diabetes indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s ejection fraction is **not** between 30 % and 40 % (the ejection‑fraction indicator is 0, so the value is outside that range).  
+- The patient has high blood pressure (the high‑blood‑pressure indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s platelet count is between 47 000 and 225 000 (the platelets indicator is 1, so the value falls in that range).  
+- The patient’s platelet count is **not** between 225 000 and 273 000 (the platelets_b1 indicator is 0).  
+- The patient’s platelet count is **not** between 273 000 and 742 000 (the platelets_b2 indicator is 0).  
+- The patient’s serum creatinine is **not** between 0.5 and 1 (the serum‑creatinine indicator is 0).  
+- The patient’s serum sodium is **not** between 135 and 138 (the serum‑sodium indicator is 0).  
+- The patient is male (the sex indicator is 1, meaning the value is between 0 and 1).  
+- The patient smokes (the smoking indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s time in the hospital is **not** between 67 and 172 days (the time indicator is 0).","1. The anaemia indicator is between 0 and 1, which is true here.  
+2. The diabetes indicator is between 0 and 1, which is true here.  
+3. The ejection fraction reading is between 30 and 40, which is not true here.  
+4. The high blood pressure indicator is between 0 and 1, which is true here.  
+5. The platelet count reading is between 47,000 and 225,000, which is true here.  
+6. The platelet count reading is between 225,000 and 273,000, which is not true here.  
+7. The platelet count reading is between 273,000 and 742,000, which is not true here.  
+8. The serum creatinine level is between 0.5 and 1.0, which is not true here.  
+9. The serum sodium level is between 135 and 138, which is not true here.  
+10. The sex indicator is between 0 and 1, which is true here.  
+11. The smoking indicator is between 0 and 1, which is true here.  
+12. The time since admission indicator is between 67 and 172, which is not true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b1 < 0.5']","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]",0.4414,FEASIBLE,cop@12,0.483
+heart,openai/gpt-oss-20b,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,90.1,90.1,88.3,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[88.3, 88.3, 88.3, 90.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (0).  
+It did so because the patient has high blood pressure (the indicator is 1, which falls in the range 0 to 1) and the sex indicator is 1 (also in the range 0 to 1).  
+The ejection‑fraction value is not in the range 15 % to 30 % and the time value is not in the range 4 days to 67 days, so those two indicators do not support the rule. The presence of high blood pressure and the sex indicator together led the model to predict survival.","The model predicts that the patient will survive. It bases this on the fact that the patient’s blood pressure is low (between 0 and 1), the patient falls into the sex category represented by 1, but the ejection fraction is not in the low range of 15 % to 30 % and the follow‑up time is not between 4 and 67 days.","1. The patient's ejection fraction is between 15 % and 30 %, which is not the case here and therefore pushes against this class.  
+2. The patient's high blood pressure indicator is between 0 and 1, which is true here and pushes the prediction towards this class.  
+3. The patient's sex indicator is between 0 and 1, which is true here and supports the prediction.  
+4. The patient's time is between 4 and 67, which does not hold and therefore pushes against this class.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519
+heart,openai/gpt-oss-20b,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[87.1, 87.1, 87.1, 87.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient will survive.  
+- The patient is a smoker (the smoking indicator is 1). The rule learned from the data says that being a smoker falls into the range “smoking in [0, 1)”, and this condition is associated with a prediction of survival.  
+- The ejection fraction is not between 15 % and 30 % (the rule says “ejection_fraction in [15, 30) — does NOT hold”), so it does not push the prediction toward death.  
+- The time since diagnosis is not between 4 and 67 months (the rule says “time in [4, 67) — does NOT hold”), so it also does not push the prediction toward death.  
+
+Because only the smoking condition holds and it points to survival, while the other two conditions do not, the model concluded that the patient is likely to survive.","The model predicted that the patient survived (class 0).  
+The rule that led to this prediction is:  
+
+- The patient’s ejection fraction is **not** between 15 % and 30 %.  
+- The patient’s smoking level is **between** 0 and 1.  
+- The patient’s time is **not** between 4 and 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is not true here.","['smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166
+heart,openai/gpt-oss-20b,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,70.0,70.0,70.0,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.0, 70.0, 70.0, 70.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that the patient would die because the patient has high blood pressure, is male, smokes, and the time variable is between 4 and 67. Each of these conditions is present, and together they match the rule that the model learned for predicting death.","The model predicts death because the patient has high blood pressure, is sex = 1, smokes, and the time value is between 4 and 67.","1. The blood pressure measurement is between 0 and 1, which is true here.  
+2. The sex measurement is between 0 and 1, which is true here.  
+3. The smoking measurement is between 0 and 1, which is true here.  
+4. The time measurement is between 4 and 67, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956
+heart,openai/gpt-oss-20b,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,85.7,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient will survive.  
+It looked at six pieces of information:
+
+* **Diabetes** – the patient has diabetes, which normally raises the risk of death.  
+* **High blood pressure** – the patient has high blood pressure, another risk factor.  
+* **Sex** – the patient is male, which also tends to increase risk.  
+* **Smoking** – the patient smokes, adding to the risk.  
+* **Ejection fraction** – the patient’s ejection fraction is **not** in the range 15 % to 30 %.  Being outside this low‑range reduces the chance of death.  
+* **Time** – the patient’s time value is **not** in the range 4 to 67.  Being outside this range also lowers the risk.
+
+So, while several risk factors are present, the two indicators that are outside the dangerous ranges (ejection fraction and time) pull the overall assessment toward survival, leading the model to predict that the patient will live.","The model predicts that this patient survived (class 0).  
+The rule that explains this prediction is based on the following facts:
+
+- **Diabetes** – the patient has diabetes.  
+- **Ejection fraction** – the patient’s ejection fraction is **not** between 15 % and 30 %.  
+- **High blood pressure** – the patient has high blood pressure.  
+- **Sex** – the patient is male.  
+- **Smoking** – the patient smokes.  
+- **Time** – the time value is **outside** the range of 4 to 67 (days, months, etc.).","1. The diabetes indicator is between 0 and 1, which is true for this patient.  
+2. The ejection fraction is between 15 and 30, which is not true for this patient.  
+3. The high blood pressure indicator is between 0 and 1, which is true for this patient.  
+4. The sex indicator is between 0 and 1, which is true for this patient.  
+5. The smoking indicator is between 0 and 1, which is true for this patient.  
+6. The time indicator is between 4 and 67, which is not true for this patient.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514
+heart,openai/gpt-oss-20b,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0) because the only measurement that matched a pattern linked to survival was the sex measurement. The patient’s sex falls in the range [0, 1). The ejection‑fraction measurement is not in the low range [15, 30), and the time measurement is not in the range [4, 67). Since the rule learned by the model says that when the sex measurement is in [0, 1) the prediction is survival, the model chose 0 for this patient.","The model predicts that the patient survived.  
+The rule that matches this prediction says:
+
+- The patient’s ejection fraction is **outside** the 15 %–30 % range.  
+- The patient’s sex falls in the first category (value 0 to 1).  
+- The patient’s time in the hospital is **outside** the 4 – 67 day range.","1. The ejection fraction is between 15 and 30, which is false here.  
+2. The sex is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is false here.","['sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148
+heart,openai/gpt-oss-20b,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die because the data show three key facts that the model learned are associated with mortality. First, the patient has high blood pressure. Second, the patient is male. Third, the patient’s observation time falls between 4 and 67 days. The rule also notes that the observation time is not in the 172‑to‑285‑day window, which is a condition that the model uses to confirm the prediction. These three conditions together led the model to classify the patient as likely to die.","The model predicts that the patient died because they had high blood pressure, were male, and had been in the hospital for 4 to 67 days. It also notes that the time since admission was not in the 172‑285 day range.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The sex measurement is between 0 and 1, which is true here.  
+3. The time measurement is between 4 and 67, which is true here.  
+4. The time measurement is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882
+heart,openai/gpt-oss-20b,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,71.0,71.0,71.0,71.0,False,False,False,9,9,9,0,0,0,0,0,0,0,0,3,"[71.0, 71.0, 61.0, 71.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die because several key health indicators were present. The patient has anaemia, diabetes, high blood pressure, is in the first sex category (often male), and smokes. In addition, the serum creatinine level is high, falling between 1.3 and 9. These conditions together match the pattern that the model learned is associated with mortality. The creatinine phosphokinase level is not in the 23 to 157 range, and the serum creatinine is not in the lower ranges of 0.5 to 1 or 1 to 1.3, so those values do not counter the prediction. All the other indicators that support the prediction are present, leading the model to classify the patient as at risk of death.","The model predicts that this patient will not survive.  
+The prediction is based on the following facts:  
+- The patient has anaemia.  
+- The patient has diabetes.  
+- The patient has high blood pressure.  
+- The patient is male.  
+- The patient smokes.  
+- The patient’s creatinine phosphokinase level is not between 23 and 157.  
+- The patient’s serum creatinine level is not between 0.5 and 1.  
+- The patient’s serum creatinine level is not between 1 and 1.3.  
+- The patient’s serum creatinine level is between 1.3 and 9.","1. The anaemia indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+2. The creatinine phosphokinase level is between 23 and 157, which is not true here, and it pushed against this class, but was outweighed.  
+3. The diabetes indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+4. The high blood pressure indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+5. The serum creatinine level in the 0.5–1 range is not true here, and it pushed against this class, but was outweighed.  
+6. The serum creatinine level in the 1–1.3 range is not true here, and it pushed against this class, but was outweighed.  
+7. The serum creatinine level in the 1.3–9 range is true here, and it pushed the prediction towards this class.  
+8. The sex indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+9. The smoking indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872
+heart,openai/gpt-oss-20b,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.4, 88.4, 88.4, 88.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0).  
+It bases this on two measurements that match the rule it learned:  
+
+- **High blood pressure** is present (the value is 1, which falls in the range [0, 1)).  
+- **Sex** is 1 (the value is 1, which falls in the range [0, 1)).  
+
+These two factors push the prediction toward survival.  
+
+The other two measurements do not match the rule:  
+
+- **Ejection fraction** is 0, so it is not in the range [15, 30).  
+- **Time** is 0, so it is not in the range [4, 67).  
+
+Because the rule that aligns with the model’s decision relies only on high blood pressure and sex, the prediction is 0.","The model says this patient survived.  
+The rule that supports that prediction is:  
+
+- The patient’s ejection fraction is **not** between 15 % and 30 %.  
+- The patient **does** have high blood pressure (value 1).  
+- The patient is **male** (sex value 1).  
+- The patient’s time is **not** between 4 and 67 (value 0).","1. The ejection fraction is between 15% and 30%, which is not the case here.  
+2. The high blood pressure measurement is between 0 and 1, which is true here.  
+3. The sex indicator is between 0 and 1, which is true here.  
+4. The time measurement is between 4 and 67, which is not the case here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994
+heart,openai/gpt-oss-20b,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,87.0,89.7,89.7,False,False,False,4,2,4,0,0,2,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 87.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die because the patient’s sex falls in the range 0 to 1, the patient smokes, and the time variable is between 4 and 67. The rule learned by the model also notes that the time variable is not between 172 and 285, which is consistent with the prediction of death.","The rule says the patient is in the first sex category, has a first smoking category, the time is between 4 and 66, and the time is not between 172 and 284.","1. The patient's sex is represented by a binary value between 0 and 1, which is true here.  
+2. The patient's smoking status is represented by a binary value between 0 and 1, which is true here.  
+3. The patient's time since diagnosis is between 4 and 67, which is true here.  
+4. The patient's time since diagnosis is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934
+heart,openai/gpt-oss-20b,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.4, 93.4, 93.4, 93.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient would die because two key indicators were present. First, the patient had high blood pressure, which the model knows is a strong sign of risk. Second, the time since the relevant event (such as hospital admission) was between 4 and 67 days. These two facts together pushed the prediction toward death. The other time ranges—between 67 and 172 days and between 172 and 285 days—did not apply to this patient, so they did not influence the decision.","The patient has high blood pressure and has been hospitalized for 4 to 67 days. The patient was not hospitalized for 67 to 172 days, nor for 172 to 285 days. These conditions led the model to predict death.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The time measurement is between 4 and 67, which is true here.  
+3. The time measurement in the 67 to 172 range did not apply here, which pushed the prediction against this class, but was outweighed.  
+4. The time measurement in the 172 to 285 range did not apply here, which pushed the prediction against this class, but was outweighed.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858
+heart,openai/gpt-oss-20b,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[88.1, 88.1, 88.1, 88.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0).  
+The rule that explains this prediction says: the patient has diabetes, has high blood pressure, and is male – all of these conditions are true. The ejection‑fraction value is not in the 15 % to 30 % range, and the time value is not in the 4 to 67 day range. Because the diabetes, high blood pressure, and male sex are present while the ejection‑fraction and time do not fall into the ranges that would push the prediction toward death, the model concluded that the patient is likely to survive.","The model says this patient is likely to survive.  
+The rule that explains this prediction is:
+
+* Diabetes is present.  
+* The ejection fraction is **not** between 15 % and 30 %.  
+* High blood pressure is present.  
+* The patient belongs to the first sex category (the first group in the data).  
+* The time value is **not** between 4 and 67 days.  
+
+These five facts together lead the model to predict survival (class 0).","1. The presence of diabetes is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is false here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The time is between 4 and 67, which is false here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148
+heart,openai/gpt-oss-20b,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,87.5,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[87.5, 87.5, 87.5, 87.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The patient’s sex falls into the first category (range [0, 1)).  
+The patient is a smoker (smoking falls into the first category [0, 1)).  
+The patient’s time value is in the first interval [4, 67).  
+The patient’s time value is not in the third interval [172, 285).  
+
+Because these conditions together match the rule that the model learned, the model predicted that the patient will die.","The model predicts death because the patient’s sex value is between 0 and 1, the smoking status is between 0 and 1, the time value is between 4 and 67, and the time value is not between 172 and 285.","1. The sex measurement is between 0 and 1, which is true here.  
+2. The smoking measurement is between 0 and 1, which is true here.  
+3. The first time measurement is between 4 and 67, which is true here.  
+4. The second time measurement is between 172 and 285, which is false here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894
+heart,openai/gpt-oss-20b,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[90.2, 90.2, 90.2, 90.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted death because the patient has high blood pressure and smokes, and the time since the event is between 4 and 67. These three factors together push the prediction toward mortality. The condition that the time would be between 172 and 285 does not hold, but it does not change the overall prediction.","The model says the patient will die because the patient has high blood pressure, smokes, and has been in the hospital for 4 to 67 days. The rule also notes that a hospital stay of 172 to 285 days would not fit this pattern, but the patient’s stay is not in that range.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The time measurement is between 4 and 67, which is true here.  
+4. The time measurement is not between 172 and 285, which is false here, and this fact pushed the prediction against this class, but was outweighed.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724

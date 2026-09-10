@@ -1,0 +1,66 @@
+=== waiting for the running python to exit  17:27:30 ===
+=== clear  17:37:14 ===
+  dropped instances with errors: [np.int64(501)] -> 70 rows kept
+--- employee main  17:37:17 ---
+lime          5.93               74.79     63.27     71.61          83.14     66.35
+lmpaxp        5.93               96.69     95.11     90.67          96.37     96.69
+shap          5.93               80.07     70.35     74.14          84.75     65.90
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.07
+lmpaxp                 0.87          0.80
+shap                   0.33          0.20
+--- employee cop_k  17:39:19 ---
+cop_k       5.93               80.67      79.3     71.26          83.79     80.53
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07           0.0
+  employee/gridllama33: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_gridllama33_Ufitcop_k.csv
+--- employee cop_best  17:48:16 ---
+cop_best       6.73               89.51     81.41     73.12          88.95     89.51
+
+WeakPAXp pass rates (baseline / v5):
+          baseline_weak_paxp  weak_paxp_v5
+arm                                       
+cop_best                0.33          0.07
+  employee/gridllama33: replaced 0 cop_best rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_gridllama33_Ufitcop_best.csv
+--- compas main  17:48:37 ---
+lime          3.60               84.27     77.89     83.64          86.70     68.51
+lmpaxp        3.60               98.31     98.31     98.31          98.31     98.31
+shap          3.60               76.01     72.37     66.77          85.48     52.26
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+lime                   0.53          0.47
+lmpaxp                 1.00          1.00
+shap                   0.53          0.47
+--- compas cop_k  18:03:13 ---
+cop_k        3.6               69.61     66.15     66.81          74.43     67.87
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  compas/gridllama33: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_gridllama33_Ufitcop_k.csv
+--- compas cop_best  18:22:44 ---
+cop_best        1.0               71.19     71.19     69.31          71.19     69.31
+
+WeakPAXp pass rates (baseline / v5):
+          baseline_weak_paxp  weak_paxp_v5
+arm                                       
+cop_best                 0.0           0.0
+  compas/gridllama33: replaced 0 cop_best rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_gridllama33_Ufitcop_best.csv
+=== Llama grid complete  18:33:53 ===

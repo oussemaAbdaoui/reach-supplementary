@@ -1,0 +1,25 @@
+Full console log -> research/results/logs/heart_nn_sonnet5_20260831_190648_22636.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+resume: 15 instances already done (90 rows) -> 0 to go
+
+saved -> research/results/heart_nn_comparison_sonnet5.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       2.93               82.57     75.51     64.55          81.49     68.02
+cop           2.13               83.69     83.69     83.69          83.69     83.69
+cop_k         4.93               86.28     86.33     83.11          86.42     86.28
+lime          4.93               81.43     78.85     78.03          87.69     73.81
+lmpaxp        4.93               97.10     96.01     96.96          97.10     97.10
+shap          4.93               88.27     81.45     86.00          89.59     76.95
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+cop_k                  0.00          0.00
+lime                   0.47          0.53
+lmpaxp                 0.87          0.87
+shap                   0.80          0.60

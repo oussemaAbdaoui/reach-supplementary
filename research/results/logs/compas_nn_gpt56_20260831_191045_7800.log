@@ -1,0 +1,25 @@
+Full console log -> research/results/logs/compas_nn_gpt56_20260831_191045_7800.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+resume: 15 instances already done (90 rows) -> 0 to go
+
+saved -> research/results/compas_nn_comparison_gpt56.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       1.93               73.69     71.39     69.26          73.28     67.31
+cop           7.00               68.00     66.28     66.01          69.26     68.00
+cop_k         3.60               69.61     69.16     64.57          70.24     69.61
+lime          3.60               84.27     79.55     79.20          86.73     55.71
+lmpaxp        3.60               98.31     95.35     95.13          97.03     89.47
+shap          3.60               76.01     70.61     70.49          79.57     40.51
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.07
+cop_k                  0.00          0.00
+lime                   0.53          0.53
+lmpaxp                 1.00          0.87
+shap                   0.53          0.47

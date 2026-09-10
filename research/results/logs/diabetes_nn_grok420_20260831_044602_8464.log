@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/diabetes_nn_grok420_20260831_044602_8464.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] base=99.2% v4=99.2% v5=99.2% v6=99.2% (len 9, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 2 calls, 1,606 in / 283 out | Llama-3.3-70B-Instruct-Turbo: 2 calls, 976 in / 204 out
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] base=88.2% v4=71.5% v5=69.3% v6=88.2% (len 6, om_v5=1)
+  [spend] grok-4.20-0309-non-reasoning: 7 calls, 4,646 in / 720 out | Llama-3.3-70B-Instruct-Turbo: 7 calls, 2,882 in / 452 out
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop_k] base=98.5% v4=98.5% v5=98.5% v6=98.5% (len 7, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 9 calls, 6,098 in / 964 out | Llama-3.3-70B-Instruct-Turbo: 9 calls, 3,747 in / 606 out
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop_k] base=92.1% v4=92.1% v5=73.5% v6=92.1% (len 7, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 14 calls, 9,583 in / 1,628 out | Llama-3.3-70B-Instruct-Turbo: 14 calls, 6,134 in / 1,041 out
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] base=89.5% v4=89.5% v5=89.5% v6=89.5% (len 5, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 19 calls, 12,763 in / 2,147 out | Llama-3.3-70B-Instruct-Turbo: 19 calls, 8,237 in / 1,346 out
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] base=89.5% v4=89.5% v5=73.0% v6=89.5% (len 9, om_v5=4)
+  [spend] grok-4.20-0309-non-reasoning: 24 calls, 16,636 in / 2,922 out | Llama-3.3-70B-Instruct-Turbo: 24 calls, 10,918 in / 1,797 out
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] base=99.6% v4=94.1% v5=98.7% v6=99.6% (len 9, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 29 calls, 20,268 in / 3,538 out | Llama-3.3-70B-Instruct-Turbo: 29 calls, 13,295 in / 2,218 out
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] base=97.4% v4=97.4% v5=97.4% v6=97.4% (len 7, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 31 calls, 21,756 in / 3,797 out | Llama-3.3-70B-Instruct-Turbo: 31 calls, 14,200 in / 2,382 out
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] base=95.7% v4=95.7% v5=95.7% v6=95.7% (len 9, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 33 calls, 23,396 in / 4,061 out | Llama-3.3-70B-Instruct-Turbo: 33 calls, 15,173 in / 2,594 out
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] base=92.3% v4=54.5% v5=77.9% v6=92.3% (len 8, om_v5=1)
+  [spend] grok-4.20-0309-non-reasoning: 38 calls, 26,941 in / 4,737 out | Llama-3.3-70B-Instruct-Turbo: 38 calls, 17,557 in / 3,032 out
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop_k] base=86.9% v4=86.9% v5=75.4% v6=86.9% (len 11, om_v5=5)
+  [spend] grok-4.20-0309-non-reasoning: 43 calls, 31,098 in / 5,625 out | Llama-3.3-70B-Instruct-Turbo: 43 calls, 20,479 in / 3,576 out
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] base=99.5% v4=99.5% v5=99.5% v6=99.5% (len 9, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 45 calls, 32,702 in / 5,885 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 21,432 in / 3,774 out
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] base=97.1% v4=97.1% v5=97.1% v6=97.1% (len 7, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 47 calls, 34,150 in / 6,119 out | Llama-3.3-70B-Instruct-Turbo: 47 calls, 22,283 in / 3,928 out
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] base=88.2% v4=88.2% v5=88.2% v6=88.2% (len 5, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 52 calls, 37,340 in / 6,591 out | Llama-3.3-70B-Instruct-Turbo: 52 calls, 24,350 in / 4,238 out
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop_k] base=97.7% v4=97.7% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 54 calls, 38,752 in / 6,780 out | Llama-3.3-70B-Instruct-Turbo: 54 calls, 25,146 in / 4,372 out
+
+saved -> research/results/diabetes_nn_comparison_cop_k_grok420.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k        7.6               94.09     90.09     88.71          92.97     94.09
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53

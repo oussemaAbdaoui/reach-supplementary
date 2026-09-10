@@ -1,0 +1,52 @@
+Full console log -> research/results/logs/cancer_nn_20260905_062741_27160.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 1
+[cancer/gridllama33] 105 rows, 45 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together
+  inst  108 shap     v5= 87.50 (was 43.0) om=7 rounds=3
+  inst  108 lime     v5= 48.50 (was 68.8) om=11 rounds=3
+  inst  108 cop_best v5= 98.80 (was 82.3) om=0 rounds=2
+  inst  139 cop      v5= 59.50 (was 59.5) om=0 rounds=0
+  inst  139 cop_k    v5= 85.90 (was 91.2) om=1 rounds=3
+  inst  139 lmpaxp   v5= 94.70 (was 94.7) om=0 rounds=2
+  inst  139 anchors  v5= 37.60 (was 37.6) om=0 rounds=0
+  inst  139 shap     v5= 80.10 (was 71.7) om=3 rounds=3
+  inst  139 lime     v5= 51.90 (was 44.9) om=6 rounds=3
+  inst  139 cop_best v5= 99.90 (was 99.2) om=0 rounds=3
+  inst  151 cop      v5= 96.30 (was 96.3) om=0 rounds=0
+  inst  151 cop_k    v5= 98.10 (was 98.1) om=0 rounds=1
+  inst  151 lmpaxp   v5= 95.50 (was 95.5) om=0 rounds=0
+  inst  151 anchors  v5= 77.50 (was 77.5) om=0 rounds=0
+  inst  151 shap     v5= 99.20 (was 95.8) om=0 rounds=1
+  inst  151 lime     v5= 85.60 (was 85.6) om=5 rounds=3
+  inst  151 cop_best v5=100.00 (was 100.0) om=0 rounds=1
+  inst  163 cop      v5= 58.10 (was 46.5) om=0 rounds=0
+  inst  163 cop_k    v5= 87.20 (was 79.2) om=3 rounds=3
+  inst  163 lmpaxp   v5= 98.00 (was 94.0) om=0 rounds=1
+  inst  163 anchors  v5= 37.10 (was 37.1) om=0 rounds=0
+  inst  163 shap     v5= 81.60 (was 73.5) om=5 rounds=3
+  inst  163 lime     v5= 43.60 (was 37.5) om=9 rounds=3
+  inst  163 cop_best v5= 99.10 (was 53.6) om=0 rounds=2
+  inst  173 cop      v5= 57.20 (was 34.7) om=0 rounds=0
+  inst  173 cop_k    v5= 83.20 (was 83.2) om=0 rounds=2
+  inst  173 lmpaxp   v5= 97.10 (was 97.1) om=0 rounds=0
+  inst  173 anchors  v5= 44.80 (was 44.8) om=0 rounds=0
+  inst  173 shap     v5= 86.70 (was 66.3) om=5 rounds=3
+  inst  173 lime     v5= 54.60 (was 39.2) om=9 rounds=3
+  inst  173 cop_best v5= 96.70 (was 75.1) om=0 rounds=2
+  inst  188 cop      v5= 94.20 (was 90.5) om=0 rounds=0
+  inst  188 cop_k    v5= 90.70 (was 68.5) om=0 rounds=1
+  inst  188 lmpaxp   v5= 96.70 (was 96.7) om=0 rounds=0
+  inst  188 anchors  v5= 72.20 (was 72.2) om=1 rounds=3
+  inst  188 shap     v5= 79.20 (was 91.9) om=6 rounds=3
+  inst  188 lime     v5= 86.90 (was 74.6) om=6 rounds=3
+  inst  188 cop_best v5= 94.30 (was 94.3) om=0 rounds=0
+  inst  189 cop      v5= 88.60 (was 75.0) om=0 rounds=0
+  inst  189 cop_k    v5= 89.70 (was 85.8) om=0 rounds=0
+  inst  189 lmpaxp   v5= 95.10 (was 95.1) om=0 rounds=0
+  inst  189 anchors  v5= 72.60 (was 72.6) om=0 rounds=0
+  inst  189 shap     v5= 97.10 (was 95.6) om=0 rounds=1
+  inst  189 lime     v5= 86.90 (was 83.7) om=4 rounds=3
+  inst  189 cop_best v5= 99.80 (was 99.8) om=0 rounds=3
+
+[cancer/gridllama33] wrote 45 rows -> research/results/cancer_nn_comparison_gridllama33.csv
+  spend: Llama-3.3-70B-Instruct-Turbo: 134 calls, 116,937 in / 30,820 out

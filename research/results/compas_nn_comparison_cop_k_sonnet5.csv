@@ -1,0 +1,302 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+compas,claude-sonnet-5,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,67.1,False,67.1,67.1,67.1,67.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[67.1, 67.1, 67.1, 67.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is **not guilty (class 0)**, based on two pieces of information:
+
+1. **Number of prior offenses**: This person's number of prior offenses does **not** fall between 3 and 36. In other words, they do not have a high number of prior offenses.
+
+2. **Score factor**: This person's score factor falls between 0 and 1, meaning this condition **does hold**.
+
+Together, these two facts led the model to conclude that the person does not fit the profile associated with a guilty prediction. Specifically, having a low (or no) count of prior offenses, combined with a low score factor, pushed the prediction toward ""not guilty.""","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction repose sur deux éléments observés chez cette personne : le nombre d'antécédents judiciaires n'est pas situé entre 3 et 36 (autrement dit, cette personne a moins de 3 antécédents), et son facteur de score se situe entre 0 et 1, ce qui correspond à un niveau de risque plus faible.
+
+Ces deux caractéristiques, combinées, sont cohérentes avec une prédiction de non-culpabilité.","1. The number of prior offenses is between 3 and 36, which is false here, meaning this person has fewer than 3 prior offenses.
+2. The score factor reading is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6646
+compas,claude-sonnet-5,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.1,False,64.1,64.1,64.1,64.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[64.1, 64.1, 64.1, 64.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this individual is **not guilty** (class 0), based on two pieces of information:
+
+1. **Number of prior offenses**: The rule looks at whether someone has 3 to 36 prior offenses. In this case, that condition does **not** hold — meaning this person does **not** fall into the higher range of prior offenses (3 or more).
+
+2. **Score factor**: This measurement, which falls between 0 and 1, **does** hold true for this individual, meaning it is at the lower end of that scale.
+
+Because the person has a low number of prior offenses (fewer than 3) and their score factor falls in the lower range, the model concluded there isn't enough evidence pointing toward guilt, resulting in a prediction of **not guilty**.","Le modèle prédit que cette personne n'est pas considérée comme à risque de récidive (classe 0), pour deux raisons principales.
+
+D'abord, son nombre d'antécédents judiciaires est inférieur à 3, donc il ne se situe pas dans la tranche élevée (3 à 36 antécédents) qui serait associée à un risque plus important.
+
+Ensuite, son facteur de score se situe dans la tranche basse (entre 0 et 1), ce qui indique également un profil à faible risque.
+
+La combinaison de ces deux éléments, un faible nombre d'antécédents et un score bas, conduit le modèle à prédire que cette personne n'est pas jugée à risque.","1. The number of prior offenses is between 3 and 36, which is false here, meaning this person's number of prior offenses does not fall in that higher range.
+2. The score factor reading is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6682
+compas,claude-sonnet-5,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,70.7,False,70.7,63.5,70.7,70.7,False,False,False,5,2,5,0,0,3,0,0,0,0,0,3,"[70.7, 63.5, 60.9, 63.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person would not be classified as guilty (class 0), based on the following rule:
+
+- Number of prior offenses: this person does NOT have between 3 and 36 prior offenses (this condition does not hold, meaning their prior offense count is lower than that range).
+- Score factor: this measurement falls between 0 and 1 (this condition holds).
+- Age above forty-five: this person's status of being above forty-five falls between 0 and 1 (this condition holds).
+- Age below twenty-five: this person's status of being below twenty-five falls between 0 and 1 (this condition holds).
+- Race (African American): this indicator falls between 0 and 1 (this condition holds).
+
+Because the number of prior offenses does not fall into the higher range (3 to 36), and all the other conditions in the rule are satisfied, the combination matches a pattern that the model associates with a prediction of ""not guilty"" (class 0). In plain terms, having a relatively low number of prior offenses was the key factor that kept this prediction at class 0, while the other measurements were consistent with the pattern the model uses to make this decision.","Le modèle prédit que cet individu n'est pas coupable, car son nombre d'antécédents judiciaires est inférieur à 3, ce qui ne correspond pas à la tranche à risque élevé (3 à 36 antécédents). De plus, son score de risque se situe dans la tranche basse (entre 0 et 1), il n'a pas plus de quarante-cinq ans, et il n'a pas moins de vingt-cinq ans. L'ensemble de ces caractéristiques conduit le modèle à classer cette personne comme non coupable.","1. The number of prior offenses is not between 3 and 36, meaning this person does not have a high number of prior offenses, which is true here.
+2. The score factor measurement is between 0 and 1, which is true here.
+3. The indicator for being older than forty-five is between 0 and 1, which is true here.
+4. The indicator for being younger than twenty-five is between 0 and 1, which is true here.
+5. The indicator for being African American is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6732
+compas,claude-sonnet-5,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,74.0,False,87.5,60.8,87.5,74.0,False,False,False,3,2,5,2,0,3,0,0,0,2,0,3,"[87.5, 87.5, 56.4, 60.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b0 = 0  (number_of_priors in [0, 1) — does NOT hold)
+  number_of_priors_b1 = 0  (number_of_priors in [1, 3) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)","The model predicted that this person is classified as ""coupable"" (class 1). Here's why, based on the rule it learned:
+
+The rule looks at how many prior offenses the person has, and neither of the two lower ranges checked out: the number of priors is not between 0 and 1, and it is also not between 1 and 3. This means the person's number of prior offenses falls outside both of these low ranges — in other words, they have a higher number of prior offenses, which pushed the prediction toward ""guilty.""
+
+In addition, three other conditions did hold true for this person:
+
+- Their ""score factor"" measurement falls between 0 and 1.
+- They are not above forty-five years old (this condition, that age-above-forty-five is between 0 and 1, holds).
+- They are not below twenty-five years old (this condition, that age-below-twenty-five is between 0 and 1, holds).
+
+Taken together, the combination of having more prior offenses (outside the two lowest ranges), along with the score factor and age conditions being satisfied as described, matches the pattern that leads this rule to predict the ""guilty"" class. Since this instance satisfies every part of the rule, the model's prediction agrees with it.","Le modèle prédit que cet individu est classé comme coupable, principalement en raison de son faible score de risque (score_factor, situé entre 0 et 1, ce qui indique un niveau de risque bas).
+
+Trois autres éléments confirment cette prédiction : le nombre d'antécédents judiciaires (number_of_priors) est supérieur ou égal à 3, ce qui signifie que cette personne a un nombre d'antécédents relativement élevé. De plus, la personne n'a pas plus de 45 ans (la condition ""âge supérieur à 45 ans"" ne s'applique pas), et elle n'a pas moins de 25 ans non plus (la condition ""âge inférieur à 25 ans"" ne s'applique pas). Cela situe donc son âge entre 25 et 45 ans.
+
+En résumé, c'est la combinaison d'un nombre élevé d'antécédents judiciaires, d'un âge moyen (entre 25 et 45 ans), et d'un score de risque bas qui conduit le modèle à prédire la classe ""coupable"" pour cet individu.","1. The number of prior offenses is not between 0 and 1, which does not hold for this case, meaning this range is false here.
+
+2. The number of prior offenses is not between 1 and 3, which does not hold for this case, meaning this range is also false here.
+
+3. The score factor reading is between 0 and 1, which is true here.
+
+4. The indicator for being above forty-five years old is between 0 and 1, which is true here.
+
+5. The indicator for being below twenty-five years old is between 0 and 1, which is true here.","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5']","[0, 1, 3, 4, 5]","[0, 1, 3]","[1, 3]","[0, 1, 3, 4, 5]",0.0,OPTIMAL,cop@5,0.3302
+compas,claude-sonnet-5,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.5,False,72.5,65.5,72.5,72.5,False,False,False,5,2,5,0,0,3,0,0,0,0,0,3,"[72.5, 71.5, 71.5, 65.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not classified as guilty (class 0), based on the following facts about them:
+
+- Number of prior offenses: this person's count of prior offenses is not in the range of 3 to 36 — meaning they have fewer than 3 prior offenses.
+- Score factor measurement: this falls in the range of 0 to 1, so it holds true for this person.
+- Being over forty-five years old: this holds true for this person.
+- Being under twenty-five years old: this also holds true for this person.
+- Being African American: this holds true for this person.
+
+Because the number of prior offenses is low (not falling into the higher range of 3 to 36), combined with the other measurements holding as described above, the rule leads to a prediction of ""not guilty"" (class 0) for this individual. The low number of prior offenses appears to be the key factor pushing the prediction away from a ""guilty"" classification.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'appuie sur les éléments suivants : le nombre d'antécédents judiciaires n'est pas élevé (inférieur à 3), le facteur de score se situe dans la tranche basse (entre 0 et 1), la personne n'a pas plus de quarante-cinq ans, elle n'a pas moins de vingt-cinq ans, et elle n'est pas identifiée comme afro-américaine dans les données.
+
+L'ensemble de ces caractéristiques, combinées, conduit le modèle à classer cette personne dans la catégorie « non coupable ».","1. The number of prior offenses is not between 3 and 36, meaning this person does not fall into that higher prior-offense range, which supports predicting they are not guilty.
+
+2. The score factor reading is between 0 and 1, which is true here, and this supports predicting they are not guilty.
+
+3. The measurement for being older than forty-five is between 0 and 1, which is true here, and this supports predicting they are not guilty.
+
+4. The measurement for being younger than twenty-five is between 0 and 1, which is true here, and this supports predicting they are not guilty.
+
+5. The indicator for being African American is between 0 and 1, which is true here, but this factor pushed against predicting they are not guilty, and was outweighed by the other measurements.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646
+compas,claude-sonnet-5,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.4,False,72.4,59.2,72.4,72.4,False,False,False,5,3,5,0,0,2,0,0,0,0,0,3,"[72.4, 70.3, 62.9, 59.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person would not be classified as guilty, based on the following pattern:
+
+- Number of prior offenses: this person does NOT have 3 to 36 prior offenses — meaning their number of prior offenses falls outside that range (likely lower).
+- Score factor measurement: falls between 0 and 1, meaning this condition holds.
+- Age above forty-five: falls between 0 and 1, meaning this condition holds.
+- Age below twenty-five: falls between 0 and 1, meaning this condition holds.
+- Identified as African American: falls between 0 and 1, meaning this condition holds.
+
+The combination of a low number of prior offenses (not in the higher 3-36 range) together with the other four measurements falling within their stated ranges matches a learned pattern that is associated with the prediction of ""not guilty"" (class 0). Since all five conditions align with this specific pattern, the model classified this individual as class 0.","Le modèle prédit que cette personne n'est pas classée comme coupable (classe 0), pour les raisons suivantes:
+
+Le nombre d'antécédents judiciaires n'est pas élevé (il se situe en dehors de la tranche de 3 à 36 antécédents). L'indicateur de score de risque se situe dans la tranche basse (entre 0 et 1). La personne n'a pas plus de quarante-cinq ans. Elle n'a pas non plus moins de vingt-cinq ans, ce qui indique qu'elle se situe dans une tranche d'âge intermédiaire. Enfin, la personne est identifiée comme afro-américaine.
+
+La combinaison de ces éléments, en particulier l'absence d'antécédents judiciaires importants, conduit le modèle à prédire l'absence de culpabilité.","1. The number of prior offenses is not between 3 and 36, which is true here, meaning this person does not have a high number of prior offenses.
+
+2. The score factor reading is between 0 and 1, which is true here.
+
+3. Being older than forty-five is between 0 and 1, which is true here, meaning this person is indeed older than forty-five.
+
+4. Being younger than twenty-five is between 0 and 1, which is true here, meaning this person is indeed younger than twenty-five.
+
+5. Being identified as African American is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6684
+compas,claude-sonnet-5,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.6,False,64.6,64.6,64.6,64.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[64.6, 64.6, 64.6, 64.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this individual is **not guilty** (class 0), based on two pieces of information:
+
+1. **Number of prior offenses**: This person's number of prior offenses does **not** fall in the range of 3 to 36. In other words, they have a low number of prior offenses (fewer than 3), which counts as a point in favor of predicting ""not guilty.""
+
+2. **Score factor**: This measurement falls between 0 and 1, meaning the condition **does hold**. This factor also supports the prediction of ""not guilty.""
+
+Together, the low number of prior offenses combined with the score factor being in its indicated range led the model to classify this individual as not guilty.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'appuie sur deux éléments concernant cette personne : son nombre d'antécédents n'atteint pas 3 (il se situe donc en dessous de ce seuil), et son facteur de score se situe entre 0 et 1. Ces deux caractéristiques, combinées, correspondent au profil des personnes que le modèle classe comme non coupables.","1. The number of prior offenses is between 3 and 36, which is false here, meaning this person has fewer than 3 prior offenses, and this pushed the prediction towards not guilty.
+
+2. The score factor reading is between 0 and 1, which is true here, and this pushed the prediction towards not guilty.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6662
+compas,claude-sonnet-5,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.1,False,66.1,66.1,71.0,66.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[66.1, 71.0, 66.1, 66.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted this person is **not guilty (class 0)**, based on two pieces of information:
+
+1. **Number of prior offenses**: This person's number of prior offenses does *not* fall in the range of 3 to 36. In other words, they have fewer than 3 prior offenses. Having a low number of prior offenses pushes the prediction toward ""not guilty.""
+
+2. **Score factor**: This person's score factor falls between 0 and 1, meaning this condition *does* hold. This also supports the ""not guilty"" prediction.
+
+Together, the low number of prior offenses and the qualifying score factor led the model to classify this individual as not guilty.","Le modèle prédit que cette personne n'est pas considérée comme récidiviste probable (classe 0).
+
+Cette prédiction s'explique par deux éléments :
+
+- Le nombre d'antécédents judiciaires de la personne n'est pas élevé : il se situe en dehors de la tranche de 3 à 36 antécédents, ce qui signifie qu'elle a moins de 3 antécédents.
+- Le facteur de score de risque est faible, situé entre 0 et 1.
+
+Ensemble, ces deux caractéristiques (peu ou pas d'antécédents judiciaires et un score de risque bas) conduisent le modèle à classer cette personne comme peu susceptible d'être coupable.","1. The number of prior offenses is between 3 and 36, which is not true here, meaning this person's number of prior offenses falls below that range.
+
+2. The score factor reading is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6752
+compas,claude-sonnet-5,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.7,False,75.7,71.9,75.7,75.7,False,False,False,5,1,5,0,0,4,0,0,0,0,0,3,"[75.7, 75.7, 61.0, 71.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person will not be classified as guilty, based on a rule that checks five pieces of information.
+
+Here is why each one matters:
+
+- Number of prior offenses: for this person, the number of priors is NOT between 3 and 35. In other words, they do not fall into the higher range of prior offenses, which supports predicting ""not guilty.""
+
+- Score factor: this measurement falls between 0 and 1, meaning the condition holds for this person, which also supports the prediction.
+
+- Being older than forty-five: this condition holds for this person — they are above forty-five — and this supports the ""not guilty"" prediction.
+
+- Being younger than twenty-five: this condition also holds for this person, meaning they fall in the lower age range, and this too supports the prediction.
+
+- Being African American: this condition holds for this person as well, and it is included as one of the factors supporting the prediction.
+
+Because all five of these conditions matched exactly what the rule requires (a low number of prior offenses, the score factor being in its stated range, being above forty-five, being below twenty-five, and being African American), the rule and the model agree in predicting that this person is not guilty.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'explique par plusieurs éléments observés chez cette personne : elle a moins de 3 antécédents judiciaires, son score de risque est faible (dans la catégorie inférieure), elle n'a pas plus de quarante-cinq ans, et elle n'a pas moins de vingt-cinq ans (donc elle se situe dans une tranche d'âge intermédiaire). La combinaison de ces facteurs - peu d'antécédents, score de risque faible, et âge se situant entre vingt-cinq et quarante-cinq ans - conduit le modèle à classer cette personne dans la catégorie non coupable.","1. The number of prior offenses is not between 3 and 36, which is true here, meaning this person does not have a high number of prior offenses, and this pushed the prediction towards not guilty.
+
+2. The score factor reading is between 0 and 1, which is true here, and this supported the prediction of not guilty.
+
+3. Being older than forty-five is between 0 and 1, which is true here, meaning this person is indeed older than forty-five, and this pushed the prediction towards not guilty.
+
+4. Being younger than twenty-five is between 0 and 1, which is true here, meaning this person is indeed younger than twenty-five, and this pushed against the prediction of not guilty, but was outweighed by the other factors.
+
+5. Being African American is between 0 and 1, which is true here, meaning this factor was present in this case, and it pushed against the prediction of not guilty, but was outweighed by the other factors.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",[2],"[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6624
+compas,claude-sonnet-5,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.1,False,72.1,62.5,72.1,72.1,False,False,False,5,2,5,0,0,3,0,0,0,0,0,3,"[72.1, 62.5, 56.4, 62.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person would not be classified as likely to reoffend (class 0), based on the following pattern found in the data:
+
+- Number of prior offenses: this person does NOT have between 3 and 36 prior offenses (this condition does not hold, meaning their prior offense count is low).
+- Score factor: this measurement falls between 0 and 1, so this condition holds.
+- Age over forty-five: this condition holds, indicating something about the age grouping used by the model applies here.
+- Age under twenty-five: this condition also holds.
+- Race (African American): this condition holds as well.
+
+The key reason for the prediction seems to be the low number of prior offenses. Because this person does not fall into the higher range of prior offenses (3 or more), the model leans toward predicting they are not likely to reoffend. The other measurements — the score factor, the two age-related indicators, and the race indicator — all matched the pattern the model associates with this outcome, reinforcing the same prediction rather than pointing in a different direction.
+
+In short, the combination of having few or no prior offenses, along with the specific combination of age-related and score-related readings all being present, led the model to predict class 0, meaning this person was not classified as likely to reoffend.","Le modèle prédit que cet individu n'est pas jugé coupable.
+
+Cette prédiction s'explique par plusieurs éléments : le nombre d'antécédents judiciaires est inférieur à 3, ce qui ne correspond pas à un profil à risque élevé. Le facteur de score se situe dans une tranche basse (entre 0 et 1). De plus, la personne n'a pas plus de quarante-cinq ans et n'a pas non plus moins de vingt-cinq ans, ce qui suggère qu'elle se situe dans une tranche d'âge intermédiaire. L'ensemble de ces caractéristiques, combinées, conduit le modèle à prédire l'absence de culpabilité.","1. The number of prior offenses is not between 3 and 36, which is true here, and this pushed the prediction towards not being classified as guilty.
+2. The score factor measurement is between 0 and 1, which is true here, and this pushed the prediction towards not being classified as guilty.
+3. The indicator for being older than forty-five is between 0 and 1, which is true here, meaning this person is older than forty-five, and this pushed the prediction towards not being classified as guilty.
+4. The indicator for being younger than twenty-five is between 0 and 1, which is true here, meaning this person is younger than twenty-five, and this pushed the prediction towards being classified as guilty, but it was outweighed by the other factors.
+5. The indicator for being African American is between 0 and 1, which is true here, meaning this person is African American, and this pushed the prediction towards being classified as guilty, but it was outweighed by the other factors.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646
+compas,claude-sonnet-5,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,68.2,False,68.2,68.2,72.8,68.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[68.2, 68.2, 72.8, 68.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not classified as guilty (class 0), based on two pieces of information:
+
+1. **Number of prior offenses**: This person's number of prior offenses does NOT fall in the range of 3 to 36. In other words, they have fewer than 3 prior offenses, which is a strong indicator working against a ""guilty"" prediction.
+
+2. **Score factor**: This person's score factor falls between 0 and 1, meaning this condition does hold. This measurement supports the model's decision as well.
+
+Because the number of prior offenses is low (not in the 3-to-36 range) and the score factor falls within the 0-to-1 range, the model predicted that this individual is not guilty.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'appuie sur deux éléments : le nombre d'antécédents judiciaires de la personne n'est pas situé entre 3 et 36, et son facteur de score se situe entre 0 et 1. Ensemble, ces deux caractéristiques ont conduit le modèle à conclure à la non-culpabilité.","1. The number of prior offenses is between 3 and 36, which is false here, meaning this person's number of prior offenses does not fall in that higher range.
+
+2. The score factor reading is between 0 and 1, which is true here, supporting the prediction that this person is not classified as guilty.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6584
+compas,claude-sonnet-5,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,65.6,False,65.6,65.6,65.6,65.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[65.6, 65.6, 65.6, 65.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person would **not** be classified as guilty (class 0), based on two pieces of information:
+
+1. **Number of prior offenses**: This person's number of prior offenses does *not* fall between 3 and 36. In other words, they have fewer than 3 prior offenses (a relatively low count).
+
+2. **Score factor**: This measurement falls between 0 and 1, meaning the condition for this factor is met.
+
+Taken together, having a low number of prior offenses (below the 3-to-36 range) combined with this score factor being in the 0-to-1 range led the model to predict the non-guilty outcome. The low prior-offense count in particular works against a guilty prediction, since a high number of priors would typically push the model toward predicting guilt.","Le modèle prédit que cette personne n'est pas classée comme coupable (classe 0).
+
+Cette prédiction s'explique par deux éléments concernant son profil : d'une part, son nombre d'antécédents judiciaires n'est pas élevé (il ne se situe pas entre 3 et 36), et d'autre part, son facteur de score se situe dans la tranche basse, entre 0 et 1.
+
+La combinaison de ces deux caractéristiques - peu d'antécédents et un score faible - conduit le modèle à conclure que cette personne présente un profil associé à une non-culpabilité.","1. The number of prior offenses is between 3 and 36, which is false here, since this person has fewer than 3 prior offenses.
+2. The score factor reading is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.658
+compas,claude-sonnet-5,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,73.2,False,73.2,70.8,73.2,73.2,False,False,False,5,1,5,0,0,4,0,0,0,0,0,3,"[73.2, 70.8, 64.4, 70.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person would not be classified as guilty. Here's why, based on the rule it learned:
+
+- Number of prior offenses: this person does NOT have between 3 and 36 prior offenses (this condition does not hold, meaning their prior count is lower).
+- Score factor: this measurement falls between 0 and 1, meaning the condition holds.
+- Age above forty-five: this condition holds, indicating the age falls in the range associated with being over forty-five.
+- Age below twenty-five: this condition also holds, indicating the age falls in the range associated with being under twenty-five.
+- Being identified as African American: this condition holds as well.
+
+Taken together, the key factor pushing the prediction toward ""not guilty"" is the low number of prior offenses (fewer than 3, since the rule requires 3 or more for the opposite outcome). The other measurements — the score factor, the two age-related readings, and the racial identification — all matched the pattern the model associates with this prediction, reinforcing the same outcome rather than working against it.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'explique par plusieurs éléments observés chez cette personne : elle n'a pas de casier judiciaire chargé (moins de 3 antécédents), son score de risque est faible, elle n'a pas plus de 45 ans, et elle n'a pas moins de 25 ans. Cette combinaison de facteurs, associée à l'absence d'antécédents significatifs, conduit le modèle à classer cette personne dans la catégorie non coupable.","1. The number of prior offenses is not between 3 and 36, meaning this person does not have a high number of prior offenses, which is true here.
+
+2. The score factor measurement is between 0 and 1, which is true here.
+
+3. The indicator for being older than forty-five is between 0 and 1, which is true here.
+
+4. The indicator for being younger than twenty-five is between 0 and 1, which is true here.
+
+5. The indicator for being African American is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",[2],"[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.658
+compas,claude-sonnet-5,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,71.8,False,71.8,70.2,71.8,59.1,False,False,False,5,1,3,0,0,4,0,2,0,0,2,3,"[71.8, 63.0, 59.1, 70.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person would not be classified as likely to reoffend, based on the following combination of factors:
+
+- Number of prior offenses: this person does NOT fall into the range of 3 to 36 prior offenses. In other words, they have fewer than 3 prior offenses, which pushes the prediction toward ""not guilty/low risk.""
+
+- Risk score factor: this measurement falls in the range of 0 to 1, meaning the underlying risk score assessment is low, which also supports a ""not guilty/low risk"" prediction.
+
+- Age over forty-five: this condition holds, meaning the person is over forty-five years old.
+
+- Age under twenty-five: this condition also holds, meaning the person is under twenty-five years old. (Note: these two age-related conditions being listed together reflects how the rule is defined based on the data provided, even though they might seem contradictory at first glance.)
+
+- Race (African American): this condition holds, meaning the person is identified as African American in the data.
+
+Taken together, the combination of having very few or no prior offenses, a low risk score, and the specific age-related indicators matching the pattern the model learned, led to a prediction of class 0 — meaning the model does not predict this person as likely to be classified as ""guilty"" or high-risk under this rule.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'appuie sur plusieurs éléments : le nombre d'antécédents judiciaires n'est pas élevé (il ne se situe pas entre 3 et 36), le facteur de risque évalué est faible (entre 0 et 1), la personne n'a pas plus de quarante-cinq ans, et elle n'a pas moins de vingt-cinq ans non plus. Ces caractéristiques, combinées, correspondent à un profil pour lequel le modèle prédit l'absence de culpabilité.","1. The number of prior offenses is not between 3 and 36, which is true here, meaning this person does not have a high number of prior offenses.
+2. The score factor reading falls between 0 and 1, which is true here.
+3. The measure of being older than forty-five falls between 0 and 1, which is true here, meaning this person is not older than forty-five.
+4. The measure of being younger than twenty-five falls between 0 and 1, which is true here, meaning this person is not younger than twenty-five.
+5. The indicator for being African American falls between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",[2],"[2, 3, 6]",0.0,OPTIMAL,cop@5,0.6592
+compas,claude-sonnet-5,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.0,False,66.0,66.0,66.0,66.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[66.0, 66.0, 66.0, 66.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this individual is **not guilty** (class 0), based on two pieces of information:
+
+1. **Number of prior offenses**: The rule looks at whether someone has between 3 and 35 prior offenses. In this case, that condition does **not** hold — meaning the person does **not** fall into that higher range of prior offenses.
+
+2. **Score factor**: This measurement falls between 0 and 1, and that condition **does** hold for this individual.
+
+Together, having a lower number of prior offenses (outside the 3-35 range) combined with a score factor in the 0 to 1 range led the model to predict that this person is not guilty.","Le modèle prédit que cette personne n'est pas considérée comme coupable (classe 0).
+
+Cette prédiction s'explique par deux éléments : le nombre d'antécédents judiciaires de la personne n'est pas situé entre 3 et 36, ce qui signifie qu'elle a un nombre d'antécédents relativement faible ; par ailleurs, son facteur de score se situe entre 0 et 1, ce qui correspond à un niveau de risque évalué comme bas.
+
+C'est la combinaison de ce faible nombre d'antécédents et de ce score bas qui conduit le modèle à conclure à la non-culpabilité.","1. The number of prior offenses is between 3 and 36, which is false here, meaning this person's number of prior offenses falls outside that higher range, supporting the prediction of not guilty.
+
+2. The score factor reading is between 0 and 1, which is true here, supporting the prediction of not guilty.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.66

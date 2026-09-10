@@ -1,0 +1,24 @@
+Full console log -> research/results/logs/heart_nn_20260905_062459_10972.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[heart/sonnet5] 90 rows, 90 to redo, model=claude-sonnet-5 provider=anthropic
+  inst    3 cop      v5= 89.10 (was 89.1) om=0 rounds=0
+  inst    3 cop_k    v5= 88.30 (was 88.3) om=0 rounds=0
+  inst    3 lmpaxp   v5= 99.20 (was 99.2) om=0 rounds=0
+  inst    3 anchors  v5= 64.40 (was 64.4) om=1 rounds=3
+  inst    3 shap     v5= 97.30 (was 97.3) om=0 rounds=1
+  inst    3 lime     v5= 91.00 (was 91.0) om=0 rounds=1
+  inst   11 cop      v5= 89.40 (was 89.4) om=0 rounds=0
+  inst   11 cop_k    v5= 88.10 (was 88.1) om=0 rounds=0
+  inst   11 lmpaxp   v5= 98.90 (was 98.9) om=0 rounds=0
+  inst   11 anchors  v5= 86.20 (was 62.1) om=0 rounds=0
+  inst   11 shap     v5= 99.40 (was 69.4) om=0 rounds=2
+  inst   11 lime     v5= 96.70 (was 96.7) om=0 rounds=0
+  inst   13 cop      v5= 57.90 (was 57.9) om=0 rounds=0
+  inst   13 cop_k    v5= 71.00 (was 64.5) om=0 rounds=0
+  inst   13 lmpaxp   v5= 94.40 (was 94.4) om=0 rounds=0
+  inst   13 anchors  v5= 69.30 (was 71.7) om=1 rounds=3
+  inst   13 shap     v5= 35.30 (was 34.5) om=5 rounds=3
+  inst   13 lime     v5=  1.50 (was 12.4) om=0 rounds=0
+  inst   14 cop      v5= 59.50 (was 59.5) om=0 rounds=0
+  inst   14 cop_k    v5= 86.20 (was 76.9) om=0 rounds=0
+  inst   14 lmpaxp   v5= 94.70 (was 92.6) om=0 rounds=0

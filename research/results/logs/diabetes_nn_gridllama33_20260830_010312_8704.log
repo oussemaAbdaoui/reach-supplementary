@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/diabetes_nn_gridllama33_20260830_010312_8704.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+resume: 15 instances already done (15 rows) -> 0 to go
+
+saved -> research/results/diabetes_nn_comparison_cop_best_gridllama33.csv
+
+=== per-arm means ===

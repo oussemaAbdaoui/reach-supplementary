@@ -1,0 +1,153 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+heart,zai-org/GLM-5.2,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because of two factors. First, the patient's sex falls in the range from 0 up to 1. Second, the follow-up time falls in the range from 4 up to 67. Additionally, the follow-up time does not fall in the range from 67 up to 172, and it does not fall in the range from 172 up to 285.","Le modèle prédit que le patient est décédé. Cette prédiction repose sur les conditions suivantes : le patient appartient au sexe 0, la durée de suivi se situe entre 4 et 67 jours, la durée de suivi n'est pas comprise entre 67 et 172 jours, et la durée de suivi n'est pas comprise entre 172 et 285 jours.","1. The sex reading is between 0 and 1, which is true here.
+2. The time reading is between 4 and 67, which is true here.
+3. The time reading is between 67 and 172, which is not true here.
+4. The time reading is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501
+heart,zai-org/GLM-5.2,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,83.1,57.4,83.1,86.2,False,False,False,10,6,12,2,0,6,0,0,0,2,0,3,"[83.1, 46.1, 41.3, 57.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that the patient would not survive because the patient's profile matches a rule associated with a fatal outcome. The rule checks for specific medical measurements, and the patient fits the required conditions for several of them.
+
+The patient has anemia and diabetes, but does not have high blood pressure. The patient is female and is not a smoker. The patient's platelets level is between 47,000 and 225,000.
+
+The rule also includes several conditions that the patient does not meet. The patient's creatinine phosphokinase is not between 23 and 157. The ejection fraction is not between 30 and 40. The platelets level is not between 225,000 and 273,000, and it is also not between 273,000 and 742,000. The serum creatinine is not between 0.5 and 1. Finally, the serum sodium is not between 135 and 138.","Le modèle prédit le décès du patient en se basant sur les éléments suivants : le patient est anémique, diabétique, de sexe féminin, non fumeur et ne souffre pas d'hypertension. Son taux de plaquettes est bas, compris entre 47000 et 225000. De plus, son taux de créatine phosphokinase n'est pas bas, sa fraction d'éjection n'est pas modérée, son taux de créatine sérique n'est pas bas et son taux de sodium sérique n'est pas modéré.","1. The anaemia reading is between 0 and 1, which is true here.
+2. The creatinine phosphokinase reading is between 23 and 157, which is not true here.
+3. The diabetes reading is between 0 and 1, which is true here.
+4. The ejection fraction reading is between 30 and 40, which is not true here.
+5. The high blood pressure reading is between 0 and 1, which is true here.
+6. The platelets reading is between 47,000 and 225,000, which is true here.
+7. The platelets reading is between 225,000 and 273,000, which is not true here.
+8. The platelets reading is between 273,000 and 742,000, which is not true here.
+9. The serum creatinine reading is between 0.5 and 1, which is not true here.
+10. The serum sodium reading is between 135 and 138, which is not true here.
+11. The sex reading is between 0 and 1, which is true here.
+12. The smoking reading is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 < 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 12, 13, 14, 15, 19, 21]","[3, 7, 9, 12, 19, 21]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483
+heart,zai-org/GLM-5.2,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,88.3,88.3,88.3,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.3, 88.3, 88.3, 88.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived. This prediction is based on a rule that looks at four medical measurements. First, the ejection fraction reading is between 15 and 30, but this condition does not hold for the patient. Second, the patient has high blood pressure, and this condition holds. Third, the patient's sex is recorded in a range from 0 to 1, and this condition holds. Fourth, the follow-up time is between 4 and 67, but this condition does not hold for the patient.","Le modèle prédit que le patient survivra. Cette prédiction s'explique par les éléments suivants : la fraction d'éjection du patient n'est pas comprise entre 15 et 30, le patient souffre d'hypertension artérielle, le patient est de sexe masculin et la durée de la période de suivi n'est pas comprise entre 4 et 67.","1. The ejection fraction reading is between 15 and 30, which is not true here.
+2. The high blood pressure reading is between 0 and 1, which is true here.
+3. The sex reading is between 0 and 1, which is true here.
+4. The time reading is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519
+heart,zai-org/GLM-5.2,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[87.1, 87.1, 58.9, 87.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived. This prediction is based on three measurements. First, the ejection fraction reading is between 15 and 30, but this condition does not hold for the patient. Second, the smoking reading is between 0 and 1, and this condition holds. Third, the time reading is between 4 and 67, but this condition does not hold.","Le modèle prédit que le patient a survécu. Cette prédiction s'appuie sur les éléments suivants : la fraction d'éjection du patient n'est pas comprise entre 15 et 30, le patient est fumeur, et la durée de suivi du patient n'est pas comprise entre 4 et 67.","1. The ejection fraction reading is between 15 and 30, which is not true here.
+2. The smoking reading is between 0 and 1, which is true here.
+3. The time reading is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166
+heart,zai-org/GLM-5.2,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,47.7,70.0,70.0,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[70.0, 47.7, 70.0, 47.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that the patient died because the following conditions were all met: the patient has high blood pressure, the patient is male, the patient is a smoker, and the follow-up time is between 4 and 67.","Le modèle prédit le décès du patient pour les raisons suivantes. Le patient a une tension artérielle élevée. Le patient est de sexe masculin. Le patient est fumeur. Le suivi médical du patient a été court, s'inscrivant dans une période allant de 4 à 67 jours.","1. The high blood pressure indicator is between 0 and 1, which is true here.
+2. The sex indicator is between 0 and 1, which is true here.
+3. The smoking indicator is between 0 and 1, which is true here.
+4. The follow-up time is between 4 and 67, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956
+heart,zai-org/GLM-5.2,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,85.7,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 52.5, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived. This prediction is based on a rule that checks six medical factors. The patient matches four of these factors: they have diabetes, high blood pressure, are male, and are a smoker. However, the patient does not match the other two factors in the rule. Their ejection fraction, which measures the heart's pumping ability, is not between 15 and 30. Additionally, their follow-up time is not between 4 and 67 days.","Le modèle prédit que le patient a survécu. Cette prédiction s'explique par les caractéristiques suivantes : le patient est diabétique, a une pression artérielle élevée, est de sexe masculin et fume. De plus, la fraction d'éjection du patient se situe en dehors de la plage de 15 à 30, et la période de suivi se situe en dehors de la plage de 4 à 67.","1. The diabetes indicator is between 0 and 1, which is true here.
+2. The ejection fraction reading is between 15 and 30, which is not true here.
+3. The high blood pressure indicator is between 0 and 1, which is true here.
+4. The sex indicator is between 0 and 1, which is true here.
+5. The smoking indicator is between 0 and 1, which is true here.
+6. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514
+heart,zai-org/GLM-5.2,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[89.7, 58.9, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived. This prediction is based on three measurements. First, the ejection fraction reading is between 15 and 30, which does not hold for this patient. Second, the sex reading is between 0 and 1, which holds for this patient. Third, the time reading is between 4 and 67, which does not hold for this patient.","Le modèle prédit que le patient a survécu. Cette prédiction s'appuie sur trois critères. Premièrement, la fraction d'éjection (la capacité de pompage du cœur) se situe dans une plage basse, entre 15 et 30, ce qui ne s'applique pas à ce patient. Deuxièmement, le sexe du patient correspond à la catégorie 0, ce qui s'applique ici. Troisièmement, la durée de suivi médical se situe entre 4 et 67, ce qui ne s'applique pas non plus à ce patient.","1. The ejection fraction reading is between 15 and 30, which is not true for this case.
+2. The sex reading is between 0 and 1, which is true here.
+3. The time reading is between 4 and 67, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148
+heart,zai-org/GLM-5.2,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,86.2,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[85.7, 86.2, 64.6, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle a prédit le décès du patient pour les raisons suivantes. Le patient a une pression artérielle élevée, avec une valeur comprise entre 0 et 1. Le patient appartient au sexe masculin, avec une valeur comprise entre 0 et 1. La durée de suivi du patient est comprise entre 4 et 67. Enfin, la durée de suivi du patient n'est pas comprise entre 172 et 285.","Le modèle prédite le décès car le patient a une tension artérielle élevée, est de sexe masculin, et son suivi a duré entre 4 et 67 jours. De plus, son suivi n'a pas duré entre 172 et 285 jours.","1. The high blood pressure indicator is between 0 and 1, which is true here.
+2. The sex indicator is between 0 and 1, which is true here.
+3. The follow-up time is between 4 and 67, which is true here.
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882
+heart,zai-org/GLM-5.2,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,67.2,49.1,71.0,71.0,False,False,False,7,5,9,2,0,4,0,0,0,2,0,3,"[67.2, 50.4, 71.0, 49.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted death for this patient based on the following medical profile. The patient has anaemia, diabetes, and high blood pressure. The patient's serum creatinine level is between 1.3 and 9. The patient's sex is recorded as 0. The patient does not smoke. The patient's creatinine phosphokinase level is not between 23 and 157. Additionally, the patient's serum creatinine level is neither between 0.5 and 1 nor between 1 and 1.3.","Le modèle prédit le décès du patient car il présente plusieurs facteurs de risque combinés. Le patient souffre d'anémie, de diabète et d'hypertension. Son taux de créatine phosphokinase se situe entre 23 et 157, et son taux de créatine sérique est élevé, compris entre 1,3 et 9. De plus, le patient est de sexe féminin et ne fume pas.","1. The anaemia reading is between 0 and 1, which is true here.
+2. The creatinine phosphokinase reading is between 23 and 157, which is not true here.
+3. The diabetes reading is between 0 and 1, which is true here.
+4. The high blood pressure reading is between 0 and 1, which is true here.
+5. The serum creatinine reading is between 0.5 and 1, which is not true here.
+6. The serum creatinine reading is between 1 and 1.3, which is not true here.
+7. The serum creatinine reading is between 1.3 and 9, which is true here.
+8. The sex reading is between 0 and 1, which is true here.
+9. The smoking reading is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 < 0.5', 'smoking_b0 < 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17]","[3, 7, 11, 17, 21]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872
+heart,zai-org/GLM-5.2,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,56.7,88.4,88.4,False,False,False,4,2,4,0,0,2,0,0,0,0,0,3,"[88.4, 88.4, 88.4, 56.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived. The explanation rule considers four measurements. The ejection fraction reading is between 15 and 30, but this condition does not hold for the patient. The high blood pressure reading is between 0 and 1, and this condition holds. The sex reading is between 0 and 1, and this condition holds. The time reading is between 4 and 67, but this condition does not hold for the patient.","Le modèle prédit que le patient survivra. Cette décision s'appuie sur les critères suivants : la fraction d'éjection est comprise entre 15 et 30, la pression artérielle élevée se situe dans la plage de 0 à 1, le sexe est dans la plage de 0 à 1, et la durée de suivi est comprise entre 4 et 67.","1. The ejection fraction reading is between 15 and 30, which is not true for this case.
+2. The high blood pressure reading is between 0 and 1, which is true here.
+3. The sex reading is between 0 and 1, which is true here.
+4. The follow-up time reading is between 4 and 67, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[11, 21]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994
+heart,zai-org/GLM-5.2,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,89.7,89.7,89.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle a prédit le décès du patient pour les raisons suivantes. Premièrement, le patient est de sexe féminin. Deuxièmement, le patient est fumeur. Troisièmement, la durée de suivi médical du patient se situe entre 4 et 67. Enfin, la durée de suivi médical ne se situe pas entre 172 et 285. La combinaison de ces éléments a conduit le modèle à prédire le décès.","Le modèle prédit le décès du patient car les conditions suivantes sont réunies : le patient est de sexe masculin, il est fumeur, et sa période de suivi médicale se situe entre 4 et 67 jours. Bien que la période de suivi ne se situe pas entre 172 et 285 jours, la règle globale est respectée et indique un risque de mortalité.","1. The patient's sex being male is between 0 and 1, which is true here.
+2. The patient's smoking status being a smoker is between 0 and 1, which is true here.
+3. The follow-up time is between 4 and 67, which is true here.
+4. The follow-up time is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934
+heart,zai-org/GLM-5.2,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,64.1,93.4,93.4,False,False,False,4,2,4,0,0,2,0,0,0,0,0,3,"[93.4, 64.1, 93.4, 64.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted death for this patient based on two factors. First, the patient has high blood pressure. Second, the follow-up time is between 4 and 67 days. Additionally, the follow-up time is not between 67 and 172 days, and it is also not between 172 and 285 days.",Le modèle prédit que le patient est décédé car il souffre d'hypertension artérielle et sa période de suivi est comprise entre 4 et 67 jours.,"1. The high blood pressure indicator is between 0 and 1, which is true here.
+2. The follow-up time is between 4 and 67, which is true here.
+3. The follow-up time is between 67 and 172, which is not true here.
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858
+heart,zai-org/GLM-5.2,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[88.1, 65.4, 88.1, 88.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient survived. This decision was based on five health measurements. The patient has diabetes, high blood pressure, and is male. The model also checked the patient's ejection fraction, which is expected to be between 15 and 30, but this condition does not hold for the patient. Finally, the model checked the follow-up time, which is expected to be between 4 and 67, but this condition also does not hold.","Le modèle prédit que le patient survit. Cette prédiction s'explique par les conditions suivantes : le patient est diabétique, a une fraction d'éjection (la capacité du cœur à pomper le sang) de 15 à moins de 30 pour cent, souffre d'hypertension, est de sexe masculin et a été suivi pendant une période de 4 à moins de 67 jours. Bien que le patient corresponde au profil concernant le diabète, l'hypertension et le sexe, il ne correspond pas aux critères liés à la fraction d'éjection et à la durée de suivi, ce qui explique la prédiction de survie.","1. The diabetes reading is between 0 and 1, which is true here.
+2. The ejection fraction reading is between 15 and 30, which is not true here.
+3. The high blood pressure reading is between 0 and 1, which is true here.
+4. The sex reading is between 0 and 1, which is true here.
+5. The follow-up time reading is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148
+heart,zai-org/GLM-5.2,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,67.8,87.5,87.5,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[87.5, 67.8, 87.5, 67.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient would die because the patient is female, the patient is a smoker, the follow-up time is between 4 and 67, and the follow-up time is not between 172 and 285.","Le modèle prédit le décès du patient car les conditions suivantes sont réunies : le patient est de sexe masculin, il est fumeur, et la durée de suivi médical est comprise entre 4 et 67 jours.","1. The patient's sex being male is in the range from 0 up to (but not including) 1, which is true here.
+2. The patient's smoking status being a smoker is in the range from 0 up to (but not including) 1, which is true here.
+3. The follow-up time is between 4 and 67 days, which is true here.
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894
+heart,zai-org/GLM-5.2,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,71.2,90.2,90.2,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[90.2, 71.2, 90.2, 71.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because the following conditions were met: the patient has high blood pressure, the patient is a smoker, and the follow-up time is between 4 and 67 days. The model also checked whether the follow-up time was between 172 and 285 days, but this condition does not hold.","Le modèle prédit le décès du patient car les conditions suivantes sont réunies : le patient souffre d'hypertension artérielle, est fumeur, et la durée de son suivi médical se situe entre 4 et 67 jours.","1. The high blood pressure indicator is between 0 and 1, which is true here.
+2. The smoking indicator is between 0 and 1, which is true here.
+3. The follow-up time is between 4 and 67, which is true here.
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724

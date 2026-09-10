@@ -1,0 +1,2 @@
+Full console log -> research/results/logs/diabetes_nn_20260905_060656_7908.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767

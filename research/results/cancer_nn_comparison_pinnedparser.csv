@@ -1,0 +1,136 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,58.1,False,58.1,58.1,58.1,58.1,False,False,False,7,7,7,0,0,0,0,0,0,0,0,3,"[58.1, 58.1, 58.1, 58.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concave_points_mean_b2 = 0  (concave_points_mean in [0.07507, 0.1913) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","The model predicted that the cancer is benign. One reason for this prediction is that the concavity of the worst area is between 0 and 0.189, which agrees with the rule learned by the model. However, other factors such as smoothness, concave points, symmetry, texture, and area do not meet the conditions set by the rule, and the fractal dimension also does not meet its condition. Despite these, the model still predicted the cancer to be benign, suggesting that the combination of these factors, particularly the concavity of the worst area, leaned towards a benign diagnosis.","The model predicts that the cancer is benign. This prediction is based on several factors, including the fact that the tumor's concavity is within a certain range, which is associated with benign tumors. Additionally, the model considers the smoothness, which is not within a specific range that would suggest malignancy, the number of concave points, which is also not within a range that would indicate a malignant tumor, the symmetry, which does not fall within a specific range that would suggest malignancy, the texture, which is not within a range that would indicate a malignant tumor, the area, which is not within a range that would suggest malignancy, and the fractal dimension, which does not fall within a specific range that would indicate a malignant tumor. 
+
+In simpler terms, the model looks at how smooth the tumor is, with smoothness being between 0.1034 and 0.1634, how many concave points it has, with the number of concave points being between 0.07507 and 0.1913, how symmetrical it is, with symmetry being between 0.007882 and 0.01623, the texture of the tumor, with the texture being between 29.02 and 47.16, the area of the tumor, with the area being between 185.2 and 622.9, and the fractal dimension, with the fractal dimension being between 0.07587 and 0.08999. However, the only condition that holds true for this specific instance is the concavity, which is within the range of 0 to 0.189.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true here.
+2. The average number of concave points is between 0.07507 and 0.1913, which is not true here.
+3. The standard error of the symmetry measurement is between 0.007882 and 0.01623, which is not true here.
+4. The worst texture reading is between 29.02 and 47.16, which is not true here.
+5. The worst area reading is between 185.2 and 622.9, which is not true here.
+6. The worst concavity reading is between 0 and 0.189, which is true here and pushed the prediction towards this class.
+7. The worst fractal dimension reading is between 0.07587 and 0.08999, which is not true here.","['concavity_worst_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concave_points_mean_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['smoothness_mean_b2 < 0.5', 'concave_points_mean_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'concavity_worst_b0 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 23, 54, 65, 69, 78, 88]","[14, 23, 54, 65, 69, 78, 88]","[14, 23, 54, 65, 69, 78, 88]","[14, 23, 54, 65, 69, 78, 88]",0.3926,FEASIBLE,cop,0.405,,
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,15,98.0,True,70.0,97.9,97.9,98.0,False,True,True,6,14,15,9,0,1,0,0,0,0,0,3,"[70.0, 97.9, 72.8, 97.9]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  concave_points_mean_b2 = 0  (concave_points_mean in [0.07507, 0.1913) — does NOT hold)
+  texture_worst_b0 = 1  (texture_worst in [12.02, 23.31) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  smoothness_worst_b0 = 1  (smoothness_worst in [0.07117, 0.1247) — holds)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  compactness_worst_b0 = 1  (compactness_worst in [0.02729, 0.1924) — holds)
+  compactness_worst_b1 = 0  (compactness_worst in [0.1924, 0.3309) — does NOT hold)
+  compactness_worst_b2 = 0  (compactness_worst in [0.3309, 0.9379) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b1 = 0  (concavity_worst in [0.189, 0.3744) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b0 = 1  (concave_points_worst in [0, 0.086) — holds)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)","The model predicted that the cancer is benign because of several factors. The average concavity measurement is low, between 0 and 0.05063, which supports this prediction. Additionally, the worst texture reading is between 12.02 and 23.31, the worst smoothness reading is between 0.07117 and 0.1247, and the worst compactness reading is between 0.02729 and 0.1924, all of which contribute to the prediction. The worst concavity measurement is also low, between 0 and 0.189, and the worst concave points measurement is between 0 and 0.086, further supporting the prediction that the cancer is benign. Other measurements, such as the average concave points and some other worst readings, do not support this prediction, but the ones mentioned above were enough to make the model predict that the cancer is benign.","The model predicted that the cancer is benign. To understand why, let's look at some key measurements. 
+
+The average concavity, which is a measure of how much a tumor is indented, is low, between 0 and 0.05063. The texture of the tumor at its worst point is moderate, between 12.02 and 23.31. The smoothness of the tumor at its worst point is relatively low, between 0.07117 and 0.1247. The compactness of the tumor at its worst point is relatively low, between 0.02729 and 0.1924. The worst concavity, which is how indented the tumor is at its most indented point, is low, between 0 and 0.189. The number of concave points at the worst point is low, between 0 and 0.086.
+
+Additionally, the model considered that the average concavity is not high, specifically not between 0.1235 and 0.4264. The average number of concave points is not between 0.07507 and 0.1913. The texture at its worst point is not very high, not between 29.02 and 47.16. The smoothness at its worst point is not high, not between 0.1417 and 0.2184. The compactness at its worst point is not moderate to high, not between 0.3309 and 0.9379. The worst concavity is not moderate, not between 0.189 and 0.3744, and not high, not between 0.3744 and 1.17. The number of concave points at the worst point is not moderate to high, not between 0.1625 and 0.291. 
+
+These conditions together support the prediction that the cancer is benign.","1. The average concavity measurement is between 0 and 0.05063, which is true here.
+2. The average concavity measurement is not between 0.1235 and 0.4264, which is also true for this case.
+3. The average number of concave points is not between 0.07507 and 0.1913, which is true here.
+4. The worst texture reading is between 12.02 and 23.31, which is true here.
+5. The worst texture reading is not between 29.02 and 47.16, which is also true for this case.
+6. The worst smoothness reading is between 0.07117 and 0.1247, which is true here.
+7. The worst smoothness reading is not between 0.1417 and 0.2184, which is also true for this case.
+8. The worst compactness reading is between 0.02729 and 0.1924, which is true here.
+9. The worst compactness reading is not between 0.1924 and 0.3309, which is also true for this case.
+10. The worst compactness reading is not between 0.3309 and 0.9379, which is true here.
+11. The worst concavity reading is between 0 and 0.189, which is true here.
+12. The worst concavity reading is not between 0.189 and 0.3744, which is also true for this case.
+13. The worst concavity reading is not between 0.3744 and 1.17, which is true here.
+14. The worst number of concave points is between 0 and 0.086, which is true here.
+15. The worst number of concave points is not between 0.1625 and 0.291, which is also true for this case.","['concavity_mean_b0 > 0.5', 'texture_worst_b0 > 0.5', 'smoothness_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5']","['concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'concave_points_mean_b2 < 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'smoothness_worst_b0 > 0.5', 'smoothness_worst_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'compactness_worst_b1 < 0.5', 'compactness_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b1 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b0 > 0.5', 'concave_points_worst_b2 < 0.5']","[18, 20, 23, 63, 65, 72, 74, 75, 76, 77, 78, 79, 80, 81, 83]","[18, 63, 72, 75, 78, 81]","[18, 20, 23, 63, 65, 72, 74, 75, 77, 78, 79, 80, 81, 83]","[18, 20, 23, 63, 65, 72, 74, 75, 76, 77, 78, 79, 80, 81, 83]",,,,,0.9786324786324786,
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,47.6,False,47.6,31.9,47.6,47.6,False,False,False,2,0,2,0,0,2,0,0,0,0,0,3,"[47.6, 31.9, 47.6, 31.9]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF texture_worst_b0 = 1 AND concavity_worst_b0 = 1 THEN class 1","The model predicted that the cancer is benign because the worst texture reading and the worst concavity reading both had values that led to this prediction. Specifically, the worst texture and the worst concavity both had values that, when combined, indicated a benign cancer. This combination of factors made the model confident that the cancer is not malignant.","The model is trying to determine if a cancer diagnosis is malignant or benign. It looks at two main factors: the texture and concavity of the tumor. If the texture is at its worst and the concavity is also at its worst, then the model predicts the cancer is benign.","1. The model's objective is to predict whether a diagnosed cancer is malignant or benign, which is the goal that guided the development of this classification system.
+2. The instance being evaluated has a worst texture reading indicator of 1 and a worst concavity reading indicator of 1, which are the specific values being considered for this prediction.
+3. The predicted class is 1, meaning the model believes the cancer is likely to be benign based on the input features.
+4. The anchor rule, which has an estimated precision of 0.98, states that if the worst texture reading is 1 and the worst concavity reading is 1, then the class is 1, indicating that these specific conditions strongly support the prediction of a benign cancer.
+5. The worst texture reading pushed the prediction towards this class, as it is one of the key factors considered in the anchor rule.
+6. The worst concavity reading also pushed the prediction towards this class, as it is another crucial factor included in the anchor rule that supports the classification of the cancer as benign.","['texture_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5']","['texture_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5']","[63, 78]","[63, 78]",[],"[63, 78]",,,,,,0.9778699861687413
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,15,98.9,True,70.0,75.4,75.4,73.5,False,False,False,6,7,7,9,0,8,0,8,0,5,8,3,"[70.0, 68.5, 61.2, 75.4]",0.0429,"SHAP feature importance (contribution to this prediction):
+  concavity_worst_b0: 15.6% (supports the prediction)
+  concave_points_worst_b0: 8.6% (supports the prediction)
+  compactness_worst_b0: 7.9% (supports the prediction)
+  texture_worst_b0: 7.4% (supports the prediction)
+  concavity_mean_b0: 7.3% (supports the prediction)
+  fractal_dimension_worst_b0: 6.4% (opposes the prediction)
+  texture_mean_b0: 5.8% (supports the prediction)
+  smoothness_mean_b2: 5.7% (supports the prediction)
+  smoothness_worst_b0: 5.6% (supports the prediction)
+  radius_se_b2: 5.4% (supports the prediction)
+  symmetry_se_b0: 5.0% (supports the prediction)
+  texture_worst_b2: 4.9% (supports the prediction)
+  area_se_b2: 4.8% (supports the prediction)
+  concavity_worst_b2: 4.8% (supports the prediction)
+  radius_worst_b2: 4.8% (supports the prediction)","The model predicted that the cancer is benign. This decision was mainly supported by the concavity of the worst case, which contributed to the prediction. The number of concave points in the worst case also played a role in this decision. Additionally, the compactness, texture, and concavity of the worst case, as well as the mean concavity, all contributed to the prediction. The texture and smoothness of the tumor also pushed the prediction towards benign. However, the fractal dimension of the worst case actually suggested the opposite, but its effect was outweighed by the other factors. Other measurements, such as the symmetry and area, also supported the prediction, but to a lesser extent. Overall, the combination of these factors led the model to predict that the cancer is benign.","The model predicts that the cancer is benign. This prediction is supported by several factors, including the tumor's concavity, which is a measure of how much the tumor's surface is curved inward, and the number of concave points on the tumor's surface. The tumor's compactness, which refers to how densely packed the tumor cells are, and its texture, which describes the pattern of the tumor cells, also support this prediction. Additionally, the model considers the tumor's smoothness, which is a measure of how much the tumor's surface is irregular, and its size, which is determined by measuring the radius of the tumor. 
+
+The model also takes into account the fractal dimension of the tumor, which is a measure of how complex the tumor's shape is, although this factor slightly opposes the prediction of a benign tumor. 
+
+Furthermore, the model considers the average texture of the tumor, which supports the prediction of a benign tumor. The smoothness of the tumor at its mean value also supports this prediction. The size of the tumor in relation to its standard error, as well as the area of the tumor in relation to its standard error, also support the prediction of a benign tumor. The symmetry of the tumor, which describes how similar the two halves of the tumor are, also supports this prediction. The radius of the tumor at its worst value, the texture of the tumor at its worst value, and the concavity of the tumor at its worst value, all support the prediction of a benign tumor, although the concavity at its worst value has a slightly lower contribution. The fractal dimension at its worst value has a lower contribution and slightly opposes the prediction.","1. The worst concavity reading pushed the prediction towards this class, contributing 15.6% to the decision.
+2. The number of concave points in the worst reading pushed the prediction towards this class, contributing 8.6% to the decision.
+3. The worst compactness reading pushed the prediction towards this class, contributing 7.9% to the decision.
+4. The worst texture reading pushed the prediction towards this class, contributing 7.4% to the decision.
+5. The average concavity reading pushed the prediction towards this class, contributing 7.3% to the decision.
+6. The worst fractal dimension reading pushed against this class, but was outweighed, contributing 6.4% to the opposition.
+7. The average texture reading pushed the prediction towards this class, contributing 5.8% to the decision.
+8. The average smoothness reading pushed the prediction towards this class, contributing 5.7% to the decision.
+9. The worst smoothness reading pushed the prediction towards this class, contributing 5.6% to the decision.
+10. The standard error of the radius pushed the prediction towards this class, contributing 5.4% to the decision.
+11. The standard error of the symmetry pushed the prediction towards this class, contributing 5.0% to the decision.
+12. The second worst texture reading pushed the prediction towards this class, contributing 4.9% to the decision.
+13. The standard error of the area pushed the prediction towards this class, contributing 4.8% to the decision.
+14. The second worst concavity reading pushed the prediction towards this class, contributing 4.8% to the decision.
+15. The standard error of the worst radius pushed the prediction towards this class, contributing 4.8% to the decision.","['concavity_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'fractal_dimension_worst_b0 < 0.5', 'texture_mean_b2 > 0.5', 'smoothness_mean_b2 > 0.5', 'smoothness_worst_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'area_se_b2 > 0.5']","['concavity_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'fractal_dimension_worst_b0 < 0.5', 'texture_mean_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'smoothness_worst_b0 > 0.5', 'radius_se_b2 > 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b2 > 0.5', 'area_se_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'radius_worst_b2 > 0.5']","[3, 14, 18, 32, 41, 54, 62, 63, 65, 72, 75, 78, 80, 81, 87]","[18, 63, 72, 75, 78, 81]","[3, 63, 72, 75, 78, 80, 81]","[3, 18, 63, 72, 75, 78, 81]",,,,,,
+cancer,meta-llama/Llama-3.3-70B-Instruct-Turbo,163,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,15,97.6,True,42.8,64.4,82.8,37.5,False,False,False,6,9,5,9,0,6,0,10,0,3,10,3,"[42.8, 82.8, 37.1, 64.4]",0.0429,"LIME local explanation (linear approximation weights):
+  concavity_worst_b0: weight=+0.1761 (supports the prediction)
+  area_se_b0: weight=-0.1552 (opposes the prediction)
+  texture_worst_b2: weight=+0.1462 (supports the prediction)
+  fractal_dimension_worst_b1: weight=-0.1431 (opposes the prediction)
+  symmetry_se_b0: weight=+0.1352 (supports the prediction)
+  smoothness_mean_b2: weight=+0.1336 (supports the prediction)
+  radius_se_b2: weight=+0.1322 (supports the prediction)
+  texture_worst_b0: weight=+0.1313 (supports the prediction)
+  concave_points_worst_b2: weight=+0.1301 (supports the prediction)
+  concavity_worst_b2: weight=+0.1301 (supports the prediction)
+  area_se_b2: weight=+0.1287 (supports the prediction)
+  concave_points_worst_b0: weight=+0.1286 (supports the prediction)
+  compactness_worst_b0: weight=+0.1285 (supports the prediction)
+  texture_mean_b2: weight=+0.1191 (supports the prediction)
+  concavity_mean_b2: weight=+0.1179 (supports the prediction)","The model predicted that the cancer is benign. This decision was supported by several factors, including the worst concavity reading, which pushed the prediction towards benign. The worst texture reading also supported this prediction, as did the symmetry of the tumor. Additionally, the smoothness and radius of the tumor, as well as the compactness and concave points of the worst case, all contributed to the prediction of a benign cancer. On the other hand, the area of the tumor in one measurement opposed this prediction, as did the fractal dimension of the worst case. However, the supporting factors outweighed the opposing ones, leading to the final prediction of a benign cancer.","The model predicted that the cancer is benign. This decision was supported by several factors, including the concavity of the worst area, which was higher than expected for malignant cancers. The area of the tumor in one dimension was also lower than expected for malignant cancers, which opposed the prediction but was outweighed by other factors. 
+
+The texture of the worst area, which was higher, and the symmetry of the tumor, also supported the prediction. The smoothness of the mean area, the radius of the standard error, and the texture of the mean area, all of which were lower, also supported the benign prediction. 
+
+Additionally, the fractal dimension of the worst area, which was lower, opposed the prediction. The concave points of the worst area, which were higher, and the compactness of the worst area, also higher, supported the benign prediction. 
+
+The concavity of the mean area and the concave points of the other area, both of which were lower, supported the prediction. The area of the standard error in another dimension, which was lower, and the texture of the other worst area, also supported the benign prediction. 
+
+The symmetry of the standard error, which was higher, supported the prediction. The radius of the other standard error and the concavity of the other worst area, both of which were lower, also supported the benign prediction. 
+
+The compactness of the worst area and the concave points of the worst area, both of which were higher, supported the prediction. The texture of the worst area, which was higher, also supported the benign prediction. 
+
+The mean texture, which was lower, supported the prediction. The mean concavity, which was lower, and the mean smoothness, also lower, supported the benign prediction. The standard error radius, which was lower, supported the prediction. The standard error area, which was lower, also supported the benign prediction.","1. The worst concavity reading pushed the prediction towards this class.
+2. The standard error of the area pushed against this class, but was outweighed.
+3. The worst texture reading pushed the prediction towards this class.
+4. The fractal dimension of the worst case pushed against this class, but was outweighed.
+5. The standard error of the symmetry supported the prediction and contributed to it.
+6. The average smoothness supported the prediction and contributed to it.
+7. The standard error of the radius supported the prediction and contributed to it.
+8. The worst texture reading supported the prediction and contributed to it.
+9. The number of concave points in the worst case supported the prediction and contributed to it.
+10. The concavity in the worst case supported the prediction and contributed to it.
+11. The standard error of the area in this case supported the prediction and contributed to it.
+12. The number of concave points in the worst case supported the prediction and contributed to it.
+13. The worst compactness reading supported the prediction and contributed to it.
+14. The average texture supported the prediction and contributed to it.
+15. The average concavity supported the prediction and contributed to it.","['concavity_worst_b0 > 0.5', 'texture_worst_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'radius_se_b2 > 0.5', 'compactness_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'area_se_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['concavity_worst_b0 > 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5', 'symmetry_se_b0 > 0.5', 'smoothness_mean_b2 > 0.5', 'radius_se_b2 > 0.5', 'texture_worst_b0 > 0.5', 'concave_points_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'area_se_b2 > 0.5', 'concave_points_worst_b0 < 0.5', 'compactness_worst_b0 > 0.5', 'texture_mean_b2 > 0.5', 'concavity_mean_b2 > 0.5']","[5, 14, 20, 32, 39, 41, 54, 63, 65, 75, 78, 80, 81, 83, 88]","[39, 63, 75, 78, 81, 88]","[5, 14, 20, 32, 39, 41, 63, 75, 88]","[39, 63, 75, 78, 88]",,,,,,

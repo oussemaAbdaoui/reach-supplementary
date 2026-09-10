@@ -2,7 +2,7 @@
 
 Consumes the measured per-request token counts from measure_token_cost.py and
 the July-2026 verified price table in LLM_API_BUDGET.md, and answers the
-planning question: what does one request cost on each provider, and how
+supervisor's question: what does one request cost on each provider, and how
 many instances fit in 30 EUR?
 
 Everything here is per-token arithmetic on MEASURED traffic. The only estimates

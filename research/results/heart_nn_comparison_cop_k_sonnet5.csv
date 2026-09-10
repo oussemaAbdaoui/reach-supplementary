@@ -1,0 +1,391 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+heart,claude-sonnet-5,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que ce patient est décédé, pour les raisons suivantes :
+
+Le patient est de sexe masculin (la caractéristique ""sexe"" correspond à la catégorie codée 0, c'est-à-dire homme).
+
+Le temps de suivi de ce patient se situe entre 4 et 67 jours. C'est cette durée relativement courte qui est déterminante ici : les deux autres tranches de temps possibles, celle allant de 67 à 172 jours et celle allant de 172 à 285 jours, ne s'appliquent pas à ce patient.
+
+En résumé, le modèle associe un temps de suivi court (entre 4 et 67 jours) chez un patient de sexe masculin à un risque plus élevé de décès, ce qui explique la prédiction de mortalité pour ce patient.","Le modèle prédit un risque élevé de décès pour ce patient.
+
+Cette prédiction s'appuie sur les éléments suivants : le patient est de sexe masculin, et la durée de suivi se situe entre 4 et 67 jours (une période relativement courte après le début de l'observation). Le modèle a appris que cette combinaison de caractéristiques est associée à une probabilité plus élevée de décès.
+
+En résumé, un patient de sexe masculin avec une courte durée de suivi (moins de 67 jours) correspond au profil que le modèle associe à un risque accru de mortalité.","1. The patient's sex is coded as male, which is true here.
+2. The follow-up time is between 4 and 67 days, which is true here.
+3. The follow-up time is between 67 and 172 days, which is not true here.
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501
+heart,claude-sonnet-5,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,86.2,76.9,86.2,86.2,False,False,False,12,10,12,0,0,2,0,0,0,0,0,3,"[86.2, 86.2, 63.4, 76.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Le modèle prédit que ce patient est décédé (classe 1), et voici pourquoi, selon les règles apprises :
+
+Plusieurs caractéristiques du patient correspondent à un profil associé au décès :
+
+- Le patient souffre d'anémie
+- Le patient est diabétique
+- Le patient a de l'hypertension artérielle
+- Le patient est un homme
+- Le patient est fumeur
+- Le taux de plaquettes se situe entre 47 000 et 225 000 (dans la fourchette la plus basse observée)
+
+D'autres mesures ne correspondent pas aux fourchettes qui, elles, seraient plutôt associées à la survie, ce qui renforce également la prédiction de décès :
+
+- Le taux de créatine phosphokinase n'est pas entre 23 et 157 (il est en dehors de cette fourchette)
+- La fraction d'éjection (mesure de la capacité du cœur à pomper le sang) n'est pas entre 30 et 40
+- Le taux de plaquettes n'est pas entre 225 000 et 273 000
+- Le taux de plaquettes n'est pas non plus entre 273 000 et 742 000
+- Le taux de créatinine sérique (indicateur de la fonction rénale) n'est pas entre 0,5 et 1
+- Le taux de sodium sérique n'est pas entre 135 et 138
+
+En résumé, la combinaison de la présence d'anémie, de diabète, d'hypertension, du fait d'être un homme fumeur, associée à un taux de plaquettes bas et à l'absence de valeurs ""protectrices"" pour la créatine phosphokinase, la fraction d'éjection, la créatinine sérique et le sodium sérique, a conduit le modèle à prédire que ce patient n'a pas survécu.","Le modèle prédit que ce patient est décédé (classe 1), en s'appuyant sur la combinaison des caractéristiques suivantes :
+
+Le patient souffre d'anémie, de diabète et d'hypertension artérielle. C'est un homme fumeur. Sa fraction d'éjection (mesure de la capacité du cœur à pomper le sang) se situe en dehors de la tranche 30 à 40, indiquant une valeur plus basse ou plus élevée que cet intervalle intermédiaire. Son taux de plaquettes se situe entre 47 000 et 225 000, ce qui correspond à une valeur normale à basse, sans dépasser les seuils supérieurs observés chez d'autres patients. Son taux de créatine phosphokinase (une enzyme musculaire) ne se situe pas dans la tranche 23 à 157, ce qui suggère un niveau plus élevé que cette fourchette. Son taux de créatinine sérique (indicateur de la fonction rénale) ne se situe pas dans la tranche 0,5 à 1, ce qui indique également une valeur plus élevée que cet intervalle. Enfin, son taux de sodium sérique ne se situe pas dans la tranche 135 à 138, ce qui suggère un écart par rapport à cette plage considérée comme normale.
+
+L'ensemble de ces facteurs, en particulier les niveaux anormaux de créatine phosphokinase, de créatinine sérique et de sodium sérique, combinés aux antécédents médicaux du patient (anémie, diabète, hypertension), conduit le modèle à prédire un risque élevé de mortalité.","1. This patient has anaemia, which is true here, and this pushed the prediction towards death.
+
+2. The level of the creatinine phosphokinase enzyme in the blood is not between 23 and 157, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+3. This patient has diabetes, which is true here, and this pushed the prediction towards death.
+
+4. The percentage of blood leaving the heart at each contraction (the ejection fraction) is not between 30 and 40, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+5. This patient has high blood pressure, which is true here, and this pushed the prediction towards death.
+
+6. The platelet count in the blood is between 47,000 and 225,000, which is true here, and this pushed the prediction towards death.
+
+7. The platelet count in the blood is not between 225,000 and 273,000, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+8. The platelet count in the blood is not between 273,000 and 742,000, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+9. The level of serum creatinine in the blood is not between 0.5 and 1, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+10. The level of serum sodium in the blood is not between 135 and 138, meaning it falls outside this range, which pushed against this class, but was outweighed.
+
+11. This patient is male, which is true here, and this pushed the prediction towards death.
+
+12. This patient is a smoker, which is true here, and this pushed the prediction towards death.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'platelets_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483
+heart,claude-sonnet-5,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,88.3,88.3,88.3,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.3, 57.4, 88.3, 88.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu, et voici pourquoi selon la règle apprise :
+
+- La fraction d'éjection du cœur (une mesure de sa capacité à pomper le sang) n'est PAS comprise entre 15 et 30. Autrement dit, la fonction cardiaque du patient n'est pas dans cette zone à risque, ce qui joue en faveur d'une meilleure survie.
+
+- Le patient a bien de l'hypertension artérielle (tension élevée).
+
+- Le patient est un homme.
+
+- La durée de suivi du patient n'est PAS comprise entre 4 et 67 jours. Cela signifie que la période d'observation enregistrée pour ce patient se situe en dehors de cette fenêtre associée à un risque plus élevé de décès.
+
+En combinant ces éléments, en particulier le fait que la fraction d'éjection ne soit pas dans la zone à risque et que la durée de suivi ne soit pas dans la période critique, le modèle conclut que ce patient a de bonnes chances d'avoir survécu.","Le modèle prédit que le patient a survécu (classe 0).
+
+Cette prédiction s'appuie sur la combinaison suivante de caractéristiques observées chez ce patient : sa fraction d'éjection n'est pas comprise entre 15 et 30 (elle est donc plus élevée, ce qui reflète une meilleure fonction cardiaque), il présente une hypertension artérielle, il s'agit d'un homme, et son temps de suivi n'est pas compris entre 4 et 67 jours (il est donc plus long).
+
+C'est cette combinaison précise de facteurs, en particulier une fonction cardiaque relativement préservée associée à une période de suivi plus longue, qui conduit le modèle à prédire la survie du patient, malgré la présence d'hypertension.","1. The fraction of blood pumped out of the heart with each beat is not between 15 and 30, which is not true for this case, meaning this measurement falls outside that range, and this pushed against the prediction of survival, but was outweighed.
+
+2. The patient has high blood pressure, which is true here, and this pushed against the prediction of survival, but was outweighed.
+
+3. The patient is male, which is true here, and this pushed towards the prediction of survival.
+
+4. The follow-up time is not between 4 and 67 days, which is not true for this case, meaning the follow-up period was longer than that range, and this pushed strongly towards the prediction of survival.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519
+heart,claude-sonnet-5,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[87.1, 87.1, 87.1, 87.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu, et voici pourquoi.
+
+Trois éléments médicaux ont été examinés :
+
+1. La fraction d'éjection (une mesure de la capacité du cœur à pomper le sang) ne se situe pas entre 15 et 30. Autrement dit, elle est en dehors de cette plage basse, ce qui est plutôt rassurant pour le patient.
+
+2. Le patient est fumeur.
+
+3. Le temps de suivi (la période pendant laquelle le patient a été observé) n'est pas compris entre 4 et 67 jours. Cette condition ne s'applique donc pas ici.
+
+En combinant ces trois observations, le modèle a conclu que le patient ne présentait pas le profil associé à un risque élevé de décès, et a donc prédit qu'il a survécu.","Le modèle prédit que le patient a survécu.
+
+Cette prédiction s'appuie sur trois éléments observés chez ce patient : sa fraction d'éjection (mesure de la capacité du cœur à pomper le sang) ne se situe pas dans la tranche basse de 15 à 30 %, ce qui est plutôt favorable. Le patient est fumeur. Enfin, sa durée de suivi n'est pas comprise dans la période courte de 4 à 67 jours, ce qui signifie qu'il a été suivi plus longtemps sans qu'un événement grave ne survienne durant cette fenêtre initiale critique.
+
+La combinaison de ces trois facteurs correspond à un profil que le modèle associe à une survie plus probable.","1. The fraction of blood pumped out of the heart with each beat (ejection fraction) is not between 15 and 30 in this case, meaning the patient's heart pumping ability falls outside this low range, which supports the prediction of survival.
+2. The patient is a smoker, and this fact pushed the prediction towards this class.
+3. The follow-up time is not between 4 and 67 days, meaning the recorded observation period falls outside this early, high-risk window, which supports the prediction of survival.","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166
+heart,claude-sonnet-5,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,70.0,70.0,70.0,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.0, 47.7, 47.7, 70.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","Le modèle prédit que ce patient est décédé, et voici pourquoi selon les règles apprises.
+
+Quatre éléments ont contribué à cette prédiction:
+
+1. **Hypertension artérielle** : le patient présente de l'hypertension artérielle (cette condition est vraie).
+
+2. **Sexe** : le patient est un homme (cette condition est vraie).
+
+3. **Tabagisme** : le patient est fumeur (cette condition est vraie).
+
+4. **Temps de suivi** : la durée de suivi du patient se situe entre 4 et 67 jours (cette condition est vraie).
+
+Comme les quatre conditions de la règle sont satisfaites simultanément chez ce patient, le modèle associe cette combinaison de caractéristiques à un risque élevé de mortalité, d'où la prédiction que le patient est décédé.","Le modèle prédit un risque élevé de décès pour ce patient en raison de la combinaison des facteurs suivants : il présente une hypertension artérielle, il est de sexe masculin, il est fumeur, et sa période de suivi se situe entre 4 et 67 jours. Cette dernière indication est particulièrement importante, car un suivi de courte durée est souvent associé à un décès survenu peu de temps après le début de l'observation, ce qui renforce la prédiction d'un risque élevé de mortalité.","1. The patient has high blood pressure, and this pushed the prediction towards this class.
+2. The patient's sex is recorded as male, and this pushed the prediction towards this class.
+3. The patient is a smoker, and this pushed the prediction towards this class.
+4. The follow-up time is between 4 and 67 days, which is true here, and this pushed the prediction towards this class.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956
+heart,claude-sonnet-5,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,87.0,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 87.0, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Voici pourquoi le modèle prédit que ce patient a survécu (classe 0) :
+
+Le modèle s'est appuyé sur une règle combinant plusieurs facteurs :
+
+- Le diabète : le patient est diabétique, ce qui correspond à la condition retenue.
+- La fraction d'éjection (une mesure de la capacité du cœur à pomper le sang) : elle ne se situe PAS entre 15 et 30, c'est-à-dire qu'elle est en dehors de cette plage considérée comme critique. Cela signifie que la fonction cardiaque du patient n'est pas dans la zone la plus à risque.
+- L'hypertension artérielle : le patient en souffre, ce qui correspond à la condition retenue.
+- Le sexe : correspond à la condition retenue dans la règle.
+- Le tabagisme : le patient est fumeur, ce qui correspond à la condition retenue.
+- Le temps de suivi (durée entre une date de référence et la fin du suivi médical) : il ne se situe PAS entre 4 et 67, c'est-à-dire que cette condition ne s'applique pas non plus.
+
+En résumé, le facteur déterminant ici semble être que la fraction d'éjection du patient est en dehors de la zone jugée dangereuse (15 à 30), ce qui pousse la prédiction vers la survie plutôt que vers le décès. Bien que le patient présente plusieurs facteurs de risque (diabète, hypertension, tabagisme), le fait que sa fonction cardiaque ne soit pas dans la plage la plus critique, combiné avec une durée de suivi hors de la plage à risque, conduit le modèle à prédire que ce patient a survécu.","Le modèle prédit que le patient a survécu (classe 0).
+
+Cette prédiction s'appuie sur une règle qui tient compte des éléments suivants chez ce patient : sa fraction d'éjection ne se situe pas entre 15 et 30, sa durée de suivi ne se situe pas entre 4 et 67, il présente de l'hypertension artérielle, il est un homme, il est fumeur, et il est diabétique. C'est la combinaison de tous ces éléments qui conduit à la prédiction de survie.","1. Le patient est diabétique, ce qui est vrai dans ce cas et qui a poussé la prédiction vers une survie.
+
+2. La fraction d'éjection (mesure de la capacité du cœur à pomper le sang) se situe normalement entre 15 et 30 dans cette règle, mais ce n'est pas le cas ici, ce qui a poussé contre cette classe, mais a été surpassé par les autres facteurs.
+
+3. Le patient souffre d'hypertension artérielle, ce qui est vrai dans ce cas et qui a poussé la prédiction vers une survie.
+
+4. Le sexe du patient correspond à la catégorie prise en compte dans cette règle, ce qui est vrai dans ce cas et qui a poussé la prédiction vers une survie.
+
+5. Le patient est fumeur, ce qui est vrai dans ce cas et qui a poussé la prédiction vers une survie.
+
+6. La durée de suivi devait normalement se situer entre 4 et 67 selon cette règle, mais ce n'est pas le cas ici, ce qui a poussé contre cette classe, mais a été surpassé par les autres facteurs.","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514
+heart,claude-sonnet-5,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu, pour les raisons suivantes :
+
+- La fraction d'éjection (une mesure de la capacité du cœur à pomper le sang) ne se situe pas entre 15 et 30. Autrement dit, la fonction cardiaque du patient n'est pas dans cette plage basse et préoccupante, ce qui joue en faveur d'une survie.
+
+- Le sexe du patient correspond à la catégorie codée comme ""1"" dans les données. Cette caractéristique fait partie des critères retenus par le modèle pour cette prédiction.
+
+- La durée de suivi du patient ne se situe pas entre 4 et 67 jours. Cela signifie que le patient a probablement été suivi plus longtemps que cette période, ce qui est associé à une meilleure chance de survie dans les données.
+
+En combinant ces trois éléments (une fraction d'éjection hors de la zone à risque, le sexe du patient, et une durée de suivi supérieure à la période critique), le modèle conclut que le patient a survécu.","Le modèle prédit que le patient a survécu.
+
+Cette prédiction s'appuie sur trois éléments : la fraction d'éjection du patient n'est pas comprise entre 15 et 30 (elle se situe donc en dehors de cette plage basse, ce qui est plutôt favorable), le patient est un homme, et le temps de suivi n'est pas compris entre 4 et 67 jours (il est donc supérieur à cette période, ce qui suggère que le patient a survécu suffisamment longtemps pour être suivi au-delà de cette fenêtre critique).
+
+La combinaison de ces trois observations - une fraction d'éjection hors de la zone à risque, le sexe masculin, et une durée de suivi dépassant la période critique initiale - conduit le modèle à prédire la survie du patient.","1. The fraction of blood pumped out of the heart with each beat (the ejection fraction) is not between 15 and 30, which is true for this case.
+2. The patient's sex is recorded as being in the category from 0 up to but not including 1, which is true here.
+3. The follow-up time is not between 4 and 67 days, which is true for this case.","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148
+heart,claude-sonnet-5,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que le patient est décédé, et voici pourquoi, selon la règle apprise :
+
+1. **Hypertension artérielle** : le patient est hypertendu (présence de ce facteur), ce qui va dans le sens d'un risque plus élevé de décès.
+
+2. **Sexe** : le patient est de sexe masculin, ce qui est également associé, selon cette règle, à un risque accru de décès.
+
+3. **Temps de suivi (court)** : la durée de suivi du patient se situe entre 4 et 67 jours, ce qui correspond à une période de suivi relativement courte après le début de la prise en charge. Cette caractéristique est associée à un risque plus élevé de décès.
+
+4. **Temps de suivi (long)** : en revanche, le patient ne se trouve pas dans la tranche de suivi allant de 172 à 285 jours. Autrement dit, son suivi n'a pas duré aussi longtemps que dans cette fourchette plus rassurante — l'absence d'un suivi long est cohérente avec un pronostic plus défavorable.
+
+En résumé, la combinaison de la présence d'hypertension, du sexe masculin, et surtout d'une durée de suivi courte (associée à l'absence d'une durée de suivi plus longue et plus favorable) conduit le modèle à prédire que ce patient est décédé.","Le modèle prédit que ce patient est décédé, principalement parce que sa période de suivi a été courte, entre 4 et 67 jours, ce qui est associé à un risque plus élevé de décès dans les données observées. Ce cas se distingue clairement d'une période de suivi plus longue, entre 172 et 285 jours, qui n'est pas le cas ici et qui aurait été associée à un meilleur pronostic.
+
+De plus, le patient présente de l'hypertension artérielle, un facteur de risque connu pour les complications cardiaques. Enfin, il s'agit d'un patient de sexe masculin, un élément que le modèle a également pris en compte dans son évaluation globale du risque.
+
+La combinaison de ces éléments, en particulier la courte durée de suivi associée à l'hypertension, a conduit le modèle à prédire un risque élevé de mortalité pour ce patient.","1. This patient has high blood pressure, which pushed the prediction towards this class.
+2. This patient is male, which pushed the prediction towards this class.
+3. The follow-up time is between 4 and 67 days, which is true here, and this pushed the prediction towards this class.
+4. The follow-up time being between 172 and 285 days does not hold for this patient, and this absence pushed the prediction towards this class.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882
+heart,claude-sonnet-5,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,71.0,64.5,71.0,71.0,False,False,False,9,8,9,0,0,1,0,0,0,0,0,3,"[71.0, 61.0, 62.4, 64.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Voici les raisons pour lesquelles le modèle prédit que ce patient est décédé :
+
+Le patient présente de l'anémie (cette condition est vraie). Il est diabétique (cette condition est vraie). Il souffre d'hypertension artérielle (cette condition est vraie). C'est un homme (cette condition est vraie). Il fume (cette condition est vraie).
+
+Concernant le taux de créatine phosphokinase dans le sang, le patient n'est pas dans la tranche 23 à 157 : sa valeur se situe donc en dehors de cet intervalle, plus précisément au-delà.
+
+Concernant le taux de créatinine sérique, un indicateur du fonctionnement des reins, le patient ne se trouve ni dans la tranche 0,5 à 1 ni dans la tranche 1 à 1,3 : ces deux conditions sont fausses. En revanche, il se trouve bien dans la tranche la plus élevée, entre 1,3 et 9, ce qui indique un taux de créatinine sérique élevé.
+
+En résumé, la combinaison de plusieurs facteurs de risque - anémie, diabète, hypertension, tabagisme, sexe masculin - associée à un taux de créatinine sérique élevé (au-delà de 1,3) a conduit le modèle à prédire que ce patient n'a pas survécu.","Le modèle prédit que ce patient est décédé.
+
+Cette prédiction s'appuie sur les éléments suivants observés chez le patient : la présence d'anémie, la présence de diabète, la présence d'hypertension artérielle, le fait d'être fumeur, et surtout un taux de créatinine sérique élevé, situé entre 1,3 et 9 (une valeur au-dessus des niveaux normaux, ce qui indique un fonctionnement rénal affaibli). Le taux de créatinine phosphokinase, lui, ne dépasse pas la plage intermédiaire (entre 23 et 157), ce qui signifie qu'il se situe soit en dessous, soit au-dessus de cette fourchette précise.
+
+Concernant les autres mesures : le taux de créatinine sérique du patient ne se situe ni entre 0,5 et 1, ni entre 1 et 1,3, ce qui confirme qu'il se trouve bien dans la tranche supérieure, au-delà de 1,3, cohérente avec l'atteinte rénale mentionnée plus haut. Enfin, le patient est de sexe masculin.
+
+L'ensemble de ces facteurs, en particulier le taux élevé de créatinine sérique associé à l'anémie, au diabète et à l'hypertension, conduit le modèle à prédire un risque de décès pour ce patient.","1. This patient does have anaemia, which is true here, and this pushed the prediction towards this class.
+
+2. The creatinine phosphokinase level, which would be between 23 and 157, is not the case here, meaning the level falls outside this range, and this pushed the prediction towards this class.
+
+3. This patient does have diabetes, which is true here, and this pushed the prediction towards this class.
+
+4. This patient does have high blood pressure, which is true here, and this pushed the prediction towards this class.
+
+5. The serum creatinine level, which would be between 0.5 and 1, is not the case here, meaning the level falls outside this range, and this pushed the prediction towards this class.
+
+6. The serum creatinine level, which would be between 1 and 1.3, is not the case here, meaning the level falls outside this range, and this pushed the prediction towards this class.
+
+7. The serum creatinine level is between 1.3 and 9, which is true here, and this pushed the prediction towards this class.
+
+8. The patient's sex, coded here as male, is true here, and this pushed the prediction towards this class.
+
+9. This patient is a smoker, which is true here, and this pushed the prediction towards this class.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872
+heart,claude-sonnet-5,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,56.7,88.4,88.4,False,False,False,4,2,4,0,0,2,0,0,0,0,0,3,"[88.4, 56.7, 88.4, 56.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que ce patient a survécu (classe 0), pour les raisons suivantes :
+
+- Le taux de fraction d'éjection du patient ne se situe pas dans la fourchette basse de 15 à 30 (cette condition ne s'applique pas ici) — autrement dit, sa fonction cardiaque n'est pas dans cette zone à risque.
+- Le patient présente une hypertension artérielle (cette condition est vraie).
+- Le patient est de sexe masculin (cette condition est vraie).
+- La durée de suivi du patient ne se situe pas dans la fourchette de 4 à 67 (cette condition ne s'applique pas ici) — son temps de suivi se trouve donc en dehors de cette période associée à un risque plus élevé.
+
+En combinant ces éléments, le modèle a jugé que l'absence d'une fraction d'éjection basse (entre 15 et 30) et l'absence d'une durée de suivi courte (entre 4 et 67) sont les éléments déterminants qui l'ont conduit à prédire la survie, malgré la présence d'hypertension et le sexe masculin.","Le modèle prédit que ce patient a survécu.
+
+Cette prédiction s'appuie sur les éléments suivants : la fraction d'éjection du patient ne se situe pas dans la tranche basse de 15 à 30 (elle est donc plus élevée, ce qui est favorable), le patient présente de l'hypertension artérielle, il s'agit d'un homme, et la durée de suivi ne se situe pas dans la période de 4 à 67 jours (elle est donc plus longue, ce qui est également favorable, car un suivi plus long est associé à une meilleure survie).
+
+L'ensemble de ces caractéristiques, en particulier la fraction d'éjection correcte et la durée de suivi plus longue, explique pourquoi le modèle prédit une survie malgré la présence d'hypertension.","1. The fraction of blood pumped out of the heart per beat (ejection fraction) is not between 15 and 30 in this case, meaning the patient's heart pumping ability falls outside that low range, which pushed the prediction away from death.
+
+2. The patient does have high blood pressure, which pushed the prediction towards death, though this was outweighed by other factors.
+
+3. The patient's sex corresponds to the category coded as 1 (male), which pushed the prediction towards death, though this was outweighed by other factors.
+
+4. The follow-up time is not between 4 and 67 days, meaning the recorded time falls outside that early range, which pushed the prediction away from death.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[11, 21]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994
+heart,claude-sonnet-5,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,89.7,89.7,89.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que ce patient est décédé, et voici pourquoi.
+
+Trois conditions favorisant cette prédiction sont présentes chez ce patient :
+
+1. Il s'agit d'un homme (le sexe correspond à la catégorie ""homme"").
+2. Le patient est fumeur.
+3. Le temps de suivi est court, compris entre 4 et 67 jours.
+
+En revanche, une condition supplémentaire n'est pas remplie : le temps de suivi ne se situe pas dans la tranche plus longue de 172 à 285 jours. Autrement dit, ce patient n'a pas été suivi aussi longtemps que dans cette tranche-là, ce qui est cohérent avec le fait que son suivi soit court (entre 4 et 67 jours).
+
+C'est la combinaison de ces éléments — être un homme fumeur avec un temps de suivi court, et l'absence d'un suivi plus long — qui a conduit le modèle à prédire un risque de décès pour ce patient.","Le modèle prédit que ce patient est décédé, en se basant sur la règle suivante : le patient est un homme, il est fumeur, et son temps de suivi se situe entre 4 et 67 jours, une période courte qui n'atteint pas la plage de 172 à 285 jours. Cette combinaison de facteurs, en particulier ce suivi de courte durée associé au tabagisme, correspond au profil de patients pour lesquels le modèle prédit un décès.","1. The patient is male, which pushed the prediction towards this class.
+
+2. The patient is a smoker, which pushed the prediction towards this class.
+
+3. The follow-up time is between 4 and 67 days, which is true here, and this short follow-up time pushed the prediction towards this class.
+
+4. The follow-up time being between 172 and 285 days does not hold in this case, meaning the patient's follow-up time falls outside this longer range, which pushed the prediction towards this class.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934
+heart,claude-sonnet-5,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.4, 93.4, 93.4, 93.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que le patient est décédé, pour deux raisons principales.
+
+D'abord, le patient a de l'hypertension artérielle (tension élevée), ce qui pousse la prédiction vers un décès.
+
+Ensuite, la durée de suivi du patient se situe entre 4 et 67 jours, une période relativement courte. Le modèle indique aussi explicitement que cette durée ne se situe ni entre 67 et 172 jours, ni entre 172 et 285 jours — autrement dit, il s'agit bien d'un suivi court. Un temps de suivi aussi bref est associé par le modèle à un risque plus élevé de décès.
+
+En combinant ces deux éléments — la présence d'hypertension et une courte durée de suivi — le modèle conclut que ce patient appartient au groupe des patients décédés.","Le modèle prédit que ce patient est décédé.
+
+Cette prédiction s'appuie sur deux éléments principaux. D'abord, le patient présente de l'hypertension artérielle. Ensuite, la durée de suivi du patient se situe entre 4 et 67 jours, ce qui est une période relativement courte après le début de la prise en charge.
+
+C'est cette combinaison d'une hypertension artérielle et d'un suivi encore précoce (moins de 67 jours) qui conduit le modèle à prédire un risque élevé de mortalité pour ce patient. Si la durée de suivi avait été plus longue, cela aurait généralement été associé à un pronostic plus favorable, mais ce n'est pas le cas ici.","1. The patient has high blood pressure, which is true here, and this pushed the prediction towards this class.
+
+2. The follow-up time is between 4 and 67 days, which is true here, and this pushed the prediction towards this class.
+
+3. The follow-up time being between 67 and 172 days is not true here, meaning the patient's actual follow-up time falls outside this range, which pushed the prediction towards this class.
+
+4. The follow-up time being between 172 and 285 days is not true here, meaning the patient's actual follow-up time falls outside this range as well, which pushed the prediction towards this class.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858
+heart,claude-sonnet-5,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[88.1, 88.1, 88.1, 88.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que ce patient a survécu (classe 0). Voici pourquoi, selon la règle apprise :
+
+- Le patient est diabétique : cette condition est présente et correspond au profil associé à la survie.
+- La fraction d'éjection (une mesure de la capacité du cœur à pomper le sang) ne se situe pas entre 15 et 30 : elle est donc en dehors de cette plage considérée comme un signe de risque plus élevé, ce qui va dans le sens d'une survie.
+- Le patient présente de l'hypertension artérielle : cette condition est présente et correspond au profil associé à la survie.
+- Le patient est de sexe masculin : cette condition est présente et correspond au profil associé à la survie.
+- Le temps de suivi (période durant laquelle le patient a été observé) ne se situe pas entre 4 et 67 : cette condition ne s'applique pas ici, ce qui va aussi dans le sens de la prédiction de survie.
+
+En résumé, la combinaison d'un diabète présent, d'une hypertension présente, du sexe masculin, d'une fraction d'éjection en dehors de la zone à risque (15-30), et d'un temps de suivi en dehors de la plage 4-67, conduit le modèle à prédire que ce patient a survécu.","Le modèle prédit que le patient survivra.
+
+Cette prédiction s'appuie sur les éléments suivants : le patient est diabétique, il souffre d'hypertension artérielle, et il s'agit d'un homme. En revanche, sa fraction d'éjection ne se situe pas dans la tranche 15 à 30 (ce qui indiquerait une fonction cardiaque très affaiblie), et sa durée de suivi ne se situe pas non plus dans la tranche 4 à 67 jours.
+
+C'est justement l'absence de ces deux derniers facteurs de risque qui explique la prédiction de survie : une fraction d'éjection en dehors de la zone critique et une période de suivi en dehors de la fenêtre à risque jouent en faveur d'un pronostic favorable, malgré la présence du diabète et de l'hypertension.","1. The patient has diabetes, meaning the diabetes status falls in the range of having the condition (between 0 and just under 1), which is true here.
+
+2. The heart's pumping efficiency, known as the ejection fraction, would need to fall between 15 and 30 to count as low in this rule, but that is not the case here, so this measurement pushed against the prediction of survival, though it was outweighed by other factors.
+
+3. The patient has high blood pressure, meaning this measurement falls in the range indicating the condition is present (between 0 and just under 1), which is true here.
+
+4. The patient's sex is recorded as male, meaning this measurement falls in the range indicating male (between 0 and just under 1), which is true here.
+
+5. The follow-up time would need to fall between 4 and 67 days to count as short in this rule, but that is not the case here, so this measurement pushed against the prediction of survival, though it was outweighed by other factors.","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148
+heart,claude-sonnet-5,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,88.3,87.5,88.3,87.5,False,False,False,3,4,4,1,0,0,0,0,0,1,0,3,"[88.3, 87.5, 87.5, 87.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que le patient est décédé, sur la base de quatre éléments observés :
+
+1. **Le sexe** correspond à la catégorie codée 0 (par exemple, femme selon l'encodage utilisé).
+
+2. **Le patient est fumeur.**
+
+3. **Le temps de suivi est court** : il se situe entre 4 et 67 jours, ce qui correspond à une période de suivi relativement brève après le diagnostic ou l'hospitalisation.
+
+4. **Le temps de suivi n'est pas long** : la condition qui aurait indiqué un suivi compris entre 172 et 285 jours ne s'applique pas ici. Autrement dit, on peut exclure que ce patient ait eu un temps de suivi aussi long.
+
+En résumé, la combinaison d'un temps de suivi court (entre 4 et 67 jours), du fait que le patient soit fumeur, et de son sexe, associée à l'absence d'un temps de suivi long (172-285 jours), a conduit le modèle à prédire que ce patient est décédé. Un temps de suivi court est souvent associé à un risque plus élevé de décès, car cela peut indiquer que l'événement (le décès) est survenu peu après le début de l'observation.","Le modèle prédit que ce patient est décédé, principalement en raison d'un délai de suivi très court, entre 4 et 67 jours seulement. Ce court intervalle de temps est fortement associé à un risque élevé de mortalité, contrairement à un suivi plus long, entre 172 et 285 jours, qui n'est pas observé ici et qui aurait été associé à de meilleures chances de survie.
+
+De plus, le patient est un homme et il est fumeur, deux facteurs qui, combinés à la courte durée de suivi, renforcent la prédiction de décès selon le modèle.
+
+En résumé, c'est surtout la brièveté de la période de suivi qui pèse le plus dans cette prédiction, le sexe masculin et le tabagisme venant appuyer ce résultat.","1. The patient is male, which pushed the prediction towards this class.
+
+2. The patient is a smoker, which pushed the prediction towards this class.
+
+3. The follow-up time is between 4 and 67 days, which is true here, and this short follow-up period pushed the prediction towards this class.
+
+4. The follow-up time is between 172 and 285 days, which is not true here, and this pushed the prediction towards this class.","['sex_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894
+heart,claude-sonnet-5,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[90.2, 90.2, 90.2, 90.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que ce patient est décédé, pour les raisons suivantes :
+
+Le patient a de l'hypertension artérielle (tension élevée), ce qui pousse la prédiction vers un décès.
+
+Le patient est fumeur, ce qui pousse également la prédiction vers un décès.
+
+Le temps de suivi du patient se situe entre 4 et 67 jours, une période courte qui est associée à un risque plus élevé de décès dans ce modèle. En revanche, ce temps de suivi ne se situe pas entre 172 et 285 jours — cette période plus longue, qui aurait été associée à une meilleure survie, ne s'applique pas ici.
+
+En résumé, c'est la combinaison de l'hypertension, du tabagisme et d'un suivi de courte durée (moins de 67 jours, et non entre 172 et 285 jours) qui conduit le modèle à prédire que ce patient n'a pas survécu.","Le modèle prédit que ce patient est décédé, principalement en raison de trois éléments combinés.
+
+Premièrement, le patient a une pression artérielle élevée. Deuxièmement, il est fumeur. Troisièmement, et surtout, la durée de suivi du patient est très courte, entre 4 et 67 jours, ce qui indique que le décès est survenu peu après le début de l'observation. Ce dernier point est renforcé par le fait que la durée de suivi ne se situe pas dans une plage plus longue (entre 172 et 285 jours), ce qui aurait été plutôt associé à une survie.
+
+C'est donc la combinaison d'une pression artérielle élevée, du tabagisme, et surtout d'un temps de suivi court qui conduit le modèle à prédire un risque élevé de mortalité pour ce patient.","1. The patient has high blood pressure, which pushed the prediction towards this class.
+
+2. The patient is a smoker, which pushed the prediction towards this class.
+
+3. The follow-up time is between 4 and 67 days, which is true here, and this pushed the prediction towards this class.
+
+4. The follow-up time is between 172 and 285 days, which is not true here, and this pushed the prediction towards this class.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724

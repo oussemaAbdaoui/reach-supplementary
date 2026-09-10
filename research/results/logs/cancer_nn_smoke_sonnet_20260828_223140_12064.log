@@ -1,0 +1,16 @@
+Full console log -> research/results/logs/cancer_nn_smoke_sonnet_20260828_223140_12064.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/1] instance 163 (pred=1, k_ref=15)
+  [cop_k] base=86.0% v4=86.0% v5=79.0% v6=86.0% (len 15, om_v5=2)
+
+saved -> research/results/cancer_nn_comparison_cop_k_smoke_sonnet.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       15.0                86.0      86.0      79.0           86.0      86.0
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0

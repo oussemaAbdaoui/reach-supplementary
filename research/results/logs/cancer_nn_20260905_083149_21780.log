@@ -1,0 +1,49 @@
+Full console log -> research/results/logs/cancer_nn_20260905_083149_21780.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 0
+[cancer/gptoss120b] 90 rows, 90 to redo, model=openai/gpt-oss-120b provider=together
+  inst    6 cop      v5= 50.80 (was 50.8) om=0 rounds=0
+  inst    6 cop_k    v5= 68.60 (was 83.9) om=6 rounds=3
+  inst    6 lmpaxp   v5= 95.80 (was 95.8) om=0 rounds=3
+  inst    6 anchors  v5= 43.80 (was 43.8) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 8192
+  inst    6 shap     v5= 45.90 (was 50.7) om=15 rounds=3
+  [empty content, finish=length] raising max_tokens to 8192
+  inst    6 lime     v5= 70.00 (was 74.7) om=0 rounds=3
+  inst   22 cop      v5= 82.70 (was 87.8) om=0 rounds=0
+  inst   22 cop_k    v5= 96.40 (was 96.4) om=0 rounds=0
+  inst   22 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=2
+  inst   22 anchors  v5= 75.70 (was 75.7) om=0 rounds=0
+  inst   22 shap     v5= 98.50 (was 98.5) om=0 rounds=3
+  inst   22 lime     v5= 81.90 (was 78.5) om=5 rounds=3
+  inst   26 cop      v5= 58.60 (was 51.1) om=0 rounds=0
+  inst   26 cop_k    v5= 77.90 (was 77.9) om=0 rounds=1
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   26 lmpaxp   v5= 97.40 (was 97.4) om=0 rounds=2
+  inst   26 anchors  v5= 41.80 (was 41.8) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   26 shap     v5= 95.60 (was 33.5) om=0 rounds=3
+  inst   26 lime     v5= 88.40 (was 42.8) om=0 rounds=2
+  inst   28 cop      v5= 61.90 (was 61.9) om=0 rounds=0
+  inst   28 cop_k    v5= 94.30 (was 94.3) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   28 lmpaxp   v5= 66.20 (was 91.1) om=9 rounds=3
+  inst   28 anchors  v5= 35.90 (was 35.9) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   28 shap     v5= 83.60 (was 78.5) om=9 rounds=3
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   28 lime     v5= 63.50 (was 61.5) om=8 rounds=3
+  inst   35 cop      v5= 92.30 (was 92.3) om=0 rounds=0
+  inst   35 cop_k    v5= 82.10 (was 82.1) om=0 rounds=0
+  inst   35 lmpaxp   v5= 96.50 (was 96.5) om=0 rounds=0
+  inst   35 anchors  v5= 74.30 (was 74.3) om=0 rounds=0
+  inst   35 shap     v5= 98.00 (was 98.0) om=0 rounds=0
+  inst   35 lime     v5= 70.90 (was 82.1) om=0 rounds=1
+  inst   57 cop      v5= 60.90 (was 57.2) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   57 cop_k    v5= 77.10 (was 40.2) om=1 rounds=3
+  inst   57 lmpaxp   v5= 97.90 (was 97.9) om=0 rounds=2
+  inst   57 anchors  v5= 35.50 (was 35.5) om=0 rounds=0
+  inst   57 shap     v5= 99.80 (was 99.8) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 4096

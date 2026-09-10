@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/heart_nn_glm52_20260831_034706_23120.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [cop_k] base=93.2% v4=93.2% v5=93.2% v6=93.2% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 5 calls, 1,757 in / 205 out | GLM-5.2: 5 calls, 1,959 in / 409 out
+[002/15] instance 14 (pred=1, k_ref=12)
+  [cop_k] base=86.2% v4=83.1% v5=57.4% v6=86.2% (len 12, om_v5=6)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,787 in / 820 out | GLM-5.2: 10 calls, 5,680 in / 1,229 out
+[003/15] instance 3 (pred=0, k_ref=4)
+  [cop_k] base=88.3% v4=88.3% v5=88.3% v6=88.3% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 15 calls, 6,674 in / 1,050 out | GLM-5.2: 15 calls, 7,709 in / 1,715 out
+[004/15] instance 94 (pred=0, k_ref=3)
+  [cop_k] base=87.1% v4=87.1% v5=87.1% v6=87.1% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,379 in / 1,220 out | GLM-5.2: 20 calls, 9,571 in / 2,120 out
+[005/15] instance 35 (pred=1, k_ref=4)
+  [cop_k] base=70.0% v4=70.0% v5=47.7% v6=70.0% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 25 calls, 10,069 in / 1,445 out | GLM-5.2: 25 calls, 11,555 in / 2,434 out
+[006/15] instance 31 (pred=0, k_ref=6)
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 12,099 in / 1,785 out | GLM-5.2: 30 calls, 13,886 in / 2,935 out
+[007/15] instance 28 (pred=0, k_ref=3)
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 35 calls, 13,809 in / 1,950 out | GLM-5.2: 35 calls, 15,732 in / 3,345 out
+[008/15] instance 17 (pred=1, k_ref=4)
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 15,534 in / 2,160 out | GLM-5.2: 40 calls, 17,716 in / 3,695 out
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop_k] base=71.0% v4=67.2% v5=49.1% v6=71.0% (len 9, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 45 calls, 18,017 in / 2,663 out | GLM-5.2: 45 calls, 20,771 in / 4,289 out
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop_k] base=88.4% v4=88.4% v5=56.7% v6=88.4% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 50 calls, 19,862 in / 2,893 out | GLM-5.2: 50 calls, 22,800 in / 4,733 out
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 55 calls, 21,655 in / 3,103 out | GLM-5.2: 55 calls, 24,759 in / 5,173 out
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop_k] base=93.4% v4=93.4% v5=64.1% v6=93.4% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 60 calls, 23,298 in / 3,283 out | GLM-5.2: 60 calls, 26,763 in / 5,454 out
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop_k] base=88.1% v4=88.1% v5=88.1% v6=88.1% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 65 calls, 25,355 in / 3,568 out | GLM-5.2: 65 calls, 28,937 in / 6,042 out
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop_k] base=87.5% v4=87.5% v5=67.8% v6=87.5% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 70 calls, 27,015 in / 3,758 out | GLM-5.2: 70 calls, 30,891 in / 6,364 out
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop_k] base=90.2% v4=90.2% v5=71.2% v6=90.2% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 75 calls, 28,696 in / 3,963 out | GLM-5.2: 75 calls, 32,890 in / 6,677 out
+
+saved -> research/results/heart_nn_comparison_cop_k_glm52.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       4.93               86.28     85.82     74.77          86.11     86.28
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0

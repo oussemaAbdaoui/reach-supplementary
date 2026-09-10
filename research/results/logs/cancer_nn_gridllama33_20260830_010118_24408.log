@@ -1,0 +1,15 @@
+Full console log -> research/results/logs/cancer_nn_gridllama33_20260830_010118_24408.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+resume: 15 instances already done (15 rows) -> 0 to go
+
+saved -> research/results/cancer_nn_comparison_cop_k_gridllama33.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       12.8               85.64     73.44     78.67          83.34     85.64
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.07

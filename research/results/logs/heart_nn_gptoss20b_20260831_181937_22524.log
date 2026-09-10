@@ -1,0 +1,87 @@
+Full console log -> research/results/logs/heart_nn_gptoss20b_20260831_181937_22524.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=93.2% v4=93.2% v5=93.2% v6=93.2% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 5 calls, 1,699 in / 205 out | gpt-oss-20b: 6 calls, 2,818 in / 6,098 out
+[002/15] instance 14 (pred=1, k_ref=12)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=87.4% v4=87.4% v5=87.4% v6=87.4% (len 12, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 10 calls, 5,106 in / 900 out | gpt-oss-20b: 14 calls, 9,012 in / 16,125 out
+[003/15] instance 3 (pred=0, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=88.3% v4=88.3% v5=90.1% v6=88.3% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 15 calls, 6,970 in / 1,130 out | gpt-oss-20b: 22 calls, 12,730 in / 23,928 out
+[004/15] instance 94 (pred=0, k_ref=3)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=87.1% v4=87.1% v5=87.1% v6=87.1% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,735 in / 1,300 out | gpt-oss-20b: 28 calls, 15,231 in / 28,229 out
+[005/15] instance 35 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=70.0% v4=70.0% v5=70.0% v6=70.0% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 25 calls, 10,367 in / 1,525 out | gpt-oss-20b: 34 calls, 17,894 in / 32,272 out
+[006/15] instance 31 (pred=0, k_ref=6)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 12,528 in / 1,865 out | gpt-oss-20b: 41 calls, 21,627 in / 38,728 out
+[007/15] instance 28 (pred=0, k_ref=3)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 35 calls, 14,202 in / 2,030 out | gpt-oss-20b: 48 calls, 24,878 in / 48,409 out
+[008/15] instance 17 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 15,960 in / 2,250 out | gpt-oss-20b: 55 calls, 28,135 in / 53,204 out
+[009/15] instance 13 (pred=1, k_ref=9)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=71.0% v4=71.0% v5=71.0% v6=71.0% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 45 calls, 18,659 in / 2,797 out | gpt-oss-20b: 65 calls, 34,669 in / 69,596 out
+[010/15] instance 86 (pred=0, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=88.4% v4=88.4% v5=88.4% v6=88.4% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 50 calls, 20,608 in / 3,027 out | gpt-oss-20b: 73 calls, 38,190 in / 76,222 out
+[011/15] instance 114 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=89.7% v4=89.7% v5=87.0% v6=89.7% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 55 calls, 22,295 in / 3,237 out | gpt-oss-20b: 79 calls, 41,008 in / 81,621 out
+[012/15] instance 69 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=93.4% v4=93.4% v5=93.4% v6=93.4% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 60 calls, 24,056 in / 3,457 out | gpt-oss-20b: 85 calls, 43,683 in / 86,007 out
+[013/15] instance 11 (pred=0, k_ref=5)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  [cop_k] base=88.1% v4=88.1% v5=88.1% v6=88.1% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 65 calls, 26,018 in / 3,742 out | gpt-oss-20b: 92 calls, 47,403 in / 94,605 out
+[014/15] instance 75 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=87.5% v4=87.5% v5=87.5% v6=87.5% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 70 calls, 27,705 in / 3,952 out | gpt-oss-20b: 98 calls, 50,024 in / 99,830 out
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop_k] base=90.2% v4=90.2% v5=90.2% v6=90.2% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 75 calls, 29,410 in / 4,177 out | gpt-oss-20b: 103 calls, 52,300 in / 103,335 out
+
+saved -> research/results/heart_nn_comparison_cop_k_gptoss20b.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       4.93               86.36     86.36      86.3          86.48     86.36
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0

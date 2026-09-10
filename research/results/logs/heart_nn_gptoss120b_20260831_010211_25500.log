@@ -1,0 +1,61 @@
+Full console log -> research/results/logs/heart_nn_gptoss120b_20260831_010211_25500.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=93.2% v4=93.2% v5=93.2% v6=93.2% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 5 calls, 1,894 in / 205 out | gpt-oss-120b: 6 calls, 2,826 in / 4,116 out
+[002/15] instance 14 (pred=1, k_ref=12)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=86.2% v4=80.6% v5=86.2% v6=42.6% (len 12, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,915 in / 687 out | gpt-oss-120b: 12 calls, 7,527 in / 10,141 out
+[003/15] instance 3 (pred=0, k_ref=4)
+  [cop_k] base=88.3% v4=88.3% v5=90.1% v6=88.3% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 15 calls, 6,955 in / 917 out | gpt-oss-120b: 17 calls, 9,839 in / 13,715 out
+[004/15] instance 94 (pred=0, k_ref=3)
+  [cop_k] base=87.1% v4=90.3% v5=90.3% v6=87.1% (len 3, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,861 in / 1,087 out | gpt-oss-120b: 22 calls, 11,970 in / 16,489 out
+[005/15] instance 35 (pred=1, k_ref=4)
+  [cop_k] base=70.0% v4=70.0% v5=70.0% v6=70.0% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 25 calls, 10,650 in / 1,312 out | gpt-oss-120b: 27 calls, 14,240 in / 18,629 out
+[006/15] instance 31 (pred=0, k_ref=6)
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 12,864 in / 1,652 out | gpt-oss-120b: 32 calls, 16,852 in / 22,725 out
+[007/15] instance 28 (pred=0, k_ref=3)
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 35 calls, 14,725 in / 1,817 out | gpt-oss-120b: 37 calls, 18,981 in / 26,403 out
+[008/15] instance 17 (pred=1, k_ref=4)
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 16,640 in / 2,037 out | gpt-oss-120b: 42 calls, 21,251 in / 29,616 out
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop_k] base=71.0% v4=71.6% v5=71.0% v6=40.6% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 45 calls, 19,067 in / 2,471 out | gpt-oss-120b: 47 calls, 24,559 in / 32,952 out
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop_k] base=88.4% v4=88.4% v5=88.4% v6=88.4% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 50 calls, 21,072 in / 2,701 out | gpt-oss-120b: 52 calls, 26,873 in / 36,906 out
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 55 calls, 23,021 in / 2,911 out | gpt-oss-120b: 57 calls, 29,110 in / 40,223 out
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop_k] base=93.4% v4=93.4% v5=64.1% v6=74.1% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 60 calls, 24,875 in / 3,101 out | gpt-oss-120b: 62 calls, 31,392 in / 43,679 out
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop_k] base=88.1% v4=88.1% v5=88.1% v6=88.1% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 65 calls, 27,086 in / 3,386 out | gpt-oss-120b: 67 calls, 33,852 in / 46,940 out
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop_k] base=87.5% v4=87.5% v5=87.5% v6=87.5% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 70 calls, 28,931 in / 3,596 out | gpt-oss-120b: 72 calls, 36,089 in / 50,215 out
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop_k] base=90.2% v4=90.2% v5=90.2% v6=90.2% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 75 calls, 30,823 in / 3,811 out | gpt-oss-120b: 77 calls, 38,366 in / 52,762 out
+
+saved -> research/results/heart_nn_comparison_cop_k_gptoss120b.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       4.93               86.28     86.16     84.66          86.65     80.06
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0

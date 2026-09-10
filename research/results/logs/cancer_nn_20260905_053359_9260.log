@@ -1,0 +1,5 @@
+Full console log -> research/results/logs/cancer_nn_20260905_053359_9260.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/grok420] 90 rows, 90 to redo, model=grok-4.20-0309-non-reasoning provider=xai DRY
+
+[cancer/grok420] wrote 90 rows -> research/results/cancer_nn_comparison_grok420.csv

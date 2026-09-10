@@ -1,0 +1,57 @@
+Full console log -> research/results/logs/heart_nn_20260905_062846_20412.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+  [keys] 3 available, starting at index 1
+[heart/gpt56] 90 rows, 50 to redo, model=gpt-5.6-terra provider=openai
+  inst   31 shap     v5=100.00 (was 78.1) om=0 rounds=2
+  inst   31 lime     v5= 94.80 (was 86.8) om=0 rounds=1
+  inst   35 cop      v5= 85.20 (was 85.2) om=0 rounds=0
+  inst   35 cop_k    v5= 70.00 (was 70.0) om=0 rounds=1
+  inst   35 lmpaxp   v5= 96.90 (was 96.9) om=0 rounds=0
+  inst   35 anchors  v5= 94.90 (was 94.9) om=0 rounds=0
+  inst   35 shap     v5= 92.10 (was 92.1) om=0 rounds=1
+  inst   35 lime     v5= 66.80 (was 23.5) om=0 rounds=0
+  inst   54 cop      v5= 64.70 (was 64.7) om=0 rounds=0
+  inst   54 cop_k    v5= 90.20 (was 90.2) om=0 rounds=0
+  inst   54 lmpaxp   v5= 96.00 (was 96.0) om=0 rounds=0
+  inst   54 anchors  v5= 76.20 (was 76.2) om=0 rounds=0
+  inst   54 shap     v5= 97.50 (was 97.5) om=0 rounds=0
+  inst   54 lime     v5= 97.50 (was 97.5) om=0 rounds=0
+  inst   69 cop      v5= 92.50 (was 92.5) om=0 rounds=0
+  inst   69 cop_k    v5= 93.40 (was 92.5) om=0 rounds=0
+  inst   69 lmpaxp   v5= 96.10 (was 96.1) om=0 rounds=0
+  inst   69 anchors  v5= 74.90 (was 74.9) om=0 rounds=0
+  inst   69 shap     v5= 97.10 (was 97.1) om=0 rounds=0
+  inst   69 lime     v5= 98.10 (was 98.1) om=0 rounds=0
+  inst   75 cop      v5= 84.50 (was 84.5) om=0 rounds=0
+  inst   75 cop_k    v5= 87.50 (was 87.5) om=0 rounds=0
+  inst   75 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=0
+  inst   75 anchors  v5= 74.50 (was 74.5) om=0 rounds=0
+  inst   75 shap     v5= 98.80 (was 74.5) om=0 rounds=2
+  inst   75 lime     v5= 89.10 (was 52.0) om=0 rounds=0
+  inst   81 cop      v5= 93.60 (was 93.6) om=0 rounds=0
+  inst   81 cop_k    v5= 93.20 (was 93.2) om=0 rounds=0
+  inst   81 lmpaxp   v5= 97.60 (was 97.6) om=0 rounds=0
+  inst   81 anchors  v5= 76.70 (was 76.7) om=0 rounds=0
+  inst   81 shap     v5= 97.90 (was 97.9) om=0 rounds=0
+  inst   81 lime     v5= 97.90 (was 97.9) om=0 rounds=1
+  inst   86 cop      v5= 88.60 (was 88.6) om=0 rounds=0
+  inst   86 cop_k    v5= 88.40 (was 88.4) om=0 rounds=0
+  inst   86 lmpaxp   v5= 98.90 (was 98.9) om=0 rounds=0
+  inst   86 anchors  v5= 82.60 (was 76.5) om=0 rounds=0
+  inst   86 shap     v5= 99.70 (was 98.2) om=0 rounds=1
+  inst   86 lime     v5= 97.10 (was 97.1) om=0 rounds=0
+  inst   94 cop      v5= 90.30 (was 90.3) om=0 rounds=0
+  inst   94 cop_k    v5= 87.10 (was 87.1) om=0 rounds=0
+  inst   94 lmpaxp   v5= 98.40 (was 98.4) om=0 rounds=0
+  inst   94 anchors  v5= 83.40 (was 83.4) om=0 rounds=0
+  inst   94 shap     v5= 97.30 (was 97.3) om=0 rounds=0
+  inst   94 lime     v5= 98.70 (was 98.7) om=0 rounds=0
+  inst  114 cop      v5= 87.00 (was 87.0) om=0 rounds=0
+  inst  114 cop_k    v5= 89.70 (was 89.7) om=0 rounds=1
+  inst  114 lmpaxp   v5= 96.70 (was 96.7) om=0 rounds=0
+  inst  114 anchors  v5= 76.30 (was 76.3) om=0 rounds=0
+  inst  114 shap     v5= 99.10 (was 76.3) om=0 rounds=1
+  inst  114 lime     v5= 76.30 (was 67.4) om=2 rounds=3
+
+[heart/gpt56] wrote 50 rows -> research/results/heart_nn_comparison_gpt56.csv
+  spend: gpt-5.6-terra: 28 calls, 11,189 in / 2,298 out

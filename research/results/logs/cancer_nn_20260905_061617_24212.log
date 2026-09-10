@@ -1,0 +1,40 @@
+Full console log -> research/results/logs/cancer_nn_20260905_061617_24212.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/gridllama33] 105 rows, 75 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together
+  inst   35 lmpaxp   v5= 96.50 (was 96.5) om=0 rounds=0
+  inst   35 anchors  v5= 74.30 (was 74.3) om=0 rounds=0
+  inst   35 shap     v5= 98.00 (was 96.3) om=0 rounds=1
+  inst   35 lime     v5= 85.40 (was 79.3) om=5 rounds=3
+  inst   35 cop_best v5= 99.80 (was 99.5) om=0 rounds=2
+  inst   57 cop      v5= 60.90 (was 35.0) om=0 rounds=0
+  inst   57 cop_k    v5= 70.30 (was 47.9) om=0 rounds=3
+  inst   57 lmpaxp   v5= 97.90 (was 94.0) om=0 rounds=2
+  inst   57 anchors  v5= 35.50 (was 31.9) om=0 rounds=0
+  inst   57 shap     v5= 89.80 (was 76.8) om=6 rounds=3
+  inst   57 lime     v5= 26.90 (was 20.3) om=10 rounds=3
+  inst   57 cop_best v5= 77.60 (was 72.5) om=0 rounds=2
+  inst   62 cop      v5= 58.80 (was 58.8) om=0 rounds=0
+  inst   62 cop_k    v5= 66.90 (was 58.7) om=0 rounds=2
+  inst   62 lmpaxp   v5= 94.80 (was 75.1) om=0 rounds=2
+  inst   62 anchors  v5= 39.90 (was 39.9) om=0 rounds=0
+  inst   62 shap     v5= 74.50 (was 69.6) om=5 rounds=3
+  inst   62 lime     v5= 54.30 (was 37.8) om=7 rounds=3
+  inst   62 cop_best v5= 84.50 (was 69.6) om=0 rounds=2
+  inst   70 cop      v5= 78.00 (was 78.0) om=0 rounds=0
+  inst   70 cop_k    v5= 94.80 (was 94.5) om=0 rounds=0
+  inst   70 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=0
+  inst   70 anchors  v5= 71.00 (was 71.0) om=0 rounds=0
+  inst   70 shap     v5= 90.80 (was 87.5) om=5 rounds=3
+  inst   70 lime     v5= 82.70 (was 87.2) om=4 rounds=3
+  inst   70 cop_best v5= 85.60 (was 85.6) om=0 rounds=0
+  inst  108 cop      v5= 49.60 (was 52.7) om=0 rounds=0
+  inst  108 cop_k    v5= 98.80 (was 87.9) om=0 rounds=2
+  inst  108 lmpaxp   v5= 97.50 (was 78.8) om=0 rounds=2
+  inst  108 anchors  v5= 34.50 (was 31.7) om=0 rounds=0
+  inst  108 shap     v5= 96.80 (was 43.0) om=4 rounds=3
+  inst  108 lime     v5= 55.20 (was 68.8) om=13 rounds=3
+  inst  108 cop_best v5= 98.80 (was 82.3) om=0 rounds=2
+  inst  139 cop      v5= 59.50 (was 59.5) om=0 rounds=0
+  inst  139 cop_k    v5= 80.10 (was 91.2) om=2 rounds=3
+  inst  139 lmpaxp   v5= 94.70 (was 94.7) om=0 rounds=2
+  inst  139 anchors  v5= 37.60 (was 37.6) om=0 rounds=0

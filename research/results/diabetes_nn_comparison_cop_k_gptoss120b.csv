@@ -1,0 +1,431 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+diabetes,openai/gpt-oss-120b,57,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,99.2,True,99.2,99.2,99.2,73.1,True,True,False,9,9,3,0,0,0,0,6,0,0,0,0,[99.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  pregnancies_b0 = 0  (pregnancies in [0, 2) — does NOT hold)
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 1  (glucose in [134, 199) — holds)
+  blood_pressure_b0 = 0  (blood_pressure in [0, 68) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)
+  age_b1 = 0  (age in [26, 38) — does NOT hold)
+  age_b2 = 1  (age in [38, 81) — holds)","The model predicted diabetes because two of the patient’s measurements fell into the risk ranges that the rule identified:
+
+* **Blood‑sugar level** – the patient’s glucose reading is between 134 and 199 mg/dL. This range is one of the conditions that points toward diabetes.  
+* **Age** – the patient is between 38 and 81 years old. Being in this age bracket also supports a diabetes prediction.
+
+All the other factors considered by the rule did **not** match their risk ranges:
+
+* The number of pregnancies is not in the low‑range (0–2).  
+* The blood‑pressure reading is not in the low‑range (0–68).  
+* The diabetes‑pedigree score is not in the moderate‑range (0.268–0.529).  
+* The glucose readings for the lower ranges (0–108 mg/dL and 108–134 mg/dL) are not met.  
+* The younger age brackets (21–26 years and 26–38 years) are not met.
+
+Because the only conditions that line up with the rule are the elevated glucose level and the older age, the model concluded that the patient is likely to have diabetes.","The model predicted diabetes because two of the patient’s measurements fell into the risk ranges that the rule identified:
+
+* **Blood‑sugar level** – the patient’s glucose reading is between 134 and 199 mg/dL. This range is one of the conditions that points toward diabetes.  
+* **Age** – the patient is between 38 and 81 years old. Being in this age bracket also supports a diabetes prediction.
+
+All the other factors considered by the rule did **not** match their risk ranges:
+
+* The number of pregnancies is not in the low‑range (0–2).  
+* The blood‑pressure reading is not in the low‑range (0–68).  
+* The diabetes‑pedigree score is not in the moderate‑range (0.268–0.529).  
+* The glucose readings for the lower ranges (0–108 mg/dL and 108–134 mg/dL) are not met.  
+* The younger age brackets (21–26 years and 26–38 years) are not met.
+
+Because the only conditions that line up with the rule are the elevated glucose level and the older age, the model concluded that the patient is likely to have diabetes.","1. The number of times the patient has been pregnant is between 0 and 1, which is not true for this case.  
+2. The blood sugar level is between 0 and 108, which is not true for this case.  
+3. The blood sugar level is between 108 and 134, which is not true for this case.  
+4. The","['glucose_b2 > 0.5', 'age_b2 > 0.5', 'pregnancies_b0 < 0.5', 'blood_pressure_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'age_b0 < 0.5', 'age_b1 < 0.5']","['pregnancies_b0 < 0.5', 'glucose_b0 < 0.5', 'glucose_b1 < 0.5']","[0, 3, 4, 5, 6, 18, 20, 21, 22]","[0, 3, 4, 5, 6, 18, 20, 21, 22]","[0, 3, 4, 5, 6, 18, 20, 21, 22]","[0, 3, 4]",0.39,FEASIBLE,cop@9,0.423
+diabetes,openai/gpt-oss-120b,12,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,88.2,False,88.2,88.2,88.2,88.2,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[88.2, 88.2, 88.2, 88.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  insulin_b0 = 1  (insulin in [0, 99) — holds)
+  insulin_b1 = 0  (insulin in [99, 680) — does NOT hold)
+  age_b0 = 1  (age in [21, 26) — holds)
+  age_b1 = 0  (age in [26, 38) — does NOT hold)
+  age_b2 = 0  (age in [38, 81) — does NOT hold)","The model predicted “no diabetes” because two of the key factors that favour a healthy outcome are present:
+
+* **Insulin level** is low – it falls in the 0 to 99 range. Low insulin is associated with a lower risk of diabetes.  
+* **Age** is young – the patient is between 21 and 26 years old. Younger age also points toward a lower risk.
+
+The other conditions that the rule mentions are not met:
+
+* The glucose level is **not** in the 134 to 199 range.  
+* The insulin level is **not** in the higher 99 to 680 range (which would suggest higher risk).  
+* The age is **not** in the 26 to 38 range nor in the 38 to 81 range (the patient is younger than those brackets).
+
+Overall, the low insulin reading and the young age outweighed the fact that the glucose reading was outside the specified range, leading the model to classify the patient as not having diabetes.","The patient’s glucose level is below 134 mg/dL (so it does not fall in the 134‑199 mg/dL range).  
+The insulin level is low, between 0 and 99 µU/mL (and therefore not in the 99‑680 µU/mL range).  
+The patient’s age is between 21 and 26 years (so the age is not in the 26‑38 year range nor in the 38‑81 year range).","1. The blood‑sugar level is between 134 and 199, which is not true for this patient.  
+2. The insulin level is between 0 and 99, which is true for this patient.  
+3. The insulin level is between 99 and 680, which is not true for this patient.  
+4. The age is between 21 and 26, which is true for this patient.  
+5. The age is between 26 and 38, which is not true for this patient.  
+6. The age is between 38 and 81, which is not true for this patient.","['insulin_b0 > 0.5', 'age_b0 > 0.5', 'glucose_b2 < 0.5', 'insulin_b1 < 0.5', 'age_b1 < 0.5', 'age_b2 < 0.5']","['glucose_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'age_b0 > 0.5', 'age_b1 < 0.5', 'age_b2 < 0.5']","[5, 12, 13, 20, 21, 22]","[5, 12, 13, 20, 21, 22]","[5, 12, 13, 20, 21, 22]","[5, 12, 13, 20, 21, 22]",0.4802,FEASIBLE,cop@6,0.5774
+diabetes,openai/gpt-oss-120b,140,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,98.5,True,98.5,98.5,98.5,98.5,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[98.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 1  (glucose in [0, 108) — holds)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  insulin_b0 = 1  (insulin in [0, 99) — holds)
+  insulin_b1 = 0  (insulin in [99, 680) — does NOT hold)
+  bmi_b2 = 0  (bmi in [34.9, 67.1) — does NOT hold)
+  age_b1 = 0  (age in [26, 38) — does NOT hold)","The model looked at several health measurements:
+
+- Your blood‑sugar level falls in the low range (0 – 108), which supports a “no diabetes” prediction.  
+- It is **not** in the middle range (108 – 134) and **not** in the higher range (134 – 199).  
+- Your insulin level is also low (0 – 99), another factor that points to “no diabetes”.  
+- It is **not** in the higher insulin range (99 – 680).  
+- Your body‑mass index is **not** in the high range (34.9 – 67.1).  
+- Your age is **not** between 26 and 38 years.
+
+Because the low glucose and low insulin conditions are satisfied, the overall assessment is that you are predicted not to have diabetes (class 0).","The model looked at several health measurements:
+
+- Your blood‑sugar level falls in the low range (0 – 108), which supports a “no diabetes” prediction.  
+- It is **not** in the middle range (108 – 134) and **not** in the higher range (134 – 199).  
+- Your insulin level is also low (0 – 99), another factor that points to “no diabetes”.  
+- It is **not** in the higher insulin range (99 – 680).  
+- Your body‑mass index is **not** in the high range (34.9 – 67.1).  
+- Your age is **not** between 26 and 38 years.
+
+Because the low glucose and low insulin conditions are satisfied, the overall assessment is that you are predicted not to have diabetes (class 0).","1. Blood sugar level is between 0 and 108, which is true for this patient.  
+2. Blood sugar level is between 108 and 134, which is not true for this patient.  
+3. Blood sugar level is between 134 and 199, which is not true for this patient.  
+4. Insulin level is between 0 and 99, which is true for this patient.  
+5. Insulin level is between 99 and 680, which is not true for this patient.  
+6. Body‑mass‑index is between 34.9 and 67.1, which is not true for this patient.  
+7. Age is between 26 and 38 years, which is not true for this patient.","['glucose_b0 > 0.5', 'glucose_b1 < 0.5', 'glucose_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'bmi_b2 < 0.5', 'age_b1 < 0.5']","['glucose_b0 > 0.5', 'glucose_b1 < 0.5', 'glucose_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'bmi_b2 < 0.5', 'age_b1 < 0.5']","[3, 4, 5, 12, 13, 16, 21]","[3, 4, 5, 12, 13, 16, 21]","[3, 4, 5, 12, 13, 16, 21]","[3, 4, 5, 12, 13, 16, 21]",0.5162,FEASIBLE,cop@7,0.588
+diabetes,openai/gpt-oss-120b,125,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,92.1,False,92.1,92.1,92.1,92.1,False,False,False,7,5,7,0,0,2,0,0,0,0,0,3,"[92.1, 92.1, 58.6, 92.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  pregnancies_b0 = 0  (pregnancies in [0, 2) — does NOT hold)
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  blood_pressure_b1 = 0  (blood_pressure in [68, 78) — does NOT hold)
+  diabetes_pedigree_function_b0 = 0  (diabetes_pedigree_function in [0.078, 0.268) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  diabetes_pedigree_function_b2 = 1  (diabetes_pedigree_function in [0.529, 2.42) — holds)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model predicted diabetes mainly because the patient’s **diabetes‑family‑history score** falls in the range 0.529 to 2.42, which is a pattern the model has learned to associate with the disease.  
+
+All the other measured factors do not match the patterns that would push the prediction in the opposite direction:  
+
+- The number of pregnancies is not in the low range of 0 to 2.  
+- The glucose level is not in the low range of 0 to 108.  
+- The blood‑pressure reading is not in the narrow range of 68 to 78.  
+- The diabetes‑family‑history score is not in the lower intervals 0.078 to 0.268 or 0.268 to 0.529.  
+- The patient’s age is not in the young‑adult range of 21 to 26.  
+
+Because the only condition that holds is the elevated family‑history score, the model’s decision leans toward class 1 (diabetes).","The model predicts diabetes because the patient has two or more pregnancies, a glucose level of at least 108 mg/dL, a blood‑pressure reading that is not between 68 and 78 mm Hg, a diabetes‑family‑history score that falls between 0.529 and 2.42, and an age that is not between 21 and 26 years.","1. The number of pregnancies is between 0 and 2, which is not true for this patient.  
+2. The blood‑sugar level (glucose) is between 0 and 108, which is not true for this patient.  
+3. The blood pressure is between 68 and 78, which is not true for this patient.  
+4. The family‑history score (diabetes pedigree function) is between 0.078 and 0.268, which is not true for this patient.  
+5. The family‑history score (diabetes pedigree function) is between 0.268 and 0.529, which is not true for this patient.  
+6. The family‑history score (diabetes pedigree function) is between 0.529 and 2.42, which is true for this patient.  
+7. The age is between 21 and 26 years, which is not true for this patient.","['diabetes_pedigree_function_b2 > 0.5', 'pregnancies_b0 < 0.5', 'glucose_b0 < 0.5', 'blood_pressure_b1 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'age_b0 < 0.5']","['pregnancies_b0 < 0.5', 'glucose_b0 < 0.5', 'blood_pressure_b1 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'diabetes_pedigree_function_b2 > 0.5', 'age_b0 < 0.5']","[0, 3, 7, 17, 18, 19, 20]","[0, 3, 7, 17, 18, 19, 20]","[0, 3, 7, 19, 20]","[0, 3, 7, 17, 18, 19, 20]",0.3684,FEASIBLE,cop@7,0.4206
+diabetes,openai/gpt-oss-120b,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,89.5,False,89.5,89.5,89.5,89.5,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[89.5, 80.8, 89.5, 89.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  diabetes_pedigree_function_b0 = 0  (diabetes_pedigree_function in [0.078, 0.268) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  diabetes_pedigree_function_b2 = 1  (diabetes_pedigree_function in [0.529, 2.42) — holds)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model predicted diabetes because the patient’s **family‑history score (diabetes pedigree function)** falls in the range 0.529 to 2.42. This condition matches the rule that points toward a diabetic outcome.  
+
+All the other listed factors do **not** match the low‑risk conditions:
+
+* **Blood‑sugar level** is not in the low range (it is 108 mg/dL or higher).  
+* **Family‑history score** is not in the lower intervals (it is not between 0.078‑0.268 nor 0.268‑0.529).  
+* **Age** is not between 21 and 26 years.
+
+Thus, the only supporting evidence for the prediction is the pedigree‑function value being in the higher interval, which led the model to classify the patient as having diabetes.","According to the rule, the patient’s blood‑sugar level is at least 108 mg/dL, the family‑history factor (diabetes pedigree function) lies between 0.529 and 2.42, and the patient is 26 years old or older. The rule also notes that the blood‑sugar is not below 108 mg/dL, the family‑history factor is not in the lower intervals 0.078 to 0.268 or 0.268 to 0.529, and the age is not between 21 and 26.","1. The blood sugar level is between 0 and 108, which is not true for this patient.  
+2. The family diabetes risk score is between 0.078 and 0.268, which is not true for this patient.  
+3. The family diabetes risk score is between 0.268 and 0.529, which is not true for this patient.  
+4. The family diabetes risk score is between 0.529 and 2.42, which is true for this patient.  
+5. The age is between 21 and 26 years, which is not true for this patient.","['diabetes_pedigree_function_b2 > 0.5', 'glucose_b0 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'age_b0 < 0.5']","['glucose_b0 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'diabetes_pedigree_function_b2 > 0.5', 'age_b0 < 0.5']","[3, 17, 18, 19, 20]","[3, 17, 18, 19, 20]","[3, 17, 18, 19, 20]","[3, 17, 18, 19, 20]",0.3212,FEASIBLE,cop@5,0.4186
+diabetes,openai/gpt-oss-120b,71,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,9,92.9,False,70.2,92.9,92.9,68.8,False,False,False,5,9,2,4,0,0,0,7,0,0,0,3,"[70.2, 92.9, 70.2, 92.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  blood_pressure_b0 = 0  (blood_pressure in [0, 68) — does NOT hold)
+  skin_thickness_b1 = 0  (skin_thickness in [13, 31) — does NOT hold)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  bmi_b1 = 0  (bmi in [29.5, 34.9) — does NOT hold)
+  bmi_b2 = 1  (bmi in [34.9, 67.1) — holds)
+  diabetes_pedigree_function_b0 = 1  (diabetes_pedigree_function in [0.078, 0.268) — holds)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  diabetes_pedigree_function_b2 = 0  (diabetes_pedigree_function in [0.529, 2.42) — does NOT hold)","The model looked at several health measurements.  
+
+- Your blood‑sugar reading was **not** between 134 mg/dL and 199 mg/dL.  
+- Your blood‑pressure reading was **not** in the low range of 0 mm Hg to 68 mm Hg.  
+- Your skin‑fold thickness was **not** between 13 mm and 31 mm.  
+
+For body‑mass index (BMI) the model saw a value that **was** in the higher range of **34.9 – 67.1**, and for the diabetes‑family‑history score (diabetes pedigree function) it saw a value that **was** in the low range of **0.078 – 0.268**.  
+
+Because the only conditions that matched the rule were the high BMI and the low family‑history score, while the other measurements did not fall into the ranges that would suggest diabetes, the model concluded that the patient is predicted **not to have diabetes** (class 0).","The model predicts no diabetes because the patient’s glucose level is not between 134 and 199, blood pressure is not between 0 and 68, skin‑fold thickness is not between 13 and 31, body‑mass index is not between 0 and 29.5, is not between 29.5 and 34.9, but is between 34.9 and 67.1, and the diabetes‑pedigree function is between 0.078 and 0.268, not between 0.268 and 0.529, and not between 0.529 and 2.42.","1. The blood sugar level is between 134 and 199, which is not true for this case.  
+2. The blood pressure is between 0 and 68, which is not true here.  
+3. The","['glucose_b2 < 0.5', 'blood_pressure_b0 < 0.5', 'skin_thickness_b1 < 0.5', 'bmi_b2 > 0.5', 'diabetes_pedigree_function_b0 > 0.5']","['glucose_b2 < 0.5', 'blood_pressure_b0 < 0.5']","[5, 6, 10, 14, 15, 16, 17, 18, 19]","[5, 6, 10, 16, 17]","[5, 6, 10, 14, 15, 16, 17, 18, 19]","[5, 6]",0.555,FEASIBLE,cop@9,0.5848
+diabetes,openai/gpt-oss-120b,52,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,9,99.6,True,99.6,99.6,99.6,99.6,True,True,True,9,9,9,0,0,0,0,0,0,0,0,0,[99.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  blood_pressure_b2 = 0  (blood_pressure in [78, 122) — does NOT hold)
+  skin_thickness_b0 = 0  (skin_thickness in [0, 13) — does NOT hold)
+  skin_thickness_b1 = 1  (skin_thickness in [13, 31) — holds)
+  skin_thickness_b2 = 0  (skin_thickness in [31, 63) — does NOT hold)
+  diabetes_pedigree_function_b2 = 0  (diabetes_pedigree_function in [0.529, 2.42) — does NOT hold)
+  age_b0 = 1  (age in [21, 26) — holds)
+  age_b1 = 0  (age in [26, 38) — does NOT hold)
+  age_b2 = 0  (age in [38, 81) — does NOT hold)","The model looked at several health measurements and compared them to the ranges it has learned are linked to diabetes.
+
+- **Glucose level** – the patient’s glucose is **not** in the 134‑199 mg/dL range.  
+- **Blood‑pressure** – the patient’s blood‑pressure is **not** in the 78‑122 mm Hg range.  
+- **Skin‑fold thickness** – the measurement is **not** in the 0‑13 mm range, but it **is** in the 13‑31 mm range.  
+- **Skin‑fold thickness** – it is **not** in the higher 31‑63 mm range.  
+- **Diabetes‑pedigree function** – the value is **not** in the 0.529‑2.42 range.  
+- **Age** – the patient is **in** the 21‑26‑year‑old range, and therefore **not** in the 26‑38 or 38‑81 year ranges.
+
+Because the glucose, blood‑pressure, pedigree score, and the higher skin‑fold ranges that are associated with diabetes are all missing, while the only conditions that do hold (moderate skin‑fold thickness and a younger age) are linked to a lower risk, the model concludes that the patient is unlikely to have diabetes and predicts class 0.","The model looked at several health measurements and compared them to the ranges it has learned are linked to diabetes.
+
+- **Glucose level** – the patient’s glucose is **not** in the 134‑199 mg/dL range.  
+- **Blood‑pressure** – the patient’s blood‑pressure is **not** in the 78‑122 mm Hg range.  
+- **Skin‑fold thickness** – the measurement is **not** in the 0‑13 mm range, but it **is** in the 13‑31 mm range.  
+- **Skin‑fold thickness** – it is **not** in the higher 31‑63 mm range.  
+- **Diabetes‑pedigree function** – the value is **not** in the 0.529‑2.42 range.  
+- **Age** – the patient is **in** the 21‑26‑year‑old range, and therefore **not** in the 26‑38 or 38‑81 year ranges.
+
+Because the glucose, blood‑pressure, pedigree score, and the higher skin‑fold ranges that are associated with diabetes are all missing, while the only conditions that do hold (moderate skin‑fold thickness and a younger age) are linked to a lower risk, the model concludes that the patient is unlikely to have diabetes and predicts class 0.","1. The blood sugar level is between 134 and 199, which is not true for this case.  
+2. The blood pressure is between 78 and 122, which is not true for this case.  
+3. The skinfold thickness is between 0 and 13, which is not true for this case.  
+4. The skinfold thickness is between 13 and 31, which is true for this case.  
+5. The skinfold thickness is between 31 and 63, which is not true for this case.  
+6. The family diabetes risk score is between 0.529 and 2.42, which is not true for this case.  
+7. The age is between 21 and 26, which is true for this case.  
+8. The age is between 26 and 38, which is not true for this case.  
+9. The age is between 38 and 81, which is not true for this case.","['glucose_b2 < 0.5', 'blood_pressure_b2 < 0.5', 'skin_thickness_b0 < 0.5', 'skin_thickness_b1 > 0.5', 'skin_thickness_b2 < 0.5', 'diabetes_pedigree_function_b2 < 0.5', 'age_b0 > 0.5', 'age_b1 < 0.5', 'age_b2 < 0.5']","['glucose_b2 < 0.5', 'blood_pressure_b2 < 0.5', 'skin_thickness_b0 < 0.5', 'skin_thickness_b1 > 0.5', 'skin_thickness_b2 < 0.5', 'diabetes_pedigree_function_b2 < 0.5', 'age_b0 > 0.5', 'age_b1 < 0.5', 'age_b2 < 0.5']","[5, 8, 9, 10, 11, 19, 20, 21, 22]","[5, 8, 9, 10, 11, 19, 20, 21, 22]","[5, 8, 9, 10, 11, 19, 20, 21, 22]","[5, 8, 9, 10, 11, 19, 20, 21, 22]",0.5448,FEASIBLE,cop@9,0.5814
+diabetes,openai/gpt-oss-120b,279,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,97.4,True,97.4,97.4,97.4,97.4,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[97.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 1  (glucose in [0, 108) — holds)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  insulin_b0 = 1  (insulin in [0, 99) — holds)
+  insulin_b1 = 0  (insulin in [99, 680) — does NOT hold)
+  bmi_b2 = 0  (bmi in [34.9, 67.1) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)","The model predicted “no diabetes” because the patient’s measurements fall into the low‑risk zones that the rule associates with the negative class:
+
+* **Blood‑sugar level (glucose)** – it is in the lowest interval, from 0 up to 108 mg/dL. The higher intervals (108‑134 mg/dL and 134‑199 mg/dL) are not met, which pushes the prediction toward “no diabetes”.
+
+* **Insulin level** – it is in the low range, from 0 up to 99 µU/mL. The next interval (99‑680 µU/mL) is not met, again supporting the negative prediction.
+
+* **Body‑mass index (BMI)** – the patient’s BMI is not in the high range of 34.9 – 67.1. Being outside that high‑BMI interval is consistent with a lower diabetes risk.
+
+* **Diabetes pedigree function** – the value does not lie in the mid‑range of 0.268 – 0.529. Being outside that range also aligns with the “no diabetes” outcome.
+
+Together, these low‑risk glucose and insulin values, the absence of a very high BMI, and a pedigree function outside the specified mid‑range lead the model to classify the patient as not having diabetes.","The model predicted “no diabetes” because the patient’s measurements fall into the low‑risk zones that the rule associates with the negative class:
+
+* **Blood‑sugar level (glucose)** – it is in the lowest interval, from 0 up to 108 mg/dL. The higher intervals (108‑134 mg/dL and 134‑199 mg/dL) are not met, which pushes the prediction toward “no diabetes”.
+
+* **Insulin level** – it is in the low range, from 0 up to 99 µU/mL. The next interval (99‑680 µU/mL) is not met, again supporting the negative prediction.
+
+* **Body‑mass index (BMI)** – the patient’s BMI is not in the high range of 34.9 – 67.1. Being outside that high‑BMI interval is consistent with a lower diabetes risk.
+
+* **Diabetes pedigree function** – the value does not lie in the mid‑range of 0.268 – 0.529. Being outside that range also aligns with the “no diabetes” outcome.
+
+Together, these low‑risk glucose and insulin values, the absence of a very high BMI, and a pedigree function outside the specified mid‑range lead the model to classify the patient as not having diabetes.","1. The blood‑sugar level is between 0 and 108, which is true for this patient.  
+2. The blood‑sugar level is between 108 and 134, which is not true for this patient.  
+3. The blood‑sugar level is between 134 and 199, which is not true for this patient.  
+4. The insulin level is between 0 and 99, which is true for this patient.  
+5. The insulin level is between 99 and 680, which is not true for this patient.  
+6. The body‑mass‑index is between 34.9 and 67.1, which is not true for this patient.  
+7. The family‑diabetes‑risk score is between 0.268 and 0.529, which is not true for this patient.","['glucose_b0 > 0.5', 'glucose_b1 < 0.5', 'glucose_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'bmi_b2 < 0.5', 'diabetes_pedigree_function_b1 < 0.5']","['glucose_b0 > 0.5', 'glucose_b1 < 0.5', 'glucose_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'bmi_b2 < 0.5', 'diabetes_pedigree_function_b1 < 0.5']","[3, 4, 5, 12, 13, 16, 18]","[3, 4, 5, 12, 13, 16, 18]","[3, 4, 5, 12, 13, 16, 18]","[3, 4, 5, 12, 13, 16, 18]",0.5124,FEASIBLE,cop@7,0.587
+diabetes,openai/gpt-oss-120b,44,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,9,95.7,True,95.7,95.7,95.7,95.7,True,True,True,9,9,9,0,0,0,0,0,0,0,0,0,[95.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  pregnancies_b0 = 1  (pregnancies in [0, 2) — holds)
+  pregnancies_b1 = 0  (pregnancies in [2, 5) — does NOT hold)
+  pregnancies_b2 = 0  (pregnancies in [5, 17) — does NOT hold)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  bmi_b0 = 1  (bmi in [0, 29.5) — holds)
+  bmi_b1 = 0  (bmi in [29.5, 34.9) — does NOT hold)
+  bmi_b2 = 0  (bmi in [34.9, 67.1) — does NOT hold)
+  diabetes_pedigree_function_b2 = 0  (diabetes_pedigree_function in [0.529, 2.42) — does NOT hold)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model looked at a set of simple checks on the patient’s data and found that the pattern matched a “no‑diabetes” rule.
+
+* **Number of pregnancies** – the patient’s count falls in the lowest bracket (0 to 2 pregnancies). This part of the rule is satisfied, while the higher brackets (2 to 5 and 5 to 17 pregnancies) are not satisfied.
+
+* **Body‑mass index (BMI)** – the patient’s BMI is in the lowest range (0 to 29.5). This condition is satisfied; the higher BMI ranges (29.5 to 34.9 and 34.9 to 67.1) are not.
+
+* **Glucose level** – the patient’s glucose does **not** fall in the range 108 to 134, so this part of the rule is not satisfied.
+
+* **Diabetes‑pedigree function** – the patient’s value is **not** in the interval 0.529 to 2.42, so this condition is not satisfied.
+
+* **Age** – the patient’s age is **not** between 21 and 26 years, so this condition is not satisfied.
+
+Because the rule that the model learned is satisfied by the two “low‑risk” conditions (few pregnancies and low BMI) and the other conditions do not trigger the higher‑risk patterns, the overall rule aligns with the model’s decision that the patient is predicted **not to have diabetes** (class 0).","The model looked at a set of simple checks on the patient’s data and found that the pattern matched a “no‑diabetes” rule.
+
+* **Number of pregnancies** – the patient’s count falls in the lowest bracket (0 to 2 pregnancies). This part of the rule is satisfied, while the higher brackets (2 to 5 and 5 to 17 pregnancies) are not satisfied.
+
+* **Body‑mass index (BMI)** – the patient’s BMI is in the lowest range (0 to 29.5). This condition is satisfied; the higher BMI ranges (29.5 to 34.9 and 34.9 to 67.1) are not.
+
+* **Glucose level** – the patient’s glucose does **not** fall in the range 108 to 134, so this part of the rule is not satisfied.
+
+* **Diabetes‑pedigree function** – the patient’s value is **not** in the interval 0.529 to 2.42, so this condition is not satisfied.
+
+* **Age** – the patient’s age is **not** between 21 and 26 years, so this condition is not satisfied.
+
+Because the rule that the model learned is satisfied by the two “low‑risk” conditions (few pregnancies and low BMI) and the other conditions do not trigger the higher‑risk patterns, the overall rule aligns with the model’s decision that the patient is predicted **not to have diabetes** (class 0).","1. The number of pregnancies is between 0 and 2, which is true for this patient.  
+2. The number of pregnancies is between 2 and 5, which is not true for this patient.  
+3. The number of pregnancies is between 5 and 17, which is not true for this patient.  
+4. The blood‑sugar level (glucose) is between 108 and 134, which is not true for this patient.  
+5. The body‑mass‑index (BMI) is between 0 and 29.5, which is true for this patient.  
+6. The body‑mass‑index (BMI) is between 29.5 and 34.9, which is not true for this patient.  
+7. The body‑mass‑index (BMI) is between 34.9 and 67.1, which is not true for this patient.  
+8. The family‑diabetes‑risk score (diabetes pedigree function) is between 0.529 and 2.42, which is not true for this patient.  
+9. The age is between 21 and 26 years, which is not true for this patient.","['pregnancies_b0 > 0.5', 'pregnancies_b1 < 0.5', 'pregnancies_b2 < 0.5', 'bmi_b0 > 0.5', 'bmi_b1 < 0.5', 'bmi_b2 < 0.5', 'glucose_b1 < 0.5', 'diabetes_pedigree_function_b2 < 0.5', 'age_b0 < 0.5']","['pregnancies_b0 > 0.5', 'pregnancies_b1 < 0.5', 'pregnancies_b2 < 0.5', 'glucose_b1 < 0.5', 'bmi_b0 > 0.5', 'bmi_b1 < 0.5', 'bmi_b2 < 0.5', 'diabetes_pedigree_function_b2 < 0.5', 'age_b0 < 0.5']","[0, 1, 2, 4, 14, 15, 16, 19, 20]","[0, 1, 2, 4, 14, 15, 16, 19, 20]","[0, 1, 2, 4, 14, 15, 16, 19, 20]","[0, 1, 2, 4, 14, 15, 16, 19, 20]",0.5582,FEASIBLE,cop@9,0.5936
+diabetes,openai/gpt-oss-120b,216,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,92.3,False,92.9,92.9,92.9,92.3,False,False,False,6,6,8,2,0,2,0,0,0,0,0,3,"[92.9, 92.3, 92.3, 92.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  blood_pressure_b0 = 1  (blood_pressure in [0, 68) — holds)
+  blood_pressure_b1 = 0  (blood_pressure in [68, 78) — does NOT hold)
+  blood_pressure_b2 = 0  (blood_pressure in [78, 122) — does NOT hold)
+  skin_thickness_b0 = 0  (skin_thickness in [0, 13) — does NOT hold)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model examined a handful of health measurements:
+
+- **Glucose level** – the rule expected a low value (under 108 mg/dL). Your glucose was higher, so this low‑risk condition was not met.  
+- **Blood pressure** – the rule was satisfied because your pressure is under 68 mm Hg. (Because it is that low, it is not in the higher ranges of 68‑78 mm Hg or 78‑122 mm Hg.)  
+- **Skin‑fold thickness** – the rule called for a very thin reading (under 13 mm). Your measurement is 13 mm or more, so this condition does not hold.  
+- **Body‑mass index (BMI)** – the rule expected a BMI below 29.5. Your BMI is 29.5 or higher, so this condition does not hold.  
+- **Diabetes pedigree function** (a score reflecting family history) – the rule looked for a value between 0.268 and 0.529. Your score falls outside that interval, so this condition does not hold.  
+- **Age** – the rule was for a young adult age between 21 and 26 years. Your age is outside that range, indicating you are older, so this condition does not hold.
+
+In short, most of the protective ranges (low glucose, low skin‑fold thickness, lower BMI, a moderate family‑history score, and a young age) were not satisfied, while only the low blood‑pressure condition matched. Because the overall pattern shows several risk‑indicating factors, the model classified the patient as having diabetes (class 1).","The rule that leads to a diabetes prediction says:
+
+- The patient’s blood pressure is low, falling below 68 mm Hg.  
+- Their glucose level is **not** below 108 mg/dL (it is 108 mg/dL or higher).  
+- Their skin‑fold thickness is **not** under 13 mm (it is 13 mm or more).  
+- Their body‑mass index is **not** under 29.5 (it is 29.5 or higher).  
+- Their diabetes‑family‑history score is **not** between 0.268 and 0.529.  
+- Their age is **not** between 21 and 26 years.","1. The blood sugar level is between 0 and 108, which is false for this patient.  
+2. The blood pressure reading is between 0 and 68, which is true for this patient.  
+3. The blood pressure reading is between 68 and 78, which is false for this patient.  
+4. The blood pressure reading is between 78 and 122, which is false for this patient.  
+5. The skin thickness measurement is between 0 and 13, which is false for this patient.  
+6. The body‑mass‑index is between 0 and 29.5, which is false for this patient.  
+7. The diabetes pedigree score is between 0.268 and 0.529, which is false for this patient.  
+8. The age is between 21 and 26 years, which is false for this patient.","['glucose_b0 < 0.5', 'blood_pressure_b0 > 0.5', 'skin_thickness_b0 < 0.5', 'bmi_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'age_b0 < 0.5']","['glucose_b0 < 0.5', 'blood_pressure_b0 > 0.5', 'blood_pressure_b1 < 0.5', 'blood_pressure_b2 < 0.5', 'skin_thickness_b0 < 0.5', 'bmi_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'age_b0 < 0.5']","[3, 6, 7, 8, 9, 14, 18, 20]","[3, 6, 9, 14, 18, 20]","[3, 6, 9, 14, 18, 20]","[3, 6, 7, 8, 9, 14, 18, 20]",0.3636,FEASIBLE,cop@8,0.4052
+diabetes,openai/gpt-oss-120b,16,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,11,86.9,False,86.9,75.4,86.9,66.1,False,False,False,11,6,6,0,0,5,0,5,0,0,0,3,"[86.9, 75.4, 86.9, 75.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b2 = 0  (glucose in [134, 199) — does NOT hold)
+  blood_pressure_b2 = 0  (blood_pressure in [78, 122) — does NOT hold)
+  skin_thickness_b0 = 1  (skin_thickness in [0, 13) — holds)
+  skin_thickness_b1 = 0  (skin_thickness in [13, 31) — does NOT hold)
+  skin_thickness_b2 = 0  (skin_thickness in [31, 63) — does NOT hold)
+  insulin_b0 = 1  (insulin in [0, 99) — holds)
+  insulin_b1 = 0  (insulin in [99, 680) — does NOT hold)
+  bmi_b1 = 0  (bmi in [29.5, 34.9) — does NOT hold)
+  diabetes_pedigree_function_b0 = 0  (diabetes_pedigree_function in [0.078, 0.268) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  diabetes_pedigree_function_b2 = 1  (diabetes_pedigree_function in [0.529, 2.42) — holds)","The model looked at several health measurements and compared them to the ranges that are most associated with diabetes.
+
+* **Blood‑sugar level** – the rule checks whether the value is between 134 and 199. In this case it is **not** in that range, so the blood‑sugar reading does not point toward diabetes.  
+* **Blood‑pressure** – the rule checks the range 78 – 122. The patient’s pressure is **outside** that interval, again not supporting a diabetes diagnosis.  
+* **Skin‑fold thickness** – the rule’s low‑range condition is 0 – 13 mm. The patient’s measurement **falls in this low range**, which is a factor that pushes the prediction toward “no diabetes.” (Because it is in the low range, it is automatically not in the higher ranges 13 – 31 mm or 31 – 63 mm.)  
+* **Insulin level** – the rule’s low‑range condition is 0 – 99 µU/mL. The patient’s insulin is **within this low range**, another sign against diabetes. (Consequently it is not in the higher range 99 – 680 µU/mL.)  
+* **Body‑mass index (BMI)** – the rule checks the interval 29.5 – 34.9. The patient’s BMI is **not** in that interval, so BMI does not add evidence for diabetes.  
+* **Diabetes‑family‑history score** – the rule’s high‑range condition is 0.529 – 2.42. The patient’s score **lies in this high range**, which actually leans toward diabetes, but the other factors (low skin‑fold, low insulin, and the lack of high‑risk glucose, blood‑pressure, and BMI values) outweigh it.
+
+Because the combination of “low skin‑fold thickness,” “low insulin,” and the absence of high‑risk glucose, blood‑pressure, and BMI values matches the rule that the model learned for class 0, the model predicts that the patient does **not** have diabetes.","The patient’s blood‑sugar level is not between 134 and 199 mg/dL, and the blood pressure is not between 78 and 122 mm Hg. The skin‑fold thickness measures between 0 and 13 mm. The insulin level is between 0 and 99 µU/mL. The body‑mass index is not between 29.5 and 34.9. Finally, the diabetes‑pedigree function value lies between 0.529 and 2.42.","1. The blood sugar level is between 134 and 199, which is not true for this patient.  
+2. The blood pressure reading is between 78 and 122, which is not true for this patient.  
+3. The skin fold thickness is between 0 and 13, which is true for this patient.  
+4. The skin fold thickness is between 13 and 31, which is not true for this patient.  
+5. The skin fold thickness is between 31 and 63, which is not true for this patient.  
+6. The insulin level is between 0","['glucose_b2 < 0.5', 'blood_pressure_b2 < 0.5', 'skin_thickness_b0 > 0.5', 'skin_thickness_b1 < 0.5', 'skin_thickness_b2 < 0.5', 'insulin_b0 > 0.5', 'insulin_b1 < 0.5', 'bmi_b1 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'diabetes_pedigree_function_b2 > 0.5']","['glucose_b2 < 0.5', 'blood_pressure_b2 < 0.5', 'skin_thickness_b0 > 0.5', 'skin_thickness_b1 < 0.5', 'skin_thickness_b2 < 0.5', 'insulin_b0 > 0.5']","[5, 8, 9, 10, 11, 12, 13, 15, 17, 18, 19]","[5, 8, 9, 10, 11, 12, 13, 15, 17, 18, 19]","[5, 8, 9, 12, 15, 19]","[5, 8, 9, 10, 11, 12]",0.5808,FEASIBLE,cop@11,0.5936
+diabetes,openai/gpt-oss-120b,15,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,99.5,True,99.5,99.5,99.5,89.6,True,True,False,9,9,6,0,0,0,0,3,0,0,0,0,[99.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 1  (glucose in [134, 199) — holds)
+  blood_pressure_b1 = 0  (blood_pressure in [68, 78) — does NOT hold)
+  skin_thickness_b0 = 0  (skin_thickness in [0, 13) — does NOT hold)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  bmi_b1 = 0  (bmi in [29.5, 34.9) — does NOT hold)
+  bmi_b2 = 1  (bmi in [34.9, 67.1) — holds)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model predicted diabetes because two key health measurements fell into the ranges that are strongly linked to the condition:
+
+- **Blood‑sugar level** is in the high range of 134 – 199 mg/dL.  
+- **Body‑mass index (BMI)** is in the high range of 34.9 – 67.1.
+
+These two factors satisfied the rule that the model learned, and that was enough for it to label the patient as having diabetes. All the other listed measurements (blood pressure, skin thickness, age, and the lower glucose and BMI ranges) did not meet their respective conditions, but they did not outweigh the impact of the high glucose and high BMI.","The model predicted diabetes because two key health measurements fell into the ranges that are strongly linked to the condition:
+
+- **Blood‑sugar level** is in the high range of 134 – 199 mg/dL.  
+- **Body‑mass index (BMI)** is in the high range of 34.9 – 67.1.
+
+These two factors satisfied the rule that the model learned, and that was enough for it to label the patient as having diabetes. All the other listed measurements (blood pressure, skin thickness, age, and the lower glucose and BMI ranges) did not meet their respective conditions, but they did not outweigh the impact of the high glucose and high BMI.","1. The blood sugar level is between 0 and 108, which is not true for this patient.  
+2. The blood sugar level is between 108 and 134, which is not true for this patient.  
+3. The blood sugar level is between 134 and 199, which is true for this patient.  
+4. The blood pressure reading is between 68 and 78, which is not true for this patient.  
+5. The skin thickness measurement is between 0 and 13, which is not true for this patient.  
+6. The body‑mass‑index value is between 0 and 29.5, which is not true for this patient.  
+7. The body‑mass‑index value is between 29.","['glucose_b2 > 0.5', 'bmi_b2 > 0.5', 'glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'bmi_b0 < 0.5', 'bmi_b1 < 0.5', 'blood_pressure_b1 < 0.5', 'skin_thickness_b0 < 0.5', 'age_b0 < 0.5']","['glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'glucose_b2 > 0.5', 'blood_pressure_b1 < 0.5', 'skin_thickness_b0 < 0.5', 'bmi_b0 < 0.5']","[3, 4, 5, 7, 9, 14, 15, 16, 20]","[3, 4, 5, 7, 9, 14, 15, 16, 20]","[3, 4, 5, 7, 9, 14, 15, 16, 20]","[3, 4, 5, 7, 9, 14]",0.3828,FEASIBLE,cop@9,0.4202
+diabetes,openai/gpt-oss-120b,47,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,97.1,True,97.1,97.1,97.1,97.1,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[97.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 1  (glucose in [134, 199) — holds)
+  insulin_b0 = 0  (insulin in [0, 99) — does NOT hold)
+  insulin_b1 = 1  (insulin in [99, 680) — holds)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  age_b0 = 0  (age in [21, 26) — does NOT hold)","The model predicted diabetes because two key measurements fell into the ranges that are linked to the disease:
+
+- **Blood‑sugar level** is between 134 and 199 mg/dL. This higher glucose range is a strong sign of diabetes, and it matches the condition that the model uses to flag a positive case.
+
+- **Insulin level** is between 99 and 680 µU/mL. An elevated insulin reading in this range also points toward diabetes, and it satisfies another condition that the model relies on.
+
+The other possible conditions did not apply to this patient:
+
+- The blood‑sugar level was not in the lower ranges (0–108 mg/dL or 108–134 mg/dL).  
+- The insulin level was not in the low range (0–99 µU/mL).  
+- The body‑mass index was not below 29.5, and the age was not between 21 and 26 years.
+
+Because the patient’s glucose and insulin values both met the “high‑risk” ranges, the model concluded that the patient is likely to have diabetes.","The model predicted diabetes because two key measurements fell into the ranges that are linked to the disease:
+
+- **Blood‑sugar level** is between 134 and 199 mg/dL. This higher glucose range is a strong sign of diabetes, and it matches the condition that the model uses to flag a positive case.
+
+- **Insulin level** is between 99 and 680 µU/mL. An elevated insulin reading in this range also points toward diabetes, and it satisfies another condition that the model relies on.
+
+The other possible conditions did not apply to this patient:
+
+- The blood‑sugar level was not in the lower ranges (0–108 mg/dL or 108–134 mg/dL).  
+- The insulin level was not in the low range (0–99 µU/mL).  
+- The body‑mass index was not below 29.5, and the age was not between 21 and 26 years.
+
+Because the patient’s glucose and insulin values both met the “high‑risk” ranges, the model concluded that the patient is likely to have diabetes.","1. The blood sugar level is between 0 and 108, which is not true for this patient.  
+2. The blood sugar level is between 108 and 134, which is not true for this patient.  
+3. The blood sugar level is between 134 and 199, which is true for this patient.  
+4. The insulin level is between 0 and 99, which is not true for this patient.  
+5. The insulin level is between 99 and 680, which is true for this patient.  
+6. The body‑mass‑index is between 0 and 29.5, which is not true for this patient.  
+7. The age is between 21 and 26, which is not true for this patient.","['glucose_b2 > 0.5', 'insulin_b1 > 0.5', 'glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'insulin_b0 < 0.5', 'bmi_b0 < 0.5', 'age_b0 < 0.5']","['glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'glucose_b2 > 0.5', 'insulin_b0 < 0.5', 'insulin_b1 > 0.5', 'bmi_b0 < 0.5', 'age_b0 < 0.5']","[3, 4, 5, 12, 13, 14, 20]","[3, 4, 5, 12, 13, 14, 20]","[3, 4, 5, 12, 13, 14, 20]","[3, 4, 5, 12, 13, 14, 20]",0.346,FEASIBLE,cop@7,0.4132
+diabetes,openai/gpt-oss-120b,111,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,88.2,False,86.8,88.2,88.2,88.2,False,False,False,3,5,5,2,0,0,0,0,0,0,0,3,"[86.8, 59.6, 86.8, 88.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  diabetes_pedigree_function_b0 = 0  (diabetes_pedigree_function in [0.078, 0.268) — does NOT hold)
+  diabetes_pedigree_function_b1 = 0  (diabetes_pedigree_function in [0.268, 0.529) — does NOT hold)
+  diabetes_pedigree_function_b2 = 1  (diabetes_pedigree_function in [0.529, 2.42) — holds)","The model looks at three measurements:
+
+* **Blood‑sugar level (glucose)** – it is not in the low range of 0 to 108.  
+* **Body‑mass index (BMI)** – it is not in the low range of 0 to 29.5.  
+* **Diabetes‑family‑history score (diabetes pedigree function)** – it is not in the two lower intervals (0.078 to 0.268 or 0.268 to 0.529), but it **does fall in the higher interval of 0.529 to 2.42**.
+
+Because the only condition that matches is the higher family‑history score, the rule that the model learned says that when this score is in that range, the patient is classified as having diabetes. The other measurements simply do not satisfy the low‑range conditions, so they do not change this conclusion.","According to the rule, diabetes is predicted when the glucose level is below 108, the body‑mass index is below 29.5, the diabetes‑family‑history score is not in the low range of 0.078 to 0.268, not in the middle range of 0.268 to 0.529, and is instead in the higher range of 0.529 to 2.42.","1. The blood sugar level is between 0 and 108, which is false for this patient.  
+2. The body mass index is between 0 and 29.5, which is false for this patient.  
+3. The family diabetes risk score is between 0.078 and 0.268, which is false for this patient.  
+4. The family diabetes risk score is between 0.268 and 0.529, which is false for this patient.  
+5. The family diabetes risk score is between 0.529 and 2.42, which is true for this patient.","['glucose_b0 < 0.5', 'bmi_b0 < 0.5', 'diabetes_pedigree_function_b2 > 0.5']","['glucose_b0 < 0.5', 'bmi_b0 < 0.5', 'diabetes_pedigree_function_b0 < 0.5', 'diabetes_pedigree_function_b1 < 0.5', 'diabetes_pedigree_function_b2 > 0.5']","[3, 14, 17, 18, 19]","[3, 14, 19]","[3, 14, 17, 18, 19]","[3, 14, 17, 18, 19]",0.3254,FEASIBLE,cop@5,0.4238
+diabetes,openai/gpt-oss-120b,119,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,97.7,True,97.7,97.7,97.7,97.7,True,True,True,6,6,6,0,0,0,0,0,0,0,0,0,[97.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  glucose_b0 = 0  (glucose in [0, 108) — does NOT hold)
+  glucose_b1 = 0  (glucose in [108, 134) — does NOT hold)
+  glucose_b2 = 1  (glucose in [134, 199) — holds)
+  bmi_b0 = 0  (bmi in [0, 29.5) — does NOT hold)
+  bmi_b1 = 0  (bmi in [29.5, 34.9) — does NOT hold)
+  bmi_b2 = 1  (bmi in [34.9, 67.1) — holds)","The model predicted diabetes because two key health measurements fall into the ranges that are linked to the disease:
+
+* **Blood‑sugar level** is between 134 and 199 mg/dL. This higher range is associated with diabetes, and the rule that matches this range is satisfied.
+* **Body‑mass index (BMI)** is between 34.9 and 67.1. This indicates obesity, another strong indicator of diabetes, and the rule for this range is also satisfied.
+
+The other possible ranges for blood‑sugar (below 108 mg/dL or 108–134 mg/dL) and for BMI (below 29.5 or 29.5–34.9) do **not** apply to this patient. Because the patient’s glucose and BMI are both in the higher‑risk intervals, the model classified the patient as having diabetes.","The model predicted diabetes because two key health measurements fall into the ranges that are linked to the disease:
+
+* **Blood‑sugar level** is between 134 and 199 mg/dL. This higher range is associated with diabetes, and the rule that matches this range is satisfied.
+* **Body‑mass index (BMI)** is between 34.9 and 67.1. This indicates obesity, another strong indicator of diabetes, and the rule for this range is also satisfied.
+
+The other possible ranges for blood‑sugar (below 108 mg/dL or 108–134 mg/dL) and for BMI (below 29.5 or 29.5–34.9) do **not** apply to this patient. Because the patient’s glucose and BMI are both in the higher‑risk intervals, the model classified the patient as having diabetes.","1. The blood glucose level is between 0 and 108, which is false for this case.  
+2. The blood glucose level is between 108 and 134, which is false for this case.  
+3. The blood glucose level is between 134 and 199, which is true for this case.  
+4. The body‑mass‑index is between 0 and 29.5, which is false for this case.  
+5. The body‑mass‑index is between 29.5 and 34.9, which is false for this case.  
+6. The body‑mass‑index is between 34.9 and 67.1, which is true for this case.","['glucose_b2 > 0.5', 'bmi_b2 > 0.5', 'glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'bmi_b0 < 0.5', 'bmi_b1 < 0.5']","['glucose_b0 < 0.5', 'glucose_b1 < 0.5', 'glucose_b2 > 0.5', 'bmi_b0 < 0.5', 'bmi_b1 < 0.5', 'bmi_b2 > 0.5']","[3, 4, 5, 14, 15, 16]","[3, 4, 5, 14, 15, 16]","[3, 4, 5, 14, 15, 16]","[3, 4, 5, 14, 15, 16]",0.3144,FEASIBLE,cop@6,0.4126

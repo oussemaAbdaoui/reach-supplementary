@@ -1,0 +1,14 @@
+Full console log -> research/results/logs/cancer_nn_20260905_061649_27740.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/gptoss120b] 90 rows, 90 to redo, model=openai/gpt-oss-120b provider=groq
+  inst    6 cop      v5= 50.80 (was 50.8) om=0 rounds=0
+  inst    6 cop_k    v5= 89.80 (was 83.9) om=6 rounds=3
+  [empty content, finish=length] raising max_tokens to 4096
+  inst    6 lmpaxp   v5= 95.80 (was 95.8) om=0 rounds=3
+  inst    6 anchors  v5= 43.80 (was 43.8) om=0 rounds=0
+  [empty content, finish=length] raising max_tokens to 8192
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 8192
+  inst    6 shap     v5= 55.20 (was 50.7) om=10 rounds=3
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096

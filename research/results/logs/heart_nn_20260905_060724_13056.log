@@ -1,0 +1,4 @@
+Full console log -> research/results/logs/heart_nn_20260905_060724_13056.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[heart/gpt56] 90 rows, 90 to redo, model=gpt-5.6-terra provider=openai
+  inst    3 cop      v5= 89.10 (was 89.1) om=0 rounds=3

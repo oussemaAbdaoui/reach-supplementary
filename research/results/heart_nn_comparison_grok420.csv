@@ -1,0 +1,1006 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec,v5_rerun
+heart,grok-4.20-0309-non-reasoning,3,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.1,False,89.1,89.1,89.1,89.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[89.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. This is because the heart's pumping strength was not in the range of 15 to 30, and the time since diagnosis was not in the range of 4 to 67.","The model predicted that this patient would survive. This is because the heart's pumping strength was not in the range of 15 to 30, and the time since diagnosis was not in the range of 4 to 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1702,OPTIMAL,cop,0.519,,,1
+heart,grok-4.20-0309-non-reasoning,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,87.6,88.3,88.3,88.3,False,False,False,3,4,4,1,0,0,0,0,0,0,0,1,"[87.6, 88.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive.
+
+This happened because the patient did not have a low ejection fraction reading (the heart's pumping strength was not between 15 and 30). Although the patient did have high blood pressure, this was not enough to change the outcome. The model also saw that the patient's follow-up time was not in the early period between 4 and 67.","The model predicted that this patient would survive.
+
+This happened because the patient did not have a low ejection fraction reading (the heart's pumping strength was not between 15 and 30). Although the patient did have high blood pressure, this was not enough to change the outcome. The model also saw that the patient was male and that the follow-up time was not in the early period between 4 and 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The high blood pressure reading is between 0 and 1, which is true here.  
+3. The sex reading is between 0 and 1, which is true here.  
+4. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519,,,1
+heart,grok-4.20-0309-non-reasoning,3,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.2,True,99.2,99.2,99.2,99.2,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[99.2],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  ejection_fraction_b2 = 1  (ejection_fraction in [40, 70) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that this patient would survive.
+
+This is because the ejection fraction was in the range of 40 to 70, and the follow-up time was between 67 and 172 days. These two measurements were enough for the model to make its prediction.
+
+The ejection fraction was not in the range of 15 to 30, and the time was not in the range of 4 to 67 days.","The model predicted that this patient would survive.
+
+This is because the ejection fraction was in the range of 40 to 70, and the follow-up time was between 67 and 172 days. These two measurements were enough for the model to make its prediction.
+
+The ejection fraction was not in the range of 15 to 30, and the time was not in the range of 4 to 67 days.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The ejection fraction is between 40 and 70, which is true here.  
+3. The follow-up time is between 4 and 67 days, which is not true here.  
+4. The follow-up time is between 67 and 172 days, which is true here.","['ejection_fraction_b2 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]",,,,,0.9899280575539569,,1
+heart,grok-4.20-0309-non-reasoning,3,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,85.7,False,80.7,64.4,80.7,64.4,False,False,False,2,2,2,1,0,1,0,1,0,1,1,3,"[80.7, 64.4, 64.4, 64.4]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF creatinine_phosphokinase_b0 = 1 AND time_b0 = 0 AND serum_sodium_b2 = 1 THEN class 0","The model predicted that this patient would survive. This is because their creatinine phosphokinase level was in the lower range, their blood sodium level was in the higher range, and the time value was in the lower range. All three of these measurements matched the conditions that strongly point to survival.","The model predicted that this patient would survive. This is because their creatinine phosphokinase level was in the lower range, their blood sodium level was in the higher range, and the follow-up time was in the lower range. All three of these measurements matched the conditions that strongly point to survival.","1. The creatinine phosphokinase reading is at the level shown by the first indicator, which pushed the prediction towards the patient surviving.  
+2. The serum sodium reading is at the level shown by the second indicator, which pushed the prediction towards the patient surviving.  
+3. The follow-up time reading is at the level shown by the first indicator, which pushed the prediction towards the patient surviving.","['creatinine_phosphokinase_b0 < 0.5', 'serum_sodium_b2 > 0.5', 'time_b0 < 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'serum_sodium_b2 > 0.5', 'time_b0 > 0.5']","[4, 20, 23]","[20, 23]","[4, 20]","[4, 20]",,,,,,0.9745676500508648,1
+heart,grok-4.20-0309-non-reasoning,3,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.3,True,95.8,97.3,97.3,82.1,True,True,False,3,4,3,1,0,0,0,1,0,1,1,1,"[95.8, 97.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 35.7% (supports the prediction)
+  ejection_fraction_b2: 22.8% (supports the prediction)
+  time_b1: 21.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 20.1% (supports the prediction)","The model predicted that this patient would survive.
+
+This happened because the patient had a low level of creatinine phosphokinase, which pushed the prediction toward survival. The heart's ejection fraction was also in a good range, which supported survival. In addition, the timing of the patient's follow-up fell into the longer period category, which further supported the prediction of survival. The other timing measurement did not support survival.","The model predicted that this patient would survive.
+
+This happened because the patient had a low level of creatinine phosphokinase, which pushed the prediction toward survival. The heart's ejection fraction was also in a good range, which supported survival. In addition, the timing of the patient's follow-up fell into the longer period category, which further supported the prediction of survival. The other timing measurement did not support survival.","1. The time until follow-up measurement was in the lowest range, which pushed the prediction towards survival.  
+2. The ejection fraction reading was in the middle range, which pushed the prediction towards survival.  
+3. The later follow-up time period was true for this case, which pushed the prediction towards survival.  
+4. The creatinine phosphokinase level was in the lowest range, which pushed the prediction towards survival.","['creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'time_b1 > 0.5', 'time_b0 < 0.5']","['time_b0 > 0.5', 'ejection_fraction_b2 > 0.5', 'time_b1 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","[4, 10, 23, 24]","[10, 23, 24]","[4, 10, 23, 24]","[4, 10, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,3,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,91.0,False,66.9,89.1,89.1,89.1,False,False,False,1,2,2,3,0,2,0,2,0,2,2,3,"[66.9, 89.1, 89.1, 89.1]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3802 (opposes the prediction)
+  time_b2: weight=+0.3702 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1995 (opposes the prediction)
+  time_b1: weight=-0.1759 (opposes the prediction)","The model predicted that this patient would survive.
+
+This prediction was driven mainly by the patient's follow-up time. The time measurement fell into a range that strongly supported survival. A second time measurement opposed survival but had less influence. The patient's ejection fraction reading also pushed against survival, though with weaker effect.","The model predicted that this patient would survive.
+
+This prediction was driven mainly by the patient's follow-up time. The follow-up time fell into the longest range that strongly supported survival. The middle follow-up time range opposed survival. A second follow-up time measurement also opposed survival but had less influence. The patient's ejection fraction reading also pushed against survival, though with weaker effect. The shortest follow-up time range opposed survival.","1. The time measurement in its lowest range pushed against this class, but was outweighed.  
+2. The time measurement in its middle range pushed against this class, but was outweighed.  
+3. The ejection fraction measurement in its lowest range pushed against this class, but was outweighed.  
+4. The time measurement in its highest range pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]",[8],"[8, 23]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,11,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.4,False,89.4,89.4,89.4,89.4,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[89.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive.
+
+This happened because the heart's pumping strength was not in the range of 15 to 30, and the time since diagnosis was not in the range of 4 to 67. Both of these measurements pushed the prediction toward survival.","The model predicted that this patient would survive.
+
+This happened because the heart's pumping strength was not in the range of 15 to 30, and the time since diagnosis was not in the range of 4 to 67. Both of these measurements pushed the prediction toward survival.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1688,OPTIMAL,cop,0.5148,,,1
+heart,grok-4.20-0309-non-reasoning,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[88.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. This is because the patient has diabetes, has high blood pressure, and is male. However, the patient's heart pumping strength (ejection fraction) is not in the range of 15 to 30, and the time since their diagnosis is not in the range of 4 to 67. These last two measurements went against the prediction but were not strong enough to change the outcome.","The model predicted that this patient would survive. This is because the patient has diabetes, has high blood pressure, and is male. However, the patient's heart pumping strength (ejection fraction) is not in the range of 15 to 30, and the time since their diagnosis is not in the range of 4 to 67. These last two measurements went against the prediction but were not strong enough to change the outcome.","1. The diabetes reading is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is not true here.  
+3. The high blood pressure reading is between 0 and 1, which is true here.  
+4. The sex reading is between 0 and 1, which is true here.  
+5. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148,,,1
+heart,grok-4.20-0309-non-reasoning,11,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.9,True,98.9,98.9,98.9,98.9,True,True,True,5,5,5,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_creatinine_b2 = 0  (serum_creatinine in [1.3, 9) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that this patient would survive. This is because their creatinine level was between 0.5 and 1, their sodium level was between 135 and 138, and the time since their diagnosis was between 67 and 172 days. The creatinine level was not in the highest range, and the time since diagnosis was not in the earliest period.","The model predicted that this patient would survive. This is because their creatinine level was between 0.5 and 1, their sodium level was between 135 and 138, and the time since their diagnosis was between 67 and 172 days. The creatinine level was not in the highest range, and the time since diagnosis was not in the earliest period.","1. The creatinine level in the blood is between 0.5 and 1, which is true here.  
+2. The creatinine level in the blood is between 1.3 and 9, which is not true here.  
+3. The sodium level in the blood is between 135 and 138, which is true here.  
+4. The follow-up time is between 4 and 67 days, which is not true here.  
+5. The follow-up time is between 67 and 172 days, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'time_b1 > 0.5', 'serum_creatinine_b2 < 0.5', 'time_b0 < 0.5']","['serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b1 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]",,,,,0.9820143884892086,,1
+heart,grok-4.20-0309-non-reasoning,11,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,86.2,False,78.4,86.2,86.2,62.1,False,False,False,2,3,2,1,0,0,0,1,0,1,1,1,"[78.4, 86.2]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 0 AND serum_creatinine_b0 = 1 AND creatinine_phosphokinase_b1 = 1 THEN class 0","The model predicted that this patient would survive. 
+
+This is because the patient had a low reading for serum creatinine, a high reading for creatinine phosphokinase, and did not have a high value for time. These three measurements together led to the prediction of survival.","The model predicted that this patient would survive. 
+
+This is because the patient had a low reading for serum creatinine, a high reading for creatinine phosphokinase, did not spend a long time under observation, and had a low reading for serum creatinine. These measurements together led to the prediction of survival.","1. The time measurement is in the lower range, which is true here and pushed the prediction towards survival.  
+2. The serum creatinine measurement is in the higher range, which is true here and pushed the prediction towards survival.  
+3. The creatinine phosphokinase measurement is in the higher range, which is true here and pushed the prediction towards survival.","['serum_creatinine_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b0 < 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5']","[5, 15, 23]","[5, 23]","[5, 15, 23]","[5, 15]",,,,,,1.0,1
+heart,grok-4.20-0309-non-reasoning,11,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,99.4,True,69.4,80.8,80.8,80.8,False,False,False,2,3,3,3,0,2,0,2,0,3,2,3,"[69.4, 80.8, 80.8, 80.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 33.7% (supports the prediction)
+  serum_creatinine_b0: 22.5% (supports the prediction)
+  time_b1: 17.2% (supports the prediction)
+  serum_sodium_b1: 13.4% (supports the prediction)
+  ejection_fraction_b0: 13.2% (supports the prediction)","The model predicted that this patient would survive.
+
+This happened mainly because the time since the patient's diagnosis was in the lower range, which strongly supported survival. The creatinine level in the blood was also in the lower range, which pushed the prediction toward survival. The fact that the patient had been under care for a longer period of time further supported survival, as did a higher than average sodium level in the blood and a lower than average ejection fraction reading from the heart. All five measurements pointed in the same direction.","The model predicted that this patient would survive.
+
+This happened mainly because the time since the patient's diagnosis was in the lower range, which strongly supported survival. The creatinine level in the blood was also in the lower range, which pushed the prediction toward survival. The fact that the patient had been under care for a longer period of time further supported survival, as did a higher than average sodium level in the blood. The heart's ejection fraction was also in the lower range, which contributed to predicting survival. All five measurements pointed in the same direction.","1. The time until follow-up measurement was short, which pushed the prediction towards survival.  
+2. The serum creatinine level was high, which pushed the prediction towards survival.  
+3. The time until follow-up measurement was long, which pushed the prediction towards survival.  
+4. The serum sodium level was normal, which pushed the prediction towards survival.  
+5. The ejection fraction was low, which pushed the prediction towards survival.","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 < 0.5', 'serum_sodium_b1 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b1 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 15, 19, 23, 24]","[15, 19]","[15, 19, 24]","[15, 19, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,11,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,96.7,True,88.4,99.0,99.0,96.7,False,True,True,2,4,5,3,0,1,0,0,0,2,0,3,"[88.4, 99.0, 99.0, 99.0]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3941 (opposes the prediction)
+  time_b2: weight=+0.3858 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1998 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1749 (opposes the prediction)
+  time_b1: weight=-0.1673 (opposes the prediction)","The model predicted that this patient would survive.
+
+This prediction was driven mainly by the follow-up time. The patient had a medium follow-up time, which pushed the prediction toward survival. A short follow-up time would have pushed the prediction the opposite way, toward death.
+
+The patient's low ejection fraction, low serum sodium, and short follow-up time all pushed against the prediction, making death more likely, but these effects were smaller than the positive effect from the medium follow-up time.","The model predicted that this patient would survive.
+
+This prediction was driven mainly by the follow-up time. The patient had a medium follow-up time, which pushed the prediction toward survival. A short follow-up time would have pushed the prediction the opposite way, toward death. The patient also had a long follow-up time, which further supported survival.
+
+The patient's low ejection fraction, low serum sodium, and short follow-up time all pushed against the prediction, making death more likely, but these effects were smaller than the positive effect from the medium follow-up time.","1. The follow-up time measurement pushed against survival but was outweighed.  
+2. The medium follow-up time pushed the prediction towards survival.  
+3. The low ejection fraction pushed against survival but was outweighed.  
+4. The low serum sodium pushed against survival but was outweighed.  
+5. The short follow-up time pushed against survival but was outweighed.","['time_b1 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b1 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","[8, 18, 23, 24, 25]","[23, 24]","[8, 18, 23, 24]","[8, 18, 23, 24, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,13,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,57.9,False,57.9,57.9,57.9,57.9,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[57.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)","The model predicted that this patient would die from heart failure. This is because the serum creatinine level was in the range of 1.3 to 9, which strongly pointed toward a higher risk of death. The other serum creatinine condition (between 0.5 and 1) did not hold for this patient.","The model predicted that this patient would die from heart failure. This is because the serum creatinine level was in the range of 1.3 to 9, which strongly pointed toward a higher risk of death. The other serum creatinine condition (between 0.5 and 1) did not hold for this patient.","1. The serum creatinine reading is between 0.5 and 1, which is not true here.  
+2. The serum creatinine reading is between 1.3 and 9, which is true here.","['serum_creatinine_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['serum_creatinine_b0 < 0.5', 'serum_creatinine_b2 > 0.5']","[15, 17]","[15, 17]","[15, 17]","[15, 17]",0.3896,FEASIBLE,cop,0.4872,,,1
+heart,grok-4.20-0309-non-reasoning,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,70.3,71.0,71.0,71.0,False,False,False,7,9,9,2,0,0,0,0,0,0,0,1,"[70.3, 71.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die from heart failure. This happened for the following reasons:
+
+The patient has anaemia. They also have diabetes, high blood pressure, and they smoke. In addition, their serum creatinine level is in the highest range, between 1.3 and 9.
+
+Two of the measured values went against the prediction: their creatinine phosphokinase level is not in the low range of 23 to 157, and their serum creatinine is not in the low range of 0.5 to 1. However, the other factors were strong enough for the model to still predict death.","The model predicted that this patient would die from heart failure. This happened for the following reasons:
+
+The patient has anaemia. They also have diabetes, high blood pressure, and they smoke. In addition, their serum creatinine level is in the highest range, between 1.3 and 9. The patient is male.
+
+Two of the measured values went against the prediction: their creatinine phosphokinase level is not in the low range of 23 to 157, and their serum creatinine is not in the low range of 0.5 to 1. Their serum creatinine is also not in the middle range of 1 to 1.3. However, the other factors were strong enough for the model to still predict death.","1. The patient has anaemia, which is between 0 and 1, and this is true here.  
+2. The creatinine phosphokinase level is between 23 and 157, which is not true here.  
+3. The patient has diabetes, which is between 0 and 1, and this is true here.  
+4. The patient has high blood pressure, which is between 0 and 1, and this is true here.  
+5. The serum creatinine level is between 0.5 and 1, which is not true here.  
+6. The serum creatinine level is between 1 and 1.3, which is not true here.  
+7. The serum creatinine level is between 1.3 and 9, which is true here.  
+8. The patient is male, which is between 0 and 1, and this is true here.  
+9. The patient is a smoker, which is between 0 and 1, and this is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 17, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872,,,1
+heart,grok-4.20-0309-non-reasoning,13,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,94.4,False,59.7,94.4,94.4,94.4,False,False,False,3,9,9,6,0,0,0,0,0,0,0,1,"[59.7, 94.4]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because three measurements pointed strongly toward death:
+
+- The creatinine phosphokinase reading was in the higher range of 157 to 582.
+- The platelets reading was in the lower range of 47,000 to 225,000.
+- The serum creatinine reading was in the highest range of 1.3 to 9.
+
+The other listed measurements did not support death and worked against the prediction, but they were not enough to change the outcome.","The model predicted that this patient would die from heart failure. This is because three measurements pointed strongly toward death: the creatinine phosphokinase reading was in the higher range of 157 to 582, the platelets reading was in the lower range of 47,000 to 225,000, and the serum creatinine reading was in the highest range of 1.3 to 9. The ejection fraction was not in the 30 to 40 range, the platelets were not in the 273,000 to 742,000 range, the serum creatinine was not in the 0.5 to 1 range or the 1 to 1.3 range, the serum sodium was not in the 135 to 138 range, and the follow-up time was not in the 67 to 172 day range. These other measurements worked against the prediction but were not enough to change the outcome.","1. The creatinine phosphokinase reading is between 157 and 582, which is true here.  
+2. The ejection fraction reading is between 30 and 40, which is not true here.  
+3. The platelets reading is between 47000 and 225000, which is true here.  
+4. The platelets reading is between 273000 and 742000, which is not true here.  
+5. The serum creatinine reading is between 0.5 and 1, which is not true here.  
+6. The serum creatinine reading is between 1 and 1.3, which is not true here.  
+7. The serum creatinine reading is between 1.3 and 9, which is true here.  
+8. The serum sodium reading is between 135 and 138, which is not true here.  
+9. The follow-up time reading is between 67 and 172, which is not true here.","['creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b2 > 0.5']","['creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 12, 17]","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12, 14, 15, 16, 17, 19, 24]",,,,,0.9510791366906476,,1
+heart,grok-4.20-0309-non-reasoning,13,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,79.5,False,61.7,79.5,79.5,71.7,False,False,False,4,7,6,3,0,0,0,1,0,1,1,1,"[61.7, 79.5]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF serum_creatinine_b2 = 1 AND age_b2 = 1 AND creatinine_phosphokinase_b1 = 1 AND time_b1 = 0 AND platelets_b0 = 1 AND serum_creatinine_b1 = 0 AND serum_creatinine_b0 = 0 THEN class 1","The model predicted that this patient would die from heart failure. This is because their serum creatinine level was in the highest range, they were in the older age group, they had an elevated creatinine phosphokinase level, their platelet count was in the lowest range, and their follow-up time was not in the middle range. All of these measurements pointed toward a high risk of death.","The model predicted that this patient would die from heart failure. This is because their serum creatinine level was in the highest range, they were in the older age group, they had an elevated creatinine phosphokinase level, their platelet count was in the lowest range, their follow-up time was not in the middle range, their serum creatinine was not in the lowest range, and their serum creatinine was not in the middle range. All of these measurements pointed toward a high risk of death.","1. The high level of serum creatinine pushed the prediction towards death.  
+2. The high age pushed the prediction towards death.  
+3. The high level of creatinine phosphokinase pushed the prediction towards death.  
+4. The shorter follow-up time pushed the prediction towards death.  
+5. The low platelet count pushed the prediction towards death.  
+6. The medium level of serum creatinine pushed against this class, but was outweighed.  
+7. The low level of serum creatinine pushed against this class, but was outweighed.","['serum_creatinine_b2 > 0.5', 'age_b2 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 < 0.5', 'time_b1 < 0.5']","['serum_creatinine_b2 > 0.5', 'age_b2 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b1 < 0.5', 'platelets_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b0 < 0.5']","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 17, 24]","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 15, 16, 17, 24]",,,,,,0.982089552238806,1
+heart,grok-4.20-0309-non-reasoning,13,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,39.1,False,20.8,60.8,60.8,33.3,False,False,False,4,6,4,5,0,3,0,5,0,2,5,3,"[20.8, 60.8, 60.8, 60.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 25.9% (opposes the prediction)
+  time_b0: 12.5% (opposes the prediction)
+  serum_creatinine_b2: 12.2% (supports the prediction)
+  time_b1: 10.4% (supports the prediction)
+  platelets_b0: 10.2% (supports the prediction)
+  creatinine_phosphokinase_b1: 10.0% (supports the prediction)
+  ejection_fraction_b2: 6.4% (opposes the prediction)
+  platelets_b2: 6.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 6.1% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because their blood test showed high serum creatinine, their platelet reading was in the lowest range, and their creatine phosphokinase level was in the middle range. These three measurements all pushed the prediction toward death. The fact that a longer time period fell into the highest range pushed against the prediction of death, as did a time period in the lowest range and a heart pumping strength in the best range.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because their blood test showed high serum creatinine, their platelet reading was in the lowest range, their creatine phosphokinase level was in the middle range, and their creatine phosphokinase level was also in the lowest range. These four measurements all pushed the prediction toward death. The fact that the longest follow-up time fell into the highest range pushed against the prediction of death, as did a time period in the lowest range, a time period in the middle range, a heart pumping strength in the best range, and a platelet reading in the highest range.","1. The high reading for creatinine phosphokinase pushed the prediction towards this class.  
+2. The medium reading for creatinine phosphokinase pushed the prediction towards this class.  
+3. The low reading for ejection fraction pushed against this class, but was outweighed.  
+4. The high reading for platelets pushed the prediction towards this class.  
+5. The low reading for platelets pushed the prediction towards this class.  
+6. The low reading for serum creatinine pushed the prediction towards this class.  
+7. The high reading for time pushed against this class, but was outweighed.  
+8. The medium reading for time pushed the prediction towards this class.  
+9. The low reading for time pushed against this class, but was outweighed.","['serum_creatinine_b2 > 0.5', 'platelets_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b2 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b2 > 0.5']","['creatinine_phosphokinase_b1 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'time_b2 < 0.5', 'time_b1 > 0.5', 'time_b0 < 0.5']","[4, 5, 10, 12, 14, 17, 23, 24, 25]","[5, 10, 17, 23]","[5, 12, 14, 17, 23, 24]","[4, 5, 12, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,13,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,1.5,False,26.5,7.1,26.5,0.4,False,False,False,4,6,5,5,0,3,0,4,0,0,4,3,"[26.5, 7.1, 7.1, 7.1]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3772 (opposes the prediction)
+  time_b0: weight=-0.3768 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1749 (opposes the prediction)
+  ejection_fraction_b2: weight=-0.1566 (opposes the prediction)
+  serum_creatinine_b2: weight=+0.1554 (supports the prediction)
+  time_b1: weight=+0.1474 (supports the prediction)
+  serum_sodium_b0: weight=-0.1470 (opposes the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1387 (supports the prediction)
+  serum_creatinine_b0: weight=+0.1212 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient's follow-up time fell into the longest range, which strongly pushed against death, but that effect was outweighed by other factors. The serum creatinine level was in its highest range, which pushed toward death. The creatinine phosphokinase level was in its lowest range, which also pushed toward death. In addition, the patient's ejection fraction was not in its lowest range, which removed some protection against death. These measurements together led the model to predict a fatal outcome.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the patient's follow-up time fell into the longest range, which strongly pushed against death, but that effect was outweighed by other factors. The follow-up time was not in its shortest or middle range, removing protection against death. The serum creatinine level was in its highest range, which pushed toward death, and was not in its lowest range, which also removed protection against death. The creatinine phosphokinase level was in its lowest range, which pushed toward death. The patient's ejection fraction was not in its lowest range and not in its highest range, which removed protection against death. In addition, the serum sodium level was in its lowest range, which pushed toward death. These measurements together led the model to predict a fatal outcome.","1. The time until follow-up measurement was in its highest range, which pushed against this class but was outweighed.  
+2. The time until follow-up measurement was in its lowest range, which pushed against this class but was outweighed.  
+3. The ejection fraction reading was in its lowest range, which pushed against this class but was outweighed.  
+4. The ejection fraction reading was in its highest range, which pushed against this class but was outweighed.  
+5. The serum creatinine reading was in its highest range, which pushed the prediction towards this class.  
+6. The time until follow-up measurement was in its middle range, which pushed the prediction towards this class.  
+7. The serum sodium reading was in its lowest range, which pushed against this class but was outweighed.  
+8. The creatinine phosphokinase reading was in its lowest range, which pushed the prediction towards this class.  
+9. The serum creatinine reading was in its lowest range, which pushed the prediction towards this class.","['time_b2 > 0.5', 'serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b2 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 < 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[4, 8, 10, 15, 17, 18, 23, 24, 25]","[4, 8, 17, 25]","[8, 15, 17, 23, 24, 25]","[8, 17, 18, 23, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,14,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,59.5,False,59.5,59.5,59.5,59.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[59.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted that this patient would die from heart failure. This happened because two important measurements were outside the safer ranges: the sodium level in the blood was not between 135 and 138, and the follow-up time was not between 67 and 172 days. Since neither of these safer conditions held, the model concluded the patient was at higher risk.","The model predicted that this patient would die from heart failure. This happened because two important measurements were outside the safer ranges: the sodium level in the blood was not between 135 and 138, and the follow-up time was not between 67 and 172 days. Since neither of these safer conditions held, the model concluded the patient was at higher risk.","1. The serum sodium level is between 135 and 138, which is not true here.  
+2. The follow-up time is between 67 and 172 days, which is not true here.","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[19, 24]","[19, 24]","[19, 24]","[19, 24]",0.3968,FEASIBLE,cop,0.483,,,1
+heart,grok-4.20-0309-non-reasoning,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,72.6,86.2,86.2,86.2,False,False,False,9,12,12,3,0,0,0,0,0,1,0,1,"[72.6, 86.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient had anaemia, diabetes, high blood pressure, and was a smoker. Their sex and platelet count also fell into the range linked to higher risk. 
+
+However, several other important measurements did not match the high-risk patterns the model looks for: their creatinine phosphokinase level was not in the range 23 to 157, their ejection fraction was not between 30 and 40, their serum creatinine was not between 0.5 and 1, and their serum sodium was not between 135 and 138. These factors that did not hold pushed against the prediction but were not strong enough to change the outcome.","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient had anaemia, diabetes, high blood pressure, and was a smoker. Their sex and platelet count in the range 47,000 to 225,000 also fell into the range linked to higher risk. 
+
+However, several other important measurements did not match the high-risk patterns the model looks for: their creatinine phosphokinase level was not in the range 23 to 157, their ejection fraction was not between 30 and 40, their platelet count was not between 225,000 and 273,000, their platelet count was not between 273,000 and 742,000, their serum creatinine was not between 0.5 and 1, and their serum sodium was not between 135 and 138. These factors that did not hold pushed against the prediction but were not strong enough to change the outcome.","1. The anaemia reading is between 0 and 1, which is true here.  
+2. The creatinine phosphokinase reading is between 23 and 157, which is not true here.  
+3. The diabetes reading is between 0 and 1, which is true here.  
+4. The ejection fraction reading is between 30 and 40, which is not true here.  
+5. The high blood pressure reading is between 0 and 1, which is true here.  
+6. The platelets reading is between 47000 and 225000, which is true here.  
+7. The platelets reading is between 225000 and 273000, which is not true here.  
+8. The platelets reading is between 273000 and 742000, which is not true here.  
+9. The serum creatinine reading is between 0.5 and 1, which is not true here.  
+10. The serum sodium reading is between 135 and 138, which is not true here.  
+11. The sex reading is between 0 and 1, which is true here.  
+12. The smoking reading is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'sex_b0 > 0.5', 'platelets_b1 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483,,,1
+heart,grok-4.20-0309-non-reasoning,14,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,94.7,False,94.7,94.7,94.7,94.7,False,False,False,12,12,12,0,0,0,0,0,0,0,0,0,[94.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  age_b2 = 0  (age in [65, 95) — does NOT hold)
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b0 = 1  (serum_sodium in [116, 135) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had anaemia, had diabetes, had high blood pressure, and had a serum sodium level between 116 and 135. In addition, the patient's creatinine phosphokinase level was between 157 and 582.
+
+The following did not apply and therefore did not affect the prediction: age between 65 and 95, creatinine phosphokinase between 23 and 157, ejection fraction between 30 and 40, platelets between 273000 and 742000, serum creatinine between 0.5 and 1, serum sodium between 135 and 138, and follow-up time between 67 and 172 days.","The model predicted that this patient would die from heart failure. This is because the patient had anaemia, had diabetes, had high blood pressure, and had a serum sodium level between 116 and 135. In addition, the patient's creatinine phosphokinase level was between 157 and 582.
+
+The following did not apply and therefore did not affect the prediction: age between 65 and 95, creatinine phosphokinase between 23 and 157, ejection fraction between 30 and 40, platelets between 273000 and 742000, serum creatinine between 0.5 and 1, serum sodium between 135 and 138, and follow-up time between 67 and 172 days.","1. The patient's age is between 65 and 95, which is not true here.  
+2. The patient's anaemia is between 0 and 1, which is true here.  
+3. The patient's creatinine phosphokinase is between 23 and 157, which is not true here.  
+4. The patient's creatinine phosphokinase is between 157 and 582, which is true here.  
+5. The patient's diabetes is between 0 and 1, which is true here.  
+6. The patient's ejection fraction is between 30 and 40, which is not true here.  
+7. The patient's high blood pressure is between 0 and 1, which is true here.  
+8. The patient's platelets is between 2.73e+05 and 7.42e+05, which is not true here.  
+9. The patient's serum creatinine is between 0.5 and 1, which is not true here.  
+10. The patient's serum sodium is between 116 and 135, which is true here.  
+11. The patient's serum sodium is between 135 and 138, which is not true here.  
+12. The patient's time is between 67 and 172, which is not true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'age_b2 < 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['age_b2 < 0.5', 'anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]",,,,,0.9553956834532374,,1
+heart,grok-4.20-0309-non-reasoning,14,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,80.3,False,57.8,64.8,64.8,68.7,False,False,False,2,4,5,4,0,2,0,1,0,4,1,3,"[57.8, 64.8, 64.8, 64.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b1 = 0 AND serum_sodium_b0 = 1 AND creatinine_phosphokinase_b1 = 1 AND ejection_fraction_b1 = 0 AND platelets_b0 = 1 AND age_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient had all of the following: they were in the younger age group, their creatinine phosphokinase level was high, their ejection fraction was low, their platelet count was in the lower range, their serum sodium level was low, and their follow-up time was short. 
+
+All of these measurements together led the model to predict death with very high confidence.","The model predicted that this patient would die from heart failure.
+
+This happened because the patient had all of the following: they were in the younger age group, their creatinine phosphokinase level was high, their ejection fraction was low, their platelet count was in the lower range, their serum sodium level was low, and their follow-up time was short.
+
+All of these measurements together led the model to predict death with very high confidence.","1. The patient's age reading pushed the prediction towards death.  
+2. The creatinine phosphokinase reading pushed the prediction towards death.  
+3. The ejection fraction reading pushed against death, but was outweighed.  
+4. The platelets reading pushed the prediction towards death.  
+5. The serum sodium reading pushed the prediction towards death.  
+6. The follow-up time reading pushed the prediction towards death.","['age_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 > 0.5', 'platelets_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'time_b1 < 0.5']","['age_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 > 0.5']","[0, 5, 9, 12, 18, 24]","[5, 24]","[0, 5, 12, 18]","[0, 5, 9, 12, 18]",,,,,,1.0,1
+heart,grok-4.20-0309-non-reasoning,14,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,11.8,False,16.8,27.1,27.1,17.4,False,False,False,3,9,6,9,0,3,0,6,0,3,6,3,"[16.8, 13.4, 27.1, 27.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 23.4% (opposes the prediction)
+  time_b0: 11.5% (opposes the prediction)
+  serum_sodium_b0: 10.1% (supports the prediction)
+  time_b1: 9.4% (supports the prediction)
+  platelets_b0: 8.7% (supports the prediction)
+  ejection_fraction_b2: 6.6% (opposes the prediction)
+  platelets_b2: 5.8% (supports the prediction)
+  serum_creatinine_b2: 5.5% (opposes the prediction)
+  ejection_fraction_b0: 5.2% (opposes the prediction)
+  creatinine_phosphokinase_b1: 5.2% (supports the prediction)
+  ejection_fraction_b1: 4.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 4.3% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient's blood sodium level was in the low range, their platelet count was in the low range, and their creatinine phosphokinase level was raised. These three measurements all pushed the prediction toward death. The length of time the patient had been followed also fell into a range that supported a higher risk of death.
+
+Several other measurements pushed against the prediction of death, including the time since the patient was first seen and a better than average heart pumping strength (ejection fraction). However, these were not strong enough to change the overall prediction.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the patient's blood sodium level was in the low range, their platelet count was in the low range, their creatinine phosphokinase level was raised, and the follow-up time fell into the longest range. These measurements all pushed the prediction toward death. 
+
+Several other measurements pushed against the prediction of death, including a shorter follow-up time, a medium follow-up time, better than average heart pumping strength, higher than average kidney function, and a normal creatinine phosphokinase level. The patient's heart pumping strength was also in the medium range, which opposed death. However, these were not strong enough to change the overall prediction.","1. The time measurement in the highest range pushed against this class, but was outweighed.  
+2. The time measurement in the lowest range pushed against this class, but was outweighed.  
+3. The blood sodium measurement in the lowest range pushed the prediction towards this class.  
+4. The time measurement in the middle range pushed the prediction towards this class.  
+5. The platelet measurement in the lowest range pushed the prediction towards this class.  
+6. The heart pumping measurement in the highest range pushed against this class, but was outweighed.  
+7. The platelet measurement in the highest range pushed the prediction towards this class.  
+8. The kidney function measurement in the highest range pushed against this class, but was outweighed.  
+9. The heart pumping measurement in the lowest range pushed against this class, but was outweighed.  
+10. The muscle enzyme measurement in the middle range pushed the prediction towards this class.  
+11. The heart pumping measurement in the middle range pushed the prediction towards this class.  
+12. The muscle enzyme measurement in the lowest range pushed the prediction towards this class.","['serum_sodium_b0 < 0.5', 'platelets_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b1 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b2 > 0.5']","['time_b2 < 0.5', 'time_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 > 0.5', 'platelets_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 > 0.5', 'serum_creatinine_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","[4, 5, 8, 9, 10, 12, 14, 17, 18, 23, 24, 25]","[5, 10, 23]","[4, 5, 9, 12, 17, 18, 23, 24, 25]","[5, 8, 12, 17, 18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,14,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,12.6,False,54.7,6.4,54.7,12.0,False,False,False,6,11,4,6,0,1,0,8,0,1,8,3,"[54.7, 21.8, 21.8, 6.4]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3865 (opposes the prediction)
+  time_b2: weight=-0.3818 (opposes the prediction)
+  time_b1: weight=+0.1775 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1761 (opposes the prediction)
+  serum_sodium_b0: weight=+0.1599 (supports the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1430 (supports the prediction)
+  ejection_fraction_b2: weight=-0.1363 (opposes the prediction)
+  serum_creatinine_b2: weight=-0.1356 (opposes the prediction)
+  serum_creatinine_b0: weight=+0.1337 (supports the prediction)
+  serum_sodium_b1: weight=+0.1101 (supports the prediction)
+  platelets_b2: weight=+0.1095 (supports the prediction)
+  ejection_fraction_b1: weight=+0.0997 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient's follow-up time fell into the longest range (time_b2), which strongly pointed against death, and the middle follow-up range (time_b1) was not present. The patient's ejection fraction was also in the best range, which further pushed against a death prediction. 
+
+These protective factors were outweighed by several smaller ones that supported death: the patient's sodium level was in its lowest range, the creatinine phosphokinase level was in its lowest range, the serum creatinine was not in its lowest range, and the platelet level was not in its highest range. Together these factors tipped the model toward predicting death.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the patient's follow-up time fell into the longest range, which strongly pointed against death, the middle follow-up range was absent, and the shortest follow-up range was also absent. The patient's ejection fraction was in the best range, which further pushed against a death prediction, while the middle ejection fraction range was absent. The patient's creatinine phosphokinase level was in its lowest range, which also supported a higher chance of death. The patient's ejection fraction was not in its lowest range, which added further support for predicting death.
+
+These protective factors were outweighed by several smaller ones that supported death: the patient's sodium level was in its lowest range, the serum creatinine was not in its lowest range and was also not in its highest range, the sodium level was not in its middle range, and the platelet level was not in its highest range. Together these factors tipped the model toward predicting death.","1. The follow-up time measurement pushed against this class, but was outweighed.  
+2. The high follow-up time measurement pushed against this class, but was outweighed.  
+3. The medium follow-up time measurement pushed the prediction towards this class.  
+4. The low ejection fraction measurement pushed against this class, but was outweighed.  
+5. The low serum sodium measurement pushed the prediction towards this class.  
+6. The low creatinine phosphokinase measurement pushed the prediction towards this class.  
+7. The high ejection fraction measurement pushed against this class, but was outweighed.  
+8. The high serum creatinine measurement pushed against this class, but was outweighed.  
+9. The low serum creatinine measurement pushed the prediction towards this class.  
+10. The medium serum sodium measurement pushed the prediction towards this class.  
+11. The high platelets measurement pushed the prediction towards this class.  
+12. The medium ejection fraction measurement pushed the prediction towards this class.","['time_b2 > 0.5', 'time_b1 < 0.5', 'ejection_fraction_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'platelets_b2 < 0.5']","['time_b0 < 0.5', 'time_b2 < 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b2 < 0.5', 'serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'platelets_b2 > 0.5', 'ejection_fraction_b1 > 0.5']","[4, 8, 9, 10, 14, 15, 17, 18, 19, 23, 24, 25]","[10, 14, 15, 18, 24, 25]","[8, 9, 10, 14, 15, 17, 18, 19, 23, 24, 25]","[8, 17, 18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,17,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.9,False,93.9,93.9,93.9,93.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[93.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The time was not between 67 and 172 days, and it was not between 172 and 285 days.","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The time was not between 67 and 172 days, and it was not between 172 and 285 days.","1. The time until event is between 4 and 67, which is true here.  
+2. The time until event is between 67 and 172, which is not true here.  
+3. The time until event is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1798,OPTIMAL,cop,0.4882,,,1
+heart,grok-4.20-0309-non-reasoning,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[85.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, and had a follow-up time between 4 and 67 days. The fact that the follow-up time was not between 172 and 285 days also contributed to the prediction of death.","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, and had a follow-up time between 4 and 67 days. The fact that the follow-up time was not between 172 and 285 days also contributed to the prediction of death.","1. The high blood pressure reading is between 0 and 1, which is true here.  
+2. The patient's sex reading is between 0 and 1, which is true here.  
+3. The follow-up time reading is between 4 and 67, which is true here.  
+4. The follow-up time reading is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882,,,1
+heart,grok-4.20-0309-non-reasoning,17,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.4,True,96.4,96.4,96.4,96.4,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time between 4 and 67 days. The other time measurements did not apply to this patient.,The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time between 4 and 67 days. The other time measurements did not apply to this patient.,"1. The smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9568345323741008,,1
+heart,grok-4.20-0309-non-reasoning,17,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.8,False,50.8,92.8,92.8,92.8,False,False,False,1,3,3,2,0,0,0,0,0,2,0,1,"[50.8, 92.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 AND time_b2 = 0 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the time since their diagnosis was in the highest risk range, their blood sodium level was in the highest risk range, and the middle time range did not apply. All three of these measurements together led to the prediction with very high confidence.","The model predicted that this patient would die from heart failure.
+
+This is because the time since their diagnosis was in the highest risk range, their blood sodium level was in the highest risk range, the middle time range did not apply, and the shortest time range also applied. All of these measurements together led to the prediction with very high confidence.","1. The time measurement in the first range pushed the prediction towards this class.  
+2. The serum sodium measurement in the first range pushed the prediction towards this class.  
+3. The time measurement in the third range pushed against this class, but was outweighed.","['time_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b0 < 0.5']","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 < 0.5']","[18, 23, 25]",[18],"[18, 23, 25]","[18, 23, 25]",,,,,,1.0,1
+heart,grok-4.20-0309-non-reasoning,17,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,98.8,98.8,98.8,83.3,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[98.8],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 49.4% (supports the prediction)
+  time_b2: 19.5% (supports the prediction)
+  serum_sodium_b0: 17.8% (supports the prediction)
+  time_b1: 13.2% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had a short follow-up time in the lowest range, which strongly pushed the prediction toward death. The other time measurements and the low blood sodium level also supported a higher risk of death, but to a lesser degree.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had a short follow-up time in the lowest range, which strongly pushed the prediction toward death. The other time measurements and the low blood sodium level also supported a higher risk of death, but to a lesser degree.","1. The time measurement in the lowest range pushed the prediction towards this class.  
+2. The time measurement in the middle range pushed against this class, but was outweighed.  
+3. The time measurement in the highest range pushed the prediction towards this class.  
+4. The serum sodium measurement in the lowest range pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5']","[18, 23, 24, 25]","[18, 23, 24, 25]","[18, 23, 24, 25]","[18, 23, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,17,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,65.6,52.5,65.6,52.5,False,False,False,3,2,2,1,0,2,0,2,0,1,2,3,"[65.6, 52.5, 52.5, 52.5]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.4017 (supports the prediction)
+  time_b2: weight=+0.3905 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1904 (opposes the prediction)
+  time_b1: weight=+0.1733 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. A second time measurement also pushed toward death, though less strongly. The ejection fraction reading was in its lowest range, which pushed against the death prediction and toward survival. The remaining time measurement had only a small effect pushing toward death.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the follow-up time measurement was in its lowest range, which strongly pushed the prediction toward death. A second follow-up time measurement was also in its lowest range and pushed toward death. The ejection fraction reading was in its lowest range, which pushed against the death prediction and toward survival. The remaining follow-up time measurement was in its middle range and had a small effect pushing toward death.","1. The time measurement in its lowest range pushed the prediction towards this class.  
+2. The time measurement in its middle range pushed the prediction towards this class.  
+3. The ejection fraction measurement in its lowest range pushed against this class, but was outweighed.  
+4. The time measurement in its highest range pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 > 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24]","[8, 23]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,28,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.8,False,88.8,88.8,88.8,88.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[88.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the time was not in the range of 4 to 67. Both of these conditions do not hold.","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the time was not in the range of 4 to 67. Both of these conditions do not hold.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.5148,,,1
+heart,grok-4.20-0309-non-reasoning,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[89.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the time since their diagnosis was not between 4 and 67 days. The fact that the patient is male did support a higher risk of death, but it was not enough to change the overall prediction.","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the time since their diagnosis was not between 4 and 67 days. The fact that the patient is male did support a higher risk of death, but it was not enough to change the overall prediction.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The patient's sex is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'sex_b0 > 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148,,,1
+heart,grok-4.20-0309-non-reasoning,28,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.6,True,98.6,98.6,98.6,98.6,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that this patient would survive.
+
+This is because the patient's time since diagnosis fell in the range of 172 to 285 days, which strongly points toward survival. The other two measurements (sodium level and an earlier time period) do not apply to this patient and played no role in the decision.","The model predicted that this patient would survive.
+
+This is because the patient's time since diagnosis fell in the range of 172 to 285 days, which strongly points toward survival. The other two measurements (sodium level and an earlier time period) do not apply to this patient and played no role in the decision.","1. The serum sodium level is between 116 and 135, which is not true here.  
+2. The time since diagnosis is between 4 and 67 days, which is not true here.  
+3. The time since diagnosis is between 172 and 285 days, which is true here.","['time_b2 > 0.5', 'time_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9820143884892086,,1
+heart,grok-4.20-0309-non-reasoning,28,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.8,False,76.0,82.8,82.8,82.8,False,False,False,1,2,2,1,0,0,0,0,0,1,0,1,"[76.0, 82.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","The model predicted that this patient would survive. This is because the patient had a follow-up time in the higher range and a serum creatinine level in the lower range. Both of these measurements pointed toward survival, which is why the prediction was made with high confidence.","The model predicted that this patient would survive. This is because the patient had a follow-up time in the higher range and a serum creatinine level in the lower range. Both of these measurements pointed toward survival, which is why the prediction was made with high confidence.","1. The time measurement is in its high range, which is true here and pushed the prediction towards survival.  
+2. The serum creatinine measurement is in its low range, which is true here and pushed the prediction towards survival.","['time_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]",[25],"[15, 25]","[15, 25]",,,,,,0.9780701754385964,1
+heart,grok-4.20-0309-non-reasoning,28,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.2,True,98.2,98.2,98.2,82.8,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[98.2],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 56.9% (supports the prediction)
+  time_b0: 27.1% (supports the prediction)
+  serum_creatinine_b0: 16.0% (supports the prediction)","The model predicted that this patient would survive.
+
+This was mainly because the patient had a longer follow-up time, which strongly supported survival. A shorter follow-up time also pushed the prediction in the same direction, though less strongly. Finally, the patient's serum creatinine level being in the lower range gave a smaller additional push toward predicting survival.","The model predicted that this patient would survive.
+
+This was mainly because the patient had a longer follow-up time, which strongly supported survival. A shorter follow-up time also pushed the prediction in the same direction, though less strongly. Finally, the patient's serum creatinine level being in the lower range gave a smaller additional push toward predicting survival.","1. The time until last follow-up being in its higher range pushed the prediction towards survival.  
+2. The time until last follow-up being in its middle range pushed the prediction towards survival.  
+3. The serum creatinine level being in its lower range pushed the prediction towards survival.","['time_b2 > 0.5', 'time_b0 < 0.5', 'serum_creatinine_b0 > 0.5']","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 23, 25]","[15, 23, 25]","[15, 23, 25]","[15, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,28,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,96.6,98.7,98.7,76.0,True,True,False,2,3,1,1,0,0,0,2,0,1,2,1,"[96.6, 98.7]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3825 (opposes the prediction)
+  time_b0: weight=-0.3820 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.2208 (opposes the prediction)","The model predicted that this patient would survive. 
+
+This happened because the patient did not have a low ejection fraction, their follow-up time was not short, and their follow-up time was long. All three of these measurements pushed the prediction toward survival.","The model predicted that this patient would survive. 
+
+This happened because the patient did not have a low ejection fraction, their follow-up time was not short, and their follow-up time was long. All three of these measurements pushed the prediction toward survival.","1. The time measurement in the lowest range pushed against this class, but was outweighed.  
+2. The time measurement in the highest range pushed against this class, but was outweighed.  
+3. The ejection fraction measurement in the lowest range pushed against this class, but was outweighed.","['ejection_fraction_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 23, 25]","[23, 25]","[8, 23, 25]",[25],,,,,,,1
+heart,grok-4.20-0309-non-reasoning,31,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[90.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the follow-up time was not in the range of 4 to 67. Both of these measurements pushed the prediction toward survival.","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the follow-up time was not in the range of 4 to 67. Both of these measurements pushed the prediction toward survival.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1784,OPTIMAL,cop,0.514,,,1
+heart,grok-4.20-0309-non-reasoning,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,85.7,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,0,[85.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient has diabetes, high blood pressure, is male, and is a smoker. However, two important conditions in the rule were not met: the heart's ejection fraction was not between 15 and 30, and the follow-up time was not between 4 and 67. Because these last two conditions did not hold, the model decided the patient would survive.","The model predicted that this patient would survive. 
+
+This happened because the patient has diabetes, high blood pressure, is male, and is a smoker. However, two important conditions in the rule were not met: the heart's ejection fraction was not between 15 and 30, and the follow-up time was not between 4 and 67. Because these last two conditions did not hold, the model decided the patient would survive.","1. The diabetes indicator is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is not true here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The smoking indicator is between 0 and 1, which is true here.  
+6. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514,,,1
+heart,grok-4.20-0309-non-reasoning,31,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,98.3,True,98.3,98.3,98.3,98.3,True,True,True,6,6,6,0,0,0,0,0,0,0,0,0,[98.3],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that this patient would survive. This is because their creatinine level was between 0.5 and 1, their sodium level was between 135 and 138, they are male, and the time recorded was between 67 and 172. Although their sodium was not in the 116–135 range and the time was not in the 4–67 range, these facts did not change the prediction.","The model predicted that this patient would survive. This is because their creatinine level was between 0.5 and 1, their sodium level was between 135 and 138, they are male, and the time recorded was between 67 and 172. Although their sodium was not in the 116–135 range and the time was not in the 4–67 range, these facts did not change the prediction.","1. The serum creatinine reading is between 0.5 and 1, which is true here.  
+2. The serum sodium reading is between 116 and 135, which is not true here.  
+3. The serum sodium reading is between 135 and 138, which is true here.  
+4. The sex reading is between 0 and 1, which is true here.  
+5. The follow-up time reading is between 4 and 67, which is not true here.  
+6. The follow-up time reading is between 67 and 172, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'sex_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_creatinine_b0 > 0.5', 'serum_sodium_b0 < 0.5', 'serum_sodium_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]",,,,,0.9841726618705036,,1
+heart,grok-4.20-0309-non-reasoning,31,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,91.7,False,91.7,91.7,91.7,72.9,False,False,False,3,3,2,0,0,0,0,1,0,0,1,0,[91.7],0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF serum_creatinine_b0 = 1 AND time_b0 = 0 AND platelets_b2 = 1 THEN class 0","The model predicted that this patient would survive. This is because their kidney function test was in the best range, their follow-up time was short, and their platelet count was in the higher range. All three of these measurements together made the model very confident the patient would live.","The model predicted that this patient would survive. This is because their kidney function test was in the best range, their follow-up time was short, and their platelet count was in the higher range. All three of these measurements together made the model very confident the patient would live.","1. The serum creatinine level is in the low range, which is true here.  
+2. The follow-up time is in the short range, which is true here.  
+3. The platelet count is in the high range, which is true here.","['serum_creatinine_b0 > 0.5', 'time_b0 < 0.5', 'platelets_b2 > 0.5']","['serum_creatinine_b0 > 0.5', 'time_b0 > 0.5', 'platelets_b2 > 0.5']","[14, 15, 23]","[14, 15, 23]","[14, 15, 23]","[14, 15]",,,,,,0.9896831245394252,1
+heart,grok-4.20-0309-non-reasoning,31,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,100.0,True,87.8,86.9,87.8,86.9,False,False,False,4,4,4,2,0,2,0,2,0,1,2,3,"[87.8, 86.9, 86.9, 86.9]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 29.7% (supports the prediction)
+  serum_creatinine_b0: 21.4% (supports the prediction)
+  time_b1: 14.9% (supports the prediction)
+  ejection_fraction_b0: 11.7% (supports the prediction)
+  platelets_b2: 11.2% (supports the prediction)
+  serum_sodium_b1: 11.1% (supports the prediction)","The model predicted that this patient would survive. 
+
+This was mainly because the time since the patient's diagnosis was in the higher range, which strongly supported survival. The patient's creatinine level was also in the lower range, which pushed the prediction toward survival. The longer follow-up time in the second range added further support for survival, as did the patient's ejection fraction being in the lower range, their platelet level being in the higher range, and their sodium level being in the middle range. All of these measurements pointed in the same direction.","The model predicted that this patient would survive. 
+
+This was mainly because the time since the patient's diagnosis was in the lower range, which strongly supported survival. The patient's creatinine level was also in the lower range, which pushed the prediction toward survival. The longer follow-up time in the second range added further support for survival, as did the patient's ejection fraction being in the lower range, their platelet level being in the higher range, and their sodium level being in the middle range. All of these measurements pointed in the same direction.","1. The time until follow-up being in its lowest range pushed the prediction towards survival.  
+2. The serum creatinine level being in its lowest range pushed the prediction towards survival.  
+3. The time until follow-up being in its middle range pushed the prediction towards survival.  
+4. The ejection fraction being in its lowest range pushed the prediction towards survival.  
+5. The platelet count being in its highest range pushed the prediction towards survival.  
+6. The serum sodium level being in its middle range pushed the prediction towards survival.","['time_b1 > 0.5', 'serum_creatinine_b0 < 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","[8, 14, 15, 19, 23, 24]","[8, 14, 19, 24]","[14, 15, 19, 24]","[14, 15, 19, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,31,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,94.8,False,88.8,94.8,94.8,68.5,False,False,False,4,6,1,2,0,0,0,5,0,1,5,1,"[88.8, 94.8]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3848 (opposes the prediction)
+  time_b2: weight=+0.3596 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1997 (opposes the prediction)
+  time_b1: weight=-0.1713 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1570 (opposes the prediction)
+  ejection_fraction_b2: weight=+0.1431 (supports the prediction)","The model predicted that this patient would survive.
+
+This happened mainly because the patient's follow-up time was in the middle range, which strongly pushed the prediction toward survival. The fact that the ejection fraction was not in its lowest range also supported survival, though more weakly.
+
+Several other measurements pushed against survival: the follow-up time was not in the shortest range, the ejection fraction was not in its highest range, and the sodium level was not in its highest range. These worked against the survival prediction but were not strong enough to change it.","The model predicted that this patient would survive.
+
+This happened mainly because the patient's follow-up time was in the middle range, which strongly pushed the prediction toward survival. The fact that the ejection fraction was not in its lowest range also supported survival, though more weakly. In addition, the follow-up time was not in the longest range, which further supported survival.
+
+Several other measurements pushed against survival: the follow-up time was not in the shortest range, the ejection fraction was not in its highest range, and the sodium level was not in its highest range. These worked against the survival prediction but were not strong enough to change it.","1. The time until follow-up measurement was in its lowest range, which pushed against survival but was outweighed.  
+2. The time until follow-up measurement was in its middle range, which pushed the prediction towards survival.  
+3. The ejection fraction reading was in its lowest range, which pushed against survival but was outweighed.  
+4. The time until follow-up measurement was in its highest range, which pushed against survival but was outweighed.  
+5. The serum sodium reading was in its lowest range, which pushed against survival but was outweighed.  
+6. The ejection fraction reading was in its highest range, which pushed the prediction towards survival.","['time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'ejection_fraction_b2 > 0.5']","[8, 10, 18, 23, 24, 25]","[10, 18, 23, 24]","[8, 10, 18, 23, 24, 25]",[24],,,,,,,1
+heart,grok-4.20-0309-non-reasoning,35,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,85.2,False,85.2,85.2,85.2,85.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[85.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The patient's time was not in the higher-risk period of 172 to 285 days.,The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The patient's time was not in the higher-risk period of 172 to 285 days.,"1. The time until event is between 4 and 67 days, which is true here.  
+2. The time until event is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1764,OPTIMAL,cop,0.4956,,,1
+heart,grok-4.20-0309-non-reasoning,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,70.0,70.0,70.0,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[70.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, was a smoker, and their time value fell in the range of 4 to 67. All four of these measurements pointed toward a higher risk of death.","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, was a smoker, and their time value fell in the range of 4 to 67. All four of these measurements pointed toward a higher risk of death.","1. The high blood pressure reading is between 0 and 1, which is true here.  
+2. The patient's sex reading is between 0 and 1, which is true here.  
+3. The smoking reading is between 0 and 1, which is true here.  
+4. The time reading is between 4 and 67, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956,,,1
+heart,grok-4.20-0309-non-reasoning,35,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.9,True,96.9,96.9,96.9,96.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the range of 4 to 67 days. The other time measurements did not apply to this patient.,The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the range of 4 to 67 days. The other time measurements did not apply to this patient.,"1. The smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9575539568345324,,1
+heart,grok-4.20-0309-non-reasoning,35,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,94.9,False,94.9,94.9,94.9,94.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[94.9],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND time_b2 = 0 AND time_b1 = 0 THEN class 1",The model predicted that this patient would die because the time since their diagnosis fell into the shortest period measured. The other two time periods did not apply.,The model predicted that this patient would die because the time since their diagnosis fell into the shortest period measured. The other two time periods did not apply.,"1. The time period indicator for the first bin is at its highest level, which pushed the prediction towards the patient having died.  
+2. The time period indicator for the second bin is at its lowest level, which pushed the prediction towards the patient having died.  
+3. The time period indicator for the third bin is at its lowest level, which pushed the prediction towards the patient having died.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",,,,,,0.9955882352941176,1
+heart,grok-4.20-0309-non-reasoning,35,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,92.1,False,64.3,64.3,64.3,64.3,False,False,False,1,1,1,3,0,3,0,3,0,3,3,3,"[64.3, 64.3, 64.3, 64.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 52.9% (supports the prediction)
+  time_b2: 20.0% (supports the prediction)
+  creatinine_phosphokinase_b0: 16.6% (opposes the prediction)
+  time_b1: 10.5% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. The second time measurement also supported death, as did the third time measurement to a smaller degree. The creatinine phosphokinase reading was in its lowest range and pushed against the prediction of death, but this effect was not strong enough to change the outcome.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the time since measurement was in its lowest range, which strongly pushed the prediction toward death. The second time measurement also supported death, as did the third time measurement to a smaller degree. The creatinine phosphokinase reading was in its lowest range and pushed against the prediction of death, but this effect was not strong enough to change the outcome.","1. The time measurement in the first bin pushed the prediction towards this class.  
+2. The time measurement in the third bin pushed the prediction towards this class.  
+3. The creatinine phosphokinase measurement in the first bin pushed against this class, but was outweighed.  
+4. The time measurement in the second bin pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'time_b1 > 0.5']","[4, 23, 24, 25]",[23],[23],[23],,,,,,,1
+heart,grok-4.20-0309-non-reasoning,35,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,66.8,False,40.8,40.8,40.8,40.8,False,False,False,3,3,3,1,0,1,0,1,0,1,1,3,"[40.8, 40.8, 40.8, 40.8]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3849 (supports the prediction)
+  time_b2: weight=+0.3760 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1802 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1636 (opposes the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in the range that strongly increases the risk of death, and a second time measurement also pushed the prediction in the same direction. 
+
+The ejection fraction reading and the serum sodium reading both worked against the prediction and tried to suggest the patient would survive, but they were not strong enough to change the outcome.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the time since diagnosis was in the first range, which strongly increases the risk of death, and the time since diagnosis was also in the third range, which further pushed the prediction toward death.
+
+The ejection fraction reading and the serum sodium reading both worked against the prediction and tried to suggest the patient would survive, but they were not strong enough to change the outcome.","1. The time until follow-up measurement being in its lowest range pushed the prediction towards this class.  
+2. The time until follow-up measurement being in its highest range pushed the prediction towards this class.  
+3. The ejection fraction being in its lowest range pushed against this class, but was outweighed.  
+4. The serum sodium being in its lowest range pushed against this class, but was outweighed.","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5']","[8, 18, 23, 25]","[8, 18, 23]","[8, 18, 23]","[8, 18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,54,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,64.7,False,64.7,64.7,64.7,64.7,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[64.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)",The model predicted that this patient would die because the time measurement was in the range of 4 to 67. This single factor was enough for the model to make its prediction.,The model predicted that this patient would die because the time measurement was in the range of 4 to 67. This single factor was enough for the model to make its prediction.,"1. The time until event is between 4 and 67, which is true here.",['time_b0 > 0.5'],['time_b0 > 0.5'],[23],[23],[23],[23],0.1924,OPTIMAL,cop,0.4724,,,1
+heart,grok-4.20-0309-non-reasoning,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[90.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure and was a smoker. In addition, the time measurement was between 4 and 67, which also pointed toward a higher risk of death. Although one of the time conditions (between 172 and 285) did not hold, the other factors were enough for the model to predict mortality.","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure and was a smoker. In addition, the time measurement was between 4 and 67, which also pointed toward a higher risk of death. Although one of the time conditions (between 172 and 285) did not hold, the other factors were enough for the model to predict mortality.","1. The patient had high blood pressure, which is between 0 and 1, and this is true here.  
+2. The patient was a smoker, which is between 0 and 1, and this is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724,,,1
+heart,grok-4.20-0309-non-reasoning,54,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.0,True,96.0,96.0,96.0,96.0,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.0],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the shortest range of 4 to 67 days. The other time measurements did not apply here.,The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the shortest range of 4 to 67 days. The other time measurements did not apply here.,"1. The smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9690647482014388,,1
+heart,grok-4.20-0309-non-reasoning,54,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.2,False,43.3,76.2,76.2,43.3,False,False,False,0,2,0,2,0,0,0,2,0,2,2,1,"[43.3, 76.2]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the patient's time reading was in the lowest range and their ejection fraction reading was also in the lowest range. Both of these measurements pointed strongly toward a higher risk of death.","The model predicted that this patient would die from heart failure.
+
+This is because the patient's time reading was in the lowest range and their ejection fraction reading was also in the lowest range. Both of these measurements pointed strongly toward a higher risk of death.","1. The time measurement is at its low bin value, which pushed the prediction towards this class.  
+2. The ejection fraction measurement is at its low bin value, which pushed the prediction towards this class.","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]",[],"[8, 23]",[],,,,,,0.991011235955056,1
+heart,grok-4.20-0309-non-reasoning,54,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.5],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 43.5% (supports the prediction)
+  time_b2: 20.7% (supports the prediction)
+  ejection_fraction_b0: 18.3% (supports the prediction)
+  serum_sodium_b0: 17.5% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had a low follow-up time, which strongly pushed the prediction toward death. A shorter time until the end of the study also supported the prediction of death. In addition, the patient had a low ejection fraction and low serum sodium. Both of these measurements further increased the chance of the predicted death.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had a low follow-up time, which strongly pushed the prediction toward death. A shorter time until the end of the study also supported the prediction of death. In addition, the patient had a low ejection fraction and low serum sodium. Both of these measurements further increased the chance of the predicted death.","1. The lowest time measurement pushed the prediction towards this class.  
+2. The medium time measurement pushed the prediction towards this class.  
+3. The lowest ejection fraction measurement pushed the prediction towards this class.  
+4. The lowest serum sodium measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,54,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.5],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3802 (supports the prediction)
+  time_b2: weight=+0.3730 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1890 (supports the prediction)
+  serum_sodium_b0: weight=+0.1590 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range and the follow-up time measurement was not in its highest range. Both of these pushed the prediction strongly toward death. 
+
+A low ejection fraction reading and a low serum sodium reading also contributed to the prediction, but to a lesser degree.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range and the follow-up time measurement was not in its highest range. Both of these pushed the prediction strongly toward death. 
+
+A low ejection fraction reading and a low serum sodium reading also contributed to the prediction, but to a lesser degree.","1. The low time measurement pushed the prediction towards this class.  
+2. The medium time measurement pushed the prediction towards this class.  
+3. The low ejection fraction pushed the prediction towards this class.  
+4. The low serum sodium pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,69,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.5,False,92.5,92.5,92.5,92.5,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[92.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The time was not between 67 and 172 days, and it was not between 172 and 285 days.","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The time was not between 67 and 172 days, and it was not between 172 and 285 days.","1. The time until the event is between 4 and 67 days, which is true here.  
+2. The time until the event is between 67 and 172 days, which is not true here.  
+3. The time until the event is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1758,FEASIBLE,cop,0.4858,,,1
+heart,grok-4.20-0309-non-reasoning,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[93.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, and their follow-up time fell into the range of 4 to 67 days. The other time measurements do not apply here.","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, and their follow-up time fell into the range of 4 to 67 days. The other time measurements do not apply here.","1. The patient had high blood pressure, which is between 0 and 1, and this is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858,,,1
+heart,grok-4.20-0309-non-reasoning,69,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.1,True,96.1,96.1,96.1,96.1,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because their blood test showed a high level of serum creatinine between 1.3 and 9, and the time since their diagnosis was in the shortest range, between 4 and 67 days. The other time periods do not apply here.","The model predicted that this patient would die from heart failure. This is because their blood test showed a high level of serum creatinine between 1.3 and 9, and the time since their diagnosis was in the shortest range, between 4 and 67 days. The other time periods do not apply here.","1. The serum creatinine level is between 1.3 and 9, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]",,,,,0.9733812949640288,,1
+heart,grok-4.20-0309-non-reasoning,69,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.9,False,41.3,74.9,74.9,41.3,False,False,False,0,2,0,2,0,0,0,2,0,2,2,1,"[41.3, 74.9]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the patient's time reading was in the lowest range and their ejection fraction reading was also in the lowest range. Both of these measurements pointed strongly toward a higher risk of death.","The model predicted that this patient would die from heart failure.
+
+This is because the patient's time reading was in the lowest range and their ejection fraction reading was also in the lowest range. Both of these measurements pointed strongly toward a higher risk of death.","1. The time measurement is at its lowest bin, which pushed the prediction towards this class.  
+2. The ejection fraction measurement is at its lowest bin, which pushed the prediction towards this class.","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]",[],"[8, 23]",[],,,,,,0.9926470588235294,1
+heart,grok-4.20-0309-non-reasoning,69,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.1,True,97.1,97.1,97.1,97.1,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[97.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 44.7% (supports the prediction)
+  ejection_fraction_b0: 22.3% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_creatinine_b2: 15.4% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient's time in the study fell into the lowest range, which strongly pushed the prediction toward death. The ejection fraction was also in its lowest range, which further increased the chance of death. A higher reading for serum creatinine added some additional support for predicting death, as did the time value not being in the higher range.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient's time in the study fell into the lowest range, which strongly pushed the prediction toward death. The ejection fraction was also in its lowest range, which further increased the chance of death. A higher reading for serum creatinine added some additional support for predicting death, as did the time value not being in the higher range.","1. The low time measurement pushed the prediction towards this class.  
+2. The low ejection fraction pushed the prediction towards this class.  
+3. The high time measurement pushed against this class, but was outweighed.  
+4. The high serum creatinine pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 < 0.5', 'serum_creatinine_b2 > 0.5']","[8, 17, 23, 25]","[8, 17, 23, 25]","[8, 17, 23, 25]","[8, 17, 23, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,69,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.1,True,98.1,98.1,98.1,74.9,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[98.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3754 (supports the prediction)
+  time_b2: weight=+0.3665 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1859 (supports the prediction)
+  time_b1: weight=+0.1542 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. A second time measurement also pushed toward death, though it was not in its highest range. The ejection fraction reading being in its lowest range added a further push toward predicting death. The remaining time measurement did not support survival.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. A second time measurement also pushed toward death, though it was not in its highest range. The ejection fraction reading being in its lowest range added a further push toward predicting death. The remaining time measurement did not support survival.","1. The lowest ejection fraction reading pushed the prediction towards this class.  
+2. The shortest follow-up time reading pushed the prediction towards this class.  
+3. The middle follow-up time reading pushed the prediction towards this class.  
+4. The longest follow-up time reading pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,75,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,84.5,False,84.5,84.5,84.5,84.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[84.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die because their time until the event was between 4 and 67 days. The other time measurement, which looks at the period between 172 and 285 days, did not apply to this patient.","The model predicted that this patient would die because their time until the event was between 4 and 67 days. The other time measurement, which looks at the period between 172 and 285 days, did not apply to this patient.","1. The time until event is between 4 and 67 days, which is true here.  
+2. The time until event is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1842,OPTIMAL,cop,0.4894,,,1
+heart,grok-4.20-0309-non-reasoning,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,87.5,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[87.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","1. The patient's sex measurement is between 0 and 1, which is true here.  
+2. The patient's smoking measurement is between 0 and 1, which is true here.  
+3. The patient's time measurement is between 4 and 67, which is true here.  
+4. The patient's time measurement is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894,,,1
+heart,grok-4.20-0309-non-reasoning,75,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,95.4,True,95.4,95.4,95.4,95.4,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[95.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This is because the patient was a smoker, and their follow-up time was in the shortest range of 4 to 67 days. The other time measurements did not apply here.","The model predicted that this patient would die from heart failure. 
+
+This is because the patient was a smoker, and their follow-up time was in the shortest range of 4 to 67 days. The other time measurements did not apply here.","1. The smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9589928057553956,,1
+heart,grok-4.20-0309-non-reasoning,75,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.5,False,42.1,74.5,74.5,42.1,False,False,False,0,2,0,2,0,0,0,2,0,2,2,1,"[42.1, 74.5]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.96):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the time measurement was at its lowest level and the sodium level in the blood was also at its lowest level. Both of these readings pointed toward a high risk of death.","The model predicted that this patient would die from heart failure. 
+
+This is because the time since diagnosis was at its lowest level and the sodium level in the blood was also at its lowest level. Both of these readings pointed toward a high risk of death.","1. The time measurement is at its low bin value, which pushed the prediction towards this class.  
+2. The serum sodium measurement is at its low bin value, which pushed the prediction towards this class.","['time_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 < 0.5', 'serum_sodium_b0 < 0.5']","[18, 23]",[],"[18, 23]",[],,,,,,0.9614678899082568,1
+heart,grok-4.20-0309-non-reasoning,75,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,98.8,98.8,98.8,74.5,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 50.4% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_sodium_b0: 17.2% (supports the prediction)
+  time_b1: 14.7% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time since their diagnosis was in the lowest range, which strongly pushed the prediction toward death. The other measurements also supported this: the patient's serum sodium level was in its lowest range, the time value was not in the middle range, and it was not in the highest range. All four factors pointed in the same direction.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time since their diagnosis was in the lowest range, which strongly pushed the prediction toward death. The other measurements also supported this: the patient's serum sodium level was in its lowest range, the time value was not in the middle range, and it was not in the highest range. All four factors pointed in the same direction.","1. The time measurement in the first range pushed the prediction towards this class.  
+2. The time measurement in the second range pushed the prediction towards this class.  
+3. The serum sodium measurement in the first range pushed the prediction towards this class.  
+4. The time measurement in the third range pushed the prediction towards this class.","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 > 0.5']","[18, 23, 24, 25]","[18, 23, 24, 25]","[18, 23, 24, 25]","[18, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,75,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.1,False,89.1,89.1,89.1,52.0,False,False,False,4,4,2,0,0,0,0,2,0,0,2,0,[89.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3943 (supports the prediction)
+  time_b2: weight=+0.3772 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1972 (opposes the prediction)
+  time_b1: weight=+0.1672 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. A second time measurement also pushed toward death, though less strongly. The ejection fraction reading was in its lowest range, which pushed against death and toward survival, but this effect was not strong enough to change the outcome.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. A second time measurement also pushed toward death, though less strongly. The ejection fraction reading was in its lowest range, which pushed against death and toward survival, but this effect was not strong enough to change the outcome.","1. The time measurement in the lowest range pushed the prediction towards this class.  
+2. The time measurement in the middle range pushed the prediction towards this class.  
+3. The ejection fraction measurement in the lowest range pushed against this class, but was outweighed.  
+4. The time measurement in the highest range pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,81,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.6,False,93.6,93.6,93.6,93.6,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[93.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die because their time since diagnosis was between 4 and 67 days. The time was not in the range of 67 to 172 days, and it was not in the range of 172 to 285 days.","The model predicted that this patient would die because their time since diagnosis was between 4 and 67 days. The time was not in the range of 67 to 172 days, and it was not in the range of 172 to 285 days.","1. The follow-up time is between 4 and 67 days, which is true here.  
+2. The follow-up time is between 67 and 172 days, which is not true here.  
+3. The follow-up time is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1872,OPTIMAL,cop,0.501,,,1
+heart,grok-4.20-0309-non-reasoning,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[93.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die because the patient is male and the time since their diagnosis is between 4 and 67 days. The other time measurements do not apply here.,The model predicted that this patient would die because the patient is male and the time since their diagnosis is between 4 and 67 days. The other time measurements do not apply here.,"1. The patient's sex is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501,,,1
+heart,grok-4.20-0309-non-reasoning,81,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.6,True,97.6,97.6,97.6,97.6,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[97.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b2 = 0  (ejection_fraction in [40, 70) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This is because the time since the start of care was between 4 and 67 days, and that condition strongly pointed toward death. 
+
+The other three measurements did not support survival: the ejection fraction was not in the 40–70 range, the serum creatinine (a kidney function test) was not between 0.5 and 1, and the time was not in the 172–285 day range. Together these facts made death the clear prediction.","The model predicted that this patient would die from heart failure. 
+
+This is because the time since the start of care was between 4 and 67 days, and that condition strongly pointed toward death. 
+
+The other three measurements did not support survival: the ejection fraction was not in the 40–70 range, the serum creatinine (a kidney function test) was not between 0.5 and 1, and the time was not in the 172–285 day range. Together these facts made death the clear prediction.","1. The ejection fraction is between 40 and 70, which is not true here.  
+2. The serum creatinine is between 0.5 and 1, which is not true here.  
+3. The time since diagnosis is between 4 and 67 days, which is true here.  
+4. The time since diagnosis is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]",,,,,0.9863309352517986,,1
+heart,grok-4.20-0309-non-reasoning,81,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.7,False,42.6,76.7,76.7,42.6,False,False,False,0,2,0,2,0,0,0,2,0,2,2,1,"[42.6, 76.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the patient had the lowest possible level of heart pumping strength and the shortest follow-up time. Both of these measurements pointed strongly toward a fatal outcome.","The model predicted that this patient would die from heart failure.
+
+This is because the patient had the lowest possible level of heart pumping strength and the shortest follow-up time. Both of these measurements pointed strongly toward a fatal outcome.","1. The time measurement is at its low bin value, which pushed the prediction towards this class.  
+2. The ejection fraction measurement is at its low bin value, which pushed the prediction towards this class.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]",[],"[8, 23]",[],,,,,,0.990950226244344,1
+heart,grok-4.20-0309-non-reasoning,81,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,97.9,97.9,97.9,84.9,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.9],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 48.9% (supports the prediction)
+  ejection_fraction_b0: 19.8% (supports the prediction)
+  time_b2: 19.7% (supports the prediction)
+  time_b1: 11.7% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. The ejection fraction reading was also in its lowest range, which further supported predicting death. The other time measurements did not push against this outcome.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. The ejection fraction reading was also in its lowest range, which further supported predicting death. The other time measurements did not push against this outcome.","1. The low ejection fraction reading pushed the prediction towards this class.  
+2. The short time since the last check pushed the prediction towards this class.  
+3. The medium time since the last check pushed against this class, but was outweighed.  
+4. The long time since the last check pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,81,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,97.9,97.9,97.9,84.9,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.9],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3917 (supports the prediction)
+  time_b2: weight=+0.3778 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1954 (supports the prediction)
+  time_b1: weight=+0.1781 (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. The ejection fraction measurement was also in its lowest range, which further increased the chance of death. The other time readings did not point the other way.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range, which strongly pushed the prediction toward death. The ejection fraction measurement was also in its lowest range, which further increased the chance of death. The other time readings did not point the other way.","1. The lowest ejection fraction reading pushed the prediction towards this class.  
+2. The shortest follow-up time reading pushed the prediction towards this class.  
+3. The middle follow-up time reading pushed against this class, but was outweighed.  
+4. The longest follow-up time reading pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,86,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.6,False,88.6,88.6,88.6,88.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[88.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the follow-up time was not in the range of 4 to 67. Both of these conditions worked against a prediction of death.","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not in the range of 15 to 30, and the follow-up time was not in the range of 4 to 67. Both of these conditions worked against a prediction of death.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.4994,,,1
+heart,grok-4.20-0309-non-reasoning,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[88.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the follow-up time was not between 4 and 67 days. These two missing conditions pulled the prediction toward survival. The patient did have high blood pressure and was male, but those factors were not enough to change the outcome.","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the follow-up time was not between 4 and 67 days. These two missing conditions pulled the prediction toward survival. The patient did have high blood pressure and was male, but those factors were not enough to change the outcome.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The high blood pressure reading is between 0 and 1, which is true here.  
+3. The sex reading is between 0 and 1, which is true here.  
+4. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994,,,1
+heart,grok-4.20-0309-non-reasoning,86,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,98.9,True,98.9,98.9,98.9,98.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b1 = 1  (ejection_fraction in [30, 40) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that this patient would survive. This is because the heart's pumping strength was in the range of 30 to 40, the patient was male, and the follow-up time was in the range of 172 to 285 days. The follow-up time was not in the range of 4 to 67 days.","The model predicted that this patient would survive. This is because the heart's pumping strength was in the range of 30 to 40, the patient was male, and the follow-up time was in the range of 172 to 285 days. The follow-up time was not in the range of 4 to 67 days.","1. The ejection fraction is between 30 and 40, which is true here.  
+2. The sex is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is true here.","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b2 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]",,,,,0.9856115107913668,,1
+heart,grok-4.20-0309-non-reasoning,86,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.6,False,76.5,82.6,82.6,82.6,False,False,False,1,2,2,1,0,0,0,0,0,1,0,1,"[76.5, 82.6]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.95):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0",The model predicted that this patient would survive. This is because the patient had a follow-up time in the higher range and a serum creatinine level in the lower range. Both of these measurements pointed toward survival.,The model predicted that this patient would survive. This is because the patient had a follow-up time in the higher range and a serum creatinine level in the lower range. Both of these measurements pointed toward survival.,"1. The time measurement is in its high range, which is true here and pushed the prediction towards the patient surviving.  
+2. The serum creatinine measurement is in its low range, which is true here and pushed the prediction towards the patient surviving.","['time_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]",[25],"[15, 25]","[15, 25]",,,,,,0.9547244094488188,1
+heart,grok-4.20-0309-non-reasoning,86,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.7,True,98.2,82.6,98.2,82.6,True,False,False,3,2,2,1,0,2,0,2,0,1,2,3,"[98.2, 82.6, 82.6, 82.6]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 46.7% (supports the prediction)
+  time_b0: 26.6% (supports the prediction)
+  serum_creatinine_b0: 16.8% (supports the prediction)
+  ejection_fraction_b0: 9.9% (supports the prediction)","The model predicted that this patient would survive.
+
+This happened mainly because the patient had a longer follow-up time, which strongly pointed toward survival. A shorter follow-up time also supported survival in this case. In addition, the patient's serum creatinine level was in the better range, which further supported the prediction of survival. Finally, the ejection fraction reading was also in the better range and pushed the model slightly toward predicting that the patient would survive.","The model predicted that this patient would survive.
+
+This happened mainly because the patient had a longer follow-up time, which strongly pointed toward survival. A shorter follow-up time also supported survival in this case. In addition, the patient's serum creatinine level was in the better range, which further supported the prediction of survival. The patient's ejection fraction was in the better range, which pushed the model slightly toward predicting survival.","1. The time measurement in the higher range pushed the prediction towards survival.  
+2. The time measurement in the lower range pushed the prediction towards survival.  
+3. The serum creatinine measurement in the lower range pushed the prediction towards survival.  
+4. The ejection fraction measurement in the lower range pushed the prediction towards survival.","['time_b2 > 0.5', 'time_b0 < 0.5', 'serum_creatinine_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 15, 23, 25]","[15, 23, 25]","[15, 25]","[15, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,86,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.1,True,68.7,68.7,68.7,88.6,False,False,False,2,2,2,2,0,2,0,2,0,2,2,3,"[68.7, 68.7, 68.7, 68.7]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3869 (opposes the prediction)
+  time_b0: weight=-0.3803 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1796 (opposes the prediction)
+  time_b1: weight=+0.1641 (supports the prediction)","The model predicted that this patient would survive. 
+
+This was mainly because the patient's follow-up time fell into the longest range, which pushed against death. The shortest follow-up time range also pushed against death, as did the worst range for heart pumping strength. The middle follow-up time range pushed slightly toward death, but it was not enough to change the overall prediction.","The model predicted that this patient would survive. 
+
+This was mainly because the patient's follow-up time fell into the longest range, which pushed against death. The shortest follow-up time range also pushed against death, as did the worst range for heart pumping strength. The middle follow-up time range pushed slightly toward death, but it was not enough to change the overall prediction.","1. The time measurement in the highest bin pushed against this class, but was outweighed.  
+2. The time measurement in the lowest bin pushed against this class, but was outweighed.  
+3. The lowest ejection fraction reading pushed against this class, but was outweighed.  
+4. The time measurement in the middle bin pushed the prediction towards this class.","['time_b2 > 0.5', 'time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5']","['time_b2 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'time_b1 > 0.5']","[8, 23, 24, 25]","[24, 25]","[24, 25]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,94,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[90.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not between 15 and 30, and the time was not between 4 and 67.","The model predicted that this patient would survive. 
+
+This happened because the ejection fraction was not between 15 and 30, and the time was not between 4 and 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1742,OPTIMAL,cop,0.5166,,,1
+heart,grok-4.20-0309-non-reasoning,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[87.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's ejection fraction was not in the range of 15 to 30, their smoking status fell in the range that points toward survival, and their follow-up time was not in the range of 4 to 67.","The model predicted that this patient would survive. 
+
+This happened because the patient's ejection fraction was not in the range of 15 to 30, their smoking status fell in the range that points toward survival, and their follow-up time was not in the range of 4 to 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166,,,1
+heart,grok-4.20-0309-non-reasoning,94,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.4,True,98.4,98.4,98.4,98.4,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that this patient would survive.
+
+This is because the patient's time since diagnosis fell in the range of 172 to 285 days, which strongly points toward survival. The other two measurements (sodium level and an earlier time period) do not apply to this patient and played no role in the decision.","The model predicted that this patient would survive.
+
+This is because the patient's time since diagnosis fell in the range of 172 to 285 days, which strongly points toward survival. The other two measurements (sodium level and an earlier time period) do not apply to this patient and played no role in the decision.","1. The serum sodium level is between 116 and 135, which is not true here.  
+2. The follow-up time is between 4 and 67 days, which is not true here.  
+3. The follow-up time is between 172 and 285 days, which is true here.","['time_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9848920863309352,,1
+heart,grok-4.20-0309-non-reasoning,94,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,83.4,False,77.0,83.4,83.4,83.4,False,False,False,1,2,2,1,0,0,0,0,0,1,0,3,"[77.0, 77.0, 77.0, 83.4]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","The model predicted that this patient survived. This is because the patient's time measurement was in the higher range and their serum creatinine level was in the lower range. Both of these measurements pointed toward survival, which is why the model made this prediction with high confidence.","The model predicted that this patient survived. This is because the patient's time measurement was in the higher range and their serum creatinine level was in the lower range. Both of these measurements pointed toward survival, which is why the model made this prediction with high confidence.","1. The time measurement is in its high range, which is true here and pushed the prediction towards survival.  
+2. The serum creatinine measurement is in its low range, which is true here and pushed the prediction towards survival.","['time_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]",[25],"[15, 25]","[15, 25]",,,,,,0.9696969696969696,1
+heart,grok-4.20-0309-non-reasoning,94,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,97.3,True,97.3,97.3,97.3,83.4,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[97.3],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 51.9% (supports the prediction)
+  time_b0: 30.8% (supports the prediction)
+  serum_creatinine_b0: 17.3% (supports the prediction)","The model predicted that this patient would survive.
+
+This happened mainly because the patient's follow-up time fell into the longer range, which strongly pointed toward survival. The fact that the patient did not have the shortest follow-up time also supported survival, as did having a serum creatinine reading in the lower range. All three measurements pushed the prediction in the same direction.","The model predicted that this patient would survive.
+
+This happened mainly because the patient's follow-up time fell into the longer range, which strongly pointed toward survival. The fact that the patient did not have the shortest follow-up time also supported survival, as did having a serum creatinine reading in the lower range. All three measurements pushed the prediction in the same direction.","1. The time measurement in the highest range pushed the prediction towards survival.  
+2. The time measurement in the lowest range pushed the prediction towards survival.  
+3. The serum creatinine measurement in the lowest range pushed the prediction towards survival.","['time_b2 > 0.5', 'time_b0 < 0.5', 'serum_creatinine_b0 > 0.5']","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 23, 25]","[15, 23, 25]","[15, 23, 25]","[15, 25]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,94,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,98.7,98.7,98.7,90.3,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[98.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3929 (opposes the prediction)
+  time_b2: weight=-0.3817 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1829 (opposes the prediction)","The model predicted that this patient would survive.
+
+This prediction was made because the patient's time measurement was not in the lowest range, the patient's time measurement was in the highest range, and the patient's ejection fraction measurement was not in the lowest range. All three of these pushed the model toward predicting survival.","The model predicted that this patient would survive.
+
+This prediction was made because the patient's time measurement was not in the lowest range, the patient's time measurement was in the highest range, and the patient's ejection fraction measurement was not in the lowest range. All three of these pushed the model toward predicting survival.","1. The time until last follow-up being in its lowest range pushed against this class, but was outweighed.  
+2. The time until last follow-up being in its highest range pushed against this class, but was outweighed.  
+3. The lowest ejection fraction reading pushed against this class, but was outweighed.","['time_b0 < 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23, 25]","[8, 23, 25]","[8, 23, 25]","[8, 23]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,114,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,87.0,False,87.0,87.0,87.0,87.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[87.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The other time measurement, which looks at the period between 172 and 285 days, did not apply to this patient.","The model predicted that this patient would die because the time since their diagnosis was between 4 and 67 days. The other time measurement, which looks at the period between 172 and 285 days, did not apply to this patient.","1. The time until event is between 4 and 67 days, which is true here.  
+2. The time until event is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1848,OPTIMAL,cop,0.4934,,,1
+heart,grok-4.20-0309-non-reasoning,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,89.7,89.7,89.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[89.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","1. The patient's sex measurement is between 0 and 1, which is true here.  
+2. The patient's smoking measurement is between 0 and 1, which is true here.  
+3. The patient's time measurement is between 4 and 67, which is true here.  
+4. The patient's time measurement is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934,,,1
+heart,grok-4.20-0309-non-reasoning,114,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.7,True,96.7,96.7,96.7,96.7,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the range of 4 to 67 days. The other time measurements did not apply to this patient.,The model predicted that this patient would die from heart failure. This is because the patient was a smoker and had a follow-up time in the range of 4 to 67 days. The other time measurements did not apply to this patient.,"1. The smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.966906474820144,,1
+heart,grok-4.20-0309-non-reasoning,114,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.3,False,76.3,76.3,76.3,42.0,False,False,False,2,2,0,0,0,0,0,2,0,0,2,0,[76.3],0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model predicted that this patient would die from heart failure. 
+
+This is because the patient's time reading was in the higher-risk group and their ejection fraction reading was also in the higher-risk group. Both of these measurements pointed toward a fatal outcome, which is why the model made this prediction with high confidence.","The model predicted that this patient would die from heart failure. 
+
+This is because the patient's time reading was in the higher-risk group and their ejection fraction reading was also in the higher-risk group. Both of these measurements pointed toward a fatal outcome, which is why the model made this prediction with high confidence.","1. The time measurement is at its low bin value, which pushed the prediction towards this class.  
+2. The ejection fraction measurement is at its low bin value, which pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]",[],,,,,,0.9832402234636872,1
+heart,grok-4.20-0309-non-reasoning,114,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,99.1,True,99.1,99.1,99.1,84.6,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[99.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 47.7% (supports the prediction)
+  time_b2: 20.9% (supports the prediction)
+  ejection_fraction_b0: 19.5% (supports the prediction)
+  time_b1: 11.9% (supports the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had the lowest range of follow-up time, which strongly pushed the prediction toward death. The patient also had the lowest range of ejection fraction, which further supported the prediction of death. The other time measurements contributed in the same direction but had smaller effects.","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the patient had the lowest range of follow-up time, which strongly pushed the prediction toward death. The patient also had the lowest range of ejection fraction, which further supported the prediction of death. The other time measurements contributed in the same direction but had smaller effects.","1. The time measurement in the lowest range pushed the prediction towards this class.  
+2. The time measurement in the middle range pushed against this class, but was outweighed.  
+3. The time measurement in the highest range pushed the prediction towards this class.  
+4. The ejection fraction measurement in the lowest range pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24]",,,,,,,1
+heart,grok-4.20-0309-non-reasoning,114,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,91.2,False,67.4,67.4,67.4,67.4,False,False,False,3,3,3,1,0,1,0,1,0,1,1,3,"[67.4, 67.4, 67.4, 67.4]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3684 (supports the prediction)
+  time_b2: weight=+0.3677 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1794 (supports the prediction)
+  serum_sodium_b0: weight=-0.1628 (opposes the prediction)","The model predicted that this patient would die from heart failure. 
+
+This happened mainly because the time measurement was in its lowest range and the follow-up time measurement was also in its lowest range. Both of these pushed the prediction strongly toward death. 
+
+A low ejection fraction reading also contributed to the prediction of death, though less strongly. 
+
+The serum sodium reading worked against the prediction and pushed slightly toward survival, but it was not enough to change the overall result.","The model predicted that this patient would die from heart failure.
+
+This happened mainly because the follow-up time measurement was in its lowest range and the overall time measurement was also in its lowest range. Both of these pushed the prediction strongly toward death.
+
+A low ejection fraction reading also contributed to the prediction of death, though less strongly.
+
+The serum sodium reading worked against the prediction and pushed slightly toward survival, but it was not enough to change the overall result.","1. The low time measurement pushed the prediction towards this class.  
+2. The medium time measurement pushed the prediction towards this class.  
+3. The low ejection fraction pushed the prediction towards this class.  
+4. The low serum sodium pushed against this class, but was outweighed.","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 < 0.5']","[8, 18, 23, 25]","[8, 18, 23]","[8, 18, 23]","[8, 18, 23]",,,,,,,1

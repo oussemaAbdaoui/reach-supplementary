@@ -1,0 +1,45 @@
+=== gptoss120b/heart 08:00:50 ===
+Full console log -> research/results/logs/heart_nn_20260905_080054_20048.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+  [keys] 3 available, starting at index 2
+[heart/gptoss120b] 90 rows, 0 to redo, model=openai/gpt-oss-120b provider=groq
+
+[heart/gptoss120b] wrote 0 rows -> research/results/heart_nn_comparison_gptoss120b.csv
+  spend: no billable calls
+=== gptoss120b/cancer 08:00:59 ===
+Full console log -> research/results/logs/cancer_nn_20260905_080101_20228.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 1
+[cancer/gptoss120b] 90 rows, 70 to redo, model=openai/gpt-oss-120b provider=groq
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 180s
+  [rate-limit] waiting 5s
+  [empty content, finish=length] raising max_tokens to 4096
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  inst   28 lmpaxp   v5= 97.40 (was 91.1) om=0 rounds=3
+  inst   28 anchors  v5= 35.90 (was 35.9) om=0 rounds=0
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s

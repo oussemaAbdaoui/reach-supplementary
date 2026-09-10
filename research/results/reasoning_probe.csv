@@ -1,0 +1,11 @@
+model,call,prompt_tokens,completion_tokens,visible_tokens,multiplier,budget,exhausted,finish_reason,seconds
+openai/gpt-oss-120b,generate,601,422,232.5,1.82,1024,False,stop,4.4
+openai/gpt-oss-120b,extract,418,440,12.2,35.92,512,False,stop,7.1
+openai/gpt-oss-20b,generate,599,708,227.8,3.11,1024,False,stop,7.4
+openai/gpt-oss-20b,extract,418,512,0.0,,512,True,length,3.7
+google/gemma-4-31B-it,generate,645,1024,0.0,,1024,True,length,30.1
+google/gemma-4-31B-it,extract,405,512,0.0,,512,True,length,19.6
+MiniMaxAI/MiniMax-M3,generate,703,741,216.8,3.42,1024,False,stop,5.8
+MiniMaxAI/MiniMax-M3,extract,521,471,12.2,38.45,512,False,stop,4.9
+moonshotai/Kimi-K2.7-Code,generate,556,1024,0.0,,1024,True,length,11.8
+moonshotai/Kimi-K2.7-Code,extract,359,512,0.0,,512,True,length,5.4

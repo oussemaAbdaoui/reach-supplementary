@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/cancer_nn_20260905_062821_20748.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 2
+[cancer/glm52] 90 rows, 0 to redo, model=zai-org/GLM-5.2 provider=together
+
+[cancer/glm52] wrote 0 rows -> research/results/cancer_nn_comparison_glm52.csv
+  spend: no billable calls

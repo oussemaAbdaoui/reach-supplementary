@@ -1,0 +1,17 @@
+Full console log -> research/results/logs/cancer_nn_20260905_044400_21148.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer] 2 instances x 6 arms, grok-4.20-0309-non-reasoning
+  inst    6 cop      lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+  inst    6 lmpaxp   lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+  inst    6 anchors  lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+  inst    6 shap     lost A=3 B=0  still-missing A=15 B=10  sim A=0.038 B=0.529
+  inst    6 lime     lost A=1 B=0  still-missing A=12 B=10  sim A=0.063 B=0.709
+  inst    6 cop_k    lost A=0 B=0  still-missing A=0 B=0  sim A=0.053 B=0.671
+  inst   22 cop      lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+  inst   22 lmpaxp   lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+  inst   22 anchors  lost A=0 B=0  still-missing A=1 B=0  sim A=0.171 B=1.0
+  inst   22 shap     lost A=0 B=1  still-missing A=3 B=6  sim A=0.083 B=0.836
+  inst   22 lime     lost A=1 B=0  still-missing A=6 B=5  sim A=0.044 B=0.748
+  inst   22 cop_k    lost A=0 B=0  still-missing A=0 B=0  sim A=1.0 B=1.0
+
+saved -> research/results/dialogue_state_probe_grok420.csv  (12 rows)

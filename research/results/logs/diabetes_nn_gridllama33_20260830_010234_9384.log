@@ -1,0 +1,23 @@
+Full console log -> research/results/logs/diabetes_nn_gridllama33_20260830_010234_9384.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+resume: 15 instances already done (50 rows) -> 0 to go
+
+saved -> research/results/diabetes_nn_comparison_gridllama33.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       4.00               83.54     73.64     70.91          75.83     73.81
+cop           1.71               70.19     70.19     68.56          71.29     70.19
+lime          7.43               68.63     58.56     60.29          76.06     54.04
+lmpaxp        7.43               96.69     93.26     96.69          96.69     96.69
+shap          7.43               83.84     72.39     64.51          85.01     68.94
+
+WeakPAXp pass rates (baseline / v5):
+        baseline_weak_paxp weak_paxp_v5
+arm                                    
+anchors           0.142857     0.142857
+cop                    0.0          0.0
+lime                   0.0          0.0
+lmpaxp                 1.0          1.0
+shap              0.428571     0.285714

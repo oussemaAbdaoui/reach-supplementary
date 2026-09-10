@@ -1,0 +1,25 @@
+Full console log -> research/results/logs/compas_nn_grok420_20260831_191257_7384.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+resume: 15 instances already done (90 rows) -> 0 to go
+
+saved -> research/results/compas_nn_comparison_grok420.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       1.93               73.69     71.43     71.14          71.43     69.91
+cop           7.00               68.00     63.35     67.23          73.84     68.00
+cop_k         3.60               69.61     66.05     67.97          69.31     69.61
+lime          3.60               84.27     74.27     82.89          87.37     54.12
+lmpaxp        3.60               98.31     93.02     89.38          93.02     98.31
+shap          3.60               76.01     76.83     66.03          77.02     64.17
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+cop_k                  0.00          0.00
+lime                   0.53          0.47
+lmpaxp                 1.00          0.47
+shap                   0.53          0.47

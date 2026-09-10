@@ -1,0 +1,456 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+employee,claude-sonnet-5,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,91.0,False,91.0,86.4,91.0,91.0,False,False,False,6,4,6,0,0,2,0,0,0,0,0,3,"[91.0, 86.4, 83.2, 86.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts this employee will stay with the company (rather than leave), based on the following characteristics:
+
+- Year joined: this employee's joining year does NOT fall in the range 2017 to 2018 (this condition does not hold).
+- City: this employee's city falls in the range 0 to 1 (this condition holds), and does NOT fall in the range 1 to 2 (this condition does not hold).
+- Payment tier: this employee's payment tier falls in the range 1 to 3 (this condition holds).
+- Gender: this employee's gender falls in the range 0 to 1 (this condition holds).
+- Ever benched (temporarily without an assigned project): this employee's status falls in the range 0 to 1, meaning they were not benched (this condition holds).
+
+Taken together, this specific combination of a joining year outside 2017-2018, a city coded in the 0-to-1 range, a payment tier in the 1-to-3 range, a gender coded in the 0-to-1 range, and never having been benched, matches a pattern that the model associates with employees who stay at the company rather than leave.","Le modèle prédit que cet employé restera dans l'entreprise (classe 0).
+
+Cette prédiction s'appuie sur les caractéristiques suivantes : l'employé n'a pas rejoint l'entreprise durant la période 2017-2018, il travaille dans une ville du premier groupe identifié, son niveau de rémunération se situe dans la catégorie 1 à 3, son genre correspond à la première catégorie, et il n'a jamais été mis au banc (sans mission active) auparavant.
+
+La combinaison de ces éléments correspond à un profil que le modèle associe généralement à une plus faible probabilité de départ, ce qui explique la prédiction de maintien dans l'entreprise.","1. The year the employee joined is not between 2017 and 2018, which is true here.
+2. The city category is between 0 and 1, which is true here.
+3. The city category is between 1 and 2, which is not true here.
+4. The payment tier is between 1 and 3, which is true here.
+5. The gender category is between 0 and 1, which is true here.
+6. Whether the employee was ever benched falls between 0 and 1, which is true here.","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]","[3, 4, 6, 10]","[3, 4, 5, 6, 10, 11]",0.0938,OPTIMAL,cop@6,0.4182
+employee,claude-sonnet-5,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,70.7,False,54.9,53.7,70.7,70.7,False,False,False,4,3,5,1,0,2,0,0,0,0,0,3,"[54.9, 70.7, 53.7, 53.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que cet employé quittera l'entreprise. Voici pourquoi, d'après les caractéristiques observées :
+
+- La ville se situe dans la catégorie correspondant à la plage 1 à 2 (et non dans la plage 0 à 1, qui ne s'applique pas ici).
+- Le niveau de rémunération se situe dans la plage 1 à 3.
+- Le genre correspond à la catégorie associée à la plage 0 à 1.
+- L'employé a déjà été mis au banc (statut ""ever benched"") au moins une fois, cette condition étant vérifiée.
+
+C'est la combinaison de ces quatre éléments qui a conduit le modèle à prédire un départ probable de l'employé. Chacun de ces facteurs correspond à une condition précise qui, prise ensemble, correspond au profil que le modèle associe à un risque de départ.","Le modèle prédit que cet employé quittera l'entreprise.
+
+Cette prédiction s'appuie sur les caractéristiques suivantes : l'employé travaille dans une ville du deuxième groupe (et non du premier), son niveau de rémunération se situe entre 1 et 3, son genre correspond à la catégorie 0, et il n'a jamais été mis au banc (sans mission active) auparavant.
+
+La combinaison de ces éléments correspond à un profil que le modèle associe fortement à un départ probable de l'entreprise.","1. The employee's city is not in the range from 0 up to (but not including) 1, which is true here.
+
+2. The employee's city is in the range from 1 up to (but not including) 2, which is true here.
+
+3. The employee's payment tier is in the range from 1 up to (but not including) 3, which is true here.
+
+4. The employee's gender is in the range from 0 up to (but not including) 1, which is true here.
+
+5. Whether the employee was ever benched is in the range from 0 up to (but not including) 1, which is true here.","['city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[4, 5, 6, 10, 11]","[5, 6, 10, 11]","[5, 6, 10]","[4, 5, 6, 10, 11]",0.23,OPTIMAL,cop@5,0.5768
+employee,claude-sonnet-5,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,65.9,False,65.9,65.9,65.9,65.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[65.9, 65.9, 65.9, 65.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model predicts that this employee will leave the company, and it based this decision on two pieces of information about the employee: their city and their gender.
+
+For city, the model checks which of two ranges the employee's city value falls into: whether it is between 0 and 1, or between 1 and 2. In this case, the city value does not fall in the 0-to-1 range, but it does fall in the 1-to-2 range.
+
+For gender, the model checks whether the employee's gender value falls between 0 and 1. In this case, it does.
+
+Because the employee's city falls specifically in the 1-to-2 range (and not the 0-to-1 range), combined with their gender value falling in the 0-to-1 range, the model classified this employee as likely to leave the company.","Le modèle prédit que cet employé quittera l'entreprise.
+
+Cette prédiction s'appuie sur trois éléments concordants : l'employé habite dans la ville correspondant à la catégorie 1 (et non dans celle correspondant à la catégorie 0), et son genre correspond à la catégorie 0. Cette combinaison précise de caractéristiques correspond à un profil que le modèle associe de façon fiable à un risque de départ.","1. The city measurement being in the range from 0 to 1 does not hold for this employee, meaning their city category is not the first one, and this fact supported the prediction that the employee will leave.
+2. The city measurement being in the range from 1 to 2 does hold for this employee, meaning their city falls into this second category, and this supported the prediction that the employee will leave.
+3. The gender measurement being in the range from 0 to 1 does hold for this employee, and this supported the prediction that the employee will leave.","['city_b0 < 0.5', 'city_b1 > 0.5', 'gender_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'gender_b0 > 0.5']","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]",0.23,OPTIMAL,cop@3,0.5676
+employee,claude-sonnet-5,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,64.5,False,65.6,71.3,71.3,64.5,False,False,False,3,2,4,1,0,2,0,0,0,1,0,3,"[65.6, 71.3, 71.3, 71.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts this employee will leave the company, based on four pieces of information that all matched a learned pattern:
+
+1. **Joining year**: The employee joined between 2017 and 2018.
+2. **Payment tier**: The employee's payment tier falls between 1 and 3.
+3. **Gender**: The employee's gender falls into the category coded between 0 and 1.
+4. **Ever benched**: The employee's ""ever benched"" status (whether they were ever temporarily without an assigned project) falls into the category coded between 0 and 1, meaning they have not been benched.
+
+Because all four of these conditions held true for this employee, the rule that the model learned—which links this exact combination of characteristics to a high likelihood of leaving—applied here, leading to the prediction that this person will quit.","Le modèle prédit que cet employé quittera l'entreprise. Cette prédiction s'appuie sur plusieurs caractéristiques observées :
+
+L'employé a rejoint l'entreprise entre 2017 et 2018. Son niveau de rémunération se situe dans la tranche 1 à 3, ce qui correspond à un niveau de paiement plus favorable. Par ailleurs, il s'agit d'une personne de genre codé 0, et cet employé n'a jamais été mis au banc (c'est-à-dire sans mission active) au cours de sa carrière dans l'entreprise.
+
+La combinaison de ces éléments - la date d'arrivée récente, le niveau de rémunération, le genre et l'absence de période sans mission - correspond à un profil que le modèle associe à un départ probable de l'entreprise.","1. The year the employee joined is between 2017 and 2018, which is true here.
+2. The payment tier is between 1 and 3, which is true here.
+3. The gender value is between 0 and 1, which is true here.
+4. Whether the employee was ever benched is between 0 and 1, which is true here.","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10]","[3, 6]","[3, 6, 10, 11]",0.3108,OPTIMAL,cop@4,0.573
+employee,claude-sonnet-5,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,84.0,False,84.0,65.1,84.0,84.0,False,False,False,6,5,6,0,0,1,0,0,0,0,0,3,"[84.0, 84.0, 84.0, 65.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que cet employé quittera l'entreprise, et voici pourquoi, selon la règle apprise :
+
+- Le niveau d'éducation se situe entre 0 et 2, ce qui correspond au profil de l'employé.
+- Concernant la ville : la condition « ville entre 0 et 1 » ne s'applique PAS ici, mais la condition « ville entre 1 et 2 » s'applique bien. Cela signifie que l'employé habite dans une ville correspondant à cette seconde catégorie.
+- Le niveau de rémunération se situe entre 1 et 3, ce qui correspond également à cet employé.
+- Le genre correspond à la catégorie codée entre 0 et 1.
+- Le fait d'avoir déjà été « mis au banc » (ever benched, c'est-à-dire sans mission active pendant un certain temps) correspond à la catégorie codée entre 0 et 1, ce qui signifie que cette situation s'est bien produite pour cet employé.
+
+C'est donc la combinaison de ces caractéristiques — le niveau d'éducation, la ville de résidence, le niveau de rémunération, le genre, et le fait d'avoir déjà été sans mission active — qui a conduit le modèle à prédire que cet employé est susceptible de quitter l'entreprise.","Le modèle prédit que cet employé quittera l'entreprise.
+
+Cette prédiction s'appuie sur les caractéristiques suivantes de l'employé : son niveau d'éducation se situe dans la tranche inférieure (0 à 2), sa ville correspond à la tranche 1 à 2 (et non à la tranche 0 à 1), son niveau de rémunération se situe dans la tranche inférieure (1 à 3), son genre correspond à la catégorie codée de 0 à 1, et il a déjà été mis au banc (sans mission) au moins une fois par le passé.
+
+C'est la combinaison de ces éléments, en particulier le fait d'avoir déjà été sans mission assignée, qui pousse le modèle à estimer que cet employé est susceptible de quitter l'entreprise.","1. The employee's education level falls between 0 and 2, which is true here, and this pushed the prediction towards this class.
+
+2. The employee's city category falls between 0 and 1, which is not true here, so this pushed against this class, but was outweighed.
+
+3. The employee's city category falls between 1 and 2, which is true here, and this pushed the prediction towards this class.
+
+4. The employee's payment tier falls between 1 and 3, which is true here, and this pushed the prediction towards this class.
+
+5. The employee's gender category falls between 0 and 1, which is true here, and this pushed the prediction towards this class.
+
+6. The employee's history of ever being benched falls between 0 and 1, which is true here, and this pushed the prediction towards this class.","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]","[0, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]",0.2186,OPTIMAL,cop@6,0.583
+employee,claude-sonnet-5,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.2,False,70.2,70.2,70.2,70.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.2, 53.3, 55.1, 70.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model predicts this employee is likely to leave the company, based on the following characteristics:
+
+- City: the value falls in the range 1 to 2 (this condition holds), while the range 0 to 1 does not apply.
+- Payment tier: the value falls in the range 1 to 3 (this condition holds).
+- Gender: the value falls in the range 0 to 1 (this condition holds).
+
+Because this specific combination of city, payment tier, and gender matches a pattern the model has learned to associate with employees leaving, it predicted that this employee will quit rather than stay.","L'employé est prédit comme susceptible de quitter l'entreprise. Cette prédiction s'appuie sur les éléments suivants : la ville correspond à la catégorie comprise entre 1 et 2 (et non à celle comprise entre 0 et 1), le niveau de rémunération se situe entre 1 et 3, et le genre correspond à la catégorie comprise entre 0 et 1. La combinaison de ces caractéristiques correspond à un profil que le modèle associe à un départ probable.","1. The city category is not in the range 0 to 1, which is true here, and this pushed the prediction towards the employee leaving.
+
+2. The city category falls between 1 and 2, which is true here, and this supported the prediction that the employee will leave.
+
+3. The payment tier falls between 1 and 3, which is true here, and this pushed the prediction towards the employee leaving.
+
+4. The gender category falls between 0 and 1, which is true here, and this supported the prediction that the employee will leave.","['city_b1 > 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]",0.2218,OPTIMAL,cop@4,0.5692
+employee,claude-sonnet-5,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,77.3,False,56.5,77.3,77.3,77.3,False,False,False,6,7,7,1,0,0,0,0,0,0,0,3,"[56.5, 77.3, 55.5, 77.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que cet employé quittera l'entreprise (prédiction = 1), et voici les raisons basées sur la règle apprise :
+
+- **Niveau d'éducation** : la valeur se situe entre 0 et 2, ce qui correspond à la condition retenue.
+- **Ville** : la valeur ne se situe PAS entre 0 et 1 (cette condition ne s'applique pas), mais elle se situe entre 1 et 2, ce qui correspond bien à la règle.
+- **Palier de rémunération (payment tier)** : la valeur se situe entre 1 et 3, ce qui correspond à la condition retenue.
+- **Âge** : la valeur ne se situe PAS entre 27 et 30 ans (cette condition ne s'applique pas à cet employé).
+- **Genre** : la valeur se situe entre 0 et 1, ce qui correspond à la condition retenue.
+- **A déjà été mis au banc (ever benched)** : la valeur se situe entre 0 et 1, ce qui correspond à la condition retenue, signifiant que cet employé n'a jamais été mis au banc.
+
+En résumé, le modèle a identifié une combinaison particulière de caractéristiques chez cet employé — notamment son niveau d'éducation, le fait qu'il habite une ville correspondant à la deuxième catégorie plutôt qu'à la première, son palier de rémunération, son genre, le fait qu'il n'ait jamais été mis au banc, et le fait que son âge ne se situe pas entre 27 et 30 ans — qui, ensemble, correspondent à un profil que le modèle associe à un départ probable de l'entreprise.","Le modèle prédit que cet employé quittera l'entreprise, en se basant sur la règle suivante qui correspond à son profil :
+
+- Le niveau d'éducation se situe dans la catégorie basse (inférieure à 2)
+- La ville ne correspond pas à la première catégorie, mais se situe dans la deuxième catégorie de ville
+- Le niveau de rémunération se situe entre 1 et 3
+- L'âge ne se situe pas entre 27 et 30 ans
+- Le genre correspond à la première catégorie
+- L'employé a déjà été mis au repos (benched) au moins une fois auparavant
+
+Cette combinaison de caractéristiques correspond exactement au profil de l'employé analysé, ce qui explique pourquoi le modèle prédit un départ probable.","1. The education level falls between 0 and 2, which is true for this employee, and this pushed the prediction towards leaving the company.
+2. The city category being between 0 and 1 does not hold for this employee, and this pushed against the prediction, but was outweighed.
+3. The city category falls between 1 and 2, which is true for this employee, and this pushed the prediction towards leaving the company.
+4. The payment tier falls between 1 and 3, which is true for this employee, and this pushed the prediction towards leaving the company.
+5. The age falls between 27 and 30 does not hold for this employee, and this pushed against the prediction, but was outweighed.
+6. The gender category falls between 0 and 1, which is true for this employee, and this pushed the prediction towards leaving the company.
+7. The history of ever being benched falls between 0 and 1, which is true for this employee, and this pushed the prediction towards leaving the company.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 8, 10, 11]","[0, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]",0.3034,OPTIMAL,cop@7,0.5646
+employee,claude-sonnet-5,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,81.9,False,81.9,62.0,81.9,81.9,False,False,False,6,4,6,0,0,2,0,0,0,0,0,3,"[81.9, 58.9, 79.7, 62.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Here is why the model predicts this employee will leave the company:
+
+The model looked at a set of conditions describing this person, and this instance matched a pattern that the model associates with leaving:
+
+- Education level falls in the range 0 to 2 — this condition holds.
+- City category falls in the range 0 to 1 — this condition does NOT hold, meaning the employee's city does not fall in that range.
+- Instead, city category falls in the range 1 to 2 — this condition holds, meaning the employee's city falls in this second range.
+- Payment tier falls in the range 1 to 3 — this condition holds.
+- Gender falls in the range 0 to 1 — this condition holds.
+- Whether the employee was ever ""benched"" (placed without an assigned project) falls in the range 0 to 1 — this condition holds.
+
+Because all of these conditions line up together for this particular employee (education in the 0–2 range, city in the 1–2 range rather than the 0–1 range, payment tier in the 1–3 range, gender in the 0–1 range, and bench status in the 0–1 range), the model classifies this pattern as one that typically leads to leaving. In other words, it is the specific combination of the employee's education level, city grouping, payment tier, gender category, and bench history — matching exactly this pattern — that led the model to predict the employee will quit.","Le modèle prédit que cet employé quittera l'entreprise, selon la règle suivante, basée sur son profil :
+
+- Son niveau d'éducation se situe dans la catégorie inférieure (entre 0 et 2)
+- Sa ville ne fait pas partie du premier groupe de villes, mais appartient au deuxième groupe de villes (entre 1 et 2)
+- Son niveau de rémunération se situe entre 1 et 3
+- Son genre correspond à la catégorie codée entre 0 et 1
+- Il n'a jamais été mis au banc (sans mission active) auparavant
+
+Ces caractéristiques, prises ensemble, correspondent à un profil que le modèle associe à un départ probable de l'entreprise.","1. The education level falls between 0 and 2, which is true here, and this pushed the prediction towards this class.
+
+2. The city category falls between 0 and 1, which is not true here, so this pushed against this class, but was outweighed.
+
+3. The city category falls between 1 and 2, which is true here, and this pushed the prediction towards this class.
+
+4. The payment tier falls between 1 and 3, which is true here, and this pushed the prediction towards this class.
+
+5. The gender indicator falls between 0 and 1, which is true here, and this pushed the prediction towards this class.
+
+6. The record of ever being benched falls between 0 and 1, which is true here, and this pushed the prediction towards this class.","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]","[0, 5, 6, 10]","[0, 4, 5, 6, 10, 11]",0.2176,OPTIMAL,cop@6,0.5676
+employee,claude-sonnet-5,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,89.1,False,68.5,68.5,89.1,89.1,False,False,False,6,6,7,1,0,1,0,0,0,0,0,3,"[68.5, 89.1, 89.1, 68.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","Le modèle prédit que cet employé quittera l'entreprise, pour les raisons suivantes :
+
+Le niveau d'éducation se situe entre 0 et 2, ce qui correspond à la condition attendue.
+
+En ce qui concerne la ville, la valeur ne se situe pas entre 0 et 1, mais elle se situe bien entre 1 et 2. Cette dernière condition est celle qui compte, et elle est respectée.
+
+Le niveau de rémunération se situe entre 1 et 3, ce qui correspond à la condition attendue.
+
+Le genre se situe entre 0 et 1, ce qui correspond à la condition attendue.
+
+Le fait d'avoir déjà été mis ""sur le banc"" (sans mission active) se situe entre 0 et 1, ce qui correspond à la condition attendue.
+
+Enfin, l'expérience dans le domaine actuel ne se situe pas entre 4 et 7 ans — cette condition ne s'applique donc pas à cet employé, ce qui va aussi dans le sens du départ prévu.
+
+En résumé, presque toutes les caractéristiques de cet employé (éducation, ville, rémunération, genre, mise au repos professionnel) correspondent exactement au profil type associé à un départ, et son expérience dans le domaine actuel se situe en dehors de la tranche associée au maintien en poste. C'est la combinaison de tous ces éléments qui conduit le modèle à prédire que cette personne quittera l'entreprise.","Le modèle prédit que cet employé quittera l'entreprise.
+
+Cette prédiction s'appuie sur la combinaison suivante de caractéristiques : un niveau d'éducation dans la catégorie inférieure (les deux premiers niveaux), une ville qui se situe dans la deuxième catégorie possible (et non dans la première), un niveau de rémunération parmi les paliers les plus bas (paliers 1 à 2), un genre correspondant à la première catégorie, le fait d'avoir déjà été mis au repos professionnel (benched) au moins une fois, et une expérience dans le domaine actuel qui ne se situe pas entre 4 et 6 ans.
+
+C'est l'association de tous ces éléments qui conduit le modèle à anticiper un départ probable de l'employé.","1. The education level falls between 0 and 2 on the coded scale, which is true for this employee, and this pushed the prediction towards leaving.
+
+2. The city category being between 0 and 1 on the coded scale does not hold for this employee, meaning this factor pushed against the prediction, but was outweighed.
+
+3. The city category falls between 1 and 2 on the coded scale, which is true for this employee, and this pushed the prediction towards leaving.
+
+4. The payment tier falls between 1 and 3 on the coded scale, which is true for this employee, and this pushed the prediction towards leaving.
+
+5. The gender category falls between 0 and 1 on the coded scale, which is true for this employee, and this pushed the prediction towards leaving.
+
+6. Having ever been benched falls between 0 and 1 on the coded scale, which is true for this employee, and this pushed the prediction towards leaving.
+
+7. The years of experience in the current domain being between 4 and 7 does not hold for this employee, meaning this factor pushed against the prediction, but was outweighed.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 5, 6, 10, 11, 14]","[0, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]",0.3238,OPTIMAL,cop@7,0.5834
+employee,claude-sonnet-5,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,67.8,False,67.8,70.9,70.9,67.8,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[67.8, 60.2, 70.9, 70.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts this employee will stay with the company (rather than leave).
+
+Here is why, based on the four pieces of information used:
+
+- Joining year: the employee did NOT join between 2017 and 2018. This condition does not apply to them.
+- Payment tier: the employee's payment tier is between 1 and 3.
+- Gender: the employee's gender falls into the category coded as 0 to 1.
+- Ever benched: the employee's ""benched"" status (whether they were temporarily without an assigned project) falls into the category coded as 0 to 1, meaning this condition holds.
+
+Together, this combination of traits — not having joined in 2017-2018, having a payment tier between 1 and 3, falling into this gender category, and having this benched status — matches a pattern the model has learned to associate with employees who stay rather than leave. Because all four conditions line up this way for this particular employee, the model predicts they will not quit.","L'employé ne devrait pas quitter l'entreprise selon le modèle, car :
+
+- Il n'a pas rejoint l'entreprise entre 2017 et 2018.
+- Son niveau de rémunération se situe entre 1 et 3.
+- Son genre correspond à la catégorie codée entre 0 et 1.
+- Il n'a jamais été mis au banc (non actif sur un projet) auparavant.
+
+Ces éléments combinés amènent le modèle à prédire que cette personne restera dans l'entreprise.","1. The year the employee joined is not between 2017 and 2018, which is true here, and this pushed the prediction towards the employee staying.
+
+2. The payment tier is between 1 and 3, which is true here, and this pushed the prediction towards the employee staying.
+
+3. The gender indicator falls between 0 and 1, which is true here, and this pushed the prediction towards the employee staying.
+
+4. Whether the employee was ever benched falls between 0 and 1, which is true here, and this pushed the prediction towards the employee staying.","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10]","[3, 6, 10, 11]",0.3156,OPTIMAL,cop@4,0.4214
+employee,claude-sonnet-5,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,87.9,False,87.8,87.8,87.8,87.9,False,False,False,6,6,7,1,0,1,0,0,0,1,0,3,"[87.8, 87.8, 83.0, 87.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que cet employé restera dans l'entreprise (valeur 0). Voici pourquoi, selon les caractéristiques observées :
+
+- Le niveau d'éducation se situe dans la tranche inférieure (entre 0 et 2 sur l'échelle utilisée).
+- L'année d'entrée dans l'entreprise ne se situe pas entre 2017 et 2018 — cette condition ne s'applique pas ici.
+- La ville de l'employé correspond à la première catégorie (entre 0 et 1 sur l'échelle utilisée), et ne correspond pas à la deuxième catégorie (entre 1 et 2).
+- Le niveau de rémunération (tier de paiement) se situe entre 1 et 3.
+- Le genre correspond à la première catégorie (entre 0 et 1 sur l'échelle utilisée).
+- L'employé n'a jamais été mis ""sur le banc"" (sans mission active), une condition qui se situe entre 0 et 1 sur l'échelle utilisée.
+
+En combinant toutes ces informations — un niveau d'éducation dans la tranche basse, une année d'entrée différente de 2017-2018, une ville appartenant à la première catégorie, un niveau de rémunération dans la tranche 1 à 3, un genre correspondant à la première catégorie, et l'absence de période sans affectation — le modèle associe ce profil à un employé qui a tendance à rester dans l'entreprise plutôt qu'à la quitter.","Le modèle prédit que cet employé restera dans l'entreprise (classe 0), et cela s'explique par la combinaison des caractéristiques suivantes :
+
+Le niveau d'éducation se situe dans la catégorie inférieure (entre 0 et 2). L'année d'entrée dans l'entreprise n'est pas 2017. La ville correspond à la première catégorie (entre 0 et 1), et non à la deuxième catégorie (entre 1 et 2). Le niveau de rémunération se situe dans la tranche entre 1 et 3. Le genre correspond à la première catégorie (entre 0 et 1). Enfin, l'employé n'a jamais été mis à l'écart (« benched ») de projet, cette situation se situant dans la catégorie entre 0 et 1.
+
+C'est l'ensemble de ces éléments réunis qui conduit le modèle à conclure que l'employé a de fortes chances de rester dans l'entreprise.","1. The employee's education level falls between 0 and 2, which is true here.
+2. The joining year falls between 2017 and 2018, which is not true here.
+3. The city category falls between 0 and 1, which is true here.
+4. The city category falls between 1 and 2, which is not true here.
+5. The payment tier falls between 1 and 3, which is true here.
+6. The gender category falls between 0 and 1, which is true here.
+7. Whether the employee was ever benched falls between 0 and 1, which is true here.","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 3, 4, 5, 6, 10, 11]","[0, 3, 4, 5, 6, 10]","[0, 3, 4, 5, 6, 10]","[0, 3, 4, 5, 6, 10, 11]",0.0978,OPTIMAL,cop@7,0.4238
+employee,claude-sonnet-5,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,88.6,False,88.6,74.1,88.6,88.6,False,False,False,8,7,8,0,0,1,0,0,0,0,0,3,"[88.6, 88.6, 80.9, 74.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","Le modèle prédit que cet employé quittera l'entreprise. Voici pourquoi, selon les caractéristiques observées :
+
+- Le niveau d'éducation se situe entre 0 et 2, ce qui correspond à la condition retenue.
+- L'année d'entrée dans l'entreprise n'est pas comprise entre 2014 et 2017 — cette condition ne s'applique donc pas ici.
+- La ville n'est pas dans la première catégorie (entre 0 et 1) — cette condition ne s'applique pas.
+- En revanche, la ville se situe bien dans la deuxième catégorie, entre 1 et 2, ce qui correspond à la règle.
+- Le niveau de rémunération se situe entre 1 et 3, ce qui correspond également à la condition.
+- Le genre correspond à la catégorie codée entre 0 et 1, ce qui remplit la condition.
+- L'employé a déjà été ""sur le banc"" (c'est-à-dire sans mission active pendant un certain temps), ce qui correspond à la condition retenue par le modèle.
+- L'expérience dans le domaine actuel n'est pas comprise entre 2 et 4 ans — cette condition ne s'applique pas dans ce cas.
+
+En résumé, le modèle associe le départ probable de cet employé à une combinaison de facteurs : un niveau d'éducation plus bas, le fait d'habiter dans la deuxième catégorie de ville, un niveau de rémunération dans la tranche inférieure à intermédiaire, ainsi que le fait d'avoir déjà été sans mission active. Ces éléments, pris ensemble, correspondent au profil que le modèle associe à un risque de départ.","Le modèle prédit que cet employé quittera l'entreprise, pour les raisons suivantes:
+
+L'employé a un niveau d'éducation inférieur à 2 (par exemple, formation initiale ou premier diplôme), n'a pas rejoint l'entreprise entre 2014 et 2017, habite dans une ville du deuxième groupe (catégorie 1 sur l'échelle des villes), se situe dans un palier de rémunération entre 1 et 3, est de genre correspondant à la catégorie 0, a déjà été mis au repos professionnel (benched) au moins une fois, et ne possède pas entre 2 et 4 ans d'expérience dans son domaine actuel.
+
+La combinaison de ces éléments - notamment le faible niveau d'éducation, l'absence d'ancienneté dans la période 2014-2017, le fait d'avoir déjà été mis au repos professionnel, et une expérience dans le domaine actuel en dehors de la tranche 2-4 ans - conduit le modèle à anticiper un départ probable de cet employé.","1. The education level is between 0 and 2, which is true here, and this pushed the prediction towards this class.
+
+2. The joining year is between 2014 and 2017, which is not true here, and this pushed against this class, but was outweighed.
+
+3. The city category is between 0 and 1, which is not true here, and this pushed against this class, but was outweighed.
+
+4. The city category is between 1 and 2, which is true here, and this pushed the prediction towards this class.
+
+5. The payment tier is between 1 and 3, which is true here, and this pushed the prediction towards this class.
+
+6. The gender category is between 0 and 1, which is true here, and this pushed the prediction towards this class.
+
+7. The record of ever being benched is between 0 and 1, which is true here, and this pushed the prediction towards this class.
+
+8. The experience in the current domain is between 2 and 4 years, which is not true here, and this pushed against this class, but was outweighed.","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 10, 11, 13]",0.4232,OPTIMAL,cop@8,0.564
+employee,claude-sonnet-5,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.0,False,72.2,72.2,91.0,91.0,False,False,False,6,6,7,1,0,1,0,0,0,0,0,3,"[72.2, 72.2, 91.0, 72.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","Le modèle prédit que cet employé quittera l'entreprise, en se basant sur la combinaison de caractéristiques suivante:
+
+- Le niveau d'éducation se situe dans la catégorie inférieure (entre 0 et 2).
+- La ville ne correspond pas à la première catégorie (entre 0 et 1) — cette condition ne s'applique pas à cet employé.
+- La ville correspond bien à la deuxième catégorie (entre 1 et 2).
+- Le niveau de rémunération se situe dans la tranche inférieure (entre 1 et 3).
+- Le genre correspond à la catégorie codée entre 0 et 1.
+- L'employé a déjà été mis ""sur le banc"" (période sans mission active) par le passé.
+- L'expérience dans le domaine actuel ne se situe pas dans la tranche de 4 à 7 ans — cette condition ne s'applique pas non plus.
+
+En résumé, c'est la combinaison précise de ces éléments — un employé résidant dans la ville de la deuxième catégorie, avec un niveau d'éducation et de rémunération plus bas, ayant connu une période sans mission active, et dont l'expérience ne se situe pas entre 4 et 7 ans — qui a conduit le modèle à prédire que cette personne est susceptible de quitter l'entreprise.","Le modèle prédit que cet employé quittera l'entreprise, pour les raisons suivantes :
+
+- Son niveau d'éducation se situe dans la catégorie basse (inférieure à 2)
+- Sa ville ne correspond pas à la première catégorie de ville, mais correspond à la deuxième catégorie de ville
+- Son niveau de rémunération se situe dans la tranche 1 à 3
+- Son genre correspond à la catégorie 0 à 1
+- Il a déjà été mis sur le banc (sans mission active) au moins une fois
+- Son expérience dans le domaine actuel ne se situe pas entre 4 et 7 ans
+
+C'est la combinaison de ces caractéristiques qui conduit le modèle à prédire un départ probable de l'employé.","1. The employee's education level falls between 0 and 2 on the encoded scale, which is true here, and this supported the prediction that the employee will leave.
+
+2. The employee's city category falls between 0 and 1 on the encoded scale, which is not true here, so this pushed against the prediction, but was outweighed.
+
+3. The employee's city category falls between 1 and 2 on the encoded scale, which is true here, and this supported the prediction that the employee will leave.
+
+4. The employee's payment tier falls between 1 and 3 on the encoded scale, which is true here, and this supported the prediction that the employee will leave.
+
+5. The employee's gender category falls between 0 and 1 on the encoded scale, which is true here, and this supported the prediction that the employee will leave.
+
+6. Whether the employee was ever benched falls between 0 and 1 on the encoded scale, which is true here, and this supported the prediction that the employee will leave.
+
+7. The employee's years of experience in their current domain falls between 4 and 7, which is not true here, so this pushed against the prediction, but was outweighed.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 5, 6, 10, 11, 14]","[0, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]",0.3254,OPTIMAL,cop@7,0.576
+employee,claude-sonnet-5,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,81.4,False,81.4,81.4,81.4,81.4,False,False,False,8,8,8,0,0,0,0,0,0,0,0,3,"[81.4, 81.4, 81.4, 81.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","Voici pourquoi le modèle prédit que cet employé restera dans l'entreprise (valeur 0) :
+
+Le modèle s'est appuyé sur une combinaison de huit caractéristiques de l'employé :
+
+1. **Niveau d'éducation** : la valeur se situe dans la catégorie inférieure (entre 0 et 2 sur l'échelle utilisée).
+2. **Ville** : l'employé habite dans la première catégorie de ville (entre 0 et 1). Il n'habite pas dans la deuxième catégorie de ville (entre 1 et 2), cette condition ne s'applique donc pas.
+3. **Niveau de rémunération** : il se situe dans la tranche entre 1 et 3.
+4. **Âge** : l'employé n'a pas un âge compris entre 27 et 30 ans — cette condition ne s'applique pas ici, ce qui signifie que son âge se situe en dehors de cette tranche.
+5. **Genre** : correspond à la première catégorie (entre 0 et 1).
+6. **Historique de mise à l'écart (""benched"")** : l'employé n'a pas été mis sur la touche, ce qui correspond à la catégorie entre 0 et 1.
+7. **Expérience dans le domaine actuel** : elle ne se situe pas entre 2 et 4 ans — cette condition ne s'applique pas, donc son expérience est en dehors de cette fourchette.
+
+Le modèle a trouvé que cette combinaison précise de caractéristiques — ce niveau d'éducation, cette ville, ce niveau de rémunération, cet âge en dehors de la tranche 27-30 ans, ce genre, l'absence de mise à l'écart, et une expérience en dehors de la tranche 2-4 ans — correspond typiquement à des employés qui restent dans l'entreprise plutôt que de la quitter. C'est l'ensemble de ces éléments réunis, et non un seul facteur isolé, qui a conduit à cette prédiction.","Le modèle prédit que cet employé restera dans l'entreprise (classe 0).
+
+Cette prédiction s'appuie sur les caractéristiques suivantes de l'employé :
+
+- Le niveau d'éducation se situe dans la catégorie inférieure (les deux premiers niveaux)
+- La ville appartient à la première catégorie du groupe de villes concerné
+- La ville n'appartient pas à la deuxième catégorie
+- Le niveau de rémunération se situe dans les paliers 1 à 2
+- L'âge n'est pas compris entre 27 et 30 ans
+- Le genre correspond à la première catégorie
+- L'employé a déjà été mis au repos forcé (sans mission) au moins une fois
+- Le nombre d'années d'expérience dans le domaine actuel n'est pas compris entre 2 et 4 ans
+
+C'est la combinaison de ces éléments qui conduit le modèle à prédire que cet employé restera dans l'entreprise plutôt que de la quitter.","1. The education level falls between 0 and 2 on the measurement scale, which is true here, and this supported the prediction that the employee will stay.
+
+2. The city category falls between 0 and 1 on the measurement scale, which is true here, and this supported the prediction that the employee will stay.
+
+3. The city category falling between 1 and 2 on the measurement scale is not true here, and this supported the prediction that the employee will stay.
+
+4. The payment tier falls between 1 and 3 on the measurement scale, which is true here, and this supported the prediction that the employee will stay.
+
+5. The age falling between 27 and 30 years is not true here, and this supported the prediction that the employee will stay.
+
+6. The gender category falls between 0 and 1 on the measurement scale, which is true here, and this supported the prediction that the employee will stay.
+
+7. The history of ever being benched falls between 0 and 1 on the measurement scale, which is true here, and this supported the prediction that the employee will stay.
+
+8. The years of experience in the current domain falling between 2 and 4 years is not true here, and this supported the prediction that the employee will stay.","['education_b0 > 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]",0.312,OPTIMAL,cop@8,0.4204
+employee,claude-sonnet-5,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,98.8,True,62.9,98.8,98.8,98.8,False,True,True,5,7,7,2,0,0,0,0,0,0,0,1,"[62.9, 98.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que cet employé quittera l'entreprise, et voici pourquoi, selon la règle apprise :
+
+- **Niveau d'études** : il se situe dans la catégorie correspondant à un niveau entre 0 et 2, ce qui correspond au profil associé à un départ.
+
+- **Année d'embauche** : elle se situe entre 2017 et 2018. Les tranches correspondant à 2012-2014 et à 2014-2017 ne s'appliquent pas ici — l'employé n'a pas été embauché durant ces périodes, seulement dans la période la plus récente (2017-2018).
+
+- **Niveau de rémunération** : il se situe dans la tranche entre 1 et 3, ce qui correspond au profil associé à un départ.
+
+- **Genre** : il correspond à la catégorie codée entre 0 et 1, un facteur pris en compte dans la règle qui prédit un départ.
+
+- **Antécédent de mise à l'écart (benching)** : cette condition est vérifiée, c'est-à-dire que l'employé a déjà été mis au repos professionnel (sans mission) à un moment donné, ce qui correspond au profil associé à un départ.
+
+En résumé, le modèle a combiné ces cinq caractéristiques — un employé récemment embauché (entre 2017 et 2018), avec un niveau d'études et un niveau de rémunération dans les tranches indiquées, un genre correspondant à la catégorie mentionnée, et un passé de mise à l'écart — pour conclure que cette personne est susceptible de quitter l'entreprise.","Le modèle prédit que cet employé quittera l'entreprise, car son profil correspond à une règle apprise selon laquelle il présente toutes les caractéristiques suivantes :
+
+- Son niveau d'éducation se situe dans la catégorie inférieure (codée entre 0 et 2)
+- Son année d'entrée dans l'entreprise n'est pas comprise entre 2012 et 2014
+- Son année d'entrée dans l'entreprise n'est pas comprise entre 2014 et 2017
+- Son année d'entrée se situe entre 2017 et 2018
+- Son niveau de rémunération se situe dans la catégorie 1 ou 2
+- Son genre correspond à la catégorie codée 0
+- Il a déjà été mis au banc (sans mission) au moins une fois
+
+C'est la combinaison de tous ces éléments, en particulier une entrée récente dans l'entreprise (2017-2018) associée à un passage antérieur sans mission, qui conduit le modèle à prédire un départ probable.","1. The employee's education level falls between 0 and 2, which is true here, supporting the prediction that this employee will leave.
+
+2. The employee's joining year is not between 2012 and 2014, which is true here, supporting the prediction that this employee will leave.
+
+3. The employee's joining year is not between 2014 and 2017, which is true here, supporting the prediction that this employee will leave.
+
+4. The employee's joining year falls between 2017 and 2018, which is true here, supporting the prediction that this employee will leave.
+
+5. The employee's payment tier falls between 1 and 3, which is true here, supporting the prediction that this employee will leave.
+
+6. The employee's gender falls between 0 and 1, which is true here, supporting the prediction that this employee will leave.
+
+7. Whether the employee was ever benched falls between 0 and 1, which is true here, supporting the prediction that this employee will leave.","['education_b0 > 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 1, 2, 3, 6, 10, 11]","[0, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]",0.3156,OPTIMAL,cop@7,0.5804

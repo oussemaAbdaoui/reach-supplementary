@@ -1,0 +1,275 @@
+=== rescore gridllama33  07:49:22 ===
+  run_sweep(DATASETS, "_gridllama33", "nn_feasible_gridllama33.csv")
+[cancer_gridllama33] rebuilding tier and re-estimating under U / V / E ...
+  105 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_gridllama33] rebuilding tier and re-estimating under U / V / E ...
+  105 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_gridllama33] rebuilding tier and re-estimating under U / V / E ...
+  105 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_gridllama33] rebuilding tier and re-estimating under U / V / E ...
+  105 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_gridllama33] rebuilding tier and re-estimating under U / V / E ...
+  105 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_gridllama33.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+          U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                   
+anchors   74.44  70.78  72.05  67.93        3.66         91.3    0.093   0.080   0.053
+cop       73.48  73.24  73.27  73.45        0.24        100.0    0.027   0.027   0.027
+cop_best  89.65  83.74  89.62  89.24        5.91         99.5    0.520   0.307   0.520
+cop_k     83.32  79.16  83.32  82.95        4.16         99.6    0.147   0.093   0.147
+lime      77.13  65.04  68.61  63.87       12.09         82.8    0.307   0.173   0.120
+lmpaxp    97.05  93.16  97.05  97.01        3.89        100.0    0.907   0.733   0.893
+shap      83.71  74.29  79.14  68.71        9.42         82.1    0.587   0.187   0.107
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+          V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                   
+anchors   89.61  84.54  86.97  83.35        5.07         93.0    0.587   0.413   0.387
+cop       85.15  84.96  84.96  85.15        0.19        100.0    0.307   0.307   0.307
+cop_best  96.88  96.12  96.91  95.98        0.76         99.1    0.787   0.787   0.773
+cop_k     91.53  90.31  91.56  90.85        1.22         99.3    0.400   0.400   0.387
+lime      85.71  74.29  79.37  76.92       11.42         89.7    0.507   0.293   0.333
+lmpaxp    96.92  96.37  96.92  96.85        0.55         99.9    0.747   0.693   0.733
+shap      93.60  89.45  90.83  89.18        4.15         95.3    0.747   0.560   0.587
+
+=== D = Empirical training distribution ===
+          E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                   
+anchors   99.43  94.13  97.11  92.13        5.30         92.7    0.960   0.747   0.680
+cop       89.18  89.10  89.10  89.18        0.08        100.0    0.453   0.453   0.453
+cop_best  97.44  97.58  97.44  96.57       -0.14         99.1    0.743   0.757   0.729
+cop_k     94.12  94.16  94.12  93.47       -0.04         99.3    0.535   0.541   0.521
+lime      88.69  77.61  82.77  81.21       11.08         91.6    0.580   0.347   0.480
+lmpaxp    97.92  97.65  97.92  97.92        0.27        100.0    0.851   0.824   0.851
+shap      95.91  90.66  92.62  89.89        5.25         93.7    0.853   0.733   0.680
+
+mean v5_rounds by arm:
+arm
+anchors     0.75
+cop         0.09
+cop_best    0.99
+cop_k       0.69
+lime        2.41
+lmpaxp      0.36
+shap        2.41
+=== gridllama33 done  07:49:51 ===
+=== rescore grok420  07:49:51 ===
+  run_sweep(DATASETS, "_grok420", "nn_feasible_grok420.csv")
+[cancer_grok420] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_grok420] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_grok420] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_grok420] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_grok420] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_grok420.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+         U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                  
+anchors  74.44  68.31  73.83  66.65        6.13         89.5    0.093   0.067   0.080
+cop      73.17  71.40  73.70  73.17        1.77        100.0    0.027   0.000   0.027
+cop_k    83.26  79.58  82.65  83.26        3.68        100.0    0.147   0.107   0.147
+lime     77.13  66.62  69.13  57.66       10.51         74.8    0.307   0.133   0.040
+lmpaxp   97.05  92.62  95.77  97.05        4.43        100.0    0.907   0.653   0.907
+shap     83.71  77.74  79.75  69.31        5.97         82.8    0.587   0.293   0.173
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+         V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                  
+anchors  89.61  81.51  88.84  80.85        8.10         90.2    0.587   0.347   0.373
+cop      84.86  84.12  84.86  84.86        0.74        100.0    0.320   0.307   0.320
+cop_k    91.52  89.25  90.63  91.52        2.27        100.0    0.387   0.373   0.387
+lime     85.71  75.91  78.85  72.34        9.80         84.4    0.507   0.320   0.200
+lmpaxp   96.92  95.83  96.79  96.92        1.09        100.0    0.747   0.693   0.747
+shap     93.60  88.47  92.53  91.58        5.13         97.8    0.747   0.573   0.627
+
+=== D = Empirical training distribution ===
+         E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                  
+anchors  99.43  90.94  98.41  91.51        8.49         92.0    0.960   0.627   0.667
+cop      89.46  88.86  89.46  89.46        0.60        100.0    0.473   0.459   0.473
+cop_k    94.02  92.89  93.15  94.02        1.13        100.0    0.535   0.534   0.535
+lime     88.69  79.37  82.67  76.80        9.32         86.6    0.580   0.467   0.387
+lmpaxp   97.92  97.08  97.82  97.92        0.84        100.0    0.851   0.797   0.851
+shap     95.91  92.01  94.59  92.45        3.90         96.4    0.853   0.716   0.733
+
+mean v5_rounds by arm:
+arm
+anchors    0.67
+cop        0.45
+cop_k      0.67
+lime       2.27
+lmpaxp     0.59
+shap       1.99
+=== grok420 done  07:50:12 ===
+=== rescore gpt56  07:50:12 ===
+  run_sweep(DATASETS, "_gpt56", "nn_feasible_gpt56.csv")
+[cancer_gpt56] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_gpt56] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_gpt56] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_gpt56] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_gpt56] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_gpt56.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+         U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                  
+anchors  74.44  70.80  73.71  66.07        3.64         88.8    0.093   0.080   0.040
+cop      73.18  72.83  72.71  72.06        0.35         98.5    0.027   0.013   0.027
+cop_k    83.32  82.53  83.23  83.32        0.79        100.0    0.147   0.160   0.147
+lime     77.13  71.31  70.22  59.41        5.82         77.0    0.307   0.227   0.027
+lmpaxp   97.05  95.59  96.75  95.26        1.46         98.2    0.907   0.827   0.800
+shap     83.71  77.22  78.93  65.49        6.49         78.2    0.587   0.320   0.027
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+         V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                  
+anchors  89.61  84.63  87.93  79.28        4.98         88.5    0.587   0.480   0.333
+cop      85.05  85.05  85.05  84.71        0.00         99.6    0.320   0.320   0.320
+cop_k    91.60  91.18  91.60  91.60        0.42        100.0    0.387   0.387   0.387
+lime     85.71  82.57  78.36  75.39        3.14         88.0    0.507   0.387   0.240
+lmpaxp   96.92  96.74  96.92  96.92        0.18        100.0    0.747   0.720   0.747
+shap     93.60  90.04  92.14  86.86        3.56         92.8    0.747   0.667   0.520
+
+=== D = Empirical training distribution ===
+         E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                  
+anchors  99.43  94.43  98.00  85.45        5.00         85.9    0.960   0.800   0.533
+cop      89.59  89.59  89.59  88.85        0.00         99.2    0.473   0.473   0.459
+cop_k    94.02  94.10  94.02  94.02       -0.08        100.0    0.535   0.542   0.535
+lime     88.69  86.58  81.49  80.03        2.11         90.2    0.580   0.507   0.387
+lmpaxp   97.92  97.88  97.92  97.92        0.04        100.0    0.851   0.840   0.851
+shap     95.91  90.08  93.70  87.17        5.83         90.9    0.853   0.707   0.627
+
+mean v5_rounds by arm:
+arm
+anchors    0.48
+cop        0.19
+cop_k      0.17
+lime       1.81
+lmpaxp     0.20
+shap       1.52
+=== gpt56 done  07:50:32 ===
+=== rescore sonnet5  07:50:33 ===
+  run_sweep(DATASETS, "_sonnet5", "nn_feasible_sonnet5.csv")
+[cancer_sonnet5] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_sonnet5] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_sonnet5] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_sonnet5] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_sonnet5] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_sonnet5.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+         U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                  
+anchors  74.44  71.46  73.63  69.05        2.98         92.8    0.093   0.093   0.067
+cop      73.32  73.37  73.32  73.31       -0.05        100.0    0.027   0.027   0.027
+cop_k    83.46  81.65  83.64  83.29        1.81         99.8    0.160   0.120   0.160
+lime     77.13  69.52  75.20  66.45        7.61         86.2    0.307   0.200   0.173
+lmpaxp   97.05  96.36  96.96  96.91        0.69         99.9    0.907   0.827   0.893
+shap     83.71  75.41  82.41  74.70        8.30         89.2    0.587   0.360   0.240
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+         V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                  
+anchors  89.61  86.83  88.89  80.84        2.78         90.2    0.587   0.547   0.413
+cop      85.16  85.16  85.16  85.16        0.00        100.0    0.320   0.307   0.320
+cop_k    91.65  91.63  91.65  91.65        0.02        100.0    0.373   0.373   0.373
+lime     85.71  79.12  83.67  79.77        6.59         93.1    0.507   0.360   0.373
+lmpaxp   96.92  96.67  96.92  96.92        0.25        100.0    0.747   0.720   0.747
+shap     93.60  88.87  93.66  91.98        4.73         98.3    0.747   0.653   0.667
+
+=== D = Empirical training distribution ===
+         E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                  
+anchors  99.43  94.55  98.40  91.10        4.88         91.6    0.960   0.813   0.733
+cop      89.60  89.71  89.60  89.60       -0.11        100.0    0.473   0.473   0.473
+cop_k    93.97  93.97  93.97  93.97        0.00        100.0    0.535   0.535   0.535
+lime     88.69  84.18  88.25  86.31        4.51         97.3    0.580   0.520   0.548
+lmpaxp   97.92  97.63  97.92  97.92        0.29        100.0    0.851   0.838   0.851
+shap     95.91  91.28  95.43  92.80        4.63         96.8    0.853   0.757   0.757
+
+mean v5_rounds by arm:
+arm
+anchors    0.40
+cop        0.09
+cop_k      0.25
+lime       1.57
+lmpaxp     0.12
+shap       1.28
+=== sonnet5 done  07:50:52 ===
+=== rescore glm52  07:50:53 ===
+  run_sweep(DATASETS, "_glm52", "nn_feasible_glm52.csv")
+[cancer_glm52] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_glm52] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_glm52] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_glm52] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_glm52] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_glm52.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+         U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                  
+anchors  74.44  69.71  74.02  71.77        4.73         96.4    0.093   0.080   0.080
+cop      73.18  72.83  72.42  73.18        0.35        100.0    0.027   0.027   0.027
+cop_k    83.47  81.86  83.43  83.47        1.61        100.0    0.147   0.107   0.147
+lime     77.13  71.30  72.02  60.50        5.83         78.4    0.307   0.253   0.080
+lmpaxp   97.05  95.74  96.40  97.05        1.31        100.0    0.907   0.800   0.907
+shap     83.71  76.66  78.74  64.78        7.05         77.4    0.587   0.400   0.107
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+         V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                  
+anchors  89.61  82.15  88.65  85.03        7.46         94.9    0.587   0.400   0.480
+cop      85.05  84.61  84.13  85.05        0.44        100.0    0.320   0.307   0.320
+cop_k    91.76  91.28  91.76  91.76        0.48        100.0    0.400   0.387   0.400
+lime     85.71  80.09  80.86  74.87        5.62         87.4    0.507   0.413   0.253
+lmpaxp   96.92  96.92  96.92  96.92        0.00        100.0    0.747   0.747   0.747
+shap     93.60  89.36  90.41  89.04        4.24         95.1    0.747   0.640   0.547
+
+=== D = Empirical training distribution ===
+         E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                  
+anchors  99.43  91.42  98.81  94.09        8.01         94.6    0.960   0.693   0.773
+cop      89.59  89.07  88.54  89.59        0.52        100.0    0.473   0.459   0.473
+cop_k    94.12  93.94  94.12  94.12        0.18        100.0    0.535   0.528   0.535
+lime     88.69  82.49  83.56  80.41        6.20         90.7    0.580   0.507   0.419
+lmpaxp   97.92  97.92  97.92  97.92        0.00        100.0    0.851   0.851   0.851
+shap     95.91  91.46  92.07  90.30        4.45         94.2    0.853   0.722   0.627
+
+mean v5_rounds by arm:
+arm
+anchors    0.49
+cop        0.53
+cop_k      0.36
+lime       1.96
+lmpaxp     0.27
+shap       1.61
+=== glm52 done  07:51:07 ===
+ALL RESCORES DONE 07:51:07

@@ -1,0 +1,97 @@
+Full console log -> research/results/logs/diabetes_nn_20260905_063946_9316.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+  [keys] 3 available, starting at index 1
+[diabetes/glm52] 90 rows, 90 to redo, model=zai-org/GLM-5.2 provider=together
+  inst   12 cop      v5= 63.60 (was 63.6) om=0 rounds=0
+  inst   12 cop_k    v5= 88.20 (was 88.2) om=0 rounds=0
+  inst   12 lmpaxp   v5= 96.00 (was 96.0) om=0 rounds=0
+  inst   12 anchors  v5= 79.90 (was 79.9) om=0 rounds=0
+  inst   12 shap     v5= 53.20 (was 43.6) om=3 rounds=3
+  inst   12 lime     v5= 80.00 (was 77.3) om=1 rounds=3
+  inst   15 cop      v5= 92.90 (was 92.9) om=0 rounds=0
+  inst   15 cop_k    v5= 99.50 (was 99.5) om=0 rounds=0
+  inst   15 lmpaxp   v5=100.00 (was 91.9) om=0 rounds=1
+  inst   15 anchors  v5= 84.20 (was 82.0) om=0 rounds=1
+  inst   15 shap     v5=100.00 (was 100.0) om=0 rounds=1
+  inst   15 lime     v5= 99.00 (was 99.0) om=0 rounds=0
+  inst   16 cop      v5= 61.20 (was 61.2) om=0 rounds=0
+  inst   16 cop_k    v5= 86.90 (was 86.9) om=0 rounds=0
+  inst   16 lmpaxp   v5= 95.50 (was 95.5) om=0 rounds=1
+  inst   16 anchors  v5= 71.50 (was 45.3) om=0 rounds=0
+  inst   16 shap     v5= 27.50 (was 15.0) om=0 rounds=1
+  inst   16 lime     v5= 53.30 (was 57.2) om=3 rounds=3
+  inst   44 cop      v5= 50.60 (was 50.6) om=0 rounds=0
+  inst   44 cop_k    v5= 95.70 (was 95.7) om=0 rounds=0
+  inst   44 lmpaxp   v5= 94.50 (was 92.0) om=0 rounds=0
+  inst   44 anchors  v5= 73.50 (was 73.5) om=0 rounds=0
+  inst   44 shap     v5= 24.50 (was 7.2) om=0 rounds=2
+  inst   44 lime     v5= 17.80 (was 8.5) om=0 rounds=0
+  inst   47 cop      v5= 94.10 (was 94.1) om=0 rounds=0
+  inst   47 cop_k    v5= 97.10 (was 97.1) om=0 rounds=1
+  inst   47 lmpaxp   v5= 95.20 (was 95.2) om=0 rounds=0
+  inst   47 anchors  v5= 97.00 (was 97.0) om=0 rounds=0
+  inst   47 shap     v5= 69.10 (was 71.0) om=1 rounds=3
+  inst   47 lime     v5= 88.70 (was 46.2) om=0 rounds=0
+  inst   52 cop      v5= 63.90 (was 47.6) om=0 rounds=0
+  inst   52 cop_k    v5= 99.60 (was 99.6) om=0 rounds=0
+  inst   52 lmpaxp   v5= 96.30 (was 96.3) om=0 rounds=0
+  inst   52 anchors  v5= 79.30 (was 64.0) om=0 rounds=0
+  inst   52 shap     v5= 95.80 (was 95.8) om=0 rounds=1
+  inst   52 lime     v5= 84.90 (was 69.1) om=4 rounds=3
+  inst   57 cop      v5= 77.90 (was 77.9) om=0 rounds=0
+  inst   57 cop_k    v5= 99.20 (was 99.2) om=0 rounds=1
+  inst   57 lmpaxp   v5= 97.60 (was 97.6) om=0 rounds=0
+  inst   57 anchors  v5= 83.40 (was 80.9) om=0 rounds=1
+  inst   57 shap     v5=100.00 (was 97.9) om=0 rounds=1
+  inst   57 lime     v5= 66.80 (was 66.8) om=3 rounds=3
+  inst   71 cop      v5= 63.70 (was 44.6) om=0 rounds=0
+  inst   71 cop_k    v5= 92.90 (was 92.9) om=0 rounds=0
+  inst   71 lmpaxp   v5= 96.00 (was 96.0) om=0 rounds=0
+  inst   71 anchors  v5= 85.00 (was 85.0) om=0 rounds=0
+  inst   71 shap     v5= 88.60 (was 54.6) om=0 rounds=1
+  inst   71 lime     v5= 92.50 (was 87.7) om=4 rounds=3
+  inst  111 cop      v5= 84.80 (was 54.6) om=0 rounds=0
+  inst  111 cop_k    v5= 88.20 (was 88.2) om=0 rounds=0
+  inst  111 lmpaxp   v5= 98.00 (was 98.0) om=0 rounds=0
+  inst  111 anchors  v5= 70.60 (was 86.5) om=2 rounds=3
+  inst  111 shap     v5= 98.00 (was 98.0) om=0 rounds=0
+  inst  111 lime     v5= 24.70 (was 24.7) om=3 rounds=3
+  inst  114 cop      v5= 85.30 (was 52.1) om=0 rounds=0
+  inst  114 cop_k    v5= 89.50 (was 89.5) om=0 rounds=0
+  inst  114 lmpaxp   v5= 97.60 (was 97.6) om=0 rounds=0
+  inst  114 anchors  v5= 83.10 (was 71.7) om=1 rounds=3
+  inst  114 shap     v5= 97.60 (was 97.6) om=0 rounds=0
+  inst  114 lime     v5= 29.40 (was 29.4) om=3 rounds=3
+  inst  119 cop      v5= 93.90 (was 93.9) om=0 rounds=0
+  inst  119 cop_k    v5= 97.70 (was 97.7) om=0 rounds=0
+  inst  119 lmpaxp   v5= 97.10 (was 97.1) om=0 rounds=0
+  inst  119 anchors  v5= 95.30 (was 95.3) om=0 rounds=0
+  inst  119 shap     v5=100.00 (was 100.0) om=0 rounds=0
+  inst  119 lime     v5= 95.90 (was 95.9) om=0 rounds=0
+  inst  125 cop      v5= 81.20 (was 54.9) om=0 rounds=0
+  inst  125 cop_k    v5= 92.10 (was 92.1) om=0 rounds=1
+  inst  125 lmpaxp   v5= 98.00 (was 98.0) om=0 rounds=0
+  inst  125 anchors  v5= 81.90 (was 79.6) om=0 rounds=0
+  inst  125 shap     v5= 88.80 (was 74.7) om=0 rounds=2
+  inst  125 lime     v5= 16.70 (was 16.7) om=2 rounds=3
+  inst  140 cop      v5= 55.70 (was 55.7) om=0 rounds=0
+  inst  140 cop_k    v5= 98.50 (was 98.5) om=0 rounds=1
+  inst  140 lmpaxp   v5= 95.30 (was 95.3) om=0 rounds=0
+  inst  140 anchors  v5= 79.80 (was 52.9) om=0 rounds=0
+  inst  140 shap     v5= 52.40 (was 52.6) om=0 rounds=0
+  inst  140 lime     v5= 36.70 (was 22.0) om=0 rounds=0
+  inst  216 cop      v5= 86.20 (was 54.5) om=0 rounds=0
+  inst  216 cop_k    v5= 92.30 (was 92.3) om=0 rounds=0
+  inst  216 lmpaxp   v5= 99.10 (was 99.1) om=0 rounds=0
+  inst  216 anchors  v5= 94.50 (was 49.8) om=0 rounds=1
+  inst  216 shap     v5= 70.20 (was 70.2) om=2 rounds=3
+  inst  216 lime     v5= 17.30 (was 17.3) om=3 rounds=3
+  inst  279 cop      v5= 68.60 (was 68.6) om=0 rounds=0
+  inst  279 cop_k    v5= 97.40 (was 97.4) om=0 rounds=0
+  inst  279 lmpaxp   v5= 95.70 (was 95.7) om=0 rounds=0
+  inst  279 anchors  v5= 87.80 (was 87.8) om=0 rounds=0
+  inst  279 shap     v5= 42.50 (was 59.5) om=0 rounds=0
+  inst  279 lime     v5= 54.80 (was 38.7) om=1 rounds=3
+
+[diabetes/glm52] wrote 90 rows -> research/results/diabetes_nn_comparison_glm52.csv
+  spend: GLM-5.2: 126 calls, 59,242 in / 13,330 out

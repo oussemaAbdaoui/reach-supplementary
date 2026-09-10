@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/compas_nn_gridllama33_20260829_032917_12264.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+resume: 15 instances already done (15 rows) -> 0 to go
+
+saved -> research/results/compas_nn_comparison_cop_best_gridllama33.csv
+
+=== per-arm means ===

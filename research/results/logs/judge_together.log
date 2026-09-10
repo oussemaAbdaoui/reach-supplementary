@@ -1,0 +1,42 @@
+=== judge start 02:56:00 ===
+    820/945 judged
+    830/945 judged
+    840/945 judged
+    850/945 judged
+    860/945 judged
+    870/945 judged
+    880/945 judged
+    890/945 judged
+    900/945 judged
+    910/945 judged
+    920/945 judged
+    930/945 judged
+    940/945 judged
+  wrote research\results\heart_nn_judge_gridllama33.csv (+945 rows)
+
+=== judge = openai/gpt-oss-120b | 1575 judgements, parse ok 98.2% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               43.28      71.50         39.55        36.18
+v5               38.22      67.15         36.59        44.22
+v6               30.68      63.20         31.76        48.86
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   32.64  25.23  30.93
+cop       32.07  26.43  22.80
+cop_best  54.47  46.51  30.61
+cop_k     44.59  47.62  29.27
+lime      38.36  32.15  29.19
+lmpaxp    59.27  57.18  34.00
+shap      42.19  33.31  38.04
+
+test-retest on 1575 repeated judgements, mean |pass1-pass2|:
+  faithfulness   7.71
+  coherence      6.56
+  completeness   6.41
+  halluc_risk    12.86
+=== judge complete 03:45:11 ===

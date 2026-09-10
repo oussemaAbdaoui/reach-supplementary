@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/diabetes_nn_sonnet5_20260831_032940_420.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] base=99.2% v4=99.2% v5=99.2% v6=99.2% (len 9, om_v5=0)
+  [spend] claude-sonnet-5: 2 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 2 calls, 1,287 in / 204 out
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] base=88.2% v4=88.2% v5=91.3% v6=88.2% (len 6, om_v5=1)
+  [spend] claude-sonnet-5: 7 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 7 calls, 3,815 in / 482 out
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop_k] base=98.5% v4=98.5% v5=98.5% v6=98.5% (len 7, om_v5=0)
+  [spend] claude-sonnet-5: 9 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 9 calls, 4,871 in / 636 out
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop_k] base=92.1% v4=92.1% v5=92.1% v6=92.1% (len 7, om_v5=2)
+  [spend] claude-sonnet-5: 14 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 14 calls, 7,998 in / 1,026 out
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] base=89.5% v4=89.5% v5=88.2% v6=89.5% (len 5, om_v5=2)
+  [spend] claude-sonnet-5: 19 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 19 calls, 10,572 in / 1,301 out
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] base=89.5% v4=89.5% v5=73.0% v6=89.5% (len 9, om_v5=4)
+  [spend] claude-sonnet-5: 24 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 24 calls, 13,993 in / 1,752 out
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] base=96.7% v4=96.7% v5=96.7% v6=96.7% (len 9, om_v5=0)
+  [spend] claude-sonnet-5: 26 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 26 calls, 15,156 in / 1,960 out
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] base=97.4% v4=97.4% v5=97.4% v6=97.4% (len 7, om_v5=0)
+  [spend] claude-sonnet-5: 28 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 28 calls, 16,266 in / 2,124 out
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] base=95.7% v4=95.7% v5=95.7% v6=95.7% (len 9, om_v5=0)
+  [spend] claude-sonnet-5: 30 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 17,691 in / 2,336 out
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] base=92.3% v4=92.9% v5=77.9% v6=92.3% (len 8, om_v5=1)
+  [spend] claude-sonnet-5: 35 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 20,642 in / 2,752 out
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop_k] base=86.9% v4=76.2% v5=86.9% v6=86.9% (len 11, om_v5=0)
+  [spend] claude-sonnet-5: 40 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 24,362 in / 3,296 out
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] base=98.0% v4=93.7% v5=98.0% v6=98.0% (len 9, om_v5=0)
+  [spend] claude-sonnet-5: 43 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 43 calls, 26,267 in / 3,574 out
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] base=97.1% v4=97.1% v5=97.1% v6=97.1% (len 7, om_v5=0)
+  [spend] claude-sonnet-5: 45 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 27,294 in / 3,728 out
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] base=88.2% v4=88.2% v5=61.8% v6=88.2% (len 5, om_v5=4)
+  [spend] claude-sonnet-5: 50 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 29,973 in / 3,978 out
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop_k] base=97.7% v4=97.7% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [spend] claude-sonnet-5: 52 calls, 0 in / 0 out | Llama-3.3-70B-Instruct-Turbo: 52 calls, 31,007 in / 4,112 out
+
+saved -> research/results/diabetes_nn_comparison_cop_k_sonnet5.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k        7.6                93.8     92.84      90.1          94.05      93.8
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53

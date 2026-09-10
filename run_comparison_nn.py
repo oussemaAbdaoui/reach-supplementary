@@ -96,30 +96,181 @@ if SAVE_TRACES:
     sys.stdout = _Tee(sys.stdout, open(_LOG_PATH, 'w', encoding='utf-8'))
     print(f'Full console log -> {_LOG_PATH}', flush=True)
 
-# ── LLM provider (copied from run_comparison_bt.py — Together default) ─────────
+# ── LLM providers ─────────────────────────────────────────────────────────────
+# THINKING IS HELD OFF ON EVERY PROVIDER. sec:models promises that decoding
+# settings are fixed across the grid, and thinking on/off IS a decoding setting;
+# it is also the only way to compare a 2026 reasoning model with Llama-3.3-70B,
+# which does not reason, on equal terms. Turning it off is not a cost dodge --
+# though it is also what makes the grid affordable: measured 2026-08-24, a
+# reasoning model spends 440-1256 hidden tokens on an extraction call whose
+# visible answer is ~12 tokens (36x-102x). See research/probe_reasoning_cost.py.
 PROVIDER = os.getenv('XAI_PROVIDER', 'together').lower()
 from openai import OpenAI
-if PROVIDER == 'together':
-    LLM_BASE_URL = 'https://api.together.xyz/v1'
-    LLM_MODEL    = sys.argv[2] if len(sys.argv) > 2 else 'meta-llama/Llama-3.3-70B-Instruct-Turbo'
-    _api_keys    = [k for k in [os.getenv('TOGETHER_API_KEY'),
-                                os.getenv('TOGETHER_API_KEY_2'),
-                                os.getenv('TOGETHER_API_KEY_3')] if k]
-    SLEEP_BETWEEN = float(os.getenv('XAI_SLEEP', '0'))
-else:
-    LLM_BASE_URL = 'https://api.groq.com/openai/v1'
-    LLM_MODEL    = sys.argv[2] if len(sys.argv) > 2 else 'llama-3.3-70b-versatile'
-    _api_keys    = [k for k in [os.getenv('GROQ_API_KEY'),
-                                os.getenv('GROQ_API_KEY_2'),
-                                os.getenv('GROQ_API_KEY_3')] if k]
-    SLEEP_BETWEEN = float(os.getenv('XAI_SLEEP', '5'))
+
+# name -> (base_url, [env vars for keys], default model, sleep, extra_body)
+#
+# extra_body carries the per-provider non-thinking switch. For Together-hosted
+# open models it is chat_template_kwargs.enable_thinking=false, which MUST go
+# through extra_body -- the OpenAI SDK rejects it as a top-level kwarg. Verified
+# on GLM-5.2 (thinking on: 1200 tokens, no content -> off: 0.81x) and
+# Nemotron-550B (4.04x -> 0.90x). `reasoning_effort: none` does NOT work, and
+# Nemotron's documented "detailed thinking off" system prompt made it worse.
+_REGISTRY = {
+    'together': ('https://api.together.xyz/v1',
+                 ['TOGETHER_API_KEY', 'TOGETHER_API_KEY_2', 'TOGETHER_API_KEY_3'],
+                 'meta-llama/Llama-3.3-70B-Instruct-Turbo', 0.0,
+                 {'chat_template_kwargs': {'enable_thinking': False}}),
+    'groq':     ('https://api.groq.com/openai/v1',
+                 ['GROQ_API_KEY', 'GROQ_API_KEY_2', 'GROQ_API_KEY_3'],
+                 'llama-3.3-70b-versatile', 5.0, {}),
+    # OpenAI gpt-5.x rejects `max_tokens` outright ("not supported with this
+    # model") and needs `max_completion_tokens` -- see _complete(). Of the
+    # reasoning_effort values, 'minimal' is rejected for gpt-5.6; 'none' and
+    # 'low' are accepted, and 'none' reports usage.reasoning_tokens == 0, which
+    # is the confirmation that thinking is actually off rather than just cheap.
+    # gpt-4o is pre-reasoning: it takes plain max_tokens and rejects
+    # reasoning_effort as an unrecognized argument.
+    'openai':   ('https://api.openai.com/v1', ['OPENAI_API_KEY'],
+                 'gpt-5.6-terra', 0.0, {'reasoning_effort': 'none'}),
+    # xAI reports reasoning tokens SEPARATELY from completion_tokens (unlike
+    # OpenAI, which folds them in), so a naive completion/visible ratio badly
+    # under-reads a Grok. Measured 2026-08-25 on the generation prompt:
+    #   grok-4.6 default            104 out + 2222 reasoning  -> 21.2x
+    #   grok-4.6 reasoning=minimal  104 out +  559 reasoning  ->  5.2x
+    #   grok-4.20-0309-non-reasoning 74 out +    0 reasoning  ->  0.76x
+    # grok-4.6 CANNOT be turned off -- 'none' and 'disabled' are both rejected
+    # and 'minimal' is the floor. The 4.20 non-reasoning variant is the only
+    # xAI model that holds decoding fixed with the rest of the grid, and it is
+    # also cheaper ($1.25/$2.50 vs $2.00/$6.00) and ~8x faster.
+    'xai':      ('https://api.x.ai/v1', ['XAI_API_KEY'],
+                 'grok-4.20-0309-non-reasoning', 0.0, {}),
+    # Anthropic is NOT OpenAI-compatible here: it goes through the official
+    # `anthropic` SDK below, so its base_url/extra_body entries are unused.
+    'anthropic': (None, ['ANTHROPIC_API_KEY'], 'claude-sonnet-5', 0.0, {}),
+}
+if PROVIDER not in _REGISTRY:
+    raise SystemExit(f'unknown XAI_PROVIDER={PROVIDER!r}; '
+                     f'choose one of {sorted(_REGISTRY)}')
+LLM_BASE_URL, _KEY_VARS, _DEFAULT_MODEL, _SLEEP, _EXTRA_BODY = _REGISTRY[PROVIDER]
+LLM_MODEL     = sys.argv[2] if len(sys.argv) > 2 else _DEFAULT_MODEL
+_api_keys     = [k for k in (os.getenv(v) for v in _KEY_VARS) if k]
+SLEEP_BETWEEN = float(os.getenv('XAI_SLEEP', str(_SLEEP)))
+if not _api_keys:
+    raise SystemExit(f'no API key for provider {PROVIDER!r}: '
+                     f'set one of {_KEY_VARS} in the project-root .env')
 _key_idx = 0
 
 def _get_client():
+    if PROVIDER == 'anthropic':
+        import anthropic
+        return anthropic.Anthropic(api_key=_api_keys[_key_idx % len(_api_keys)])
     return OpenAI(api_key=_api_keys[_key_idx % len(_api_keys)], base_url=LLM_BASE_URL)
 
-def llm(prompt, max_tokens=1024, max_retries=15):
-    """One completion.
+
+# ── The parser is instrument, not subject ─────────────────────────────────────
+# sec:parsing describes extraction as the PARSER: it receives the id->range
+# legend the generator never sees, and its job is to read the explanation back
+# into literals. It is measurement apparatus, not the thing being measured.
+#
+# Routing it through the generator's own model made the parser vary with the
+# generator, so a cross-model comparison compared generator+parser PAIRS rather
+# than generators. XAI_EXTRACTOR pins it to one model for the whole grid, which
+# removes that confound.
+#
+# It also removes the cost: extraction emits ~12 visible tokens (a Python list)
+# and a reasoning model spends 440-1256 hidden tokens producing it -- 36x to
+# 102x, on roughly half of the ~53 calls per instance (measured 2026-08-24,
+# research/probe_reasoning_cost.py).
+#
+# Set XAI_EXTRACTOR='' to restore the old same-model behaviour.
+EXTRACTOR_MODEL = os.getenv('XAI_EXTRACTOR',
+                            'meta-llama/Llama-3.3-70B-Instruct-Turbo')
+_EXTRACTOR_BASE = 'https://api.together.xyz/v1'
+_extractor_keys = [k for k in (os.getenv(v) for v in
+                   ('TOGETHER_API_KEY', 'TOGETHER_API_KEY_2', 'TOGETHER_API_KEY_3')) if k]
+if EXTRACTOR_MODEL and not _extractor_keys:
+    raise SystemExit('XAI_EXTRACTOR is set but TOGETHER_API_KEY is missing; '
+                     "set the key, or XAI_EXTRACTOR='' to parse with the generator")
+
+
+class CreditExhausted(RuntimeError):
+    """The provider refused for lack of credit.
+
+    Fatal by design. A credit failure is not transient, so retrying or logging
+    it as a per-arm error just burns through the remaining instances writing
+    failures -- and those failures are checkpointed, so the next launch skips
+    the very work that did not happen. Observed 2026-08-29: a 402 partway
+    through the third dataset produced 150 error rows across the last two
+    before anyone noticed.
+    """
+
+
+# Token spend, accumulated from the API's own usage object rather than
+# estimated. Printed per instance and at the end of a run, so the cost of a
+# grid is visible while it accrues instead of at the moment the credit runs out.
+_SPEND = {}
+
+
+def _record_usage(model, usage):
+    if usage is None:
+        return
+    e = _SPEND.setdefault(model, [0, 0, 0])
+    e[0] += int(getattr(usage, 'prompt_tokens', 0) or 0)
+    e[1] += int(getattr(usage, 'completion_tokens', 0) or 0)
+    e[2] += 1
+
+
+def spend_report():
+    if not _SPEND:
+        return 'no billable calls'
+    out = []
+    for m, (pin, pout, n) in sorted(_SPEND.items()):
+        out.append(f'{m.split("/")[-1]}: {n} calls, {pin:,} in / {pout:,} out')
+    return ' | '.join(out)
+
+
+def _complete(prompt, budget, model=None, base_url=None, api_key=None,
+              extra_body=None, force_openai=False):
+    """One provider-agnostic completion -> (text_or_None, finish_reason).
+
+    Kept separate from llm() so the retry/rate-limit/empty-content logic below
+    stays in one place and applies identically to every provider. The optional
+    overrides let the pinned extractor reuse that same logic on a different
+    endpoint without duplicating it.
+    """
+    if model is not None:
+        resp = OpenAI(api_key=api_key, base_url=base_url).chat.completions.create(
+            model=model, messages=[{'role': 'user', 'content': prompt}],
+            temperature=0.2, max_tokens=budget, timeout=180.0,
+            **({'extra_body': extra_body} if extra_body else {}))
+        choice = resp.choices[0]
+        _record_usage(model, getattr(resp, 'usage', None))
+        return choice.message.content, choice.finish_reason
+    if PROVIDER == 'anthropic':
+        r = _get_client().messages.create(
+            model=LLM_MODEL, max_tokens=budget,
+            thinking={'type': 'disabled'},          # decoding held fixed
+            messages=[{'role': 'user', 'content': prompt}])
+        text = ''.join(b.text for b in r.content if b.type == 'text')
+        _record_usage(LLM_MODEL, getattr(r, 'usage', None))
+        return text, r.stop_reason
+    kw = {'extra_body': _EXTRA_BODY} if _EXTRA_BODY else {}
+    if PROVIDER == 'openai' and not LLM_MODEL.startswith('gpt-4'):
+        # gpt-5.x: `max_tokens` is rejected, and temperature is not accepted
+        # alongside reasoning_effort. gpt-4o keeps the classic signature.
+        kw['max_completion_tokens'] = budget
+    else:
+        kw['max_tokens'] = budget
+        kw['temperature'] = 0.2
+    resp = _get_client().chat.completions.create(
+        model=LLM_MODEL, messages=[{'role': 'user', 'content': prompt}],
+        timeout=180.0, **kw)
+    choice = resp.choices[0]
+    _record_usage(LLM_MODEL, getattr(resp, 'usage', None))
+    return choice.message.content, choice.finish_reason
+
+def llm(prompt, max_tokens=1024, max_retries=15, as_parser=False):
+    """One completion. `as_parser=True` routes to the pinned extractor.
 
     REASONING MODELS: a thinking model spends its token budget on hidden
     reasoning BEFORE emitting any content, so a budget sized for a plain
@@ -134,23 +285,33 @@ def llm(prompt, max_tokens=1024, max_retries=15):
     budget = max_tokens
     for attempt in range(max_retries):
         try:
-            resp = _get_client().chat.completions.create(
-                model=LLM_MODEL, messages=[{'role': 'user', 'content': prompt}],
-                temperature=0.2, max_tokens=budget, timeout=180.0)
-            choice = resp.choices[0]
-            content = choice.message.content
+            if as_parser and EXTRACTOR_MODEL:
+                content, finish = _complete(
+                    prompt, budget, model=EXTRACTOR_MODEL,
+                    base_url=_EXTRACTOR_BASE,
+                    api_key=_extractor_keys[_key_idx % len(_extractor_keys)],
+                    extra_body={'chat_template_kwargs': {'enable_thinking': False}})
+            else:
+                content, finish = _complete(prompt, budget)
             if content is None or not content.strip():
                 if budget < MAX_TOKENS_CAP:
                     budget = min(budget * 4, MAX_TOKENS_CAP)
-                    print(f'  [empty content, finish={choice.finish_reason}] '
+                    print(f'  [empty content, finish={finish}] '
                           f'raising max_tokens to {budget}', flush=True)
                     continue
                 raise RuntimeError(
                     f'empty content at max_tokens={budget} '
-                    f'(finish_reason={choice.finish_reason})')
+                    f'(finish_reason={finish})')
             return content.strip()
+        except CreditExhausted:
+            raise
         except Exception as e:
             err = str(e)
+            if '402' in err or 'credit' in err.lower():
+                raise CreditExhausted(
+                    'provider refused for lack of credit; stopping rather than '
+                    'writing error rows across the remaining instances. '
+                    f'Spend this run: {spend_report()}') from e
             if '429' in err or 'rate_limit' in err.lower():
                 _key_idx += 1
                 m_s = re.search(r'try again in ([\d.]+)s', err, re.IGNORECASE)
@@ -221,35 +382,91 @@ for _col, _edges in zip(X_train.columns, kbins.bin_edges_):
 
 
 _COP_SWEEP_CACHE = {}
+_COP_SWEEP_SRC = ''         # which curve chose k*; recorded on every cop_best row
+_COP_SWEEP_KMAX = 0
+
+
+def _cop_sweep_path():
+    """The WIDEST one-hot-valid cop@k curve stored for this dataset.
+
+    The sweep's own K_MAX bounds the search, so a curve that stops below the
+    certified lengths makes k* the best length within a range that excludes the
+    lengths every other arm uses -- the exact cap this arm was warned about when
+    it was added (commit 3d387d7). cancer has two curves, _V (k<=9) and _V18
+    (k<=18), and choosing by filename order silently takes the capped one, so
+    the choice is made by how far each curve actually reaches.
+    XAI_COP_SWEEP=<path> overrides.
+    """
+    override = os.getenv('XAI_COP_SWEEP', '').strip()
+    if override:
+        return override
+    import glob
+    # Rank by (has precision_V, how far the curve reaches). A sweep written
+    # before precision_V existed can reach just as far as its replacement, and
+    # ranking on k alone would keep handing cop_best the uniform-only curve
+    # forever; the V column is what the selection actually needs.
+    best, best_rank = '', (-1, -1)
+    for p in sorted(glob.glob(f'research/results/{DATASET_NAME}_cop_sweep_V*.csv')):
+        try:
+            df = pd.read_csv(p)
+            rank = (int('precision_V' in df.columns),
+                    int(df.query("method == 'cop@k'").k_requested.max()))
+        except Exception:
+            continue
+        if rank > best_rank:
+            best, best_rank = p, rank
+    return best
 
 
 def _cop_best_k(pos, k_ref):
     """k that maximised measured precision for this instance in the stored sweep.
 
-    Reads <dataset>_cop_sweep_V.csv, the cop@k curve fitted on one-hot-valid
-    oracle samples. Falls back to k_ref when the instance or the file is
+    Reads the cop@k curve fitted on one-hot-valid oracle samples (see
+    _cop_sweep_path). Falls back to k_ref when the instance or the file is
     absent, so a missing sweep degrades to the length-matched arm rather than
-    failing the run. The sweep's own K_MAX bounds the search, so k* is the best
-    length WITHIN THAT RANGE and not necessarily the global optimum.
+    failing the run. k* is the best length WITHIN the curve's range; when that
+    range stops short of k_ref the row says so, because the selection is then
+    capped and not comparable with the arms that use the full length.
     """
+    global _COP_SWEEP_SRC, _COP_SWEEP_KMAX
     if not _COP_SWEEP_CACHE:
-        path = f'research/results/{DATASET_NAME}_cop_sweep_V.csv'
-        if not os.path.exists(path):
-            print(f'  [cop_best] {path} missing -> falling back to k_ref',
-                  flush=True)
+        path = _cop_sweep_path()
+        if not path or not os.path.exists(path):
+            print(f'  [cop_best] no {DATASET_NAME}_cop_sweep_V*.csv '
+                  f'-> falling back to k_ref', flush=True)
             _COP_SWEEP_CACHE['__missing__'] = True
         else:
             s = pd.read_csv(path)
-            s = s[(s.method == 'cop@k') & s.precision.notna()]
+            _COP_SWEEP_SRC = path
+            _COP_SWEEP_KMAX = int(s[s.method == 'cop@k'].k_requested.max())
+            # SELECT ON THE SAMPLER WE REPORT. The sweep stores two estimates:
+            # `precision` under Uniform({0,1}^d) and `precision_V` under the
+            # one-hot-valid sampler. Taking the argmax of the uniform curve and
+            # then reporting the winner under V optimises one metric and reports
+            # another, and §5.5 puts the gap between them at ~8.5 points. Sweeps
+            # written before precision_V existed have only the uniform column;
+            # they still work, and the fallback says so rather than passing the
+            # capped criterion off as the intended one.
+            _COL = 'precision_V' if 'precision_V' in s.columns else 'precision'
+            _note = '' if _COL == 'precision_V' else                 ' -- the UNIFORM sampler, not the one reported; re-run the '                 'sweep to get precision_V'
+            print(f'  [cop_best] sweep {os.path.basename(path)} '
+                  f'(k up to {_COP_SWEEP_KMAX}, selecting on {_COL}{_note})',
+                  flush=True)
+            s = s[(s.method == 'cop@k') & s[_COL].notna()]
             for inst, g in s.groupby('instance'):
-                row = g.loc[g.precision.idxmax()]
+                # Rows are in ascending k, and idxmax returns the FIRST maximum,
+                # so ties break towards the shortest rule. V saturates at 100 on
+                # the easier datasets, where that tie-break is the whole
+                # selection: the shortest rule that already reaches the ceiling.
+                row = g.loc[g[_COL].idxmax()]
                 _COP_SWEEP_CACHE[int(inst)] = (int(row.k_requested),
-                                               float(row.precision))
+                                               float(row[_COL]))
     if pos in _COP_SWEEP_CACHE:
         k_star, p_sel = _COP_SWEEP_CACHE[pos]
+        capped = ' [CAPPED: curve stops below k_ref]'             if _COP_SWEEP_KMAX < k_ref else ''
         print(f'  [cop_best] inst {pos}: k*={k_star} '
-              f'(selection precision {p_sel:.1f}, re-certified below)',
-              flush=True)
+              f'(selection precision {p_sel:.1f}, re-certified below)'
+              f'{capped}', flush=True)
         return k_star
     return k_ref
 
@@ -285,6 +502,7 @@ predict_proba = lambda Z: mlp.predict_proba(np.atleast_2d(np.asarray(Z)).astype(
 import shap
 from anchor import anchor_tabular
 from lime.lime_tabular import LimeTabularExplainer
+from sklearn.utils import check_random_state
 
 _bg = shap.sample(Xtr_bin.astype(float), 100, random_state=RANDOM_SEED)
 _shap_expl = shap.KernelExplainer(predict_proba, _bg)
@@ -297,6 +515,34 @@ _anchor_expl = anchor_tabular.AnchorTabularExplainer(
     class_names=[str(c) for c in mlp.classes_], feature_names=bin_ids,
     train_data=Xtr_bin.astype(float),
     categorical_names={j: ['0', '1'] for j in range(d)})
+
+def _reseed(seed):
+    """Put the stateful explainers back to a known point before each instance.
+
+    fit_cop_rule and fit_lmpaxp take an explicit per-instance seed, so their
+    contexts are reproducible. SHAP, LIME and Anchors do not: the explainer
+    objects are built once and their RNG state carries across instances, so a
+    context depends on the ORDER and NUMBER of calls that preceded it. A resume
+    from checkpoint, or a run restricted to a subset of arms, therefore yields a
+    different context for the same instance. Measured across two stored grids,
+    the arm's own condition set was identical on only 7% of instances for SHAP
+    and Anchors and 13% for LIME, with baseline precision differing by up to
+    17.9 points, while COP and LmPAXp agreed on 100% of them.
+
+    That breaks the model grid, whose premise is that only the generating model
+    varies: without this, every model is handed its own SHAP, LIME and Anchors
+    contexts and the shape comparison is made on non-comparable inputs.
+
+    LIME's random_state is set at construction but also advances per call, so it
+    is reset here rather than only there.
+    """
+    np.random.seed(seed % (2 ** 32 - 1))
+    random.seed(seed)
+    try:
+        _lime_expl.random_state = check_random_state(seed)
+    except Exception:
+        pass
+
 
 def _shap_vec(x_bin, pred):
     sv = np.asarray(_shap_expl.shap_values(x_bin.astype(float), silent=True,
@@ -313,6 +559,10 @@ def conds_of(S, x_bin):
 
 def build_arm(arm, x_bin, pred, k_ref, seed):
     """Returns (S, context_text, own_feature_ids, meta)."""
+    # Reproducibility of the heuristic arms: see _reseed. Without this the
+    # SHAP, LIME and Anchors contexts depend on the call history, and a model
+    # grid compares different contexts rather than different generators.
+    _reseed(seed)
     if arm in ('cop', 'cop_k', 'cop_best'):
         # cop   : floating-K Table-1 optimum (loss-optimal size)  [K Table 1]
         # cop_k : loss-minimal rule pinned AT size k_ref — equal budget with
@@ -343,9 +593,15 @@ def build_arm(arm, x_bin, pred, k_ref, seed):
                'on this instance; PAC guarantee in expectation):\n' +
                ('\n'.join(f'  {c}' for c in conds_of(r.S, x_bin))
                 if r.S else '  (empty rule: the loss-optimal monomial has no condition)'))
-        return r.S, ctx, [bin_ids[j] for j in r.S], {
-            'cop_loss': r.empirical_loss, 'cop_status': r.status,
-            'cop_variant': r.variant, 'base_rate_same': r.base_rate_same}
+        meta = {'cop_loss': r.empirical_loss, 'cop_status': r.status,
+                'cop_variant': r.variant, 'base_rate_same': r.base_rate_same}
+        if arm == 'cop_best':
+            # k* is only readable next to the curve it came from and how far
+            # that curve reached, so both travel with the row.
+            meta.update(cop_k_star=k_star,
+                        cop_sweep_src=os.path.basename(_COP_SWEEP_SRC),
+                        cop_sweep_kmax=_COP_SWEEP_KMAX)
+        return r.S, ctx, [bin_ids[j] for j in r.S], meta
     if arm == 'lmpaxp':
         r = fit_lmpaxp(predict, x_bin, T=T, seed=seed)
         ctx = (f'Probabilistic sufficient explanation (verified precision '
@@ -469,11 +725,21 @@ PROMPT_V6 = (
 )
 
 REFINE = (
+    # The previous draft MUST be in this prompt. llm() is a single-turn call
+    # with no conversation history, so without {prev} the model is asked to
+    # "keep the conditions you already stated" while having no record of what
+    # it stated -- each round then regenerates from scratch instead of
+    # revising, and drops conditions it had already transmitted. Measured on
+    # cancer/grok-4.20, 49 rounds: without {prev} the refined text has 0.13
+    # similarity to the draft and loses 1.84 conditions; with it, 0.75 and
+    # 0.37, and every rule-shaped arm ends with the context intact.
+    # See research/test_dialogue_state.py.
     "System: You are a machine learning expert refining an explanation based on feedback.\n"
     "Model objective: {obj}\n"
     "Instance (binary indicator features; name = value): {inst}\n"
     "Predicted class: {cls}\n"
     "{ctx}\n\n"
+    "Your previous explanation:\n\"\"\"\n{prev}\n\"\"\"\n\n"
     "Indicators from the context above not yet reflected in your explanation: {missing}\n"
     "IMPORTANT: Keep the conditions you already stated correctly and add one for each listed "
     "indicator ONLY as supported by the context above. Never state an indicator in two "
@@ -518,7 +784,8 @@ def run_strategies(pos, arm, x_bin, pred, S_arm, ctx, own_ids, meta):
         time.sleep(SLEEP_BETWEEN)
         expl = llm(prompt)
         time.sleep(SLEEP_BETWEEN)
-        raw = llm(EXTRACT.format(legend=legend, expl=expl), max_tokens=2048)
+        raw = llm(EXTRACT.format(legend=legend, expl=expl), max_tokens=2048,
+                  as_parser=True)
         rules = parse_rules_from_llm(raw)
         S, contr, unk = rules_to_S(rules, x_bin)
         est = score_of(S, x_bin, RANDOM_SEED + 31 * pos)
@@ -541,13 +808,24 @@ def run_strategies(pos, arm, x_bin, pred, S_arm, ctx, own_ids, meta):
         # of it this instance falls on. That would manufacture the recovery the
         # paper attributes to context shape. Names only, as in the original.
         missing = [bin_ids[j] for j in S_arm if j not in cur_S]
-        if not missing and cur_est.precision >= T:
+        # Exit as soon as the context has fully arrived. The old gate also
+        # required cur_est.precision >= T, which no arm whose OWN context
+        # precision is below T can ever satisfy -- so cop, cop_k and anchors
+        # burned all three rounds on every instance regardless of whether
+        # anything was still missing. Measured over 410 re-run rows: 412 of
+        # 907 rounds (45%) ran after om=0. Those rounds are not merely wasted;
+        # each one regenerates the explanation and can drop conditions that had
+        # already been transmitted, so the gate was manufacturing erosion.
+        if not missing:
             break
         fb = missing if missing else \
             '(all context indicators captured; refine for clarity)'
         try:
             e, r, S, c, u, est = explain_extract(
-                REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx, missing=fb))
+                REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx,
+                              missing=fb, prev=cur_expl))
+        except CreditExhausted:
+            raise
         except Exception:
             break
         cur_expl, cur_S, cur_est, rounds = e, S, est, rnd
@@ -564,6 +842,9 @@ def run_strategies(pos, arm, x_bin, pred, S_arm, ctx, own_ids, meta):
 
     return {
         'dataset': DATASET_NAME, 'llm': LLM_MODEL, 'instance': pos, 'arm': arm,
+        # which model parsed this row -- the grid is only comparable across
+        # generators if this column is constant, so it is stored, not assumed
+        'extractor': EXTRACTOR_MODEL or LLM_MODEL,
         'pred': pred, 'len_S_arm': len(S_arm),
         'baseline_precision': round(base.precision * 100, 2),
         'baseline_weak_paxp': base.precision >= T,
@@ -655,6 +936,8 @@ for it, pos in enumerate(positions):
         else:
             try:
                 row = run_strategies(pos, arm, x, pred, S_arm, ctx, own, meta)
+            except CreditExhausted:
+                raise
             except Exception as e:
                 row = {'dataset': DATASET_NAME, 'instance': pos, 'arm': arm,
                        'error': str(e)[:300]}
@@ -679,6 +962,8 @@ for it, pos in enumerate(positions):
     if (it + 1) % CKPT_EVERY == 0:
         os.makedirs('research/results', exist_ok=True)
         pd.DataFrame(results).to_csv(_OUT_CSV, index=False)
+    # Spend is printed as it accrues, not discovered when the credit runs out.
+    print(f'  [spend] {spend_report()}', flush=True)
 
 df = pd.DataFrame(results)
 os.makedirs('research/results', exist_ok=True)

@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/diabetes_nn_glm52_20260831_021312_20892.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] base=99.2% v4=80.3% v5=99.2% v6=99.2% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 3 calls, 1,527 in / 264 out | GLM-5.2: 3 calls, 1,801 in / 483 out
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] base=88.2% v4=88.2% v5=88.2% v6=88.2% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 8 calls, 3,591 in / 553 out | GLM-5.2: 8 calls, 4,011 in / 1,072 out
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop_k] base=98.5% v4=75.2% v5=98.5% v6=98.5% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 11 calls, 4,860 in / 751 out | GLM-5.2: 11 calls, 5,573 in / 1,407 out
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop_k] base=92.1% v4=92.1% v5=92.1% v6=92.1% (len 7, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 16 calls, 7,168 in / 1,141 out | GLM-5.2: 16 calls, 8,249 in / 2,012 out
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] base=89.5% v4=89.5% v5=89.5% v6=89.5% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 21 calls, 9,371 in / 1,446 out | GLM-5.2: 21 calls, 10,589 in / 2,647 out
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] base=92.9% v4=92.9% v5=92.9% v6=92.9% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 26 calls, 12,097 in / 2,006 out | GLM-5.2: 26 calls, 13,623 in / 3,492 out
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] base=99.6% v4=99.6% v5=99.6% v6=99.6% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 28 calls, 13,145 in / 2,208 out | GLM-5.2: 28 calls, 14,904 in / 3,839 out
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] base=97.4% v4=97.4% v5=97.4% v6=97.4% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 14,090 in / 2,372 out | GLM-5.2: 30 calls, 16,073 in / 4,147 out
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] base=95.7% v4=95.7% v5=95.7% v6=95.7% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 32 calls, 15,167 in / 2,584 out | GLM-5.2: 32 calls, 17,386 in / 4,519 out
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] base=92.3% v4=92.3% v5=92.3% v6=92.3% (len 8, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 37 calls, 17,566 in / 3,044 out | GLM-5.2: 37 calls, 20,055 in / 5,225 out
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop_k] base=86.9% v4=86.9% v5=86.9% v6=86.9% (len 11, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 42 calls, 20,603 in / 3,651 out | GLM-5.2: 42 calls, 23,412 in / 6,240 out
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] base=99.5% v4=99.5% v5=99.5% v6=99.5% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 44 calls, 21,671 in / 3,849 out | GLM-5.2: 44 calls, 24,683 in / 6,617 out
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] base=97.1% v4=92.4% v5=97.1% v6=97.1% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 47 calls, 22,935 in / 4,047 out | GLM-5.2: 47 calls, 26,239 in / 6,962 out
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] base=88.2% v4=88.2% v5=88.2% v6=88.2% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 52 calls, 25,210 in / 4,357 out | GLM-5.2: 52 calls, 28,603 in / 7,665 out
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop_k] base=97.7% v4=97.7% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 54 calls, 26,071 in / 4,491 out | GLM-5.2: 54 calls, 29,682 in / 7,921 out
+
+saved -> research/results/diabetes_nn_comparison_cop_k_glm52.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k        7.6               94.32     91.19     94.32          94.32     94.32
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53

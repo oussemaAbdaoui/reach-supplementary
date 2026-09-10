@@ -1,0 +1,6 @@
+Full console log -> research/results/logs/employee_nn_20260905_090730_11776.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[employee/gptoss120b] 90 rows, 0 to redo, model=openai/gpt-oss-120b provider=together
+
+[employee/gptoss120b] wrote 0 rows -> research/results/employee_nn_comparison_gptoss120b.csv
+  spend: no billable calls

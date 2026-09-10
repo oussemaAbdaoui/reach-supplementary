@@ -1,0 +1,351 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+employee,openai/gpt-oss-120b,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,91.0,False,91.4,91.4,91.4,46.7,False,False,False,5,5,0,1,0,1,0,6,0,1,1,3,"[91.4, 91.4, 91.4, 91.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The employee did not join the company in the 2017‑2018 period, so that condition is not met.  
+The employee’s city belongs to the first city group (the range the model associates with staying) and is not in the second city group.  
+The employee’s payment tier is between 1 and 3, a range that pushes the prediction toward staying.  
+The employee’s gender falls in the range the model links to staying.  
+The employee has never been benched (value in the 0‑1 range), which also supports a “stay” outcome.  
+
+Because most of the factors that the model ties to employees remaining are present, the model predicts that this employee will stay.","The model predicts the employee will stay (class 0) because:
+
+- The employee did **not** join in 2017‑2018.  
+- The employee works in a city whose code is in the first range (0 ≤ city < 1).  
+- The employee does **not** work in a city whose code is in the second range (1 ≤ city < 2).  
+- The employee’s payment tier is between 1 and 3.  
+- The employee’s gender is in the first range (0 ≤ gender < 1).  
+- The employee has **never** been benched before.",1. The year the employee joined the company is between 2017 and,"['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']",['joining_year_b2 > 0.5'],"[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10]","[3, 4, 5, 6, 10]",[],0.0938,OPTIMAL,cop@6,0.4182
+employee,openai/gpt-oss-120b,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,70.7,False,70.7,53.7,70.7,70.7,False,False,False,5,3,5,0,0,2,0,0,0,0,0,3,"[70.7, 53.7, 53.7, 53.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model looked at five pieces of information about the employee:
+
+* **Location** – the employee lives in a city that falls in the range [1 to 2). The condition for a city in the lower range [0 to 1) is not met.  
+* **Pay level** – the employee’s payment tier is between 1 and 3.  
+* **Gender** – the employee’s gender falls in the range [0 to 1).  
+* **Bench history** – the employee has never been placed on the bench (the “ever‑benched” indicator is in the range [0 to 1).
+
+All of these factors line up with the rule that the model has learned for predicting that an employee will leave. Because the city condition for the lower range is false while the other four conditions are true, the combination pushes the model to output the “will leave” (1) prediction.","The model predicts the employee will leave because they work in a city whose code falls between 1 and 2 (so it is not in the 0‑1 range), they are on a payment tier between 1 and 3, their gender code is between 0 and 1, and they have never been placed on the bench (bench status between 0 and 1).","1. The city index is between 0 and 1, which is not true for this employee.  
+2. The city index is between 1 and 2, which is true for this employee.  
+3. The payment‑tier level is between 1 and 3, which is true for this employee.  
+4. The gender category is between 0 and 1, which is true for this employee.  
+5. The record of ever having been benched is between 0 and 1, which is true for this employee.","['city_b1 > 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[4, 5, 6, 10, 11]","[4, 5, 6, 10, 11]","[5, 6, 10]","[4, 5, 6, 10, 11]",0.23,OPTIMAL,cop@5,0.5768
+employee,openai/gpt-oss-120b,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,65.9,False,65.9,65.9,65.9,65.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[65.9, 65.9, 65.9, 65.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model saw that the employee lives in a city whose identifier falls in the range 1 to 2, and it did **not** see the employee in a city whose identifier falls in the range 0 to 1. It also recognized that the employee’s gender falls in the range 0 to 1. Because the city‑in‑range‑1‑to‑2 condition and the gender‑in‑range‑0‑to‑1 condition are both satisfied, the model concluded that the employee is likely to leave the company.","The model predicts that this employee will leave the company.  
+The rule that supports this prediction says:
+
+- The employee’s city does **not** belong to the first city range (values from 0 up to but not including 1).  
+- The employee’s city **does** belong to the second city range (values from 1 up to but not including 2).  
+- The employee’s gender falls in the first gender range (values from 0 up to but not including 1).","1. The city identifier is not in the range from 0 (inclusive) up to 1 (exclusive), which is false for this employee.  
+2. The city identifier is in the range from 1 (inclusive) up to 2 (exclusive), which is true here.  
+3. The gender code falls in the range from 0 (inclusive) up to 1 (exclusive), which is true for this employee.","['city_b1 > 0.5', 'city_b0 < 0.5', 'gender_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'gender_b0 > 0.5']","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]",0.23,OPTIMAL,cop@3,0.5676
+employee,openai/gpt-oss-120b,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,64.5,False,65.6,65.6,65.6,71.3,False,False,False,3,3,2,1,0,1,0,2,0,1,2,3,"[65.6, 65.6, 65.6, 65.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model says this employee is likely to leave because all of the following facts about them line up with the pattern it has learned for departures:
+
+* **Year they joined the company** – they started sometime between 2017 and early 2018. Employees who began in that period tend to be in the “leave” group.  
+* **Pay level** – their salary tier falls between 1 and just under 3. Workers in this pay range are more often predicted to quit.  
+* **Gender** – their gender falls in the range the model treats as 0 to 1 (the category used in the rule). This category is associated with a higher chance of leaving.  
+* **Whether they have ever been benched** – they have never been benched (the value is in the 0 to 1 range). Not having been benched also matches the pattern for employees who depart.
+
+Because each of these four characteristics matches the conditions that the model has linked to turnover, the prediction is that the employee will leave.","The model predicts that the employee will leave because they joined the company in 2017‑2018, earn a salary tier between 1 and 3, belong to the first gender category, and have never been benched.","1. The year the employee joined the company is between 2017 and 2018, which is true for this case.  
+2. The employee’s salary tier is between level 1 and level 3, which is true here.  
+3. The employee’s gender falls in the lower coded category (a value from 0 up to but not including 1), which is true for this individual.  
+4. The employee has never been placed on a bench, meaning the bench‑status value is between 0 and 1, which is true for this person.","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 < 0.5']","[3, 6, 10, 11]","[3, 6, 10]","[3, 6, 10]","[3, 6]",0.3108,OPTIMAL,cop@4,0.573
+employee,openai/gpt-oss-120b,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,84.0,False,67.8,80.8,80.8,84.0,False,False,False,5,5,6,1,0,1,0,0,0,0,0,3,"[67.8, 63.5, 63.5, 80.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee is likely to leave because of several characteristics that match the pattern it has learned:
+
+- **Education level** is low, falling between 0 and 2.  
+- **City of residence** does not fall in the first range (0 to 1); instead it is in the second range, between 1 and 2.  
+- **Payment tier** is modest, lying between 1 and 3.  
+- **Gender** falls in the lower range, between 0 and 1.  
+- **Never been benched** (i.e., the employee has not been placed on a bench) is also in the range 0 to 1.
+
+All of these factors line up with the rule that the model associates with employees who quit, leading it to output the prediction “will leave.”","The employee’s education level is in the low range (0 – 2), the city they work in falls in the middle range (1 – 2) and is **not** in the lowest range (0 – 1), the payment tier is modest (1 – 3), the gender is in the first category (0 – 1), and they have **never** been benched (bench status in 0 – 1).","1. The employee’s education level falls between 0 and 2, which is true for this case.  
+2. The city identifier falls between 0 and 1, which is not true for this case.  
+3. The city identifier falls between 1 and 2, which is true for this case.  
+4. The payment tier is between 1 and 3, which is true for this case.  
+5. The gender category is between 0 and 1, which is true for this case.  
+6. The “ever benched” status is between 0 and 1, which is true for this case.","['education_b0 > 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 6, 10, 11]","[0, 4, 5, 6, 10]","[0, 4, 5, 6, 10, 11]",0.2186,OPTIMAL,cop@6,0.583
+employee,openai/gpt-oss-120b,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.2,False,70.2,70.2,70.2,70.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.2, 70.2, 70.2, 70.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model looked at three pieces of information that match the pattern it has learned for people who tend to leave the company:
+
+* **City** – the employee’s city falls in the range 1 to 2 (the condition “city in [1, 2)” is true). The opposite condition (“city in [0, 1)”) is not true, which is consistent with the rule.
+
+* **Payment tier** – the employee’s payment tier is between 1 and 3 (the condition “payment tier in [1, 3)” is true).
+
+* **Gender** – the employee’s gender value is in the range 0 to 1 (the condition “gender in [0, 1)” is true).
+
+Because all three of these conditions are satisfied, the rule that the model learned flags the employee as likely to quit, leading to the prediction of 1 (the employee will leave).","The model predicts that this employee will leave the company.  
+It does so because the following facts about the employee match the rule it learned:
+
+- The employee’s city falls in the second numeric range (a value between 1 and 2); the first range (0 to 1) does not apply.  
+- The employee’s payment tier is in the range from 1 (inclusive) up to 3 (exclusive).  
+- The employee’s gender is coded in the first numeric range (a value between 0 and 1).  
+
+When these three conditions are all true, the model’s rule says the employee is likely to quit, so it outputs the class “will leave.”","1. The city location is between 0 (inclusive) and 1 (exclusive), which is not true for this employee.  
+2. The city location is between 1 (inclusive) and 2 (exclusive), which is true here.  
+3. The payment‑tier level is between 1 (inclusive) and 3 (exclusive), which is true for this case.  
+4. The gender indicator falls in the range 0 (inclusive) to 1 (exclusive), which is true for this employee.","['city_b1 > 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]",0.2218,OPTIMAL,cop@4,0.5692
+employee,openai/gpt-oss-120b,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,77.3,False,77.3,56.5,77.3,59.2,False,False,False,7,6,1,0,0,1,0,6,0,0,0,3,"[77.3, 75.3, 75.3, 56.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts that this employee is likely to leave because most of the key factors that the rule associates with turnover are present:
+
+- **Education** falls in the low‑range (between 0 and 2).  
+- **City** is not in the first range (0 – 1) but is in the second range (1 – 2).  
+- **Payment tier** is in the middle range (between 1 and 3).  
+- **Gender** is in the range 0 – 1.  
+- **Ever benched** is in the range 0 – 1 (meaning the employee has not been benched).
+
+The only two conditions that do not match are:
+
+- The employee is not in the first city range (0 – 1).  
+- The employee’s age is not between 27 and 30.
+
+Because the majority of the conditions that push the prediction toward “will leave” are satisfied, the model outputs class 1.","The model predicts that this employee will leave because the following facts about them match the learned rule:
+
+- Their education level is in the low range (0 – 2).  
+- They live in a city whose code falls in the range 1 – 2 (the other city range 0 – 1 does not apply).  
+- Their payment‑tier falls between 1 and 3.  
+- Their gender code is in the range 0 – 1.  
+- They have never been benched (the “ever benched” indicator is in the range 0 – 1).  
+
+The rule also notes that the employee’s age is **not** in the 27 – 30 range, but all the conditions above are satisfied, leading to the prediction that they will quit.","1. The employee's education level is between 0 and 2, which is true here.  
+2.","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'age_b1 < 0.5']",['education_b0 > 0.5'],"[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]","[0, 5, 6, 8, 10, 11]",[0],0.3034,OPTIMAL,cop@7,0.5646
+employee,openai/gpt-oss-120b,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,81.9,False,64.1,79.7,79.7,81.9,False,False,False,5,5,6,1,0,1,0,0,0,0,0,3,"[64.1, 79.7, 79.7, 79.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts that this employee is likely to leave because several of the key factors that increase the risk are present:
+
+- **Education level** is low, falling in the range from 0 to 2.  
+- **City location** does not fall in the lowest range (0 – 1), but it does fall in the next range, from 1 to 2.  
+- **Payment tier** is modest, between 1 and 3.  
+- **Gender** falls in the category represented by values between 0 and 1.  
+- **Bench history** shows the employee has never been benched (value between 0 and 1).
+
+These conditions together match the rule that the model has learned for predicting a departure, leading it to assign the “will leave” class (1).","The rule says the employee is predicted to leave because:
+
+- Their education level is in the low range (0 to 2).  
+- The city they work in is **not** in the lowest range (0 to 1) but **is** in the next range (1 to 2).  
+- Their payment tier falls between 1 and 3.  
+- Their gender is in the range that corresponds to male (0 to 1).  
+- They have never been benched (bench‑status in the range 0 to 1).","1. The employee’s education level falls between 0 and 2 on the company’s scale, which is true for this case.  
+2. The city code falls between 0 and 1, which is not true for this employee.  
+3. The city code falls between 1 and 2, which is true for this employee.  
+4. The payment‑tier classification is between 1 and 3, which is true for this employee.  
+5. The gender indicator is between 0 and 1, which is true for this employee.  
+6. The benching history (ever benched) is between 0 and 1, meaning the employee has never been benched, which is true for this employee.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 5, 6, 10, 11]","[0, 4, 5, 6, 10]","[0, 4, 5, 6, 10, 11]",0.2176,OPTIMAL,cop@6,0.5676
+employee,openai/gpt-oss-120b,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,89.1,False,85.4,85.4,85.4,78.6,False,False,False,6,6,5,1,0,1,0,2,0,1,1,3,"[85.4, 65.9, 85.4, 85.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicts that this employee is likely to leave because most of the key factors that the rule associates with turnover are present:
+
+- **Education level** is low, falling in the range of 0 to 2 (the rule treats this as a risk factor).  
+- **City location** is not in the lowest range (0 to 1); instead it is in the middle range of 1 to 2, which the rule also links to higher turnover.  
+- **Payment tier** is moderate, between 1 and 3, a level that the rule flags as contributing to the prediction.  
+- **Gender** falls in the first coded category (0 to 1), which the rule includes among the conditions for a “leave” prediction.  
+- The employee **has never been benched** (the “ever benched” indicator is 0 to 1), another condition the rule uses to signal departure.
+
+Two conditions do **not** match the rule:
+
+- The employee’s **city** is not in the lowest range (0 to 1).  
+- Their **experience in the current domain** is not between 4 and 7 years.
+
+Even though those two points differ, the majority of the rule’s criteria are satisfied, so the model concludes that the employee will likely quit.","The employee is predicted to leave because they have a low education level (0 – 2 years), live in a city that falls in the higher range (index 1 – 2) but not in the lower range (index 0 – 1), earn a salary tier between 1 and 3, are male (gender index 0 – 1), have never been benched (bench status 0 – 1), and they do not have 4 – 7 years of experience in their current domain.","1. The employee’s education level is between 0 and 2, which is true for this case.  
+2. The city group is between 0 and 1, which is not true for this case.  
+3. The city group is between 1 and 2, which is true for this case.  
+4. The payment tier is between 1 and 3, which is true for this case.  
+5. The gender category is between 0 and 1, which is true for this case.  
+6. The employee has never been benched, which falls","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 14]","[0, 4, 5, 6, 10, 14]","[0, 4, 5, 6, 10]",0.3238,OPTIMAL,cop@7,0.5834
+employee,openai/gpt-oss-120b,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,67.8,False,70.9,70.9,70.9,67.8,False,False,False,3,3,4,1,0,1,0,0,0,1,0,3,"[70.9, 70.9, 60.2, 70.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will stay because three of the key factors match the pattern associated with staying, while one factor does not match the pattern linked to leaving.
+
+* **Year of joining** – The rule applies to people who started in 2017‑2018, but this employee did **not** join during that period, so the “leaving” condition is not triggered.  
+* **Pay level** – The employee’s pay tier falls between 1 and 3, which is a range the model has learned to associate with staying.  
+* **Gender** – The employee’s gender falls in the range the rule specifies (the first gender category), which also supports the “stay” prediction.  
+* **Bench history** – The employee has never been placed on the bench (the “ever benched” indicator is in the “never benched” range), another sign the model links to staying.
+
+Because the employee meets the three staying‑related conditions and does not meet the one leaving‑related condition, the model classifies the outcome as “will stay” (class 0).","The rule says that an employee who **did not join in 2017‑2018**, has a **payment tier between 1 and 3**, is **female** (gender value in the range 0‑1), and has **never been benched** (ever‑benched value in the range 0‑1) is predicted to stay with the company (class 0).","1. The year the employee joined the company is between 2017 and 2018, which is not true for this case.  
+2. The salary tier is between 1 and 3, which is true here.  
+3. The gender falls within the range 0 to 1, which is true for this employee.  
+4. The employee has never been benched, which lies in the range 0 to 1, and this is true here.","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10]","[3, 6, 10]","[3, 6, 10, 11]",0.3156,OPTIMAL,cop@4,0.4214
+employee,openai/gpt-oss-120b,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,87.9,False,87.8,87.8,87.8,87.9,False,False,False,6,6,7,1,0,1,0,0,0,1,0,3,"[87.8, 83.0, 87.8, 87.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model looked at several facts about the employee:
+
+- **Education level** is in the low‑range (between 0 and 2).  
+- **Year of joining** is **not** in the 2017‑2018 window.  
+- **Location** falls in the first city category (between 0 and 1) and **does not** fall in the second city category (between 1 and 2).  
+- **Pay‑grade** is in the range 1 to 3.  
+- **Gender code** is in the lower range (between 0 and 1).  
+- The employee **has never been benched** (the “ever benched” indicator is in the 0‑1 range).
+
+All of these conditions that the rule associates with staying at the company are satisfied, except for the two that do not hold (the joining‑year window and the second city category). Because the majority of the relevant indicators point toward the employee remaining, the model predicts the class “stay” (0).","The model predicts the employee will stay because they have a low education level (0 – 1), they did not join the company in 2017‑2018, they belong to the first city group (not the second), they are in payment tier 1 – 2, they are male, and they have never been placed on a bench.","1. The employee’s education level is between 0 and 2, which is true for this case.  
+2. The year the employee joined the company is between 2017 and 2018, which is not true for this employee.  
+3. The employee works in a city that falls in the first category (0 to 1), which is true here.  
+4. The employee works in a city that falls in the second category (1 to 2), which is not true here.  
+5. The employee’s payment tier is between 1 and 3, which is true for this case.  
+6. The employee’s gender is in the first category (0 to 1), which is true here.  
+7. The employee has never been benched (value between 0 and 1), which is true for this employee.","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 3, 4, 5, 6, 10, 11]","[0, 3, 4, 5, 6, 10]","[0, 3, 4, 5, 6, 10]","[0, 3, 4, 5, 6, 10, 11]",0.0978,OPTIMAL,cop@7,0.4238
+employee,openai/gpt-oss-120b,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,88.6,False,88.6,71.1,88.6,85.7,False,False,False,8,6,7,0,0,2,0,1,0,0,0,3,"[88.6, 70.5, 84.6, 71.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","The model decided that this employee is likely to leave because the combination of several key facts matches a pattern it has learned for “leaving” cases.
+
+* **Education** – the employee’s education level falls in the lowest bracket (between 0 and 2).  
+* **Joining year** – the employee did **not** join the company between 2014 and 2017.  
+* **City** – the employee’s city is not in the first bracket (0 to 1) but is in the second bracket (1 to 2).  
+* **Payment tier** – the employee’s pay tier is in the lower‑middle range (between 1 and 3).  
+* **Gender** – the employee’s gender falls in the first category (between 0 and 1).  
+* **Ever benched** – the employee has never been benched (value in the 0 to 1 range).  
+* **Experience in current domain** – the employee’s experience is **not** in the 2‑to‑4‑year bracket.
+
+Because most of these conditions line up with the “leaving” pattern (education, city, payment tier, gender, never benched) and only a few do not (joining year and domain experience), the rule flags the employee as a likely quitter, leading the model to predict class 1.","The employee is predicted to leave because:
+
+- Their education level is low (0 – 2 years of schooling).  
+- They joined the company outside the 2014‑2017 period (i.e., before 2014 or after 2017).  
+- They live in a city whose index falls in the 1 – 2 range.  
+- Their pay tier is low (1 – 3).  
+- Their gender falls in the 0 – 1 range (male).  
+- They have never been benched (0 – 1).  
+- Their experience in the current domain is not between 2 and 4 years (either less than 2 years or 4 years and more).","1. Education level is between 0 and 2, which is true for this employee.  
+2. Year of joining the company is between 2014 and 2017, which is not true for this employee.  
+3. Location group is between 0 and 1, which is not true for this employee.  
+4. Location group is between 1 and 2, which is true for this employee.  
+5. Salary band is between 1 and 3, which is true for this employee.  
+6. Gender category is between 0 and 1, which is true for this employee.  
+7. Ever‑benched status is between 0 and 1, which is true for this employee.  
+8. Experience in the current domain (years","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 5, 6, 10, 13]","[0, 2, 4, 5, 6, 10, 11]",0.4232,OPTIMAL,cop@8,0.564
+employee,openai/gpt-oss-120b,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.0,False,86.5,62.0,86.5,91.0,False,False,False,6,4,7,1,0,3,0,0,0,1,0,3,"[86.5, 68.2, 86.5, 62.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicts that this employee is likely to leave because most of the characteristics that the rule links to turnover are present:
+
+- **Education level** is low, falling in the range 0 to 2.  
+- **City of residence** falls in the second category (range 1 to 2).  
+- **Pay tier** is in the middle range, between 1 and 3.  
+- **Gender** is in the first category (range 0 to 1).  
+- The employee has **never been benched** (value in the 0‑1 range).
+
+Two conditions that the rule mentions are not met:
+
+- The employee’s **city** is not in the first category (range 0 to 1).  
+- Their **experience in the current domain** is not between 4 and 7 years.
+
+Because the majority of the rule’s factors that point toward leaving are satisfied, the model outputs the “will leave” prediction.","The employee is predicted to leave because the following conditions are true for this person:
+
+- Their education level falls in the range 0 to 2.  
+- They live in a city whose classification is in the range 1 to 2.  
+- Their payment tier is between 1 and 3.  
+- Their gender falls in the range 0 to 1.  
+- They have never been benched (the “ever benched” value is in the range 0 to 1).","1. The employee’s education level falls between 0 and 2, which is true for this case.  
+2. The employee’s city category 0 falls between 0 and 1, which is not true for this case.  
+3. The employee’s city category 1 falls between 1 and 2, which is true for this case.  
+4. The employee’s payment tier is between 1 and 3, which is true for this case.  
+5. The employee’s gender category 0 is between 0 and 1, which is true for this case.  
+6. The employee’s ever‑benched status is between 0 and 1, which is true for this case.  
+7. The employee’s years of experience in the current domain are between 4 and 7, which is not true for this case.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 14]","[0, 5, 6, 10]","[0, 4, 5, 6, 10, 11, 14]",0.3254,OPTIMAL,cop@7,0.576
+employee,openai/gpt-oss-120b,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,81.4,False,81.4,79.2,81.4,81.4,False,False,False,8,7,8,0,0,1,0,0,0,0,0,3,"[81.4, 81.4, 79.2, 79.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","The model predicted that the employee will stay (class 0) because most of the conditions that favour staying are satisfied:
+
+- **Education level** falls in the low‑range (between 0 and 2).  
+- **City code** is in the first range (between 0 and 1).  
+- **Payment tier** is in the middle range (between 1 and 3).  
+- **Gender** is in the first category (between 0 and 1).  
+- The employee has **never been benched** (the “ever benched” indicator is in the 0‑to‑1 range).
+
+The few conditions that are *not* met would have pushed the prediction toward leaving, but they are outweighed by the satisfied ones:
+
+- The city is **not** in the second range (1 to 2).  
+- The employee’s **age is not** between 27 and 30.  
+- The employee’s **experience in the current domain is not** between 2 and 4 years.  
+
+Because the majority of the relevant factors point toward staying, the model’s final decision is that the employee will remain with the company.","The model predicts the employee will stay because: education is between 0 and 2, city index is between 0 and 1, city index is not between 1 and 2, payment tier is between 1 and 3, age is not between 27 and 30, gender is between 0 and 1, the employee has never been benched (value between 0 and 1), and experience in the current domain is not between 2 and 4.","1. The employee’s education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is true here.  
+3. The city category is between 1 and 2, which is false here.  
+4. The payment‑tier falls between 1 and 3, which is true here.  
+5. The employee’s age is between 27 and 30, which is false here.  
+6. The gender classification is between 0 and 1, which is true here.  
+7. The employee has never been benched, which falls between 0 and 1, and this is true here.  
+8. The experience in the current domain is between 2 and 4 years, which","['education_b0 > 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b1 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 13]","[0, 4, 5, 6, 8, 10, 11, 13]",0.312,OPTIMAL,cop@8,0.4204
+employee,openai/gpt-oss-120b,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,98.8,True,98.8,98.8,99.6,99.5,True,True,True,6,6,4,1,0,1,0,3,0,1,0,3,"[98.8, 64.0, 99.6, 98.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicts that this employee will leave because several of the key factors that the rule links to turnover are present:
+
+- **Education level** is in the lower range (between 0 and 2).  
+- **Year of joining** falls in the 2017‑2018 window, while the employee did not join in the earlier periods of 2012‑2014 or 2014‑2017.  
+- **Payment tier** is in the modest range of 1 to 3.  
+- **Gender** belongs to the first category (the range 0 to 1).  
+- **Bench history** shows the employee has never been benched (value in the 0 to 1 range).
+
+These conditions together match the pattern the model has learned for employees who are likely to quit, leading it to output the “will leave” prediction.","The employee is predicted to leave when all of the following are true:  
+
+- Their education level is between 0 and 2 (the lower‑range education bracket).  
+- They joined the company in the 2017 – 2018 period.  
+- Their payment tier is between 1 and 3.  
+- Their gender falls in the range 0 to 1.  
+- They have never been benched (ever‑benched value between 0 and 1).  
+
+The other joining‑year periods (2012 – 2014 and 2014 – 2017) do not apply.","1. The employee’s education level is between 0 and 2, which is true for this case.  
+2. The year the employee joined is between 2012 and 2014, which is not true for this case.  
+3. The year the employee joined is between 2014 and 2017, which is not true for this case.  
+4. The year the employee joined is between 2017 and 2018, which is true for this case.","['education_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5']","['education_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5']","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10]","[0, 1, 2, 3, 6, 10]","[0, 1, 2, 3]",0.3156,OPTIMAL,cop@7,0.5804

@@ -7,10 +7,17 @@ what it found.
 
 ---
 
-## 1. The refine loop returns names, and nothing else
+## 1. The refine loop returns the draft and the missing names, nothing else
 
-Bounded dialogue gives the generator up to three refine-and-extract rounds. The
-feedback it returns is **the names of missing indicators only** — never
+Bounded dialogue gives the generator up to three refine-and-extract rounds.
+Each round returns the model **its own previous draft** together with **the
+names of the indicators that draft did not state**. An earlier implementation
+returned the names without the draft; because `llm()` is a single-turn call
+with no history, the model then regenerated from scratch every round instead
+of revising, and dropped conditions it had already transmitted. That is
+corrected, and the results here are from the corrected loop.
+
+Beyond the draft, the feedback carries **the names of missing indicators only** — never
 thresholds, never ranges, never a holds / does-not-hold flag against the
 instance, and never any fidelity score.
 

@@ -1,0 +1,59 @@
+=== sonnet5 / cancer 05:39:55 ===
+Full console log -> research/results/logs/cancer_nn_20260905_054001_22332.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/sonnet5] 90 rows, 90 to redo, model=claude-sonnet-5 provider=anthropic
+  inst    6 cop      v5= 50.80 (was 50.8) om=0 rounds=3
+  inst    6 cop_k    v5= 83.90 (was 67.8) om=0 rounds=3
+  inst    6 lmpaxp   v5= 95.80 (was 95.8) om=0 rounds=0
+  inst    6 anchors  v5= 46.80 (was 43.8) om=1 rounds=3
+  inst    6 shap     v5= 99.20 (was 94.1) om=1 rounds=3
+  inst    6 lime     v5= 25.40 (was 32.2) om=10 rounds=3
+  inst   22 cop      v5= 87.80 (was 87.8) om=2 rounds=3
+  inst   22 cop_k    v5= 96.40 (was 96.4) om=0 rounds=0
+  inst   22 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=0
+  inst   22 anchors  v5= 75.70 (was 75.7) om=0 rounds=3
+  inst   22 shap     v5= 98.50 (was 88.9) om=0 rounds=3
+  inst   22 lime     v5= 56.20 (was 88.5) om=1 rounds=3
+  inst   26 cop      v5= 58.60 (was 58.6) om=0 rounds=3
+  inst   26 cop_k    v5= 77.90 (was 77.9) om=0 rounds=3
+  inst   26 lmpaxp   v5= 97.40 (was 97.4) om=0 rounds=0
+  inst   26 anchors  v5= 41.80 (was 41.8) om=0 rounds=3
+  inst   26 shap     v5= 96.20 (was 93.8) om=1 rounds=3
+  inst   26 lime     v5= 50.90 (was 49.3) om=7 rounds=3
+  inst   28 cop      v5= 61.90 (was 61.9) om=0 rounds=3
+  inst   28 cop_k    v5= 94.30 (was 94.3) om=0 rounds=3
+  inst   28 lmpaxp   v5= 97.40 (was 97.4) om=0 rounds=1
+  inst   28 anchors  v5= 38.30 (was 38.3) om=1 rounds=3
+  inst   28 shap     v5= 95.00 (was 82.5) om=2 rounds=3
+  inst   28 lime     v5= 61.80 (was 51.5) om=6 rounds=3
+  inst   35 cop      v5= 92.30 (was 92.3) om=0 rounds=3
+Traceback (most recent call last):
+  File "run_comparison_nn.py", line 295, in llm
+    content, finish = _complete(prompt, budget)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 250, in _complete
+    r = _get_client().messages.create(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CejcTBZMjfaTKf2XdWkQf'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\rerun_dialogue.py", line 116, in <module>
+    expl = llm(REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+pipeline_partial.CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: claude-sonnet-5: 126 calls, 0 in / 0 out
+!!! sonnet5/cancer exited 1 -- stopping this wave (credit or fatal)

@@ -1,0 +1,60 @@
+Full console log -> research/results/logs/cancer_nn_gridllama33_20260829_004502_6592.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop_best] sweep cancer_cop_sweep_V18pv.csv (k up to 18, selecting on precision_V)
+  [cop_best] inst 163: k*=17 (selection precision 99.9, re-certified below)
+  [cop_best] base=99.1% v4=88.5% v5=53.6% v6=99.1% (len 17, om_v5=14)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop_best] inst 28: k*=18 (selection precision 99.8, re-certified below)
+  [cop_best] base=94.3% v4=77.5% v5=83.6% v6=94.3% (len 18, om_v5=2)
+[003/15] instance 6 (pred=1, k_ref=17)
+  [cop_best] inst 6: k*=18 (selection precision 94.4, re-certified below)
+  [cop_best] base=82.0% v4=54.5% v5=66.0% v6=82.0% (len 18, om_v5=2)
+[004/15] instance 189 (pred=0, k_ref=7)
+  [cop_best] inst 189: k*=18 (selection precision 100.0, re-certified below)
+  [cop_best] base=99.8% v4=93.9% v5=99.8% v6=99.8% (len 18, om_v5=0)
+[005/15] instance 70 (pred=0, k_ref=10)
+  [cop_best] inst 70: k*=5 (selection precision 83.1, re-certified below)
+  [cop_best] base=85.6% v4=85.6% v5=85.6% v6=85.6% (len 5, om_v5=0)
+[006/15] instance 62 (pred=1, k_ref=14)
+  [cop_best] inst 62: k*=16 (selection precision 89.2, re-certified below)
+  [cop_best] base=84.5% v4=63.8% v5=69.6% v6=84.5% (len 16, om_v5=2)
+[007/15] instance 57 (pred=1, k_ref=18)
+  [cop_best] inst 57: k*=17 (selection precision 81.8, re-certified below)
+  [cop_best] base=77.6% v4=78.1% v5=72.5% v6=77.6% (len 17, om_v5=1)
+[008/15] instance 35 (pred=0, k_ref=8)
+  [cop_best] inst 35: k*=18 (selection precision 100.0, re-certified below)
+  [cop_best] base=99.8% v4=84.9% v5=99.5% v6=99.8% (len 18, om_v5=1)
+[009/15] instance 188 (pred=0, k_ref=9)
+  [cop_best] inst 188: k*=7 (selection precision 92.1, re-certified below)
+  [cop_best] base=94.3% v4=94.3% v5=94.3% v6=94.3% (len 7, om_v5=0)
+[010/15] instance 26 (pred=1, k_ref=14)
+  [cop_best] inst 26: k*=16 (selection precision 99.5, re-certified below)
+  [cop_best] base=98.1% v4=51.8% v5=98.1% v6=98.1% (len 16, om_v5=0)
+[011/15] instance 173 (pred=1, k_ref=14)
+  [cop_best] inst 173: k*=17 (selection precision 98.3, re-certified below)
+  [cop_best] base=96.7% v4=86.3% v5=75.1% v6=96.7% (len 17, om_v5=8)
+[012/15] instance 139 (pred=1, k_ref=13)
+  [cop_best] inst 139: k*=18 (selection precision 100.0, re-certified below)
+  [cop_best] base=99.9% v4=83.6% v5=99.2% v6=99.9% (len 18, om_v5=2)
+[013/15] instance 22 (pred=0, k_ref=9)
+  [cop_best] inst 22: k*=13 (selection precision 94.2, re-certified below)
+  [cop_best] base=82.8% v4=83.9% v5=91.6% v6=82.8% (len 13, om_v5=7)
+[014/15] instance 151 (pred=0, k_ref=8)
+  [cop_best] inst 151: k*=13 (selection precision 100.0, re-certified below)
+  [cop_best] base=100.0% v4=100.0% v5=100.0% v6=100.0% (len 13, om_v5=0)
+[015/15] instance 108 (pred=1, k_ref=18)
+  [cop_best] inst 108: k*=18 (selection precision 99.7, re-certified below)
+  [cop_best] base=98.8% v4=80.7% v5=82.3% v6=98.8% (len 18, om_v5=8)
+
+saved -> research/results/cancer_nn_comparison_cop_best_gridllama33.csv
+
+=== per-arm means ===
+          len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                 
+cop_best      15.27               92.89     80.49     84.72          90.93     92.89
+
+WeakPAXp pass rates (baseline / v5):
+          baseline_weak_paxp  weak_paxp_v5
+arm                                       
+cop_best                0.53          0.33

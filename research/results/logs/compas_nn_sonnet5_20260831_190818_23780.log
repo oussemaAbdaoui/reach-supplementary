@@ -1,0 +1,25 @@
+Full console log -> research/results/logs/compas_nn_sonnet5_20260831_190818_23780.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+resume: 15 instances already done (90 rows) -> 0 to go
+
+saved -> research/results/compas_nn_comparison_sonnet5.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       1.93               73.69     73.29     67.80          73.29     69.97
+cop           7.00               68.00     67.98     68.24          71.50     67.95
+cop_k         3.60               69.61     70.51     65.74          71.14     68.76
+lime          3.60               84.27     81.69     86.28          87.55     75.91
+lmpaxp        3.60               98.31     98.31     98.31          98.31     97.64
+shap          3.60               76.01     72.86     66.13          74.83     76.83
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+cop_k                  0.00          0.00
+lime                   0.53          0.53
+lmpaxp                 1.00          1.00
+shap                   0.53          0.53

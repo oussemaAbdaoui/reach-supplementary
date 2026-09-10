@@ -1,0 +1,187 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+heart,gpt-5.6-terra,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction est un décès. Elle est notamment liée au fait que le sexe indiqué est dans la catégorie codée entre 0 et 1, et que le temps de suivi est entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas entre 67 et 172, ni entre 172 et 285.",La prédiction de décès est associée au fait que le patient est de sexe masculin et que la durée de suivi se situe entre 4 et 67 jours. Les intervalles de 67 à 172 jours et de 172 à 285 jours ne s’appliquent pas à ce patient.,"1. The patient’s sex is in the range from 0 to 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501
+heart,gpt-5.6-terra,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,86.2,76.9,86.2,86.2,False,False,False,12,10,12,0,0,2,0,0,0,0,0,3,"[86.2, 74.2, 64.2, 76.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Le modèle prédit un décès (classe 1). Cette explication est une règle qui correspond à la décision du modèle pour ce patient, même si certaines de ses conditions ne sont pas remplies.
+
+Les conditions remplies sont : présence d’anémie, présence de diabète, présence d’hypertension artérielle, numération plaquettaire comprise entre 47 000 et 225 000, sexe codé entre 0 et 1, et statut tabagique codé entre 0 et 1.
+
+En revanche, les conditions suivantes ne sont pas remplies : créatine phosphokinase comprise entre 23 et 157, fraction d’éjection comprise entre 30 et 40, numération plaquettaire comprise entre 225 000 et 273 000 ou entre 273 000 et 742 000, créatinine sanguine comprise entre 0,5 et 1, et sodium sanguin compris entre 135 et 138.
+
+Ainsi, la prédiction de décès est associée ici notamment à l’anémie, au diabète, à l’hypertension et à la plage de plaquettes la plus basse indiquée par la règle, dans le contexte des autres mesures qui ne correspondent pas aux plages listées.","La prédiction indique un risque de décès. Elle est associée à la présence d’anémie, de diabète, d’hypertension artérielle, à un nombre de plaquettes inférieur à 225 000, au sexe féminin et au tabagisme. Elle tient aussi compte du fait que la créatine phosphokinase n’est pas comprise entre 23 et 157, que la fraction d’éjection n’est pas comprise entre 30 % et 40 %, que la créatinine sérique n’est pas comprise entre 0,5 et 1, et que le sodium sérique n’est pas compris entre 135 et 138.","1. The anaemia indicator is between 0 and 1, which is true here.  
+2. The creatine phosphokinase measurement is between 23 and 157, which is not true here.  
+3. The diabetes indicator is between 0 and 1, which is true here.  
+4. The heart’s ejection fraction is between 30 and 40, which is not true here.  
+5. The high blood pressure indicator is between 0 and 1, which is true here.  
+6. The platelet count is between 47,000 and 225,000, which is true here.  
+7. The platelet count is between 225,000 and 273,000, which is not true here.  
+8. The platelet count is between 273,000 and 742,000, which is not true here.  
+9. The serum creatinine level is between 0.5 and 1, which is not true here.  
+10. The serum sodium level is between 135 and 138, which is not true here.  
+11. The sex indicator is between 0 and 1, which is true here.  
+12. The smoking indicator is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483
+heart,gpt-5.6-terra,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,88.3,88.3,88.3,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.3, 88.3, 88.3, 88.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit une survie (classe 0). Cette explication repose sur le fait que le patient a une pression artérielle élevée, indiquée par une valeur comprise entre 0 et 1, et que le sexe est également codé par une valeur comprise entre 0 et 1.
+
+En revanche, deux conditions de la règle ne sont pas remplies : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est notamment associée à une pression artérielle élevée présente, au sexe masculin, ainsi qu’à une fraction d’éjection qui n’est pas comprise entre 15 et 30 % et à un temps de suivi qui n’est pas compris entre 4 et 67 jours.","1. La fraction d’éjection est comprise entre 15 et 30, ce qui n’est pas vrai dans ce cas.  
+2. La pression artérielle élevée est comprise entre 0 et 1, ce qui est vrai dans ce cas.  
+3. Le sexe est compris entre 0 et 1, ce qui est vrai dans ce cas.  
+4. Le temps de suivi est compris entre 4 et 67, ce qui n’est pas vrai dans ce cas.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519
+heart,gpt-5.6-terra,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[87.1, 87.1, 87.1, 87.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est que le patient a survécu. Le fait de fumer est présent, avec une valeur comprise entre 0 et 1, et cette condition est satisfaite. En revanche, la fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67. Ces deux dernières conditions de la règle ne sont donc pas satisfaites, ce qui est cohérent avec la prédiction de survie.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est notamment associée au fait que le patient fume, que sa fraction d’éjection cardiaque n’est pas comprise entre 15 % et 30 %, et que la durée de suivi n’est pas comprise entre 4 et 67 jours.","1. The heart’s pumping efficiency is between 15% and 30%, which is not true for this case.  
+2. The patient’s smoking status is between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67 days, which is not true for this case.","['smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166
+heart,gpt-5.6-terra,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,66.9,70.0,71.2,70.0,False,False,False,2,4,4,2,0,0,0,0,0,2,0,3,"[66.9, 71.2, 70.0, 70.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","La prédiction est que le patient est décédé (classe 1). Cette décision est cohérente avec les caractéristiques observées : présence d’hypertension artérielle, sexe codé dans la catégorie correspondant à une valeur inférieure à 1, statut tabagique codé dans la catégorie correspondant à une valeur inférieure à 1, et durée de suivi comprise entre 4 et 67.","La prédiction indique un risque de décès lorsque le patient présente une hypertension artérielle, est de sexe masculin, fume, et que le suivi se situe entre 4 et 67 jours.","1. The patient’s high blood pressure indicator is between 0 and 1, which is true here.  
+2. The patient’s sex indicator is between 0 and 1, which is true here.  
+3. The patient’s smoking indicator is between 0 and 1, which is true here.  
+4. The time since follow-up began is between 4 and 67 days, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 < 0.5', 'smoking_b0 < 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956
+heart,gpt-5.6-terra,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,91.0,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[85.7, 91.0, 51.2, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit une survie (classe 0). Cette décision est cohérente avec plusieurs éléments présents dans la règle : le patient a du diabète, une pression artérielle élevée, est de sexe masculin et fume.
+
+En revanche, deux conditions de la règle ne sont pas respectées : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","La prédiction indique une survie (classe 0). Cette règle est associée à un diabète présent, une pression artérielle élevée, le sexe codé 1 et le tabagisme présent. Elle inclut aussi une fraction d’éjection entre 15 et 30 % et un délai de suivi entre 4 et 67 jours, mais ces deux dernières conditions ne correspondent pas à ce patient.","1. The diabetes measurement is between 0 and 1, which is true here.  
+2. The heart pumping efficiency is between 15 and 30, which is not true here.  
+3. The high blood pressure measurement is between 0 and 1, which is true here.  
+4. The sex measurement is between 0 and 1, which is true here.  
+5. The smoking measurement is between 0 and 1, which is true here.  
+6. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514
+heart,gpt-5.6-terra,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est que le patient a survécu (classe 0).
+
+La règle examinée indique que le sexe se situe entre 0 et 1, et cette condition est remplie. En revanche, la fraction d’éjection du cœur n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67. Ces deux dernières conditions ne sont donc pas remplies pour ce patient.","Le modèle prédit que le patient a survécu. Cette prédiction est associée au fait que le sexe du patient est codé entre 0 et 1. En revanche, le patient n’a pas une fraction d’éjection comprise entre 15 et 30 %, et son temps de suivi n’est pas compris entre 4 et 67 jours.","1. The heart’s pumping efficiency is between 15 and 30, which is not true for this case.  
+2. The patient’s sex is coded between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67, which is not true for this case.","['sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148
+heart,gpt-5.6-terra,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,86.2,86.2,85.7,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[85.7, 86.2, 85.7, 86.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est associée aux éléments suivants : la pression artérielle élevée est indiquée comme présente, le patient est de sexe masculin, et le temps de suivi se situe entre 4 et 67.
+
+La règle mentionne aussi un temps de suivi entre 172 et 285, mais cette condition n’est pas remplie pour ce patient.","La prédiction indique un décès. Elle est associée à une pression artérielle élevée, au sexe codé 0 dans les données, et à un temps de suivi compris entre 4 et 67 jours. Le temps de suivi n’est pas compris entre 172 et 285 jours.","1. The high blood pressure measurement is between 0 and 1, which is true for this case.  
+2. The sex measurement is between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67 days, which is true for this case.  
+4. The follow-up time is between 172 and 285 days, which is not true for this case.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882
+heart,gpt-5.6-terra,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,71.0,50.4,71.6,71.0,False,False,False,9,4,9,0,0,5,0,0,0,0,0,3,"[71.0, 54.8, 71.6, 50.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Le modèle prédit un décès. Cette décision est principalement associée aux éléments suivants : présence d’anémie, présence de diabète, présence d’hypertension artérielle, sexe dans la catégorie codée entre 0 et 1, et statut tabagique dans la catégorie codée entre 0 et 1.
+
+La créatinine sanguine se situe entre 1,3 et 9, ce qui correspond à la condition retenue par la règle. En revanche, elle ne se situe ni entre 0,5 et 1, ni entre 1 et 1,3. La créatine phosphokinase ne se situe pas entre 23 et 157 ; cette condition de la règle n’est donc pas satisfaite.
+
+La règle affichée est globalement cohérente avec la prédiction du modèle pour ce patient, même si toutes ses conditions ne sont pas remplies.","La prédiction indique un risque de décès. Elle est notamment cohérente avec la présence d’anémie, de diabète et d’hypertension artérielle, ainsi qu’avec une créatinine sanguine comprise entre 1,3 et 9. Le patient est également de sexe féminin (valeur 0).","1. The patient has anaemia, which is true for this case.  
+2. The creatine phosphokinase level is between 23 and 157, which is not true for this case.  
+3. The patient has diabetes, which is true for this case.  
+4. The patient has high blood pressure, which is true for this case.  
+5. The blood creatinine level is between 0.5 and 1, which is not true for this case.  
+6. The blood creatinine level is between 1 and 1.3, which is not true for this case.  
+7. The blood creatinine level is between 1.3 and 9, which is true for this case.  
+8. The patient is female, which is true for this case.  
+9. The patient smokes, which is true for this case.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'creatinine_phosphokinase_b0 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 7, 11, 17]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872
+heart,gpt-5.6-terra,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.4, 88.4, 88.4, 88.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu (classe 0). La règle examinée correspond globalement à cette prédiction.
+
+Le patient présente une hypertension artérielle et est de sexe masculin, deux conditions qui figurent dans la règle. En revanche, sa fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est notamment associée au fait que le patient présente une hypertension artérielle et que son sexe est codé dans la catégorie 1. En revanche, les conditions concernant une fraction d’éjection comprise entre 15 et 30 % et un suivi compris entre 4 et 67 jours ne sont pas remplies pour ce patient.","1. La fraction d’éjection est comprise entre 15 et 30, ce qui n’est pas vrai dans ce cas.  
+2. La pression artérielle élevée est comprise entre 0 et 1, ce qui est vrai dans ce cas.  
+3. Le sexe est compris entre 0 et 1, ce qui est vrai dans ce cas.  
+4. Le temps de suivi est compris entre 4 et 67, ce qui n’est pas vrai dans ce cas.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994
+heart,gpt-5.6-terra,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,90.8,89.7,90.8,89.7,False,False,False,3,4,4,1,0,0,0,0,0,1,0,3,"[90.8, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle s’appuie sur le fait que le patient est de sexe 0, fume, et que le temps observé est compris entre 4 et 67.
+
+En revanche, la condition selon laquelle le temps serait compris entre 172 et 285 n’est pas satisfaite.","Le modèle prédit un décès. Cette prédiction est associée au fait que le patient est de sexe féminin, fume, et que le suivi se situe entre 4 et 67 jours. La condition selon laquelle le suivi serait entre 172 et 285 jours n’est pas satisfaite pour ce patient.","1. The patient's sex value is between 0 and 1, which is true here.  
+2. The patient's smoking value is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['sex_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934
+heart,gpt-5.6-terra,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,92.5,93.4,93.4,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[93.4, 93.4, 93.4, 92.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est associée à une pression artérielle élevée dont la valeur est comprise entre 0 et 1, ainsi qu’à un temps de suivi compris entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas compris entre 67 et 172, ni entre 172 et 285.","La prédiction indique un risque de décès. Cette décision est associée à une pression artérielle élevée absente ou faible (valeur entre 0 et 1) et à un suivi très court, entre 4 et 67 jours. Les intervalles de suivi de 67 à 172 jours et de 172 à 285 jours ne correspondent pas à ce patient.","1. The patient has high blood pressure, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858
+heart,gpt-5.6-terra,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,52.8,88.1,88.1,False,False,False,5,2,5,0,0,3,0,0,0,0,0,3,"[88.1, 88.1, 88.1, 52.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle a prédit une survie (classe 0). La règle associée met en avant les éléments suivants :
+
+- Le diabète est présent, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La pression artérielle élevée est présente, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- Le sexe est codé par une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La fraction d’éjection du cœur n’est pas dans l’intervalle de 15 à 30 ; cette condition n’est pas satisfaite.
+- Le temps de suivi n’est pas compris entre 4 et 67 ; cette condition n’est pas satisfaite.
+
+Cette combinaison de caractéristiques correspond à une prédiction de survie pour ce patient selon le modèle.","Le modèle prédit une survie (classe 0) pour ce patient. Cette prédiction est associée aux conditions suivantes : diabète présent, tension artérielle élevée présente, sexe codé dans la catégorie 0 à moins de 1, fraction d’éjection comprise entre 15 et 30, et durée de suivi comprise entre 4 et 67 jours.","1. The diabetes indicator is between 0 and 1, which is true here.  
+2. The heart pumping efficiency is between 15 and 30, which is not true here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 11]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148
+heart,gpt-5.6-terra,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,88.3,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[87.5, 88.3, 67.8, 87.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est cohérente avec les éléments suivants : le sexe se situe dans la catégorie codée entre 0 et 1, le patient fume dans la catégorie codée entre 0 et 1, et le temps de suivi est compris entre 4 et 67.
+
+En revanche, la condition selon laquelle le temps de suivi serait compris entre 172 et 285 n’est pas remplie.","La prédiction de décès est associée au fait que le patient est de sexe masculin, qu’il fume et que son suivi se situe entre 4 et 67 jours. De plus, la condition correspondant à un suivi entre 172 et 285 jours n’est pas remplie, ce qui est cohérent avec un suivi plus court.","1. The patient’s sex value is between 0 and 1, which is true here.  
+2. The patient’s smoking value is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894
+heart,gpt-5.6-terra,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[90.2, 90.2, 90.2, 90.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle a prédit un décès. Cette décision est associée au fait que le patient présente une hypertension artérielle et fume. Le temps de suivi se situe entre 4 et 67 jours, ce qui correspond aussi à la règle.
+
+En revanche, le temps de suivi ne se situe pas entre 172 et 285 jours ; cette condition n’est donc pas remplie.","Le modèle prédit un décès. Cette prédiction est associée à une pression artérielle élevée, au fait de fumer, et à un temps de suivi compris entre 4 et 67 jours. Le temps de suivi n’est pas compris entre 172 et 285 jours.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The smoking measurement is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724

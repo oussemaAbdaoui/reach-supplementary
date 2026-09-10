@@ -1,0 +1,3 @@
+Full console log -> research/results/logs/cancer_nn_20260905_060722_15492.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/gridllama33] 105 rows, 105 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together

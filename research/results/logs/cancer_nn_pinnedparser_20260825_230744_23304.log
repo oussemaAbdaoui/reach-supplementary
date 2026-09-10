@@ -1,0 +1,13 @@
+Full console log -> research/results/logs/cancer_nn_pinnedparser_20260825_230744_23304.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop] base=58.1% v4=58.1% v5=58.1% v6=58.1% (len 7, om_v5=0)
+  [lmpaxp] base=98.0% v4=70.0% v5=97.9% v6=98.0% (len 15, om_v5=1)
+  [anchors] base=47.6% v4=47.6% v5=31.9% v6=47.6% (len 2, om_v5=2)
+  [shap] base=98.9% v4=70.0% v5=75.4% v6=73.5% (len 15, om_v5=8)
+  [lime] base=97.6% v4=42.8% v5=64.4% v6=37.5% (len 15, om_v5=6)
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop] base=55.6% v4=55.6% v5=55.6% v6=55.6% (len 7, om_v5=0)
+  [lmpaxp] base=97.4% v4=80.4% v5=93.6% v6=97.4% (len 18, om_v5=2)
+  [anchors] base=42.1% v4=36.0% v5=36.0% v6=33.7% (len 2, om_v5=1)
+  [shap] base=94.5% v4=76.7% v5=93.7% v6=84.5% (len 18, om_v5=6)

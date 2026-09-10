@@ -1,0 +1,189 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+heart,grok-4.20-0309-non-reasoning,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that this patient would die because the patient is male and the time since their diagnosis is between 4 and 67 days. The other time measurements do not apply here.,"The patient is a man. He was followed for less than 67 days. Because of this short follow-up time, he falls into the highest-risk period according to the model, which is why it predicts that he died.","1. The patient's sex is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501
+heart,grok-4.20-0309-non-reasoning,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,72.6,77.4,77.4,86.2,False,False,False,9,10,12,3,0,2,0,0,0,1,0,3,"[72.6, 64.2, 65.8, 77.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient had anaemia, diabetes, high blood pressure, and was a smoker. Their sex and platelet count also fell into the range linked to higher risk. 
+
+However, several other important measurements did not match the high-risk patterns the model looks for: their creatinine phosphokinase level was not in the range 23 to 157, their ejection fraction was not between 30 and 40, their serum creatinine was not between 0.5 and 1, and their serum sodium was not between 135 and 138. These factors that did not hold pushed against the prediction but were not strong enough to change the outcome.","The patient died from heart failure. This was predicted because they had anaemia, diabetes, high blood pressure, a normal platelet count between 47,000 and 225,000, were male, and smoked.
+
+In addition, their creatinine phosphokinase level was not in the range of 23 to 157, their ejection fraction was not between 30 and 40, their platelet count was not between 225,000 and 273,000, and their platelet count was not between 273,000 and 742,000.","1. The anaemia reading is between 0 and 1, which is true here.  
+2. The creatinine phosphokinase reading is between 23 and 157, which is not true here.  
+3. The diabetes reading is between 0 and 1, which is true here.  
+4. The ejection fraction reading is between 30 and 40, which is not true here.  
+5. The high blood pressure reading is between 0 and 1, which is true here.  
+6. The platelets reading is between 47000 and 225000, which is true here.  
+7. The platelets reading is between 225000 and 273000, which is not true here.  
+8. The platelets reading is between 273000 and 742000, which is not true here.  
+9. The serum creatinine reading is between 0.5 and 1, which is not true here.  
+10. The serum sodium reading is between 135 and 138, which is not true here.  
+11. The sex reading is between 0 and 1, which is true here.  
+12. The smoking reading is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'sex_b0 > 0.5', 'platelets_b1 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483
+heart,grok-4.20-0309-non-reasoning,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,87.6,57.4,87.6,88.3,False,False,False,3,2,4,1,0,2,0,0,0,0,0,3,"[87.6, 57.4, 57.4, 57.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive.
+
+This happened because the patient did not have a low ejection fraction reading (the heart's pumping strength was not between 15 and 30). Although the patient did have high blood pressure, this was not enough to change the outcome. The model also saw that the patient's follow-up time was not in the early period between 4 and 67.","The patient survived. This prediction is explained by the fact that their heart's ejection fraction was between 15 and 30, and the time since their diagnosis was between 4 and 67 days. The patient also had high blood pressure and was male.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The high blood pressure reading is between 0 and 1, which is true here.  
+3. The sex reading is between 0 and 1, which is true here.  
+4. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 23]","[11, 21]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519
+heart,grok-4.20-0309-non-reasoning,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,53.8,87.1,87.1,False,False,False,3,1,3,0,0,2,0,0,0,0,0,3,"[87.1, 53.8, 87.1, 53.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's ejection fraction was not in the range of 15 to 30, their smoking status fell in the range that points toward survival, and their follow-up time was not in the range of 4 to 67.","The patient survived. This outcome is explained by three key measurements: their heart's ejection fraction was between 15 and 30, they were a smoker, and the time since their diagnosis was between 4 and 67 days.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]",[22],"[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166
+heart,grok-4.20-0309-non-reasoning,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,47.7,70.0,70.0,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[70.0, 47.7, 70.0, 47.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, was a smoker, and their time value fell in the range of 4 to 67. All four of these measurements pointed toward a higher risk of death.","The patient died from heart failure. This happened because he had high blood pressure, was male, was a smoker, and was followed for a relatively short time (between 4 and 67 days).","1. The high blood pressure reading is between 0 and 1, which is true here.  
+2. The patient's sex reading is between 0 and 1, which is true here.  
+3. The smoking reading is between 0 and 1, which is true here.  
+4. The time reading is between 4 and 67, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956
+heart,grok-4.20-0309-non-reasoning,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,52.5,85.7,85.7,False,False,False,6,4,6,0,0,2,0,0,0,0,0,3,"[85.7, 52.5, 85.7, 52.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient has diabetes, high blood pressure, is male, and is a smoker. However, two important conditions in the rule were not met: the heart's ejection fraction was not between 15 and 30, and the follow-up time was not between 4 and 67. Because these last two conditions did not hold, the model decided the patient would survive.","**Refined explanation:**
+
+This patient survived. The model made this prediction because the person has diabetes, high blood pressure, is male, and is a smoker. However, two important protective factors were also present: their ejection fraction was between 15 and 30, and the time since diagnosis was between 4 and 67 days. These last two conditions were decisive enough for the model to predict survival despite the other risk factors.","1. The diabetes indicator is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is not true here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The smoking indicator is between 0 and 1, which is true here.  
+6. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 11, 21, 22]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514
+heart,grok-4.20-0309-non-reasoning,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,58.9,89.7,89.7,False,False,False,3,1,3,0,0,2,0,0,0,0,0,3,"[89.7, 58.9, 58.9, 58.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the time since their diagnosis was not between 4 and 67 days. The fact that the patient is male did support a higher risk of death, but it was not enough to change the overall prediction.","The patient survived. This was because their heart's pumping strength was measured between 15 and 30 percent, their time in the study was between 4 and 67 days, and they were male.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The patient's sex is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'sex_b0 > 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]",[21],"[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148
+heart,grok-4.20-0309-non-reasoning,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, was male, and had a follow-up time between 4 and 67 days. The fact that the follow-up time was not between 172 and 285 days also contributed to the prediction of death.","**Explanation:**
+
+This patient died from heart failure. The model reached this prediction mainly because the patient had high blood pressure, was male, and was followed for a relatively short time.
+
+More precisely: the person had high blood pressure (between 0 and 1), was male (between 0 and 1), and the follow-up time was between 4 and 67 days. The follow-up time was not in the much longer range of 172 to 285 days.","1. The high blood pressure reading is between 0 and 1, which is true here.  
+2. The patient's sex reading is between 0 and 1, which is true here.  
+3. The follow-up time reading is between 4 and 67, which is true here.  
+4. The follow-up time reading is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882
+heart,grok-4.20-0309-non-reasoning,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,70.3,71.0,71.0,71.0,False,False,False,7,9,9,2,0,0,0,0,0,0,0,3,"[70.3, 64.5, 53.7, 71.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die from heart failure. This happened for the following reasons:
+
+The patient has anaemia. They also have diabetes, high blood pressure, and they smoke. In addition, their serum creatinine level is in the highest range, between 1.3 and 9.
+
+Two of the measured values went against the prediction: their creatinine phosphokinase level is not in the low range of 23 to 157, and their serum creatinine is not in the low range of 0.5 to 1. However, the other factors were strong enough for the model to still predict death.","The patient died from heart failure. This was predicted because they had anaemia, diabetes, high blood pressure, were male, and smoked. Their serum creatinine level was high (between 1.3 and 9).
+
+In addition, their creatinine phosphokinase level was not in the lower range (not between 23 and 157), their serum creatinine was not in the lowest range (not between 0.5 and 1), and it was also not in the middle range (not between 1 and 1.3).","1. The patient has anaemia, which is between 0 and 1, and this is true here.  
+2. The creatinine phosphokinase level is between 23 and 157, which is not true here.  
+3. The patient has diabetes, which is between 0 and 1, and this is true here.  
+4. The patient has high blood pressure, which is between 0 and 1, and this is true here.  
+5. The serum creatinine level is between 0.5 and 1, which is not true here.  
+6. The serum creatinine level is between 1 and 1.3, which is not true here.  
+7. The serum creatinine level is between 1.3 and 9, which is true here.  
+8. The patient is male, which is between 0 and 1, and this is true here.  
+9. The patient is a smoker, which is between 0 and 1, and this is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 17, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872
+heart,grok-4.20-0309-non-reasoning,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.4, 56.7, 56.7, 88.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. 
+
+This happened because the patient's heart pumping strength was not in the 15 to 30 range, and the follow-up time was not between 4 and 67 days. These two missing conditions pulled the prediction toward survival. The patient did have high blood pressure and was male, but those factors were not enough to change the outcome.","The patient survived. This is explained by having a high blood pressure reading between 0 and 1, and being male (sex between 0 and 1). 
+
+In addition, the ejection fraction was not in the 15 to 30 range, and the follow-up time was not between 4 and 67 days.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The high blood pressure reading is between 0 and 1, which is true here.  
+3. The sex reading is between 0 and 1, which is true here.  
+4. The follow-up time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994
+heart,grok-4.20-0309-non-reasoning,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,89.7,89.7,89.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","The patient died. This matches what the model predicted.
+
+This outcome is explained by the following: the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. The follow-up time was not between 172 and 285 days.","1. The patient's sex measurement is between 0 and 1, which is true here.  
+2. The patient's smoking measurement is between 0 and 1, which is true here.  
+3. The patient's time measurement is between 4 and 67, which is true here.  
+4. The patient's time measurement is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934
+heart,grok-4.20-0309-non-reasoning,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.4, 93.4, 93.4, 93.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure, and their follow-up time fell into the range of 4 to 67 days. The other time measurements do not apply here.","The patient died from heart failure. This happened because they had high blood pressure and their follow-up time was very short, between 4 and 67 days. 
+
+The longer time periods (between 67 and 172 days, and between 172 and 285 days) did not apply to this patient.","1. The patient had high blood pressure, which is between 0 and 1, and this is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858
+heart,grok-4.20-0309-non-reasoning,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[88.1, 88.1, 53.8, 88.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that this patient would survive. This is because the patient has diabetes, has high blood pressure, and is male. However, the patient's heart pumping strength (ejection fraction) is not in the range of 15 to 30, and the time since their diagnosis is not in the range of 4 to 67. These last two measurements went against the prediction but were not strong enough to change the outcome.","The patient survived. This matches what we would expect for someone with diabetes, high blood pressure, and who is male. However, two important details point in the other direction: the heart’s ejection fraction was quite low (between 15 and 30), and the patient was followed for a relatively short time (between 4 and 67 days). These last two factors normally increase the risk of death, but in this case the model still predicted that the patient would survive.","1. The diabetes reading is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is not true here.  
+3. The high blood pressure reading is between 0 and 1, which is true here.  
+4. The sex reading is between 0 and 1, which is true here.  
+5. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148
+heart,grok-4.20-0309-non-reasoning,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,87.5,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[87.5, 87.5, 87.5, 87.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. 
+
+This happened because the patient is male, is a smoker, and had a follow-up time between 4 and 67 days. Although the patient did not have a follow-up time between 172 and 285 days, the other three factors were enough for the model to predict death.","The patient is a man who smokes. His follow-up time was between 4 and 67 days, which is quite short. Because his follow-up time was not between 172 and 285 days, the model predicted that he died.","1. The patient's sex measurement is between 0 and 1, which is true here.  
+2. The patient's smoking measurement is between 0 and 1, which is true here.  
+3. The patient's time measurement is between 4 and 67, which is true here.  
+4. The patient's time measurement is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894
+heart,grok-4.20-0309-non-reasoning,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[90.2, 90.2, 90.2, 90.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that this patient would die from heart failure. This is because the patient had high blood pressure and was a smoker. In addition, the time measurement was between 4 and 67, which also pointed toward a higher risk of death. Although one of the time conditions (between 172 and 285) did not hold, the other factors were enough for the model to predict mortality.","**Explanation:**
+
+This patient died from heart failure. The model reached this prediction mainly because the person had high blood pressure and was a smoker. In addition, the time since their diagnosis was between 4 and 67 days, which also pointed toward higher risk. The fact that their time since diagnosis was not in the 172 to 285 day range further supported the higher-risk prediction.","1. The patient had high blood pressure, which is between 0 and 1, and this is true here.  
+2. The patient was a smoker, which is between 0 and 1, and this is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724

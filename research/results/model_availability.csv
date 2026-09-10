@@ -1,0 +1,29 @@
+run_utc,model,verdict,detail
+2026-08-24T20:04:01Z,deepcogito/cogito-v2-1-671b,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-24T20:04:01Z,openai/gpt-oss-120b,OK,
+2026-08-24T20:04:01Z,openai/gpt-oss-20b,OK,
+2026-08-24T20:04:01Z,meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-24T20:04:01Z,meta-llama/Llama-3.3-70B-Instruct-Turbo,OK,
+2026-08-24T20:04:01Z,mistralai/Mistral-Small-24B-Instruct-2501,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-24T20:04:01Z,google/gemma-4-31B-it,OK,
+2026-08-24T20:04:01Z,Qwen/Qwen3-Next-80B-A3B-Instruct,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-24T20:04:01Z,MiniMaxAI/MiniMax-M3,OK,
+2026-08-24T20:04:01Z,arcee-ai/trinity-mini,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,MiniMaxAI/MiniMax-M3,OK,
+2026-08-25T21:40:05Z,Qwen/Qwen2.5-72B-Instruct-Turbo,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,Qwen/Qwen3.7-Max,STREAMING ONLY,runner uses non-streaming
+2026-08-25T21:40:05Z,deepcogito/cogito-v2-1-671b,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,deepseek-ai/DeepSeek-V4-Pro,OK,
+2026-08-25T21:40:05Z,google/gemma-4-31B-it,OK,
+2026-08-25T21:40:05Z,meta-llama/Llama-3.3-70B-Instruct-Turbo,OK,
+2026-08-25T21:40:05Z,mistralai/Mixtral-8x7B-Instruct-v0.1,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,moonshotai/Kimi-K2.7-Code,OK,
+2026-08-25T21:40:05Z,moonshotai/Kimi-K3,OK,
+2026-08-25T21:40:05Z,nvidia/Llama-3.1-Nemotron-70B-Instruct-HF,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:05Z,nvidia/nemotron-3-ultra-550b-a55b,OK,
+2026-08-25T21:40:05Z,openai/gpt-oss-120b,OK,
+2026-08-25T21:40:05Z,openai/gpt-oss-20b,OK,
+2026-08-25T21:40:05Z,zai-org/GLM-5.1,NOT SERVERLESS,needs a dedicated endpoint
+2026-08-25T21:40:35Z,zai-org/GLM-5.2,OK,
+2026-08-25T21:40:35Z,Qwen/Qwen3.8-2.4T,NOT FOUND,

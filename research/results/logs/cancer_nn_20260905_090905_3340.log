@@ -1,0 +1,20 @@
+Full console log -> research/results/logs/cancer_nn_20260905_090905_3340.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 2
+[cancer/gptoss120b] 90 rows, 55 to redo, model=openai/gpt-oss-120b provider=groq
+  [empty content, finish=length] raising max_tokens to 4096
+  inst   57 lime     v5= 89.60 (was 31.9) om=0 rounds=1
+  inst   62 cop      v5= 58.80 (was 28.2) om=0 rounds=0
+  [rate-limit] waiting 5s
+  [empty content, finish=length] raising max_tokens to 4096
+  [rate-limit] waiting 5s
+  inst   62 cop_k    v5= 66.90 (was 56.4) om=0 rounds=2
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 180s

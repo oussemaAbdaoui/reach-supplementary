@@ -1,0 +1,168 @@
+Full console log -> research/results/logs/employee_nn_gridllama33_20260830_023405_8208.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop] base=77.7% v4=77.7% v5=77.7% v6=77.7% (len 2, om_v5=0)
+  [lmpaxp] base=97.7% v4=97.7% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [anchors] base=77.1% v4=77.1% v5=77.1% v6=77.1% (len 2, om_v5=0)
+  [shap] base=96.2% v4=41.4% v5=79.6% v6=41.4% (len 6, om_v5=2)
+  [lime] base=97.0% v4=62.7% v5=51.9% v6=77.7% (len 6, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 44 calls, 17,778 in / 3,633 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop] base=64.6% v4=64.6% v5=64.6% v6=64.6% (len 1, om_v5=0)
+  [lmpaxp] base=97.9% v4=88.4% v5=97.9% v6=97.9% (len 5, om_v5=0)
+  [anchors] base=84.1% v4=84.1% v5=67.0% v6=59.1% (len 4, om_v5=1)
+  [shap] base=99.5% v4=74.7% v5=99.5% v6=86.2% (len 5, om_v5=0)
+  [lime] base=92.8% v4=92.8% v5=92.8% v6=53.5% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 90 calls, 35,645 in / 7,268 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop] base=64.1% v4=64.1% v5=64.1% v6=64.1% (len 1, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 3, om_v5=0)
+  [anchors] base=84.8% v4=84.8% v5=77.6% v6=84.8% (len 3, om_v5=1)
+  [shap] base=91.2% v4=95.5% v5=91.2% v6=91.2% (len 3, om_v5=0)
+  [lime] base=96.2% v4=95.5% v5=95.5% v6=75.3% (len 3, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 134 calls, 51,173 in / 9,992 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop] base=73.0% v4=73.0% v5=73.0% v6=73.0% (len 1, om_v5=0)
+  [lmpaxp] base=98.3% v4=98.3% v5=98.3% v6=98.3% (len 4, om_v5=0)
+  [anchors] base=99.9% v4=99.9% v5=99.9% v6=77.1% (len 5, om_v5=0)
+  [shap] base=98.4% v4=80.6% v5=98.4% v6=98.4% (len 4, om_v5=0)
+  [lime] base=98.0% v4=75.0% v5=78.2% v6=73.0% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 170 calls, 64,911 in / 12,400 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop] base=82.0% v4=82.0% v5=82.0% v6=82.0% (len 2, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 6, om_v5=0)
+  [anchors] base=74.8% v4=79.6% v5=79.6% v6=62.6% (len 3, om_v5=1)
+  [shap] base=91.6% v4=83.9% v5=91.4% v6=75.1% (len 6, om_v5=3)
+  [lime] base=95.2% v4=94.9% v5=87.5% v6=89.6% (len 6, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 214 calls, 82,699 in / 16,041 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop] base=64.8% v4=64.8% v5=64.8% v6=64.8% (len 1, om_v5=0)
+  [lmpaxp] base=99.6% v4=99.6% v5=99.6% v6=99.6% (len 4, om_v5=0)
+  [network: Connection error.] retry in 10s
+  [network: Connection error.] retry in 20s
+  [network: Connection error.] retry in 30s
+  [network: Connection error.] retry in 40s
+  [network: Connection error.] retry in 50s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 10s
+  [network: Connection error.] retry in 20s
+  [network: Connection error.] retry in 30s
+  [network: Connection error.] retry in 40s
+  [network: Connection error.] retry in 50s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [anchors] ERROR LLM: max retries exceeded
+  [network: Connection error.] retry in 10s
+  [network: Connection error.] retry in 20s
+  [network: Connection error.] retry in 30s
+  [network: Connection error.] retry in 40s
+  [network: Connection error.] retry in 50s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [network: Connection error.] retry in 60s
+  [shap] base=95.7% v4=95.7% v5=95.7% v6=64.8% (len 4, om_v5=0)
+  [lime] base=64.1% v4=44.5% v5=44.5% v6=38.9% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 246 calls, 94,515 in / 18,144 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop] base=61.8% v4=61.8% v5=61.8% v6=61.8% (len 1, om_v5=0)
+  [lmpaxp] base=98.6% v4=98.6% v5=98.6% v6=98.6% (len 7, om_v5=0)
+  [anchors] base=86.4% v4=86.4% v5=68.3% v6=86.4% (len 4, om_v5=1)
+  [shap] base=91.1% v4=77.0% v5=56.5% v6=69.0% (len 7, om_v5=3)
+  [lime] base=91.6% v4=62.6% v5=70.7% v6=81.3% (len 7, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 290 calls, 113,073 in / 22,052 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop] base=77.1% v4=77.1% v5=77.1% v6=77.1% (len 2, om_v5=0)
+  [lmpaxp] base=94.7% v4=94.7% v5=94.7% v6=94.7% (len 6, om_v5=0)
+  [anchors] base=71.3% v4=71.3% v5=76.6% v6=58.8% (len 3, om_v5=1)
+  [shap] base=92.0% v4=93.1% v5=71.9% v6=71.9% (len 6, om_v5=2)
+  [lime] base=90.7% v4=66.6% v5=92.7% v6=67.3% (len 6, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 340 calls, 133,290 in / 26,106 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop] base=78.7% v4=78.7% v5=78.7% v6=65.4% (len 2, om_v5=0)
+  [lmpaxp] base=96.6% v4=96.6% v5=96.6% v6=96.6% (len 7, om_v5=0)
+  [anchors] base=61.9% v4=61.9% v5=61.9% v6=61.9% (len 4, om_v5=0)
+  [shap] base=63.6% v4=58.9% v5=62.1% v6=46.4% (len 7, om_v5=4)
+  [lime] base=63.6% v4=46.2% v5=78.7% v6=68.9% (len 7, om_v5=5)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 384 calls, 152,164 in / 30,181 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop] base=61.2% v4=61.2% v5=61.2% v6=61.2% (len 1, om_v5=0)
+  [lmpaxp] base=95.0% v4=95.0% v5=95.0% v6=95.0% (len 4, om_v5=0)
+  [anchors] base=82.3% v4=74.4% v5=80.3% v6=82.3% (len 5, om_v5=1)
+  [shap] base=79.3% v4=66.8% v5=66.8% v6=66.8% (len 4, om_v5=1)
+  [lime] base=43.8% v4=43.8% v5=54.7% v6=47.9% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 428 calls, 168,788 in / 33,285 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop] base=81.5% v4=81.5% v5=81.5% v6=81.5% (len 3, om_v5=0)
+  [lmpaxp] base=98.5% v4=93.7% v5=53.4% v6=98.5% (len 7, om_v5=4)
+  [anchors] base=71.5% v4=71.5% v5=71.5% v6=71.5% (len 2, om_v5=0)
+  [shap] base=98.3% v4=49.3% v5=56.1% v6=41.5% (len 7, om_v5=3)
+  [lime] base=85.4% v4=42.8% v5=43.2% v6=79.1% (len 7, om_v5=7)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 478 calls, 190,121 in / 37,566 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop] base=61.9% v4=61.9% v5=61.9% v6=61.9% (len 1, om_v5=0)
+  [lmpaxp] base=95.1% v4=95.1% v5=95.1% v6=95.1% (len 8, om_v5=0)
+  [anchors] base=81.7% v4=81.7% v5=79.6% v6=76.4% (len 5, om_v5=1)
+  [shap] base=41.0% v4=63.8% v5=66.2% v6=66.2% (len 8, om_v5=6)
+  [lime] base=41.0% v4=76.4% v5=76.4% v6=66.2% (len 8, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 522 calls, 209,469 in / 41,829 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop] base=76.3% v4=76.3% v5=76.3% v6=76.3% (len 2, om_v5=0)
+  [lmpaxp] base=93.8% v4=93.8% v5=48.6% v6=93.8% (len 7, om_v5=2)
+  [anchors] base=61.4% v4=61.4% v5=47.7% v6=61.4% (len 4, om_v5=1)
+  [shap] base=63.0% v4=45.9% v5=56.7% v6=59.0% (len 7, om_v5=4)
+  [lime] base=63.0% v4=46.1% v5=47.9% v6=63.2% (len 7, om_v5=6)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 572 calls, 230,674 in / 46,228 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop] base=52.7% v4=52.7% v5=52.7% v6=52.7% (len 1, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 8, om_v5=0)
+  [anchors] base=70.4% v4=52.2% v5=52.2% v6=65.1% (len 4, om_v5=2)
+  [shap] base=6.1% v4=32.3% v5=44.1% v6=2.5% (len 8, om_v5=6)
+  [lime] base=8.9% v4=4.2% v5=35.3% v6=42.6% (len 8, om_v5=5)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 616 calls, 250,243 in / 50,750 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop] base=77.0% v4=77.0% v5=77.0% v6=77.0% (len 2, om_v5=0)
+  [lmpaxp] base=95.4% v4=85.9% v5=95.4% v6=95.4% (len 7, om_v5=0)
+  [anchors] base=81.2% v4=81.2% v5=81.2% v6=81.2% (len 3, om_v5=0)
+  [shap] base=94.0% v4=96.4% v5=75.9% v6=79.4% (len 7, om_v5=3)
+  [lime] base=90.6% v4=95.0% v5=94.2% v6=70.8% (len 7, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 664 calls, 270,552 in / 54,965 out
+
+saved -> research/results/employee_nn_comparison_gridllama33.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       3.64               77.77     76.25     72.89          77.39     71.84
+cop           1.53               70.29     70.29     70.29          70.29     69.41
+lime          5.93               74.79     63.27     69.61          82.45     66.35
+lmpaxp        5.93               96.69     95.11     90.67          96.37     96.69
+shap          5.93               80.07     70.35     74.14          84.75     63.99
+
+WeakPAXp pass rates (baseline / v5):
+        baseline_weak_paxp weak_paxp_v5
+arm                                    
+anchors           0.071429     0.071429
+cop                    0.0          0.0
+lime              0.266667     0.066667
+lmpaxp            0.866667          0.8
+shap              0.333333          0.2

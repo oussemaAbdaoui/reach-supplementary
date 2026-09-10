@@ -1,0 +1,72 @@
+=== glm52 (zai-org/GLM-5.2 via together) order: diabetes compas heart employee cancer  start 01:23:56 ===
+--- glm52/diabetes main  01:23:56 ---
+arm                                      
+anchors                0.20          0.13
+cop                    0.00          0.00
+lime                   0.13          0.13
+lmpaxp                 0.93          0.87
+shap                   0.47          0.40
+--- glm52/diabetes cop_k  02:13:10 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+  diabetes/glm52: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_glm52_Ufitcop_k.csv
+--- glm52/compas main  02:34:26 ---
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+lime                   0.53          0.47
+lmpaxp                 1.00          0.73
+shap                   0.53          0.47
+--- glm52/compas cop_k  03:04:01 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  compas/glm52: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_glm52_Ufitcop_k.csv
+--- glm52/heart main  03:12:28 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.47
+lmpaxp                 0.87          0.87
+shap                   0.80          0.60
+--- glm52/heart cop_k  03:47:03 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  heart/glm52: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_heart_nn_comparison_glm52_Ufitcop_k.csv
+--- glm52/employee main  03:58:23 ---
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.13
+lmpaxp                 0.87          0.87
+shap                   0.33          0.27
+--- glm52/employee cop_k  04:24:05 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+  employee/glm52: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_glm52_Ufitcop_k.csv
+--- glm52/cancer main  04:36:08 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.13          0.07
+lmpaxp                 0.87          0.73
+shap                   0.80          0.20
+--- glm52/cancer cop_k  05:24:06 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.13
+  cancer/glm52: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_glm52_Ufitcop_k.csv
+=== glm52 complete  05:46:25 ===

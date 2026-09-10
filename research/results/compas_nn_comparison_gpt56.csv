@@ -1,0 +1,946 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec,v5_rerun
+compas,gpt-5.6-terra,51,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,63.6,False,63.6,63.6,63.6,63.6,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[63.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). This explanation is consistent with the model because the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are all between 0 and 1.
+
+One listed condition does not hold: the number of prior offenses is not between 3 and 36.","The model predicted “not guilty” (class 0). This explanation is consistent with the model because the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are all between 0 and 1.
+
+One listed condition does not hold: the number of prior offenses is not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being older than 45 is between 0 and 1, which is true for this case.  
+4. Being younger than 25 is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6732,,,1
+compas,gpt-5.6-terra,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,70.7,False,70.7,70.7,70.7,70.7,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[70.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Elle est associée au fait que le facteur de score est entre 0 et 1, que l’indicateur « plus de 45 ans » est entre 0 et 1, que l’indicateur « moins de 25 ans » est entre 0 et 1, et que l’indicateur « afro-américain » est entre 0 et 1.
+
+La condition sur le nombre d’antécédents ne s’applique pas : le modèle attendait un nombre d’antécédents entre 3 et 36, mais cette condition n’est pas satisfaite.","La prédiction est « non coupable » (classe 0). Elle est associée au fait que le facteur de score est entre 0 et 1, que l’indicateur « plus de 45 ans » est entre 0 et 1, que l’indicateur « moins de 25 ans » est entre 0 et 1, et que l’indicateur « afro-américain » est entre 0 et 1.
+
+La condition sur le nombre d’antécédents ne s’applique pas : le modèle attendait un nombre d’antécédents entre 3 et 36, mais cette condition n’est pas satisfaite.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above forty-five years old is between 0 and 1, which is true for this case.  
+4. Being below twenty-five years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6732,,,1
+compas,gpt-5.6-terra,51,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,97.8,True,97.8,97.8,97.8,88.6,True,True,False,5,5,3,0,0,0,0,2,0,0,2,0,[97.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont les suivants : le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici. En revanche, il ne se situe pas entre 3 et 36. L’indicateur d’âge inférieur à 25 ans correspond à une valeur entre 0 et 1, et cette condition est satisfaite. Les indicateurs « autre » et « délit mineur » sont également entre 0 et 1, et ces deux conditions sont satisfaites.","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont les suivants : le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici. En revanche, il ne se situe pas entre 3 et 36. L’indicateur d’âge inférieur à 25 ans correspond à une valeur entre 0 et 1, et cette condition est satisfaite. Les indicateurs « autre » et « délit mineur » sont également entre 0 et 1, et ces deux conditions sont satisfaites.","1. The number of prior offences is between 1 and 3, which is true here.  
+2. The number of prior offences is between 3 and 36, which is not true here.  
+3. The person is under 25 years old, which is true here.  
+4. The alleged offence is not classified as “other,” which is true here.  
+5. The alleged offence is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 > 0.5', 'misdemeanor_b0 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5]",,,,,0.9768185451638688,,1
+compas,gpt-5.6-terra,51,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.1,False,64.1,64.1,64.1,64.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[64.1],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF female_b0 = 1 AND number_of_priors_b2 = 0 THEN class 0","La prédiction est « non coupable » (classe 0). Elle s’appuie sur le fait que la personne est indiquée comme étant une femme et qu’elle n’a aucun antécédent judiciaire. Ensemble, ces deux informations correspondent à une règle qui prédit la classe 0 avec une précision estimée de 1,00.","La prédiction est « non coupable » (classe 0). Elle s’appuie sur le fait que la personne est indiquée comme étant une femme et qu’elle n’a aucun antécédent judiciaire. Ensemble, ces deux informations correspondent à une règle qui prédit la classe 0 avec une précision estimée de 1,00.","1. The person is female, which pushed the prediction towards not being guilty.  
+2. The person has no prior convictions, which pushed the prediction towards not being guilty.","['female_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['female_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[2, 11]","[2, 11]","[2, 11]","[2, 11]",,,,,,1.0,1
+compas,gpt-5.6-terra,51,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,47.7,False,54.7,47.7,54.7,28.2,False,False,False,3,5,2,2,0,0,0,3,0,0,3,2,"[54.7, 24.3, 47.7]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle prédit que cette personne n’est pas coupable (classe 0). La principale raison est que l’indicateur correspondant à deux antécédents n’est pas présent, ce qui soutient cette prédiction (49,7 % de l’influence). Le fait que l’indicateur correspondant à un antécédent soit présent soutient aussi la prédiction (18,0 %).
+
+En revanche, l’indicateur indiquant zéro antécédent n’est pas présent, ce qui va dans le sens opposé à la prédiction (32,3 %). Les indicateurs liés au score et au fait d’avoir plus de 45 ans n’ont pas eu d’influence notable sur la décision.","Le modèle prédit que cette personne n’est pas coupable (classe 0). La principale raison est qu’elle n’a pas deux antécédents ou plus, ce qui soutient fortement cette prédiction (49,7 %). Le fait d’avoir exactement un antécédent la soutient également (18,0 %).
+
+À l’inverse, le fait de ne pas avoir zéro antécédent va dans le sens opposé à cette prédiction (32,3 %). Le score de risque le plus bas et le fait d’avoir 45 ans ou moins ont une influence nulle ou négligeable.","1. The number of prior offenses in the highest listed category pushed the prediction towards not guilty.  
+2. The number of prior offenses in the lowest listed category pushed against the prediction of not guilty, but was outweighed.  
+3. The number of prior offenses in the middle listed category pushed the prediction towards not guilty.  
+4. The score factor pushed against the prediction of not guilty, but was outweighed.  
+5. Being above forty-five years old pushed against the prediction of not guilty, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,51,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,59.8,False,68.7,44.4,68.7,68.7,False,False,False,1,2,1,4,0,3,0,4,0,4,4,3,"[68.7, 63.5, 63.5, 44.4]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1926 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1761 (supports the prediction)
+  number_of_priors_b1: weight=-0.0415 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  score_factor_b0: weight=+0.0000 (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). La principale raison est l’absence d’antécédents judiciaires : cet indicateur soutient la prédiction de non-culpabilité.
+
+La présence d’un antécédent judiciaire va légèrement dans le sens opposé, donc vers la culpabilité. L’indicateur correspondant à deux antécédents ne s’applique pas ici, mais son absence a également eu une influence allant légèrement contre cette prédiction. Les indicateurs liés à une infraction mineure et au facteur de score n’ont pratiquement pas influencé la décision.","Le modèle a prédit « non coupable » (classe 0). Le fait d’avoir zéro antécédent judiciaire soutient cette prédiction. À l’inverse, avoir un antécédent judiciaire la contredit légèrement. La catégorie de deux antécédents va aussi dans le sens opposé, mais elle ne s’applique pas à cette personne.
+
+Le fait que l’infraction soit une infraction mineure n’a pratiquement eu aucune influence. De même, le score de risque dans sa première catégorie n’a pas influencé la décision.","1. The number of previous convictions at the highest level pushed against this class, but was outweighed.  
+2. The number of previous convictions at the lowest level pushed the prediction towards this class.  
+3. The number of previous convictions at the middle level pushed against this class, but was outweighed.  
+4. The misdemeanor status pushed against this class, but was outweighed.  
+5. The score factor pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 < 0.5', 'misdemeanor_b0 < 0.5', 'score_factor_b0 < 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'misdemeanor_b0 < 0.5', 'score_factor_b0 < 0.5']","[0, 1, 2, 3, 12]",[2],"[3, 12]",[2],,,,,,,1
+compas,gpt-5.6-terra,178,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,66.1,False,66.0,66.1,66.1,66.1,False,False,False,2,7,7,5,0,0,0,0,0,5,0,1,"[66.0, 66.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted not guilty (class 0). The rule indicates that the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are each between 0 and 1.
+
+The condition for having 3 to fewer than 36 prior offenses does not hold for this individual.","The model predicted not guilty (class 0). The score factor is between 0 and 1. The indicators for being above 45 years old, below 25 years old, African American, Asian, and Hispanic are also each between 0 and 1.
+
+The condition of having between 3 and fewer than 36 prior offenses does not hold for this individual.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true here.  
+3. Being above forty-five years old is between 0 and 1, which is true here.  
+4. Being below twenty-five years old is between 0 and 1, which is true here.  
+5. Being African American is between 0 and 1, which is true here.  
+6. Being Asian is between 0 and 1, which is true here.  
+7. Being Hispanic is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.66,,,1
+compas,gpt-5.6-terra,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.0,False,66.0,66.0,66.0,66.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[66.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Le score factoriel est compris entre 0 et 1, ce qui correspond à la condition observée et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","La prédiction est « non coupable » (classe 0). Le score factoriel est compris entre 0 et 1, ce qui correspond à la condition observée et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.66,,,1
+compas,gpt-5.6-terra,178,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.5,True,98.5,98.5,98.5,98.5,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.5],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui correspond à l’indicateur favorable à cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36, donc cette seconde condition n’est pas remplie.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui correspond à l’indicateur favorable à cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36, donc cette seconde condition n’est pas remplie.","1. The number of previous convictions is between 0 and 1, which is true here.  
+2. The number of previous convictions is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.988009592326139,,1
+compas,gpt-5.6-terra,178,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,59.8,False,39.4,59.8,59.8,39.4,False,False,False,1,2,1,1,0,0,0,1,0,1,1,1,"[39.4, 59.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF african_american_b0 = 1 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0). Elle s’appuie sur deux informations présentes pour cette personne : elle est indiquée comme afro-américaine et elle n’a aucun antécédent judiciaire. Dans les données utilisées par le modèle, cette combinaison correspond toujours à une prédiction de non-culpabilité, avec une précision estimée de 100 %.","La prédiction est « non coupable » (classe 0). Elle s’appuie sur le fait que la personne est indiquée comme afro-américaine et qu’elle n’a aucun antécédent judiciaire (0 antécédent). Dans les données utilisées par le modèle, cette combinaison correspond toujours à une prédiction de non-culpabilité, avec une précision estimée de 100 %.","1. Having no prior convictions is true in this case and supports the prediction of not guilty.  
+2. Being identified as African American is true in this case and supports the prediction of not guilty.","['african_american_b0 > 0.5', 'number_of_priors_b0 < 0.5']","['number_of_priors_b0 < 0.5', 'african_american_b0 > 0.5']","[0, 6]",[6],"[0, 6]",[6],,,,,,1.0,1
+compas,gpt-5.6-terra,178,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.5,True,70.8,98.5,98.5,44.7,False,True,False,1,2,0,1,0,0,0,2,0,1,1,1,"[70.8, 98.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","La prédiction est « non coupable ». Les deux indicateurs disponibles vont dans ce sens : l’absence de la condition associée à la deuxième catégorie du nombre d’antécédents soutient cette conclusion (61,3 % de l’influence), et le fait que la condition associée à la troisième catégorie ne soit pas remplie la soutient également (38,7 %).","La prédiction est « non coupable ». Le fait que la personne ait moins de deux antécédents soutient surtout cette conclusion (61,3 % de l’influence). L’absence d’un nombre d’antécédents correspondant à la troisième catégorie soutient également la prédiction (38,7 %).",1. The number of prior offenses pushed the prediction towards this class.,"['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']",['number_of_priors_b2 > 0.5'],"[0, 2]",[2],"[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,178,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.5,True,70.8,98.5,98.5,70.8,False,True,False,1,2,1,1,0,0,0,1,0,1,1,1,"[70.8, 98.5]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1925 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1769 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Les deux informations disponibles allaient toutefois plutôt à l’encontre de cette prédiction : l’indicateur correspondant à l’absence de condamnations antérieures n’est pas présent, tandis que l’indicateur correspondant à une autre catégorie de nombre de condamnations antérieures est également absent.","La prédiction est « non coupable » (classe 0). Les deux indicateurs disponibles s’opposent légèrement à cette prédiction : la personne a zéro condamnation antérieure, et elle n’appartient pas à la catégorie correspondant à deux condamnations antérieures ou plus.","1. Having two prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]",[2],"[0, 2]",[2],,,,,,,1
+compas,gpt-5.6-terra,209,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.1,False,64.1,64.1,64.1,64.1,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[64.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). The score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are all between 0 and 1 in the way captured by this rule. The condition for having 3 to fewer than 36 prior offenses does not hold.","The model predicted “not guilty” (class 0). The score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are all between 0 and 1 in the way captured by this rule. The condition for having 3 to fewer than 36 prior offenses does not hold.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above 45 years old is between 0 and 1, which is true for this case.  
+4. Being below 25 years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6646,,,1
+compas,gpt-5.6-terra,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.1,False,72.1,72.1,72.1,72.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[72.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score est compris entre 0 et 1, l’indicateur d’âge au-dessus de 45 ans est compris entre 0 et 1, l’indicateur d’âge en dessous de 25 ans est compris entre 0 et 1, et l’indicateur d’appartenance afro-américaine est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents judiciaires ne tient pas : il faudrait que ce nombre soit entre 3 et 36, mais ce n’est pas le cas ici.","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score est compris entre 0 et 1, l’indicateur d’âge au-dessus de 45 ans est compris entre 0 et 1, l’indicateur d’âge en dessous de 25 ans est compris entre 0 et 1, et l’indicateur d’appartenance afro-américaine est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents judiciaires ne tient pas : il faudrait que ce nombre soit entre 3 et 36, mais ce n’est pas le cas ici.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being older than 45 is between 0 and 1, which is true for this case.  
+4. Being younger than 25 is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646,,,1
+compas,gpt-5.6-terra,209,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.0,True,74.3,98.0,98.0,88.7,False,True,False,2,5,3,3,0,0,0,2,0,3,2,1,"[74.3, 98.0]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont les suivants :
+
+- Le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici.
+- La condition correspondant à un nombre d’antécédents entre 3 et 36 ne s’applique pas ici.
+- La personne n’a pas moins de 25 ans.
+- L’infraction n’est pas classée dans la catégorie « autre ».
+- L’infraction n’est pas un délit mineur.
+
+Ensemble, ces informations conduisent le modèle à prédire la classe 0.","La prédiction est « non coupable » (classe 0). Les conditions retenues sont les suivantes : le nombre d’antécédents est compris entre 1 et 3 ; il n’est pas compris entre 3 et 36 ; la personne a moins de 25 ans ; l’infraction est classée dans la catégorie « autre » ; et elle est un délit mineur. Ensemble, ces éléments conduisent le modèle à prédire la classe 0.","1. The number of prior offenses is between 1 and 3, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.  
+3. The person is younger than 25 years old, which is true here.  
+4. The alleged offense is not classified as “other,” which is true here.  
+5. The alleged offense is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2]","[1, 2, 5, 10, 12]","[1, 2, 5]",,,,,0.9704236610711432,,1
+compas,gpt-5.6-terra,209,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,43.0,False,49.8,49.8,49.8,49.8,False,False,False,1,1,1,1,0,1,0,1,0,1,1,3,"[49.8, 49.8, 49.8, 49.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF african_american_b0 = 1 AND number_of_priors_b1 = 1 THEN class 0","La prédiction est « non coupable ». Elle s’appuie sur deux indicateurs présents pour cette personne : elle est indiquée comme n’étant pas afro-américaine et comme ayant au moins une condamnation antérieure. Ensemble, ces deux éléments correspondent exactement à une règle qui a donné la classe « non coupable » avec une précision estimée de 100 %.",La prédiction est « non coupable ». Elle s’appuie sur le fait que la personne n’est pas indiquée comme afro-américaine et qu’elle a au moins une condamnation antérieure. Ces deux éléments réunis correspondent à une règle dont la précision estimée est de 100 % pour prédire « non coupable ».,"1. The person has at least one prior offense, and being recorded as not African American together indicated a prediction of not guilty.","['african_american_b0 < 0.5', 'number_of_priors_b1 > 0.5']","['number_of_priors_b1 > 0.5', 'african_american_b0 < 0.5']","[1, 6]",[1],[1],[1],,,,,,1.0,1
+compas,gpt-5.6-terra,209,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,51.0,False,27.1,24.5,43.7,27.1,False,False,False,2,4,2,3,0,1,0,3,0,2,3,3,"[27.1, 43.7, 27.1, 24.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle prédit que la personne n’est pas coupable (classe 0). La raison principale est que l’indicateur correspondant à deux antécédents judiciaires n’est pas présent, ce qui soutient fortement cette prédiction (49,7 %). L’indicateur correspondant à un antécédent judiciaire est présent et soutient aussi la prédiction (18,0 %).
+
+En revanche, l’absence d’antécédent judiciaire pousse dans le sens opposé, vers la culpabilité (32,3 %). Les indicateurs liés au facteur de score et au fait d’avoir plus de 45 ans n’ont pratiquement pas influencé la décision.","Le modèle prédit que la personne n’est pas coupable (classe 0). Le fait d’avoir moins de deux antécédents judiciaires, et en particulier exactement un antécédent, soutient cette prédiction. L’absence de deux antécédents est le facteur principal (49,7 %), suivie du fait d’en avoir exactement un (18,0 %).
+
+À l’inverse, le fait de ne pas avoir zéro antécédent, donc d’avoir au moins un antécédent, pousse la décision vers la culpabilité (32,3 %). Le score dans sa première catégorie et le fait d’avoir 45 ans ou moins n’ont pas eu d’influence notable.","1. A higher number of prior offenses pushed the prediction towards not guilty.  
+2. Having no prior offenses pushed against the not-guilty prediction, but was outweighed.  
+3. Having one prior offense pushed the prediction towards not guilty.  
+4. The score factor pushed against the not-guilty prediction, but was outweighed.  
+5. Being age 45 or younger pushed against the not-guilty prediction, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1]","[0, 1, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,209,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.5,False,27.1,75.5,86.7,49.8,False,False,False,2,5,1,3,0,0,0,4,0,2,4,3,"[27.1, 68.0, 86.7, 75.5]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1927 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1766 (supports the prediction)
+  number_of_priors_b1: weight=-0.0418 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  hispanic_b0: weight=+0.0000 (opposes the prediction)","The model predicted “not guilty.” The main reason was that the person had no prior convictions, which pushed the prediction toward not guilty.
+
+The person did have one prior-conviction indicator active, which pushed slightly against the not-guilty prediction. The two other prior-conviction indicators were not active; one of these also counted against the prediction in the local explanation.
+
+The misdemeanor and Hispanic indicators did not meaningfully affect this prediction.","The model predicted “not guilty.” Having no prior convictions was the main factor supporting that prediction; this person did not have zero prior convictions.
+
+The person had one prior conviction, which slightly pushed against the “not guilty” prediction. They did not have two or more prior convictions; in this local comparison, having two or more priors would also have pushed against “not guilty.”
+
+The person was Hispanic, and the case was a misdemeanor. Neither had a meaningful effect on the prediction.","1. Having two or more prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed the prediction towards this class.  
+3. Having exactly one prior conviction pushed against this class, but was outweighed.  
+4. Not having a misdemeanor charge pushed against this class, but was outweighed.  
+5. Not being Hispanic pushed against this class, but was outweighed.","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","[0, 1, 2, 8, 12]","[0, 1]","[0, 1, 2, 8, 12]",[1],,,,,,,1
+compas,gpt-5.6-terra,228,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.9,False,64.1,64.9,64.9,64.9,False,False,False,2,7,7,5,0,0,0,0,0,5,0,1,"[64.1, 64.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted not guilty (class 0). The score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are all between 0 and 1.
+
+The condition involving prior offenses does not hold: the number of prior offenses is not between 3 and 36.","The model predicted not guilty (class 0). The score factor is between 0 and 1. The indicators for being above 45, below 25, African American, Asian, and Hispanic are each between 0 and 1.
+
+The condition involving prior offenses does not hold: the number of prior offenses is not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above forty-five years old is between 0 and 1, which is true for this case.  
+4. Being below twenty-five years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6682,,,1
+compas,gpt-5.6-terra,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.1,False,64.1,64.1,64.1,64.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[64.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","La prédiction est « non coupable ». Le score factor se situe entre 0 et 1, et cette condition est remplie. En revanche, le nombre de condamnations antérieures ne se situe pas entre 3 et 36 ; cette condition n’est donc pas remplie.","La prédiction est « non coupable ». Le score factor se situe entre 0 et 1, et cette condition est remplie. En revanche, le nombre de condamnations antérieures ne se situe pas entre 3 et 36 ; cette condition n’est donc pas remplie.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6682,,,1
+compas,gpt-5.6-terra,228,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,98.8,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est compris entre 0 et 1, ce qui soutient cette prédiction. En revanche, il n’est pas compris entre 3 et 36 ; cette condition ne s’applique donc pas à cette personne.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est compris entre 0 et 1, ce qui soutient cette prédiction. En revanche, il n’est pas compris entre 3 et 36 ; cette condition ne s’applique donc pas à cette personne.","1. The number of prior offenses is between 0 and 1, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.9896083133493204,,1
+compas,gpt-5.6-terra,228,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,73.2,False,73.2,73.2,73.2,44.9,False,False,False,2,2,0,0,0,0,0,2,0,0,1,0,[73.2],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF other_b0 = 1 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0) parce que les deux informations disponibles correspondent à une règle qui a été très fiable ici : l’indicateur « autre » est présent et l’indicateur concernant le nombre d’antécédents est présent. Ensemble, ces deux éléments mènent à la classe 0, avec une précision estimée de 1,00 pour cette règle.","La prédiction est « non coupable » (classe 0) parce que les deux informations disponibles correspondent à une règle qui a été très fiable ici : l’indicateur « autre » est présent et l’indicateur concernant le nombre d’antécédents est présent. Ensemble, ces deux éléments mènent à la classe 0, avec une précision estimée de 1,00 pour cette règle.",1. Having no prior convictions applies here and supports the prediction of not guilty.,"['other_b0 > 0.5', 'number_of_priors_b0 > 0.5']",['number_of_priors_b0 < 0.5'],"[0, 10]","[0, 10]","[0, 10]",[],,,,,,1.0,1
+compas,gpt-5.6-terra,228,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,69.7,98.8,98.8,67.0,False,True,False,1,2,1,1,0,0,0,1,0,1,0,1,"[69.7, 98.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","La prédiction est « non coupable » (classe 0). Deux indicateurs soutiennent cette décision : l’absence de l’indicateur correspondant à la deuxième catégorie du nombre d’antécédents contribue le plus (61,3 %), et l’absence de l’indicateur correspondant à la troisième catégorie contribue également (38,7 %).","La prédiction est « non coupable » (classe 0). Le fait que la personne soit dans la première catégorie du nombre d’antécédents soutient surtout cette décision (61,3 %). L’absence d’appartenance à la troisième catégorie du nombre d’antécédents la soutient également (38,7 %).",1. Having no prior convictions pushed the prediction towards this class.,"['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']",['number_of_priors_b0 > 0.5'],"[0, 2]",[2],"[0, 2]",[0],,,,,,,1
+compas,gpt-5.6-terra,228,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,44.9,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1919 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1768 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Les deux indicateurs disponibles ont toutefois légèrement poussé dans le sens opposé, c’est-à-dire vers la classe « coupable » : l’indicateur lié au nombre d’antécédents correspondant à la première catégorie est présent, tandis que celui correspondant à la troisième catégorie n’est pas présent. Malgré ces influences opposées à la prédiction, le modèle a finalement retenu la classe « non coupable ».","La prédiction est « non coupable » (classe 0). Les deux indicateurs disponibles ont toutefois légèrement poussé dans le sens opposé, c’est-à-dire vers la classe « coupable » : l’indicateur lié au nombre d’antécédents correspondant à la première catégorie est présent, tandis que celui correspondant à la troisième catégorie n’est pas présent. Malgré ces influences opposées à la prédiction, le modèle a finalement retenu la classe « non coupable ».","1. Having two or more previous convictions pushed against this class, but was outweighed.  
+2. Having no previous convictions pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,285,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,67.2,False,66.1,67.2,67.2,67.2,False,False,False,2,7,7,5,0,0,0,0,0,5,0,1,"[66.1, 67.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). This decision is consistent with the score factor being between 0 and 1, and with the indicators for being over 45, under 25, African American, Asian, and Hispanic all being between 0 and 1.
+
+The condition about having 3 to fewer than 36 prior offenses does not hold for this individual.","The model predicted “not guilty” (class 0). This is consistent with the score factor being between 0 and 1; the over-45 indicator being between 0 and 1; the under-25 indicator being between 0 and 1; and the African American, Asian, and Hispanic indicators each being between 0 and 1.
+
+The condition of having from 3 up to, but not including, 36 prior offenses does not hold for this individual.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being older than 45 is between 0 and 1, which is true for this case.  
+4. Being younger than 25 is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6752,,,1
+compas,gpt-5.6-terra,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.1,False,66.1,66.1,66.1,66.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[66.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","La prédiction est « non coupable ». Le score factor est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","La prédiction est « non coupable ». Le score factor est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6752,,,1
+compas,gpt-5.6-terra,285,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.6,True,98.6,98.6,98.6,66.9,True,True,False,2,2,1,0,0,0,0,1,0,0,0,0,[98.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas.","1. The number of previous convictions is between 0 and 1, which is true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']",['number_of_priors_b0 > 0.5'],"[0, 2]","[0, 2]","[0, 2]",[0],,,,,0.9904076738609112,,1
+compas,gpt-5.6-terra,285,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,75.4,False,75.4,75.4,75.4,49.2,False,False,False,2,2,1,0,0,0,0,1,0,0,0,0,[75.4],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF hispanic_b0 = 1 AND number_of_priors_b2 = 0 THEN class 0","La prédiction est « non coupable ». Elle s’appuie sur le fait que la personne est indiquée comme hispanique et qu’elle n’a aucun antécédent judiciaire. Dans les données utilisées par le modèle, cette combinaison correspond à la classe « non coupable » avec une précision estimée de 100 %.","La prédiction est « non coupable ». Elle s’appuie sur le fait que la personne est indiquée comme hispanique et qu’elle n’a aucun antécédent judiciaire. Dans les données utilisées par le modèle, cette combinaison correspond à la classe « non coupable » avec une précision estimée de 100 %.","1. The person is Hispanic, which pushed the prediction toward not guilty.","['hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']",['hispanic_b0 > 0.5'],"[2, 8]","[2, 8]","[2, 8]",[8],,,,,,1.0,1
+compas,gpt-5.6-terra,285,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.6,True,98.6,98.6,98.6,44.7,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.6],0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","La prédiction est « non coupable ». Le fait que la personne ait zéro antécédent dans la deuxième catégorie d’antécédents a soutenu cette conclusion (38,7 % de l’influence). Le premier indicateur d’antécédents était actif et a également soutenu la prédiction (61,3 %).","La prédiction est « non coupable ». Le fait que la personne ait zéro antécédent dans la deuxième catégorie d’antécédents a soutenu cette conclusion (38,7 % de l’influence). Le premier indicateur d’antécédents était actif et a également soutenu la prédiction (61,3 %).","1. Having no prior convictions pushed the prediction towards this class.  
+2. Having two or more prior convictions pushed the prediction towards this class.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 > 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,285,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.6,True,98.6,98.6,98.6,71.0,True,True,False,2,2,1,0,0,0,0,1,0,0,1,0,[98.6],0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1924 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1770 (opposes the prediction)","La prédiction est « non coupable » (classe 0). L’indicateur « aucun antécédent » est présent, tandis que l’indicateur correspondant à un niveau plus élevé d’antécédents ne l’est pas. Dans cette explication locale, ces deux éléments vont légèrement à l’encontre de la prédiction « non coupable », mais leur influence est faible.","La prédiction est « non coupable » (classe 0). L’indicateur « aucun antécédent » est présent, tandis que l’indicateur correspondant à un niveau plus élevé d’antécédents ne l’est pas. Dans cette explication locale, ces deux éléments vont légèrement à l’encontre de la prédiction « non coupable », mais leur influence est faible.","1. Having two prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[2],,,,,,,1
+compas,gpt-5.6-terra,457,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.8,False,64.6,54.9,64.6,64.8,False,False,False,2,5,7,5,0,2,0,0,0,5,0,3,"[64.6, 54.9, 54.9, 54.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). This is supported by the score factor being between 0 and 1, and by the indicators for being above 45, below 25, African American, Asian, and Hispanic all being between 0 and 1.
+
+The condition related to having 3 to fewer than 36 prior offenses does not hold for this individual.","The model predicted “not guilty” (class 0). This is supported by a score factor between 0 and 1, being neither above 45 nor below 25 years old, and ethnicity indicators for African American, Asian, and Hispanic each between 0 and 1.
+
+The condition of having between 3 and fewer than 36 prior offenses does not hold for this individual.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true here.  
+3. Being above forty-five years old is between 0 and 1, which is true here.  
+4. Being below twenty-five years old is between 0 and 1, which is true here.  
+5. Being African American is between 0 and 1, which is true here.  
+6. Being Asian is between 0 and 1, which is true here.  
+7. Being Hispanic is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6662,,,1
+compas,gpt-5.6-terra,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.6,False,64.6,64.6,64.6,64.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[64.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","La prédiction est « non coupable ». Le score factoriel est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle. En revanche, le nombre de condamnations antérieures n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas.","La prédiction est « non coupable ». Le score factoriel est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle. En revanche, le nombre de condamnations antérieures n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6662,,,1
+compas,gpt-5.6-terra,457,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,98.8,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable » (classe 0). Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas.","La prédiction est « non coupable » (classe 0). Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas.","1. The number of previous convictions is between 0 and 1, which is true here.  
+2. The number of previous convictions is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.9864108713029576,,1
+compas,gpt-5.6-terra,457,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,69.8,True,True,False,2,2,1,0,0,0,0,1,0,0,1,0,[98.8],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0) parce que les deux indicateurs observés correspondent exactement à une règle associée à cette classe : l’indicateur lié au nombre d’antécédents dans la deuxième catégorie vaut 0, et celui de la première catégorie vaut 1. Pour des cas présentant cette combinaison, la règle a une précision estimée à 1,00.","La prédiction est « non coupable » (classe 0) parce que les deux indicateurs observés correspondent exactement à une règle associée à cette classe : l’indicateur lié au nombre d’antécédents dans la deuxième catégorie vaut 0, et celui de la première catégorie vaut 1. Pour des cas présentant cette combinaison, la règle a une précision estimée à 1,00.","1. The individual has no prior convictions in the measured category, which pushed the prediction towards not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[2],,,,,,1.0,1
+compas,gpt-5.6-terra,457,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,42.3,True,True,False,2,2,0,0,0,0,0,2,0,0,1,0,[98.8],0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","La prédiction est « non coupable ». Les deux éléments disponibles vont dans ce sens : le premier indicateur lié au nombre d’antécédents est présent et contribue le plus à cette décision (61,3 %), tandis que le second indicateur lié au nombre d’antécédents n’est pas présent et soutient également la prédiction (38,7 %).","La prédiction est « non coupable ». Les deux éléments disponibles vont dans ce sens : le premier indicateur lié au nombre d’antécédents est présent et contribue le plus à cette décision (61,3 %), tandis que le second indicateur lié au nombre d’antécédents n’est pas présent et soutient également la prédiction (38,7 %).",1. The number of prior offenses pushed the prediction towards this class.,"['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']",['number_of_priors_b2 > 0.5'],"[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,457,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,42.3,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1925 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1763 (opposes the prediction)","La prédiction est « non coupable » (classe 0). L’indicateur indiquant l’absence de catégorie « deux antécédents ou plus » est à 0, donc cette condition ne s’applique pas. L’indicateur correspondant à la catégorie « aucun antécédent » est à 1 ; dans cette explication locale, il allait légèrement à l’encontre de la prédiction.","La prédiction est « non coupable » (classe 0). L’indicateur indiquant l’absence de catégorie « deux antécédents ou plus » est à 0, donc cette condition ne s’applique pas. L’indicateur correspondant à la catégorie « aucun antécédent » est à 1 ; dans cette explication locale, il allait légèrement à l’encontre de la prédiction.","1. Having two or more prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,501,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.6,False,64.6,64.6,64.6,64.6,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[64.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted not guilty (class 0). This explanation is based on several indicators that hold: the score factor is between 0 and 1; the indicators for being above 45 and below 25 are each between 0 and 1; and the indicators for African American, Asian, and Hispanic are each between 0 and 1.
+
+The condition related to having 3 to fewer than 36 prior offenses does not hold for this individual.","The model predicted not guilty (class 0). This explanation is based on several indicators that hold: the score factor is between 0 and 1; the indicators for being above 45 and below 25 are each between 0 and 1; and the indicators for African American, Asian, and Hispanic are each between 0 and 1.
+
+The condition related to having 3 to fewer than 36 prior offenses does not hold for this individual.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above 45 years old is between 0 and 1, which is true for this case.  
+4. Being below 25 years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6684,,,1
+compas,gpt-5.6-terra,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.4,False,72.4,72.4,72.4,72.4,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[72.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le facteur de score est entre 0 et 1, l’indicateur « plus de 45 ans » est entre 0 et 1, l’indicateur « moins de 25 ans » est entre 0 et 1, et l’indicateur d’appartenance afro-américaine est entre 0 et 1.
+
+La règle incluait aussi un nombre d’antécédents entre 3 et 36, mais cette condition ne tient pas ici : le nombre d’antécédents n’est pas dans cette plage.","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le facteur de score est entre 0 et 1, l’indicateur « plus de 45 ans » est entre 0 et 1, l’indicateur « moins de 25 ans » est entre 0 et 1, et l’indicateur d’appartenance afro-américaine est entre 0 et 1.
+
+La règle incluait aussi un nombre d’antécédents entre 3 et 36, mais cette condition ne tient pas ici : le nombre d’antécédents n’est pas dans cette plage.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above age 45 is between 0 and 1, which is true for this case.  
+4. Being below age 25 is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6684,,,1
+compas,gpt-5.6-terra,501,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.1,True,98.1,98.1,98.1,86.5,True,True,False,5,5,3,0,0,0,0,2,0,0,2,0,[98.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont :
+
+- Le nombre d’antécédents est compris entre 1 et 3.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur « moins de 25 ans » est dans la plage de 0 à 1.
+- L’indicateur « autre » est dans la plage de 0 à 1.
+- L’indicateur « délit mineur » est dans la plage de 0 à 1.
+
+Ensemble, ces conditions correspondent à une prédiction de non-culpabilité avec une fiabilité vérifiée d’au moins 95 %.","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont :
+
+- Le nombre d’antécédents est compris entre 1 et 3.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur « moins de 25 ans » est dans la plage de 0 à 1.
+- L’indicateur « autre » est dans la plage de 0 à 1.
+- L’indicateur « délit mineur » est dans la plage de 0 à 1.
+
+Ensemble, ces conditions correspondent à une prédiction de non-culpabilité avec une fiabilité vérifiée d’au moins 95 %.","1. The number of prior offenses is between 1 and 3, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.  
+3. The person is under 25 years old, which is true here.  
+4. The alleged offense is not classified as “other,” which is true here.  
+5. The alleged offense is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 > 0.5', 'misdemeanor_b0 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5]",,,,,0.9728217426059153,,1
+compas,gpt-5.6-terra,501,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,74.9,False,74.9,74.9,74.9,74.9,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[74.9],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b1 = 1 THEN class 0","La prédiction est « non coupable » (classe 0) parce que les deux indicateurs observés correspondent exactement à une règle très fiable du modèle : le deuxième indicateur lié au nombre d’antécédents vaut 0, et le premier indicateur lié au nombre d’antécédents vaut 1. Dans les cas présentant cette même combinaison, la règle indique la classe 0 avec une précision estimée de 1,00.","La prédiction est « non coupable » (classe 0) parce que les deux indicateurs observés correspondent exactement à une règle très fiable du modèle : le deuxième indicateur lié au nombre d’antécédents vaut 0, et le premier indicateur lié au nombre d’antécédents vaut 1. Dans les cas présentant cette même combinaison, la règle indique la classe 0 avec une précision estimée de 1,00.","1. The person has exactly one prior offence recorded, which supports the prediction that they are not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b1 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5']","[1, 2]","[1, 2]","[1, 2]","[1, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,501,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,48.4,False,52.5,24.1,52.5,26.5,False,False,False,3,4,2,2,0,1,0,3,0,0,3,3,"[52.5, 24.1, 30.2, 24.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). Les éléments les plus importants allant dans ce sens sont que l’indicateur correspondant à deux antécédents n’est pas présent (49,7 % de l’influence) et que l’indicateur correspondant à un antécédent est présent (18,0 %).
+
+En revanche, l’absence d’antécents, qui n’est pas indiquée ici, poussait dans le sens opposé (32,3 %). Les indicateurs liés au score et au fait d’avoir plus de 45 ans n’ont eu pratiquement aucun effet sur la décision.","Le modèle a prédit « non coupable » (classe 0). Les principaux éléments allant dans ce sens sont que la personne a moins de deux antécédents (49,7 % de l’influence) et qu’elle a exactement un antécédent (18,0 %).
+
+À l’inverse, le fait qu’elle n’ait pas zéro antécédent a poussé la décision dans le sens opposé (32,3 %). Le score associé au dossier n’a eu pratiquement aucun effet sur la décision, tout comme le fait d’avoir 45 ans ou moins.","1. The number of prior offenses at the highest indicated level pushed the prediction towards not guilty.  
+2. The number of prior offenses at the lowest indicated level pushed against the prediction of not guilty, but was outweighed.  
+3. The number of prior offenses at the middle indicated level pushed the prediction towards not guilty.  
+4. The score-related factor at the lowest indicated level pushed against the prediction of not guilty, but was outweighed.  
+5. Being above forty-five years old at the lowest indicated level pushed against the prediction of not guilty, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,501,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.9,False,70.3,43.9,74.9,48.0,False,False,False,1,0,1,4,0,5,0,4,0,4,4,3,"[70.3, 74.9, 70.3, 43.9]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1928 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1771 (supports the prediction)
+  number_of_priors_b1: weight=-0.0421 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  hispanic_b0: weight=+0.0000 (opposes the prediction)","The model predicted not guilty. The strongest reason was that there were no prior offenses, which pushed the prediction toward not guilty. The indicator for two prior offenses was not present, so it did not support a guilty prediction. The indicator for one prior offense was present and slightly pushed toward guilty, but this was weaker than the effect of having no prior offenses. Misdemeanor status and Hispanic ethnicity did not meaningfully affect this prediction.","The model predicted not guilty. Having zero prior offenses supported this result. Having one prior offense slightly pushed toward guilty, while having two prior offenses also pushed against the not-guilty prediction; this person had neither two priors nor an effect from that category. The current charge was not a misdemeanor, and the person was not Hispanic; neither had a meaningful effect on the prediction.","1. The indicator for having two or more prior convictions pushed against this class, but was outweighed.  
+2. The indicator for having no prior convictions pushed the prediction towards this class.  
+3. The indicator for having one prior conviction pushed against this class, but was outweighed.  
+4. The indicator for not having a misdemeanor charge pushed against this class, but was outweighed.  
+5. The indicator for not being Hispanic pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 > 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","[0, 1, 2, 8, 12]",[2],[],[1],,,,,,,1
+compas,gpt-5.6-terra,563,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,65.6,False,65.6,65.6,65.6,65.6,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[65.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). The explanation rule is mostly satisfied: the score factor is between 0 and 1, and the indicators for being over 45, under 25, African American, Asian, and Hispanic are all between 0 and 1.
+
+One condition in the rule does not hold: the number of prior offenses is not between 3 and 36.","The model predicted “not guilty” (class 0). The explanation rule is mostly satisfied: the score factor is between 0 and 1, and the indicators for being over 45, under 25, African American, Asian, and Hispanic are all between 0 and 1.
+
+One condition in the rule does not hold: the number of prior offenses is not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. The person is older than 45 is between 0 and 1, which is true for this case.  
+4. The person is younger than 25 is between 0 and 1, which is true for this case.  
+5. The person is African American is between 0 and 1, which is true for this case.  
+6. The person is Asian is between 0 and 1, which is true for this case.  
+7. The person is Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6646,,,1
+compas,gpt-5.6-terra,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.5,False,72.5,72.5,72.5,72.5,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[72.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score est compris entre 0 et 1, l’indicateur « plus de 45 ans » est compris entre 0 et 1, l’indicateur « moins de 25 ans » est compris entre 0 et 1, et l’indicateur relatif à l’appartenance afro-américaine est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents judiciaires ne correspond pas à cette personne : la règle attendait un nombre d’antécédents entre 3 et 36, mais ce n’est pas le cas ici.","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score est compris entre 0 et 1, l’indicateur « plus de 45 ans » est compris entre 0 et 1, l’indicateur « moins de 25 ans » est compris entre 0 et 1, et l’indicateur relatif à l’appartenance afro-américaine est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents judiciaires ne correspond pas à cette personne : la règle attendait un nombre d’antécédents entre 3 et 36, mais ce n’est pas le cas ici.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. The indicator for being older than 45 is between 0 and 1, which is true for this case.  
+4. The indicator for being younger than 25 is between 0 and 1, which is true for this case.  
+5. The indicator for being African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646,,,1
+compas,gpt-5.6-terra,563,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,97.4,True,97.4,97.4,97.4,79.1,True,True,False,5,5,2,0,0,0,0,3,0,0,3,0,[97.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Les éléments observés sont les suivants :
+
+- Le nombre d’antécédents est compris entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur d’âge inférieur à 25 ans est compris entre 0 et 1, ce qui est le cas.
+- L’indicateur « autre » est compris entre 0 et 1, ce qui est le cas.
+- L’indicateur d’infraction mineure est compris entre 0 et 1, ce qui est le cas.
+
+Ensemble, ces conditions soutiennent la prédiction de non-culpabilité, avec une précision vérifiée d’au moins 95 % pour ce cas.","La prédiction est « non coupable » (classe 0). Les éléments observés sont les suivants :
+
+- Le nombre d’antécédents est compris entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur d’âge inférieur à 25 ans est compris entre 0 et 1, ce qui est le cas.
+- L’indicateur « autre » est compris entre 0 et 1, ce qui est le cas.
+- L’indicateur d’infraction mineure est compris entre 0 et 1, ce qui est le cas.
+
+Ensemble, ces conditions soutiennent la prédiction de non-culpabilité, avec une précision vérifiée d’au moins 95 % pour ce cas.","1. The number of prior convictions is between 1 and 3, which is true here.  
+2. The number of prior convictions is between 3 and 36, which is not true here.  
+3. The person is not below 25 years old, which is true here.  
+4. The alleged offense is not classified as “other,” which is true here.  
+5. The alleged offense is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 > 0.5', 'misdemeanor_b0 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2]",,,,,0.9696243005595524,,1
+compas,gpt-5.6-terra,563,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,44.2,False,51.6,51.6,51.6,45.5,False,False,False,1,1,0,1,0,1,0,2,0,1,1,3,"[51.6, 51.6, 51.6, 51.6]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF african_american_b0 = 1 AND number_of_priors_b1 = 1 THEN class 0","La prédiction est « non coupable ». Elle repose sur deux indicateurs présents pour cette personne : elle est indiquée comme n’étant pas afro-américaine, et elle a au moins une condamnation antérieure. Dans les données utilisées par le modèle, cette combinaison est associée à la classe « non coupable » avec une précision estimée de 100 %.","La prédiction est « non coupable ». Elle repose sur deux éléments : la personne n’est pas indiquée comme afro-américaine et elle a au moins une condamnation antérieure. Dans les données utilisées par le modèle, cette combinaison est associée à la classe « non coupable » avec une précision estimée de 100 %.","1. The person is not identified as African American, which supports this class.","['african_american_b0 < 0.5', 'number_of_priors_b1 > 0.5']",['african_american_b0 < 0.5'],"[1, 6]",[1],[1],[],,,,,,1.0,1
+compas,gpt-5.6-terra,563,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,50.6,False,56.5,50.6,56.5,28.2,False,False,False,3,5,2,2,0,0,0,3,0,2,3,2,"[56.5, 56.5, 50.6]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). Les éléments les plus influents ont été liés au nombre d’antécédents : l’indicateur correspondant à la troisième catégorie n’était pas présent et a fortement soutenu cette prédiction (49,7 %), tandis que l’indicateur correspondant à la deuxième catégorie était présent et l’a aussi soutenue (18,0 %).  
+
+L’absence de l’indicateur correspondant à la première catégorie d’antécédents allait légèrement dans le sens opposé (32,3 %). Les informations sur le score et sur le fait d’avoir plus de 45 ans n’ont pratiquement pas influencé la décision.","Le modèle a prédit « non coupable » (classe 0). Les éléments les plus influents concernent le nombre d’antécédents : ne pas appartenir à la troisième catégorie a fortement soutenu cette prédiction (49,7 %), tandis qu’appartenir à la deuxième catégorie l’a aussi soutenue (18,0 %). Ne pas appartenir à la première catégorie allait dans le sens opposé (32,3 %).
+
+Le score se situant dans la première catégorie et le fait d’avoir plus de 45 ans n’ont eu pratiquement aucune influence sur la décision.","1. A higher number of prior offenses pushed the prediction towards not guilty.  
+2. Having no prior offenses pushed against the not-guilty prediction, but was outweighed.  
+3. Having one prior offense pushed the prediction towards not guilty.  
+4. The score factor pushed against the not-guilty prediction, but was outweighed.  
+5. Being age forty-five or younger pushed against the not-guilty prediction, but was outweighed.","['number_of_priors_b2 < 0.5', 'number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,563,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,58.4,False,71.5,71.5,71.5,29.9,False,False,False,1,1,4,4,0,4,0,1,0,4,1,3,"[71.5, 41.2, 65.5, 71.5]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1929 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1764 (supports the prediction)
+  number_of_priors_b1: weight=-0.0422 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  score_factor_b0: weight=+0.0000 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Le principal élément allant dans ce sens est l’absence d’antécédents judiciaires.
+
+Le fait d’avoir un antécédent judiciaire a légèrement poussé dans le sens opposé, vers « coupable ». L’indicateur correspondant à deux antécédents ne s’appliquait pas ici, mais il est également associé à une poussée vers « coupable » dans cette explication locale.
+
+Les indicateurs liés au délit mineur et au facteur de score n’ont pratiquement pas influencé cette décision.","La prédiction est « non coupable » (classe 0). Le principal élément qui la soutient est l’absence d’antécédents judiciaires : la personne a 0 antécédent.
+
+Le fait d’avoir exactement 1 antécédent judiciaire va légèrement à l’encontre de cette prédiction. La catégorie correspondant à 2 antécédents ou plus va également à l’encontre de la prédiction, mais elle ne concerne pas cette personne.
+
+Le fait que l’infraction ne soit pas un délit mineur n’a pratiquement pas influencé la décision. De même, le score dans sa première catégorie n’a pratiquement eu aucun effet.","1. The number of prior offences in the highest category pushed against this class, but was outweighed.  
+2. The number of prior offences in the lowest category pushed the prediction towards this class.  
+3. The number of prior offences in the middle category pushed against this class, but was outweighed.  
+4. Whether the offence was a misdemeanor pushed against this class, but was outweighed.  
+5. The risk-score factor pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 < 0.5', 'misdemeanor_b0 < 0.5', 'score_factor_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'misdemeanor_b0 > 0.5', 'score_factor_b0 > 0.5']","[0, 1, 2, 3, 12]",[2],[2],"[0, 1, 3, 12]",,,,,,,1
+compas,gpt-5.6-terra,1116,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,65.6,False,65.6,65.6,65.6,65.6,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[65.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). The learned rule matched this case because the score factor is between 0 and 1, the indicators for being above 45 and below 25 are both in the 0 to 1 range, and the indicators related to African American, Asian, and Hispanic status are also in the 0 to 1 range.
+
+One listed condition did not hold: the number of prior offenses is not between 3 and 36.","The model predicted “not guilty” (class 0). The learned rule matched this case because the score factor is between 0 and 1, the indicators for being above 45 and below 25 are both in the 0 to 1 range, and the indicators related to African American, Asian, and Hispanic status are also in the 0 to 1 range.
+
+One listed condition did not hold: the number of prior offenses is not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above forty-five years old is between 0 and 1, which is true for this case.  
+4. Being below twenty-five years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6592,,,1
+compas,gpt-5.6-terra,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,71.8,False,65.1,65.1,65.1,71.8,False,False,False,2,2,5,3,0,3,0,0,0,3,0,3,"[65.1, 65.1, 65.1, 65.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement associée aux éléments suivants : le score de risque est entre 0 et 1, la personne n’est pas classée comme ayant plus de 45 ans, n’est pas classée comme ayant moins de 25 ans, et n’est pas classée comme afro-américaine.
+
+La règle mentionne aussi un nombre d’antécédents entre 3 et 36, mais cette condition ne s’applique pas ici : la personne a 0 antécédent.","La prédiction est « non coupable ». Elle est associée à un score de risque compris entre 0 et 1, à un âge qui n’est ni supérieur à 45 ans ni inférieur à 25 ans, et au fait que la personne n’est pas identifiée comme afro-américaine.
+
+La règle mentionne aussi un nombre d’antécédents compris entre 3 et 36, mais cette condition ne s’applique pas ici : la personne a 0 antécédent.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. The person is over 45 years old is between 0 and 1, which is true for this case.  
+4. The person is under 25 years old is between 0 and 1, which is true for this case.  
+5. The person is African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3]","[2, 3]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6592,,,1
+compas,gpt-5.6-terra,1116,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,97.9,True,97.9,97.9,97.9,76.4,True,True,False,5,5,2,0,0,0,0,3,0,0,3,0,[97.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable ». Les éléments examinés sont les suivants :
+
+- Le nombre d’antécédents est compris entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur « âgé de moins de 25 ans » est compris entre 0 et 1, ce qui est le cas ici.
+- L’indicateur « autre » est compris entre 0 et 1, ce qui est le cas ici.
+- L’indicateur « délit mineur » est compris entre 0 et 1, ce qui est le cas ici.
+
+Ensemble, ces informations soutiennent la prédiction de non-culpabilité avec une précision vérifiée d’au moins 95 % pour ce cas.","La prédiction est « non coupable ». Les éléments examinés sont les suivants :
+
+- Le nombre d’antécédents est compris entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’indicateur « âgé de moins de 25 ans » est compris entre 0 et 1, ce qui est le cas ici.
+- L’indicateur « autre » est compris entre 0 et 1, ce qui est le cas ici.
+- L’indicateur « délit mineur » est compris entre 0 et 1, ce qui est le cas ici.
+
+Ensemble, ces informations soutiennent la prédiction de non-culpabilité avec une précision vérifiée d’au moins 95 % pour ce cas.","1. The number of prior offenses is between 1 and 3, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.  
+3. The person is not below age 25, which is true here.  
+4. The current charge is not classified as “other,” which is true here.  
+5. The current charge is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 > 0.5', 'misdemeanor_b0 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2]",,,,,0.9808153477218226,,1
+compas,gpt-5.6-terra,1116,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,76.4,False,76.4,76.4,76.4,76.4,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[76.4],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b1 = 1 THEN class 0","La prédiction est « non coupable » (classe 0) parce que l’indicateur du nombre d’antécédents correspondant au deuxième groupe vaut 0, tandis que celui correspondant au premier groupe vaut 1. Ensemble, ces deux valeurs correspondent exactement à une règle qui prédit la classe 0 avec une précision estimée de 1,00.","La prédiction est « non coupable » (classe 0) parce que l’indicateur du nombre d’antécédents correspondant au deuxième groupe vaut 0, tandis que celui correspondant au premier groupe vaut 1. Ensemble, ces deux valeurs correspondent exactement à une règle qui prédit la classe 0 avec une précision estimée de 1,00.","1. The person has one prior record, which supports the prediction of not guilty.  
+2. The person has no prior records in the second count category, which supports the prediction of not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b1 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5']","[1, 2]","[1, 2]","[1, 2]","[1, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,1116,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,50.4,False,53.9,50.4,53.9,26.3,False,False,False,3,5,2,2,0,0,0,3,0,2,2,3,"[53.9, 19.9, 44.4, 50.4]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « non coupable ». La principale raison est que l’indicateur correspondant à deux antécédents n’est pas présent, ce qui soutient cette prédiction (49,7 % de l’influence). L’indicateur correspondant à un antécédent est présent et soutient aussi la prédiction (18,0 %).
+
+En revanche, l’absence d’antécédents n’est pas indiquée et pousse dans le sens opposé (32,3 %). Les indicateurs liés au score et au fait d’avoir plus de 45 ans n’ont pas eu d’effet notable sur la décision.","Le modèle a prédit « non coupable ». Le fait d’avoir exactement un antécédent soutient cette prédiction (18,0 %), tout comme le fait de ne pas avoir deux antécédents (49,7 %).
+
+En revanche, le fait de ne pas avoir d’antécédent pousse vers une prédiction de culpabilité (32,3 %). Le score de risque le plus bas et le fait d’avoir 45 ans ou moins n’ont pas eu d’effet notable sur la décision.","1. Having two or more previous offenses pushed the prediction towards not guilty.  
+2. Having no previous offenses pushed against the not-guilty prediction, but was outweighed.  
+3. Having one previous offense pushed the prediction towards not guilty.  
+4. The score factor pushed against the not-guilty prediction, but was outweighed.  
+5. Being age 45 or younger pushed against the not-guilty prediction, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b2 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,1116,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,76.2,False,70.2,70.2,70.2,50.6,False,False,False,1,1,1,4,0,4,0,4,0,4,4,3,"[70.2, 70.2, 70.2, 70.2]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1929 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1771 (supports the prediction)
+  number_of_priors_b1: weight=-0.0413 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  hispanic_b0: weight=+0.0000 (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). Le principal élément allant dans ce sens est que la personne n’a aucun antécédent judiciaire.
+
+Le fait qu’elle ait exactement un antécédent judiciaire a légèrement poussé dans le sens opposé, tout comme l’indicateur correspondant à deux antécédents, qui n’est pas présent. Les informations indiquant qu’il ne s’agit pas d’un délit mineur et que la personne n’est pas hispanique n’ont pas eu d’effet mesurable sur cette décision.","Le modèle a prédit « non coupable » (classe 0). Le facteur principal en faveur de cette décision est l’absence d’antécédent judiciaire : la personne a 0 antécédent, ce qui soutient la prédiction.
+
+La personne appartient aussi à la catégorie « 1 antécédent », mais cette indication va légèrement à l’encontre de la prédiction. De même, la catégorie « 2 antécédents ou plus » irait davantage à l’encontre de la prédiction, mais elle ne correspond pas au profil observé.
+
+Le fait que la personne ne soit pas hispanique et que l’infraction ne soit pas un délit mineur n’a pas eu d’effet mesurable sur la décision.","1. Having two or more prior offenses pushed against this class, but was outweighed.  
+2. Having no prior offenses pushed the prediction towards this class.  
+3. Having one prior offense pushed against this class, but was outweighed.  
+4. Not having a misdemeanor record pushed the prediction towards this class.  
+5. Not being Hispanic pushed the prediction towards this class.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","[0, 1, 2, 8, 12]",[2],[2],[1],,,,,,,1
+compas,gpt-5.6-terra,1309,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,66.1,False,67.1,66.1,67.1,66.1,False,False,False,2,7,7,5,0,0,0,0,0,5,0,1,"[67.1, 66.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted not guilty (class 0). This is consistent with a score factor between 0 and 1, and with the indicators for being above 45, below 25, African American, Asian, and Hispanic all being between 0 and 1.
+
+The condition for having 3 to fewer than 36 prior offenses did not hold.","The model predicted not guilty (class 0). This is consistent with a score factor between 0 and 1; age-above-45, age-below-25, African American, Asian, and Hispanic indicators each between 0 and 1.
+
+The condition for having 3 to fewer than 36 prior offenses did not hold.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above forty-five years old is between 0 and 1, which is true for this case.  
+4. Being below twenty-five years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6646,,,1
+compas,gpt-5.6-terra,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,67.1,False,67.1,67.1,67.1,67.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[67.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The prediction was not guilty. The score factor is between 0 and 1, and this condition holds. The prior-offense condition of having between 3 and 36 prior offenses does not hold.","The prediction was not guilty. The score factor is between 0 and 1, and this condition holds. The prior-offense condition of having between 3 and 36 prior offenses does not hold.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6646,,,1
+compas,gpt-5.6-terra,1309,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,98.8,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas à cette personne.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas à cette personne.","1. The number of prior convictions is between 0 and 1, which is true here.  
+2. The number of prior convictions is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.9848121502797762,,1
+compas,gpt-5.6-terra,1309,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,98.8,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant au deuxième groupe de nombre d’antécédents vaut 0, tandis que celui correspondant au premier groupe vaut 1. Ensemble, ces deux éléments correspondent à une règle qui a prédit la classe « non coupable » avec une précision estimée de 100 %.","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant au deuxième groupe de nombre d’antécédents vaut 0, tandis que celui correspondant au premier groupe vaut 1. Ensemble, ces deux éléments correspondent à une règle qui a prédit la classe « non coupable » avec une précision estimée de 100 %.","1. The person has no prior convictions in the higher-prior category, which pushed the prediction towards not guilty.  
+2. The person is in the lowest-prior category, which pushed the prediction towards not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,1309,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,46.9,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","Le modèle a prédit que cette personne n’est pas coupable (classe 0). Le principal élément est que l’indicateur correspondant à l’absence de condamnations antérieures est présent : il soutient cette prédiction à hauteur de 61,3 %. L’indicateur correspondant à deux condamnations antérieures n’est pas présent : cela soutient également la prédiction, à hauteur de 38,7 %.","Le modèle a prédit que cette personne n’est pas coupable (classe 0). Le principal élément est que l’indicateur correspondant à l’absence de condamnations antérieures est présent : il soutient cette prédiction à hauteur de 61,3 %. L’indicateur correspondant à deux condamnations antérieures n’est pas présent : cela soutient également la prédiction, à hauteur de 38,7 %.","1. Having no prior convictions pushed the prediction towards this class.  
+2. Having two or more prior convictions pushed the prediction towards this class.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 > 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,1309,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,71.1,98.8,98.8,71.1,False,True,False,1,2,1,1,0,0,0,1,0,1,1,1,"[71.1, 98.8]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1924 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1763 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Les deux indicateurs disponibles ont légèrement joué contre cette prédiction : l’indicateur correspondant à l’absence de condamnations antérieures n’est pas présent, tandis que l’indicateur correspondant à une autre catégorie de nombre de condamnations antérieures ne l’est pas non plus. Leur influence est toutefois faible.","La prédiction est « non coupable » (classe 0). L’indicateur d’absence de condamnations antérieures est présent, mais il a légèrement joué contre cette prédiction. L’indicateur correspondant à une autre catégorie de nombre de condamnations antérieures est absent et a également légèrement joué contre la prédiction.","1. Having two prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]",[2],"[0, 2]",[2],,,,,,,1
+compas,gpt-5.6-terra,1385,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,69.0,False,69.0,69.0,69.0,69.0,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[69.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted not guilty (class 0). This is consistent with a score factor between 0 and 1, and with the indicators for being above age 45, below age 25, African American, Asian, and Hispanic all being in their 0-to-1 ranges.
+
+One listed condition did not hold: the number of prior offenses was not between 3 and 36.","The model predicted not guilty (class 0). This is consistent with a score factor between 0 and 1, and with the indicators for being above age 45, below age 25, African American, Asian, and Hispanic all being in their 0-to-1 ranges.
+
+One listed condition did not hold: the number of prior offenses was not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above 45 years old is between 0 and 1, which is true for this case.  
+4. Being below 25 years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6584,,,1
+compas,gpt-5.6-terra,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,68.2,False,68.2,68.2,68.2,68.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[68.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","La prédiction est « non coupable ». Le score factor est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","La prédiction est « non coupable ». Le score factor est compris entre 0 et 1, ce qui correspond à la condition retenue par la règle et soutient cette prédiction. En revanche, le nombre d’antécédents n’est pas compris entre 3 et 36, donc cette condition ne s’applique pas ici.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6584,,,1
+compas,gpt-5.6-terra,1385,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,98.8,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas ici.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est dans l’intervalle de 0 à moins de 1, ce qui soutient cette prédiction. En revanche, il n’est pas dans l’intervalle de 3 à moins de 36 ; cette condition ne s’applique donc pas ici.","1. The number of previous offenses is between 0 and 1, which is true here.  
+2. The number of previous offenses is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.9872102318145484,,1
+compas,gpt-5.6-terra,1385,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,60.8,False,60.8,60.8,60.8,60.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[60.8],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF female_b0 = 1 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0). Elle s’appuie sur le fait que la personne est une femme et qu’elle a au moins une condamnation antérieure. Pour les cas réunissant ces deux caractéristiques, la règle fournie prédit toujours la classe 0.","La prédiction est « non coupable » (classe 0). Elle s’appuie sur le fait que la personne est une femme et qu’elle a au moins une condamnation antérieure. Pour les cas réunissant ces deux caractéristiques, la règle fournie prédit toujours la classe 0.","1. The person is female, which pushed the prediction towards not guilty.  
+2. The person has prior offenses, which pushed the prediction towards not guilty.","['female_b0 > 0.5', 'number_of_priors_b0 > 0.5']","['female_b0 > 0.5', 'number_of_priors_b0 > 0.5']","[0, 11]","[0, 11]","[0, 11]","[0, 11]",,,,,,1.0,1
+compas,gpt-5.6-terra,1385,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,46.1,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","Le modèle prédit que la personne n’est pas coupable. Les deux indicateurs disponibles vont dans ce sens : le premier, qui est présent, contribue le plus à cette prédiction (61,3 %), tandis que le second n’est pas présent et renforce également la prédiction (38,7 %).","Le modèle prédit que la personne n’est pas coupable. Les deux indicateurs disponibles vont dans ce sens : le premier, qui est présent, contribue le plus à cette prédiction (61,3 %), tandis que le second n’est pas présent et renforce également la prédiction (38,7 %).","1. Having no prior convictions pushed the prediction towards this class.  
+2. Having two prior convictions pushed the prediction towards this class.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 > 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,1385,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,98.8,True,98.8,98.8,98.8,46.1,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[98.8],0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1923 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1772 (opposes the prediction)","La prédiction est « non coupable ». Les deux indicateurs fournis ont légèrement poussé dans le sens opposé à cette prédiction : la condition correspondant à l’absence de deux condamnations antérieures n’est pas remplie, tandis que la condition correspondant à l’absence de condamnations antérieures est remplie. Toutefois, selon l’explication locale du modèle, ces éléments ne soutiennent pas la décision « non coupable ».","La prédiction est « non coupable ». Les deux indicateurs fournis ont légèrement poussé dans le sens opposé à cette prédiction : la condition correspondant à l’absence de deux condamnations antérieures n’est pas remplie, tandis que la condition correspondant à l’absence de condamnations antérieures est remplie. Toutefois, selon l’explication locale du modèle, ces éléments ne soutiennent pas la décision « non coupable ».","1. Having two or more prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,1508,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,69.3,False,58.2,58.2,58.2,69.3,False,False,False,5,5,7,2,0,2,0,0,0,2,0,3,"[58.2, 58.2, 58.2, 58.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). This is consistent with a score factor between 0 and 1, and with the indicators for being above 45, below 25, African American, Asian, and Hispanic all being in the 0-to-1 range.
+
+The condition concerning prior offenses was not met: the person does not fall in the range of 3 to fewer than 36 prior offenses.","The model predicted “not guilty” (class 0). This is consistent with a score factor between 0 and 1, being neither above 45 nor below 25 years old, and African American, Asian, and Hispanic indicator values between 0 and 1.
+
+The condition concerning prior offenses was not met: the person does not have between 3 and fewer than 36 prior offenses.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true here.  
+3. Being above 45 years old is between 0 and 1, which is true here.  
+4. Being below 25 years old is between 0 and 1, which is true here.  
+5. Being African American is between 0 and 1, which is true here.  
+6. Being Asian is between 0 and 1, which is true here.  
+7. Being Hispanic is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 6, 7, 8]","[2, 3, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.6624,,,1
+compas,gpt-5.6-terra,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.7,False,75.7,75.7,75.7,75.7,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[75.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score se situe entre 0 et 1, l’indicateur d’être âgé de plus de 45 ans est entre 0 et 1, l’indicateur d’être âgé de moins de 25 ans est entre 0 et 1, et l’indicateur lié à l’origine afro-américaine est entre 0 et 1.
+
+En revanche, la condition concernant le nombre d’antécédents judiciaires ne tient pas : le nombre d’antécédents n’est pas compris entre 3 et 36.","La prédiction est « non coupable ». Elle est principalement cohérente avec les conditions suivantes : le score se situe entre 0 et 1, l’indicateur d’être âgé de plus de 45 ans est entre 0 et 1, l’indicateur d’être âgé de moins de 25 ans est entre 0 et 1, et l’indicateur lié à l’origine afro-américaine est entre 0 et 1.
+
+En revanche, la condition concernant le nombre d’antécédents judiciaires ne tient pas : le nombre d’antécédents n’est pas compris entre 3 et 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above 45 years old is between 0 and 1, which is true for this case.  
+4. Being below 25 years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6624,,,1
+compas,gpt-5.6-terra,1508,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.0,True,98.0,98.0,98.0,87.6,True,True,False,5,5,3,0,0,0,0,2,0,0,2,0,[98.0],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont les suivants :
+
+- Le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents ne se situe pas entre 3 et 36.
+- L’indicateur d’âge inférieur à 25 ans est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+- L’indicateur « autre » est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+- L’indicateur relatif à un délit mineur est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+
+Ensemble, ces informations soutiennent la prédiction de non-culpabilité avec une précision vérifiée d’au moins 95 % pour des cas similaires.","La prédiction est « non coupable » (classe 0). Les éléments pris en compte sont les suivants :
+
+- Le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents ne se situe pas entre 3 et 36.
+- L’indicateur d’âge inférieur à 25 ans est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+- L’indicateur « autre » est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+- L’indicateur relatif à un délit mineur est dans l’intervalle de 0 à 1, ce qui est le cas ici.
+
+Ensemble, ces informations soutiennent la prédiction de non-culpabilité avec une précision vérifiée d’au moins 95 % pour des cas similaires.","1. The number of prior offenses is between 1 and 3, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.  
+3. The person is under 25 years old, which is true here.  
+4. The alleged offense is not classified as “other,” which is true here.  
+5. The alleged offense is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 > 0.5', 'misdemeanor_b0 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5, 10, 12]","[1, 2, 5]",,,,,0.9784172661870504,,1
+compas,gpt-5.6-terra,1508,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,78.2,False,78.2,78.2,78.2,78.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[78.2],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b1 = 1 AND number_of_priors_b2 = 0 THEN class 0","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant au premier groupe de nombre d’antécédents est actif, tandis que celui du deuxième groupe ne l’est pas. Cette combinaison correspond exactement à une règle qui prédit la classe 0 avec une précision estimée de 100 %.","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant au premier groupe de nombre d’antécédents est actif, tandis que celui du deuxième groupe ne l’est pas. Cette combinaison correspond exactement à une règle qui prédit la classe 0 avec une précision estimée de 100 %.","1. The person has one prior conviction recorded, which supports the prediction of not guilty.  
+2. The person does not have two prior convictions recorded, which supports the prediction of not guilty.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5']","[1, 2]","[1, 2]","[1, 2]","[1, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,1508,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,49.4,False,53.2,49.4,53.2,27.2,False,False,False,3,5,2,2,0,0,0,3,0,2,2,3,"[53.2, 25.2, 53.2, 49.4]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). Les éléments les plus influents vont dans ce sens : l’indicateur correspondant à l’absence de la catégorie « deux antécédents ou plus » soutient fortement cette prédiction (49,7 %), ainsi que l’indicateur correspondant à la présence de la catégorie « un antécédent » (18,0 %).
+
+En revanche, l’indicateur indiquant l’absence de la catégorie « aucun antécédent » va à l’encontre de la prédiction (32,3 %). Les indicateurs liés au facteur de score et à l’âge supérieur à 45 ans n’ont pratiquement pas influencé la décision.","Le modèle a prédit « non coupable » (classe 0). Le facteur principal est que la personne n’a pas deux antécédents ou plus, ce qui soutient fortement cette prédiction (49,7 %). Le fait d’avoir exactement un antécédent la soutient également (18,0 %).
+
+En revanche, le fait de ne pas avoir zéro antécédent va dans le sens opposé (32,3 %). Le score de risque le plus bas et le fait d’avoir 45 ans ou moins n’ont pratiquement pas influencé la décision.","1. The indicator for having two or more prior offenses pushed the prediction towards not guilty.  
+2. The indicator for having no prior offenses pushed against the prediction of not guilty, but was outweighed.  
+3. The indicator for having one prior offense pushed the prediction towards not guilty.  
+4. The score factor indicator pushed against the prediction of not guilty, but was outweighed.  
+5. The indicator for being age 45 or younger pushed against the prediction of not guilty, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,1508,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.6,False,71.9,50.7,71.9,50.7,False,False,False,1,1,1,4,0,4,0,4,0,4,4,3,"[71.9, 71.9, 71.9, 50.7]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1930 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1764 (supports the prediction)
+  number_of_priors_b1: weight=-0.0418 (opposes the prediction)
+  misdemeanor_b0: weight=+0.0000 (opposes the prediction)
+  hispanic_b0: weight=+0.0000 (opposes the prediction)","La prédiction est « non coupable ». Le facteur principal allant dans ce sens est que la personne n’a aucun antécédent judiciaire. Le fait qu’elle ait un antécédent judiciaire a légèrement poussé dans le sens opposé, mais moins fortement. L’indicateur correspondant à deux antécédents judiciaires n’est pas présent et aurait également poussé contre cette prédiction. Les informations sur le fait qu’il s’agisse ou non d’un délit mineur et sur l’origine hispanique n’ont pas eu d’effet mesurable sur cette décision.","La prédiction est « non coupable ». Le principal facteur qui la soutient est que la personne a 0 antécédent judiciaire. En revanche, l’indicateur correspondant à 1 antécédent va légèrement dans le sens opposé, même si la personne est aussi indiquée comme ayant 0 antécédent ; l’indicateur lié à 2 antécédents va davantage contre la prédiction, mais cette personne n’a pas 2 antécédents. Le fait de ne pas être hispanique et le fait que l’infraction ne soit pas un délit mineur n’ont pas eu d’effet mesurable.","1. Having two or more prior offenses pushed against this class, but was outweighed.  
+2. Having no prior offenses pushed the prediction towards this class.  
+3. Having exactly one prior offense pushed against this class, but was outweighed.  
+4. Not having a misdemeanor record pushed against this class, but was outweighed.  
+5. Not being Hispanic pushed against this class, but was outweighed.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'misdemeanor_b0 < 0.5', 'hispanic_b0 < 0.5']","[0, 1, 2, 8, 12]",[2],[1],[1],,,,,,,1
+compas,gpt-5.6-terra,1516,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.6,False,65.6,64.6,65.6,64.6,False,False,False,2,7,7,5,0,0,0,0,0,5,0,1,"[65.6, 64.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). The learned rule is consistent with this prediction because the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are also between 0 and 1.
+
+The condition about having 3 to fewer than 36 prior offenses does not hold for this individual.","The model predicted “not guilty” (class 0). The rule matches this prediction because the score factor is between 0 and 1; the indicators for being over 45, under 25, African American, Asian, and Hispanic are each between 0 and 1.
+
+The condition of having 3 to fewer than 36 prior offenses does not hold for this individual.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true here.  
+3. Being above forty-five years old is between 0 and 1, which is true here.  
+4. Being below twenty-five years old is between 0 and 1, which is true here.  
+5. Being African American is between 0 and 1, which is true here.  
+6. Being Asian is between 0 and 1, which is true here.  
+7. Being Hispanic is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5', 'asian_b0 < 0.5', 'hispanic_b0 < 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.658,,,1
+compas,gpt-5.6-terra,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,65.6,False,65.6,65.6,65.6,65.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[65.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The prediction was not guilty (class 0). The score factor is between 0 and 1, which matches the rule. The number of prior offenses is not between 3 and 36, so that part of the rule does not hold.","The prediction was not guilty (class 0). The score factor is between 0 and 1, which matches the rule. The number of prior offenses is not between 3 and 36, so that part of the rule does not hold.","1. The number of prior offences is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['score_factor_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.658,,,1
+compas,gpt-5.6-terra,1516,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,99.1,True,99.1,99.1,99.1,99.1,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[99.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b0 = 1  (number_of_priors in [0, 1) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)","La prédiction est « non coupable ». Le nombre de condamnations antérieures est inférieur à 1, ce qui soutient cette prédiction. En revanche, il n’est pas compris entre 3 et 36, donc cette seconde condition ne s’applique pas.","La prédiction est « non coupable ». Le nombre de condamnations antérieures est inférieur à 1, ce qui soutient cette prédiction. En revanche, il n’est pas compris entre 3 et 36, donc cette seconde condition ne s’applique pas.","1. The number of previous convictions is between 0 and 1, which is true here.  
+2. The number of previous convictions is between 3 and 36, which is not true here.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,0.9832134292565948,,1
+compas,gpt-5.6-terra,1516,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,99.1,True,99.1,99.1,99.1,99.1,True,True,True,2,2,2,0,0,0,0,0,0,0,0,0,[99.1],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b0 = 1 THEN class 0","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant à l’absence de la catégorie « deux antécédents ou plus » vaut 0, tandis que l’indicateur correspondant à la catégorie « aucun antécédent » vaut 1. Ensemble, ces valeurs correspondent à la règle qui conduit systématiquement à la classe 0 dans les exemples utilisés par le modèle.","La prédiction est « non coupable » (classe 0). Elle repose sur le fait que l’indicateur correspondant à l’absence de la catégorie « deux antécédents ou plus » vaut 0, tandis que l’indicateur correspondant à la catégorie « aucun antécédent » vaut 1. Ensemble, ces valeurs correspondent à la règle qui conduit systématiquement à la classe 0 dans les exemples utilisés par le modèle.","1. The individual has no prior convictions in the second prior-conviction category, which pushed the prediction towards not guilty.  
+2. The individual has a prior conviction in the first prior-conviction category, which pushed the prediction towards not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","[0, 2]","[0, 2]","[0, 2]","[0, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,1516,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,99.1,True,99.1,99.1,99.1,44.7,True,True,False,2,2,0,0,0,0,0,2,0,0,2,0,[99.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b0: 61.3% (supports the prediction)
+  number_of_priors_b2: 38.7% (supports the prediction)","La prédiction est « non coupable ». Le fait que l’indicateur correspondant à l’absence de certaines condamnations antérieures soit présent a le plus fortement soutenu cette décision (61,3 %). L’autre indicateur lié au nombre de condamnations antérieures n’est pas présent, ce qui a également soutenu la prédiction (38,7 %).","La prédiction est « non coupable ». Le fait que l’indicateur correspondant à l’absence de certaines condamnations antérieures soit présent a le plus fortement soutenu cette décision (61,3 %). L’autre indicateur lié au nombre de condamnations antérieures n’est pas présent, ce qui a également soutenu la prédiction (38,7 %).","1. Having no prior convictions pushed the prediction towards this class.  
+2. Having two or more prior convictions pushed the prediction towards this class.","['number_of_priors_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b2 > 0.5']","[0, 2]","[0, 2]","[0, 2]",[],,,,,,,1
+compas,gpt-5.6-terra,1516,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,99.1,True,99.1,99.1,99.1,70.2,True,True,False,2,2,1,0,0,0,0,1,0,0,1,0,[99.1],0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1923 (opposes the prediction)
+  number_of_priors_b0: weight=-0.1767 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Le fait de ne pas être dans la catégorie correspondant à deux antécédents a soutenu cette prédiction. En revanche, être dans la catégorie correspondant à zéro antécédent allait légèrement à l’encontre de cette prédiction.","La prédiction est « non coupable » (classe 0). Le fait de ne pas être dans la catégorie correspondant à deux antécédents a soutenu cette prédiction. En revanche, être dans la catégorie correspondant à zéro antécédent allait légèrement à l’encontre de cette prédiction.","1. Having two prior convictions pushed against this class, but was outweighed.  
+2. Having no prior convictions pushed against this class, but was outweighed.","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'number_of_priors_b0 < 0.5']","[0, 2]","[0, 2]","[0, 2]",[2],,,,,,,1
+compas,gpt-5.6-terra,1518,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,100.0,True,85.5,85.5,100.0,100.0,False,False,True,2,2,7,5,0,5,0,0,0,3,0,3,"[85.5, 100.0, 100.0, 85.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b0 = 0  (number_of_priors in [0, 1) — does NOT hold)
+  number_of_priors_b1 = 0  (number_of_priors in [1, 3) — does NOT hold)
+  number_of_priors_b2 = 1  (number_of_priors in [3, 36) — holds)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « coupable ». La règle met surtout en avant les éléments suivants :
+
+- Le nombre d’antécédents est compris entre 3 et 36, ce qui correspond à la condition retenue.
+- Le score factor est compris entre 0 et 1.
+- L’indicateur « âgé de plus de 45 ans » vaut 0, donc cette personne n’est pas dans ce groupe selon cette mesure.
+- L’indicateur « âgé de moins de 25 ans » vaut 0, donc cette personne n’est pas dans ce groupe selon cette mesure.
+- L’indicateur « afro-américain » vaut 0, donc cette personne n’est pas dans ce groupe selon cette mesure.
+
+Les conditions indiquant entre 0 et 1 antécédent, ou entre 1 et 3 antécédents, ne sont pas satisfaites.","La prédiction est « coupable ». La règle indique que :
+
+- Le nombre d’antécédents est compris entre 3 et 36.
+- Le score factor est compris entre 0 et 1.
+- L’indicateur « âgé de plus de 45 ans » vaut 0 : la personne n’a pas plus de 45 ans.
+- L’indicateur « âgé de moins de 25 ans » vaut 0 : la personne n’a pas moins de 25 ans.
+- L’indicateur d’appartenance afro-américaine vaut 0 : la personne n’est pas identifiée comme afro-américaine par cette variable.","1. The number of prior offenses is between 0 and 1, which is not true here.  
+2. The number of prior offenses is between 1 and 3, which is not true here.  
+3. The number of prior offenses is between 3 and 36, which is true here.  
+4. The score factor is between 0 and 1, which is true here.  
+5. Being over 45 years old is between 0 and 1, which is true here.  
+6. Being under 25 years old is between 0 and 1, which is true here.  
+7. Being African American is between 0 and 1, which is true here.","['number_of_priors_b2 > 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'number_of_priors_b2 > 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[0, 1, 2, 3, 4, 5, 6]","[2, 3]","[2, 3]","[0, 1, 2, 3, 4, 5, 6]",0.0,OPTIMAL,cop,0.3302,,,1
+compas,gpt-5.6-terra,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,74.0,False,74.0,74.0,74.0,74.0,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[74.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b0 = 0  (number_of_priors in [0, 1) — does NOT hold)
+  number_of_priors_b1 = 0  (number_of_priors in [1, 3) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)","La prédiction est « coupable » (classe 1). Les éléments qui soutiennent cette décision sont un score factoriel compris entre 0 et 1, l’indication d’un âge au-dessus de 45 ans comprise entre 0 et 1, et l’indication d’un âge en dessous de 25 ans comprise entre 0 et 1.
+
+En revanche, les conditions liées au nombre d’antécédents ne sont pas remplies : le nombre d’antécédents n’est ni entre 0 et 1, ni entre 1 et 3 selon ces indicateurs.","La prédiction est « coupable » (classe 1). Les éléments qui soutiennent cette décision sont un score factoriel compris entre 0 et 1, l’indication d’un âge au-dessus de 45 ans comprise entre 0 et 1, et l’indication d’un âge en dessous de 25 ans comprise entre 0 et 1.
+
+En revanche, les conditions liées au nombre d’antécédents ne sont pas remplies : le nombre d’antécédents n’est ni entre 0 et 1, ni entre 1 et 3 selon ces indicateurs.","1. The number of prior offenses is between 0 and 1, which is not true for this case.  
+2. The number of prior offenses is between 1 and 3, which is not true for this case.  
+3. The score factor is between 0 and 1, which is true for this case.  
+4. The person is older than 45, which is between 0 and 1, and this is true for this case.  
+5. The person is younger than 25, which is between 0 and 1, and this is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5']","[0, 1, 3, 4, 5]","[0, 1, 3, 4, 5]","[0, 1, 3, 4, 5]","[0, 1, 3, 4, 5]",0.0,OPTIMAL,cop@5,0.3302,,,1
+compas,gpt-5.6-terra,1518,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,97.8,True,97.8,97.8,97.8,97.8,True,True,True,5,5,5,0,0,0,0,0,0,0,0,0,[97.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 0  (number_of_priors in [1, 3) — does NOT hold)
+  number_of_priors_b2 = 1  (number_of_priors in [3, 36) — holds)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)","La prédiction est « coupable ». Les éléments relevés sont :
+
+- Le nombre d’antécédents est entre 3 et 36, ce qui est le cas ici.
+- La condition selon laquelle le nombre d’antécédents serait entre 1 et 3 ne s’applique pas.
+- Le score est entre 0 et 1.
+- L’indicateur « afro-américain » est entre 0 et 1.
+- L’indicateur « asiatique » est entre 0 et 1.
+
+Ensemble, ces informations correspondent à une configuration pour laquelle le modèle prédit la classe « coupable », avec une précision vérifiée d’au moins 95 % pour cette explication.","La prédiction est « coupable ». Les éléments relevés sont :
+
+- Le nombre d’antécédents est entre 3 et 36, ce qui est le cas ici.
+- La condition selon laquelle le nombre d’antécédents serait entre 1 et 3 ne s’applique pas.
+- Le score est entre 0 et 1.
+- L’indicateur « afro-américain » est entre 0 et 1.
+- L’indicateur « asiatique » est entre 0 et 1.
+
+Ensemble, ces informations correspondent à une configuration pour laquelle le modèle prédit la classe « coupable », avec une précision vérifiée d’au moins 95 % pour cette explication.","1. The number of prior offenses is between 1 and 3, which is not true for this case.  
+2. The number of prior offenses is between 3 and 36, which is true for this case.  
+3. The score factor is between 0 and 1, which is true for this case.  
+4. African American status is between 0 and 1, which is true for this case.  
+5. Asian status is between 0 and 1, which is true for this case.","['number_of_priors_b2 > 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5']","['number_of_priors_b1 < 0.5', 'number_of_priors_b2 > 0.5', 'score_factor_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5']","[1, 2, 3, 6, 7]","[1, 2, 3, 6, 7]","[1, 2, 3, 6, 7]","[1, 2, 3, 6, 7]",,,,,0.9776179056754596,,1
+compas,gpt-5.6-terra,1518,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,81.1,False,52.8,52.8,52.8,81.1,False,False,False,0,0,1,1,0,1,0,0,0,0,0,3,"[52.8, 52.8, 52.8, 52.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 1 THEN class 1","The prediction is “guilty” because the person has the indicated prior-record category. In the model’s examples, this condition led to a guilty prediction every time, with estimated precision of 1.00.","The prediction is “guilty” because the person has two or more prior offenses. In the model’s examples, having two or more prior offenses led to a guilty prediction every time, with an estimated precision of 1.00.","1. The number of prior offenses falls in the indicated higher-prior category, which supports predicting that the individual is guilty.",[],['number_of_priors_b2 > 0.5'],[2],[],[],[2],,,,,,1.0,1
+compas,gpt-5.6-terra,1518,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,100.0,True,100.0,100.0,100.0,81.1,True,True,False,3,5,1,2,0,0,0,4,0,2,2,1,"[100.0, 100.0]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 63.7% (supports the prediction)
+  number_of_priors_b0: 29.2% (supports the prediction)
+  number_of_priors_b1: 7.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « coupable » principalement parce que l’indicateur correspondant au troisième niveau du nombre d’antécédents était présent, ce qui a fortement soutenu cette prédiction (63,7 % de l’influence). L’indicateur correspondant au premier niveau du nombre d’antécédents était absent, ce qui a aussi soutenu la prédiction (29,2 %), tout comme l’absence de l’indicateur du deuxième niveau (7,0 %).
+
+Le facteur de score indiqué n’a pas soutenu la prédiction, et l’indicateur concernant un âge supérieur à 45 ans n’était pas présent ; tous deux allaient légèrement dans le sens opposé, sans influence notable.","Le modèle a prédit « coupable » principalement parce que la personne se situe dans le troisième niveau de nombre d’antécédents, ce qui a fortement soutenu cette prédiction (63,7 %). Le fait de ne pas appartenir au premier niveau de nombre d’antécédents a aussi soutenu la prédiction (29,2 %), tout comme le fait de ne pas appartenir au deuxième niveau (7,0 %).
+
+Le score de risque est dans le premier niveau de sa plage, et la personne n’a pas plus de 45 ans. Ces deux éléments allaient très légèrement à l’encontre de la prédiction, mais leur influence était pratiquement nulle.","1. The number of prior offenses pushed the prediction towards this class.  
+2. The number of prior offenses pushed the prediction towards this class.  
+3. The number of prior offenses pushed the prediction towards this class.  
+4. The score factor pushed against this class, but was outweighed.  
+5. Whether the person is above forty-five years old pushed against this class, but was outweighed.","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b2 > 0.5', 'number_of_priors_b2 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]",[2],,,,,,,1
+compas,gpt-5.6-terra,1518,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,100.0,True,100.0,100.0,100.0,81.1,True,True,False,3,5,1,2,0,0,0,4,0,2,2,1,"[100.0, 100.0]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=+0.1927 (supports the prediction)
+  number_of_priors_b0: weight=+0.1773 (supports the prediction)
+  number_of_priors_b1: weight=+0.0414 (supports the prediction)
+  score_factor_b0: weight=+0.0000 (opposes the prediction)
+  age_above_fourtyfive_b0: weight=+0.0000 (opposes the prediction)","La prédiction est « coupable » principalement en raison du nombre d’antécédents : l’indicateur correspondant à la troisième catégorie d’antécédents est présent et soutient le plus fortement cette décision. Les indicateurs des deux autres catégories d’antécédents ne sont pas présents, mais ils apportent aussi un soutien plus faible dans cette explication locale.
+
+Le facteur de score et l’indicateur d’âge au-dessus de 45 ans ne contribuent pratiquement pas à la décision ici.","La prédiction est « coupable » principalement en raison du nombre d’antécédents : l’indicateur correspondant à la troisième catégorie d’antécédents est présent et soutient le plus fortement cette décision. Les deux premières catégories d’antécédents ne sont pas présentes, mais elles apportent aussi un soutien plus faible dans cette explication locale.
+
+Le facteur de score est dans sa première catégorie et l’âge est dans la catégorie « au-dessus de 45 ans » ; toutefois, ces deux éléments n’ont pratiquement aucun effet sur la décision ici.","1. The number of prior offenses pushed the prediction toward this class.  
+2. The number of prior offenses pushed the prediction toward this class.  
+3. The number of prior offenses pushed the prediction toward this class.  
+4. The score-related factor pushed against this class, but was outweighed.  
+5. Whether the person is above age 45 pushed against this class, but was outweighed.","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b2 > 0.5', 'number_of_priors_b2 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1, 2]","[0, 1, 2, 3, 4]",[2],,,,,,,1
+compas,gpt-5.6-terra,1827,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,64.5,False,64.5,64.5,64.5,64.5,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[64.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)
+  asian_b0 = 1  (asian in [0, 1) — holds)
+  hispanic_b0 = 1  (hispanic in [0, 1) — holds)","The model predicted “not guilty” (class 0). The learned rule indicates that the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are each between 0 and 1.
+
+One listed condition does not hold: the number of prior offenses is not between 3 and 36.","The model predicted “not guilty” (class 0). The learned rule indicates that the score factor is between 0 and 1, and the indicators for being above 45, below 25, African American, Asian, and Hispanic are each between 0 and 1.
+
+One listed condition does not hold: the number of prior offenses is not between 3 and 36.","1. The number of prior offenses is between 3 and 36, which is not true for this case.  
+2. The score factor is between 0 and 1, which is true for this case.  
+3. Being above 45 years old is between 0 and 1, which is true for this case.  
+4. Being below 25 years old is between 0 and 1, which is true for this case.  
+5. Being African American is between 0 and 1, which is true for this case.  
+6. Being Asian is between 0 and 1, which is true for this case.  
+7. Being Hispanic is between 0 and 1, which is true for this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'asian_b0 > 0.5', 'hispanic_b0 > 0.5']","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]","[2, 3, 4, 5, 6, 7, 8]",0.0,OPTIMAL,cop,0.658,,,1
+compas,gpt-5.6-terra,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,73.2,False,73.2,73.2,73.2,73.2,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[73.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","La prédiction est « non coupable ». Elle est principalement cohérente avec les éléments suivants : le score est compris entre 0 et 1, l’indicateur « âgé de plus de 45 ans » est compris entre 0 et 1, l’indicateur « âgé de moins de 25 ans » est compris entre 0 et 1, et l’indicateur « afro-américain » est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents ne tient pas : la règle visait un nombre d’antécédents entre 3 et 36, alors que cette condition n’est pas satisfaite ici.","La prédiction est « non coupable ». Elle est principalement cohérente avec les éléments suivants : le score est compris entre 0 et 1, l’indicateur « âgé de plus de 45 ans » est compris entre 0 et 1, l’indicateur « âgé de moins de 25 ans » est compris entre 0 et 1, et l’indicateur « afro-américain » est compris entre 0 et 1.
+
+La condition concernant le nombre d’antécédents ne tient pas : la règle visait un nombre d’antécédents entre 3 et 36, alors que cette condition n’est pas satisfaite ici.","1. The number of prior offenses is between 3 and 36, which is not true in this case.  
+2. The score factor is between 0 and 1, which is true in this case.  
+3. Being above 45 years old is between 0 and 1, which is true in this case.  
+4. Being below 25 years old is between 0 and 1, which is true in this case.  
+5. Being African American is between 0 and 1, which is true in this case.","['score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5', 'number_of_priors_b2 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.658,,,1
+compas,gpt-5.6-terra,1827,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.3,True,77.6,77.6,77.6,77.6,False,False,False,2,2,2,3,0,3,0,3,0,3,3,3,"[77.6, 77.6, 77.6, 77.6]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  number_of_priors_b1 = 1  (number_of_priors in [1, 3) — holds)
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  other_b0 = 1  (other in [0, 1) — holds)
+  misdemeanor_b0 = 1  (misdemeanor in [0, 1) — holds)","La prédiction est « non coupable ». Les éléments retenus sont :
+
+- Le nombre d’antécédents se situe entre 1 et 3, ce qui est le cas ici.
+- Le nombre d’antécédents ne se situe pas entre 3 et 36.
+- La personne n’a pas moins de 25 ans : l’indicateur correspondant est dans l’intervalle de 0 à 1.
+- La catégorie « autre » est dans l’intervalle de 0 à 1.
+- L’infraction n’est pas classée comme un délit mineur : l’indicateur correspondant est dans l’intervalle de 0 à 1.
+
+Ensemble, ces informations soutiennent la prédiction de non-culpabilité, avec une fiabilité vérifiée d’au moins 95 % pour ce type de situation.","La prédiction est « non coupable ». Les conditions retenues sont :
+
+- Le nombre d’antécédents est compris entre 1 et 3.
+- Le nombre d’antécédents n’est pas compris entre 3 et 36.
+- L’âge n’est pas inférieur à 25 ans.
+- L’infraction n’appartient pas à la catégorie « autre ».
+- L’infraction n’est pas classée comme un délit mineur.
+
+Ces éléments soutiennent la prédiction avec une fiabilité vérifiée d’au moins 95 %.","1. The number of prior offenses is between 1 and 3, which is true here.  
+2. The number of prior offenses is between 3 and 36, which is not true here.  
+3. The person is not below twenty-five years old, which is true here.  
+4. The alleged offense is not classified as “other,” which is true here.  
+5. The alleged offense is not a misdemeanor, which is true here.","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'age_below_twentyfive_b0 < 0.5', 'other_b0 < 0.5', 'misdemeanor_b0 < 0.5']","[1, 2, 5, 10, 12]","[1, 2]","[1, 2]","[1, 2]",,,,,0.9752198241406874,,1
+compas,gpt-5.6-terra,1827,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,77.6,False,77.6,77.6,77.6,77.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[77.6],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF number_of_priors_b2 = 0 AND number_of_priors_b1 = 1 THEN class 0","La prédiction est « non coupable » (classe 0). Elle repose sur deux indicateurs : le second indicateur lié au nombre d’antécédents vaut 0, et le premier vaut 1. Lorsque cette combinaison est présente, la règle observée prédit systématiquement la classe 0, avec une précision estimée de 1,00.","La prédiction est « non coupable » (classe 0). Elle repose sur deux indicateurs : le second indicateur lié au nombre d’antécédents vaut 0, et le premier vaut 1. Lorsque cette combinaison est présente, la règle observée prédit systématiquement la classe 0, avec une précision estimée de 1,00.","1. The person has one previous conviction, which supported the prediction of not guilty.","['number_of_priors_b2 < 0.5', 'number_of_priors_b1 > 0.5']","['number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5']","[1, 2]","[1, 2]","[1, 2]","[1, 2]",,,,,,1.0,1
+compas,gpt-5.6-terra,1827,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,51.3,False,26.6,24.1,48.7,26.6,False,False,False,2,4,2,3,0,1,0,3,0,2,3,3,"[26.6, 48.7, 26.6, 24.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  number_of_priors_b2: 49.7% (supports the prediction)
+  number_of_priors_b0: 32.3% (opposes the prediction)
+  number_of_priors_b1: 18.0% (supports the prediction)
+  score_factor_b0: 0.0% (opposes the prediction)
+  age_above_fourtyfive_b0: 0.0% (opposes the prediction)","Le modèle a prédit « non coupable » (classe 0). La principale raison est que l’indicateur correspondant à l’absence de deux antécédents a fortement soutenu cette prédiction (49,7 %). L’indicateur correspondant à un antécédent a aussi soutenu la prédiction (18,0 %).
+
+En revanche, l’indicateur indiquant l’absence d’antécédents s’opposait à cette prédiction (32,3 %), mais moins fortement. Les indicateurs liés au facteur de score et au fait d’avoir plus de 45 ans n’ont pratiquement pas influencé la décision.","Le modèle a prédit « non coupable » (classe 0). Le fait d’avoir exactement un antécédent a soutenu cette prédiction (18,0 %), tout comme le fait d’avoir moins de deux antécédents (49,7 %).
+
+En revanche, l’absence d’antécédent allait dans le sens opposé à cette prédiction (32,3 %). Le score de risque le plus bas et le fait d’avoir 45 ans ou moins n’ont pratiquement pas influencé la décision.","1. The number of prior cases in the highest group pushed the prediction towards not guilty.  
+2. The number of prior cases in the lowest group pushed against the prediction of not guilty, but was outweighed.  
+3. The number of prior cases in the middle group pushed the prediction towards not guilty.  
+4. The score factor pushed against the prediction of not guilty, but was outweighed.  
+5. Being age 45 or younger pushed against the prediction of not guilty, but was outweighed.","['number_of_priors_b1 > 0.5', 'number_of_priors_b0 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 < 0.5', 'number_of_priors_b1 > 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[0, 1]","[0, 1, 3, 4]","[0, 1]",,,,,,,1
+compas,gpt-5.6-terra,1827,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,51.3,False,77.6,70.8,77.6,40.5,False,False,False,2,1,1,3,0,4,0,4,0,3,4,3,"[77.6, 48.7, 70.8, 70.8]",0.0429,"LIME local explanation (linear approximation weights):
+  number_of_priors_b2: weight=-0.1925 (opposes the prediction)
+  number_of_priors_b0: weight=+0.1763 (supports the prediction)
+  number_of_priors_b1: weight=-0.0415 (opposes the prediction)
+  score_factor_b0: weight=+0.0000 (opposes the prediction)
+  age_above_fourtyfive_b0: weight=+0.0000 (opposes the prediction)","La prédiction est « non coupable » (classe 0). Le principal élément allant dans ce sens est l’absence d’antécédents : l’indicateur correspondant à zéro antécédent est actif et soutient la prédiction.
+
+En revanche, l’indicateur correspondant à un antécédent est actif et va légèrement à l’encontre de cette prédiction. L’indicateur correspondant à deux antécédents n’est pas actif, mais son influence locale va aussi à l’encontre de la prédiction. Les indicateurs liés au facteur de score et au fait d’avoir plus de 45 ans n’ont pratiquement pas influencé la décision.","La prédiction est « non coupable » (classe 0). L’absence d’antécédent judiciaire soutient nettement cette décision, tandis qu’avoir exactement un antécédent va légèrement dans le sens opposé.
+
+La catégorie correspondant à deux antécédents ou plus, qui ne s’applique pas ici, est aussi localement associée à une influence opposée à cette prédiction.
+
+Le score pris en compte et le fait d’être âgé de plus de 45 ans n’ont pratiquement pas influencé la décision.","1. The number of prior offenses in the highest listed category pushed against this class, but was outweighed.  
+2. The number of prior offenses in the lowest listed category pushed the prediction towards this class.  
+3. The number of prior offenses in the middle listed category pushed against this class, but was outweighed.  
+4. The score factor pushed the prediction towards this class.  
+5. Being age 45 or younger pushed the prediction towards this class.","['number_of_priors_b0 > 0.5', 'number_of_priors_b1 > 0.5', 'number_of_priors_b2 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 < 0.5']","['number_of_priors_b2 > 0.5', 'number_of_priors_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5']","[0, 1, 2, 3, 4]","[1, 2]",[2],[3],,,,,,,1

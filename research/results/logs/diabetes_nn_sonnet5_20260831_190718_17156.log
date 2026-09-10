@@ -1,0 +1,25 @@
+Full console log -> research/results/logs/diabetes_nn_sonnet5_20260831_190718_17156.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+resume: 15 instances already done (90 rows) -> 0 to go
+
+saved -> research/results/diabetes_nn_comparison_sonnet5.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       4.20               85.50     84.02     80.99          85.50     79.78
+cop           2.13               74.91     75.42     71.35          75.42     74.91
+cop_k         7.60               93.80     92.84     90.10          94.05     93.80
+lime          7.60               63.43     63.01     55.29          69.65     52.15
+lmpaxp        7.60               96.79     94.70     93.96          95.56     96.79
+shap          7.60               77.66     69.64     68.33          82.66     67.77
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+cop_k                  0.53          0.53
+lime                   0.13          0.07
+lmpaxp                 0.93          0.73
+shap                   0.47          0.40

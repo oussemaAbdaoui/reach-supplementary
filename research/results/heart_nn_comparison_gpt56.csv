@@ -1,0 +1,1018 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec,v5_rerun
+heart,gpt-5.6-terra,3,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.1,False,89.1,89.1,89.1,89.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[89.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est une survie (classe 0). Deux conditions associées à la règle ne sont pas présentes chez ce patient : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","La prédiction est une survie (classe 0). Deux conditions associées à la règle ne sont pas présentes chez ce patient : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","1. The ejection fraction is between 15 and 30, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1702,OPTIMAL,cop,0.519,,,1
+heart,gpt-5.6-terra,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,88.3,88.3,88.3,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[88.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit une survie (classe 0). Cette explication repose sur le fait que le patient a une pression artérielle élevée, indiquée par une valeur comprise entre 0 et 1, et que le sexe est également codé par une valeur comprise entre 0 et 1.
+
+En revanche, deux conditions de la règle ne sont pas remplies : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","Le modèle prédit une survie (classe 0). Cette explication repose sur le fait que le patient a une pression artérielle élevée, indiquée par une valeur comprise entre 0 et 1, et que le sexe est également codé par une valeur comprise entre 0 et 1.
+
+En revanche, deux conditions de la règle ne sont pas remplies : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","1. La fraction d’éjection est comprise entre 15 et 30, ce qui n’est pas vrai dans ce cas.  
+2. La pression artérielle élevée est comprise entre 0 et 1, ce qui est vrai dans ce cas.  
+3. Le sexe est compris entre 0 et 1, ce qui est vrai dans ce cas.  
+4. Le temps de suivi est compris entre 4 et 67, ce qui n’est pas vrai dans ce cas.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519,,,1
+heart,gpt-5.6-terra,3,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.2,True,99.2,99.2,99.2,99.2,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[99.2],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  ejection_fraction_b2 = 1  (ejection_fraction in [40, 70) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","Le modèle prédit une survie (classe 0). Cette prédiction est principalement liée au fait que la fraction d’éjection cardiaque est comprise entre 40 et 70, et que le suivi dans le temps est compris entre 67 et 172.
+
+En revanche, la fraction d’éjection n’est pas comprise entre 15 et 30, et le suivi dans le temps n’est pas compris entre 4 et 67. Ensemble, ces éléments soutiennent la prédiction de survie.","Le modèle prédit une survie (classe 0). Cette prédiction est principalement liée au fait que la fraction d’éjection cardiaque est comprise entre 40 et 70, et que le suivi dans le temps est compris entre 67 et 172.
+
+En revanche, la fraction d’éjection n’est pas comprise entre 15 et 30, et le suivi dans le temps n’est pas compris entre 4 et 67. Ensemble, ces éléments soutiennent la prédiction de survie.","1. The heart’s pumping efficiency is between 15 and 30, which is not true here.  
+2. The heart’s pumping efficiency is between 40 and 70, which is true here.  
+3. The follow-up time is between 4 and 67, which is not true here.  
+4. The follow-up time is between 67 and 172, which is true here.","['ejection_fraction_b2 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]",,,,,0.9899280575539569,,1
+heart,gpt-5.6-terra,3,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,85.7,False,64.4,85.7,85.7,85.7,False,False,False,2,3,3,1,0,0,0,0,0,1,0,1,"[64.4, 85.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF creatinine_phosphokinase_b0 = 1 AND time_b0 = 0 AND serum_sodium_b2 = 1 THEN class 0","Le modèle prédit une survie (classe 0). Cette prédiction est surtout soutenue par la combinaison observée de la créatine phosphokinase, du sodium sanguin et du temps de suivi. Ensemble, ces indicateurs correspondent à une règle qui prédit la survie avec une précision estimée à 97 %.","Le modèle prédit une survie (classe 0). Cette prédiction est soutenue par une créatine phosphokinase dans la catégorie observée, un sodium sanguin dans la catégorie observée et un temps de suivi qui n’appartient pas à la première catégorie de temps. Ensemble, ces conditions correspondent à une règle prédisant la survie avec une précision estimée à 97 %.","1. The creatine phosphokinase enzyme measurement is in the indicated category, which pushed the prediction towards survival.
+
+2. The follow-up time is outside the earliest time category, which pushed the prediction towards survival.
+
+3. The blood sodium measurement is in the indicated category, which pushed the prediction towards survival.","['creatinine_phosphokinase_b0 > 0.5', 'serum_sodium_b2 > 0.5', 'time_b0 > 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'time_b0 < 0.5', 'serum_sodium_b2 > 0.5']","[4, 20, 23]","[4, 20]","[4, 20, 23]","[4, 20, 23]",,,,,,0.9745676500508648,1
+heart,gpt-5.6-terra,3,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.3,True,91.7,97.3,97.3,82.1,False,True,False,3,4,3,1,0,0,0,1,0,0,1,1,"[91.7, 97.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 35.7% (supports the prediction)
+  ejection_fraction_b2: 22.8% (supports the prediction)
+  time_b1: 21.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 20.1% (supports the prediction)","Le modèle prédit une survie (classe 0). Tous les éléments disponibles vont dans ce sens.
+
+Le facteur le plus important est le temps de suivi, qui soutient fortement la prédiction de survie (35,7 % et 21,4 % des contributions). La fraction d’éjection cardiaque soutient également cette prédiction (22,8 %). Enfin, le niveau de créatine phosphokinase contribue aussi à la prédiction de survie (20,1 %).","Le modèle prédit une survie (classe 0). Tous les éléments disponibles soutiennent cette prédiction.
+
+Le temps de suivi est le facteur principal : sa valeur située dans la deuxième plage de temps considérée par le modèle contribue à la survie (21,4 %), tandis que l’absence d’appartenance à la première plage contribue également à cette prédiction (35,7 %). La fraction d’éjection cardiaque, située dans sa troisième plage de valeurs, soutient aussi la survie (22,8 %). Enfin, le taux de créatine phosphokinase, situé dans sa première plage de valeurs, contribue à la prédiction de survie (20,1 %).","1. The creatine phosphokinase measurement pushed the prediction towards this class.  
+2. The heart pumping efficiency measurement pushed the prediction towards this class.  
+3. The follow-up time measurement pushed the prediction towards this class.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5']","[4, 10, 23, 24]","[4, 10, 23]","[4, 10, 23, 24]","[4, 10, 24]",,,,,,,1
+heart,gpt-5.6-terra,3,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,91.0,False,91.0,91.0,91.0,63.9,False,False,False,4,4,2,0,0,0,0,2,0,0,1,0,[91.0],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3802 (opposes the prediction)
+  time_b2: weight=+0.3702 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1995 (opposes the prediction)
+  time_b1: weight=-0.1759 (opposes the prediction)","Le modèle prédit une survie (classe 0). La mesure du temps se situe dans la catégorie intermédiaire indiquée par les données, ce qui a légèrement poussé la prédiction vers la survie. En revanche, elle n’est ni dans la première catégorie ni dans la troisième catégorie de temps, deux éléments qui auraient aussi influencé la décision dans l’autre sens. La fraction d’éjection n’est pas dans la première catégorie indiquée, ce qui a également légèrement influencé la prédiction.","Le modèle prédit une survie (classe 0). La mesure du temps se situe dans la catégorie intermédiaire indiquée par les données, ce qui a légèrement poussé la prédiction vers la survie. En revanche, elle n’est ni dans la première catégorie ni dans la troisième catégorie de temps, deux éléments qui auraient aussi influencé la décision dans l’autre sens. La fraction d’éjection n’est pas dans la première catégorie indiquée, ce qui a également légèrement influencé la prédiction.","1. The follow-up time measurement pushed against this class, but was outweighed.","['time_b1 > 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b1 < 0.5', 'time_b2 < 0.5', 'time_b0 < 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[23, 25]",,,,,,,1
+heart,gpt-5.6-terra,11,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.4,False,89.4,89.4,89.4,89.4,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[89.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est que le patient a survécu. Deux conditions associées à la règle ne sont pas présentes : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67. Ces conditions non satisfaites correspondent à la prédiction de survie pour ce cas.","La prédiction est que le patient a survécu. Deux conditions associées à la règle ne sont pas présentes : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67. Ces conditions non satisfaites correspondent à la prédiction de survie pour ce cas.","1. La fraction d’éjection du cœur n’est pas comprise entre 15 et 30 %, ce qui n’est pas vrai dans ce cas.  
+2. Le temps de suivi n’est pas compris entre 4 et 67 jours, ce qui n’est pas vrai dans ce cas.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1688,OPTIMAL,cop,0.5148,,,1
+heart,gpt-5.6-terra,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,0,[88.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle a prédit une survie (classe 0). La règle associée met en avant les éléments suivants :
+
+- Le diabète est présent, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La pression artérielle élevée est présente, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- Le sexe est codé par une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La fraction d’éjection du cœur n’est pas dans l’intervalle de 15 à 30 ; cette condition n’est pas satisfaite.
+- Le temps de suivi n’est pas compris entre 4 et 67 ; cette condition n’est pas satisfaite.
+
+Cette combinaison de caractéristiques correspond à une prédiction de survie pour ce patient selon le modèle.","Le modèle a prédit une survie (classe 0). La règle associée met en avant les éléments suivants :
+
+- Le diabète est présent, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La pression artérielle élevée est présente, avec une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- Le sexe est codé par une valeur comprise entre 0 et 1 ; cette condition est satisfaite.
+- La fraction d’éjection du cœur n’est pas dans l’intervalle de 15 à 30 ; cette condition n’est pas satisfaite.
+- Le temps de suivi n’est pas compris entre 4 et 67 ; cette condition n’est pas satisfaite.
+
+Cette combinaison de caractéristiques correspond à une prédiction de survie pour ce patient selon le modèle.","1. The diabetes indicator is between 0 and 1, which is true here.  
+2. The heart pumping efficiency is between 15 and 30, which is not true here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148,,,1
+heart,gpt-5.6-terra,11,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.9,True,98.9,98.9,98.9,98.9,True,True,True,5,5,5,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_creatinine_b2 = 0  (serum_creatinine in [1.3, 9) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","Le modèle prédit une survie (classe 0). Cette conclusion est appuyée par les éléments suivants :
+
+- La créatinine sanguine est comprise entre 0,5 et 1, ce qui est le cas ici. En revanche, elle n’est pas comprise entre 1,3 et 9.
+- Le sodium sanguin est compris entre 135 et 138, ce qui est le cas ici.
+- Le suivi après l’événement n’est pas compris entre 4 et 67 jours, mais il est compris entre 67 et 172 jours.
+
+Ensemble, ces caractéristiques correspondent à une prédiction de survie avec une précision vérifiée d’au moins 95 % pour des situations similaires.","Le modèle prédit une survie (classe 0). Cette conclusion est appuyée par les éléments suivants :
+
+- La créatinine sanguine est comprise entre 0,5 et 1, ce qui est le cas ici. En revanche, elle n’est pas comprise entre 1,3 et 9.
+- Le sodium sanguin est compris entre 135 et 138, ce qui est le cas ici.
+- Le suivi après l’événement n’est pas compris entre 4 et 67 jours, mais il est compris entre 67 et 172 jours.
+
+Ensemble, ces caractéristiques correspondent à une prédiction de survie avec une précision vérifiée d’au moins 95 % pour des situations similaires.","1. The blood creatinine level is between 0.5 and 1, which is true here.  
+2. The blood creatinine level is between 1.3 and 9, which is not true here.  
+3. The blood sodium level is between 135 and 138, which is true here.  
+4. The follow-up time is between 4 and 67, which is not true here.  
+5. The follow-up time is between 67 and 172, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b1 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","['serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b1 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]",,,,,0.9820143884892086,,1
+heart,gpt-5.6-terra,11,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,86.2,False,62.1,86.2,86.2,62.1,False,False,False,2,3,2,1,0,0,0,1,0,1,1,2,"[62.1, 62.1, 86.2]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 0 AND serum_creatinine_b0 = 1 AND creatinine_phosphokinase_b1 = 1 THEN class 0","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction repose sur la combinaison observée de trois mesures : le temps de suivi correspond à la condition retenue par le modèle, la créatinine sérique correspond également à cette condition, et la créatine phosphokinase correspond elle aussi à la condition retenue. Ensemble, ces éléments sont associés à une prédiction de survie avec une précision estimée de 100 % pour cette règle.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction correspond à un temps de suivi qui n’est pas dans la plage la plus basse, à une créatinine sérique dans sa plage la plus basse et à une créatine phosphokinase dans sa plage intermédiaire. Pour les patients présentant cette combinaison, la règle a une précision estimée de 100 % en faveur de la survie.","1. The follow-up time measurement pushed the prediction towards survival.
+
+2. The blood creatinine measurement pushed the prediction towards survival.
+
+3. The creatine phosphokinase enzyme measurement pushed the prediction towards survival.","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5']","[5, 15, 23]","[5, 15]","[5, 15, 23]","[5, 15]",,,,,,1.0,1
+heart,gpt-5.6-terra,11,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,99.4,True,69.4,56.1,80.8,80.8,False,False,False,2,0,3,3,0,5,0,2,0,2,2,3,"[69.4, 56.1, 80.8, 56.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 33.7% (supports the prediction)
+  serum_creatinine_b0: 22.5% (supports the prediction)
+  time_b1: 17.2% (supports the prediction)
+  serum_sodium_b1: 13.4% (supports the prediction)
+  ejection_fraction_b0: 13.2% (supports the prediction)","Le modèle prédit une survie (classe 0). Tous les éléments fournis vont dans le sens de cette prédiction.
+
+Le facteur le plus important est la période de suivi, qui soutient fortement la prédiction de survie. Le niveau de créatinine sanguine soutient également cette conclusion. Le niveau de sodium sanguin va aussi dans le sens d’une survie. Enfin, la fraction d’éjection du cœur contribue elle aussi à la prédiction de survie.
+
+Ces facteurs n’établissent pas une cause médicale à eux seuls : ils indiquent simplement pourquoi le modèle a choisi la classe « survie » pour ce patient.","Le modèle prédit une survie (classe 0). Tous les éléments fournis soutiennent cette prédiction.
+
+Le facteur principal concerne la durée de suivi : les deux indicateurs associés à cette durée vont dans le sens d’une survie prédite. La créatinine sanguine et le sodium sanguin, dans les tranches correspondant aux mesures de ce patient, soutiennent également cette conclusion. La fraction d’éjection, qui mesure la part de sang expulsée par le cœur à chaque battement, contribue aussi à la prédiction de survie.
+
+Les seuils numériques exacts des tranches ne sont pas fournis ici ; cette explication indique donc seulement que les intervalles correspondant aux mesures du patient ont influencé le modèle.","1. The follow-up time measurement pushed the prediction towards survival.  
+2. The blood creatinine measurement pushed the prediction towards survival.  
+3. The follow-up time measurement pushed the prediction towards survival.  
+4. The blood sodium measurement pushed the prediction towards survival.  
+5. The heart’s pumping fraction measurement pushed the prediction towards survival.","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b1 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 15, 19, 23, 24]","[15, 19]",[],"[15, 19, 24]",,,,,,,1
+heart,gpt-5.6-terra,11,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,96.7,True,96.7,96.7,96.7,99.0,True,True,True,5,5,4,0,0,0,0,1,0,0,1,0,[96.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3941 (opposes the prediction)
+  time_b2: weight=+0.3858 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1998 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1749 (opposes the prediction)
+  time_b1: weight=-0.1673 (opposes the prediction)","Le modèle prédit une survie (classe 0). Le principal élément allant dans ce sens est que le patient n’est pas dans la première catégorie de temps de suivi et se trouve dans la catégorie intermédiaire de temps de suivi, ce qui soutient la prédiction de survie.
+
+À l’inverse, le fait de ne pas être dans la dernière catégorie de temps de suivi, ainsi que les catégories indiquées pour la fraction d’éjection et le sodium sanguin, poussent légèrement dans le sens opposé. Globalement, l’élément lié au temps de suivi en catégorie intermédiaire l’emporte, ce qui conduit à la prédiction de survie.","Le modèle prédit une survie (classe 0). Le principal élément allant dans ce sens est que le patient n’est pas dans la première catégorie de temps de suivi et se trouve dans la catégorie intermédiaire de temps de suivi, ce qui soutient la prédiction de survie.
+
+À l’inverse, le fait de ne pas être dans la dernière catégorie de temps de suivi, ainsi que les catégories indiquées pour la fraction d’éjection et le sodium sanguin, poussent légèrement dans le sens opposé. Globalement, l’élément lié au temps de suivi en catégorie intermédiaire l’emporte, ce qui conduit à la prédiction de survie.","1. The follow-up time measurement pushed against the prediction, but was outweighed.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The heart’s pumping fraction measurement pushed against the prediction, but was outweighed.  
+4. The blood sodium measurement pushed against the prediction, but was outweighed.  
+5. The follow-up time measurement pushed against the prediction, but was outweighed.","['time_b0 < 0.5', 'time_b1 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b1 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","[8, 18, 23, 24, 25]","[8, 18, 23, 24, 25]","[8, 18, 23, 24, 25]","[8, 18, 23, 24]",,,,,,,1
+heart,gpt-5.6-terra,13,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,57.9,False,57.9,57.9,57.9,57.9,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[57.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)","La prédiction indique un risque de décès (classe 1). La principale raison est que la créatinine sérique, une mesure liée à la fonction rénale, se situe entre 1,3 et 9, ce qui correspond à la condition retenue par la règle.
+
+La condition selon laquelle la créatinine sérique serait entre 0,5 et 1 n’est pas remplie.","La prédiction indique un risque de décès (classe 1). La principale raison est que la créatinine sérique, une mesure liée à la fonction rénale, se situe entre 1,3 et 9, ce qui correspond à la condition retenue par la règle.
+
+La condition selon laquelle la créatinine sérique serait entre 0,5 et 1 n’est pas remplie.","1. The blood creatinine level is between 0.5 and 1, which is not true here.  
+2. The blood creatinine level is between 1.3 and 9, which is true here.","['serum_creatinine_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['serum_creatinine_b0 < 0.5', 'serum_creatinine_b2 > 0.5']","[15, 17]","[15, 17]","[15, 17]","[15, 17]",0.3896,OPTIMAL,cop,0.4872,,,1
+heart,gpt-5.6-terra,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,71.0,71.0,71.0,71.0,False,False,False,9,9,9,0,0,0,0,0,0,0,0,0,[71.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Le modèle prédit un décès. Cette décision est principalement associée aux éléments suivants : présence d’anémie, présence de diabète, présence d’hypertension artérielle, sexe dans la catégorie codée entre 0 et 1, et statut tabagique dans la catégorie codée entre 0 et 1.
+
+La créatinine sanguine se situe entre 1,3 et 9, ce qui correspond à la condition retenue par la règle. En revanche, elle ne se situe ni entre 0,5 et 1, ni entre 1 et 1,3. La créatine phosphokinase ne se situe pas entre 23 et 157 ; cette condition de la règle n’est donc pas satisfaite.
+
+La règle affichée est globalement cohérente avec la prédiction du modèle pour ce patient, même si toutes ses conditions ne sont pas remplies.","Le modèle prédit un décès. Cette décision est principalement associée aux éléments suivants : présence d’anémie, présence de diabète, présence d’hypertension artérielle, sexe dans la catégorie codée entre 0 et 1, et statut tabagique dans la catégorie codée entre 0 et 1.
+
+La créatinine sanguine se situe entre 1,3 et 9, ce qui correspond à la condition retenue par la règle. En revanche, elle ne se situe ni entre 0,5 et 1, ni entre 1 et 1,3. La créatine phosphokinase ne se situe pas entre 23 et 157 ; cette condition de la règle n’est donc pas satisfaite.
+
+La règle affichée est globalement cohérente avec la prédiction du modèle pour ce patient, même si toutes ses conditions ne sont pas remplies.","1. The patient has anaemia, which is true for this case.  
+2. The creatine phosphokinase level is between 23 and 157, which is not true for this case.  
+3. The patient has diabetes, which is true for this case.  
+4. The patient has high blood pressure, which is true for this case.  
+5. The blood creatinine level is between 0.5 and 1, which is not true for this case.  
+6. The blood creatinine level is between 1 and 1.3, which is not true for this case.  
+7. The blood creatinine level is between 1.3 and 9, which is true for this case.  
+8. The patient is female, which is true for this case.  
+9. The patient smokes, which is true for this case.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'creatinine_phosphokinase_b0 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872,,,1
+heart,gpt-5.6-terra,13,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,94.4,False,94.4,94.4,94.4,94.4,False,False,False,9,9,9,0,0,0,0,0,0,0,0,0,[94.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","Le modèle prédit un décès. Cette prédiction est notamment cohérente avec les éléments suivants :
+
+- La créatine phosphokinase est comprise entre 157 et 582.
+- Le nombre de plaquettes est compris entre 47 000 et 225 000.
+- La créatinine sanguine est comprise entre 1,3 et 9, ce qui correspond à une valeur élevée dans les catégories utilisées par le modèle.
+
+D’autres conditions incluses dans l’explication ne sont pas présentes : la fraction d’éjection n’est pas comprise entre 30 et 40, les plaquettes ne sont pas comprises entre 273 000 et 742 000, la créatinine sanguine n’est ni entre 0,5 et 1 ni entre 1 et 1,3, le sodium sanguin n’est pas entre 135 et 138, et le temps n’est pas entre 67 et 172.","Le modèle prédit un décès. Cette prédiction est notamment cohérente avec les éléments suivants :
+
+- La créatine phosphokinase est comprise entre 157 et 582.
+- Le nombre de plaquettes est compris entre 47 000 et 225 000.
+- La créatinine sanguine est comprise entre 1,3 et 9, ce qui correspond à une valeur élevée dans les catégories utilisées par le modèle.
+
+D’autres conditions incluses dans l’explication ne sont pas présentes : la fraction d’éjection n’est pas comprise entre 30 et 40, les plaquettes ne sont pas comprises entre 273 000 et 742 000, la créatinine sanguine n’est ni entre 0,5 et 1 ni entre 1 et 1,3, le sodium sanguin n’est pas entre 135 et 138, et le temps n’est pas entre 67 et 172.","1. The creatine phosphokinase level is between 157 and 582, which is true here.  
+2. The heart’s ejection fraction is between 30 and 40, which is not true here.  
+3. The platelet count is between 47,000 and 225,000, which is true here.  
+4. The platelet count is between 273,000 and 742,000, which is not true here.  
+5. The blood creatinine level is between 0.5 and 1, which is not true here.  
+6. The blood creatinine level is between 1 and 1.3, which is not true here.  
+7. The blood creatinine level is between 1.3 and 9, which is true here.  
+8. The blood sodium level is between 135 and 138, which is not true here.  
+9. The follow-up time is between 67 and 172, which is not true here.","['creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12, 14, 15, 16, 17, 19, 24]",,,,,0.9510791366906476,,1
+heart,gpt-5.6-terra,13,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,79.5,False,79.5,79.5,79.5,79.5,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[79.5],0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF serum_creatinine_b2 = 1 AND age_b2 = 1 AND creatinine_phosphokinase_b1 = 1 AND time_b1 = 0 AND platelets_b0 = 1 AND serum_creatinine_b1 = 0 AND serum_creatinine_b0 = 0 THEN class 1","Le modèle prédit un décès (classe 1) car tous les éléments de la règle associée à ce résultat sont présents : l’âge correspond au niveau indiqué par le modèle, la créatine phosphokinase correspond également au niveau attendu, et les plaquettes sont au niveau retenu par la règle.
+
+La créatinine sanguine se situe dans le niveau le plus élevé utilisé par le modèle ; elle n’est pas dans les deux niveaux inférieurs. Enfin, le temps de suivi n’est pas dans le niveau indiqué comme positif par cette variable dans la règle.
+
+Cette combinaison correspond très fortement, selon le modèle, à la classe 1 : la règle est estimée correcte dans environ 98 % des cas similaires.","Le modèle prédit un décès (classe 1) car tous les éléments de la règle associée à ce résultat sont présents : l’âge correspond au niveau indiqué par le modèle, la créatine phosphokinase correspond également au niveau attendu, et les plaquettes sont au niveau retenu par la règle.
+
+La créatinine sanguine se situe dans le niveau le plus élevé utilisé par le modèle ; elle n’est pas dans les deux niveaux inférieurs. Enfin, le temps de suivi n’est pas dans le niveau indiqué comme positif par cette variable dans la règle.
+
+Cette combinaison correspond très fortement, selon le modèle, à la classe 1 : la règle est estimée correcte dans environ 98 % des cas similaires.","1. The patient’s age was in the higher age group, which pushed the prediction towards death.  
+2. The creatine phosphokinase level was in the indicated group, which pushed the prediction towards death.  
+3. The platelet count was in the indicated group, which pushed the prediction towards death.  
+4. The serum creatinine level was not in the lowest group, which supported the prediction towards death.  
+5. The serum creatinine level was not in the middle group, which supported the prediction towards death.  
+6. The serum creatinine level was in the highest group, which pushed the prediction towards death.  
+7. The follow-up time was not in the indicated time group, which pushed the prediction towards death.","['age_b2 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 < 0.5']","['age_b2 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 < 0.5']","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 12, 15, 16, 17, 24]",,,,,,0.982089552238806,1
+heart,gpt-5.6-terra,13,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,39.1,False,44.8,35.7,44.8,67.9,False,False,False,5,5,4,4,0,4,0,5,0,3,4,3,"[44.8, 44.8, 44.8, 35.7]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 25.9% (opposes the prediction)
+  time_b0: 12.5% (opposes the prediction)
+  serum_creatinine_b2: 12.2% (supports the prediction)
+  time_b1: 10.4% (supports the prediction)
+  platelets_b0: 10.2% (supports the prediction)
+  creatinine_phosphokinase_b1: 10.0% (supports the prediction)
+  ejection_fraction_b2: 6.4% (opposes the prediction)
+  platelets_b2: 6.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 6.1% (supports the prediction)","Le modèle prédit un décès (classe 1). Les éléments qui ont le plus poussé cette prédiction sont une créatinine sérique dans la catégorie indiquée par le modèle, un niveau de plaquettes dans la catégorie concernée, et une créatine phosphokinase dans la catégorie concernée. L’indicateur lié à la durée de suivi correspondant à la catégorie intermédiaire a également soutenu la prédiction.
+
+À l’inverse, l’indicateur de durée de suivi correspondant à la catégorie la plus élevée s’opposait fortement à la prédiction de décès, tout comme l’indicateur de la catégorie la plus basse. La fraction d’éjection dans la catégorie indiquée s’opposait aussi à cette prédiction, de même que l’indicateur de plaquettes de l’autre catégorie. Malgré ces éléments contraires, les facteurs allant dans le sens du décès ont conduit le modèle à prédire la classe 1.","Le modèle prédit un décès (classe 1). Les facteurs qui soutiennent cette prédiction comprennent une créatinine sérique dans la tranche la plus élevée, un niveau de plaquettes dans la tranche la plus basse, une créatine phosphokinase dans la tranche intermédiaire ainsi que l’indicateur de créatine phosphokinase dans la tranche la plus basse. Une durée de suivi dans la tranche intermédiaire va également dans le sens du décès prédit.
+
+En revanche, une durée de suivi dans la tranche la plus élevée s’oppose fortement à cette prédiction, tout comme une durée de suivi dans la tranche la plus basse. Une fraction d’éjection dans la tranche la plus élevée constitue aussi un facteur favorable à la survie, de même qu’un niveau de plaquettes dans la tranche la plus élevée. Malgré ces éléments contraires, le cumul des contributions amène le modèle à prédire la classe 1.","1. The follow-up time pushed against this class, but was outweighed.  
+2. The follow-up time pushed against this class, but was outweighed.  
+3. The blood creatinine level pushed the prediction towards this class.  
+4. The follow-up time pushed the prediction towards this class.  
+5. The platelet count pushed the prediction towards this class.  
+6. The creatine phosphokinase enzyme level pushed the prediction towards this class.  
+7. The heart’s ejection fraction pushed against this class, but was outweighed.  
+8. The platelet count pushed against this class, but was outweighed.  
+9. The creatine phosphokinase enzyme level pushed the prediction towards this class.","['serum_creatinine_b2 > 0.5', 'platelets_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b1 > 0.5', 'time_b2 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 < 0.5']","['time_b1 > 0.5', 'serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'platelets_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 < 0.5', 'creatinine_phosphokinase_b0 > 0.5']","[4, 5, 10, 12, 14, 17, 23, 24, 25]","[5, 12, 14, 17, 23]","[5, 10, 12, 17, 25]","[5, 12, 14, 17]",,,,,,,1
+heart,gpt-5.6-terra,13,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,1.5,False,18.0,8.2,23.1,32.8,False,False,False,3,4,5,6,0,5,0,4,0,3,3,3,"[18.0, 23.1, 23.1, 8.2]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3772 (opposes the prediction)
+  time_b0: weight=-0.3768 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1749 (opposes the prediction)
+  ejection_fraction_b2: weight=-0.1566 (opposes the prediction)
+  serum_creatinine_b2: weight=+0.1554 (supports the prediction)
+  time_b1: weight=+0.1474 (supports the prediction)
+  serum_sodium_b0: weight=-0.1470 (opposes the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1387 (supports the prediction)
+  serum_creatinine_b0: weight=+0.1212 (supports the prediction)","Le modèle prédit un décès. Le principal élément allant dans ce sens est la mesure de créatinine dans le sang, dont le niveau correspondant à cette catégorie a augmenté la probabilité prédite de décès.
+
+D’autres indicateurs présents ont aussi légèrement soutenu cette prédiction : la catégorie de créatine phosphokinase et une catégorie intermédiaire de durée de suivi.
+
+À l’inverse, plusieurs éléments ont réduit la probabilité prédite de décès : la catégorie observée pour la durée de suivi, la fraction d’éjection du cœur, et la catégorie de sodium dans le sang. Malgré ces éléments favorables, l’ensemble des signaux a conduit le modèle à prédire la classe 1, correspondant au décès.","Le modèle prédit un décès. Une créatinine sanguine élevée soutient cette prédiction, tout comme une créatine phosphokinase basse, une créatinine sanguine basse et une durée de suivi intermédiaire.
+
+À l’inverse, une durée de suivi courte ou tardive réduit fortement la probabilité prédite de décès. Une fraction d’éjection cardiaque basse ou élevée, ainsi qu’un sodium sanguin bas, vont également dans le sens d’une survie. Malgré ces éléments favorables, le modèle prédit la classe 1, correspondant au décès.","1. The follow-up time pushed against the prediction, but was outweighed.  
+2. The follow-up time pushed against the prediction, but was outweighed.  
+3. The heart’s pumping efficiency pushed against the prediction, but was outweighed.  
+4. The heart’s pumping efficiency pushed against the prediction, but was outweighed.  
+5. The blood creatinine level pushed the prediction towards this class.  
+6. The follow-up time pushed the prediction towards this class.  
+7. The blood sodium level pushed against the prediction, but was outweighed.  
+8. The creatine phosphokinase enzyme level pushed the prediction towards this class.  
+9. The blood creatinine level pushed the prediction towards this class.","['serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'time_b1 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b1 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'serum_sodium_b0 < 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[4, 8, 10, 15, 17, 18, 23, 24, 25]","[17, 18, 23]","[8, 17, 18, 23]","[8, 10, 17, 18, 24]",,,,,,,1
+heart,gpt-5.6-terra,14,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,59.5,False,59.5,59.5,59.5,59.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[59.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","La prédiction est « décès » (classe 1). Les deux conditions relevées par la règle ne sont pas satisfaites : le sodium sanguin n’est pas entre 135 et 138, et la durée de suivi n’est pas entre 67 et 172.","La prédiction est « décès » (classe 1). Les deux conditions relevées par la règle ne sont pas satisfaites : le sodium sanguin n’est pas entre 135 et 138, et la durée de suivi n’est pas entre 67 et 172.","1. The blood sodium level is between 135 and 138, which is not true for this case.  
+2. The follow-up time is between 67 and 172 days, which is not true for this case.","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[19, 24]","[19, 24]","[19, 24]","[19, 24]",0.3968,FEASIBLE,cop,0.483,,,1
+heart,gpt-5.6-terra,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,86.2,False,86.2,86.2,86.2,86.2,False,False,False,12,12,12,0,0,0,0,0,0,0,0,0,[86.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","Le modèle prédit un décès (classe 1). Cette explication est une règle qui correspond à la décision du modèle pour ce patient, même si certaines de ses conditions ne sont pas remplies.
+
+Les conditions remplies sont : présence d’anémie, présence de diabète, présence d’hypertension artérielle, numération plaquettaire comprise entre 47 000 et 225 000, sexe codé entre 0 et 1, et statut tabagique codé entre 0 et 1.
+
+En revanche, les conditions suivantes ne sont pas remplies : créatine phosphokinase comprise entre 23 et 157, fraction d’éjection comprise entre 30 et 40, numération plaquettaire comprise entre 225 000 et 273 000 ou entre 273 000 et 742 000, créatinine sanguine comprise entre 0,5 et 1, et sodium sanguin compris entre 135 et 138.
+
+Ainsi, la prédiction de décès est associée ici notamment à l’anémie, au diabète, à l’hypertension et à la plage de plaquettes la plus basse indiquée par la règle, dans le contexte des autres mesures qui ne correspondent pas aux plages listées.","Le modèle prédit un décès (classe 1). Cette explication est une règle qui correspond à la décision du modèle pour ce patient, même si certaines de ses conditions ne sont pas remplies.
+
+Les conditions remplies sont : présence d’anémie, présence de diabète, présence d’hypertension artérielle, numération plaquettaire comprise entre 47 000 et 225 000, sexe codé entre 0 et 1, et statut tabagique codé entre 0 et 1.
+
+En revanche, les conditions suivantes ne sont pas remplies : créatine phosphokinase comprise entre 23 et 157, fraction d’éjection comprise entre 30 et 40, numération plaquettaire comprise entre 225 000 et 273 000 ou entre 273 000 et 742 000, créatinine sanguine comprise entre 0,5 et 1, et sodium sanguin compris entre 135 et 138.
+
+Ainsi, la prédiction de décès est associée ici notamment à l’anémie, au diabète, à l’hypertension et à la plage de plaquettes la plus basse indiquée par la règle, dans le contexte des autres mesures qui ne correspondent pas aux plages listées.","1. The anaemia indicator is between 0 and 1, which is true here.  
+2. The creatine phosphokinase measurement is between 23 and 157, which is not true here.  
+3. The diabetes indicator is between 0 and 1, which is true here.  
+4. The heart’s ejection fraction is between 30 and 40, which is not true here.  
+5. The high blood pressure indicator is between 0 and 1, which is true here.  
+6. The platelet count is between 47,000 and 225,000, which is true here.  
+7. The platelet count is between 225,000 and 273,000, which is not true here.  
+8. The platelet count is between 273,000 and 742,000, which is not true here.  
+9. The serum creatinine level is between 0.5 and 1, which is not true here.  
+10. The serum sodium level is between 135 and 138, which is not true here.  
+11. The sex indicator is between 0 and 1, which is true here.  
+12. The smoking indicator is between 0 and 1, which is true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]","[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",0.4394,FEASIBLE,cop@12,0.483,,,1
+heart,gpt-5.6-terra,14,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,94.7,False,93.1,93.1,93.1,93.1,False,False,False,10,10,10,2,0,2,0,2,0,2,2,3,"[93.1, 93.1, 93.1, 93.1]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  age_b2 = 0  (age in [65, 95) — does NOT hold)
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b0 = 1  (serum_sodium in [116, 135) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","Le modèle prédit un décès (classe 1). Cette prédiction est associée à la combinaison suivante de caractéristiques :
+
+- Le patient n’est pas dans la tranche d’âge de 65 à 95 ans.
+- Une anémie est présente.
+- La créatine phosphokinase est comprise entre 157 et 582, et non entre 23 et 157.
+- Le patient n’est pas diabétique.
+- La fraction d’éjection n’est pas comprise entre 30 et 40.
+- Il n’y a pas d’hypertension artérielle.
+- Le taux de plaquettes n’est pas compris entre 273 000 et 742 000.
+- La créatinine sanguine n’est pas comprise entre 0,5 et 1.
+- Le sodium sanguin est compris entre 116 et 135, et non entre 135 et 138.
+- La durée de suivi n’est pas comprise entre 67 et 172.
+
+Selon la vérification fournie, cette combinaison conduit à une prédiction de décès avec une précision d’au moins 95 % pour ce cas.","Le modèle prédit un décès (classe 1). Cette prédiction est associée à la combinaison suivante :
+
+Le patient n’est pas dans la tranche d’âge de 65 à 95 ans. Une anémie est présente. La créatine phosphokinase est comprise entre 157 et 582, et non entre 23 et 157. Le patient n’est pas diabétique. La fraction d’éjection n’est pas comprise entre 30 et 40. Il n’y a pas d’hypertension artérielle. Le taux de plaquettes n’est pas compris entre 273 000 et 742 000. La créatinine sanguine n’est pas comprise entre 0,5 et 1. Le sodium sanguin est compris entre 116 et 135, et non entre 135 et 138. La durée de suivi n’est pas comprise entre 67 et 172.
+
+Selon la vérification fournie, cette combinaison est associée à une prédiction de décès avec une précision d’au moins 95 % pour ce cas.","1. The patient's age is not between 65 and 95 years, which is not true here.  
+2. The patient has anaemia, which is true here.  
+3. The creatine phosphokinase level is not between 23 and 157, which is not true here.  
+4. The creatine phosphokinase level is between 157 and 582, which is true here.  
+5. The patient does not have diabetes, which is true here.  
+6. The heart’s ejection fraction is not between 30% and 40%, which is not true here.  
+7. The patient does not have high blood pressure, which is true here.  
+8. The platelet count is not between 273,000 and 742,000, which is not true here.  
+9. The blood creatinine level is not between 0.5 and 1, which is not true here.  
+10. The blood sodium level is between 116 and 135, which is true here.  
+11. The blood sodium level is not between 135 and 138, which is not true here.  
+12. The follow-up time is not between 67 and 172 days, which is not true here.","['age_b2 < 0.5', 'anaemia_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'diabetes_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5', 'creatinine_phosphokinase_b0 < 0.5']","['age_b2 < 0.5', 'anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'diabetes_b0 < 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 9, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 9, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 9, 14, 15, 18, 19, 24]",,,,,0.9553956834532374,,1
+heart,gpt-5.6-terra,14,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,80.3,False,64.8,58.8,64.8,64.8,False,False,False,4,2,4,2,0,4,0,2,0,2,2,3,"[64.8, 43.6, 64.8, 58.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b1 = 0 AND serum_sodium_b0 = 1 AND creatinine_phosphokinase_b1 = 1 AND ejection_fraction_b1 = 0 AND platelets_b0 = 1 AND age_b0 = 1 THEN class 1","Le modèle prédit un décès (classe 1) parce que toutes les conditions de la règle utilisée sont réunies pour ce patient : l’âge, le taux de créatine phosphokinase, les plaquettes, le sodium sanguin, la fraction d’éjection du cœur et le temps de suivi correspondent ensemble à un profil que le modèle associe à la mortalité.
+
+Dans les données utilisées par le modèle, cette combinaison de caractéristiques a conduit à la classe 1 avec une précision estimée de 100 %.","Le modèle prédit un décès (classe 1) car le patient correspond simultanément à certaines plages d’âge, de créatine phosphokinase, de fraction d’éjection cardiaque, de nombre de plaquettes, de sodium sanguin et de durée de suivi.
+
+Cette règle inclut notamment une fraction d’éjection cardiaque en dehors de la deuxième plage définie par les données, ainsi qu’une durée de suivi en dehors de la deuxième plage. Dans les données utilisées, cette combinaison de plages de mesures a été associée à un décès avec une précision estimée de 100 %.","1. The follow-up time measurement pushed the prediction towards death.  
+2. The blood sodium measurement pushed the prediction towards death.  
+3. The creatine phosphokinase enzyme level pushed the prediction towards death.  
+4. The heart’s pumping efficiency measurement pushed the prediction towards death.  
+5. The blood platelet count pushed the prediction towards death.  
+6. The patient’s age pushed the prediction towards death.","['age_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'ejection_fraction_b1 > 0.5', 'time_b1 > 0.5']","['time_b1 > 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 > 0.5', 'platelets_b0 > 0.5', 'age_b0 > 0.5']","[0, 5, 9, 12, 18, 24]","[0, 5, 12, 18]","[9, 24]","[0, 5, 12, 18]",,,,,,1.0,1
+heart,gpt-5.6-terra,14,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,11.8,False,15.1,29.1,29.1,34.6,False,False,False,5,8,7,7,0,4,0,5,0,1,4,3,"[15.1, 29.1, 29.1, 29.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 23.4% (opposes the prediction)
+  time_b0: 11.5% (opposes the prediction)
+  serum_sodium_b0: 10.1% (supports the prediction)
+  time_b1: 9.4% (supports the prediction)
+  platelets_b0: 8.7% (supports the prediction)
+  ejection_fraction_b2: 6.6% (opposes the prediction)
+  platelets_b2: 5.8% (supports the prediction)
+  serum_creatinine_b2: 5.5% (opposes the prediction)
+  ejection_fraction_b0: 5.2% (opposes the prediction)
+  creatinine_phosphokinase_b1: 5.2% (supports the prediction)
+  ejection_fraction_b1: 4.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 4.3% (supports the prediction)","Le modèle prédit un décès (classe 1). Les éléments qui ont le plus poussé vers cette prédiction sont le sodium sanguin, les plaquettes et la créatine phosphokinase, ainsi que certains indicateurs liés au temps de suivi.
+
+À l’inverse, l’indicateur principal lié au temps de suivi a fortement poussé vers une survie, ce qui allait contre la prédiction de décès. La fraction d’éjection du cœur a également plutôt poussé vers une survie, tout comme la créatinine sanguine. Malgré ces éléments favorables, les facteurs allant dans le sens d’un décès ont été jugés globalement plus déterminants par le modèle.","Le modèle prédit un décès (classe 1). Les éléments qui soutiennent cette prédiction comprennent un sodium sanguin dans une tranche basse, des plaquettes dans la tranche indiquée, ainsi que des niveaux de créatine phosphokinase dans les tranches concernées. Le temps de suivi dans la tranche intermédiaire contribue aussi au sens d’un décès.
+
+À l’inverse, un temps de suivi dans la tranche la plus élevée est l’élément qui s’oppose le plus fortement à cette prédiction, et un temps de suivi dans la tranche la plus basse s’y oppose également. Une fraction d’éjection cardiaque dans la tranche la plus élevée réduit aussi la probabilité prédite de décès. La créatinine sanguine dans la tranche concernée, une autre tranche de plaquettes et les autres tranches de fraction d’éjection prises en compte vont également dans le sens d’une survie.
+
+Ces résultats reflètent l’influence des mesures sur la décision du modèle pour ce patient et ne constituent pas une conclusion médicale.","1. The follow-up time pushed against this class, but was outweighed.  
+2. The follow-up time pushed against this class, but was outweighed.  
+3. The blood sodium level pushed the prediction towards this class.  
+4. The follow-up time pushed the prediction towards this class.  
+5. The platelet count pushed the prediction towards this class.  
+6. The heart’s ejection fraction pushed against this class, but was outweighed.  
+7. The platelet count pushed the prediction towards this class.  
+8. The blood creatinine level pushed against this class, but was outweighed.  
+9. The heart’s ejection fraction pushed against this class, but was outweighed.  
+10. The creatine phosphokinase enzyme level pushed the prediction towards this class.  
+11. The heart’s ejection fraction pushed the prediction towards this class.  
+12. The creatine phosphokinase enzyme level pushed the prediction towards this class.","['serum_sodium_b0 > 0.5', 'platelets_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_creatinine_b2 < 0.5']","['time_b1 < 0.5', 'time_b1 < 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 > 0.5', 'platelets_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 > 0.5', 'serum_creatinine_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","[4, 5, 8, 9, 10, 12, 14, 17, 18, 23, 24, 25]","[8, 12, 17, 18, 23]","[5, 8, 9, 12, 14, 17, 18, 23]","[5, 8, 12, 17, 18, 24, 25]",,,,,,,1
+heart,gpt-5.6-terra,14,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,12.6,False,67.9,24.8,67.9,47.2,False,False,False,3,3,5,9,0,9,0,7,0,3,7,3,"[67.9, 0.8, 18.1, 24.8]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3865 (opposes the prediction)
+  time_b2: weight=-0.3818 (opposes the prediction)
+  time_b1: weight=+0.1775 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1761 (opposes the prediction)
+  serum_sodium_b0: weight=+0.1599 (supports the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1430 (supports the prediction)
+  ejection_fraction_b2: weight=-0.1363 (opposes the prediction)
+  serum_creatinine_b2: weight=-0.1356 (opposes the prediction)
+  serum_creatinine_b0: weight=+0.1337 (supports the prediction)
+  serum_sodium_b1: weight=+0.1101 (supports the prediction)
+  platelets_b2: weight=+0.1095 (supports the prediction)
+  ejection_fraction_b1: weight=+0.0997 (supports the prediction)","Le modèle prédit un décès (classe 1). Les éléments qui ont le plus poussé cette prédiction vers un risque plus élevé sont le niveau de sodium sanguin, la créatine phosphokinase et la créatinine sanguine, selon les catégories utilisées par le modèle. Les plaquettes ont également contribué dans le même sens.
+
+En revanche, la catégorie de temps de suivi présente pour ce patient a plutôt réduit la prédiction de décès, tout comme la fraction d’éjection cardiaque. Certaines catégories de créatinine sanguine qui auraient pu augmenter ou diminuer la prédiction ne sont pas présentes ici.","Le modèle prédit un décès (classe 1). Cette prédiction est notamment soutenue par un sodium sanguin dans la tranche la plus basse, une créatine phosphokinase dans la tranche la plus basse, une créatinine sanguine dans la tranche la plus basse et des plaquettes dans la tranche la plus élevée.
+
+À l’inverse, un temps de suivi dans la tranche la plus élevée réduit fortement la prédiction de décès ; le temps de suivi dans la tranche la plus basse la réduit aussi. Une fraction d’éjection cardiaque dans la tranche la plus basse ou la plus élevée réduit également la prédiction de décès, tandis qu’une fraction d’éjection dans la tranche intermédiaire tend à l’augmenter. Enfin, une créatinine sanguine dans la tranche élevée réduit la prédiction de décès, et un sodium sanguin dans la tranche intermédiaire tend à l’augmenter.","1. Le temps de suivi a poussé la prédiction contre cette classe, mais cet effet a été compensé.  
+2. Le temps de suivi a poussé la prédiction contre cette classe, mais cet effet a été compensé.  
+3. Le temps de suivi a poussé la prédiction vers cette classe.  
+4. La fraction d’éjection du cœur a poussé la prédiction contre cette classe, mais cet effet a été compensé.  
+5. Le taux de sodium dans le sang a poussé la prédiction vers cette classe.  
+6. Le taux de créatine phosphokinase dans le sang a poussé la prédiction vers cette classe.  
+7. La fraction d’éjection du cœur a poussé la prédiction contre cette classe, mais cet effet a été compensé.  
+8. Le taux de créatinine dans le sang a poussé la prédiction contre cette classe, mais cet effet a été compensé.  
+9. Le taux de créatinine dans le sang a poussé la prédiction vers cette classe.  
+10. Le taux de sodium dans le sang a poussé la prédiction vers cette classe.  
+11. Le nombre de plaquettes sanguines a poussé la prédiction vers cette classe.  
+12. La fraction d’éjection du cœur a poussé la prédiction vers cette classe.","['serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'platelets_b2 > 0.5', 'time_b1 < 0.5', 'ejection_fraction_b1 < 0.5']","['time_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b2 > 0.5', 'serum_sodium_b1 > 0.5', 'platelets_b2 > 0.5', 'ejection_fraction_b2 > 0.5']","[4, 8, 9, 10, 14, 15, 17, 18, 19, 23, 24, 25]","[9, 18, 24]","[10, 18, 25]","[8, 9, 10, 15, 18]",,,,,,,1
+heart,gpt-5.6-terra,17,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.9,False,93.9,93.9,93.9,93.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[93.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Le temps enregistré est compris entre 4 et 67, ce qui correspond à la condition observée pour cette prédiction. En revanche, le temps n’est pas compris entre 67 et 172, ni entre 172 et 285 : ces deux conditions ne sont donc pas remplies.","La prédiction indique un décès. Le temps enregistré est compris entre 4 et 67, ce qui correspond à la condition observée pour cette prédiction. En revanche, le temps n’est pas compris entre 67 et 172, ni entre 172 et 285 : ces deux conditions ne sont donc pas remplies.","1. The time since follow-up began is between 4 and 67 days, which is true here.  
+2. The time since follow-up began is between 67 and 172 days, which is not true here.  
+3. The time since follow-up began is between 172 and 285 days, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1798,OPTIMAL,cop,0.4882,,,1
+heart,gpt-5.6-terra,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[85.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est associée aux éléments suivants : la pression artérielle élevée est indiquée comme présente, le patient est de sexe masculin, et le temps de suivi se situe entre 4 et 67.
+
+La règle mentionne aussi un temps de suivi entre 172 et 285, mais cette condition n’est pas remplie pour ce patient.","La prédiction indique un décès. Elle est associée aux éléments suivants : la pression artérielle élevée est indiquée comme présente, le patient est de sexe masculin, et le temps de suivi se situe entre 4 et 67.
+
+La règle mentionne aussi un temps de suivi entre 172 et 285, mais cette condition n’est pas remplie pour ce patient.","1. The high blood pressure measurement is between 0 and 1, which is true for this case.  
+2. The sex measurement is between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67 days, which is true for this case.  
+4. The follow-up time is between 172 and 285 days, which is not true for this case.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882,,,1
+heart,gpt-5.6-terra,17,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.4,True,96.4,96.4,96.4,96.4,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit que le patient est décédé. Cette prédiction est principalement associée au fait que le patient fume et que le temps de suivi se situe entre 4 et 67 jours.
+
+Les périodes de suivi entre 67 et 172 jours et entre 172 et 285 jours ne s’appliquent pas à ce patient.","Le modèle prédit que le patient est décédé. Cette prédiction est principalement associée au fait que le patient fume et que le temps de suivi se situe entre 4 et 67 jours.
+
+Les périodes de suivi entre 67 et 172 jours et entre 172 et 285 jours ne s’appliquent pas à ce patient.","1. The patient’s smoking status is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is not between 67 and 172 days, which is true here.  
+4. The follow-up time is not between 172 and 285 days, which is true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9568345323741008,,1
+heart,gpt-5.6-terra,17,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.8,False,75.2,92.8,92.8,92.8,False,False,False,2,3,3,1,0,0,0,0,0,0,0,1,"[75.2, 92.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 AND time_b2 = 0 THEN class 1","La prédiction est que le patient est décédé (classe 1). Elle repose sur la combinaison observée du taux de sodium dans le sang et du temps de suivi, qui correspond exactement à une règle ayant une précision estimée de 100 % pour prédire le décès dans les données du modèle.","La prédiction est que le patient est décédé (classe 1). Elle repose sur la combinaison d’un taux de sodium sanguin situé dans la première plage de valeurs, d’un temps de suivi situé dans la première plage et n’appartenant pas à la troisième plage. Cette combinaison correspond à une règle ayant une précision estimée de 100 % pour prédire le décès dans les données du modèle.","1. The follow-up time falls in the model’s lowest time category, which pushed the prediction towards death.  
+2. The blood sodium level falls in the model’s lowest sodium category, which pushed the prediction towards death.  
+3. The follow-up time does not fall in the model’s highest time category, which pushed the prediction towards death.","['serum_sodium_b0 > 0.5', 'time_b0 > 0.5']","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 < 0.5']","[18, 23, 25]","[18, 23]","[18, 23, 25]","[18, 23, 25]",,,,,,1.0,1
+heart,gpt-5.6-terra,17,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,50.8,98.8,98.8,75.2,False,True,False,1,4,2,3,0,0,0,2,0,3,2,1,"[50.8, 98.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 49.4% (supports the prediction)
+  time_b2: 19.5% (supports the prediction)
+  serum_sodium_b0: 17.8% (supports the prediction)
+  time_b1: 13.2% (supports the prediction)","Le modèle prédit un décès (classe 1). La raison principale est la catégorie de durée de suivi indiquée par « time », qui a le plus fortement poussé la prédiction vers un décès (environ 49 % de l’influence). Une autre catégorie de durée de suivi a également contribué dans le même sens (environ 20 %), tandis que la troisième catégorie n’était pas présente.
+
+Le niveau de sodium sanguin, dans la catégorie indiquée, a aussi renforcé la prédiction de décès (environ 18 %).","Le modèle prédit un décès (classe 1). La durée de suivi est le facteur principal : la première catégorie de durée de suivi est présente et pousse fortement la prédiction vers un décès (environ 49 %). La deuxième catégorie n’est pas présente, mais contribue néanmoins dans le sens d’un décès (environ 13 %). La troisième catégorie n’est pas présente et contribue aussi vers un décès (environ 20 %).
+
+Le niveau de sodium sanguin appartient à la catégorie indiquée et renforce également la prédiction de décès (environ 18 %).","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The blood sodium measurement pushed the prediction towards this class.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b1 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b0 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 > 0.5']","[18, 23, 24, 25]",[18],"[18, 23, 24, 25]","[18, 23]",,,,,,,1
+heart,gpt-5.6-terra,17,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,89.7,89.7,41.2,False,False,False,4,4,2,0,0,0,0,2,0,0,2,0,[89.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.4017 (supports the prediction)
+  time_b2: weight=+0.3905 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1904 (opposes the prediction)
+  time_b1: weight=+0.1733 (supports the prediction)","Le modèle prédit un décès. Le principal facteur est la mesure du temps : l’indicateur correspondant à la première catégorie est présent, ce qui pousse fortement la prédiction vers un décès. Les indicateurs des deux autres catégories de temps ne sont pas présents ; l’absence de l’un d’eux pousse aussi légèrement vers cette prédiction selon le modèle.
+
+L’indicateur lié à la fraction d’éjection n’est pas présent, ce qui va plutôt dans le sens d’une survie, mais cet effet est moins fort que les éléments liés au temps.","Le modèle prédit un décès. Le principal facteur est la mesure du temps : l’indicateur correspondant à la première catégorie est présent, ce qui pousse fortement la prédiction vers un décès. Les indicateurs des deux autres catégories de temps ne sont pas présents ; l’absence de l’un d’eux pousse aussi légèrement vers cette prédiction selon le modèle.
+
+L’indicateur lié à la fraction d’éjection n’est pas présent, ce qui va plutôt dans le sens d’une survie, mais cet effet est moins fort que les éléments liés au temps.","1. The follow-up time measurement pushed the prediction towards death.  
+2. The follow-up time measurement pushed the prediction towards death.  
+3. The ejection fraction measurement pushed against the prediction of death, but was outweighed.  
+4. The follow-up time measurement pushed the prediction towards death.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 24]",,,,,,,1
+heart,gpt-5.6-terra,28,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.8,False,88.8,88.8,88.8,88.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[88.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est cohérente avec le fait que la fraction d’éjection n’est pas comprise entre 15 et 30, et que le temps de suivi n’est pas compris entre 4 et 67.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est cohérente avec le fait que la fraction d’éjection n’est pas comprise entre 15 et 30, et que le temps de suivi n’est pas compris entre 4 et 67.","1. The ejection fraction is between 15 and 30, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.5148,,,1
+heart,gpt-5.6-terra,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[89.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est que le patient a survécu (classe 0).
+
+La règle examinée indique que le sexe se situe entre 0 et 1, et cette condition est remplie. En revanche, la fraction d’éjection du cœur n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67. Ces deux dernières conditions ne sont donc pas remplies pour ce patient.","La prédiction est que le patient a survécu (classe 0).
+
+La règle examinée indique que le sexe se situe entre 0 et 1, et cette condition est remplie. En revanche, la fraction d’éjection du cœur n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67. Ces deux dernières conditions ne sont donc pas remplies pour ce patient.","1. The heart’s pumping efficiency is between 15 and 30, which is not true for this case.  
+2. The patient’s sex is coded between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67, which is not true for this case.","['sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148,,,1
+heart,gpt-5.6-terra,28,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.6,True,98.6,98.6,98.6,98.6,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","Le modèle prédit une survie (classe 0). La principale information en faveur de cette prédiction est que la durée de suivi se situe entre 172 et 285 jours.
+
+En revanche, le sodium sanguin n’est pas compris entre 116 et 135, et la durée de suivi n’est pas comprise entre 4 et 67 jours. Ces conditions ne sont donc pas présentes pour ce patient.","Le modèle prédit une survie (classe 0). La principale information en faveur de cette prédiction est que la durée de suivi se situe entre 172 et 285 jours.
+
+En revanche, le sodium sanguin n’est pas compris entre 116 et 135, et la durée de suivi n’est pas comprise entre 4 et 67 jours. Ces conditions ne sont donc pas présentes pour ce patient.","1. The blood sodium level is between 116 and 135, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.  
+3. The follow-up time is between 172 and 285 days, which is true for this case.","['time_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9820143884892086,,1
+heart,gpt-5.6-terra,28,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.8,False,82.8,82.8,82.8,82.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[82.8],0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction repose sur la combinaison observée d’un résultat de créatinine sérique correspondant à l’indicateur fourni et d’une durée de suivi correspondant à l’indicateur fourni. Lorsque ces deux éléments sont présents ensemble, la règle du modèle prédit une survie avec une précision estimée à 98 %.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction repose sur la combinaison observée d’un résultat de créatinine sérique correspondant à l’indicateur fourni et d’une durée de suivi correspondant à l’indicateur fourni. Lorsque ces deux éléments sont présents ensemble, la règle du modèle prédit une survie avec une précision estimée à 98 %.","1. The follow-up time measurement supported the prediction of survival.  
+2. The blood creatinine measurement supported the prediction of survival.","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]","[15, 25]","[15, 25]","[15, 25]",,,,,,0.9780701754385964,1
+heart,gpt-5.6-terra,28,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.2,True,85.1,98.2,98.2,82.8,False,True,False,2,3,2,1,0,0,0,1,0,0,0,1,"[85.1, 98.2]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 56.9% (supports the prediction)
+  time_b0: 27.1% (supports the prediction)
+  serum_creatinine_b0: 16.0% (supports the prediction)","Le modèle prédit une survie (classe 0). Le facteur principal est la durée de suivi, dans la catégorie indiquée par le modèle, qui soutient fortement cette prédiction (56,9 %). L’absence de la condition correspondant à la catégorie de durée de suivi la plus basse soutient également la survie (27,1 %). Enfin, la créatinine sanguine se trouve dans la catégorie indiquée par le modèle, ce qui soutient aussi la prédiction de survie (16,0 %).","Le modèle prédit une survie (classe 0). Le principal élément est une durée de suivi dans la catégorie la plus élevée, ce qui soutient fortement cette prédiction (56,9 %). L’absence d’une durée de suivi dans la catégorie la plus basse soutient également la survie (27,1 %). Enfin, la créatinine sanguine appartient à la catégorie indiquée par le modèle, ce qui va aussi dans le sens d’une survie (16,0 %).","1. The follow-up time pushed the prediction towards this class.  
+2. The follow-up time pushed the prediction towards this class.  
+3. The blood creatinine level pushed the prediction towards this class.","['time_b0 < 0.5', 'serum_creatinine_b0 > 0.5']","['time_b2 > 0.5', 'time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 23, 25]","[15, 23]","[15, 23, 25]","[15, 25]",,,,,,,1
+heart,gpt-5.6-terra,28,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,98.7,98.7,98.7,67.1,True,True,False,3,3,1,0,0,0,0,2,0,0,2,0,[98.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3825 (opposes the prediction)
+  time_b0: weight=-0.3820 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.2208 (opposes the prediction)","Le modèle prédit une survie (classe 0). La principale information est que la mesure du temps se situe dans la catégorie indiquée comme présente, ce qui a poussé la prédiction vers la survie. Les autres catégories de temps et de fraction d’éjection indiquées comme absentes ont également contribué dans le même sens.","Le modèle prédit une survie (classe 0). La principale information est que la mesure du temps se situe dans la catégorie indiquée comme présente, ce qui a poussé la prédiction vers la survie. Les autres catégories de temps et de fraction d’éjection indiquées comme absentes ont également contribué dans le même sens.","1. The follow-up time measurement pushed against the prediction of survival, but was outweighed.  
+2. The follow-up time measurement pushed against the prediction of survival, but was outweighed.  
+3. The heart’s ejection fraction measurement pushed against the prediction of survival, but was outweighed.","['time_b2 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b2 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23, 25]","[8, 23, 25]","[8, 23, 25]",[8],,,,,,,1
+heart,gpt-5.6-terra,31,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[90.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est une survie (classe 0). Les deux conditions associées à un risque plus élevé de décès ne sont pas présentes : la fraction d’éjection du cœur n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","La prédiction est une survie (classe 0). Les deux conditions associées à un risque plus élevé de décès ne sont pas présentes : la fraction d’éjection du cœur n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","1. The ejection fraction is between 15 and 30, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1784,OPTIMAL,cop,0.514,,,1
+heart,gpt-5.6-terra,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,85.7,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,0,[85.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit une survie (classe 0). Cette décision est cohérente avec plusieurs éléments présents dans la règle : le patient a du diabète, une pression artérielle élevée, est de sexe masculin et fume.
+
+En revanche, deux conditions de la règle ne sont pas respectées : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","Le modèle prédit une survie (classe 0). Cette décision est cohérente avec plusieurs éléments présents dans la règle : le patient a du diabète, une pression artérielle élevée, est de sexe masculin et fume.
+
+En revanche, deux conditions de la règle ne sont pas respectées : la fraction d’éjection n’est pas comprise entre 15 et 30, et le temps de suivi n’est pas compris entre 4 et 67.","1. The diabetes measurement is between 0 and 1, which is true here.  
+2. The heart pumping efficiency is between 15 and 30, which is not true here.  
+3. The high blood pressure measurement is between 0 and 1, which is true here.  
+4. The sex measurement is between 0 and 1, which is true here.  
+5. The smoking measurement is between 0 and 1, which is true here.  
+6. The follow-up time is between 4 and 67, which is not true here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514,,,1
+heart,gpt-5.6-terra,31,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,98.3,True,98.3,98.3,98.3,98.3,True,True,True,6,6,6,0,0,0,0,0,0,0,0,0,[98.3],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","Le modèle prédit une survie (classe 0). Cette conclusion est surtout associée aux éléments suivants :
+
+- La créatinine sanguine est comprise entre 0,5 et 1.
+- Le sodium sanguin est compris entre 135 et 138. Il n’est pas compris entre 116 et 135.
+- Le sexe est codé entre 0 et 1 dans les données.
+- La durée de suivi est comprise entre 67 et 172. Elle n’est pas comprise entre 4 et 67.
+
+Ensemble, ces informations correspondent à des profils pour lesquels le modèle prédit une survie avec une précision vérifiée d’au moins 95 %.","Le modèle prédit une survie (classe 0). Cette conclusion est surtout associée aux éléments suivants :
+
+- La créatinine sanguine est comprise entre 0,5 et 1.
+- Le sodium sanguin est compris entre 135 et 138. Il n’est pas compris entre 116 et 135.
+- Le sexe est codé entre 0 et 1 dans les données.
+- La durée de suivi est comprise entre 67 et 172. Elle n’est pas comprise entre 4 et 67.
+
+Ensemble, ces informations correspondent à des profils pour lesquels le modèle prédit une survie avec une précision vérifiée d’au moins 95 %.","1. The blood creatinine level is between 0.5 and 1, which is true here.  
+2. The blood sodium level is between 116 and 135, which is not true here.  
+3. The blood sodium level is between 135 and 138, which is true here.  
+4. The patient’s sex is coded as 0, which is true here.  
+5. The follow-up time is between 4 and 67 days, which is not true here.  
+6. The follow-up time is between 67 and 172 days, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'serum_sodium_b0 < 0.5', 'sex_b0 > 0.5', 'time_b1 > 0.5', 'time_b0 < 0.5']","['serum_creatinine_b0 > 0.5', 'serum_sodium_b0 < 0.5', 'serum_sodium_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]",,,,,0.9841726618705036,,1
+heart,gpt-5.6-terra,31,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,91.7,False,58.3,91.7,91.7,72.9,False,False,False,0,3,2,3,0,0,0,1,0,0,1,1,"[58.3, 91.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF serum_creatinine_b0 = 1 AND time_b0 = 0 AND platelets_b2 = 1 THEN class 0","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction repose sur la combinaison observée de la numération des plaquettes, de la créatinine sérique et du temps de suivi. Ensemble, ces valeurs correspondent à une règle qui prédit la survie avec une précision estimée à 99 %.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est associée à une combinaison de plaquettes dans la troisième plage de valeurs, de créatinine sérique dans la première plage de valeurs, et d’un temps de suivi qui n’est pas dans la première plage. Ensemble, ces caractéristiques correspondent à une règle prédisant la survie avec une précision estimée à 99 %.","1. The blood platelet count pushed the prediction toward survival.  
+2. The blood creatinine level pushed the prediction toward survival.  
+3. The length of follow-up time pushed the prediction toward survival.",[],"['platelets_b2 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b0 > 0.5']","[14, 15, 23]",[],"[14, 15, 23]","[14, 15]",,,,,,0.9896831245394252,1
+heart,gpt-5.6-terra,31,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,100.0,True,86.9,100.0,100.0,86.9,False,True,False,4,6,4,2,0,0,0,2,0,2,2,2,"[86.9, 86.9, 100.0]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 29.7% (supports the prediction)
+  serum_creatinine_b0: 21.4% (supports the prediction)
+  time_b1: 14.9% (supports the prediction)
+  ejection_fraction_b0: 11.7% (supports the prediction)
+  platelets_b2: 11.2% (supports the prediction)
+  serum_sodium_b1: 11.1% (supports the prediction)","Le modèle prédit une survie (classe 0). Les éléments qui ont le plus soutenu cette prédiction sont le temps de suivi, surtout la condition associée au premier indicateur de temps (29,7 %), ainsi que la créatinine sanguine (21,4 %). Le second indicateur de temps a aussi soutenu la prédiction (14,9 %).
+
+La fraction d’éjection, c’est-à-dire la capacité du cœur à pomper le sang, a également contribué en faveur de la survie (11,7 %). De même, le niveau de plaquettes (11,2 %) et le sodium sanguin (11,1 %) ont poussé la prédiction vers la survie.","Le modèle prédit une survie (classe 0). Le facteur principal est le temps de suivi : le patient n’est pas dans la première plage de temps définie par le modèle, tandis qu’il appartient à une autre plage de temps qui favorise fortement la survie (29,7 % et 14,9 %).
+
+La créatinine sanguine se situe dans la première plage de valeurs utilisée par le modèle (21,4 %), ce qui va dans le sens de la survie. La fraction d’éjection, qui mesure la capacité du cœur à pomper le sang, n’appartient pas à sa première plage de valeurs et soutient néanmoins la prédiction de survie (11,7 %). Les niveaux de plaquettes et de sodium sanguin contribuent aussi, chacun à environ 11 %, en faveur de la survie.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The blood creatinine level pushed the prediction towards this class.  
+3. The follow-up time measurement pushed the prediction towards this class.  
+4. The heart’s ejection fraction measurement pushed the prediction towards this class.  
+5. The platelet count pushed the prediction towards this class.  
+6. The blood sodium level pushed the prediction towards this class.","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","[8, 14, 15, 19, 23, 24]","[14, 15, 19, 24]","[8, 14, 15, 19, 23, 24]","[14, 15, 19, 24]",,,,,,,1
+heart,gpt-5.6-terra,31,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,94.8,False,97.1,94.8,97.1,96.1,True,False,True,5,6,3,1,0,0,0,3,0,1,3,1,"[97.1, 94.8]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3848 (opposes the prediction)
+  time_b2: weight=+0.3596 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1997 (opposes the prediction)
+  time_b1: weight=-0.1713 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1570 (opposes the prediction)
+  ejection_fraction_b2: weight=+0.1431 (supports the prediction)","Le modèle prédit une survie (classe 0). Le principal élément allant dans ce sens est que la mesure du temps se situe dans la catégorie intermédiaire, ce qui pousse la prédiction vers la survie.
+
+L’absence de certaines catégories associées au temps et à la fraction d’éjection a aussi influencé la décision : l’absence de la catégorie la plus basse du temps, de la catégorie la plus élevée du temps, de la catégorie la plus basse de fraction d’éjection et de la catégorie la plus basse de sodium sanguin pousse le modèle dans le sens opposé, vers le décès. L’absence de la catégorie la plus élevée de fraction d’éjection pousse légèrement vers la survie.
+
+Au total, le modèle estime que les éléments favorisant la survie l’emportent, mais certains facteurs vont dans la direction opposée.","Le modèle prédit une survie (classe 0). Le principal élément allant dans ce sens est que le temps de suivi se situe dans une catégorie intermédiaire, ce qui favorise la survie.
+
+L’absence de certaines catégories influence aussi la décision : l’absence de la catégorie la plus basse du temps, de la catégorie la plus élevée du temps, de la catégorie la plus basse de fraction d’éjection et de la catégorie la plus basse de sodium sanguin pousse plutôt vers le décès. En revanche, l’absence d’une fraction d’éjection élevée pousse légèrement vers la survie.
+
+Au total, les éléments favorisant la survie l’emportent, même si certains signaux vont dans la direction opposée.","1. The follow-up time measurement pushed against this class, but was outweighed.  
+2. The follow-up time measurement pushed towards this class.  
+3. The heart’s pumping efficiency measurement pushed against this class, but was outweighed.  
+4. The follow-up time measurement pushed against this class, but was outweighed.  
+5. The blood sodium measurement pushed against this class, but was outweighed.  
+6. The heart’s pumping efficiency measurement pushed towards this class.","['time_b1 > 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'ejection_fraction_b2 > 0.5']","['time_b1 < 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'ejection_fraction_b2 > 0.5']","[8, 10, 18, 23, 24, 25]","[8, 18, 23, 24, 25]","[8, 10, 18, 23, 24, 25]","[8, 18, 23]",,,,,,,1
+heart,gpt-5.6-terra,35,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,85.2,False,85.2,85.2,85.2,64.3,False,False,False,2,2,1,0,0,0,0,1,0,0,0,0,[85.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Le temps de suivi du patient est compris entre 4 et 67 jours, ce qui correspond à la condition observée dans la règle. En revanche, le temps de suivi n’est pas dans l’intervalle de 172 à 285 jours, et cette seconde condition n’est donc pas satisfaite.","La prédiction indique un décès. Le temps de suivi du patient est compris entre 4 et 67 jours, ce qui correspond à la condition observée dans la règle. En revanche, le temps de suivi n’est pas dans l’intervalle de 172 à 285 jours, et cette seconde condition n’est donc pas satisfaite.","1. The time recorded is between 4 and 67 days, which is true here.","['time_b0 > 0.5', 'time_b2 < 0.5']",['time_b0 > 0.5'],"[23, 25]","[23, 25]","[23, 25]",[23],0.1764,OPTIMAL,cop,0.4956,,,1
+heart,gpt-5.6-terra,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,66.9,70.0,70.0,70.0,False,False,False,2,4,4,2,0,0,0,0,0,2,0,1,"[66.9, 70.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","La prédiction est que le patient est décédé (classe 1). Cette décision est cohérente avec les caractéristiques observées : présence d’hypertension artérielle, sexe codé dans la catégorie correspondant à une valeur inférieure à 1, statut tabagique codé dans la catégorie correspondant à une valeur inférieure à 1, et durée de suivi comprise entre 4 et 67.","La prédiction est que le patient est décédé (classe 1). Elle correspond à la présence d’hypertension artérielle, à un sexe codé par une valeur comprise entre 0 et 1, à un statut tabagique codé par une valeur comprise entre 0 et 1, et à une durée de suivi comprise entre 4 et 67.","1. The patient’s high blood pressure indicator is between 0 and 1, which is true here.  
+2. The patient’s sex indicator is between 0 and 1, which is true here.  
+3. The patient’s smoking indicator is between 0 and 1, which is true here.  
+4. The time since follow-up began is between 4 and 67 days, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 < 0.5', 'smoking_b0 < 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956,,,1
+heart,gpt-5.6-terra,35,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.9,True,96.9,96.9,96.9,96.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est principalement associée au fait que le patient est fumeur et que le temps de suivi se situe entre 4 et 67 jours. En revanche, le temps de suivi ne se situe pas entre 67 et 172 jours, ni entre 172 et 285 jours.","La prédiction indique un décès. Elle est principalement associée au fait que le patient est fumeur et que le temps de suivi se situe entre 4 et 67 jours. En revanche, le temps de suivi ne se situe pas entre 67 et 172 jours, ni entre 172 et 285 jours.","1. The smoking indicator is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9575539568345324,,1
+heart,gpt-5.6-terra,35,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,94.9,False,94.9,94.9,94.9,94.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[94.9],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND time_b2 = 0 AND time_b1 = 0 THEN class 1","La prédiction est un décès (classe 1) car les trois indicateurs liés au temps correspondent exactement à la règle apprise par le modèle : le premier indicateur de temps est actif, tandis que les deux autres ne le sont pas. Dans les données utilisées par le modèle, cette combinaison est associée à la classe 1 avec une précision estimée de 100 %.","La prédiction est un décès (classe 1) car les trois indicateurs liés au temps correspondent exactement à la règle apprise par le modèle : le premier indicateur de temps est actif, tandis que les deux autres ne le sont pas. Dans les données utilisées par le modèle, cette combinaison est associée à la classe 1 avec une précision estimée de 100 %.","1. The follow-up time falls in the earliest time group, which pushed the prediction towards death.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",,,,,,0.9955882352941176,1
+heart,gpt-5.6-terra,35,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,92.1,False,64.3,92.1,92.1,64.3,False,False,False,1,4,1,3,0,0,0,3,0,3,3,1,"[64.3, 92.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 52.9% (supports the prediction)
+  time_b2: 20.0% (supports the prediction)
+  creatinine_phosphokinase_b0: 16.6% (opposes the prediction)
+  time_b1: 10.5% (supports the prediction)","Le modèle prédit un décès (classe 1), principalement en raison de la mesure du temps de suivi, qui a fortement poussé la prédiction vers cette issue. Les deux autres indicateurs liés au temps de suivi ont également soutenu cette prédiction, mais plus modestement.
+
+La créatine phosphokinase, une mesure sanguine liée à l’activité musculaire, a au contraire légèrement poussé la prédiction vers la survie. Malgré cet élément favorable, l’influence globale des mesures de temps de suivi a conduit le modèle à prédire un décès.","Le modèle prédit un décès (classe 1), surtout en raison du temps de suivi : le patient appartient à la première plage de temps observée, ce qui contribue fortement à cette prédiction. Les deux autres plages de temps, auxquelles le patient n’appartient pas, contribuent aussi dans le sens d’un décès, mais plus faiblement.
+
+La créatine phosphokinase sanguine se situe dans sa première plage de valeurs ; cet élément pousse légèrement la prédiction vers la survie. Toutefois, son effet ne compense pas l’influence globale des variables liées au temps de suivi.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The creatine phosphokinase blood test measurement pushed against this class, but was outweighed.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'time_b2 > 0.5']","[4, 23, 24, 25]",[23],"[4, 23, 24, 25]",[23],,,,,,,1
+heart,gpt-5.6-terra,35,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,66.8,False,66.8,66.8,66.8,61.1,False,False,False,4,4,1,0,0,0,0,3,0,0,2,0,[66.8],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3849 (supports the prediction)
+  time_b2: weight=+0.3760 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1802 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1636 (opposes the prediction)","Le modèle prédit un décès. Le principal facteur allant dans ce sens est que l’indicateur lié au temps est présent, ce qui a fortement poussé la prédiction vers le décès.
+
+L’autre indicateur de temps n’est pas présent, mais il aurait également poussé la prédiction vers le décès s’il l’avait été.
+
+Les indicateurs concernant la fraction d’éjection et le sodium sérique ne sont pas présents. Leur absence a légèrement poussé la prédiction dans le sens de la survie, mais pas assez pour compenser l’influence des indicateurs liés au temps.","Le modèle prédit un décès. Le principal facteur allant dans ce sens est que l’indicateur lié au temps est présent, ce qui a fortement poussé la prédiction vers le décès.
+
+L’autre indicateur de temps n’est pas présent, mais il aurait également poussé la prédiction vers le décès s’il l’avait été.
+
+Les indicateurs concernant la fraction d’éjection et le sodium sérique ne sont pas présents. Leur absence a légèrement poussé la prédiction dans le sens de la survie, mais pas assez pour compenser l’influence des indicateurs liés au temps.","1. The heart’s pumping efficiency pushed against the prediction of death, but was outweighed.  
+2. The blood sodium level pushed against the prediction of death, but was outweighed.  
+3. The follow-up time pushed the prediction towards death.  
+4. The follow-up time pushed the prediction towards death.","['time_b0 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 < 0.5', 'time_b2 < 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]",[25],,,,,,,1
+heart,gpt-5.6-terra,54,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,64.7,False,64.7,64.7,64.7,64.7,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[64.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)",La prédiction est que le patient est décédé. La raison indiquée par le modèle est que le temps de suivi se situe entre 4 et 67 jours. Cette condition est présente et oriente la prédiction vers le décès.,La prédiction est que le patient est décédé. La raison indiquée par le modèle est que le temps de suivi se situe entre 4 et 67 jours. Cette condition est présente et oriente la prédiction vers le décès.,"1. The time since follow-up began is between 4 and 67 days, which is true here.",['time_b0 > 0.5'],['time_b0 > 0.5'],[23],[23],[23],[23],0.1924,FEASIBLE,cop,0.4724,,,1
+heart,gpt-5.6-terra,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[90.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle a prédit un décès. Cette décision est associée au fait que le patient présente une hypertension artérielle et fume. Le temps de suivi se situe entre 4 et 67 jours, ce qui correspond aussi à la règle.
+
+En revanche, le temps de suivi ne se situe pas entre 172 et 285 jours ; cette condition n’est donc pas remplie.","Le modèle a prédit un décès. Cette décision est associée au fait que le patient présente une hypertension artérielle et fume. Le temps de suivi se situe entre 4 et 67 jours, ce qui correspond aussi à la règle.
+
+En revanche, le temps de suivi ne se situe pas entre 172 et 285 jours ; cette condition n’est donc pas remplie.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The smoking measurement is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724,,,1
+heart,gpt-5.6-terra,54,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.0,True,96.0,96.0,96.0,96.0,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.0],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Les éléments retenus sont :
+
+- La personne est fumeuse (valeur comprise entre 0 et 1 pour l’indicateur de tabagisme).
+- Le suivi se situe entre 4 et 67 jours.
+- Le suivi ne se situe pas entre 67 et 172 jours.
+- Le suivi ne se situe pas entre 172 et 285 jours.
+
+Ensemble, ces informations correspondent à des profils pour lesquels le modèle prédit un risque de décès élevé.","La prédiction indique un décès. Les éléments retenus sont :
+
+- La personne est fumeuse (valeur comprise entre 0 et 1 pour l’indicateur de tabagisme).
+- Le suivi se situe entre 4 et 67 jours.
+- Le suivi ne se situe pas entre 67 et 172 jours.
+- Le suivi ne se situe pas entre 172 et 285 jours.
+
+Ensemble, ces informations correspondent à des profils pour lesquels le modèle prédit un risque de décès élevé.","1. The smoking indicator is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9690647482014388,,1
+heart,gpt-5.6-terra,54,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.2,False,76.2,76.2,76.2,76.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[76.2],0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","La prédiction est « décès » (classe 1) car les deux indicateurs disponibles sont présents : le temps de suivi et la fraction d’éjection du cœur correspondent tous deux à la condition associée à un risque très élevé de décès dans ce modèle. Cette règle a une précision estimée à 0,99.","La prédiction est « décès » (classe 1) car les deux indicateurs disponibles sont présents : le temps de suivi et la fraction d’éjection du cœur correspondent tous deux à la condition associée à un risque très élevé de décès dans ce modèle. Cette règle a une précision estimée à 0,99.","1. The follow-up time measurement supported the prediction of death.  
+2. The heart’s pumping efficiency measurement supported the prediction of death.","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",,,,,,0.991011235955056,1
+heart,gpt-5.6-terra,54,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,0,0,[97.5],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 43.5% (supports the prediction)
+  time_b2: 20.7% (supports the prediction)
+  ejection_fraction_b0: 18.3% (supports the prediction)
+  serum_sodium_b0: 17.5% (supports the prediction)","Le modèle prédit un décès (classe 1). Cette prédiction est surtout soutenue par la mesure du temps, qui apporte la plus grande part de l’influence (43,5 %), ainsi que par une autre indication liée au temps (20,7 %), même si cette dernière condition n’est pas présente. La fraction d’éjection, une mesure de la capacité du cœur à pomper le sang, soutient aussi la prédiction (18,3 %). Enfin, le taux de sodium dans le sang va également dans le sens de cette prédiction (17,5 %).","Le modèle prédit un décès (classe 1). Cette prédiction est surtout soutenue par la mesure du temps, qui apporte la plus grande part de l’influence (43,5 %), ainsi que par une autre indication liée au temps (20,7 %), même si cette dernière condition n’est pas présente. La fraction d’éjection, une mesure de la capacité du cœur à pomper le sang, soutient aussi la prédiction (18,3 %). Enfin, le taux de sodium dans le sang va également dans le sens de cette prédiction (17,5 %).","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The heart’s pumping efficiency measurement pushed the prediction towards this class.  
+4. The blood sodium measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,,1
+heart,gpt-5.6-terra,54,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,0,0,[97.5],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3802 (supports the prediction)
+  time_b2: weight=+0.3730 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1890 (supports the prediction)
+  serum_sodium_b0: weight=+0.1590 (supports the prediction)","La prédiction est un décès. Le facteur le plus important est la mesure du temps, qui a fortement poussé la prédiction vers le décès. La fraction d’éjection du cœur a également contribué à cette prédiction, tout comme le taux de sodium dans le sang.  
+
+En revanche, l’autre condition liée au temps n’était pas présente chez ce patient, mais elle a tout de même été prise en compte dans l’explication locale du modèle.","La prédiction est un décès. Le facteur le plus important est la mesure du temps, qui a fortement poussé la prédiction vers le décès. La fraction d’éjection du cœur a également contribué à cette prédiction, tout comme le taux de sodium dans le sang.  
+
+En revanche, l’autre condition liée au temps n’était pas présente chez ce patient, mais elle a tout de même été prise en compte dans l’explication locale du modèle.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The heart’s pumping efficiency measurement pushed the prediction towards this class.  
+4. The blood sodium measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,,1
+heart,gpt-5.6-terra,69,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.5,False,92.5,92.5,92.5,92.5,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[92.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction est un décès. Le temps observé se situe entre 4 et 67, ce qui correspond à la condition satisfaite par cette explication. En revanche, le temps ne se situe ni entre 67 et 172, ni entre 172 et 285 ; ces deux conditions ne sont donc pas satisfaites.","La prédiction est un décès. Le temps observé se situe entre 4 et 67, ce qui correspond à la condition satisfaite par cette explication. En revanche, le temps ne se situe ni entre 67 et 172, ni entre 172 et 285 ; ces deux conditions ne sont donc pas satisfaites.","1. The time measurement is between 4 and 67, which is true here.  
+2. The time measurement is between 67 and 172, which is not true here.  
+3. The time measurement is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1758,FEASIBLE,cop,0.4858,,,1
+heart,gpt-5.6-terra,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[93.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est associée à une pression artérielle élevée dont la valeur est comprise entre 0 et 1, ainsi qu’à un temps de suivi compris entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas compris entre 67 et 172, ni entre 172 et 285.","La prédiction indique un décès. Elle est associée à une pression artérielle élevée dont la valeur est comprise entre 0 et 1, ainsi qu’à un temps de suivi compris entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas compris entre 67 et 172, ni entre 172 et 285.","1. The patient has high blood pressure, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858,,,1
+heart,gpt-5.6-terra,69,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.1,True,96.1,96.1,96.1,96.1,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un risque de décès. Les éléments observés sont :
+
+- La créatinine sérique est comprise entre 1,3 et 9, ce qui a contribué à cette prédiction.
+- Le temps de suivi est compris entre 4 et 67, ce qui a également contribué à la prédiction.
+- Le temps de suivi n’est pas compris entre 67 et 172.
+- Le temps de suivi n’est pas compris entre 172 et 285.
+
+Cette combinaison d’éléments est associée, dans le modèle, à une probabilité d’au moins 95 % de prédire le décès.","La prédiction indique un risque de décès. Les éléments observés sont :
+
+- La créatinine sérique est comprise entre 1,3 et 9, ce qui a contribué à cette prédiction.
+- Le temps de suivi est compris entre 4 et 67, ce qui a également contribué à la prédiction.
+- Le temps de suivi n’est pas compris entre 67 et 172.
+- Le temps de suivi n’est pas compris entre 172 et 285.
+
+Cette combinaison d’éléments est associée, dans le modèle, à une probabilité d’au moins 95 % de prédire le décès.","1. The serum creatinine level is between 1.3 and 9, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]",,,,,0.9733812949640288,,1
+heart,gpt-5.6-terra,69,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.9,False,74.9,74.9,74.9,74.9,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[74.9],0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","La prédiction est que le patient est décédé (classe 1). Elle est principalement due au fait que l’indicateur de temps et l’indicateur de fraction d’éjection remplissent tous les deux la condition associée à cette prédiction. Dans les données du modèle, cette combinaison conduit à une prédiction de décès avec une précision estimée de 99 %.","La prédiction est que le patient est décédé (classe 1). Elle est principalement due au fait que l’indicateur de temps et l’indicateur de fraction d’éjection remplissent tous les deux la condition associée à cette prédiction. Dans les données du modèle, cette combinaison conduit à une prédiction de décès avec une précision estimée de 99 %.","1. The follow-up time measurement supported the prediction of death.  
+2. The heart’s pumping efficiency measurement supported the prediction of death.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",,,,,,0.9926470588235294,1
+heart,gpt-5.6-terra,69,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.1,True,97.1,97.1,97.1,83.4,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 44.7% (supports the prediction)
+  ejection_fraction_b0: 22.3% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_creatinine_b2: 15.4% (supports the prediction)","Le modèle prédit un décès (classe 1). La principale raison est la catégorie de durée de suivi indiquée par les données, qui pousse fortement vers cette prédiction (44,7 %).
+
+La catégorie de fraction d’éjection du cœur observée va également dans le sens d’un décès (22,3 %). La catégorie de créatinine sanguine observée renforce aussi cette prédiction (15,4 %).
+
+Enfin, l’indicateur correspondant à une autre catégorie de durée de suivi n’est pas présent, mais il contribue tout de même au résultat du modèle (17,6 %).","Le modèle prédit un décès (classe 1). La principale raison est la catégorie de durée de suivi indiquée par les données, qui pousse fortement vers cette prédiction (44,7 %).
+
+La catégorie de fraction d’éjection du cœur observée va également dans le sens d’un décès (22,3 %). La catégorie de créatinine sanguine observée renforce aussi cette prédiction (15,4 %).
+
+Enfin, l’indicateur correspondant à une autre catégorie de durée de suivi n’est pas présent, mais il contribue tout de même au résultat du modèle (17,6 %).","1. The follow-up time pushed the prediction towards this class.  
+2. The heart’s pumping efficiency pushed the prediction towards this class.  
+3. The longer follow-up time category pushed the prediction towards this class.  
+4. The blood creatinine level, which reflects kidney function, pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5', 'serum_creatinine_b2 > 0.5']","[8, 17, 23, 25]","[8, 17, 23, 25]","[8, 17, 23, 25]","[8, 17, 23]",,,,,,,1
+heart,gpt-5.6-terra,69,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.1,True,98.1,98.1,98.1,74.9,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[98.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3754 (supports the prediction)
+  time_b2: weight=+0.3665 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1859 (supports the prediction)
+  time_b1: weight=+0.1542 (supports the prediction)","Le modèle prédit un décès (classe 1). La principale raison est que la mesure du temps se situe dans la première catégorie utilisée par le modèle, ce qui pousse fortement la prédiction vers un décès. La fraction d’éjection cardiaque se situe également dans sa première catégorie, ce qui renforce cette prédiction.
+
+Les deux autres catégories de temps ne sont pas présentes pour ce patient.","Le modèle prédit un décès (classe 1). La principale raison est que la mesure du temps se situe dans la première catégorie utilisée par le modèle, ce qui pousse fortement la prédiction vers un décès. La fraction d’éjection cardiaque se situe également dans sa première catégorie, ce qui renforce cette prédiction.
+
+Les deux autres catégories de temps ne sont pas présentes pour ce patient.","1. The time since follow-up began pushed the prediction toward death.  
+2. The time since follow-up began pushed the prediction toward death.  
+3. The heart’s ejection fraction, which measures how well it pumps blood, pushed the prediction toward death.  
+4. The time since follow-up began pushed the prediction toward death.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,75,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,84.5,False,84.5,84.5,84.5,84.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[84.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un risque de décès. Le temps de suivi du patient est compris entre 4 et 67 jours, ce qui correspond à la condition observée dans la règle. En revanche, le temps de suivi n’est pas compris entre 172 et 285 jours, ce qui ne correspond pas à l’autre condition de la règle.","La prédiction indique un risque de décès. Le temps de suivi du patient est compris entre 4 et 67 jours, ce qui correspond à la condition observée dans la règle. En revanche, le temps de suivi n’est pas compris entre 172 et 285 jours, ce qui ne correspond pas à l’autre condition de la règle.","1. The follow-up time is between 4 and 67, which is true here.  
+2. The follow-up time is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1842,OPTIMAL,cop,0.4894,,,1
+heart,gpt-5.6-terra,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,87.5,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[87.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est cohérente avec les éléments suivants : le sexe se situe dans la catégorie codée entre 0 et 1, le patient fume dans la catégorie codée entre 0 et 1, et le temps de suivi est compris entre 4 et 67.
+
+En revanche, la condition selon laquelle le temps de suivi serait compris entre 172 et 285 n’est pas remplie.","La prédiction indique un décès. Elle est cohérente avec les éléments suivants : le sexe se situe dans la catégorie codée entre 0 et 1, le patient fume dans la catégorie codée entre 0 et 1, et le temps de suivi est compris entre 4 et 67.
+
+En revanche, la condition selon laquelle le temps de suivi serait compris entre 172 et 285 n’est pas remplie.","1. The patient’s sex value is between 0 and 1, which is true here.  
+2. The patient’s smoking value is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894,,,1
+heart,gpt-5.6-terra,75,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,95.4,True,95.4,95.4,95.4,95.4,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[95.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle est principalement associée au fait que le patient fume et que la durée de suivi se situe entre 4 et 67 jours.
+
+Les intervalles de durée de suivi entre 67 et 172 jours et entre 172 et 285 jours ne s’appliquent pas à ce patient.","La prédiction indique un décès. Elle est principalement associée au fait que le patient fume et que la durée de suivi se situe entre 4 et 67 jours.
+
+Les intervalles de durée de suivi entre 67 et 172 jours et entre 172 et 285 jours ne s’appliquent pas à ce patient.","1. Le statut de tabagisme est compris entre 0 et 1, ce qui est vrai dans ce cas.  
+2. Le temps de suivi est compris entre 4 et 67 jours, ce qui est vrai dans ce cas.  
+3. Le temps de suivi est compris entre 67 et 172 jours, ce qui n’est pas vrai dans ce cas.  
+4. Le temps de suivi est compris entre 172 et 285 jours, ce qui n’est pas vrai dans ce cas.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9589928057553956,,1
+heart,gpt-5.6-terra,75,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.5,False,74.5,74.5,74.5,74.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[74.5],0.0429,"Anchor rule (IF-THEN, estimated precision 0.96):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 THEN class 1","La prédiction est « décès » (classe 1) car deux indicateurs présents pour ce patient vont ensemble dans ce sens : le temps de suivi et le taux de sodium dans le sang. Lorsque ces deux conditions sont réunies, le modèle prédit un décès avec une précision estimée à 96 %.","La prédiction est « décès » (classe 1) car deux indicateurs présents pour ce patient vont ensemble dans ce sens : le temps de suivi et le taux de sodium dans le sang. Lorsque ces deux conditions sont réunies, le modèle prédit un décès avec une précision estimée à 96 %.","1. The follow-up time measurement supported the prediction of death.  
+2. The blood sodium level measurement supported the prediction of death.","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[18, 23]","[18, 23]","[18, 23]","[18, 23]",,,,,,0.9614678899082568,1
+heart,gpt-5.6-terra,75,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,62.5,98.8,98.8,74.5,False,True,False,2,4,2,2,0,0,0,2,0,2,2,2,"[62.5, 92.3, 98.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 50.4% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_sodium_b0: 17.2% (supports the prediction)
+  time_b1: 14.7% (supports the prediction)","La prédiction indique un risque de décès (classe 1). Le facteur le plus important est la durée de suivi, qui a fortement poussé la prédiction vers le décès. Les autres indicateurs liés à la durée de suivi ont également renforcé cette prédiction, y compris un indicateur qui n’était pas présent. Enfin, l’indicateur concernant le sodium sanguin a aussi poussé la prédiction vers le décès.","La prédiction indique un risque de décès (classe 1). Le principal facteur est que la durée de suivi appartient à la première plage de valeurs, ce qui a fortement orienté la prédiction vers le décès. Les indicateurs correspondant aux autres plages de durée de suivi, y compris la deuxième plage même si elle n’est pas observée ici, ont également renforcé cette prédiction. Enfin, le sodium sanguin se situe dans sa première plage de valeurs et a aussi contribué à la prédiction de décès.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The blood sodium measurement pushed the prediction towards this class.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b0 < 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 > 0.5']","[18, 23, 24, 25]","[18, 24]","[18, 23, 24, 25]","[18, 23]",,,,,,,1
+heart,gpt-5.6-terra,75,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.1,False,89.1,89.1,89.1,52.0,False,False,False,4,4,2,0,0,0,0,2,0,0,2,0,[89.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3943 (supports the prediction)
+  time_b2: weight=+0.3772 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1972 (opposes the prediction)
+  time_b1: weight=+0.1672 (supports the prediction)","Le modèle prédit un décès (classe 1), principalement parce que la mesure du temps correspond à la première catégorie indiquée, ce qui pousse fortement la prédiction vers un décès. La troisième catégorie de temps ne s’applique pas, mais elle contribue aussi légèrement dans le sens du décès dans cette explication locale. La deuxième catégorie de temps ne s’applique pas et pousse également légèrement vers cette prédiction.
+
+En revanche, la mesure de fraction d’éjection ne correspond pas à la première catégorie indiquée ; cela va plutôt dans le sens d’une survie et atténue partiellement la prédiction de décès.","Le modèle prédit un décès (classe 1), principalement parce que la mesure du temps correspond à la première catégorie indiquée, ce qui pousse fortement la prédiction vers un décès. La troisième catégorie de temps ne s’applique pas, mais elle contribue aussi légèrement dans le sens du décès dans cette explication locale. La deuxième catégorie de temps ne s’applique pas et pousse également légèrement vers cette prédiction.
+
+En revanche, la mesure de fraction d’éjection ne correspond pas à la première catégorie indiquée ; cela va plutôt dans le sens d’une survie et atténue partiellement la prédiction de décès.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The ejection fraction measurement pushed against this class, but was outweighed.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,81,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.6,False,93.6,93.6,93.6,93.6,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[93.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction est que le patient est décédé. Le temps enregistré se situe entre 4 et 67, ce qui correspond à la condition observée dans cette décision.
+
+En revanche, le temps ne se situe pas entre 67 et 172, ni entre 172 et 285.","La prédiction est que le patient est décédé. Le temps enregistré se situe entre 4 et 67, ce qui correspond à la condition observée dans cette décision.
+
+En revanche, le temps ne se situe pas entre 67 et 172, ni entre 172 et 285.","1. The time measurement is between 4 and 67, which is true here.  
+2. The time measurement is between 67 and 172, which is not true here.  
+3. The time measurement is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1872,OPTIMAL,cop,0.501,,,1
+heart,gpt-5.6-terra,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[93.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction est un décès. Elle est notamment liée au fait que le sexe indiqué est dans la catégorie codée entre 0 et 1, et que le temps de suivi est entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas entre 67 et 172, ni entre 172 et 285.","La prédiction est un décès. Elle est notamment liée au fait que le sexe indiqué est dans la catégorie codée entre 0 et 1, et que le temps de suivi est entre 4 et 67.
+
+En revanche, le temps de suivi n’est pas entre 67 et 172, ni entre 172 et 285.","1. The patient’s sex is in the range from 0 to 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501,,,1
+heart,gpt-5.6-terra,81,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.6,True,97.6,97.6,97.6,97.6,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[97.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b2 = 0  (ejection_fraction in [40, 70) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Le modèle prédit un risque de décès (classe 1). La principale information présente est que le temps de suivi est compris entre 4 et 67 jours.
+
+Il tient aussi compte du fait que la fraction d’éjection n’est pas comprise entre 40 et 70, que la créatinine sanguine n’est pas comprise entre 0,5 et 1, et que le temps de suivi n’est pas compris entre 172 et 285 jours. Ensemble, ces éléments correspondent à des profils pour lesquels la prédiction de décès est très fiable selon le modèle.","Le modèle prédit un risque de décès (classe 1). La principale information présente est que le temps de suivi est compris entre 4 et 67 jours.
+
+Il tient aussi compte du fait que la fraction d’éjection n’est pas comprise entre 40 et 70, que la créatinine sanguine n’est pas comprise entre 0,5 et 1, et que le temps de suivi n’est pas compris entre 172 et 285 jours. Ensemble, ces éléments correspondent à des profils pour lesquels la prédiction de décès est très fiable selon le modèle.","1. La fraction d’éjection est entre 40 et 70, ce qui n’est pas vrai dans ce cas.  
+2. La créatinine sérique est entre 0,5 et 1, ce qui n’est pas vrai dans ce cas.  
+3. Le temps de suivi est entre 4 et 67 jours, ce qui est vrai dans ce cas.  
+4. Le temps de suivi est entre 172 et 285 jours, ce qui n’est pas vrai dans ce cas.","['time_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]",,,,,0.9863309352517986,,1
+heart,gpt-5.6-terra,81,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.7,False,76.7,76.7,76.7,63.0,False,False,False,2,2,1,0,0,0,0,1,0,0,1,0,[76.7],0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","La prédiction est « décès » (classe 1) parce que les deux indicateurs disponibles vont dans le même sens : la durée de suivi et la fraction d’éjection cardiaque correspondent toutes deux aux conditions associées à cette prédiction. Selon la règle du modèle, lorsque ces deux conditions sont présentes, la prédiction de décès est très fiable, avec une précision estimée à 0,99.","La prédiction est « décès » (classe 1) parce que les deux indicateurs disponibles vont dans le même sens : la durée de suivi et la fraction d’éjection cardiaque correspondent toutes deux aux conditions associées à cette prédiction. Selon la règle du modèle, lorsque ces deux conditions sont présentes, la prédiction de décès est très fiable, avec une précision estimée à 0,99.","1. The follow-up time measurement pushed the prediction towards death.  
+2. The heart’s pumping efficiency measurement pushed the prediction towards death.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]",[23],,,,,,0.990950226244344,1
+heart,gpt-5.6-terra,81,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,97.9,97.9,97.9,76.7,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[97.9],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 48.9% (supports the prediction)
+  ejection_fraction_b0: 19.8% (supports the prediction)
+  time_b2: 19.7% (supports the prediction)
+  time_b1: 11.7% (supports the prediction)","Le modèle prédit un décès (classe 1). La raison principale est la valeur observée pour le temps de suivi, qui contribue fortement à cette prédiction. La fraction d’éjection cardiaque observée renforce également la prédiction.
+
+Les deux autres indicateurs liés au temps de suivi ne sont pas présents dans ce cas, mais ils contribuent aussi au résultat global du modèle.","Le modèle prédit un décès (classe 1). La raison principale est la valeur observée pour le temps de suivi, qui contribue fortement à cette prédiction. La fraction d’éjection cardiaque observée renforce également la prédiction.
+
+Les deux autres indicateurs liés au temps de suivi ne sont pas présents dans ce cas, mais ils contribuent aussi au résultat global du modèle.","1. The lowest time period category pushed the prediction towards death.  
+2. The lowest ejection fraction category pushed the prediction towards death.  
+3. The highest time period category pushed the prediction towards death.  
+4. The middle time period category pushed the prediction towards death.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5', 'time_b1 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,81,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,72.5,97.9,97.9,76.7,False,True,False,2,4,2,2,0,0,0,2,0,2,2,1,"[72.5, 97.9]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3917 (supports the prediction)
+  time_b2: weight=+0.3778 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1954 (supports the prediction)
+  time_b1: weight=+0.1781 (supports the prediction)","Le modèle prédit un décès. Cette décision est surtout soutenue par la mesure du temps, dans sa première catégorie, qui est présente et a fortement poussé la prédiction vers un décès. La fraction d’éjection cardiaque, dans sa première catégorie, est également présente et a renforcé cette prédiction.
+
+Les deuxième et troisième catégories de temps ne sont pas présentes. Toutefois, dans l’approximation locale du modèle, elles sont aussi associées à une poussée vers la prédiction de décès.","Le modèle prédit un décès. Cette décision est principalement soutenue par une durée de suivi située dans la première plage de valeurs, ainsi que par une fraction d’éjection cardiaque située dans sa première plage. La durée de suivi n’appartient pas aux deuxième et troisième plages, mais l’approximation locale indique néanmoins que ces catégories sont également associées à une prédiction de décès.","1. The heart’s pumping efficiency measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The follow-up time measurement pushed the prediction towards this class.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,86,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.6,False,88.6,88.6,88.6,88.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[88.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu. Cette décision est cohérente avec le fait que la fraction d’éjection n’est pas comprise entre 15 et 30, et que le temps de suivi n’est pas compris entre 4 et 67.","Le modèle prédit que le patient a survécu. Cette décision est cohérente avec le fait que la fraction d’éjection n’est pas comprise entre 15 et 30, et que le temps de suivi n’est pas compris entre 4 et 67.","1. The heart’s pumping efficiency is between 15% and 30%, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.4994,,,1
+heart,gpt-5.6-terra,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[88.4],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","Le modèle prédit que le patient a survécu (classe 0). La règle examinée correspond globalement à cette prédiction.
+
+Le patient présente une hypertension artérielle et est de sexe masculin, deux conditions qui figurent dans la règle. En revanche, sa fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67.","Le modèle prédit que le patient a survécu (classe 0). La règle examinée correspond globalement à cette prédiction.
+
+Le patient présente une hypertension artérielle et est de sexe masculin, deux conditions qui figurent dans la règle. En revanche, sa fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67.","1. La fraction d’éjection est comprise entre 15 et 30, ce qui n’est pas vrai dans ce cas.  
+2. La pression artérielle élevée est comprise entre 0 et 1, ce qui est vrai dans ce cas.  
+3. Le sexe est compris entre 0 et 1, ce qui est vrai dans ce cas.  
+4. Le temps de suivi est compris entre 4 et 67, ce qui n’est pas vrai dans ce cas.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994,,,1
+heart,gpt-5.6-terra,86,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,98.9,True,98.9,98.9,98.9,98.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b1 = 1  (ejection_fraction in [30, 40) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","Le modèle prédit une survie (classe 0). Cette prédiction est principalement associée aux éléments suivants : la fraction d’éjection du cœur est comprise entre 30 et 40, le sexe est codé entre 0 et 1, et le temps de suivi est compris entre 172 et 285.
+
+En revanche, la condition selon laquelle le temps de suivi serait compris entre 4 et 67 n’est pas remplie.","Le modèle prédit une survie (classe 0). Cette prédiction est principalement associée aux éléments suivants : la fraction d’éjection du cœur est comprise entre 30 et 40, le sexe est codé entre 0 et 1, et le temps de suivi est compris entre 172 et 285.
+
+En revanche, la condition selon laquelle le temps de suivi serait compris entre 4 et 67 n’est pas remplie.","1. The heart’s pumping efficiency is between 30% and 40%, which is true here.  
+2. The patient’s recorded sex value is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is true here.","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b2 > 0.5', 'time_b0 < 0.5']","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]",,,,,0.9856115107913668,,1
+heart,gpt-5.6-terra,86,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.6,False,82.6,82.6,82.6,82.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[82.6],0.0429,"Anchor rule (IF-THEN, estimated precision 0.95):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","La prédiction est que le patient a survécu (classe 0). Elle repose sur la combinaison observée entre la mesure du temps et la créatinine sérique : ces deux indicateurs correspondent à un profil que le modèle associe à la survie. Pour cette règle, la prédiction est estimée correcte dans environ 95 % des cas similaires.","La prédiction est que le patient a survécu (classe 0). Elle repose sur la combinaison observée entre la mesure du temps et la créatinine sérique : ces deux indicateurs correspondent à un profil que le modèle associe à la survie. Pour cette règle, la prédiction est estimée correcte dans environ 95 % des cas similaires.","1. The follow-up time measurement supported the prediction that the patient survived.  
+2. The blood creatinine measurement supported the prediction that the patient survived.","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]","[15, 25]","[15, 25]","[15, 25]",,,,,,0.9547244094488188,1
+heart,gpt-5.6-terra,86,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.7,True,74.3,99.7,99.7,82.6,False,True,False,2,4,2,2,0,0,0,2,0,2,1,1,"[74.3, 99.7]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 46.7% (supports the prediction)
+  time_b0: 26.6% (supports the prediction)
+  serum_creatinine_b0: 16.8% (supports the prediction)
+  ejection_fraction_b0: 9.9% (supports the prediction)","Le modèle prédit une survie (classe 0). La principale raison est la mesure du temps correspondant à l’indicateur actif, qui soutient cette prédiction à 46,7 %. L’autre indicateur de temps n’est pas présent et soutient aussi la prédiction à 26,6 %.
+
+La créatinine sérique associée à son indicateur actif soutient également la survie prédite, à 16,8 %. Enfin, l’indicateur concernant la fraction d’éjection n’est pas présent ; cela soutient aussi la prédiction de survie, à 9,9 %.","Le modèle prédit une survie (classe 0). Les deux indicateurs liés au temps de suivi soutiennent fortement cette prédiction : le patient se situe dans la tranche de temps correspondant à l’indicateur actif, tandis qu’il n’est pas dans la tranche de temps la plus basse.
+
+Une créatinine sérique dans la tranche indiquée par le modèle soutient aussi la survie prédite. Enfin, le fait que la fraction d’éjection ne soit pas dans sa tranche la plus basse contribue également, plus modestement, à la prédiction de survie.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The blood creatinine level pushed the prediction towards this class.  
+4. The heart’s pumping fraction pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'serum_creatinine_b0 > 0.5', 'ejection_fraction_b0 < 0.5']","['time_b2 > 0.5', 'time_b2 > 0.5', 'serum_creatinine_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 15, 23, 25]","[8, 15]","[8, 15, 23, 25]","[15, 25]",,,,,,,1
+heart,gpt-5.6-terra,86,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.1,True,97.1,97.1,97.1,58.3,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[97.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3869 (opposes the prediction)
+  time_b0: weight=-0.3803 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1796 (opposes the prediction)
+  time_b1: weight=+0.1641 (supports the prediction)","Le modèle prédit une survie (classe 0). La principale information est que le suivi se situe dans la catégorie de temps la plus élevée parmi celles utilisées par le modèle, ce qui pousse vers la survie. Les deux catégories de temps plus faibles ne sont pas présentes, et l’indicateur lié à la fraction d’éjection n’est pas présent. Ces éléments ont également orienté la prédiction vers la survie.","Le modèle prédit une survie (classe 0). La principale information est que le suivi se situe dans la catégorie de temps la plus élevée parmi celles utilisées par le modèle, ce qui pousse vers la survie. Les deux catégories de temps plus faibles ne sont pas présentes, et l’indicateur lié à la fraction d’éjection n’est pas présent. Ces éléments ont également orienté la prédiction vers la survie.","1. The follow-up time measurement pushed against the predicted outcome, but was outweighed.  
+2. The follow-up time measurement pushed against the predicted outcome, but was outweighed.  
+3. The ejection fraction measurement pushed against the predicted outcome, but was outweighed.  
+4. The follow-up time measurement pushed the prediction towards this class.","['time_b2 > 0.5', 'time_b1 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b2 < 0.5', 'time_b1 < 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 24]",,,,,,,1
+heart,gpt-5.6-terra,94,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[90.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est une survie (classe 0). Deux conditions associées à la règle ne sont pas présentes chez ce patient : la fraction d’éjection n’est pas comprise entre 15 et 30, et le suivi n’est pas compris entre 4 et 67 jours.","La prédiction est une survie (classe 0). Deux conditions associées à la règle ne sont pas présentes chez ce patient : la fraction d’éjection n’est pas comprise entre 15 et 30, et le suivi n’est pas compris entre 4 et 67 jours.","1. The ejection fraction is between 15 and 30, which is not true for this case.  
+2. The follow-up time is between 4 and 67 days, which is not true for this case.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1742,OPTIMAL,cop,0.5166,,,1
+heart,gpt-5.6-terra,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[87.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","La prédiction est que le patient a survécu. Le fait de fumer est présent, avec une valeur comprise entre 0 et 1, et cette condition est satisfaite. En revanche, la fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67. Ces deux dernières conditions de la règle ne sont donc pas satisfaites, ce qui est cohérent avec la prédiction de survie.","La prédiction est que le patient a survécu. Le fait de fumer est présent, avec une valeur comprise entre 0 et 1, et cette condition est satisfaite. En revanche, la fraction d’éjection n’est pas comprise entre 15 et 30, et la durée de suivi n’est pas comprise entre 4 et 67. Ces deux dernières conditions de la règle ne sont donc pas satisfaites, ce qui est cohérent avec la prédiction de survie.","1. The heart’s pumping efficiency is between 15% and 30%, which is not true for this case.  
+2. The patient’s smoking status is between 0 and 1, which is true for this case.  
+3. The follow-up time is between 4 and 67 days, which is not true for this case.","['smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166,,,1
+heart,gpt-5.6-terra,94,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.4,True,98.4,98.4,98.4,98.4,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","Le modèle prédit une survie (classe 0). La principale information en faveur de cette prédiction est que le suivi du patient se situe entre 172 et 285 jours.
+
+En revanche, le taux de sodium sanguin n’est pas dans l’intervalle de 116 à 135, et la durée de suivi n’est pas comprise entre 4 et 67 jours.","Le modèle prédit une survie (classe 0). La principale information en faveur de cette prédiction est que le suivi du patient se situe entre 172 et 285 jours.
+
+En revanche, le taux de sodium sanguin n’est pas dans l’intervalle de 116 à 135, et la durée de suivi n’est pas comprise entre 4 et 67 jours.","1. The blood sodium level is between 116 and 135, which is not true here.  
+2. The follow-up time is between 4 and 67 days, which is not true here.  
+3. The follow-up time is between 172 and 285 days, which is true here.","['time_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9848920863309352,,1
+heart,gpt-5.6-terra,94,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,83.4,False,83.4,83.4,83.4,83.4,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[83.4],0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","La prédiction est que le patient a survécu (classe 0). Elle repose sur la combinaison de deux informations présentes : le temps de suivi du patient et son taux de créatinine sérique, une mesure liée à la fonction rénale. Lorsque ces deux indicateurs correspondent aux valeurs observées ici, le modèle prédit une survie avec une précision estimée à 97 %.","La prédiction est que le patient a survécu (classe 0). Elle repose sur la combinaison de deux informations présentes : le temps de suivi du patient et son taux de créatinine sérique, une mesure liée à la fonction rénale. Lorsque ces deux indicateurs correspondent aux valeurs observées ici, le modèle prédit une survie avec une précision estimée à 97 %.","1. The follow-up time pushed the prediction towards survival.  
+2. The blood creatinine level pushed the prediction towards survival.","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 25]","[15, 25]","[15, 25]","[15, 25]",,,,,,0.9696969696969696,1
+heart,gpt-5.6-terra,94,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,97.3,True,97.3,97.3,97.3,83.4,True,True,False,3,3,2,0,0,0,0,1,0,0,0,0,[97.3],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 51.9% (supports the prediction)
+  time_b0: 30.8% (supports the prediction)
+  serum_creatinine_b0: 17.3% (supports the prediction)","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est surtout soutenue par la mesure du temps correspondant à l’indicateur actif, qui représente 51,9 % de l’influence totale. L’autre indicateur de temps, qui n’est pas actif, soutient également cette prédiction à hauteur de 30,8 %. Enfin, l’indicateur lié à la créatinine sanguine, actif ici, contribue aussi à la prédiction de survie, avec 17,3 % de l’influence.","Le modèle prédit que le patient a survécu (classe 0). Cette prédiction est surtout soutenue par la mesure du temps correspondant à l’indicateur actif, qui représente 51,9 % de l’influence totale. L’autre indicateur de temps, qui n’est pas actif, soutient également cette prédiction à hauteur de 30,8 %. Enfin, l’indicateur lié à la créatinine sanguine, actif ici, contribue aussi à la prédiction de survie, avec 17,3 % de l’influence.","1. The follow-up time measurement pushed the prediction towards this class.  
+2. The follow-up time measurement pushed the prediction towards this class.  
+3. The blood creatinine measurement pushed the prediction towards this class.","['time_b2 > 0.5', 'time_b0 < 0.5', 'serum_creatinine_b0 > 0.5']","['time_b2 > 0.5', 'time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 23, 25]","[15, 23, 25]","[15, 23, 25]","[15, 25]",,,,,,,1
+heart,gpt-5.6-terra,94,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,98.7,98.7,98.7,90.3,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[98.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3929 (opposes the prediction)
+  time_b2: weight=-0.3817 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1829 (opposes the prediction)","Le modèle prédit une survie (classe 0). Le principal élément est la mesure du temps correspondant à la troisième catégorie, qui est présente et pousse la prédiction vers la survie. La première catégorie de temps n’est pas présente et contribue également dans ce sens. Enfin, la première catégorie de fraction d’éjection n’est pas présente, ce qui soutient aussi la prédiction de survie.","Le modèle prédit une survie (classe 0). Le principal élément est la mesure du temps correspondant à la troisième catégorie, qui est présente et pousse la prédiction vers la survie. La première catégorie de temps n’est pas présente et contribue également dans ce sens. Enfin, la première catégorie de fraction d’éjection n’est pas présente, ce qui soutient aussi la prédiction de survie.","1. The follow-up time measurement pushed against this class, but was outweighed.  
+2. The follow-up time measurement pushed against this class, but was outweighed.  
+3. The heart’s ejection fraction measurement pushed against this class, but was outweighed.","['time_b2 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23, 25]","[8, 23, 25]","[8, 23, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,114,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,87.0,False,87.0,87.0,87.0,64.7,False,False,False,2,2,1,0,0,0,0,1,0,0,0,0,[87.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Le modèle s’appuie sur le fait que le temps de suivi est compris entre 4 et 67 jours, ce qui est le cas ici. Il considère aussi la condition selon laquelle le temps de suivi serait entre 172 et 285 jours, mais cette condition n’est pas remplie.","La prédiction indique un décès. Le modèle s’appuie sur le fait que le temps de suivi est compris entre 4 et 67 jours, ce qui est le cas ici. Il considère aussi la condition selon laquelle le temps de suivi serait entre 172 et 285 jours, mais cette condition n’est pas remplie.","1. The time since follow-up began is between 4 and 67 days, which is true here.","['time_b0 > 0.5', 'time_b2 < 0.5']",['time_b0 > 0.5'],"[23, 25]","[23, 25]","[23, 25]",[23],0.1848,OPTIMAL,cop,0.4934,,,1
+heart,gpt-5.6-terra,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,90.8,89.7,90.8,89.7,False,False,False,3,4,4,1,0,0,0,0,0,1,0,1,"[90.8, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès. Elle s’appuie sur le fait que le patient est de sexe 0, fume, et que le temps observé est compris entre 4 et 67.
+
+En revanche, la condition selon laquelle le temps serait compris entre 172 et 285 n’est pas satisfaite.","La prédiction indique un décès. Elle s’appuie sur le fait que le sexe du patient est codé entre 0 et 1, qu’il fume, et que le temps observé est compris entre 4 et 67.
+
+En revanche, le temps n’est pas compris entre 172 et 285.","1. The patient's sex value is between 0 and 1, which is true here.  
+2. The patient's smoking value is between 0 and 1, which is true here.  
+3. The follow-up time is between 4 and 67, which is true here.  
+4. The follow-up time is between 172 and 285, which is not true here.","['sex_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934,,,1
+heart,gpt-5.6-terra,114,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.7,True,96.7,96.7,96.7,96.7,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","La prédiction indique un décès (classe 1). Elle s’appuie sur le fait que la personne fume, et que le temps de suivi se situe entre 4 et 67 jours. En revanche, le temps de suivi ne se situe pas entre 67 et 172 jours, ni entre 172 et 285 jours. Cette combinaison d’éléments est associée à une probabilité d’au moins 95 % pour cette prédiction dans des cas similaires.","La prédiction indique un décès (classe 1). Elle s’appuie sur le fait que la personne fume, et que le temps de suivi se situe entre 4 et 67 jours. En revanche, le temps de suivi ne se situe pas entre 67 et 172 jours, ni entre 172 et 285 jours. Cette combinaison d’éléments est associée à une probabilité d’au moins 95 % pour cette prédiction dans des cas similaires.","1. Smoking is between 0 and 1, which is true here.  
+2. The follow-up time is between 4 and 67 days, which is true here.  
+3. The follow-up time is between 67 and 172 days, which is not true here.  
+4. The follow-up time is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.966906474820144,,1
+heart,gpt-5.6-terra,114,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.3,False,76.3,76.3,76.3,64.7,False,False,False,2,2,1,0,0,0,0,1,0,0,1,0,[76.3],0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","La prédiction est « décès » (classe 1) car les deux indicateurs disponibles vont dans le même sens : le temps de suivi correspond à la condition associée à la classe 1, et la fraction d’éjection cardiaque correspond également à cette condition. Lorsque ces deux éléments sont présents ensemble, la règle du modèle prédit un décès avec une précision estimée à 98 %.","La prédiction est « décès » (classe 1) car les deux indicateurs disponibles vont dans le même sens : le temps de suivi correspond à la condition associée à la classe 1, et la fraction d’éjection cardiaque correspond également à cette condition. Lorsque ces deux éléments sont présents ensemble, la règle du modèle prédit un décès avec une précision estimée à 98 %.","1. The follow-up time measurement pushed the prediction towards death.  
+2. The heart’s pumping efficiency measurement pushed the prediction towards death.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]",[23],,,,,,0.9832402234636872,1
+heart,gpt-5.6-terra,114,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,99.1,True,84.6,99.1,99.1,76.3,False,True,False,3,4,2,1,0,0,0,2,0,1,2,1,"[84.6, 99.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 47.7% (supports the prediction)
+  time_b2: 20.9% (supports the prediction)
+  ejection_fraction_b0: 19.5% (supports the prediction)
+  time_b1: 11.9% (supports the prediction)","Le modèle prédit un décès (classe 1). La principale raison est la mesure du temps, dans la catégorie correspondant à l’indicateur actif, qui pousse fortement cette prédiction (47,7 % de l’influence). Une autre catégorie de temps, même si son indicateur n’est pas actif, contribue aussi à la prédiction (20,9 %). La fraction d’éjection du cœur, dans la catégorie indiquée, va également dans le sens d’un décès (19,5 %). Enfin, la catégorie intermédiaire du temps n’est pas présente, mais elle contribue tout de même à la décision (11,9 %).","Le modèle prédit un décès (classe 1). La principale raison est que le suivi se situe dans la première plage de durée, ce qui favorise fortement cette prédiction (47,7 %). Le fait que la durée de suivi ne soit pas dans la troisième plage contribue également à la prédiction (20,9 %). La fraction d’éjection cardiaque se trouve dans la plage indiquée, ce qui va aussi dans le sens d’un décès (19,5 %). Enfin, l’absence de la plage intermédiaire de durée de suivi contribue aussi à cette décision (11,9 %).","1. The early follow-up time measurement pushed the prediction towards death.  
+2. The later follow-up time measurement pushed the prediction towards death.  
+3. The heart’s pumping-strength measurement pushed the prediction towards death.  
+4. The middle follow-up time measurement pushed the prediction towards death.","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 < 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b1 > 0.5']","[8, 23, 24, 25]","[8, 23, 24]","[8, 23, 24, 25]","[8, 23]",,,,,,,1
+heart,gpt-5.6-terra,114,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,91.2,False,67.4,76.3,76.3,64.7,False,False,False,3,2,1,1,0,2,0,3,0,0,2,3,"[67.4, 67.4, 67.4, 76.3]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3684 (supports the prediction)
+  time_b2: weight=+0.3677 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1794 (supports the prediction)
+  serum_sodium_b0: weight=-0.1628 (opposes the prediction)","Le modèle prédit un décès (classe 1). Les facteurs qui ont le plus poussé cette prédiction sont la mesure du temps, ainsi que la fraction d’éjection cardiaque. La mesure du sodium sanguin a au contraire légèrement poussé la prédiction vers la survie, mais cet effet n’a pas suffi à compenser les autres éléments.","Le modèle prédit un décès (classe 1). Une durée de suivi dans la plage la plus basse, ainsi que dans une autre plage de durée de suivi, contribuent fortement à cette prédiction. Une faible fraction d’éjection cardiaque va également dans le sens d’un risque plus élevé. Le taux de sodium sanguin pousse légèrement la prédiction vers la survie, sans compenser les autres facteurs.","1. The follow-up time pushed the prediction towards death from heart failure.  
+2. The follow-up time pushed the prediction towards death from heart failure.  
+3. The heart’s pumping efficiency pushed the prediction towards death from heart failure.  
+4. The blood sodium level pushed against the prediction of death from heart failure, but was outweighed.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 > 0.5', 'time_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23]","[8, 23]",[23],,,,,,,1

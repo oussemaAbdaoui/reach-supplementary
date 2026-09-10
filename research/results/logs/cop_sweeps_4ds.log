@@ -1,0 +1,185 @@
+=== compas (K_MAX=5) start 19:35:05 ===
+compas: d=13 | MLP test acc 0.6135 | m_learn=5000 (Thm-1 m_ref for eps=0.1: 3303)
+resume: 15 instances already complete, skipping
+
+saved -> research/results/compas_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean   std
+k_requested             
+1.0          71.19  2.99
+2.0          67.71  9.05
+3.0          71.30  4.65
+4.0          80.57  1.12
+5.0          72.90  1.29
+
+cop_free : precision 74.63 at mean len 5.00 (loss 0.000, base_rate_same 0.642)
+lmpaxp   : precision 98.31 at mean len 3.60 (certified reference)
+
+equal-budget check: cop@4 = 80.57 vs lmpaxp = 98.31 at ~same length
+=== compas done 19:36:00 ===
+=== employee (K_MAX=8) start 19:36:01 ===
+employee: d=15 | MLP test acc 0.6114 | m_learn=5000 (Thm-1 m_ref for eps=0.1: 5071)
+resume: 15 instances already complete, skipping
+
+saved -> research/results/employee_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean   std
+k_requested             
+1.0          62.33  5.53
+2.0          69.37  8.03
+3.0          73.09  7.55
+4.0          65.09  9.72
+5.0          73.44  7.36
+6.0          81.53  6.23
+7.0          86.63  8.89
+8.0          93.55  5.31
+
+cop_free : precision 70.53 at mean len 1.53 (loss 0.221, base_rate_same 0.533)
+lmpaxp   : precision 96.69 at mean len 5.93 (certified reference)
+
+equal-budget check: cop@6 = 81.53 vs lmpaxp = 96.69 at ~same length
+=== employee done 19:36:15 ===
+=== diabetes (K_MAX=11) start 19:36:15 ===
+diabetes: d=23 | MLP test acc 0.7767 | m_learn=5000 (Thm-1 m_ref for eps=0.1: 7636)
+resume: 7 instances already complete, skipping
+[08/15] inst 279 | lmpaxp 95.7/7 | cop_free 62.9/1 | cop@k: 1:63 2:69 3:80 4:90 5:84 6:95 7:97 8:84 9:97 10:94 11:85
+[09/15] inst 44 | lmpaxp 94.5/9 | cop_free 49.9/4 | cop@k: 1:51 2:63 3:70 4:78 5:89 6:89 7:91 8:95 9:96 10:99 11:96
+[10/15] inst 216 | lmpaxp 99.1/8 | cop_free 86.2/3 | cop@k: 1:69 2:82 3:86 4:87 5:87 6:93 7:90 8:92 9:91 10:96 11:96
+[11/15] inst 16 | lmpaxp 95.5/11 | cop_free 73.3/3 | cop@k: 1:61 2:72 3:76 4:84 5:89 6:89 7:89 8:92 9:51 10:98 11:87
+[12/15] inst 15 | lmpaxp 100.0/9 | cop_free 92.9/3 | cop@k: 1:71 2:84 3:93 4:93 5:96 6:97 7:98 8:100 9:97 10:99 11:98
+[13/15] inst 47 | lmpaxp 95.2/7 | cop_free 94.1/3 | cop@k: 1:74 2:85 3:94 4:93 5:96 6:97 7:97 8:98 9:97 10:100 11:97
+[14/15] inst 111 | lmpaxp 98.0/5 | cop_free 88.9/5 | cop@k: 1:72 2:79 3:85 4:86 5:88 6:96 7:96 8:99 9:99 10:98 11:99
+[15/15] inst 119 | lmpaxp 97.1/6 | cop_free 93.9/3 | cop@k: 1:73 2:84 3:94 4:93 5:96 6:98 7:97 8:97 9:100 10:99 11:100
+
+saved -> research/results/diabetes_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean    std
+k_requested              
+1.0          66.32   6.16
+2.0          77.36   6.08
+3.0          83.78   6.62
+4.0          88.67   4.26
+5.0          91.92   3.99
+6.0          92.17   5.71
+7.0          94.69   3.65
+8.0          94.83   4.82
+9.0          89.25  15.65
+10.0         97.15   2.01
+11.0         88.69  17.26
+
+cop_free : precision 78.27 at mean len 4.20 (loss 0.374, base_rate_same 0.496)
+lmpaxp   : precision 96.79 at mean len 7.60 (certified reference)
+
+equal-budget check: cop@8 = 94.83 vs lmpaxp = 96.79 at ~same length
+=== diabetes done 21:02:00 ===
+=== heart (K_MAX=12) start 21:02:00 ===
+heart: d=26 | MLP test acc 0.8361 | m_learn=5000 (Thm-1 m_ref for eps=0.1: 8558)
+[01/15] inst 81 | lmpaxp 97.6/4 | cop_free 93.6/3 | cop@k: 1:63 2:85 3:89 4:93 5:90 6:90 7:90 8:96 9:99 10:100 11:99 12:100
+[02/15] inst 14 | lmpaxp 94.7/12 | cop_free 64.0/3 | cop@k: 1:48 2:60 3:64 4:61 5:67 6:66 7:65 8:70 9:76 10:79 11:81 12:86
+[03/15] inst 3 | lmpaxp 99.2/4 | cop_free 92.7/4 | cop@k: 1:80 2:89 3:87 4:88 5:85 6:85 7:86 8:91 9:93 10:94 11:95 12:99
+[04/15] inst 94 | lmpaxp 98.4/3 | cop_free 90.3/2 | cop@k: 1:80 2:90 3:87 4:90 5:85 6:86 7:86 8:92 9:96 10:96 11:99 12:99
+[05/15] inst 35 | lmpaxp 96.9/4 | cop_free 85.2/2 | cop@k: 1:64 2:85 3:88 4:70 5:79 6:97 7:98 8:98 9:99 10:99 11:99 12:98
+[06/15] inst 31 | lmpaxp 98.3/6 | cop_free 90.3/2 | cop@k: 1:80 2:90 3:91 4:87 5:89 6:86 7:86 8:91 9:94 10:95 11:97 12:100
+[07/15] inst 28 | lmpaxp 98.6/3 | cop_free 88.8/2 | cop@k: 1:79 2:89 3:90 4:87 5:86 6:84 7:84 8:91 9:97 10:95 11:99 12:98
+[08/15] inst 17 | lmpaxp 96.4/4 | cop_free 84.4/2 | cop@k: 1:64 2:84 3:94 4:86 5:87 6:78 7:97 8:97 9:99 10:99 11:100 12:100
+[09/15] inst 13 | lmpaxp 94.4/9 | cop_free 57.9/2 | cop@k: 1:48 2:53 3:56 4:52 5:65 6:64 7:62 8:67 9:71 10:76 11:81 12:87
+[10/15] inst 86 | lmpaxp 98.9/4 | cop_free 88.6/2 | cop@k: 1:78 2:89 3:89 4:88 5:84 6:85 7:85 8:91 9:97 10:96 11:98 12:100
+[11/15] inst 114 | lmpaxp 96.7/4 | cop_free 95.0/3 | cop@k: 1:65 2:87 3:95 4:90 5:97 6:79 7:97 8:97 9:99 10:99 11:100 12:100
+[12/15] inst 69 | lmpaxp 96.1/4 | cop_free 84.7/2 | cop@k: 1:62 2:85 3:92 4:93 5:88 6:96 7:76 8:95 9:99 10:100 11:100 12:100
+[13/15] inst 11 | lmpaxp 98.9/5 | cop_free 89.4/2 | cop@k: 1:80 2:89 3:86 4:89 5:88 6:86 7:86 8:92 9:97 10:96 11:99 12:99
+[14/15] inst 75 | lmpaxp 95.4/4 | cop_free 84.5/2 | cop@k: 1:64 2:84 3:84 4:88 5:89 6:96 7:96 8:96 9:98 10:99 11:99 12:97
+[15/15] inst 54 | lmpaxp 96.0/4 | cop_free 85.3/2 | cop@k: 1:65 2:85 3:94 4:90 5:87 6:95 7:97 8:96 9:99 10:90 11:100 12:99
+
+saved -> research/results/heart_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean    std
+k_requested              
+1.0          68.10  11.08
+2.0          82.97  11.16
+3.0          85.77  11.12
+4.0          83.43  12.26
+5.0          84.39   8.48
+6.0          84.78  10.11
+7.0          86.15  11.15
+8.0          90.67   9.20
+9.0          94.33   8.62
+10.0         94.11   7.36
+11.0         96.37   6.38
+12.0         97.41   4.48
+
+cop_free : precision 84.98 at mean len 2.33 (loss 0.217, base_rate_same 0.498)
+lmpaxp   : precision 97.10 at mean len 4.93 (certified reference)
+
+equal-budget check: cop@5 = 84.39 vs lmpaxp = 97.10 at ~same length
+=== heart done 23:14:59 ===
+=== all four sweeps complete 23:14:59 ===
+ 97.1/6 | cop_free 93.9/3 | cop@k: 1:73 2:84 3:94 4:93 5:96 6:98 7:98 8:97 9:100 10:99 11:100
+
+saved -> research/results/diabetes_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean    std
+k_requested              
+1.0          66.32   6.16
+2.0          77.36   6.08
+3.0          83.78   6.62
+4.0          88.67   4.26
+5.0          91.92   3.99
+6.0          92.17   5.71
+7.0          94.81   3.75
+8.0          94.84   4.83
+9.0          88.25  15.62
+10.0         97.34   1.76
+11.0         88.57  17.20
+
+cop_free : precision 77.85 at mean len 4.33 (loss 0.381, base_rate_same 0.496)
+lmpaxp   : precision 96.79 at mean len 7.60 (certified reference)
+
+equal-budget check: cop@8 = 94.84 vs lmpaxp = 96.79 at ~same length
+=== diabetes done 20:56:45 ===
+=== heart (K_MAX=12) start 20:56:45 ===
+heart: d=26 | MLP test acc 0.8361 | m_learn=5000 (Thm-1 m_ref for eps=0.1: 8558)
+[01/15] inst 81 | lmpaxp 97.6/4 | cop_free 93.6/3 | cop@k: 1:63 2:85 3:89 4:93 5:90 6:90 7:90 8:96 9:99 10:100 11:98 12:99
+[02/15] inst 14 | lmpaxp 94.7/12 | cop_free 64.0/3 | cop@k: 1:48 2:60 3:64 4:61 5:67 6:66 7:65 8:71 9:76 10:79 11:81 12:86
+[03/15] inst 3 | lmpaxp 99.2/4 | cop_free 89.1/2 | cop@k: 1:80 2:89 3:87 4:88 5:85 6:85 7:86 8:91 9:93 10:94 11:95 12:99
+[04/15] inst 94 | lmpaxp 98.4/3 | cop_free 91.1/3 | cop@k: 1:80 2:90 3:87 4:90 5:85 6:86 7:86 8:92 9:95 10:96 11:99 12:99
+[05/15] inst 35 | lmpaxp 96.9/4 | cop_free 85.2/2 | cop@k: 1:64 2:85 3:88 4:70 5:79 6:97 7:98 8:98 9:99 10:99 11:99 12:100
+[06/15] inst 31 | lmpaxp 98.3/6 | cop_free 90.3/2 | cop@k: 1:80 2:90 3:91 4:87 5:89 6:86 7:86 8:91 9:94 10:95 11:97 12:100
+[07/15] inst 28 | lmpaxp 98.6/3 | cop_free 88.8/2 | cop@k: 1:79 2:89 3:90 4:87 5:86 6:84 7:84 8:91 9:97 10:95 11:99 12:98
+[08/15] inst 17 | lmpaxp 96.4/4 | cop_free 84.4/2 | cop@k: 1:64 2:84 3:94 4:86 5:87 6:78 7:97 8:97 9:99 10:99 11:100 12:100
+[09/15] inst 13 | lmpaxp 94.4/9 | cop_free 57.9/2 | cop@k: 1:48 2:53 3:56 4:52 5:65 6:64 7:62 8:67 9:71 10:76 11:81 12:85
+[10/15] inst 86 | lmpaxp 98.9/4 | cop_free 88.6/2 | cop@k: 1:78 2:89 3:89 4:88 5:84 6:85 7:85 8:91 9:97 10:96 11:98 12:100
+[11/15] inst 114 | lmpaxp 96.7/4 | cop_free 95.0/3 | cop@k: 1:65 2:87 3:95 4:90 5:97 6:79 7:97 8:97 9:99 10:99 11:100 12:100
+[12/15] inst 69 | lmpaxp 96.1/4 | cop_free 84.7/2 | cop@k: 1:62 2:85 3:92 4:93 5:88 6:96 7:76 8:95 9:99 10:100 11:100 12:100
+[13/15] inst 11 | lmpaxp 98.9/5 | cop_free 89.4/2 | cop@k: 1:80 2:89 3:86 4:89 5:88 6:86 7:86 8:92 9:97 10:96 11:97 12:99
+[14/15] inst 75 | lmpaxp 95.4/4 | cop_free 84.5/2 | cop@k: 1:64 2:84 3:84 4:88 5:89 6:96 7:96 8:96 9:98 10:99 11:99 12:100
+[15/15] inst 54 | lmpaxp 96.0/4 | cop_free 85.3/2 | cop@k: 1:65 2:85 3:94 4:90 5:87 6:95 7:97 8:96 9:99 10:99 11:100 12:99
+
+saved -> research/results/heart_cop_sweep_V.csv
+
+=== [K Fig. 2] style: mean precision by size ===
+              mean    std
+k_requested              
+1.0          68.10  11.08
+2.0          82.97  11.16
+3.0          85.77  11.12
+4.0          83.43  12.26
+5.0          84.39   8.48
+6.0          84.78  10.11
+7.0          86.15  11.15
+8.0          90.71   9.12
+9.0          94.21   8.60
+10.0         94.77   7.36
+11.0         96.22   6.33
+12.0         97.51   4.93
+
+cop_free : precision 84.79 at mean len 2.27 (loss 0.214, base_rate_same 0.498)
+lmpaxp   : precision 97.10 at mean len 4.93 (certified reference)
+
+equal-budget check: cop@5 = 84.39 vs lmpaxp = 97.10 at ~same length
+=== heart done 23:09:03 ===
+=== all four sweeps complete 23:09:03 ===

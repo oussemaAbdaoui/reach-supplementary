@@ -1,0 +1,28 @@
+=== gridllama33 grids complete -- stripping stale v5 judgements 07:15:13
+  results\cancer_nn_judge_gridllama33.csv: dropped 0 v5 rows, kept 630
+  results\compas_nn_judge_gridllama33.csv: dropped 0 v5 rows, kept 630
+  results\diabetes_nn_judge_gridllama33.csv: dropped 0 v5 rows, kept 630
+  results\employee_nn_judge_gridllama33.csv: dropped 0 v5 rows, kept 630
+  results\heart_nn_judge_gridllama33.csv: dropped 0 v5 rows, kept 630
+=== launching judge for gridllama33 on groq 07:15:14
+=== grok420 grids complete -- stripping stale v5 judgements 07:15:16
+  results\cancer_nn_judge_grok420.csv: dropped 0 v5 rows, kept 540
+  results\compas_nn_judge_grok420.csv: dropped 0 v5 rows, kept 540
+  results\diabetes_nn_judge_grok420.csv: dropped 0 v5 rows, kept 540
+  results\employee_nn_judge_grok420.csv: dropped 0 v5 rows, kept 540
+  results\heart_nn_judge_grok420.csv: dropped 0 v5 rows, kept 539
+=== launching judge for grok420 on groq 07:15:17
+=== gpt56 grids complete -- stripping stale v5 judgements 07:15:18
+  results\cancer_nn_judge_gpt56.csv: dropped 0 v5 rows, kept 538
+  results\compas_nn_judge_gpt56.csv: dropped 0 v5 rows, kept 540
+  results\diabetes_nn_judge_gpt56.csv: dropped 0 v5 rows, kept 540
+  results\employee_nn_judge_gpt56.csv: dropped 0 v5 rows, kept 540
+  results\heart_nn_judge_gpt56.csv: dropped 0 v5 rows, kept 540
+=== launching judge for gpt56 on groq 07:15:19
+=== sonnet5 grids complete -- stripping stale v5 judgements 07:15:20
+  results\cancer_nn_judge_sonnet5.csv: dropped 0 v5 rows, kept 529
+  results\compas_nn_judge_sonnet5.csv: dropped 0 v5 rows, kept 540
+  results\diabetes_nn_judge_sonnet5.csv: dropped 0 v5 rows, kept 539
+  results\employee_nn_judge_sonnet5.csv: dropped 0 v5 rows, kept 535
+  results\heart_nn_judge_sonnet5.csv: dropped 0 v5 rows, kept 270
+=== launching judge for sonnet5 on groq 07:15:22

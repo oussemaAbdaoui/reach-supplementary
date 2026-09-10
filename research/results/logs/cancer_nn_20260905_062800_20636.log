@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/cancer_nn_20260905_062800_20636.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 0
+[cancer/gpt56] 90 rows, 0 to redo, model=gpt-5.6-terra provider=openai
+
+[cancer/gpt56] wrote 0 rows -> research/results/cancer_nn_comparison_gpt56.csv
+  spend: no billable calls

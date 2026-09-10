@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/employee_nn_gridllama33_20260830_173924_22240.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop_k] base=91.0% v4=91.0% v5=83.2% v6=91.0% (len 6, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,637 in / 980 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop_k] base=70.7% v4=63.0% v5=76.6% v6=70.7% (len 5, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,778 in / 1,696 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop_k] base=65.9% v4=65.9% v5=78.1% v6=65.9% (len 3, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 12,265 in / 2,183 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop_k] base=64.5% v4=68.2% v5=65.6% v6=65.6% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 16,138 in / 2,769 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop_k] base=84.0% v4=89.6% v5=89.6% v6=80.8% (len 6, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 50 calls, 20,601 in / 3,674 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop_k] base=70.2% v4=70.2% v5=55.1% v6=70.2% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 60 calls, 24,596 in / 4,481 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop_k] base=77.3% v4=75.3% v5=63.5% v6=77.3% (len 7, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 70 calls, 29,392 in / 5,523 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop_k] base=81.9% v4=81.9% v5=87.4% v6=81.9% (len 6, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 80 calls, 33,934 in / 6,510 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop_k] base=89.1% v4=89.1% v5=74.7% v6=89.1% (len 7, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 90 calls, 38,858 in / 7,598 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop_k] base=67.8% v4=67.8% v5=53.4% v6=67.8% (len 4, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 100 calls, 42,878 in / 8,312 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop_k] base=87.9% v4=87.9% v5=83.0% v6=87.8% (len 7, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 110 calls, 47,705 in / 9,331 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop_k] base=88.6% v4=88.6% v5=64.1% v6=88.6% (len 8, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 120 calls, 52,922 in / 10,530 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop_k] base=91.0% v4=72.2% v5=61.7% v6=91.0% (len 7, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 130 calls, 57,750 in / 11,555 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop_k] base=81.4% v4=79.2% v5=65.0% v6=81.4% (len 8, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 140 calls, 62,889 in / 12,707 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop_k] base=98.8% v4=99.6% v5=67.9% v6=98.8% (len 7, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 150 calls, 67,715 in / 13,642 out
+
+saved -> research/results/employee_nn_comparison_cop_k_gridllama33.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       5.93               80.67      79.3     71.26          83.79     80.53
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07           0.0

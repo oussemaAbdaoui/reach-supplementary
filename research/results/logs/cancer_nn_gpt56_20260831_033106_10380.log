@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/cancer_nn_gpt56_20260831_033106_10380.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop_k] base=89.8% v4=83.9% v5=54.6% v6=89.8% (len 15, om_v5=12)
+  [spend] gpt-5.6-terra: 5 calls, 4,407 in / 1,238 out | Llama-3.3-70B-Instruct-Turbo: 5 calls, 3,999 in / 607 out
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop_k] base=94.3% v4=97.6% v5=25.3% v6=94.3% (len 18, om_v5=12)
+  [spend] gpt-5.6-terra: 10 calls, 9,496 in / 2,706 out | Llama-3.3-70B-Instruct-Turbo: 10 calls, 8,687 in / 1,444 out
+[003/15] instance 6 (pred=1, k_ref=17)
+  [cop_k] base=83.9% v4=84.5% v5=45.8% v6=83.9% (len 17, om_v5=11)
+  [spend] gpt-5.6-terra: 15 calls, 14,273 in / 3,982 out | Llama-3.3-70B-Instruct-Turbo: 15 calls, 12,907 in / 2,168 out
+[004/15] instance 189 (pred=0, k_ref=7)
+  [cop_k] base=89.7% v4=89.7% v5=80.4% v6=89.7% (len 7, om_v5=5)
+  [spend] gpt-5.6-terra: 20 calls, 17,027 in / 4,635 out | Llama-3.3-70B-Instruct-Turbo: 20 calls, 15,454 in / 2,487 out
+[005/15] instance 70 (pred=0, k_ref=10)
+  [cop_k] base=89.2% v4=89.2% v5=89.2% v6=89.2% (len 10, om_v5=0)
+  [spend] gpt-5.6-terra: 25 calls, 20,303 in / 5,856 out | Llama-3.3-70B-Instruct-Turbo: 25 calls, 18,856 in / 3,102 out
+[006/15] instance 62 (pred=1, k_ref=14)
+  [cop_k] base=66.9% v4=44.6% v5=61.7% v6=66.9% (len 14, om_v5=6)
+  [spend] gpt-5.6-terra: 30 calls, 24,477 in / 7,050 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 22,709 in / 3,750 out
+[007/15] instance 57 (pred=1, k_ref=18)
+  [cop_k] base=70.3% v4=43.8% v5=59.2% v6=70.3% (len 18, om_v5=9)
+  [spend] gpt-5.6-terra: 35 calls, 29,575 in / 8,508 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 27,272 in / 4,463 out
+[008/15] instance 35 (pred=0, k_ref=8)
+  [cop_k] base=82.1% v4=82.1% v5=86.1% v6=82.1% (len 8, om_v5=1)
+  [spend] gpt-5.6-terra: 40 calls, 32,556 in / 9,321 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 30,100 in / 4,885 out
+[009/15] instance 188 (pred=0, k_ref=9)
+  [cop_k] base=90.7% v4=90.7% v5=89.6% v6=90.7% (len 9, om_v5=2)
+  [spend] gpt-5.6-terra: 45 calls, 35,709 in / 10,176 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 33,046 in / 5,354 out
+[010/15] instance 26 (pred=1, k_ref=14)
+  [cop_k] base=77.9% v4=84.2% v5=29.5% v6=77.9% (len 14, om_v5=10)
+  [spend] gpt-5.6-terra: 50 calls, 39,881 in / 11,410 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 36,923 in / 5,951 out
+[011/15] instance 173 (pred=1, k_ref=14)
+  [cop_k] base=83.2% v4=83.2% v5=59.4% v6=83.2% (len 14, om_v5=4)
+  [spend] gpt-5.6-terra: 55 calls, 44,087 in / 12,722 out | Llama-3.3-70B-Instruct-Turbo: 55 calls, 40,926 in / 6,690 out
+[012/15] instance 139 (pred=1, k_ref=13)
+  [cop_k] base=91.2% v4=85.3% v5=89.6% v6=91.2% (len 13, om_v5=2)
+  [spend] gpt-5.6-terra: 60 calls, 48,135 in / 13,812 out | Llama-3.3-70B-Instruct-Turbo: 60 calls, 44,589 in / 7,309 out
+[013/15] instance 22 (pred=0, k_ref=9)
+  [cop_k] base=83.2% v4=83.2% v5=85.1% v6=83.2% (len 9, om_v5=2)
+  [spend] gpt-5.6-terra: 65 calls, 51,307 in / 14,640 out | Llama-3.3-70B-Instruct-Turbo: 65 calls, 47,521 in / 7,780 out
+[014/15] instance 151 (pred=0, k_ref=8)
+  [cop_k] base=98.1% v4=98.1% v5=98.1% v6=98.1% (len 8, om_v5=0)
+  [spend] gpt-5.6-terra: 67 calls, 52,600 in / 15,052 out | Llama-3.3-70B-Instruct-Turbo: 67 calls, 48,702 in / 7,972 out
+[015/15] instance 108 (pred=1, k_ref=18)
+  [cop_k] base=98.8% v4=98.8% v5=98.8% v6=98.8% (len 18, om_v5=0)
+  [spend] gpt-5.6-terra: 69 calls, 54,751 in / 15,928 out | Llama-3.3-70B-Instruct-Turbo: 69 calls, 50,828 in / 8,420 out
+
+saved -> research/results/cancer_nn_comparison_cop_k_gpt56.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       12.8               85.95     82.59     70.16          85.44     85.95
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.13

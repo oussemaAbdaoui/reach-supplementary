@@ -1,0 +1,44 @@
+Full console log -> research/results/logs/heart_nn_20260905_062430_17584.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[heart/gpt56] 90 rows, 90 to redo, model=gpt-5.6-terra provider=openai
+  inst    3 cop      v5= 89.10 (was 89.1) om=0 rounds=0
+  inst    3 cop_k    v5= 88.30 (was 88.3) om=0 rounds=0
+  inst    3 lmpaxp   v5= 99.20 (was 99.2) om=0 rounds=0
+  inst    3 anchors  v5= 85.70 (was 80.7) om=0 rounds=1
+  inst    3 shap     v5= 97.30 (was 71.9) om=0 rounds=1
+  inst    3 lime     v5= 91.00 (was 76.5) om=0 rounds=0
+  inst   11 cop      v5= 89.40 (was 89.4) om=0 rounds=0
+  inst   11 cop_k    v5= 88.10 (was 52.8) om=0 rounds=0
+  inst   11 lmpaxp   v5= 98.90 (was 98.9) om=0 rounds=0
+  inst   11 anchors  v5= 86.20 (was 86.2) om=0 rounds=2
+  inst   11 shap     v5= 56.10 (was 80.8) om=5 rounds=3
+  inst   11 lime     v5= 96.70 (was 96.7) om=0 rounds=0
+  inst   13 cop      v5= 57.90 (was 57.9) om=0 rounds=0
+  inst   13 cop_k    v5= 71.00 (was 50.4) om=0 rounds=0
+  inst   13 lmpaxp   v5= 94.40 (was 94.4) om=0 rounds=0
+  inst   13 anchors  v5= 79.50 (was 61.7) om=0 rounds=0
+  inst   13 shap     v5= 35.70 (was 59.7) om=4 rounds=3
+  inst   13 lime     v5=  8.20 (was 4.1) om=5 rounds=3
+  inst   14 cop      v5= 59.50 (was 59.5) om=0 rounds=0
+  inst   14 cop_k    v5= 86.20 (was 76.9) om=0 rounds=0
+  inst   14 lmpaxp   v5= 93.10 (was 87.1) om=2 rounds=3
+  inst   14 anchors  v5= 58.80 (was 46.5) om=4 rounds=3
+  inst   14 shap     v5= 29.10 (was 27.0) om=4 rounds=3
+  inst   14 lime     v5= 24.80 (was 65.3) om=9 rounds=3
+  inst   17 cop      v5= 93.90 (was 93.9) om=0 rounds=0
+  inst   17 cop_k    v5= 85.70 (was 86.2) om=0 rounds=0
+  inst   17 lmpaxp   v5= 96.40 (was 96.4) om=0 rounds=0
+  inst   17 anchors  v5= 92.80 (was 92.8) om=0 rounds=1
+  inst   17 shap     v5= 98.80 (was 98.8) om=0 rounds=1
+  inst   17 lime     v5= 89.70 (was 89.7) om=0 rounds=0
+  inst   28 cop      v5= 88.80 (was 88.8) om=0 rounds=0
+  inst   28 cop_k    v5= 89.70 (was 89.7) om=0 rounds=0
+  inst   28 lmpaxp   v5= 98.60 (was 98.6) om=0 rounds=0
+  inst   28 anchors  v5= 82.80 (was 82.8) om=0 rounds=0
+  inst   28 shap     v5= 98.20 (was 98.2) om=0 rounds=1
+  inst   28 lime     v5= 98.70 (was 98.7) om=0 rounds=0
+  inst   31 cop      v5= 90.30 (was 90.3) om=0 rounds=0
+  inst   31 cop_k    v5= 85.70 (was 85.7) om=0 rounds=0
+  inst   31 lmpaxp   v5= 98.30 (was 98.3) om=0 rounds=0
+  inst   31 anchors  v5= 91.70 (was 91.7) om=0 rounds=1
+  inst   31 shap     v5= 86.90 (was 78.1) om=2 rounds=3

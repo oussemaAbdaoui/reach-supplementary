@@ -1,0 +1,408 @@
+############ gptoss120b  (openai/gpt-oss-120b via together)  22:06:07 ############
+--- gptoss120b/cancer main  22:06:07 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.20          0.07
+lmpaxp                 0.87          0.73
+shap                   0.80          0.40
+--- gptoss120b/cancer cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.27          0.27
+  cancer/gptoss120b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_gptoss120b_Ufitcop_k.csv
+--- gptoss120b/heart main  00:04:20 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.27
+lmpaxp                 0.87          0.87
+shap                   0.80          0.53
+--- gptoss120b/heart cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  heart/gptoss120b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_heart_nn_comparison_gptoss120b_Ufitcop_k.csv
+--- gptoss120b/diabetes main  01:14:21 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+lime                   0.13          0.07
+lmpaxp                 0.93          0.93
+shap                   0.47          0.27
+--- gptoss120b/diabetes cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+  diabetes/gptoss120b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_gptoss120b_Ufitcop_k.csv
+--- gptoss120b/employee main  02:34:34 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.20
+lmpaxp                 0.87          0.87
+shap                   0.33          0.20
+--- gptoss120b/employee cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+  employee/gptoss120b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_gptoss120b_Ufitcop_k.csv
+--- gptoss120b/compas main  03:34:37 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.07
+lime                   0.53          0.47
+lmpaxp                 1.00          0.67
+shap                   0.53          0.53
+--- gptoss120b/compas cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  compas/gptoss120b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_gptoss120b_Ufitcop_k.csv
+############ gptoss120b complete  04:36:06 ############
+############ gptoss20b  (openai/gpt-oss-20b via together)  04:36:06 ############
+--- gptoss20b/cancer main  04:36:06 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.13          0.00
+lmpaxp                 0.87          0.87
+shap                   0.80          0.27
+--- gptoss20b/cancer cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.2          0.13
+  cancer/gptoss20b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_gptoss20b_Ufitcop_k.csv
+--- gptoss20b/heart main  07:40:47 ---
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.33
+lmpaxp                 0.87          0.87
+shap                   0.80          0.40
+--- gptoss20b/heart cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  heart/gptoss20b: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_heart_nn_comparison_gptoss20b_Ufitcop_k.csv
+--- gptoss20b/diabetes main  18:48:53 ---
+    e, r, S, c, u, est = explain_extract(
+                         ^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 777, in explain_extract
+    raw = llm(EXTRACT.format(legend=legend, expl=expl), max_tokens=2048,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: Llama-3.3-70B-Instruct-Turbo: 34 calls, 12,612 in / 1,688 out | gpt-oss-20b: 48 calls, 22,150 in / 49,749 out
+--- gptoss20b/diabetes cop_k ---
+           ^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: Llama-3.3-70B-Instruct-Turbo: 1 calls, 438 in / 56 out | gpt-oss-20b: 3 calls, 1,809 in / 2,746 out
+  [missing] research\results\diabetes_nn_comparison_cop_k_gptoss20b.csv
+--- gptoss20b/employee main  19:01:15 ---
+    e, r, S, c, u, est = explain_extract(
+                         ^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 775, in explain_extract
+    expl = llm(prompt)
+           ^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: Llama-3.3-70B-Instruct-Turbo: 1 calls, 388 in / 22 out | gpt-oss-20b: 2 calls, 736 in / 1,717 out
+--- gptoss20b/employee cop_k ---
+           ^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: no billable calls
+  [missing] research\results\employee_nn_comparison_gptoss20b.csv
+--- gptoss20b/compas main  19:02:16 ---
+    e, r, S, c, u, est = explain_extract(
+                         ^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 777, in explain_extract
+    raw = llm(EXTRACT.format(legend=legend, expl=expl), max_tokens=2048,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: Llama-3.3-70B-Instruct-Turbo: 1 calls, 525 in / 88 out | gpt-oss-20b: 4 calls, 2,208 in / 5,579 out
+--- gptoss20b/compas cop_k ---
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: gpt-oss-20b: 1 calls, 409 in / 768 out
+  [missing] research\results\compas_nn_comparison_gptoss20b.csv
+############ gptoss20b complete  19:06:13 ############
+############ sonnet5  (claude-sonnet-5 via anthropic)  19:06:13 ############
+--- sonnet5/cancer main  19:06:13 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+cop_k                  0.20          0.13
+lime                   0.13          0.07
+lmpaxp                 0.87          0.87
+shap                   0.80          0.20
+--- sonnet5/cancer cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.2          0.13
+    score_v6  86.95 -> 86.95 (+0.00)
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/heart main  19:06:44 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+cop_k                  0.00          0.00
+lime                   0.47          0.53
+lmpaxp                 0.87          0.87
+shap                   0.80          0.60
+--- sonnet5/heart cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  86.28 -> 86.28 (+0.00)
+    superseded copy -> research\results\_superseded_heart_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/diabetes main  19:07:14 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+cop_k                  0.53          0.53
+lime                   0.13          0.07
+lmpaxp                 0.93          0.73
+shap                   0.47          0.40
+--- sonnet5/diabetes cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+    score_v6  93.80 -> 93.80 (+0.00)
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/employee main  19:07:45 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+cop_k                  0.07          0.07
+lime                   0.27          0.13
+lmpaxp                 0.87          0.87
+shap                   0.33          0.20
+--- sonnet5/employee cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+    score_v6  80.67 -> 80.67 (+0.00)
+    superseded copy -> research\results\_superseded_employee_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/compas main  19:08:15 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+cop_k                  0.00          0.00
+lime                   0.53          0.53
+lmpaxp                 1.00          1.00
+shap                   0.53          0.53
+--- sonnet5/compas cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  68.76 -> 68.76 (+0.00)
+    superseded copy -> research\results\_superseded_compas_nn_comparison_sonnet5_Ufitcop_k.csv
+############ sonnet5 complete  19:08:44 ############
+############ gpt56  (gpt-5.6-terra via openai)  19:08:45 ############
+--- gpt56/cancer main  19:08:45 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+cop_k                  0.13          0.13
+lime                   0.13          0.00
+lmpaxp                 0.87          0.67
+shap                   0.80          0.40
+--- gpt56/cancer cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.13
+    score_v6  85.95 -> 85.95 (-0.00)
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/heart main  19:09:15 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+cop_k                  0.00          0.00
+lime                   0.47          0.47
+lmpaxp                 0.87          0.87
+shap                   0.80          0.47
+--- gpt56/heart cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  86.28 -> 86.28 (+0.00)
+    superseded copy -> research\results\_superseded_heart_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/diabetes main  19:09:40 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+cop_k                  0.53          0.53
+lime                   0.13          0.13
+lmpaxp                 0.93          0.87
+shap                   0.47          0.40
+--- gpt56/diabetes cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+    score_v6  94.09 -> 94.09 (+0.00)
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/employee main  19:10:08 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+cop_k                  0.07          0.07
+lime                   0.27          0.20
+lmpaxp                 0.87          0.80
+shap                   0.33          0.27
+--- gpt56/employee cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+    score_v6  80.67 -> 80.67 (+0.00)
+    superseded copy -> research\results\_superseded_employee_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/compas main  19:10:40 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.07
+cop_k                  0.00          0.00
+lime                   0.53          0.53
+lmpaxp                 1.00          0.87
+shap                   0.53          0.47
+--- gpt56/compas cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  69.61 -> 69.61 (+0.00)
+    superseded copy -> research\results\_superseded_compas_nn_comparison_gpt56_Ufitcop_k.csv
+############ gpt56 complete  19:11:02 ############
+############ grok420  (grok-4.20-0309-non-reasoning via xai)  19:11:02 ############
+--- grok420/cancer main  19:11:02 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+cop_k                  0.13          0.13
+lime                   0.13          0.07
+lmpaxp                 0.87          0.60
+shap                   0.80          0.20
+--- grok420/cancer cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.13
+    score_v6  85.64 -> 85.64 (-0.00)
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_grok420_Ufitcop_k.csv
+--- grok420/heart main  19:11:24 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+cop_k                  0.00          0.00
+lime                   0.47          0.40
+lmpaxp                 0.87          0.87
+shap                   0.80          0.60
+--- grok420/heart cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  86.28 -> 86.28 (+0.00)
+    superseded copy -> research\results\_superseded_heart_nn_comparison_grok420_Ufitcop_k.csv
+--- grok420/diabetes main  19:11:53 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+cop_k                  0.53          0.53
+lime                   0.13          0.07
+lmpaxp                 0.93          0.87
+shap                   0.47          0.20
+--- grok420/diabetes cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+    score_v6  94.09 -> 94.09 (+0.00)
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_grok420_Ufitcop_k.csv
+--- grok420/employee main  19:12:22 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.00
+cop                    0.00          0.00
+cop_k                  0.07          0.00
+lime                   0.27          0.00
+lmpaxp                 0.87          0.67
+shap                   0.33          0.20
+--- grok420/employee cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07           0.0
+    score_v6  80.67 -> 80.67 (+0.00)
+    superseded copy -> research\results\_superseded_employee_nn_comparison_grok420_Ufitcop_k.csv
+--- grok420/compas main  19:12:54 ---
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+cop_k                  0.00          0.00
+lime                   0.53          0.47
+lmpaxp                 1.00          0.47
+shap                   0.53          0.47
+--- grok420/compas cop_k ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+    score_v6  69.61 -> 69.61 (+0.00)
+    superseded copy -> research\results\_superseded_compas_nn_comparison_grok420_Ufitcop_k.csv
+############ grok420 complete  19:13:23 ############
+=== all five models complete  19:13:23 ===

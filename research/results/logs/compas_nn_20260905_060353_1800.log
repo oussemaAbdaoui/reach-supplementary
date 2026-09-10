@@ -1,0 +1,33 @@
+Full console log -> research/results/logs/compas_nn_20260905_060353_1800.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+[compas/glm52] 90 rows, 90 to redo, model=zai-org/GLM-5.2 provider=together
+  inst   51 cop      v5= 63.60 (was 63.5) om=0 rounds=3
+  inst   51 cop_k    v5= 70.70 (was 63.5) om=0 rounds=3
+  inst   51 lmpaxp   v5= 97.80 (was 97.8) om=0 rounds=0
+  inst   51 anchors  v5= 64.10 (was 64.1) om=0 rounds=3
+  inst   51 shap     v5= 28.20 (was 75.8) om=3 rounds=3
+  inst   51 lime     v5= 75.80 (was 72.7) om=3 rounds=3
+  inst  178 cop      v5= 66.10 (was 70.8) om=0 rounds=3
+  inst  178 cop_k    v5= 66.00 (was 40.9) om=0 rounds=3
+  inst  178 lmpaxp   v5= 98.50 (was 98.5) om=0 rounds=0
+  inst  178 anchors  v5= 59.80 (was 39.4) om=0 rounds=3
+  inst  178 shap     v5= 98.50 (was 98.5) om=0 rounds=0
+  inst  178 lime     v5= 98.50 (was 98.5) om=0 rounds=1
+  inst  209 cop      v5= 62.50 (was 62.5) om=5 rounds=3
+  inst  209 cop_k    v5= 72.10 (was 62.5) om=0 rounds=3
+  inst  209 lmpaxp   v5= 98.00 (was 98.0) om=0 rounds=0
+  inst  209 anchors  v5= 43.00 (was 43.0) om=0 rounds=3
+  inst  209 shap     v5= 55.00 (was 49.8) om=2 rounds=3
+  inst  209 lime     v5= 74.30 (was 68.0) om=3 rounds=3
+  inst  228 cop      v5= 64.10 (was 64.1) om=5 rounds=3
+  inst  228 cop_k    v5= 64.10 (was 64.1) om=0 rounds=3
+  inst  228 lmpaxp   v5= 98.80 (was 98.8) om=0 rounds=0
+  inst  228 anchors  v5= 73.20 (was 50.2) om=0 rounds=3
+  inst  228 shap     v5= 98.80 (was 98.8) om=0 rounds=0
+  inst  228 lime     v5= 98.80 (was 98.8) om=0 rounds=0
+  inst  285 cop      v5= 66.10 (was 71.0) om=5 rounds=3
+  inst  285 cop_k    v5= 66.10 (was 66.1) om=0 rounds=3
+  inst  285 lmpaxp   v5= 98.60 (was 98.6) om=0 rounds=0
+  inst  285 anchors  v5= 75.40 (was 75.4) om=0 rounds=3
+  inst  285 shap     v5= 98.60 (was 98.6) om=0 rounds=0
+  inst  285 lime     v5= 98.60 (was 98.6) om=0 rounds=0

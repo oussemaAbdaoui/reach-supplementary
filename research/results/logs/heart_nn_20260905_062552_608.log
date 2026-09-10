@@ -1,0 +1,16 @@
+Full console log -> research/results/logs/heart_nn_20260905_062552_608.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[heart/gptoss120b] 90 rows, 90 to redo, model=openai/gpt-oss-120b provider=groq
+  inst    3 cop      v5= 89.10 (was 89.1) om=0 rounds=0
+  inst    3 cop_k    v5= 88.30 (was 90.1) om=0 rounds=0
+  inst    3 lmpaxp   v5= 99.20 (was 99.2) om=0 rounds=0
+  inst    3 anchors  v5= 85.70 (was 80.7) om=0 rounds=0
+  inst    3 shap     v5= 97.30 (was 97.3) om=0 rounds=0
+  inst    3 lime     v5= 91.00 (was 62.0) om=0 rounds=0
+  inst   11 cop      v5= 89.40 (was 89.4) om=0 rounds=0
+  inst   11 cop_k    v5= 88.10 (was 88.1) om=0 rounds=0
+  inst   11 lmpaxp   v5= 98.90 (was 98.9) om=0 rounds=0
+  inst   11 anchors  v5= 86.20 (was 86.2) om=0 rounds=2
+  inst   11 shap     v5= 99.40 (was 97.6) om=0 rounds=2
+  inst   11 lime     v5= 96.70 (was 51.6) om=0 rounds=3
+  inst   13 cop      v5= 57.90 (was 57.9) om=0 rounds=0

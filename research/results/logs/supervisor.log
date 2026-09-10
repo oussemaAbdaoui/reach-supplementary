@@ -1,0 +1,32 @@
+########## PASS 1  06:27:38 ##########
+queued 30 jobs, cap=6, start 06:27:38
+-> gridllama33/cancer 06:27:38
+-> grok420/cancer 06:27:47
+-> gpt56/cancer 06:27:55
+-> sonnet5/cancer 06:28:03
+-> gptoss120b/cancer 06:28:11
+-> glm52/cancer 06:28:19
+-> gridllama33/heart 06:28:27
+-> grok420/heart 06:28:36
+-> gpt56/heart 06:28:44
+-> sonnet5/heart 06:28:52
+-> gptoss120b/heart 06:29:56
+-> glm52/heart 06:30:15
+-> gridllama33/diabetes 06:33:06
+-> grok420/diabetes 06:33:45
+-> gpt56/diabetes 06:36:21
+-> sonnet5/diabetes 06:37:16
+-> gptoss120b/diabetes 06:38:56
+-> glm52/diabetes 06:39:44
+-> gridllama33/employee 06:42:30
+-> grok420/employee 06:43:04
+-> gpt56/employee 06:45:30
+-> sonnet5/employee 06:45:38
+-> gptoss120b/employee 06:49:26
+-> glm52/employee 06:50:09
+-> gridllama33/compas 06:51:45
+-> grok420/compas 06:52:39
+-> gpt56/compas 06:54:24
+-> sonnet5/compas 06:56:44
+-> gptoss120b/compas 06:59:05
+-> glm52/compas 07:01:26

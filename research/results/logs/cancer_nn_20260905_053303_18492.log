@@ -1,0 +1,6 @@
+Full console log -> research/results/logs/cancer_nn_20260905_053303_18492.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer] 15 instances x 6 arms, DRY
+
+saved -> research/results/dialogue_state_probe_grok420.csv  (90 rows)
+DRY: 90 arm-instances, <= 1080 LLM calls (540 per variant)

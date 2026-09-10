@@ -1,0 +1,106 @@
+dataset,instance,method,k_requested,len_S,precision,precision_V,weak_paxp,weak_paxp_V,S,precision_cert,cop_loss,base_rate_same,cop_status
+compas,1309,lmpaxp,,2,98.8,100.0,True,True,"[0, 2]",98.48,,,
+compas,1309,cop_free,5.0,5,73.8,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.665,
+compas,1309,cop@k,1.0,1,71.1,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1309,cop@k,2.0,2,67.1,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1309,cop@k,3.0,3,71.4,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1309,cop@k,4.0,4,81.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1309,cop@k,5.0,5,73.8,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,228,lmpaxp,,2,98.8,100.0,True,True,"[0, 2]",98.96,,,
+compas,228,cop_free,5.0,5,72.0,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.668,
+compas,228,cop@k,1.0,1,69.7,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,228,cop@k,2.0,2,64.1,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,228,cop@k,3.0,3,70.1,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,228,cop@k,4.0,4,79.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,228,cop@k,5.0,5,72.0,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,51,lmpaxp,,5,97.8,100.0,True,True,"[1, 2, 5, 10, 12]",97.68,,,
+compas,51,cop_free,5.0,5,70.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.673,
+compas,51,cop@k,1.0,1,68.7,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,51,cop@k,2.0,2,63.5,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,51,cop@k,3.0,3,68.2,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,51,cop@k,4.0,4,80.1,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,51,cop@k,5.0,5,70.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1518,lmpaxp,,5,97.8,100.0,True,True,"[1, 2, 3, 6, 7]",97.76,,,
+compas,1518,cop_free,5.0,5,100.0,100.0,True,True,"[0, 1, 2, 3, 4]",,0.0,0.33,
+compas,1518,cop@k,1.0,1,81.1,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1518,cop@k,2.0,2,100.0,100.0,True,True,"[0, 2]",,0.0,,OPTIMAL
+compas,1518,cop@k,3.0,3,87.5,100.0,False,True,"[0, 1, 3]",,0.0,,OPTIMAL
+compas,1518,cop@k,4.0,4,82.0,100.0,False,True,"[0, 1, 3, 4]",,0.0,,OPTIMAL
+compas,1518,cop@k,5.0,5,74.0,100.0,False,True,"[0, 1, 3, 4, 5]",,0.0,,OPTIMAL
+compas,563,lmpaxp,,5,97.4,100.0,True,True,"[1, 2, 5, 10, 12]",96.96,,,
+compas,563,cop_free,5.0,5,72.5,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.665,
+compas,563,cop@k,1.0,1,71.5,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,563,cop@k,2.0,2,65.5,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,563,cop@k,3.0,3,70.7,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,563,cop@k,4.0,4,81.2,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,563,cop@k,5.0,5,72.5,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,501,lmpaxp,,5,98.1,100.0,True,True,"[1, 2, 5, 10, 12]",97.28,,,
+compas,501,cop_free,5.0,5,72.4,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.668,
+compas,501,cop@k,1.0,1,70.3,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,501,cop@k,2.0,2,66.0,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,501,cop@k,3.0,3,69.4,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,501,cop@k,4.0,4,79.4,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,501,cop@k,5.0,5,72.4,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,457,lmpaxp,,2,98.8,100.0,True,True,"[0, 2]",98.64,,,
+compas,457,cop_free,5.0,5,71.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.666,
+compas,457,cop@k,1.0,1,69.8,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,457,cop@k,2.0,2,64.6,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,457,cop@k,3.0,3,69.9,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,457,cop@k,4.0,4,78.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,457,cop@k,5.0,5,71.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,285,lmpaxp,,2,98.6,100.0,True,True,"[0, 2]",99.04,,,
+compas,285,cop_free,5.0,5,73.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.675,
+compas,285,cop@k,1.0,1,71.0,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,285,cop@k,2.0,2,66.1,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,285,cop@k,3.0,3,70.9,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,285,cop@k,4.0,4,80.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,285,cop@k,5.0,5,73.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1508,lmpaxp,,5,98.0,100.0,True,True,"[1, 2, 5, 10, 12]",97.84,,,
+compas,1508,cop_free,5.0,5,75.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.662,
+compas,1508,cop@k,1.0,1,71.9,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1508,cop@k,2.0,2,66.8,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1508,cop@k,3.0,3,72.1,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1508,cop@k,4.0,4,82.2,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1508,cop@k,5.0,5,75.7,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,209,lmpaxp,,5,98.0,100.0,True,True,"[1, 2, 5, 10, 12]",97.04,,,
+compas,209,cop_free,5.0,5,72.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.665,
+compas,209,cop@k,1.0,1,68.0,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,209,cop@k,2.0,2,62.5,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,209,cop@k,3.0,3,68.1,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,209,cop@k,4.0,4,79.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,209,cop@k,5.0,5,72.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1385,lmpaxp,,2,98.8,100.0,True,True,"[0, 2]",98.72,,,
+compas,1385,cop_free,5.0,5,74.0,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.658,
+compas,1385,cop@k,1.0,1,72.8,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1385,cop@k,2.0,2,68.2,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1385,cop@k,3.0,3,72.5,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1385,cop@k,4.0,4,81.6,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1385,cop@k,5.0,5,74.0,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1516,lmpaxp,,2,99.1,100.0,True,True,"[0, 2]",98.32,,,
+compas,1516,cop_free,5.0,5,73.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.658,
+compas,1516,cop@k,1.0,1,70.2,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1516,cop@k,2.0,2,65.6,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1516,cop@k,3.0,3,69.9,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1516,cop@k,4.0,4,80.6,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1516,cop@k,5.0,5,73.1,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1827,lmpaxp,,5,98.3,100.0,True,True,"[1, 2, 5, 10, 12]",97.52,,,
+compas,1827,cop_free,5.0,5,73.2,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.658,
+compas,1827,cop@k,1.0,1,70.8,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1827,cop@k,2.0,2,64.5,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1827,cop@k,3.0,3,69.8,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1827,cop@k,4.0,4,80.9,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1827,cop@k,5.0,5,73.2,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,1116,lmpaxp,,5,97.9,100.0,True,True,"[1, 2, 5, 10, 12]",98.08,,,
+compas,1116,cop_free,5.0,5,71.8,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.659,
+compas,1116,cop@k,1.0,1,70.2,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,1116,cop@k,2.0,2,65.1,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,1116,cop@k,3.0,3,69.4,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,1116,cop@k,4.0,4,80.6,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,1116,cop@k,5.0,5,71.8,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL
+compas,178,lmpaxp,,2,98.5,100.0,True,True,"[0, 2]",98.8,,,
+compas,178,cop_free,5.0,5,73.4,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,0.66,
+compas,178,cop@k,1.0,1,70.8,100.0,False,True,[2],,0.0,,OPTIMAL
+compas,178,cop@k,2.0,2,66.0,100.0,False,True,"[2, 3]",,0.0,,OPTIMAL
+compas,178,cop@k,3.0,3,69.6,100.0,False,True,"[2, 3, 4]",,0.0,,OPTIMAL
+compas,178,cop@k,4.0,4,78.5,100.0,False,True,"[2, 3, 4, 5]",,0.0,,OPTIMAL
+compas,178,cop@k,5.0,5,73.4,100.0,False,True,"[2, 3, 4, 5, 6]",,0.0,,OPTIMAL

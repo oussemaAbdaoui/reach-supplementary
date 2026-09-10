@@ -1,0 +1,211 @@
+dataset,instance,method,k_requested,len_S,precision,precision_V,weak_paxp,weak_paxp_V,S,precision_cert,cop_loss,base_rate_same,cop_status
+heart,81,lmpaxp,,4,97.6,99.6,True,True,"[10, 15, 23, 25]",98.63,,,
+heart,81,cop_free,12.0,3,93.6,94.9,False,False,"[23, 24, 25]",,0.1872,0.501,
+heart,81,cop@k,1.0,1,63.0,94.9,False,False,[23],,0.1872,,OPTIMAL
+heart,81,cop@k,2.0,2,84.6,94.9,False,False,"[23, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,3.0,3,89.0,94.9,False,False,"[22, 23, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,4.0,4,93.2,94.9,False,False,"[21, 23, 24, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,5.0,5,89.6,94.9,False,False,"[11, 21, 22, 23, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,6.0,6,90.3,94.9,False,False,"[7, 11, 21, 22, 23, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,7.0,7,90.0,94.9,False,False,"[3, 7, 11, 21, 22, 23, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,8.0,8,96.5,94.9,True,False,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1872,,OPTIMAL
+heart,81,cop@k,9.0,9,98.8,98.4,True,True,"[3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.275,,FEASIBLE
+heart,81,cop@k,10.0,10,100.0,99.9,True,True,"[3, 4, 7, 10, 11, 21, 22, 23, 24, 25]",,0.3456,,FEASIBLE
+heart,81,cop@k,11.0,11,98.7,97.2,True,True,"[3, 7, 11, 15, 16, 17, 21, 22, 23, 24, 25]",,0.388,,FEASIBLE
+heart,81,cop@k,12.0,12,99.6,100.0,True,True,"[3, 4, 5, 6, 7, 11, 15, 21, 22, 23, 24, 25]",,0.425,,FEASIBLE
+heart,14,lmpaxp,,12,94.7,86.7,False,False,"[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]",95.54,,,
+heart,14,cop_free,12.0,3,64.0,61.7,False,False,"[4, 15, 19]",,0.4056,0.483,
+heart,14,cop@k,1.0,1,48.2,59.3,False,False,[12],,0.4068,,OPTIMAL
+heart,14,cop@k,2.0,2,59.5,56.8,False,False,"[19, 24]",,0.3968,,OPTIMAL
+heart,14,cop@k,3.0,3,64.0,56.8,False,False,"[19, 22, 24]",,0.3968,,OPTIMAL
+heart,14,cop@k,4.0,4,60.7,56.8,False,False,"[11, 19, 21, 24]",,0.3968,,OPTIMAL
+heart,14,cop@k,5.0,5,67.0,56.8,False,False,"[7, 11, 19, 22, 24]",,0.3968,,OPTIMAL
+heart,14,cop@k,6.0,6,65.7,56.8,False,False,"[7, 11, 19, 21, 22, 24]",,0.3968,,FEASIBLE
+heart,14,cop@k,7.0,7,64.8,56.8,False,False,"[3, 7, 11, 19, 21, 22, 24]",,0.3968,,FEASIBLE
+heart,14,cop@k,8.0,8,70.5,61.4,False,False,"[3, 7, 9, 11, 19, 21, 22, 24]",,0.4008,,FEASIBLE
+heart,14,cop@k,9.0,9,76.5,65.2,False,False,"[3, 4, 7, 9, 11, 19, 21, 22, 24]",,0.409,,FEASIBLE
+heart,14,cop@k,10.0,10,78.9,73.6,False,False,"[3, 4, 7, 11, 12, 13, 14, 15, 21, 22]",,0.4156,,FEASIBLE
+heart,14,cop@k,11.0,11,81.0,78.1,False,False,"[3, 4, 7, 11, 12, 13, 14, 15, 19, 21, 22]",,0.4272,,FEASIBLE
+heart,14,cop@k,12.0,12,86.2,84.8,False,False,"[3, 4, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22]",,0.4394,,FEASIBLE
+heart,3,lmpaxp,,4,99.2,92.1,True,False,"[8, 10, 23, 24]",98.99,,,
+heart,3,cop_free,12.0,4,92.7,93.1,False,False,"[8, 9, 10, 23]",,0.321,0.519,
+heart,3,cop@k,1.0,1,79.8,77.2,False,False,[23],,0.1834,,OPTIMAL
+heart,3,cop@k,2.0,2,89.1,91.0,False,False,"[8, 23]",,0.1702,,OPTIMAL
+heart,3,cop@k,3.0,3,86.8,91.0,False,False,"[8, 22, 23]",,0.1702,,OPTIMAL
+heart,3,cop@k,4.0,4,88.3,91.0,False,False,"[8, 11, 21, 23]",,0.1702,,OPTIMAL
+heart,3,cop@k,5.0,5,84.6,91.0,False,False,"[7, 8, 11, 22, 23]",,0.1702,,OPTIMAL
+heart,3,cop@k,6.0,6,85.1,91.0,False,False,"[7, 8, 11, 21, 22, 23]",,0.1702,,OPTIMAL
+heart,3,cop@k,7.0,7,85.8,91.0,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1702,,FEASIBLE
+heart,3,cop@k,8.0,8,91.1,97.5,False,True,"[3, 7, 8, 11, 17, 21, 22, 23]",,0.2404,,FEASIBLE
+heart,3,cop@k,9.0,9,93.0,98.5,False,True,"[0, 3, 7, 8, 11, 17, 21, 22, 23]",,0.3192,,FEASIBLE
+heart,3,cop@k,10.0,10,93.9,97.0,False,True,"[3, 7, 8, 9, 10, 11, 17, 21, 22, 23]",,0.3698,,FEASIBLE
+heart,3,cop@k,11.0,11,95.4,98.3,True,True,"[0, 3, 7, 8, 9, 10, 11, 17, 21, 22, 23]",,0.4146,,FEASIBLE
+heart,3,cop@k,12.0,12,99.1,96.9,True,True,"[3, 7, 8, 9, 10, 11, 17, 21, 22, 23, 24, 25]",,0.4438,,FEASIBLE
+heart,94,lmpaxp,,3,98.4,91.9,True,False,"[18, 23, 25]",98.49,,,
+heart,94,cop_free,12.0,2,90.3,89.5,False,False,"[8, 23]",,0.1742,0.517,
+heart,94,cop@k,1.0,1,80.0,74.7,False,False,[23],,0.1818,,OPTIMAL
+heart,94,cop@k,2.0,2,90.3,89.5,False,False,"[8, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,3.0,3,87.1,89.5,False,False,"[8, 22, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,4.0,4,89.5,89.5,False,False,"[8, 11, 21, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,5.0,5,84.9,89.5,False,False,"[7, 8, 11, 22, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,6.0,6,86.2,89.5,False,False,"[7, 8, 11, 21, 22, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,7.0,7,86.5,89.5,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1742,,OPTIMAL
+heart,94,cop@k,8.0,8,92.0,95.9,False,True,"[3, 7, 8, 11, 17, 21, 22, 23]",,0.2446,,OPTIMAL
+heart,94,cop@k,9.0,9,96.5,95.6,True,True,"[3, 7, 8, 11, 21, 22, 23, 24, 25]",,0.322,,FEASIBLE
+heart,94,cop@k,10.0,10,96.4,99.3,True,True,"[3, 7, 8, 11, 15, 16, 17, 21, 22, 23]",,0.3732,,FEASIBLE
+heart,94,cop@k,11.0,11,98.7,98.2,True,True,"[3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.4144,,FEASIBLE
+heart,94,cop@k,12.0,12,98.6,96.8,True,True,"[3, 7, 11, 17, 18, 19, 20, 21, 22, 23, 24, 25]",,0.4458,,FEASIBLE
+heart,35,lmpaxp,,4,96.9,94.0,True,False,"[22, 23, 24, 25]",95.76,,,
+heart,35,cop_free,12.0,2,85.2,94.0,False,False,"[23, 25]",,0.1764,0.496,
+heart,35,cop@k,1.0,1,64.3,94.0,False,False,[23],,0.1764,,OPTIMAL
+heart,35,cop@k,2.0,2,85.2,94.0,False,False,"[23, 25]",,0.1764,,OPTIMAL
+heart,35,cop@k,3.0,3,88.2,94.0,False,False,"[22, 23, 25]",,0.1764,,OPTIMAL
+heart,35,cop@k,4.0,4,70.0,94.0,False,False,"[11, 21, 22, 23]",,0.1764,,OPTIMAL
+heart,35,cop@k,5.0,5,78.7,94.0,False,False,"[7, 21, 22, 23, 24]",,0.1764,,OPTIMAL
+heart,35,cop@k,6.0,6,96.8,94.0,True,False,"[7, 21, 22, 23, 24, 25]",,0.1764,,OPTIMAL
+heart,35,cop@k,7.0,7,97.5,94.0,True,False,"[7, 11, 21, 22, 23, 24, 25]",,0.1764,,OPTIMAL
+heart,35,cop@k,8.0,8,97.5,94.0,True,False,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1764,,FEASIBLE
+heart,35,cop@k,9.0,9,99.3,98.3,True,True,"[3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.262,,FEASIBLE
+heart,35,cop@k,10.0,10,99.3,98.5,True,True,"[2, 3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.3346,,FEASIBLE
+heart,35,cop@k,11.0,11,98.9,97.7,True,True,"[2, 3, 5, 7, 11, 15, 21, 22, 23, 24, 25]",,0.3832,,FEASIBLE
+heart,35,cop@k,12.0,12,98.0,96.3,True,True,"[0, 1, 2, 3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.4148,,FEASIBLE
+heart,31,lmpaxp,,6,98.3,92.7,True,False,"[15, 18, 19, 21, 23, 24]",98.42,,,
+heart,31,cop_free,12.0,2,90.3,88.0,False,False,"[8, 23]",,0.1784,0.514,
+heart,31,cop@k,1.0,1,80.2,75.9,False,False,[23],,0.1804,,OPTIMAL
+heart,31,cop@k,2.0,2,90.3,88.0,False,False,"[8, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,3.0,3,91.0,88.0,False,False,"[8, 21, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,4.0,4,86.6,88.0,False,False,"[8, 11, 22, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,5.0,5,88.7,88.0,False,False,"[7, 8, 11, 21, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,6.0,6,85.7,88.0,False,False,"[7, 8, 11, 21, 22, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,7.0,7,86.2,88.0,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1784,,OPTIMAL
+heart,31,cop@k,8.0,8,91.0,95.1,False,True,"[3, 7, 8, 11, 12, 21, 22, 23]",,0.246,,OPTIMAL
+heart,31,cop@k,9.0,9,94.0,98.6,False,True,"[3, 7, 8, 11, 12, 17, 21, 22, 23]",,0.318,,FEASIBLE
+heart,31,cop@k,10.0,10,95.1,99.5,True,True,"[3, 7, 8, 11, 15, 16, 17, 21, 22, 23]",,0.3764,,FEASIBLE
+heart,31,cop@k,11.0,11,96.9,97.5,True,True,"[3, 7, 8, 11, 12, 17, 21, 22, 23, 24, 25]",,0.4128,,FEASIBLE
+heart,31,cop@k,12.0,12,99.6,99.3,True,True,"[3, 7, 8, 11, 12, 17, 18, 21, 22, 23, 24, 25]",,0.4406,,FEASIBLE
+heart,28,lmpaxp,,3,98.6,89.8,True,False,"[18, 23, 25]",98.2,,,
+heart,28,cop_free,12.0,2,88.8,88.4,False,False,"[8, 23]",,0.1668,0.515,
+heart,28,cop@k,1.0,1,79.3,73.6,False,False,[23],,0.1814,,OPTIMAL
+heart,28,cop@k,2.0,2,88.8,88.4,False,False,"[8, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,3.0,3,89.7,88.4,False,False,"[8, 21, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,4.0,4,87.0,88.4,False,False,"[8, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,5.0,5,86.0,88.4,False,False,"[7, 8, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,6.0,6,84.1,88.4,False,False,"[7, 8, 11, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,7.0,7,84.5,88.4,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,28,cop@k,8.0,8,90.6,95.6,False,True,"[3, 7, 8, 11, 17, 21, 22, 23]",,0.2466,,FEASIBLE
+heart,28,cop@k,9.0,9,97.3,95.2,True,True,"[3, 7, 8, 11, 21, 22, 23, 24, 25]",,0.3126,,FEASIBLE
+heart,28,cop@k,10.0,10,94.7,98.7,False,True,"[3, 7, 8, 11, 15, 16, 17, 21, 22, 23]",,0.3686,,FEASIBLE
+heart,28,cop@k,11.0,11,98.9,96.4,True,True,"[3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.4066,,FEASIBLE
+heart,28,cop@k,12.0,12,97.5,98.8,True,True,"[2, 3, 7, 8, 11, 15, 16, 17, 18, 21, 22, 23]",,0.4398,,FEASIBLE
+heart,17,lmpaxp,,4,96.4,96.5,True,True,"[22, 23, 24, 25]",95.68,,,
+heart,17,cop_free,12.0,2,84.4,96.5,False,True,"[23, 25]",,0.1798,0.488,
+heart,17,cop@k,1.0,1,63.8,96.5,False,True,[23],,0.1798,,OPTIMAL
+heart,17,cop@k,2.0,2,84.4,96.5,False,True,"[23, 25]",,0.1798,,OPTIMAL
+heart,17,cop@k,3.0,3,93.9,96.5,False,True,"[23, 24, 25]",,0.1798,,OPTIMAL
+heart,17,cop@k,4.0,4,85.7,96.5,False,True,"[11, 21, 23, 25]",,0.1798,,OPTIMAL
+heart,17,cop@k,5.0,5,87.2,96.5,False,True,"[7, 11, 21, 23, 25]",,0.1798,,OPTIMAL
+heart,17,cop@k,6.0,6,77.6,96.5,False,True,"[7, 11, 21, 22, 24, 25]",,0.1798,,OPTIMAL
+heart,17,cop@k,7.0,7,97.3,96.5,True,True,"[7, 11, 21, 22, 23, 24, 25]",,0.1798,,FEASIBLE
+heart,17,cop@k,8.0,8,96.6,96.5,True,True,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1798,,FEASIBLE
+heart,17,cop@k,9.0,9,99.0,99.1,True,True,"[3, 7, 11, 19, 21, 22, 23, 24, 25]",,0.2638,,FEASIBLE
+heart,17,cop@k,10.0,10,98.9,98.6,True,True,"[3, 7, 11, 16, 19, 21, 22, 23, 24, 25]",,0.3328,,FEASIBLE
+heart,17,cop@k,11.0,11,100.0,100.0,True,True,"[3, 7, 11, 18, 19, 20, 21, 22, 23, 24, 25]",,0.379,,FEASIBLE
+heart,17,cop@k,12.0,12,100.0,100.0,True,True,"[3, 4, 5, 6, 7, 11, 19, 21, 22, 23, 24, 25]",,0.4092,,FEASIBLE
+heart,13,lmpaxp,,9,94.4,100.0,False,True,"[5, 9, 12, 14, 15, 16, 17, 19, 24]",95.11,,,
+heart,13,cop_free,12.0,2,57.9,63.6,False,False,"[15, 17]",,0.3896,0.487,
+heart,13,cop@k,1.0,1,48.3,63.6,False,False,[17],,0.3896,,OPTIMAL
+heart,13,cop@k,2.0,2,52.9,63.6,False,False,"[17, 22]",,0.3896,,OPTIMAL
+heart,13,cop@k,3.0,3,55.5,63.6,False,False,"[15, 16, 22]",,0.3896,,OPTIMAL
+heart,13,cop@k,4.0,4,52.3,63.6,False,False,"[11, 17, 21, 22]",,0.3896,,OPTIMAL
+heart,13,cop@k,5.0,5,64.7,63.6,False,False,"[7, 11, 15, 17, 22]",,0.3896,,OPTIMAL
+heart,13,cop@k,6.0,6,63.5,63.6,False,False,"[7, 11, 15, 17, 21, 22]",,0.3896,,FEASIBLE
+heart,13,cop@k,7.0,7,62.0,63.6,False,False,"[3, 7, 11, 15, 17, 21, 22]",,0.3896,,FEASIBLE
+heart,13,cop@k,8.0,8,67.4,65.7,False,False,"[3, 4, 7, 11, 15, 19, 21, 22]",,0.396,,FEASIBLE
+heart,13,cop@k,9.0,9,71.0,68.8,False,False,"[3, 4, 7, 11, 15, 16, 17, 21, 22]",,0.3982,,FEASIBLE
+heart,13,cop@k,10.0,10,75.9,73.3,False,False,"[3, 4, 7, 11, 14, 15, 16, 17, 21, 22]",,0.4092,,FEASIBLE
+heart,13,cop@k,11.0,11,80.9,77.3,False,False,"[3, 4, 7, 9, 11, 14, 15, 16, 17, 21, 22]",,0.4256,,FEASIBLE
+heart,13,cop@k,12.0,12,87.0,85.2,False,False,"[3, 4, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22]",,0.429,,FEASIBLE
+heart,86,lmpaxp,,4,98.9,97.6,True,True,"[9, 21, 23, 25]",98.56,,,
+heart,86,cop_free,12.0,2,88.6,90.7,False,False,"[8, 23]",,0.1668,0.499,
+heart,86,cop@k,1.0,1,78.5,74.6,False,False,[23],,0.1874,,OPTIMAL
+heart,86,cop@k,2.0,2,88.6,90.7,False,False,"[8, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,3.0,3,89.2,90.7,False,False,"[8, 21, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,4.0,4,88.4,90.7,False,False,"[8, 11, 21, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,5.0,5,84.4,90.7,False,False,"[7, 8, 11, 22, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,6.0,6,85.1,90.7,False,False,"[7, 8, 11, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,7.0,7,85.4,90.7,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1668,,OPTIMAL
+heart,86,cop@k,8.0,8,90.7,96.9,False,True,"[3, 7, 8, 11, 17, 21, 22, 23]",,0.2274,,FEASIBLE
+heart,86,cop@k,9.0,9,96.8,96.9,True,True,"[3, 7, 8, 11, 21, 22, 23, 24, 25]",,0.3068,,FEASIBLE
+heart,86,cop@k,10.0,10,95.9,99.5,True,True,"[3, 7, 8, 11, 15, 16, 17, 21, 22, 23]",,0.3564,,FEASIBLE
+heart,86,cop@k,11.0,11,98.3,97.6,True,True,"[3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.3992,,FEASIBLE
+heart,86,cop@k,12.0,12,100.0,100.0,True,True,"[3, 7, 8, 9, 10, 11, 17, 21, 22, 23, 24, 25]",,0.4258,,FEASIBLE
+heart,114,lmpaxp,,4,96.7,95.1,True,True,"[22, 23, 24, 25]",96.69,,,
+heart,114,cop_free,12.0,3,95.0,95.1,True,True,"[23, 24, 25]",,0.1848,0.493,
+heart,114,cop@k,1.0,1,64.7,95.1,False,True,[23],,0.1848,,OPTIMAL
+heart,114,cop@k,2.0,2,87.0,95.1,False,True,"[23, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,3.0,3,95.0,95.1,True,True,"[23, 24, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,4.0,4,89.7,95.1,False,True,"[21, 22, 23, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,5.0,5,97.4,95.1,True,True,"[11, 22, 23, 24, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,6.0,6,79.1,95.1,False,True,"[7, 11, 21, 22, 24, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,7.0,7,97.2,95.1,True,True,"[7, 11, 21, 22, 23, 24, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,8.0,8,97.1,95.1,True,True,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1848,,OPTIMAL
+heart,114,cop@k,9.0,9,99.1,99.4,True,True,"[3, 7, 11, 19, 21, 22, 23, 24, 25]",,0.269,,FEASIBLE
+heart,114,cop@k,10.0,10,99.4,99.4,True,True,"[1, 3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.337,,FEASIBLE
+heart,114,cop@k,11.0,11,100.0,100.0,True,True,"[3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.3768,,FEASIBLE
+heart,114,cop@k,12.0,12,100.0,100.0,True,True,"[1, 3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.412,,FEASIBLE
+heart,69,lmpaxp,,4,96.1,99.5,True,True,"[17, 23, 24, 25]",97.34,,,
+heart,69,cop_free,12.0,2,84.7,95.5,False,True,"[23, 25]",,0.1758,0.486,
+heart,69,cop@k,1.0,1,62.2,95.5,False,True,[23],,0.1758,,OPTIMAL
+heart,69,cop@k,2.0,2,84.7,95.5,False,True,"[23, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,3.0,3,92.5,95.5,False,True,"[23, 24, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,4.0,4,93.4,95.5,False,True,"[11, 23, 24, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,5.0,5,88.2,95.5,False,True,"[7, 21, 22, 23, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,6.0,6,96.0,95.5,True,True,"[7, 11, 22, 23, 24, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,7.0,7,76.3,95.5,False,True,"[3, 7, 11, 21, 22, 24, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,8.0,8,95.2,95.5,True,True,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1758,,OPTIMAL
+heart,69,cop@k,9.0,9,98.9,98.7,True,True,"[3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.2612,,FEASIBLE
+heart,69,cop@k,10.0,10,99.5,99.5,True,True,"[3, 7, 11, 14, 15, 21, 22, 23, 24, 25]",,0.3272,,FEASIBLE
+heart,69,cop@k,11.0,11,100.0,100.0,True,True,"[3, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25]",,0.3794,,FEASIBLE
+heart,69,cop@k,12.0,12,99.8,100.0,True,True,"[3, 7, 11, 12, 13, 14, 15, 21, 22, 23, 24, 25]",,0.4054,,FEASIBLE
+heart,11,lmpaxp,,5,98.9,91.0,True,False,"[15, 17, 19, 23, 24]",98.2,,,
+heart,11,cop_free,12.0,2,89.4,89.9,False,False,"[8, 23]",,0.1688,0.515,
+heart,11,cop@k,1.0,1,80.0,74.6,False,False,[23],,0.1872,,OPTIMAL
+heart,11,cop@k,2.0,2,89.4,89.9,False,False,"[8, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,3.0,3,86.5,89.9,False,False,"[8, 22, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,4.0,4,88.9,89.9,False,False,"[8, 11, 21, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,5.0,5,88.1,89.9,False,False,"[7, 8, 11, 21, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,6.0,6,85.8,89.9,False,False,"[7, 8, 11, 21, 22, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,7.0,7,86.0,89.9,False,False,"[3, 7, 8, 11, 21, 22, 23]",,0.1688,,OPTIMAL
+heart,11,cop@k,8.0,8,92.0,95.9,False,True,"[3, 7, 8, 11, 17, 21, 22, 23]",,0.2368,,FEASIBLE
+heart,11,cop@k,9.0,9,97.4,99.0,True,True,"[3, 7, 8, 11, 17, 18, 21, 22, 23]",,0.3126,,FEASIBLE
+heart,11,cop@k,10.0,10,95.6,99.0,True,True,"[3, 7, 8, 11, 15, 16, 17, 21, 22, 23]",,0.3692,,FEASIBLE
+heart,11,cop@k,11.0,11,98.8,98.1,True,True,"[3, 7, 8, 11, 17, 18, 21, 22, 23, 24, 25]",,0.4106,,FEASIBLE
+heart,11,cop@k,12.0,12,99.2,100.0,True,True,"[0, 3, 7, 8, 11, 17, 18, 21, 22, 23, 24, 25]",,0.4398,,FEASIBLE
+heart,75,lmpaxp,,4,95.4,94.6,True,False,"[22, 23, 24, 25]",95.9,,,
+heart,75,cop_free,12.0,2,84.5,94.6,False,False,"[23, 25]",,0.1842,0.489,
+heart,75,cop@k,1.0,1,64.5,94.6,False,False,[23],,0.1842,,OPTIMAL
+heart,75,cop@k,2.0,2,84.5,94.6,False,False,"[23, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,3.0,3,84.2,94.6,False,False,"[21, 23, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,4.0,4,87.5,94.6,False,False,"[21, 22, 23, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,5.0,5,89.0,94.6,False,False,"[11, 21, 22, 23, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,6.0,6,95.9,94.6,True,False,"[11, 21, 22, 23, 24, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,7.0,7,96.2,94.6,True,False,"[7, 11, 21, 22, 23, 24, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,8.0,8,95.8,94.6,True,False,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1842,,OPTIMAL
+heart,75,cop@k,9.0,9,98.3,98.9,True,True,"[3, 7, 11, 19, 21, 22, 23, 24, 25]",,0.264,,OPTIMAL
+heart,75,cop@k,10.0,10,98.7,99.4,True,True,"[3, 7, 11, 13, 19, 21, 22, 23, 24, 25]",,0.3352,,FEASIBLE
+heart,75,cop@k,11.0,11,99.2,99.2,True,True,"[3, 7, 11, 12, 13, 14, 21, 22, 23, 24, 25]",,0.3776,,FEASIBLE
+heart,75,cop@k,12.0,12,97.4,97.1,True,True,"[3, 7, 8, 9, 10, 11, 15, 21, 22, 23, 24, 25]",,0.4118,,FEASIBLE
+heart,54,lmpaxp,,4,96.0,96.0,True,True,"[22, 23, 24, 25]",96.91,,,
+heart,54,cop_free,12.0,2,85.3,96.0,False,True,"[23, 25]",,0.1924,0.472,
+heart,54,cop@k,1.0,1,64.7,96.0,False,True,[23],,0.1924,,OPTIMAL
+heart,54,cop@k,2.0,2,85.3,96.0,False,True,"[23, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,3.0,3,93.9,96.0,False,True,"[23, 24, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,4.0,4,90.2,96.0,False,True,"[11, 22, 23, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,5.0,5,87.4,96.0,False,True,"[7, 11, 21, 23, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,6.0,6,94.8,96.0,False,True,"[7, 11, 21, 23, 24, 25]",,0.1924,,FEASIBLE
+heart,54,cop@k,7.0,7,96.6,96.0,True,True,"[7, 11, 21, 22, 23, 24, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,8.0,8,96.1,96.0,True,True,"[3, 7, 11, 21, 22, 23, 24, 25]",,0.1924,,OPTIMAL
+heart,54,cop@k,9.0,9,99.0,99.3,True,True,"[3, 7, 11, 15, 21, 22, 23, 24, 25]",,0.269,,FEASIBLE
+heart,54,cop@k,10.0,10,89.5,85.2,False,False,"[3, 7, 10, 11, 12, 13, 14, 21, 22, 25]",,0.3678,,FEASIBLE
+heart,54,cop@k,11.0,11,99.8,99.6,True,True,"[3, 7, 11, 15, 16, 17, 21, 22, 23, 24, 25]",,0.3742,,FEASIBLE
+heart,54,cop@k,12.0,12,99.2,96.6,True,True,"[3, 7, 8, 9, 10, 11, 14, 15, 19, 21, 22, 25]",,0.408,,FEASIBLE

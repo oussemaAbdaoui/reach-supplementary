@@ -1,0 +1,4 @@
+Full console log -> research/results/logs/diabetes_nn_gridllama33_20260830_011027_608.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+resume: 7 instances already done (35 rows) -> 8 to go
+[008/15] instance 279 (pred=0, k_ref=7)

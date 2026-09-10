@@ -1,4 +1,52 @@
 .env
+.env.*
+!.env.example
+# build/cache/third-party artifacts (regenerable or external)
 __pycache__/
 *.pyc
-.DS_Store
+supplementary_material/
+praxp/
+_bt_cache_*.pkl
+_bt_cache_*.pkl.*.bak
+_bt_train.csv
+*.nfs*
+research/.nfs*
+
+# scratch/session artifacts (2026-07)
+_bt_out*.txt
+_bt_cache_*.pkl.bak
+_hcii.txt
+_lmpe_text.txt
+_diag_wf.py
+research/_*_extract.txt
+research/results/.~lock.*
+# third-party paper PDFs (copyright; HCII draft is unpublished)
+research/2510.18615v1.pdf
+research/HCII2026*.pdf
+research/Learning Model Agnostic*.pdf
+research/Locally-Minimal*.pdf
+
+# LaTeX build artifacts (2026-08). Scoped to research/*.tex siblings on
+# purpose: research/results/logs/*.log are EXPERIMENT logs and are tracked,
+# so no blanket *.log rule here.
+research/*.aux
+research/*.log
+research/*.out
+# research/*.bbl is TRACKED on purpose: it is what ACM wants at submission,
+# and without it a fresh checkout renders every citation as [?].
+research/*.blg
+research/*.toc
+research/*.lof
+research/*.lot
+research/*.fls
+research/*.fdb_latexmk
+research/*.synctex.gz
+research/*.run.xml
+research/*.bcf
+!research/results/logs/*.log
+
+# editing backups and scratch files
+*.bak
+research/_*.tmp
+research/figpage*.png
+research/results/_*.log

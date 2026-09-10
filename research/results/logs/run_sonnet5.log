@@ -1,0 +1,72 @@
+=== sonnet5 (claude-sonnet-5 via anthropic) order: compas employee diabetes heart cancer  start 01:01:33 ===
+--- sonnet5/compas main  01:01:33 ---
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.00
+lime                   0.53          0.53
+lmpaxp                 1.00          1.00
+shap                   0.53          0.53
+--- sonnet5/compas cop_k  01:34:26 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  compas/sonnet5: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/employee main  01:45:26 ---
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.13
+lmpaxp                 0.87          0.87
+shap                   0.33          0.20
+--- sonnet5/employee cop_k  02:23:11 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+  employee/sonnet5: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/diabetes main  02:31:50 ---
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+lime                   0.13          0.07
+lmpaxp                 0.93          0.73
+shap                   0.47          0.40
+--- sonnet5/diabetes cop_k  03:29:38 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+  diabetes/sonnet5: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/heart main  03:51:33 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.53
+lmpaxp                 0.87          0.87
+shap                   0.80          0.60
+--- sonnet5/heart cop_k  04:40:55 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  heart/sonnet5: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_heart_nn_comparison_sonnet5_Ufitcop_k.csv
+--- sonnet5/cancer main  04:55:20 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.13          0.07
+lmpaxp                 0.87          0.87
+shap                   0.80          0.20
+--- sonnet5/cancer cop_k  06:04:17 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.2          0.13
+  cancer/sonnet5: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_sonnet5_Ufitcop_k.csv
+=== sonnet5 complete  06:34:04 ===

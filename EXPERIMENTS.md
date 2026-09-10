@@ -54,9 +54,10 @@ faithfulness and measured fidelity is +0.242, produced entirely by differences
 *between* arms. Within each arm: −0.04 (LmPAXp), +0.05 (COP), −0.10 (Anchors),
 −0.00 (SHAP), −0.00 (LIME).
 
-**It points the wrong way on the repair.** Moving the certified context from
-bounded dialogue to structured generation raises measured fidelity 95.6 → 96.3
-while the verifier cuts faithfulness 62.8 → 28.5. Across contexts, verifier
+**It responds to formatting, not to fidelity.** Moving the certified context
+from bounded dialogue to structured generation leaves measured fidelity where
+it was -- 96.9 against 96.7, below what the estimator resolves -- while the
+verifier cuts faithfulness 56.5 → 31.1, a 25.4-point penalty. Across contexts, verifier
 faithfulness falls 42.9 → 40.9 → 29.8 and completeness 44.6 → 41.5 → 32.2 from
 v4 to v6 — structured output reads as a flat enumeration while being logically
 exact.

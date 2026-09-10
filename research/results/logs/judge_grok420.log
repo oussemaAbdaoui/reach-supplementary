@@ -1,0 +1,186 @@
+judge = openai/gpt-oss-120b via together
+[cancer] judging stored explanations ...
+  generator grok-4.20-0309-non-reasoning | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\cancer_nn_judge_grok420.csv (+270 rows)
+[compas] judging stored explanations ...
+  generator grok-4.20-0309-non-reasoning | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\compas_nn_judge_grok420.csv (+270 rows)
+[diabetes] judging stored explanations ...
+  generator grok-4.20-0309-non-reasoning | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\diabetes_nn_judge_grok420.csv (+270 rows)
+[employee] judging stored explanations ...
+  generator grok-4.20-0309-non-reasoning | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\employee_nn_judge_grok420.csv (+270 rows)
+[heart] judging stored explanations ...
+  generator grok-4.20-0309-non-reasoning | judge openai/gpt-oss-120b
+  resuming: 539 already judged
+  810 judgements over 3 pass(es) (271 to run, 539 already done)
+    10/271 judged
+    20/271 judged
+    30/271 judged
+    40/271 judged
+    50/271 judged
+    60/271 judged
+    70/271 judged
+    80/271 judged
+    90/271 judged
+    100/271 judged
+    110/271 judged
+    120/271 judged
+    130/271 judged
+    140/271 judged
+    150/271 judged
+    160/271 judged
+    170/271 judged
+    180/271 judged
+    190/271 judged
+    200/271 judged
+    210/271 judged
+    220/271 judged
+    230/271 judged
+    240/271 judged
+    250/271 judged
+    260/271 judged
+    270/271 judged
+  wrote research\results\heart_nn_judge_grok420.csv (+271 rows)
+
+=== judge = openai/gpt-oss-120b | 1350 judgements, parse ok 98.7% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               41.19      74.96         37.81        30.03
+v5               40.23      72.22         36.86        32.70
+v6               25.37      61.80         25.16        40.85
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   37.26  34.11  28.85
+cop       30.54  29.80  18.33
+cop_k     41.33  42.60  23.13
+lime      41.55  41.01  27.47
+lmpaxp    48.80  48.49  25.20
+shap      47.50  45.81  29.35
+
+test-retest on 1350 repeated judgements, mean |pass1-pass2|:
+  faithfulness   8.41
+  coherence      7.25
+  completeness   6.82
+  halluc_risk    14.56

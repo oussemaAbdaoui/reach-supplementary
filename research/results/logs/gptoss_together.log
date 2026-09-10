@@ -1,0 +1,114 @@
+=== gptoss120b/cancer 09:07:04 ===
+Full console log -> research/results/logs/cancer_nn_20260905_090708_5616.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+=== gptoss120b/heart 09:07:12 ===
+[cancer/gptoss120b] 90 rows, 55 to redo, model=openai/gpt-oss-120b provider=together
+Full console log -> research/results/logs/heart_nn_20260905_090714_28604.log
+Traceback (most recent call last):
+  File "run_comparison_nn.py", line 295, in llm
+    content, finish = _complete(prompt, budget)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 265, in _complete
+    resp = _get_client().chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'id': 'oz2khpu-z1gNr-a36365622c8b46a0', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param': None, 'code': None}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\rerun_dialogue.py", line 145, in <module>
+    expl = llm(REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+pipeline_partial.CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: no billable calls
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[heart/gptoss120b] 90 rows, 0 to redo, model=openai/gpt-oss-120b provider=together
+
+[heart/gptoss120b] wrote 0 rows -> research/results/heart_nn_comparison_gptoss120b.csv
+  spend: no billable calls
+=== gptoss120b/diabetes 09:07:20 ===
+Full console log -> research/results/logs/diabetes_nn_20260905_090722_19740.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[diabetes/gptoss120b] 90 rows, 13 to redo, model=openai/gpt-oss-120b provider=together
+Traceback (most recent call last):
+  File "run_comparison_nn.py", line 295, in llm
+    content, finish = _complete(prompt, budget)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 265, in _complete
+    resp = _get_client().chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'id': 'oz2kmFw-z1gNr-a36365ab9c392e92', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param': None, 'code': None}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\rerun_dialogue.py", line 145, in <module>
+    expl = llm(REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+pipeline_partial.CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: no billable calls
+=== gptoss120b/employee 09:07:28 ===
+Full console log -> research/results/logs/employee_nn_20260905_090730_11776.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[employee/gptoss120b] 90 rows, 0 to redo, model=openai/gpt-oss-120b provider=together
+
+[employee/gptoss120b] wrote 0 rows -> research/results/employee_nn_comparison_gptoss120b.csv
+  spend: no billable calls
+=== gptoss120b/compas 09:07:36 ===
+Full console log -> research/results/logs/compas_nn_20260905_090738_10360.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+[compas/gptoss120b] 90 rows, 1 to redo, model=openai/gpt-oss-120b provider=together
+Traceback (most recent call last):
+  File "run_comparison_nn.py", line 295, in llm
+    content, finish = _complete(prompt, budget)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 265, in _complete
+    resp = _get_client().chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'id': 'oz2kr4A-z1gNr-a36366106ce5eba6', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param': None, 'code': None}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\rerun_dialogue.py", line 145, in <module>
+    expl = llm(REFINE.format(obj=obj, inst=inst_repr, cls=pred, ctx=ctx,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "run_comparison_nn.py", line 311, in llm
+    raise CreditExhausted(
+pipeline_partial.CreditExhausted: provider refused for lack of credit; stopping rather than writing error rows across the remaining instances. Spend this run: no billable calls
+GPTOSS-TOGETHER DONE 09:07:44

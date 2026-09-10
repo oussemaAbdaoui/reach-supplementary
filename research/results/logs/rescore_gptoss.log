@@ -1,0 +1,55 @@
+=== rescore gptoss120b  09:36:52 ===
+  run_sweep(DATASETS, "_gptoss120b", "nn_feasible_gptoss120b.csv")
+[cancer_gptoss120b] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[heart_gptoss120b] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[diabetes_gptoss120b] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[employee_gptoss120b] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+[compas_gptoss120b] rebuilding tier and re-estimating under U / V / E ...
+  90 rows | reproduction gate: max |U_recomputed - stored| = 0.00 pts
+
+wrote <HOME>\Downloads\explainable_ai (copie)\explainable_ai (copie)\research\results\nn_feasible_gptoss120b.csv
+
+=== D = Uniform {0,1}^d  (current choice; mostly INFEASIBLE points) ===
+         U_arm   U_v4   U_v5   U_v6  erosion_v4  retained_v6  Uwp_arm  Uwp_v4  Uwp_v6
+arm                                                                                  
+anchors  74.53  71.92  71.95  71.82        2.61         96.4    0.093   0.080   0.067
+cop      73.61  73.55  72.87  73.07        0.06         99.3    0.027   0.013   0.027
+cop_k    83.58  81.73  82.64  79.66        1.85         95.3    0.173   0.160   0.133
+lime     77.30  69.79  74.12  62.54        7.51         80.9    0.320   0.213   0.133
+lmpaxp   97.05  92.40  95.11  92.90        4.65         95.7    0.907   0.667   0.733
+shap     83.70  74.30  79.34  69.75        9.40         83.3    0.587   0.320   0.147
+
+=== D = One-hot-VALID uniform  (structural correction) ===
+         V_arm   V_v4   V_v5   V_v6  erosion_v4  retained_v6  Vwp_arm  Vwp_v4  Vwp_v6
+arm                                                                                  
+anchors  89.68  85.29  86.21  85.67        4.39         95.5    0.587   0.507   0.480
+cop      85.12  84.80  84.24  84.34        0.32         99.1    0.320   0.320   0.307
+cop_k    91.87  91.06  90.84  88.42        0.81         96.2    0.400   0.400   0.347
+lime     85.79  77.66  80.32  77.29        8.13         90.1    0.520   0.347   0.333
+lmpaxp   96.92  96.05  95.95  94.18        0.87         97.2    0.747   0.720   0.667
+shap     93.60  86.41  88.71  90.12        7.19         96.3    0.747   0.560   0.560
+
+=== D = Empirical training distribution ===
+         E_arm   E_v4   E_v5   E_v6  erosion_v4  retained_v6  Ewp_arm  Ewp_v4  Ewp_v6
+arm                                                                                  
+anchors  99.43  94.36  96.28  95.53        5.07         96.1    0.960   0.813   0.800
+cop      89.53  89.27  88.03  88.46        0.26         98.8    0.467   0.467   0.440
+cop_k    94.06  94.04  93.60  90.58        0.02         96.3    0.535   0.521   0.465
+lime     88.69  79.54  81.48  79.78        9.15         90.0    0.580   0.427   0.467
+lmpaxp   97.92  97.79  97.85  95.50        0.13         97.5    0.851   0.840   0.784
+shap     95.91  88.71  91.04  91.97        7.20         95.9    0.853   0.649   0.693
+
+mean v5_rounds by arm:
+arm
+anchors    0.80
+cop        0.51
+cop_k      0.76
+lime       1.57
+lmpaxp     0.60
+shap       1.59
+=== gptoss120b done  09:37:06 ===
+ALL RESCORES DONE 09:37:06

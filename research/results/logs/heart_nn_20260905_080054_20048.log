@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/heart_nn_20260905_080054_20048.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+  [keys] 3 available, starting at index 2
+[heart/gptoss120b] 90 rows, 0 to redo, model=openai/gpt-oss-120b provider=groq
+
+[heart/gptoss120b] wrote 0 rows -> research/results/heart_nn_comparison_gptoss120b.csv
+  spend: no billable calls

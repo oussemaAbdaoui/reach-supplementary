@@ -1,0 +1,214 @@
+judge = openai/gpt-oss-120b via together
+[cancer] judging stored explanations ...
+  generator claude-sonnet-5 | judge openai/gpt-oss-120b
+  resuming: 529 already judged
+  810 judgements over 3 pass(es) (281 to run, 529 already done)
+    10/281 judged
+    20/281 judged
+    30/281 judged
+    40/281 judged
+    50/281 judged
+    60/281 judged
+    70/281 judged
+    80/281 judged
+    90/281 judged
+    100/281 judged
+    110/281 judged
+    120/281 judged
+    130/281 judged
+    140/281 judged
+    150/281 judged
+    160/281 judged
+    170/281 judged
+    180/281 judged
+    190/281 judged
+    200/281 judged
+    210/281 judged
+    220/281 judged
+    230/281 judged
+    240/281 judged
+    250/281 judged
+    260/281 judged
+    270/281 judged
+    280/281 judged
+  wrote research\results\cancer_nn_judge_sonnet5.csv (+281 rows)
+[compas] judging stored explanations ...
+  generator claude-sonnet-5 | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\compas_nn_judge_sonnet5.csv (+270 rows)
+[diabetes] judging stored explanations ...
+  generator claude-sonnet-5 | judge openai/gpt-oss-120b
+  resuming: 539 already judged
+  810 judgements over 3 pass(es) (271 to run, 539 already done)
+    10/271 judged
+    20/271 judged
+    30/271 judged
+    40/271 judged
+    50/271 judged
+    60/271 judged
+    70/271 judged
+    80/271 judged
+    90/271 judged
+    100/271 judged
+    110/271 judged
+    120/271 judged
+    130/271 judged
+    140/271 judged
+    150/271 judged
+    160/271 judged
+    170/271 judged
+    180/271 judged
+    190/271 judged
+    200/271 judged
+    210/271 judged
+    220/271 judged
+    230/271 judged
+    240/271 judged
+    250/271 judged
+    260/271 judged
+    270/271 judged
+  wrote research\results\diabetes_nn_judge_sonnet5.csv (+271 rows)
+[employee] judging stored explanations ...
+  generator claude-sonnet-5 | judge openai/gpt-oss-120b
+  resuming: 535 already judged
+  810 judgements over 3 pass(es) (275 to run, 535 already done)
+    10/275 judged
+    20/275 judged
+    30/275 judged
+    40/275 judged
+    50/275 judged
+    60/275 judged
+    70/275 judged
+    80/275 judged
+    90/275 judged
+    100/275 judged
+    110/275 judged
+    120/275 judged
+    130/275 judged
+    140/275 judged
+    150/275 judged
+    160/275 judged
+    170/275 judged
+    180/275 judged
+    190/275 judged
+    200/275 judged
+    210/275 judged
+    220/275 judged
+    230/275 judged
+    240/275 judged
+    250/275 judged
+    260/275 judged
+    270/275 judged
+  wrote research\results\employee_nn_judge_sonnet5.csv (+275 rows)
+[heart] judging stored explanations ...
+  generator claude-sonnet-5 | judge openai/gpt-oss-120b
+  resuming: 270 already judged
+  810 judgements over 3 pass(es) (540 to run, 270 already done)
+    10/540 judged
+    20/540 judged
+    30/540 judged
+    40/540 judged
+    50/540 judged
+    60/540 judged
+    70/540 judged
+    80/540 judged
+    90/540 judged
+    100/540 judged
+    110/540 judged
+    120/540 judged
+    130/540 judged
+    140/540 judged
+    150/540 judged
+    160/540 judged
+    170/540 judged
+    180/540 judged
+    190/540 judged
+    200/540 judged
+    210/540 judged
+    220/540 judged
+    230/540 judged
+    240/540 judged
+    250/540 judged
+    260/540 judged
+    270/540 judged
+    280/540 judged
+    290/540 judged
+    300/540 judged
+    310/540 judged
+    320/540 judged
+    330/540 judged
+    340/540 judged
+    350/540 judged
+    360/540 judged
+    370/540 judged
+    380/540 judged
+    390/540 judged
+    400/540 judged
+    410/540 judged
+    420/540 judged
+    430/540 judged
+    440/540 judged
+    450/540 judged
+    460/540 judged
+    470/540 judged
+    480/540 judged
+    490/540 judged
+    500/540 judged
+    510/540 judged
+    520/540 judged
+    530/540 judged
+    540/540 judged
+  wrote research\results\heart_nn_judge_sonnet5.csv (+540 rows)
+
+=== judge = openai/gpt-oss-120b | 1350 judgements, parse ok 97.0% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               51.24      80.61         46.80        31.67
+v5               50.10      79.19         45.73        35.66
+v6               33.98      65.15         30.29        33.40
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   42.40  41.49  41.88
+cop       38.61  37.60  28.92
+cop_k     56.96  53.21  35.40
+lime      51.10  47.51  28.94
+lmpaxp    62.60  64.29  37.22
+shap      56.25  57.12  31.89
+
+test-retest on 1350 repeated judgements, mean |pass1-pass2|:
+  faithfulness   9.90
+  coherence      6.07
+  completeness   7.40
+  halluc_risk    12.08

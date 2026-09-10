@@ -1,0 +1,26 @@
+Full console log -> research/results/logs/diabetes_nn_gptoss20b_20260831_184857_648.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=77.9% v4=77.9% v5=77.9% v6=77.9% (len 2, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [lmpaxp] base=97.6% v4=97.6% v5=97.6% v6=97.6% (len 9, om_v5=0)
+  [anchors] base=83.4% v4=83.4% v5=83.4% v6=83.4% (len 3, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [shap] base=100.0% v4=100.0% v5=100.0% v6=97.3% (len 9, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [lime] base=82.0% v4=85.3% v5=78.0% v6=66.8% (len 9, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 19 calls, 7,495 in / 1,094 out | gpt-oss-20b: 27 calls, 13,373 in / 28,746 out
+[002/15] instance 12 (pred=0, k_ref=6)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop] base=63.6% v4=63.6% v5=63.6% v6=63.6% (len 1, om_v5=0)
+  [lmpaxp] base=96.0% v4=96.0% v5=96.0% v6=96.0% (len 6, om_v5=0)
+  [empty content, finish=length] raising max_tokens to 4096
+  [anchors] base=79.9% v4=66.2% v5=77.4% v6=54.7% (len 4, om_v5=1)
+  [empty content, finish=length] raising max_tokens to 4096
+  [empty content, finish=length] raising max_tokens to 4096

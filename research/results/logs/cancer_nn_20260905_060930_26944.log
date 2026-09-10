@@ -1,0 +1,35 @@
+Full console log -> research/results/logs/cancer_nn_20260905_060930_26944.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/gridllama33] 105 rows, 105 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together
+  inst    6 cop      v5= 50.80 (was 50.8) om=0 rounds=0
+  inst    6 cop_k    v5= 83.90 (was 91.5) om=0 rounds=2
+  inst    6 lmpaxp   v5= 95.80 (was 95.8) om=0 rounds=2
+  inst    6 anchors  v5= 43.80 (was 43.8) om=0 rounds=0
+  inst    6 shap     v5= 48.70 (was 59.2) om=13 rounds=3
+  inst    6 lime     v5= 20.50 (was 22.5) om=9 rounds=3
+  inst    6 cop_best v5= 89.90 (was 66.0) om=2 rounds=3
+  inst   22 cop      v5= 82.70 (was 87.8) om=0 rounds=0
+  inst   22 cop_k    v5= 76.70 (was 76.7) om=0 rounds=0
+  inst   22 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=2
+  inst   22 anchors  v5= 75.70 (was 75.7) om=0 rounds=0
+  inst   22 shap     v5= 91.00 (was 92.8) om=5 rounds=3
+  inst   22 lime     v5= 83.50 (was 83.5) om=5 rounds=3
+  inst   22 cop_best v5= 82.80 (was 91.6) om=0 rounds=1
+  inst   26 cop      v5= 58.60 (was 58.6) om=0 rounds=0
+  inst   26 cop_k    v5= 77.90 (was 39.8) om=0 rounds=2
+  inst   26 lmpaxp   v5= 97.40 (was 85.1) om=0 rounds=2
+  inst   26 anchors  v5= 41.80 (was 41.8) om=0 rounds=0
+  inst   26 shap     v5= 87.20 (was 84.4) om=4 rounds=3
+  inst   26 lime     v5= 40.90 (was 49.3) om=6 rounds=3
+  inst   26 cop_best v5= 98.10 (was 98.1) om=0 rounds=1
+  inst   28 cop      v5= 61.90 (was 61.9) om=0 rounds=0
+  inst   28 cop_k    v5= 94.30 (was 90.9) om=0 rounds=2
+  inst   28 lmpaxp   v5= 97.40 (was 93.6) om=0 rounds=2
+  inst   28 anchors  v5= 35.90 (was 35.9) om=0 rounds=0
+  inst   28 shap     v5= 82.50 (was 19.4) om=10 rounds=3
+  inst   28 lime     v5= 70.00 (was 76.2) om=7 rounds=3
+  inst   28 cop_best v5= 94.30 (was 83.6) om=0 rounds=2
+  inst   35 cop      v5= 92.30 (was 92.3) om=0 rounds=0
+  inst   35 cop_k    v5= 82.10 (was 86.1) om=0 rounds=0
+  inst   35 lmpaxp   v5= 96.50 (was 96.5) om=0 rounds=0
+  inst   35 anchors  v5= 74.30 (was 74.3) om=0 rounds=0

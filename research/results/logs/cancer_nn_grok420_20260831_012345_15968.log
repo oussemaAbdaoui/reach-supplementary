@@ -1,0 +1,127 @@
+Full console log -> research/results/logs/cancer_nn_grok420_20260831_012345_15968.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[001/15] instance 163 (pred=1, k_ref=15)
+  [cop] base=58.1% v4=58.1% v5=58.1% v6=58.1% (len 7, om_v5=0)
+  [lmpaxp] base=98.0% v4=70.0% v5=98.0% v6=98.0% (len 15, om_v5=0)
+  [anchors] base=37.1% v4=37.1% v5=37.1% v6=37.1% (len 2, om_v5=0)
+  [shap] base=97.1% v4=73.5% v5=63.8% v6=73.5% (len 15, om_v5=6)
+  [lime] base=84.3% v4=37.7% v5=14.9% v6=22.9% (len 15, om_v5=10)
+  [spend] grok-4.20-0309-non-reasoning: 23 calls, 17,945 in / 3,695 out | Llama-3.3-70B-Instruct-Turbo: 23 calls, 14,031 in / 2,752 out
+[002/15] instance 28 (pred=1, k_ref=18)
+  [cop] base=61.9% v4=61.9% v5=61.9% v6=61.9% (len 7, om_v5=0)
+  [lmpaxp] base=97.4% v4=80.4% v5=93.6% v6=97.4% (len 18, om_v5=2)
+  [anchors] base=35.9% v4=35.9% v5=35.9% v6=35.9% (len 2, om_v5=0)
+  [shap] base=95.9% v4=82.5% v5=83.6% v6=82.5% (len 18, om_v5=10)
+  [lime] base=91.3% v4=42.0% v5=30.4% v6=51.5% (len 18, om_v5=12)
+  [spend] grok-4.20-0309-non-reasoning: 48 calls, 39,589 in / 8,022 out | Llama-3.3-70B-Instruct-Turbo: 48 calls, 30,928 in / 5,927 out
+[003/15] instance 6 (pred=1, k_ref=17)
+  [cop] base=50.1% v4=50.1% v5=50.1% v6=50.1% (len 7, om_v5=0)
+  [lmpaxp] base=95.8% v4=95.8% v5=95.8% v6=95.8% (len 17, om_v5=0)
+  [anchors] base=43.8% v4=43.8% v5=37.0% v6=43.8% (len 3, om_v5=1)
+  [shap] base=98.8% v4=58.2% v5=37.6% v6=58.2% (len 17, om_v5=15)
+  [lime] base=70.0% v4=39.9% v5=42.9% v6=20.5% (len 17, om_v5=11)
+  [spend] grok-4.20-0309-non-reasoning: 70 calls, 57,265 in / 11,936 out | Llama-3.3-70B-Instruct-Turbo: 70 calls, 45,093 in / 8,505 out
+[004/15] instance 189 (pred=0, k_ref=7)
+  [cop] base=88.5% v4=88.5% v5=88.5% v6=88.5% (len 7, om_v5=0)
+  [lmpaxp] base=95.1% v4=95.1% v5=95.1% v6=95.1% (len 7, om_v5=0)
+  [anchors] base=72.6% v4=72.6% v5=72.6% v6=72.6% (len 2, om_v5=0)
+  [shap] base=97.1% v4=91.3% v5=94.5% v6=91.3% (len 7, om_v5=1)
+  [lime] base=89.2% v4=68.9% v5=89.5% v6=86.9% (len 7, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 92 calls, 71,040 in / 14,217 out | Llama-3.3-70B-Instruct-Turbo: 92 calls, 54,928 in / 10,014 out
+[005/15] instance 70 (pred=0, k_ref=10)
+  [cop] base=76.7% v4=76.7% v5=76.7% v6=76.7% (len 6, om_v5=0)
+  [lmpaxp] base=95.4% v4=82.0% v5=82.0% v6=95.4% (len 10, om_v5=6)
+  [anchors] base=71.0% v4=71.0% v5=71.0% v6=73.3% (len 2, om_v5=0)
+  [shap] base=94.6% v4=93.7% v5=96.7% v6=93.7% (len 10, om_v5=1)
+  [lime] base=69.8% v4=83.5% v5=90.6% v6=80.1% (len 10, om_v5=6)
+  [spend] grok-4.20-0309-non-reasoning: 117 calls, 88,231 in / 17,537 out | Llama-3.3-70B-Instruct-Turbo: 117 calls, 68,009 in / 12,075 out
+[006/15] instance 62 (pred=1, k_ref=14)
+  [cop] base=45.0% v4=45.0% v5=45.0% v6=45.0% (len 6, om_v5=0)
+  [lmpaxp] base=94.8% v4=94.8% v5=83.9% v6=94.8% (len 14, om_v5=4)
+  [anchors] base=39.9% v4=39.9% v5=39.9% v6=40.0% (len 2, om_v5=0)
+  [shap] base=90.2% v4=61.4% v5=90.5% v6=69.5% (len 14, om_v5=4)
+  [lime] base=59.7% v4=62.2% v5=38.6% v6=36.7% (len 14, om_v5=9)
+  [spend] grok-4.20-0309-non-reasoning: 142 calls, 107,355 in / 21,197 out | Llama-3.3-70B-Instruct-Turbo: 142 calls, 82,581 in / 14,642 out
+[007/15] instance 57 (pred=1, k_ref=18)
+  [cop] base=60.9% v4=60.9% v5=60.9% v6=60.9% (len 7, om_v5=0)
+  [lmpaxp] base=97.9% v4=81.7% v5=88.0% v6=97.9% (len 18, om_v5=4)
+  [anchors] base=35.5% v4=35.5% v5=35.5% v6=35.5% (len 2, om_v5=0)
+  [shap] base=99.8% v4=62.1% v5=76.3% v6=66.1% (len 18, om_v5=9)
+  [lime] base=89.6% v4=52.0% v5=79.9% v6=16.6% (len 18, om_v5=6)
+  [spend] grok-4.20-0309-non-reasoning: 167 calls, 128,630 in / 25,499 out | Llama-3.3-70B-Instruct-Turbo: 167 calls, 99,105 in / 17,411 out
+[008/15] instance 35 (pred=0, k_ref=8)
+  [cop] base=92.3% v4=92.3% v5=92.3% v6=92.3% (len 5, om_v5=0)
+  [lmpaxp] base=96.5% v4=94.6% v5=83.7% v6=96.5% (len 8, om_v5=4)
+  [anchors] base=74.3% v4=74.3% v5=74.3% v6=74.3% (len 2, om_v5=0)
+  [shap] base=98.0% v4=96.3% v5=97.0% v6=98.0% (len 8, om_v5=1)
+  [lime] base=70.9% v4=77.0% v5=74.0% v6=85.4% (len 8, om_v5=7)
+  [spend] grok-4.20-0309-non-reasoning: 192 calls, 144,537 in / 28,116 out | Llama-3.3-70B-Instruct-Turbo: 192 calls, 110,591 in / 19,170 out
+[009/15] instance 188 (pred=0, k_ref=9)
+  [cop] base=94.2% v4=91.1% v5=74.9% v6=94.2% (len 5, om_v5=4)
+  [lmpaxp] base=96.7% v4=96.7% v5=96.7% v6=96.7% (len 9, om_v5=0)
+  [anchors] base=72.8% v4=72.8% v5=72.8% v6=72.8% (len 3, om_v5=0)
+  [shap] base=97.1% v4=83.0% v5=76.8% v6=82.0% (len 9, om_v5=6)
+  [lime] base=66.4% v4=40.5% v5=47.5% v6=86.9% (len 9, om_v5=4)
+  [spend] grok-4.20-0309-non-reasoning: 214 calls, 158,813 in / 30,553 out | Llama-3.3-70B-Instruct-Turbo: 214 calls, 121,082 in / 20,811 out
+[010/15] instance 26 (pred=1, k_ref=14)
+  [cop] base=58.6% v4=58.6% v5=58.6% v6=58.6% (len 4, om_v5=0)
+  [lmpaxp] base=97.4% v4=97.4% v5=97.4% v6=97.4% (len 14, om_v5=0)
+  [anchors] base=41.8% v4=41.8% v5=41.8% v6=41.8% (len 2, om_v5=0)
+  [shap] base=95.6% v4=76.0% v5=90.4% v6=91.2% (len 14, om_v5=4)
+  [lime] base=88.4% v4=42.2% v5=36.2% v6=49.3% (len 14, om_v5=11)
+  [spend] grok-4.20-0309-non-reasoning: 236 calls, 174,639 in / 33,422 out | Llama-3.3-70B-Instruct-Turbo: 236 calls, 132,934 in / 22,846 out
+[011/15] instance 173 (pred=1, k_ref=14)
+  [cop] base=57.2% v4=57.2% v5=57.2% v6=57.2% (len 7, om_v5=0)
+  [lmpaxp] base=97.1% v4=97.1% v5=97.1% v6=97.1% (len 14, om_v5=0)
+  [anchors] base=44.8% v4=44.8% v5=44.8% v6=38.6% (len 2, om_v5=0)
+  [shap] base=97.6% v4=79.7% v5=86.7% v6=79.7% (len 14, om_v5=5)
+  [lime] base=90.3% v4=39.6% v5=41.3% v6=31.8% (len 14, om_v5=11)
+  [spend] grok-4.20-0309-non-reasoning: 258 calls, 191,076 in / 36,770 out | Llama-3.3-70B-Instruct-Turbo: 258 calls, 145,786 in / 25,268 out
+[012/15] instance 139 (pred=1, k_ref=13)
+  [cop] base=62.8% v4=62.8% v5=55.3% v6=62.8% (len 7, om_v5=4)
+  [lmpaxp] base=94.7% v4=79.2% v5=78.2% v6=94.7% (len 13, om_v5=6)
+  [anchors] base=37.6% v4=32.2% v5=32.2% v6=37.6% (len 2, om_v5=1)
+  [shap] base=93.3% v4=86.8% v5=79.6% v6=80.1% (len 13, om_v5=3)
+  [lime] base=94.5% v4=89.2% v5=45.1% v6=51.9% (len 13, om_v5=9)
+  [spend] grok-4.20-0309-non-reasoning: 283 calls, 209,904 in / 40,271 out | Llama-3.3-70B-Instruct-Turbo: 283 calls, 160,042 in / 27,824 out
+[013/15] instance 22 (pred=0, k_ref=9)
+  [cop] base=82.7% v4=82.7% v5=78.1% v6=82.7% (len 7, om_v5=4)
+  [lmpaxp] base=95.4% v4=95.4% v5=95.4% v6=95.4% (len 9, om_v5=0)
+  [anchors] base=75.7% v4=74.5% v5=75.7% v6=74.5% (len 2, om_v5=0)
+  [shap] base=98.5% v4=91.0% v5=81.5% v6=91.0% (len 9, om_v5=5)
+  [lime] base=65.1% v4=83.5% v5=83.5% v6=83.5% (len 9, om_v5=5)
+  [spend] grok-4.20-0309-non-reasoning: 305 calls, 224,521 in / 42,759 out | Llama-3.3-70B-Instruct-Turbo: 305 calls, 170,711 in / 29,558 out
+[014/15] instance 151 (pred=0, k_ref=8)
+  [cop] base=96.3% v4=93.5% v5=96.3% v6=96.3% (len 6, om_v5=0)
+  [lmpaxp] base=95.5% v4=95.5% v5=95.5% v6=95.5% (len 8, om_v5=0)
+  [anchors] base=77.5% v4=77.5% v5=77.5% v6=77.5% (len 2, om_v5=0)
+  [shap] base=99.2% v4=98.3% v5=97.7% v6=97.7% (len 8, om_v5=1)
+  [lime] base=99.2% v4=92.8% v5=99.2% v6=85.6% (len 8, om_v5=0)
+  [spend] grok-4.20-0309-non-reasoning: 324 calls, 236,512 in / 44,868 out | Llama-3.3-70B-Instruct-Turbo: 324 calls, 179,392 in / 30,943 out
+[015/15] instance 108 (pred=1, k_ref=18)
+  [cop] base=49.7% v4=51.3% v5=31.7% v6=49.7% (len 7, om_v5=7)
+  [lmpaxp] base=97.5% v4=97.5% v5=97.5% v6=97.5% (len 18, om_v5=0)
+  [anchors] base=34.5% v4=34.5% v5=34.5% v6=34.5% (len 2, om_v5=0)
+  [shap] base=95.6% v4=86.8% v5=18.6% v6=89.4% (len 18, om_v5=15)
+  [lime] base=96.9% v4=55.4% v5=51.9% v6=48.1% (len 18, om_v5=15)
+  [spend] grok-4.20-0309-non-reasoning: 346 calls, 254,555 in / 48,497 out | Llama-3.3-70B-Instruct-Turbo: 346 calls, 193,506 in / 33,631 out
+
+saved -> research/results/cancer_nn_comparison_grok420.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       2.13               52.99     52.55     52.17          52.63     52.65
+cop           6.33               69.00     68.71     65.71          69.11     69.00
+lime         12.80               81.71     60.43     57.70          77.73     55.85
+lmpaxp       12.80               96.35     90.21     91.86          94.55     96.35
+shap         12.80               96.56     81.37     78.09          88.75     82.93
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.13          0.07
+lmpaxp                 0.87          0.60
+shap                   0.80          0.20

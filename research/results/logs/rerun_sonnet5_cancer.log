@@ -1,0 +1,47 @@
+Full console log -> research/results/logs/cancer_nn_20260905_062806_22448.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+  [keys] 3 available, starting at index 0
+[cancer/sonnet5] 90 rows, 40 to redo, model=claude-sonnet-5 provider=anthropic
+  inst  108 lmpaxp   v5= 97.50 (was 97.5) om=0 rounds=0
+  inst  108 anchors  v5= 34.50 (was 34.5) om=0 rounds=0
+  inst  108 shap     v5= 89.40 (was 91.7) om=8 rounds=3
+  inst  108 lime     v5= 93.60 (was 49.1) om=1 rounds=3
+  inst  139 cop      v5= 62.80 (was 62.8) om=0 rounds=0
+  inst  139 cop_k    v5= 91.20 (was 85.3) om=0 rounds=0
+  inst  139 lmpaxp   v5= 94.70 (was 94.7) om=0 rounds=0
+  inst  139 anchors  v5= 37.60 (was 32.2) om=0 rounds=1
+  inst  139 shap     v5= 90.00 (was 80.1) om=1 rounds=3
+  inst  139 lime     v5= 93.20 (was 63.7) om=2 rounds=3
+  inst  151 cop      v5= 96.30 (was 96.3) om=0 rounds=0
+  inst  151 cop_k    v5= 98.10 (was 98.1) om=0 rounds=0
+  inst  151 lmpaxp   v5= 95.50 (was 95.5) om=0 rounds=0
+  inst  151 anchors  v5= 77.50 (was 77.5) om=0 rounds=0
+  inst  151 shap     v5= 99.20 (was 99.2) om=0 rounds=0
+  inst  151 lime     v5= 92.80 (was 99.2) om=3 rounds=3
+  inst  163 cop      v5= 58.10 (was 58.1) om=0 rounds=0
+  inst  163 cop_k    v5= 86.00 (was 79.0) om=0 rounds=1
+  inst  163 lmpaxp   v5= 98.00 (was 98.0) om=0 rounds=0
+  inst  163 anchors  v5= 41.80 (was 27.6) om=1 rounds=3
+  inst  163 shap     v5= 90.10 (was 73.5) om=2 rounds=3
+  inst  163 lime     v5= 56.00 (was 31.7) om=4 rounds=3
+  inst  173 cop      v5= 57.20 (was 57.2) om=0 rounds=0
+  inst  173 cop_k    v5= 83.20 (was 83.2) om=0 rounds=0
+  inst  173 lmpaxp   v5= 97.10 (was 97.1) om=0 rounds=0
+  inst  173 anchors  v5= 44.80 (was 39.9) om=0 rounds=0
+  inst  173 shap     v5= 87.30 (was 79.7) om=3 rounds=3
+  inst  173 lime     v5= 62.40 (was 19.1) om=4 rounds=3
+  inst  188 cop      v5= 94.20 (was 94.2) om=0 rounds=0
+  inst  188 cop_k    v5= 90.70 (was 89.6) om=0 rounds=1
+  inst  188 lmpaxp   v5= 96.70 (was 96.7) om=0 rounds=0
+  inst  188 anchors  v5= 72.80 (was 70.0) om=0 rounds=0
+  inst  188 shap     v5= 82.00 (was 84.7) om=5 rounds=3
+  inst  188 lime     v5= 66.40 (was 86.9) om=0 rounds=1
+  inst  189 cop      v5= 88.50 (was 88.5) om=0 rounds=0
+  inst  189 cop_k    v5= 89.70 (was 86.0) om=0 rounds=1
+  inst  189 lmpaxp   v5= 95.10 (was 95.1) om=0 rounds=0
+  inst  189 anchors  v5= 72.60 (was 72.6) om=0 rounds=0
+  inst  189 shap     v5= 97.10 (was 97.1) om=0 rounds=0
+  inst  189 lime     v5= 89.20 (was 94.2) om=0 rounds=1
+
+[cancer/sonnet5] wrote 40 rows -> research/results/cancer_nn_comparison_sonnet5.csv
+  spend: claude-sonnet-5: 78 calls, 0 in / 0 out

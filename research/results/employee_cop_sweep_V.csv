@@ -1,0 +1,151 @@
+dataset,instance,method,k_requested,len_S,precision,precision_V,weak_paxp,weak_paxp_V,S,precision_cert,cop_loss,base_rate_same,cop_status
+employee,1309,lmpaxp,,6,97.7,100.0,True,True,"[3, 5, 8, 11, 13, 14]",97.11,,,
+employee,1309,cop_free,8.0,2,77.7,100.0,False,True,"[3, 5]",,0.0938,0.418,
+employee,1309,cop@k,1.0,1,55.5,72.6,False,False,[5],,0.2124,,OPTIMAL
+employee,1309,cop@k,2.0,2,77.7,100.0,False,True,"[3, 5]",,0.0938,,OPTIMAL
+employee,1309,cop@k,3.0,3,85.4,100.0,False,True,"[3, 5, 10]",,0.0938,,OPTIMAL
+employee,1309,cop@k,4.0,4,86.2,100.0,False,True,"[3, 4, 5, 6]",,0.0938,,OPTIMAL
+employee,1309,cop@k,5.0,5,91.4,100.0,False,True,"[3, 4, 5, 6, 10]",,0.0938,,OPTIMAL
+employee,1309,cop@k,6.0,6,91.0,100.0,False,True,"[3, 4, 5, 6, 10, 11]",,0.0938,,OPTIMAL
+employee,1309,cop@k,7.0,7,90.4,100.0,False,True,"[0, 3, 4, 5, 6, 10, 11]",,0.0938,,OPTIMAL
+employee,1309,cop@k,8.0,8,90.5,100.0,False,True,"[0, 3, 4, 5, 6, 10, 11, 12]",,0.1956,,OPTIMAL
+employee,228,lmpaxp,,5,97.9,100.0,True,True,"[1, 4, 5, 8, 14]",98.36,,,
+employee,228,cop_free,8.0,1,64.6,84.7,False,False,[5],,0.23,0.577,
+employee,228,cop@k,1.0,1,64.6,84.7,False,False,[5],,0.23,,OPTIMAL
+employee,228,cop@k,2.0,2,62.8,84.7,False,False,"[5, 11]",,0.23,,OPTIMAL
+employee,228,cop@k,3.0,3,76.6,84.7,False,False,"[4, 5, 11]",,0.23,,OPTIMAL
+employee,228,cop@k,4.0,4,54.9,84.7,False,False,"[5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,228,cop@k,5.0,5,70.7,84.7,False,False,"[4, 5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,228,cop@k,6.0,6,80.0,84.7,False,False,"[0, 4, 5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,228,cop@k,7.0,7,76.2,88.0,False,False,"[0, 4, 5, 6, 8, 10, 11]",,0.3134,,OPTIMAL
+employee,228,cop@k,8.0,8,100.0,100.0,True,True,"[0, 1, 4, 5, 6, 8, 10, 11]",,0.3476,,OPTIMAL
+employee,51,lmpaxp,,3,96.4,89.0,True,False,"[1, 3, 5]",96.33,,,
+employee,51,cop_free,8.0,2,78.1,83.7,False,False,"[4, 5]",,0.23,0.568,
+employee,51,cop@k,1.0,1,64.1,83.7,False,False,[5],,0.23,,OPTIMAL
+employee,51,cop@k,2.0,2,62.4,83.7,False,False,"[5, 11]",,0.23,,OPTIMAL
+employee,51,cop@k,3.0,3,65.9,83.7,False,False,"[4, 5, 10]",,0.23,,OPTIMAL
+employee,51,cop@k,4.0,4,56.0,83.7,False,False,"[5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,51,cop@k,5.0,5,72.0,83.7,False,False,"[4, 5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,51,cop@k,6.0,6,82.3,83.7,False,False,"[0, 4, 5, 6, 10, 11]",,0.23,,OPTIMAL
+employee,51,cop@k,7.0,7,89.9,87.5,False,False,"[0, 4, 5, 6, 10, 11, 14]",,0.3172,,OPTIMAL
+employee,51,cop@k,8.0,8,99.3,91.2,True,False,"[0, 1, 2, 3, 6, 9, 10, 11]",,0.3858,,OPTIMAL
+employee,1518,lmpaxp,,4,98.3,92.0,True,False,"[1, 2, 3, 9]",97.97,,,
+employee,1518,cop_free,8.0,1,73.0,91.1,False,False,[3],,0.3108,0.573,
+employee,1518,cop@k,1.0,1,73.0,91.1,False,False,[3],,0.3108,,OPTIMAL
+employee,1518,cop@k,2.0,2,70.0,91.1,False,False,"[3, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,3.0,3,65.2,91.1,False,False,"[3, 10, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,4.0,4,64.5,91.1,False,False,"[3, 6, 10, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,5.0,5,66.7,91.1,False,False,"[0, 3, 6, 10, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,6.0,6,87.3,91.1,False,False,"[0, 1, 3, 6, 10, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,7.0,7,98.7,91.1,True,False,"[0, 1, 2, 3, 6, 10, 11]",,0.3108,,OPTIMAL
+employee,1518,cop@k,8.0,8,98.8,93.4,True,False,"[0, 1, 2, 3, 6, 10, 11, 13]",,0.3814,,OPTIMAL
+employee,563,lmpaxp,,6,96.4,100.0,True,True,"[1, 4, 6, 9, 13, 14]",95.7,,,
+employee,563,cop_free,8.0,1,67.5,83.3,False,False,[5],,0.2186,0.583,
+employee,563,cop@k,1.0,1,67.5,83.3,False,False,[5],,0.2186,,OPTIMAL
+employee,563,cop@k,2.0,2,82.0,83.3,False,False,"[4, 5]",,0.2186,,OPTIMAL
+employee,563,cop@k,3.0,3,81.4,83.3,False,False,"[4, 5, 11]",,0.2186,,OPTIMAL
+employee,563,cop@k,4.0,4,72.0,83.3,False,False,"[4, 5, 10, 11]",,0.2186,,OPTIMAL
+employee,563,cop@k,5.0,5,75.3,83.3,False,False,"[4, 5, 6, 10, 11]",,0.2186,,OPTIMAL
+employee,563,cop@k,6.0,6,84.0,83.3,False,False,"[0, 4, 5, 6, 10, 11]",,0.2186,,OPTIMAL
+employee,563,cop@k,7.0,7,81.1,88.0,False,False,"[0, 4, 5, 6, 8, 10, 11]",,0.3098,,OPTIMAL
+employee,563,cop@k,8.0,8,100.0,100.0,True,True,"[0, 1, 4, 5, 6, 8, 10, 11]",,0.352,,OPTIMAL
+employee,501,lmpaxp,,4,99.6,100.0,True,True,"[1, 4, 5, 7]",99.61,,,
+employee,501,cop_free,8.0,2,77.7,83.8,False,False,"[4, 5]",,0.2218,0.569,
+employee,501,cop@k,1.0,1,64.8,83.8,False,False,[5],,0.2218,,OPTIMAL
+employee,501,cop@k,2.0,2,64.0,83.8,False,False,"[5, 11]",,0.2218,,OPTIMAL
+employee,501,cop@k,3.0,3,66.6,83.8,False,False,"[4, 5, 10]",,0.2218,,OPTIMAL
+employee,501,cop@k,4.0,4,70.2,83.8,False,False,"[4, 5, 6, 10]",,0.2218,,OPTIMAL
+employee,501,cop@k,5.0,5,73.6,83.8,False,False,"[4, 5, 6, 10, 11]",,0.2218,,OPTIMAL
+employee,501,cop@k,6.0,6,82.8,83.8,False,False,"[0, 4, 5, 6, 10, 11]",,0.2218,,OPTIMAL
+employee,501,cop@k,7.0,7,89.1,88.4,False,False,"[0, 4, 5, 6, 10, 11, 14]",,0.3076,,OPTIMAL
+employee,501,cop@k,8.0,8,92.3,100.0,False,True,"[0, 4, 5, 6, 8, 10, 11, 14]",,0.345,,OPTIMAL
+employee,457,lmpaxp,,7,98.6,100.0,True,True,"[2, 4, 5, 8, 11, 12, 14]",98.67,,,
+employee,457,cop_free,8.0,2,75.6,87.3,False,False,"[4, 5]",,0.2232,0.565,
+employee,457,cop@k,1.0,1,61.8,87.3,False,False,[5],,0.2232,,OPTIMAL
+employee,457,cop@k,2.0,2,60.9,87.3,False,False,"[5, 11]",,0.2232,,OPTIMAL
+employee,457,cop@k,3.0,3,64.8,87.3,False,False,"[4, 5, 10]",,0.2232,,OPTIMAL
+employee,457,cop@k,4.0,4,54.0,87.3,False,False,"[5, 6, 10, 11]",,0.2232,,OPTIMAL
+employee,457,cop@k,5.0,5,70.4,87.3,False,False,"[4, 5, 6, 10, 11]",,0.2232,,OPTIMAL
+employee,457,cop@k,6.0,6,80.4,87.3,False,False,"[0, 4, 5, 6, 10, 11]",,0.2232,,OPTIMAL
+employee,457,cop@k,7.0,7,77.3,89.2,False,False,"[0, 4, 5, 6, 8, 10, 11]",,0.3034,,OPTIMAL
+employee,457,cop@k,8.0,8,90.9,100.0,False,True,"[0, 4, 5, 6, 8, 10, 11, 14]",,0.3456,,OPTIMAL
+employee,285,lmpaxp,,6,94.7,100.0,False,True,"[1, 4, 6, 9, 13, 14]",95.94,,,
+employee,285,cop_free,8.0,1,64.8,85.5,False,False,[5],,0.2176,0.568,
+employee,285,cop@k,1.0,1,64.8,85.5,False,False,[5],,0.2176,,OPTIMAL
+employee,285,cop@k,2.0,2,77.1,85.5,False,False,"[4, 5]",,0.2176,,OPTIMAL
+employee,285,cop@k,3.0,3,78.4,85.5,False,False,"[4, 5, 11]",,0.2176,,OPTIMAL
+employee,285,cop@k,4.0,4,58.9,85.5,False,False,"[5, 6, 10, 11]",,0.2176,,OPTIMAL
+employee,285,cop@k,5.0,5,73.5,85.5,False,False,"[4, 5, 6, 10, 11]",,0.2176,,OPTIMAL
+employee,285,cop@k,6.0,6,81.9,85.5,False,False,"[0, 4, 5, 6, 10, 11]",,0.2176,,OPTIMAL
+employee,285,cop@k,7.0,7,98.6,88.9,True,False,"[0, 1, 4, 5, 6, 10, 11]",,0.304,,OPTIMAL
+employee,285,cop@k,8.0,8,100.0,100.0,True,True,"[0, 1, 4, 5, 6, 8, 10, 11]",,0.346,,OPTIMAL
+employee,1508,lmpaxp,,7,96.6,100.0,True,True,"[0, 3, 4, 5, 11, 13, 14]",96.64,,,
+employee,1508,cop_free,8.0,2,78.7,86.6,False,False,"[4, 5]",,0.2326,0.583,
+employee,1508,cop@k,1.0,1,65.4,86.6,False,False,[5],,0.2326,,OPTIMAL
+employee,1508,cop@k,2.0,2,78.7,86.6,False,False,"[4, 5]",,0.2326,,OPTIMAL
+employee,1508,cop@k,3.0,3,78.9,86.6,False,False,"[4, 5, 11]",,0.2326,,OPTIMAL
+employee,1508,cop@k,4.0,4,57.4,86.6,False,False,"[5, 6, 10, 11]",,0.2326,,OPTIMAL
+employee,1508,cop@k,5.0,5,73.7,86.6,False,False,"[4, 5, 6, 10, 11]",,0.2326,,OPTIMAL
+employee,1508,cop@k,6.0,6,82.4,86.6,False,False,"[0, 4, 5, 6, 10, 11]",,0.2326,,OPTIMAL
+employee,1508,cop@k,7.0,7,89.1,90.2,False,False,"[0, 4, 5, 6, 10, 11, 14]",,0.3238,,OPTIMAL
+employee,1508,cop@k,8.0,8,91.3,92.3,False,False,"[0, 3, 4, 5, 6, 10, 11, 14]",,0.393,,OPTIMAL
+employee,209,lmpaxp,,4,95.0,100.0,True,True,"[1, 8, 12, 14]",93.67,,,
+employee,209,cop_free,8.0,1,61.2,59.5,False,False,[3],,0.3156,0.421,
+employee,209,cop@k,1.0,1,61.2,59.5,False,False,[3],,0.3156,,OPTIMAL
+employee,209,cop@k,2.0,2,62.0,59.5,False,False,"[3, 11]",,0.3156,,OPTIMAL
+employee,209,cop@k,3.0,3,70.5,59.5,False,False,"[3, 10, 11]",,0.3156,,OPTIMAL
+employee,209,cop@k,4.0,4,67.8,59.5,False,False,"[3, 6, 10, 11]",,0.3156,,OPTIMAL
+employee,209,cop@k,5.0,5,62.8,59.5,False,False,"[0, 3, 6, 10, 11]",,0.3156,,OPTIMAL
+employee,209,cop@k,6.0,6,69.1,64.1,False,False,"[0, 3, 6, 10, 11, 13]",,0.3182,,OPTIMAL
+employee,209,cop@k,7.0,7,72.0,64.5,False,False,"[0, 3, 6, 8, 10, 11, 12]",,0.3438,,OPTIMAL
+employee,209,cop@k,8.0,8,93.8,83.6,False,False,"[1, 2, 3, 6, 10, 12, 13, 14]",,0.3444,,OPTIMAL
+employee,1385,lmpaxp,,7,98.5,100.0,True,True,"[3, 5, 7, 9, 10, 12, 13]",98.36,,,
+employee,1385,cop_free,8.0,2,72.9,100.0,False,True,"[3, 5]",,0.0978,0.424,
+employee,1385,cop@k,1.0,1,51.6,67.9,False,False,[5],,0.2284,,OPTIMAL
+employee,1385,cop@k,2.0,2,72.9,100.0,False,True,"[3, 5]",,0.0978,,OPTIMAL
+employee,1385,cop@k,3.0,3,81.6,100.0,False,True,"[3, 5, 10]",,0.0978,,OPTIMAL
+employee,1385,cop@k,4.0,4,80.4,100.0,False,True,"[3, 5, 6, 10]",,0.0978,,OPTIMAL
+employee,1385,cop@k,5.0,5,88.1,100.0,False,True,"[3, 4, 5, 10, 11]",,0.0978,,OPTIMAL
+employee,1385,cop@k,6.0,6,88.2,100.0,False,True,"[3, 4, 5, 6, 10, 11]",,0.0978,,OPTIMAL
+employee,1385,cop@k,7.0,7,87.9,100.0,False,True,"[0, 3, 4, 5, 6, 10, 11]",,0.0978,,OPTIMAL
+employee,1385,cop@k,8.0,8,94.0,100.0,False,True,"[0, 3, 4, 5, 6, 9, 10, 11]",,0.202,,OPTIMAL
+employee,1516,lmpaxp,,8,95.1,100.0,True,True,"[0, 4, 5, 6, 8, 9, 13, 14]",95.7,,,
+employee,1516,cop_free,8.0,2,74.4,84.7,False,False,"[4, 5]",,0.233,0.564,
+employee,1516,cop@k,1.0,1,61.9,84.7,False,False,[5],,0.233,,OPTIMAL
+employee,1516,cop@k,2.0,2,74.4,84.7,False,False,"[4, 5]",,0.233,,OPTIMAL
+employee,1516,cop@k,3.0,3,63.9,84.7,False,False,"[4, 5, 10]",,0.233,,OPTIMAL
+employee,1516,cop@k,4.0,4,67.9,84.7,False,False,"[4, 5, 10, 11]",,0.233,,OPTIMAL
+employee,1516,cop@k,5.0,5,71.6,84.7,False,False,"[4, 5, 6, 10, 11]",,0.233,,OPTIMAL
+employee,1516,cop@k,6.0,6,81.4,84.7,False,False,"[0, 4, 5, 6, 10, 11]",,0.233,,OPTIMAL
+employee,1516,cop@k,7.0,7,85.7,81.8,False,False,"[0, 2, 4, 5, 6, 10, 11]",,0.3508,,OPTIMAL
+employee,1516,cop@k,8.0,8,88.6,80.9,False,False,"[0, 2, 4, 5, 6, 10, 11, 13]",,0.4232,,OPTIMAL
+employee,1827,lmpaxp,,7,93.8,100.0,False,True,"[0, 1, 3, 4, 5, 13, 14]",93.44,,,
+employee,1827,cop_free,8.0,2,76.3,84.6,False,False,"[4, 5]",,0.2282,0.576,
+employee,1827,cop@k,1.0,1,63.4,84.6,False,False,[5],,0.2282,,OPTIMAL
+employee,1827,cop@k,2.0,2,76.3,84.6,False,False,"[4, 5]",,0.2282,,OPTIMAL
+employee,1827,cop@k,3.0,3,76.8,84.6,False,False,"[4, 5, 11]",,0.2282,,OPTIMAL
+employee,1827,cop@k,4.0,4,70.1,84.6,False,False,"[4, 5, 6, 10]",,0.2282,,OPTIMAL
+employee,1827,cop@k,5.0,5,73.3,84.6,False,False,"[4, 5, 6, 10, 11]",,0.2282,,OPTIMAL
+employee,1827,cop@k,6.0,6,84.0,84.6,False,False,"[0, 4, 5, 6, 10, 11]",,0.2282,,OPTIMAL
+employee,1827,cop@k,7.0,7,91.0,90.1,False,False,"[0, 4, 5, 6, 10, 11, 14]",,0.3254,,OPTIMAL
+employee,1827,cop@k,8.0,8,92.2,91.8,False,False,"[0, 3, 4, 5, 6, 10, 11, 14]",,0.3934,,OPTIMAL
+employee,1116,lmpaxp,,8,96.4,100.0,True,True,"[4, 6, 7, 8, 9, 10, 12, 14]",96.02,,,
+employee,1116,cop_free,8.0,1,52.7,70.2,False,False,[5],,0.2306,0.42,
+employee,1116,cop@k,1.0,1,52.7,70.2,False,False,[5],,0.2306,,OPTIMAL
+employee,1116,cop@k,2.0,2,57.7,70.2,False,False,"[4, 5]",,0.2306,,OPTIMAL
+employee,1116,cop@k,3.0,3,63.7,70.2,False,False,"[4, 5, 11]",,0.2306,,OPTIMAL
+employee,1116,cop@k,4.0,4,61.4,70.2,False,False,"[5, 6, 10, 11]",,0.2306,,OPTIMAL
+employee,1116,cop@k,5.0,5,68.2,70.2,False,False,"[4, 5, 6, 10, 11]",,0.2306,,OPTIMAL
+employee,1116,cop@k,6.0,6,67.3,70.2,False,False,"[0, 4, 5, 6, 10, 11]",,0.2306,,OPTIMAL
+employee,1116,cop@k,7.0,7,73.6,71.7,False,False,"[0, 4, 5, 6, 8, 10, 11]",,0.2782,,OPTIMAL
+employee,1116,cop@k,8.0,8,81.4,75.0,False,False,"[0, 4, 5, 6, 8, 10, 11, 13]",,0.312,,OPTIMAL
+employee,178,lmpaxp,,7,95.4,100.0,True,True,"[3, 4, 5, 6, 9, 12, 14]",95.7,,,
+employee,178,cop_free,8.0,1,62.7,84.4,False,False,[5],,0.2254,0.58,
+employee,178,cop@k,1.0,1,62.7,84.4,False,False,[5],,0.2254,,OPTIMAL
+employee,178,cop@k,2.0,2,61.7,84.4,False,False,"[5, 11]",,0.2254,,OPTIMAL
+employee,178,cop@k,3.0,3,76.6,84.4,False,False,"[4, 5, 11]",,0.2254,,OPTIMAL
+employee,178,cop@k,4.0,4,54.7,84.4,False,False,"[5, 6, 10, 11]",,0.2254,,OPTIMAL
+employee,178,cop@k,5.0,5,70.3,84.4,False,False,"[4, 5, 6, 10, 11]",,0.2254,,OPTIMAL
+employee,178,cop@k,6.0,6,80.8,84.4,False,False,"[0, 4, 5, 6, 10, 11]",,0.2254,,OPTIMAL
+employee,178,cop@k,7.0,7,98.8,88.1,True,False,"[0, 1, 2, 3, 6, 10, 11]",,0.3156,,OPTIMAL
+employee,178,cop@k,8.0,8,90.1,100.0,False,True,"[0, 4, 5, 6, 8, 10, 11, 14]",,0.355,,OPTIMAL

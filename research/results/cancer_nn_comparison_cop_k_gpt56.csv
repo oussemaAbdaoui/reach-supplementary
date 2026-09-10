@@ -1,0 +1,470 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+cancer,gpt-5.6-terra,163,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,15,89.8,False,83.9,54.6,83.9,89.8,False,False,False,14,3,15,1,0,12,0,0,0,0,0,3,"[83.9, 54.6, 83.9, 54.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b1 = 0  (concavity_mean in [0.05063, 0.1235) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","Le modèle a prédit un cancer bénin (classe 1). Cette décision est notamment cohérente avec deux éléments qui sont présents : la concavité moyenne est comprise entre 0 et 0,05063, et la concavité dans la zone la plus défavorable est comprise entre 0 et 0,189.
+
+Les autres conditions examinées ne sont pas remplies : la douceur moyenne n’est pas entre 0,1034 et 0,1634 ; la concavité moyenne n’est ni entre 0,05063 et 0,1235 ni entre 0,1235 et 0,4264 ; et la concavité dans la zone la plus défavorable n’est pas entre 0,3744 et 1,17.
+
+De même, l’aire de l’erreur de mesure n’est ni entre 6,802 et 21,83 ni entre 49,7 et 542,2. Le rayon le plus défavorable n’est pas entre 18,55 et 36,04, la texture la plus défavorable n’est pas entre 29,02 et 47,16, et l’aire la plus défavorable n’est ni entre 185,2 et 622,9 ni entre 1050 et 4254. Enfin, le nombre de points concaves dans la zone la plus défavorable n’est pas entre 0,1625 et 0,291, et la dimension fractale la plus défavorable n’est pas entre 0,07587 et 0,08999.","Le diagnostic prédit est bénin. Cette prédiction est notamment cohérente avec une concavité moyenne faible, comprise entre 0 et 0,05063, ainsi qu’une concavité dans la zone la plus défavorable faible, comprise entre 0 et 0,189. De plus, la mesure de symétrie dans l’erreur standard ne se situe pas entre 0,007882 et 0,01623.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+2. The average concavity reading is between 0 and 0.05063, which is true for this case.  
+3. The average concavity reading is between 0.05063 and 0.1235, which is not true for this case.  
+4. The average concavity reading is between 0.1235 and 0.4264, which is not true for this case.  
+5. The standard-error area reading is between 6.802 and 21.83, which is not true for this case.  
+6. The standard-error area reading is between 49.7 and 542.2, which is not true for this case.  
+7. The standard-error symmetry reading is between 0.007882 and 0.01623, which is not true for this case.  
+8. The worst radius reading is between 18.55 and 36.04, which is not true for this case.  
+9. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+10. The worst area reading is between 185.2 and 622.9, which is not true for this case.  
+11. The worst area reading is between 1050 and 4254, which is not true for this case.  
+12. The worst concavity reading is between 0 and 0.189, which is true for this case.  
+13. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+14. The worst concave-points reading is between 0.1625 and 0.291, which is not true for this case.  
+15. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['concavity_mean_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b1 < 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'area_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b1 < 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'area_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 18, 19, 20, 39, 41, 54, 62, 65, 69, 71, 78, 80, 83, 88]","[14, 18, 19, 20, 39, 41, 62, 65, 69, 71, 78, 80, 83, 88]","[18, 54, 78]","[14, 18, 19, 20, 39, 41, 54, 62, 65, 69, 71, 78, 80, 83, 88]",0.4044,FEASIBLE,cop@15,0.405
+cancer,gpt-5.6-terra,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,18,94.3,False,97.6,25.3,97.6,94.3,True,False,False,16,6,18,2,0,12,0,0,0,0,0,3,"[97.6, 40.5, 97.6, 25.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b0 = 1  (smoothness_mean in [0.06576, 0.09168) — holds)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  compactness_worst_b0 = 1  (compactness_worst in [0.02729, 0.1924) — holds)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b0 = 1  (concave_points_worst in [0, 0.086) — holds)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b0 = 1  (fractal_dimension_worst in [0.05504, 0.07587) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est bénigne (classe 1). Les éléments qui vont dans ce sens sont les suivants : la douceur moyenne est dans l’intervalle [0.06576, 0.09168), la concavité moyenne dans [0, 0.05063), la surface mesurée dans l’erreur standard dans [6.802, 21.83), et la symétrie mesurée dans l’erreur standard dans [0.007882, 0.01623).
+
+De plus, la compacité au pire est dans [0.02729, 0.1924), la concavité au pire dans [0, 0.189), les points concaves au pire dans [0, 0.086), et la dimension fractale au pire dans [0.05504, 0.07587).
+
+Les intervalles associés à des valeurs plus élevées de plusieurs mesures ne sont pas présents : la douceur moyenne n’est pas dans [0.1034, 0.1634), la concavité moyenne n’est pas dans [0.1235, 0.4264), et les valeurs « au pire » de rayon, texture, périmètre, douceur, concavité et points concaves ne sont pas dans les intervalles élevés indiqués par la règle.","La prédiction est bénigne (classe 1). Elle est notamment cohérente avec une régularité de la tumeur comprise entre 0,06576 et 0,09168, une concavité moyenne inférieure à 0,05063, une aire d’erreur entre 6,802 et 21,83, et une symétrie d’erreur entre 0,007882 et 0,01623.
+
+Elle est aussi soutenue par l’absence d’une symétrie d’erreur élevée, c’est-à-dire qu’elle n’est pas comprise entre 0,02137 et 0,06146, ainsi que par une dimension fractale maximale qui n’est pas comprise entre 0,07587 et 0,08999.","1. The average smoothness is between 0.06576 and 0.09168, which is true here.  
+2. The average smoothness is between 0.1034 and 0.1634, which is not true here.  
+3. The average concavity is between 0 and 0.05063, which is true here.  
+4. The average concavity is between 0.1235 and 0.4264, which is not true here.  
+5. The standard error of the area is between 6.802 and 21.83, which is true here.  
+6. The standard error of symmetry is between 0.007882 and 0.01623, which is true here.  
+7. The standard error of symmetry is between 0.02137 and 0.06146, which is not true here.  
+8. The worst radius reading is between 18.55 and 36.04, which is not true here.  
+9. The worst texture reading is between 29.02 and 47.16, which is not true here.  
+10. The worst perimeter reading is between 126.9 and 251.2, which is not true here.  
+11. The worst smoothness reading is between 0.1417 and 0.2184, which is not true here.  
+12. The worst compactness reading is between 0.02729 and 0.1924, which is true here.  
+13. The worst concavity reading is between 0 and 0.189, which is true here.  
+14. The worst concavity reading is between 0.3744 and 1.17, which is not true here.  
+15. The worst concave-points reading is between 0 and 0.086, which is true here.  
+16. The worst concave-points reading is between 0.1625 and 0.291, which is not true here.  
+17. The worst fractal-dimension reading is between 0.05504 and 0.07587, which is true here.  
+18. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true here.","['smoothness_mean_b0 > 0.5', 'concavity_mean_b0 > 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'fractal_dimension_worst_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5']","['smoothness_mean_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b0 > 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[12, 14, 18, 20, 39, 54, 56, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87, 88]","[12, 14, 18, 20, 39, 54, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87]","[12, 18, 39, 54, 56, 88]","[12, 14, 18, 20, 39, 54, 56, 62, 65, 68, 74, 75, 78, 80, 81, 83, 87, 88]",0.4068,FEASIBLE,cop@18,0.407
+cancer,gpt-5.6-terra,6,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,17,83.9,False,84.5,45.8,84.5,83.9,False,False,False,15,6,17,2,0,11,0,0,0,0,0,3,"[84.5, 45.8, 84.5, 45.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 0  (concavity_mean in [0, 0.05063) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b0 = 1  (texture_worst in [12.02, 23.31) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","Le modèle a prédit un cancer bénin. Les éléments qui correspondent à la règle sont :
+
+- la mesure de surface est entre 6,802 et 21,83 ;
+- la mesure de symétrie est entre 0,007882 et 0,01623 ;
+- la pire mesure de texture est entre 12,02 et 23,31 ;
+- la pire mesure de dimension fractale est entre 0,07587 et 0,08999.
+
+D’autres conditions de la règle ne sont pas satisfaites : la régularité moyenne n’est pas entre 0,1034 et 0,1634, la concavité moyenne n’est ni entre 0 et 0,05063 ni entre 0,1235 et 0,4264, et le rayon mesuré n’est pas entre 0,5115 et 2,873.
+
+De même, le pire rayon n’est pas entre 18,55 et 36,04, la pire texture n’est pas entre 29,02 et 47,16, la pire surface n’est ni entre 185,2 et 622,9 ni entre 1 050 et 4 254, la pire concavité n’est ni entre 0 et 0,189 ni entre 0,3744 et 1,17, et les pires points concaves ne sont pas entre 0,1625 et 0,291.","La prédiction est bénigne. Elle est notamment cohérente avec une aire d’erreur comprise entre 6,802 et 21,83, et non comprise entre 49,7 et 542,2, ainsi qu’avec une mesure de symétrie d’erreur comprise entre 0,007882 et 0,01623, et non comprise entre 0,02137 et 0,06146. La texture maximale est comprise entre 12,02 et 23,31, et la dimension fractale maximale entre 0,07587 et 0,08999.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true here.  
+2. The average concavity reading is between 0 and 0.05063, which is not true here.  
+3. The average concavity reading is between 0.1235 and 0.4264, which is not true here.  
+4. The standard-error radius reading is between 0.5115 and 2.873, which is not true here.  
+5. The standard-error area reading is between 6.802 and 21.83, which is true here.  
+6. The standard-error area reading is between 49.7 and 542.2, which is not true here.  
+7. The standard-error symmetry reading is between 0.007882 and 0.01623, which is true here.  
+8. The standard-error symmetry reading is between 0.02137 and 0.06146, which is not true here.  
+9. The worst radius reading is between 18.55 and 36.04, which is not true here.  
+10. The worst texture reading is between 12.02 and 23.31, which is true here.  
+11. The worst texture reading is between 29.02 and 47.16, which is not true here.  
+12. The worst area reading is between 185.2 and 622.9, which is not true here.  
+13. The worst area reading is between 1050 and 4254, which is not true here.  
+14. The worst concavity reading is between 0 and 0.189, which is not true here.  
+15. The worst concavity reading is between 0.3744 and 1.17, which is not true here.  
+16. The worst concave-points reading is between 0.1625 and 0.291, which is not true here.  
+17. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is true here.","['area_se_b0 > 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b0 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 > 0.5', 'area_se_b2 < 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[14, 18, 20, 32, 39, 41, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[14, 18, 20, 32, 39, 54, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[39, 41, 54, 56, 63, 88]","[14, 18, 20, 32, 39, 41, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]",0.4054,FEASIBLE,cop@17,0.406
+cancer,gpt-5.6-terra,189,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,89.7,False,89.7,80.4,89.7,89.7,False,False,False,7,2,7,0,0,5,0,0,0,0,0,3,"[89.7, 80.4, 89.7, 80.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b1 = 0  (concavity_worst in [0.189, 0.3744) — does NOT hold)
+  concavity_worst_b2 = 1  (concavity_worst in [0.3744, 1.17) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est maligne (classe 0). La règle met surtout en évidence deux conditions qui sont satisfaites : la pire valeur de texture est entre 29.02 et 47.16, et la pire valeur de concavité est entre 0.3744 et 1.17.
+
+Les autres conditions de la règle ne sont pas satisfaites : la lissité moyenne n’est pas entre 0.1034 et 0.1634, la zone mesurée pour l’erreur standard n’est pas entre 6.802 et 21.83, la pire concavité n’est ni entre 0 et 0.189 ni entre 0.189 et 0.3744, et la pire dimension fractale n’est pas entre 0.07587 et 0.08999.","La prédiction est maligne (classe 0), car la texture dans la zone la plus défavorable est élevée, entre 29,02 et 47,16, et la concavité dans cette zone est très élevée, entre 0,3744 et 1,17.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+2. The standard error of the area measurement is between 6.802 and 21.83, which is not true for this case.  
+3. The worst texture reading is between 29.02 and 47.16, which is true here.  
+4. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+5. The worst concavity reading is between 0.189 and 0.3744, which is not true for this case.  
+6. The worst concavity reading is between 0.3744 and 1.17, which is true here.  
+7. The worst fractal dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['texture_worst_b2 > 0.5', 'concavity_worst_b2 > 0.5', 'smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b1 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 > 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b1 < 0.5', 'concavity_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 39, 65, 78, 79, 80, 88]","[14, 39, 65, 78, 79, 80, 88]","[65, 80]","[14, 39, 65, 78, 79, 80, 88]",0.5696,FEASIBLE,cop@7,0.594
+cancer,gpt-5.6-terra,70,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,10,89.2,False,89.2,89.2,89.2,89.2,False,False,False,10,10,10,0,0,0,0,0,0,0,0,3,"[89.2, 89.2, 89.2, 89.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  radius_mean_b0 = 0  (radius_mean in [6.981, 12.88) — does NOT hold)
+  perimeter_mean_b2 = 1  (perimeter_mean in [106.3, 188.5) — holds)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  concave_points_se_b0 = 0  (concave_points_se in [0, 0.009924) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b1 = 0  (texture_worst in [23.31, 29.02) — does NOT hold)
+  perimeter_worst_b0 = 0  (perimeter_worst in [50.41, 92.74) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est « maligne » (classe 0). La règle retenue correspond à ce résultat principalement parce que le périmètre moyen se situe entre 106,3 et 188,5, ce qui est le seul critère de la règle qui est satisfait.
+
+Les autres conditions de la règle ne sont pas satisfaites : le rayon moyen n’est pas entre 6,981 et 12,88 ; l’erreur de mesure du rayon n’est pas entre 0,5115 et 2,873 ; l’erreur de mesure de la surface n’est pas entre 6,802 et 21,83 ; l’erreur de mesure des points concaves n’est pas entre 0 et 0,009924 ; le rayon maximal n’est pas entre 18,55 et 36,04 ; la texture maximale n’est pas entre 23,31 et 29,02 ; le périmètre maximal n’est pas entre 50,41 et 92,74 ; la concavité maximale n’est pas entre 0 et 0,189 ; et la dimension fractale maximale n’est pas entre 0,07587 et 0,08999.","La prédiction est maligne (classe 0). La seule condition satisfaite dans cette règle est que le périmètre moyen est compris entre 106,3 et 188,5. Les autres conditions de la règle ne sont pas réunies : le rayon moyen n’est pas entre 6,981 et 12,88, le rayon mesuré en erreur n’est pas entre 0,5115 et 2,873, la surface mesurée en erreur n’est pas entre 6,802 et 21,83, et les points concaves mesurés en erreur ne sont pas entre 0 et 0,009924. De même, le pire rayon n’est pas entre 18,55 et 36,04, la pire texture n’est pas entre 23,31 et 29,02, le pire périmètre n’est pas entre 50,41 et 92,74, la pire concavité n’est pas entre 0 et 0,189, et la pire dimension fractale n’est pas entre 0,07587 et 0,08999.","1. The average radius is between 6.981 and 12.88, which is not true for this case.  
+2. The average perimeter is between 106.3 and 188.5, which is true for this case.  
+3. The standard error of the radius is between 0.5115 and 2.873, which is not true for this case.  
+4. The standard error of the area is between 6.802 and 21.83, which is not true for this case.  
+5. The standard error of the concave points is between 0 and 0.009924, which is not true for this case.  
+6. The largest observed radius is between 18.55 and 36.04, which is not true for this case.  
+7. The worst texture reading is between 23.31 and 29.02, which is not true for this case.  
+8. The worst perimeter reading is between 50.41 and 92.74, which is not true for this case.  
+9. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+10. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['perimeter_mean_b2 > 0.5', 'radius_mean_b0 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 < 0.5', 'concave_points_se_b0 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b1 < 0.5', 'perimeter_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['radius_mean_b0 < 0.5', 'perimeter_mean_b2 > 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 < 0.5', 'concave_points_se_b0 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b1 < 0.5', 'perimeter_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[0, 8, 32, 39, 51, 62, 64, 66, 78, 88]","[0, 8, 32, 39, 51, 62, 64, 66, 78, 88]","[0, 8, 32, 39, 51, 62, 64, 66, 78, 88]","[0, 8, 32, 39, 51, 62, 64, 66, 78, 88]",0.5862,FEASIBLE,cop@10,0.5934
+cancer,gpt-5.6-terra,62,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,14,66.9,False,44.6,61.7,61.7,66.9,False,False,False,11,8,14,3,0,6,0,0,0,0,0,3,"[44.6, 61.7, 44.6, 61.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  compactness_mean_b2 = 0  (compactness_mean in [0.1304, 0.3114) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  texture_worst_b0 = 0  (texture_worst in [12.02, 23.31) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b1 = 1  (concavity_worst in [0.189, 0.3744) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","Le modèle a prédit un cancer bénin (classe 1). Cette conclusion est cohérente avec plusieurs mesures qui satisfont les conditions de la règle :
+
+- la zone mesurée par l’erreur standard est comprise entre 6,802 et 21,83 ;
+- la pire texture est comprise entre 29,02 et 47,16 ;
+- la pire zone est comprise entre 185,2 et 622,9 ;
+- la pire concavité est comprise entre 0,189 et 0,3744 ;
+- la pire dimension fractale est comprise entre 0,07587 et 0,08999.
+
+D’autres conditions de la règle ne sont pas satisfaites : la compacité moyenne n’est pas entre 0,1304 et 0,3114, la concavité moyenne n’est pas entre 0,1235 et 0,4264, et la pire texture n’est pas entre 12,02 et 23,31. De même, la pire zone n’est pas entre 1050 et 4254, et la pire concavité n’est ni entre 0 et 0,189 ni entre 0,3744 et 1,17.","La prédiction est bénigne. Elle est notamment cohérente avec une aire mesurée dans l’échantillon entre 6,802 et 21,83, une aire maximale entre 185,2 et 622,9, une texture maximale entre 29,02 et 47,16, une concavité maximale entre 0,189 et 0,3744, et une dimension fractale maximale entre 0,07587 et 0,08999. De plus, l’aire mesurée dans l’échantillon n’est pas dans l’intervalle élevé de 49,7 à 542,2, le périmètre maximal n’est pas entre 126,9 et 251,2, et la régularité maximale n’est pas entre 0,1417 et 0,2184.","1. The mean compactness reading is between 0.1304 and 0.3114, which is not true here.  
+2. The mean concavity reading is between 0.1235 and 0.4264, which is not true here.  
+3. The standard error of the area is between 6.802 and 21.83, which is true here.  
+4. The standard error of the area is between 49.7 and 542.2, which is not true here.  
+5. The worst texture reading is between 12.02 and 23.31, which is not true here.  
+6. The worst texture reading is between 29.02 and 47.16, which is true here.  
+7. The worst perimeter reading is between 126.9 and 251.2, which is not true here.  
+8. The worst area reading is between 185.2 and 622.9, which is true here.  
+9. The worst area reading is between 1050 and 4254, which is not true here.  
+10. The worst smoothness reading is between 0.1417 and 0.2184, which is not true here.  
+11. The worst concavity reading is between 0 and 0.189, which is not true here.  
+12. The worst concavity reading is between 0.189 and 0.3744, which is true here.  
+13. The worst concavity reading is between 0.3744 and 1.17, which is not true here.  
+14. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is true here.","['area_se_b0 > 0.5', 'texture_worst_b2 > 0.5', 'area_worst_b0 > 0.5', 'concavity_worst_b1 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'compactness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'texture_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5']","['compactness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 > 0.5', 'area_se_b2 < 0.5', 'texture_worst_b0 < 0.5', 'texture_worst_b2 > 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b1 > 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[17, 20, 39, 41, 63, 65, 68, 69, 71, 74, 78, 79, 80, 88]","[17, 20, 39, 63, 65, 69, 71, 78, 79, 80, 88]","[39, 41, 65, 68, 69, 74, 79, 88]","[17, 20, 39, 41, 63, 65, 68, 69, 71, 74, 78, 79, 80, 88]",0.3984,FEASIBLE,cop@14,0.3994
+cancer,gpt-5.6-terra,57,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,18,70.3,False,43.8,59.2,59.2,70.3,False,False,False,11,9,18,7,0,9,0,0,0,0,0,3,"[43.8, 59.2, 43.8, 59.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  texture_mean_b2 = 0  (texture_mean in [21.51, 39.28) — does NOT hold)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  compactness_mean_b2 = 0  (compactness_mean in [0.1304, 0.3114) — does NOT hold)
+  concavity_mean_b1 = 0  (concavity_mean in [0.05063, 0.1235) — does NOT hold)
+  symmetry_mean_b1 = 1  (symmetry_mean in [0.1721, 0.1928) — holds)
+  symmetry_mean_b2 = 0  (symmetry_mean in [0.1928, 0.2743) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b0 = 1  (texture_worst in [12.02, 23.31) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est bénigne (classe 1). Parmi les conditions de la règle, deux sont satisfaites : la mesure de symétrie moyenne est comprise entre 0,1721 et 0,1928, et la pire mesure de texture est comprise entre 12,02 et 23,31.
+
+Les autres conditions de la règle ne sont pas satisfaites : la texture moyenne n’est pas entre 21,51 et 39,28, la régularité moyenne n’est pas entre 0,1034 et 0,1634, et la compacité moyenne n’est pas entre 0,1304 et 0,3114. La concavité moyenne n’est pas entre 0,05063 et 0,1235, et la symétrie moyenne n’est pas entre 0,1928 et 0,2743.
+
+De même, plusieurs mesures liées aux valeurs les plus élevées observées ne se situent pas dans les intervalles indiqués par la règle, notamment le rayon maximal, la surface maximale, la concavité maximale et les points concaves maximaux. L’ensemble de ces conditions, avec les deux conditions satisfaites, conduit le modèle à la classe bénigne.","La prédiction est bénigne (classe 1). Elle est cohérente avec une symétrie moyenne comprise entre 0,1721 et 0,1928 et une texture maximale comprise entre 12,02 et 23,31.
+
+Elle est également compatible avec les mesures suivantes situées en dehors de certaines plages associées à la règle : le rayon d’erreur n’est pas entre 0,5115 et 2,873 ; l’erreur de symétrie n’est ni entre 0,007882 et 0,01623, ni entre 0,02137 et 0,06146 ; la texture maximale n’est pas entre 29,02 et 47,16 ; la surface maximale n’est pas entre 1 050 et 4 254 ; la concavité maximale n’est pas entre 0,3744 et 1,17 ; et la dimension fractale maximale n’est pas entre 0,07587 et 0,08999.","1. The average texture reading is between 21.51 and 39.28, which is not true for this case.  
+2. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+3. The average compactness reading is between 0.1304 and 0.3114, which is not true for this case.  
+4. The average concavity reading is between 0.05063 and 0.1235, which is not true for this case.  
+5. The average symmetry reading is between 0.1721 and 0.1928, which is true for this case.  
+6. The average symmetry reading is between 0.1928 and 0.2743, which is not true for this case.  
+7. The standard error of the radius reading is between 0.5115 and 2.873, which is not true for this case.  
+8. The standard error of the symmetry reading is between 0.007882 and 0.01623, which is not true for this case.  
+9. The standard error of the symmetry reading is between 0.02137 and 0.06146, which is not true for this case.  
+10. The worst radius reading is between 18.55 and 36.04, which is not true for this case.  
+11. The worst texture reading is between 12.02 and 23.31, which is true for this case.  
+12. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+13. The worst area reading is between 185.2 and 622.9, which is not true for this case.  
+14. The worst area reading is between 1050 and 4254, which is not true for this case.  
+15. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+16. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+17. The worst concave-points reading is between 0.1625 and 0.291, which is not true for this case.  
+18. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['symmetry_mean_b1 > 0.5', 'texture_worst_b0 > 0.5', 'texture_mean_b2 < 0.5', 'smoothness_mean_b2 < 0.5', 'compactness_mean_b2 < 0.5', 'concavity_mean_b1 < 0.5', 'symmetry_mean_b2 < 0.5', 'radius_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b2 < 0.5']","['texture_mean_b2 < 0.5', 'smoothness_mean_b2 < 0.5', 'compactness_mean_b2 < 0.5', 'concavity_mean_b1 < 0.5', 'symmetry_mean_b1 > 0.5', 'symmetry_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b0 > 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[5, 14, 17, 19, 25, 26, 32, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]","[5, 14, 17, 19, 25, 26, 62, 63, 69, 78, 83]","[25, 32, 54, 56, 63, 65, 71, 80, 88]","[5, 14, 17, 19, 25, 26, 32, 54, 56, 62, 63, 65, 69, 71, 78, 80, 83, 88]",0.4032,FEASIBLE,cop@18,0.4036
+cancer,gpt-5.6-terra,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,82.1,False,82.1,86.1,86.1,82.1,False,False,False,8,7,8,0,0,1,0,0,0,0,0,3,"[82.1, 82.1, 79.2, 86.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 1  (concave_points_worst in [0.1625, 0.291) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","Le modèle a prédit un cancer malin (classe 0). Parmi les conditions examinées, deux sont remplies : la mesure de symétrie est comprise entre 0,007882 et 0,01623, et le nombre de points concaves dans la mesure « pire cas » est compris entre 0,1625 et 0,291.
+
+Les autres conditions de la règle ne sont pas remplies : la douceur moyenne n’est pas dans l’intervalle 0,1034–0,1634, l’aire mesurée n’est pas entre 6,802 et 21,83, la texture en pire cas n’est pas entre 29,02 et 47,16, la concavité en pire cas n’est ni entre 0 et 0,189 ni entre 0,3744 et 1,17, et la dimension fractale en pire cas n’est pas entre 0,07587 et 0,08999.","La prédiction est maligne (classe 0). Les mesures qui correspondent à la règle sont une symétrie de l’erreur standard comprise entre 0,007882 et 0,01623, ainsi que des points concaves dans la pire zone compris entre 0,1625 et 0,291.
+
+Les autres conditions de la règle ne sont pas présentes pour ce cas : la douceur moyenne n’est pas comprise entre 0,1034 et 0,1634, l’aire de l’erreur standard n’est pas comprise entre 6,802 et 21,83, la texture dans la pire zone n’est pas comprise entre 29,02 et 47,16, la concavité dans la pire zone n’est ni comprise entre 0 et 0,189 ni entre 0,3744 et 1,17, et la dimension fractale dans la pire zone n’est pas comprise entre 0,07587 et 0,08999.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+2. The area measurement’s standard-error reading is between 6.802 and 21.83, which is not true for this case.  
+3. The symmetry measurement’s standard-error reading is between 0.007882 and 0.01623, which is true for this case.  
+4. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+5. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+6. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+7. The worst concave-points reading is between 0.1625 and 0.291, which is true for this case.  
+8. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['symmetry_se_b0 > 0.5', 'concave_points_worst_b2 > 0.5', 'smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['smoothness_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'symmetry_se_b0 > 0.5', 'texture_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[14, 39, 54, 65, 78, 80, 83, 88]","[14, 39, 54, 65, 78, 80, 83, 88]","[14, 39, 54, 65, 78, 83, 88]","[14, 39, 54, 65, 78, 80, 83, 88]",0.583,FEASIBLE,cop@8,0.5876
+cancer,gpt-5.6-terra,188,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,9,90.7,False,90.7,89.6,90.7,90.7,False,False,False,9,7,9,0,0,2,0,0,0,0,0,3,"[90.7, 90.7, 68.2, 89.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 0  (area_worst in [185.2, 622.9) — does NOT hold)
+  area_worst_b1 = 1  (area_worst in [622.9, 1050) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  compactness_worst_b0 = 0  (compactness_worst in [0.02729, 0.1924) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concave_points_worst_b0 = 0  (concave_points_worst in [0, 0.086) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","Le modèle a prédit un cancer malin (classe 0). Parmi les conditions examinées, une seule est satisfaite : la pire mesure de surface est comprise entre 622,9 et 1 050.
+
+Les autres conditions de la règle ne sont pas satisfaites : la surface standard n’est pas comprise entre 6,802 et 21,83, la pire texture n’est pas comprise entre 29,02 et 47,16, la pire surface n’est pas comprise entre 185,2 et 622,9 ni entre 1 050 et 4 254, la pire compacité n’est pas comprise entre 0,02729 et 0,1924, la pire concavité n’est pas comprise entre 0 et 0,189, les pires points concaves ne sont pas compris entre 0 et 0,086, et la pire dimension fractale n’est pas comprise entre 0,07587 et 0,08999.","La prédiction est maligne. La zone mesurée dans l’image la plus défavorable est comprise entre 622,9 et 1 050. De plus, la zone de l’erreur standard n’est pas comprise entre 6,802 et 21,83, la texture dans l’image la plus défavorable n’est pas comprise entre 29,02 et 47,16, et la compacité dans l’image la plus défavorable n’est pas comprise entre 0,02729 et 0,1924. La concavité et le nombre de points concaves dans l’image la plus défavorable ne sont pas respectivement compris entre 0 et 0,189, ni entre 0 et 0,086. Enfin, la dimension fractale dans l’image la plus défavorable n’est pas comprise entre 0,07587 et 0,08999.","1. The standard error of the area is between 6.802 and 21.83, which is not true for this case.  
+2. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+3. The worst area reading is between 185.2 and 622.9, which is not true for this case.  
+4. The worst area reading is between 622.9 and 1050, which is true for this case.  
+5. The worst area reading is between 1050 and 4254, which is not true for this case.  
+6. The worst compactness reading is between 0.02729 and 0.1924, which is not true for this case.  
+7. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+8. The worst concave-points reading is between 0 and 0.086, which is not true for this case.  
+9. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['area_worst_b1 > 0.5', 'area_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b2 < 0.5', 'compactness_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['area_se_b0 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 < 0.5', 'area_worst_b1 > 0.5', 'area_worst_b2 < 0.5', 'compactness_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b0 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[39, 65, 69, 70, 71, 75, 78, 81, 88]","[39, 65, 69, 70, 71, 75, 78, 81, 88]","[39, 65, 70, 75, 78, 81, 88]","[39, 65, 69, 70, 71, 75, 78, 81, 88]",0.5558,FEASIBLE,cop@9,0.5786
+cancer,gpt-5.6-terra,26,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,14,77.9,False,84.2,29.5,84.2,77.9,False,False,False,13,4,14,1,0,10,0,0,0,0,0,3,"[84.2, 29.5, 84.2, 29.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  perimeter_mean_b2 = 0  (perimeter_mean in [106.3, 188.5) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b1 = 0  (area_se in [21.83, 49.7) — does NOT hold)
+  smoothness_se_b2 = 0  (smoothness_se in [0.007571, 0.03113) — does NOT hold)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  compactness_worst_b0 = 1  (compactness_worst in [0.02729, 0.1924) — holds)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est bénigne (classe 1). La règle associée à cette décision est globalement satisfaite parce que plusieurs mesures ne se situent pas dans les intervalles indiqués pour des valeurs plus élevées.
+
+En particulier, la symétrie mesurée est dans l’intervalle de 0,007882 à 0,01623, la compacité au pire endroit est entre 0,02729 et 0,1924, et la concavité au pire endroit est entre 0 et 0,189.
+
+À l’inverse, les conditions suivantes ne sont pas remplies : le périmètre moyen n’est pas entre 106,3 et 188,5 ; le rayon mesuré n’est pas entre 0,5115 et 2,873 ; l’aire mesurée n’est pas entre 21,83 et 49,7 ; la régularité de surface mesurée n’est pas entre 0,007571 et 0,03113 ; le rayon au pire endroit n’est pas entre 18,55 et 36,04 ; la texture au pire endroit n’est pas entre 29,02 et 47,16 ; le périmètre au pire endroit n’est pas entre 126,9 et 251,2 ; l’aire au pire endroit n’est pas entre 1050 et 4254 ; la concavité au pire endroit n’est pas entre 0,3744 et 1,17 ; et la dimension fractale au pire endroit n’est pas entre 0,07587 et 0,08999.","La prédiction est bénigne. Elle est notamment cohérente avec une symétrie mesurée entre 0,007882 et 0,01623, une compacité au pire comprise entre 0,02729 et 0,1924, et une concavité au pire comprise entre 0 et 0,189. De plus, la symétrie n’est pas dans la plage élevée de 0,02137 à 0,06146.","1. The average perimeter is between 106.3 and 188.5, which is not true for this case.  
+2. The standard error of the radius is between 0.5115 and 2.873, which is not true for this case.  
+3. The standard error of the area is between 21.83 and 49.7, which is not true for this case.  
+4. The standard error of smoothness is between 0.007571 and 0.03113, which is not true for this case.  
+5. The standard error of symmetry is between 0.007882 and 0.01623, which is true for this case.  
+6. The standard error of symmetry is between 0.02137 and 0.06146, which is not true for this case.  
+7. The worst radius reading is between 18.55 and 36.04, which is not true for this case.  
+8. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+9. The worst perimeter reading is between 126.9 and 251.2, which is not true for this case.  
+10. The worst area reading is between 1050 and 4254, which is not true for this case.  
+11. The worst compactness reading is between 0.02729 and 0.1924, which is true for this case.  
+12. The worst concavity reading is between 0 and 0.189, which is true for this case.  
+13. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+14. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['symmetry_se_b0 > 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'perimeter_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b1 < 0.5', 'smoothness_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['perimeter_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b1 < 0.5', 'smoothness_se_b2 < 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b2 < 0.5', 'compactness_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","[8, 32, 40, 44, 54, 56, 62, 65, 68, 71, 75, 78, 80, 88]","[8, 32, 40, 44, 54, 62, 65, 68, 71, 75, 78, 80, 88]","[54, 56, 75, 78]","[8, 32, 40, 44, 54, 56, 62, 65, 68, 71, 75, 78, 80, 88]",0.4032,FEASIBLE,cop@14,0.4048
+cancer,gpt-5.6-terra,173,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,14,83.2,False,83.2,59.4,83.2,83.2,False,False,False,14,10,14,0,0,4,0,0,0,0,0,3,"[83.2, 83.2, 78.6, 59.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  smoothness_se_b2 = 0  (smoothness_se in [0.007571, 0.03113) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  compactness_worst_b2 = 0  (compactness_worst in [0.3309, 0.9379) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b0 = 1  (concave_points_worst in [0, 0.086) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","Le modèle a prédit une tumeur bénigne. Les éléments les plus favorables à cette décision sont que la concavité mesurée au pire endroit est dans l’intervalle [0, 0,189) et que le nombre de points concaves au pire endroit est dans l’intervalle [0, 0,086).
+
+Les autres conditions examinées ne sont pas remplies : la concavité moyenne n’est pas entre 0,1235 et 0,4264 ; la surface de l’erreur de mesure n’est ni entre 6,802 et 21,83, ni entre 49,7 et 542,2 ; la régularité de l’erreur de mesure n’est pas entre 0,007571 et 0,03113 ; et la symétrie de l’erreur de mesure n’est dans aucun des intervalles indiqués.
+
+De même, les valeurs les plus défavorables du rayon, de la texture, du périmètre et de la compacité ne se situent pas dans leurs intervalles élevés respectifs. La concavité au pire endroit n’est pas non plus entre 0,3744 et 1,17, et la dimension fractale au pire endroit n’est pas entre 0,07587 et 0,08999.","La prédiction bénigne est cohérente avec les mesures suivantes : la concavité moyenne n’est pas comprise entre 0,1235 et 0,4264 ; la zone mesurée lors de l’analyse détaillée n’est ni entre 6,802 et 21,83 ni entre 49,7 et 542,2 ; la régularité mesurée lors de l’analyse détaillée n’est pas entre 0,007571 et 0,03113.
+
+De plus, la symétrie mesurée lors de l’analyse détaillée n’est ni entre 0,007882 et 0,01623 ni entre 0,02137 et 0,06146. Le plus grand rayon observé n’est pas entre 18,55 et 36,04, et la dimension fractale la plus élevée n’est pas entre 0,07587 et 0,08999.
+
+Enfin, la concavité la plus élevée est inférieure à 0,189 et les points concaves les plus élevés sont inférieurs à 0,086, ce qui soutient également la prédiction bénigne.","1. The average concavity reading is between 0.1235 and 0.4264, which is not true for this case.  
+2. The standard error of the area measurement is between 6.802 and 21.83, which is not true for this case.  
+3. The standard error of the area measurement is between 49.7 and 542.2, which is not true for this case.  
+4. The standard error of the smoothness measurement is between 0.007571 and 0.03113, which is not true for this case.  
+5. The standard error of the symmetry measurement is between 0.007882 and 0.01623, which is not true for this case.  
+6. The standard error of the symmetry measurement is between 0.02137 and 0.06146, which is not true for this case.  
+7. The worst radius reading is between 18.55 and 36.04, which is not true for this case.  
+8. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+9. The worst perimeter reading is between 126.9 and 251.2, which is not true for this case.  
+10. The worst compactness reading is between 0.3309 and 0.9379, which is not true for this case.  
+11. The worst concavity reading is between 0 and 0.189, which is true here.  
+12. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+13. The worst concave-points reading is between 0 and 0.086, which is true here.  
+14. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['concavity_worst_b0 > 0.5', 'concave_points_worst_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'area_se_b2 < 0.5', 'smoothness_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'compactness_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['concavity_mean_b2 < 0.5', 'area_se_b0 < 0.5', 'area_se_b2 < 0.5', 'smoothness_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'texture_worst_b2 < 0.5', 'perimeter_worst_b2 < 0.5', 'compactness_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b0 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[20, 39, 41, 44, 54, 56, 62, 65, 68, 77, 78, 80, 81, 88]","[20, 39, 41, 44, 54, 56, 62, 65, 68, 77, 78, 80, 81, 88]","[20, 39, 41, 44, 54, 56, 62, 78, 81, 88]","[20, 39, 41, 44, 54, 56, 62, 65, 68, 77, 78, 80, 81, 88]",0.395,FEASIBLE,cop@14,0.3966
+cancer,gpt-5.6-terra,139,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,13,91.2,False,85.3,89.6,89.6,91.2,False,False,False,9,11,13,4,0,2,0,0,0,0,0,3,"[85.3, 89.6, 47.7, 89.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b1 = 1  (symmetry_se in [0.01623, 0.02137) — holds)
+  symmetry_se_b2 = 0  (symmetry_se in [0.02137, 0.06146) — does NOT hold)
+  texture_worst_b2 = 0  (texture_worst in [29.02, 47.16) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b1 = 0  (area_worst in [622.9, 1050) — does NOT hold)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b1 = 1  (fractal_dimension_worst in [0.07587, 0.08999) — holds)","Le modèle a prédit une tumeur bénigne (classe 1). Cette décision est surtout cohérente avec trois conditions qui sont remplies :
+
+- la mesure de symétrie de l’erreur standard est comprise entre 0.01623 et 0.02137 ;
+- la pire mesure de surface est comprise entre 185.2 et 622.9 ;
+- la pire mesure de dimension fractale est comprise entre 0.07587 et 0.08999.
+
+Les autres conditions examinées ne sont pas remplies : la douceur moyenne n’est pas entre 0.1034 et 0.1634, la concavité moyenne n’est pas entre 0.1235 et 0.4264, et la pire texture n’est pas entre 29.02 et 47.16. De même, la pire douceur, la pire concavité et le nombre de pires points concaves ne sont pas dans les intervalles indiqués par la règle.","Le diagnostic prédit est bénin (classe 1). Les conditions observées sont : la symétrie mesurée est comprise entre 0,01623 et 0,02137, la zone maximale est comprise entre 185,2 et 622,9, et la dimension fractale maximale est comprise entre 0,07587 et 0,08999.
+
+En outre, la douceur moyenne n’est pas comprise entre 0,1034 et 0,1634, la concavité moyenne n’est pas comprise entre 0,1235 et 0,4264, la texture maximale n’est pas comprise entre 29,02 et 47,16, et la zone maximale n’est ni comprise entre 622,9 et 1 050 ni entre 1 050 et 4 254.
+
+Enfin, la douceur maximale n’est pas comprise entre 0,1417 et 0,2184, la concavité maximale n’est pas comprise entre 0,3744 et 1,17, et les points concaves maximaux ne sont pas compris entre 0,1625 et 0,291.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+2. The average concavity reading is between 0.1235 and 0.4264, which is not true for this case.  
+3. The symmetry measurement’s standard-error reading is between 0.007882 and 0.01623, which is not true for this case.  
+4. The symmetry measurement’s standard-error reading is between 0.01623 and 0.02137, which is true for this case.  
+5. The symmetry measurement’s standard-error reading is between 0.02137 and 0.06146, which is not true for this case.  
+6. The worst texture reading is between 29.02 and 47.16, which is not true for this case.  
+7. The worst area reading is between 185.2 and 622.9, which is true for this case.  
+8. The worst area reading is between 622.9 and 1050, which is not true for this case.  
+9. The worst area reading is between 1050 and 4254, which is not true for this case.  
+10. The worst smoothness reading is between 0.1417 and 0.2184, which is not true for this case.  
+11. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+12. The worst concave-points reading is between 0.1625 and 0.291, which is not true for this case.  
+13. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is true for this case.","['symmetry_se_b1 > 0.5', 'area_worst_b0 > 0.5', 'fractal_dimension_worst_b1 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'texture_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b1 > 0.5', 'symmetry_se_b2 < 0.5', 'texture_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b1 < 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b1 > 0.5']","[14, 20, 54, 55, 56, 65, 69, 70, 71, 74, 80, 83, 88]","[14, 20, 55, 65, 69, 74, 80, 83, 88]","[14, 20, 55, 65, 69, 70, 71, 74, 80, 83, 88]","[14, 20, 54, 55, 56, 65, 69, 70, 71, 74, 80, 83, 88]",0.398,FEASIBLE,cop@13,0.4008
+cancer,gpt-5.6-terra,22,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,9,83.2,False,83.2,85.1,85.1,83.2,False,False,False,9,7,9,0,0,2,0,0,0,0,0,3,"[83.2, 83.2, 71.5, 85.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_mean_b0 = 0  (area_mean in [143.5, 512) — does NOT hold)
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 0  (concavity_mean in [0, 0.05063) — does NOT hold)
+  area_se_b2 = 0  (area_se in [49.7, 542.2) — does NOT hold)
+  radius_worst_b2 = 0  (radius_worst in [18.55, 36.04) — does NOT hold)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)
+  concave_points_worst_b1 = 0  (concave_points_worst in [0.086, 0.1625) — does NOT hold)
+  concave_points_worst_b2 = 1  (concave_points_worst in [0.1625, 0.291) — holds)
+  fractal_dimension_worst_b1 = 0  (fractal_dimension_worst in [0.07587, 0.08999) — does NOT hold)","La prédiction est maligne (classe 0). Parmi les conditions examinées, seule celle concernant les points concaves dans la mesure la plus défavorable est satisfaite : cette valeur est comprise entre 0,1625 et 0,291.
+
+Les autres conditions de la règle ne sont pas satisfaites : l’aire moyenne n’est pas dans [143,5 ; 512), la régularité moyenne n’est pas dans [0,1034 ; 0,1634), la concavité moyenne n’est pas dans [0 ; 0,05063), l’erreur sur l’aire n’est pas dans [49,7 ; 542,2), le pire rayon n’est pas dans [18,55 ; 36,04), la pire concavité n’est pas dans [0 ; 0,189), les points concaves les plus défavorables ne sont pas dans [0,086 ; 0,1625), et la pire dimension fractale n’est pas dans [0,07587 ; 0,08999).","La prédiction est maligne. Parmi les conditions observées, les points concaves dans la pire mesure sont élevés, entre 0,1625 et 0,291. En revanche, la concavité moyenne n’est pas dans la plage basse de 0 à 0,05063, la zone mesurée par erreur n’est pas entre 49,7 et 542,2, le pire rayon n’est pas entre 18,55 et 36,04, la pire concavité n’est pas entre 0 et 0,189, les points concaves dans la pire mesure ne sont pas entre 0,086 et 0,1625, et la pire dimension fractale n’est pas entre 0,07587 et 0,08999.","1. The average area reading is between 143.5 and 512, which is not true for this case.  
+2. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+3. The average concavity reading is between 0 and 0.05063, which is not true for this case.  
+4. The area measurement’s standard-error reading is between 49.7 and 542.2, which is not true for this case.  
+5. The worst radius reading is between 18.55 and 36.04, which is not true for this case.  
+6. The worst concavity reading is between 0 and 0.189, which is not true for this case.  
+7. The worst concave-points reading is between 0.086 and 0.1625, which is not true for this case.  
+8. The worst concave-points reading is between 0.1625 and 0.291, which is true for this case.  
+9. The worst fractal-dimension reading is between 0.07587 and 0.08999, which is not true for this case.","['concave_points_worst_b2 > 0.5', 'area_mean_b0 < 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'area_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b1 < 0.5', 'fractal_dimension_worst_b1 < 0.5']","['area_mean_b0 < 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b0 < 0.5', 'area_se_b2 < 0.5', 'radius_worst_b2 < 0.5', 'concavity_worst_b0 < 0.5', 'concave_points_worst_b1 < 0.5', 'concave_points_worst_b2 > 0.5', 'fractal_dimension_worst_b1 < 0.5']","[9, 14, 18, 41, 62, 78, 82, 83, 88]","[9, 14, 18, 41, 62, 78, 82, 83, 88]","[18, 41, 62, 78, 82, 83, 88]","[9, 14, 18, 41, 62, 78, 82, 83, 88]",0.5812,FEASIBLE,cop@9,0.5952
+cancer,gpt-5.6-terra,151,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,98.1,True,98.1,98.1,98.1,98.1,True,True,True,8,8,8,0,0,0,0,0,0,0,0,0,[98.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  area_se_b0 = 0  (area_se in [6.802, 21.83) — does NOT hold)
+  area_se_b2 = 1  (area_se in [49.7, 542.2) — holds)
+  symmetry_se_b0 = 1  (symmetry_se in [0.007882, 0.01623) — holds)
+  symmetry_se_b1 = 0  (symmetry_se in [0.01623, 0.02137) — does NOT hold)
+  radius_worst_b0 = 0  (radius_worst in [7.93, 14.23) — does NOT hold)
+  radius_worst_b2 = 1  (radius_worst in [18.55, 36.04) — holds)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  concavity_worst_b0 = 0  (concavity_worst in [0, 0.189) — does NOT hold)","La prédiction est maligne (classe 0). Les éléments qui correspondent à la règle sont :
+
+- la mesure d’aire estimée est entre 49.7 et 542.2 ;
+- la mesure de symétrie estimée est entre 0.007882 et 0.01623 ;
+- le pire rayon est entre 18.55 et 36.04 ;
+- la pire texture est entre 29.02 et 47.16.
+
+D’autres conditions de la règle ne sont pas satisfaites : l’aire estimée n’est pas entre 6.802 et 21.83, la symétrie estimée n’est pas entre 0.01623 et 0.02137, le pire rayon n’est pas entre 7.93 et 14.23, et la pire concavité n’est pas entre 0 et 0.189. Malgré cela, les conditions satisfaites ci-dessus conduisent le modèle à la classe maligne.","La prédiction est maligne (classe 0). Les éléments qui correspondent à la règle sont :
+
+- la mesure d’aire estimée est entre 49.7 et 542.2 ;
+- la mesure de symétrie estimée est entre 0.007882 et 0.01623 ;
+- le pire rayon est entre 18.55 et 36.04 ;
+- la pire texture est entre 29.02 et 47.16.
+
+D’autres conditions de la règle ne sont pas satisfaites : l’aire estimée n’est pas entre 6.802 et 21.83, la symétrie estimée n’est pas entre 0.01623 et 0.02137, le pire rayon n’est pas entre 7.93 et 14.23, et la pire concavité n’est pas entre 0 et 0.189. Malgré cela, les conditions satisfaites ci-dessus conduisent le modèle à la classe maligne.","1. The standard error of the area is between 6.802 and 21.83, which is not true here.  
+2. The standard error of the area is between 49.7 and 542.2, which is true here.  
+3. The standard error of symmetry is between 0.007882 and 0.01623, which is true here.  
+4. The standard error of symmetry is between 0.01623 and 0.02137, which is not true here.  
+5. The worst radius reading is between 7.93 and 14.23, which is not true here.  
+6. The worst radius reading is between 18.55 and 36.04, which is true here.  
+7. The worst texture reading is between 29.02 and 47.16, which is true here.  
+8. The worst concavity reading is between 0 and 0.189, which is not true here.","['area_se_b2 > 0.5', 'symmetry_se_b0 > 0.5', 'radius_worst_b2 > 0.5', 'texture_worst_b2 > 0.5', 'area_se_b0 < 0.5', 'symmetry_se_b1 < 0.5', 'radius_worst_b0 < 0.5', 'concavity_worst_b0 < 0.5']","['area_se_b0 < 0.5', 'area_se_b2 > 0.5', 'symmetry_se_b0 > 0.5', 'symmetry_se_b1 < 0.5', 'radius_worst_b0 < 0.5', 'radius_worst_b2 > 0.5', 'texture_worst_b2 > 0.5', 'concavity_worst_b0 < 0.5']","[39, 41, 54, 55, 60, 62, 65, 78]","[39, 41, 54, 55, 60, 62, 65, 78]","[39, 41, 54, 55, 60, 62, 65, 78]","[39, 41, 54, 55, 60, 62, 65, 78]",0.6028,FEASIBLE,cop@8,0.6106
+cancer,gpt-5.6-terra,108,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,18,98.8,True,98.8,98.8,98.8,98.8,True,True,True,18,18,18,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  smoothness_mean_b2 = 0  (smoothness_mean in [0.1034, 0.1634) — does NOT hold)
+  concavity_mean_b0 = 1  (concavity_mean in [0, 0.05063) — holds)
+  concavity_mean_b2 = 0  (concavity_mean in [0.1235, 0.4264) — does NOT hold)
+  radius_se_b2 = 0  (radius_se in [0.5115, 2.873) — does NOT hold)
+  area_se_b0 = 1  (area_se in [6.802, 21.83) — holds)
+  symmetry_se_b0 = 0  (symmetry_se in [0.007882, 0.01623) — does NOT hold)
+  symmetry_se_b2 = 1  (symmetry_se in [0.02137, 0.06146) — holds)
+  texture_worst_b0 = 0  (texture_worst in [12.02, 23.31) — does NOT hold)
+  texture_worst_b2 = 1  (texture_worst in [29.02, 47.16) — holds)
+  perimeter_worst_b2 = 0  (perimeter_worst in [126.9, 251.2) — does NOT hold)
+  area_worst_b0 = 1  (area_worst in [185.2, 622.9) — holds)
+  area_worst_b2 = 0  (area_worst in [1050, 4254) — does NOT hold)
+  smoothness_worst_b0 = 0  (smoothness_worst in [0.07117, 0.1247) — does NOT hold)
+  smoothness_worst_b2 = 0  (smoothness_worst in [0.1417, 0.2184) — does NOT hold)
+  concavity_worst_b0 = 1  (concavity_worst in [0, 0.189) — holds)
+  concavity_worst_b2 = 0  (concavity_worst in [0.3744, 1.17) — does NOT hold)
+  concave_points_worst_b2 = 0  (concave_points_worst in [0.1625, 0.291) — does NOT hold)
+  fractal_dimension_worst_b0 = 0  (fractal_dimension_worst in [0.05504, 0.07587) — does NOT hold)","Le modèle a prédit une tumeur bénigne (classe 1). Plusieurs conditions associées à cette décision sont satisfaites : la concavité moyenne est comprise entre 0 et 0,05063, la surface mesurée est comprise entre 6,802 et 21,83, la symétrie mesurée est comprise entre 0,02137 et 0,06146, la pire texture est comprise entre 29,02 et 47,16, la pire surface est comprise entre 185,2 et 622,9, et la pire concavité est comprise entre 0 et 0,189.
+
+Les autres conditions de la règle ne sont pas satisfaites : la douceur moyenne n’est pas entre 0,1034 et 0,1634 ; la concavité moyenne n’est pas entre 0,1235 et 0,4264 ; le rayon mesuré n’est pas entre 0,5115 et 2,873 ; la symétrie mesurée n’est pas entre 0,007882 et 0,01623 ; la pire texture n’est pas entre 12,02 et 23,31 ; le pire périmètre n’est pas entre 126,9 et 251,2 ; la pire surface n’est pas entre 1050 et 4254 ; la pire douceur n’est ni entre 0,07117 et 0,1247, ni entre 0,1417 et 0,2184 ; la pire concavité n’est pas entre 0,3744 et 1,17 ; les pires points concaves ne sont pas entre 0,1625 et 0,291 ; et la pire dimension fractale n’est pas entre 0,05504 et 0,07587.","Le modèle a prédit une tumeur bénigne (classe 1). Plusieurs conditions associées à cette décision sont satisfaites : la concavité moyenne est comprise entre 0 et 0,05063, la surface mesurée est comprise entre 6,802 et 21,83, la symétrie mesurée est comprise entre 0,02137 et 0,06146, la pire texture est comprise entre 29,02 et 47,16, la pire surface est comprise entre 185,2 et 622,9, et la pire concavité est comprise entre 0 et 0,189.
+
+Les autres conditions de la règle ne sont pas satisfaites : la douceur moyenne n’est pas entre 0,1034 et 0,1634 ; la concavité moyenne n’est pas entre 0,1235 et 0,4264 ; le rayon mesuré n’est pas entre 0,5115 et 2,873 ; la symétrie mesurée n’est pas entre 0,007882 et 0,01623 ; la pire texture n’est pas entre 12,02 et 23,31 ; le pire périmètre n’est pas entre 126,9 et 251,2 ; la pire surface n’est pas entre 1050 et 4254 ; la pire douceur n’est ni entre 0,07117 et 0,1247, ni entre 0,1417 et 0,2184 ; la pire concavité n’est pas entre 0,3744 et 1,17 ; les pires points concaves ne sont pas entre 0,1625 et 0,291 ; et la pire dimension fractale n’est pas entre 0,05504 et 0,07587.","1. The average smoothness reading is between 0.1034 and 0.1634, which is not true for this case.  
+2. The average concavity reading is between 0 and 0.05063, which is true here.  
+3. The average concavity reading is between 0.1235 and 0.4264, which is not true for this case.  
+4. The standard error of the radius is between 0.5115 and 2.873, which is not true for this case.  
+5. The standard error of the area is between 6.802 and 21.83, which is true here.  
+6. The standard error of the symmetry is between 0.007882 and 0.01623, which is not true for this case.  
+7. The standard error of the symmetry is between 0.02137 and 0.06146, which is true here.  
+8. The worst texture reading is between 12.02 and 23.31, which is not true for this case.  
+9. The worst texture reading is between 29.02 and 47.16, which is true here.  
+10. The worst perimeter reading is between 126.9 and 251.2, which is not true for this case.  
+11. The worst area reading is between 185.2 and 622.9, which is true here.  
+12. The worst area reading is between 1050 and 4254, which is not true for this case.  
+13. The worst smoothness reading is between 0.07117 and 0.1247, which is not true for this case.  
+14. The worst smoothness reading is between 0.1417 and 0.2184, which is not true for this case.  
+15. The worst concavity reading is between 0 and 0.189, which is true here.  
+16. The worst concavity reading is between 0.3744 and 1.17, which is not true for this case.  
+17. The worst concave-points reading is between 0.1625 and 0.291, which is not true for this case.  
+18. The worst fractal-dimension reading is between 0.05504 and 0.07587, which is not true for this case.","['concavity_mean_b0 > 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b2 > 0.5', 'texture_worst_b2 > 0.5', 'area_worst_b0 > 0.5', 'concavity_worst_b0 > 0.5', 'smoothness_mean_b2 < 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'symmetry_se_b0 < 0.5', 'texture_worst_b0 < 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b0 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 < 0.5']","['smoothness_mean_b2 < 0.5', 'concavity_mean_b0 > 0.5', 'concavity_mean_b2 < 0.5', 'radius_se_b2 < 0.5', 'area_se_b0 > 0.5', 'symmetry_se_b0 < 0.5', 'symmetry_se_b2 > 0.5', 'texture_worst_b0 < 0.5', 'texture_worst_b2 > 0.5', 'perimeter_worst_b2 < 0.5', 'area_worst_b0 > 0.5', 'area_worst_b2 < 0.5', 'smoothness_worst_b0 < 0.5', 'smoothness_worst_b2 < 0.5', 'concavity_worst_b0 > 0.5', 'concavity_worst_b2 < 0.5', 'concave_points_worst_b2 < 0.5', 'fractal_dimension_worst_b0 < 0.5']","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]","[14, 18, 20, 32, 39, 54, 56, 63, 65, 68, 69, 71, 72, 74, 78, 80, 83, 87]",0.4074,FEASIBLE,cop@18,0.4076

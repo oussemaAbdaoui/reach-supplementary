@@ -1,0 +1,1283 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec
+heart,openai/gpt-oss-20b,3,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.1,False,89.1,89.1,89.1,89.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[89.1, 89.1, 89.1, 89.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model looked at two simple checks.  
+One check asks whether the patient’s ejection fraction was between 15 % and 30 %. For this patient that check was **false** (the ejection fraction was outside that range).  
+The other check asks whether the patient’s time was between 4 days and 67 days. That check was also **false** (the time was outside that range).  
+
+Because both checks were false, the model’s rule says the patient is likely to survive, so it predicted class 0. The fact that the actual measurements were not in the specified ranges simply means the checks were false, which is exactly what the rule uses to make the prediction.","The patient’s ejection fraction is not between 15 % and 30 %, and the time since diagnosis is not between 4 days and 67 days. Under these conditions, the model predicts that the patient will survive.","1. The heart's pumping efficiency is between 15 % and 30 %, which is not true here.  
+2. The duration of the patient's condition is between 4 and 67 days, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1702,OPTIMAL,cop,0.519,,
+heart,openai/gpt-oss-20b,3,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.3,False,88.3,90.1,90.1,88.3,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[88.3, 88.3, 88.3, 90.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (0).  
+It did so because the patient has high blood pressure (the indicator is 1, which falls in the range 0 to 1) and the sex indicator is 1 (also in the range 0 to 1).  
+The ejection‑fraction value is not in the range 15 % to 30 % and the time value is not in the range 4 days to 67 days, so those two indicators do not support the rule. The presence of high blood pressure and the sex indicator together led the model to predict survival.","The model predicts that the patient will survive. It bases this on the fact that the patient’s blood pressure is low (between 0 and 1), the patient falls into the sex category represented by 1, but the ejection fraction is not in the low range of 15 % to 30 % and the follow‑up time is not between 4 and 67 days.","1. The patient's ejection fraction is between 15 % and 30 %, which is not the case here and therefore pushes against this class.  
+2. The patient's high blood pressure indicator is between 0 and 1, which is true here and pushes the prediction towards this class.  
+3. The patient's sex indicator is between 0 and 1, which is true here and supports the prediction.  
+4. The patient's time is between 4 and 67, which does not hold and therefore pushes against this class.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 21, 23]","[8, 11, 21, 23]",0.1702,OPTIMAL,cop@4,0.519,,
+heart,openai/gpt-oss-20b,3,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.2,True,99.2,99.2,99.2,99.2,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[99.2],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  ejection_fraction_b2 = 1  (ejection_fraction in [40, 70) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that the patient survived.  
+Because the patient’s ejection fraction is between 40 % and 70 %, a range that the model associates with a higher chance of survival.  
+Also, the patient’s time is between 67 and 172, another range that the model links to survival.  
+The other two ranges—ejection fraction between 15 % and 30 % and time between 4 and 67—do not apply to this patient, so they do not influence the prediction.","The model predicted that the patient survived.  
+Because the patient’s ejection fraction is between 40 % and 70 %, a range that the model associates with a higher chance of survival.  
+Also, the patient’s time is between 67 and 172, another range that the model links to survival.  
+The other two ranges—ejection fraction between 15 % and 30 % and time between 4 and 67—do not apply to this patient, so they do not influence the prediction.","1. The ejection fraction is between 15% and 30%, which is not true here.  
+2. The ejection fraction is between 40% and 70%, which is true here.  
+3. The time is between 4 and 67, which is not true here.  
+4. The time is between 67 and 172, which is true here.","['ejection_fraction_b2 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]","[8, 10, 23, 24]",,,,,0.9899280575539569,
+heart,openai/gpt-oss-20b,3,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,85.7,False,64.4,79.8,85.7,85.7,False,False,False,2,1,3,1,0,2,0,0,0,1,0,3,"[64.4, 85.7, 79.8, 79.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF creatinine_phosphokinase_b0 = 1 AND time_b0 = 0 AND serum_sodium_b2 = 1 THEN class 0","The model predicted that the patient survived (class 0) because the three measurements that were recorded match a rule the model uses with high confidence.  
+- The creatinine phosphokinase measurement was at a level that the rule says is associated with survival.  
+- The serum sodium measurement was at a level that the rule says is associated with survival.  
+- The time measurement was at a level that the rule says is associated with survival.  
+
+When all three of these conditions are true, the rule says the patient will survive, and the rule has been observed to be correct 97 % of the time.","If a patient’s creatinine phosphokinase level is above 200 U/L, the time since admission is 0 days, and the serum sodium level is below 135 mmol/L, the model predicts that the patient will survive.","1. The creatinine phosphokinase level was high, which pushed the prediction towards the survival outcome.  
+2. The serum sodium level was high, which pushed the prediction towards the survival outcome.  
+3. The time was zero, which pushed the prediction towards the survival outcome.","['creatinine_phosphokinase_b0 > 0.5', 'serum_sodium_b2 > 0.5', 'time_b0 > 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'serum_sodium_b2 > 0.5', 'time_b0 < 0.5']","[4, 20, 23]","[4, 20]",[23],"[4, 20, 23]",,,,,,0.9745676500508648
+heart,openai/gpt-oss-20b,3,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.3,True,82.1,79.8,82.1,82.1,False,False,False,3,1,3,1,0,3,0,1,0,1,1,3,"[82.1, 72.8, 64.5, 79.8]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 35.7% (supports the prediction)
+  ejection_fraction_b2: 22.8% (supports the prediction)
+  time_b1: 21.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 20.1% (supports the prediction)","The model predicted that the patient survived because each of the four indicators that were present pushed the prediction toward survival.  
+- The indicator for creatinine phosphokinase added 20.1 % to the survival prediction.  
+- The indicator for ejection fraction added 22.8 % to the survival prediction.  
+- The first time‑related indicator added 35.7 % to the survival prediction.  
+- The second time‑related indicator added 21.4 % to the survival prediction.  
+
+All of these contributions support the prediction that the patient will survive.","The model predicts that the patient survived. This prediction is supported by several factors: the patient’s creatinine phosphokinase level is high (above 200 U/L), the patient was not admitted for less than 1 day (time since admission is at least 1 day), and the patient has been admitted for more than 1 day (time since admission exceeds 1 day).","1. The creatinine phosphokinase level pushed the prediction towards survival.  
+2. The ejection fraction pushed the prediction towards survival.  
+3. The time at baseline pushed the prediction towards survival.  
+4. The time at follow‑up pushed the prediction towards survival.","['creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5']","[4, 10, 23, 24]","[4, 10, 24]",[23],"[4, 10, 24]",,,,,,
+heart,openai/gpt-oss-20b,3,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,91.0,False,89.1,89.1,89.1,49.7,False,False,False,2,2,2,2,0,2,0,2,0,2,2,3,"[89.1, 89.1, 89.1, 89.1]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3802 (opposes the prediction)
+  time_b2: weight=+0.3702 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1995 (opposes the prediction)
+  time_b1: weight=-0.1759 (opposes the prediction)","The model predicted that the patient survived.  
+It saw that the patient’s time was in the second category, which tends to support survival.  
+At the same time, the patient did not have ejection fraction in the first category, and the patient’s time was not in the first or third categories. Those conditions are linked to higher risk.  
+Because the supportive signal from the second‑category time outweighed the opposing signals, the model chose the “survived” class.","The model predicts that the patient will survive because the time since diagnosis is more than 12 months, which increases the chance of survival. A low ejection fraction (below 40 %) and a time since diagnosis of less than 6 months both lower the chance of survival. The period of 6 to 12 months since diagnosis also lowers the chance of survival.","1. The lowest ejection fraction category pushes the prediction against this class.  
+2. The earliest time category pushes the prediction against this class.  
+3. The second time category pushes the prediction against this class.  
+4. The latest time category pushes the prediction towards this class.","['time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'time_b1 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 < 0.5']","[8, 23, 24, 25]","[8, 23]","[8, 23]","[24, 25]",,,,,,
+heart,openai/gpt-oss-20b,11,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,89.4,False,89.4,67.0,89.4,89.4,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[89.4, 89.4, 89.4, 67.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived.  
+For this patient the two indicators are both “0”, meaning that the ejection fraction is **not** between 15 % and 30 % and that the time is **not** between 4 and 67 days.  
+The rule the model learned says that when both of these indicators are 0, the prediction is survival. This rule matches the model’s decision for this patient.",The model says the patient survived because their ejection fraction is not between 15 % and 30,"1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]",[8],"[8, 23]",0.1688,OPTIMAL,cop,0.5148,,
+heart,openai/gpt-oss-20b,11,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,88.1,False,88.1,88.1,88.1,88.1,False,False,False,5,5,5,0,0,0,0,0,0,0,0,3,"[88.1, 88.1, 88.1, 88.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0).  
+The rule that explains this prediction says: the patient has diabetes, has high blood pressure, and is male – all of these conditions are true. The ejection‑fraction value is not in the 15 % to 30 % range, and the time value is not in the 4 to 67 day range. Because the diabetes, high blood pressure, and male sex are present while the ejection‑fraction and time do not fall into the ranges that would push the prediction toward death, the model concluded that the patient is likely to survive.","The model says this patient is likely to survive.  
+The rule that explains this prediction is:
+
+* Diabetes is present.  
+* The ejection fraction is **not** between 15 % and 30 %.  
+* High blood pressure is present.  
+* The patient belongs to the first sex category (the first group in the data).  
+* The time value is **not** between 4 and 67 days.  
+
+These five facts together lead the model to predict survival (class 0).","1. The presence of diabetes is between 0 and 1, which is true here.  
+2. The ejection fraction is between 15 and 30, which is false here.  
+3. The high blood pressure indicator is between 0 and 1, which is true here.  
+4. The sex indicator is between 0 and 1, which is true here.  
+5. The time is between 4 and 67, which is false here.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]","[7, 8, 11, 21, 23]",0.1688,OPTIMAL,cop@5,0.5148,,
+heart,openai/gpt-oss-20b,11,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,98.9,True,98.9,98.9,98.9,98.9,True,True,True,5,5,5,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_creatinine_b2 = 0  (serum_creatinine in [1.3, 9) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)","The model predicted that the patient will survive because the key measurements are in ranges that are linked to lower risk of death.  
+- The patient’s serum creatinine is between 0.5 and 1, a low level, and it is not in the higher range of 1.3 to 9.  
+- The serum sodium level is between 135 and 138, which is a normal range.  
+- The time value is between 67 and 172, so it is not in the earlier 4 to 67 range.  
+
+These values together point to a lower likelihood of mortality, leading the model to classify the patient as surviving.","The model predicted that the patient will survive because the key measurements are in ranges that are linked to lower risk of death.  
+- The patient’s serum creatinine is between 0.5 and 1, a low level, and it is not in the higher range of 1.3 to 9.  
+- The serum sodium level is between 135 and 138, which is a normal range.  
+- The time value is between 67 and 172, so it is not in the earlier 4 to 67 range.  
+
+These values together point to a lower likelihood of mortality, leading the model to classify the patient as surviving.","1. The serum creatinine level is between 0.5 and 1.0, which is true here.  
+2. The serum creatinine level is between 1.3 and 9.0, which is false here.  
+3. The serum sodium level is between 135 and 138, which is true here.  
+4. The time in the hospital is between 4 and 67 days, which is false here.  
+5. The time in the hospital is between 67 and 172 days, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b1 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","['serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b1 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]","[15, 17, 19, 23, 24]",,,,,0.9820143884892086,
+heart,openai/gpt-oss-20b,11,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,86.2,False,86.2,80.0,86.2,86.2,False,False,False,3,1,3,0,0,2,0,0,0,0,0,3,"[86.2, 78.4, 62.1, 80.0]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 0 AND serum_creatinine_b0 = 1 AND creatinine_phosphokinase_b1 = 1 THEN class 0","Because the patient’s creatinine phosphokinase level was high, the serum creatinine level was high, and the time measurement was zero, all three conditions of the rule that predicts survival are met. Therefore the model concluded that the patient survived.","If the time is 0 days, the serum creatinine level is 1 mg/dL, and the creatine phosphokinase level is 1 U/L, then the model predicts the patient will survive.","1. The creatinine phosphokinase level was high, which pushed the prediction towards this class.  
+2. The serum creatinine level was high, which pushed the prediction towards this class.  
+3. The time since admission was zero days, which pushed the prediction towards this class.","['creatinine_phosphokinase_b1 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b0 < 0.5']","['creatinine_phosphokinase_b1 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b0 < 0.5']","[5, 15, 23]","[5, 15, 23]",[23],"[5, 15, 23]",,,,,,1.0
+heart,openai/gpt-oss-20b,11,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,99.4,True,99.4,99.4,99.4,80.8,True,True,False,5,5,3,0,0,0,0,2,0,0,2,0,[99.4],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 33.7% (supports the prediction)
+  serum_creatinine_b0: 22.5% (supports the prediction)
+  time_b1: 17.2% (supports the prediction)
+  serum_sodium_b1: 13.4% (supports the prediction)
+  ejection_fraction_b0: 13.2% (supports the prediction)","The model predicted that the patient will survive.  
+All of the five indicators that were checked pushed the prediction toward survival.  
+* The fact that the patient’s time‑related indicator “time_b0” was not present gave a strong positive signal (about one‑third of the decision).  
+* The presence of the “serum_creatinine_b0” indicator also added a positive signal (about one‑fifth).  
+* The “time_b1” indicator being present added another positive contribution (about one‑sixth).  
+* The “serum_sodium_b1” indicator being present added a smaller positive contribution (about one‑seventh).  
+* Finally, the “ejection_fraction_b0” indicator being absent added a small positive contribution (about one‑seventh).  
+
+Because each of these measurements supported the outcome of survival, the overall prediction was class 0 (survived).","The model predicted that the patient will survive.  
+All of the five indicators that were checked pushed the prediction toward survival.  
+* The fact that the patient’s time‑related indicator “time_b0” was not present gave a strong positive signal (about one‑third of the decision).  
+* The presence of the “serum_creatinine_b0” indicator also added a positive signal (about one‑fifth).  
+* The “time_b1” indicator being present added another positive contribution (about one‑sixth).  
+* The “serum_sodium_b1” indicator being present added a smaller positive contribution (about one‑seventh).  
+* Finally, the “ejection_fraction_b0” indicator being absent added a small positive contribution (about one‑seventh).  
+
+Because each of these measurements supported the outcome of survival, the overall prediction was class 0 (survived).","1. The first time indicator pushed the prediction towards this class.  
+2. The serum creatinine level pushed the prediction towards this class.  
+3. The serum sodium level pushed the prediction towards this class.  
+4. The second time indicator pushed the prediction towards this class.  
+5. The ejection fraction pushed the prediction towards this class.","['time_b0 < 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b1 > 0.5', 'ejection_fraction_b0 < 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5']","[8, 15, 19, 23, 24]","[8, 15, 19, 23, 24]","[8, 15, 19, 23, 24]","[15, 19, 24]",,,,,,
+heart,openai/gpt-oss-20b,11,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,96.7,True,80.0,95.9,95.9,95.9,False,True,True,1,3,3,4,0,2,0,2,0,2,2,3,"[80.0, 77.5, 74.8, 95.9]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3941 (opposes the prediction)
+  time_b2: weight=+0.3858 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1998 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1749 (opposes the prediction)
+  time_b1: weight=-0.1673 (opposes the prediction)","The model predicted that the patient survived.  
+The patient had a time indicator of 1, which tends to lower the chance of survival.  
+The patient did not have the time indicator that would raise the chance of survival.  
+The patient did","The model predicts that the patient will survive (class 0). This prediction is affected by several measurable factors:
+
+- **Ejection fraction** – if it is low (below about 40 %), the chance of survival drops.  
+- **Serum sodium** – if it is low (below about 135 mEq/L), the chance of survival drops.  
+- **Time since admission** –  
+  - 0 days (today) – lowers the chance of survival.  
+  - 1 day – lowers the chance of survival.  
+  - 2 days – raises the chance of survival.  
+
+These conditions together explain why the model chose the survival outcome for this patient.","1. The ejection fraction measurement pushed the prediction against this class.  
+2. The serum sodium measurement pushed the prediction against this class.  
+3. The initial time measurement pushed the prediction against this class.  
+4. The first follow-up time measurement pushed the prediction against this class.  
+5. The second follow-up time measurement pushed the prediction towards this class.","['time_b0 < 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5']","['ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b1 < 0.5', 'time_b2 > 0.5']","[8, 18, 23, 24, 25]",[23],"[8, 18, 23]","[8, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,13,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,57.9,False,57.9,57.9,57.9,57.9,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[57.9, 57.9, 57.9, 57.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)","The model predicted that the patient will not survive because the serum creatinine level is in the higher range of 1.3 to 9. This level is associated with a higher risk of death from heart failure. The lower range of 0.5 to 1 does not apply to this patient, so only the higher‑range condition influences the prediction.","The model predicts that the patient will die.  
+The rule that explains this prediction is:  
+
+- If the serum creatinine level is between 1.3 and 9, the patient is predicted to die.  
+- The level is not between 0.5 and 1, so that part of the rule does not apply.  
+
+Because the patient’s serum creatinine falls in the 1.3‑9 range, the rule matches the model’s prediction. The rule was derived using a method that provides a statistical guarantee on its accuracy.","1. The serum creatinine level is between 0.5 and 1, which is not true here.  
+2. The serum creatinine level is between 1.3 and 9, which is true here.","['serum_creatinine_b2 > 0.5', 'serum_creatinine_b0 < 0.5']","['serum_creatinine_b0 < 0.5', 'serum_creatinine_b2 > 0.5']","[15, 17]","[15, 17]","[15, 17]","[15, 17]",0.3896,FEASIBLE,cop,0.4872,,
+heart,openai/gpt-oss-20b,13,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,71.0,False,71.0,71.0,71.0,71.0,False,False,False,9,9,9,0,0,0,0,0,0,0,0,3,"[71.0, 71.0, 61.0, 71.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)","The model predicted that this patient would die because several key health indicators were present. The patient has anaemia, diabetes, high blood pressure, is in the first sex category (often male), and smokes. In addition, the serum creatinine level is high, falling between 1.3 and 9. These conditions together match the pattern that the model learned is associated with mortality. The creatinine phosphokinase level is not in the 23 to 157 range, and the serum creatinine is not in the lower ranges of 0.5 to 1 or 1 to 1.3, so those values do not counter the prediction. All the other indicators that support the prediction are present, leading the model to classify the patient as at risk of death.","The model predicts that this patient will not survive.  
+The prediction is based on the following facts:  
+- The patient has anaemia.  
+- The patient has diabetes.  
+- The patient has high blood pressure.  
+- The patient is male.  
+- The patient smokes.  
+- The patient’s creatinine phosphokinase level is not between 23 and 157.  
+- The patient’s serum creatinine level is not between 0.5 and 1.  
+- The patient’s serum creatinine level is not between 1 and 1.3.  
+- The patient’s serum creatinine level is between 1.3 and 9.","1. The anaemia indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+2. The creatinine phosphokinase level is between 23 and 157, which is not true here, and it pushed against this class, but was outweighed.  
+3. The diabetes indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+4. The high blood pressure indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+5. The serum creatinine level in the 0.5–1 range is not true here, and it pushed against this class, but was outweighed.  
+6. The serum creatinine level in the 1–1.3 range is not true here, and it pushed against this class, but was outweighed.  
+7. The serum creatinine level in the 1.3–9 range is true here, and it pushed the prediction towards this class.  
+8. The sex indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.  
+9. The smoking indicator is between 0 and 1, which is true here, and it pushed the prediction towards this class.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5']","['anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5']","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]","[3, 4, 7, 11, 15, 16, 17, 21, 22]",0.3982,FEASIBLE,cop@9,0.4872,,
+heart,openai/gpt-oss-20b,13,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,94.4,False,94.4,56.3,94.4,94.4,False,False,False,9,3,9,0,0,6,0,0,0,0,0,3,"[94.4, 94.4, 94.4, 56.3]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted death because the patient’s creatinine phosphokinase level is high, falling between 157 and 582, and the platelet count is also in a high range, between 47 000 and 225 000. In addition, the serum creatinine level is high, between 1.3 and 9. These three measurements are the ones that meet the model’s risk thresholds and push the prediction toward death.  
+
+The other measurements do not fall into the model’s risk ranges: the ejection fraction is not between 30 % and 40 %; the platelet count is not in the very high range of 273 000 to 742 000; the serum creatinine is not between 0.5 and 1 or between 1 and 1.3; the serum sodium is not between 135 and 138; and the time is not between 67 and 172. These non‑matching values do not contribute to the prediction.","Creatinine phosphokinase between 157 and 582 supports the prediction.  
+Ejection fraction is not between 30 and 40.  
+Platelets between 47 000 and 225 000 support the prediction.  
+Platelets","1. The creatinine phosphokinase level is between 157 and 582, which is true here.  
+2. The heart ejection fraction is between 30 and 40, which is not true here.  
+3. The platelet count is between 47,000 and 225,000, which is true here.  
+4. The platelet count is between 273,000 and 742,000, which is not true here.  
+5. The serum creatinine level is between 0.5 and 1, which is not true here.  
+6. The serum creatinine level is between 1 and 1.3, which is not true here.  
+7. The serum creatinine level is between 1.3 and 9, which is true here.  
+8. The serum sodium level is between 135 and 138, which is not true here.  
+9. The time since admission is between 67 and 172 days, which is not true here.","['creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b2 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12, 14, 15, 16, 17, 19, 24]","[5, 9, 12]","[5, 9, 12, 14, 15, 16, 17, 19, 24]",,,,,0.9510791366906476,
+heart,openai/gpt-oss-20b,13,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,79.5,False,61.1,61.1,68.7,69.3,False,False,False,4,4,6,3,0,3,0,1,0,1,1,3,"[61.1, 61.7, 68.7, 61.1]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF serum_creatinine_b2 = 1 AND age_b2 = 1 AND creatinine_phosphokinase_b1 = 1 AND time_b1 = 0 AND platelets_b0 = 1 AND serum_creatinine_b1 = 0 AND serum_creatinine_b0 = 0 THEN class 1","The model looked at a few key measurements.  
+The patient is older (high age).  
+The blood test for creatinine is high.  
+The enzyme creatinine phosphokinase is high.  
+The time measurement is low.  
+The platelet count is normal.  
+Because the creatinine test is not in the lower ranges, the model treats it as high rather than low.  
+
+When all of these conditions are present, the rule the model uses says the patient is very likely to have died. The rule is known to be accurate about 98 % of the time, so the prediction of death is considered reliable.","If the patient’s serum creatinine level is normal (about 0.6–1.3 mg/dL), age is high, creatinine phosphokinase is high, time is short, platelets are normal, and serum creatinine is normal, the model predicts the patient died.","1. The patient's age is in the oldest group, which is true here and pushed the prediction towards this class.  
+2. The patient's creatinine phosphokinase level is high, which is true here and pushed the prediction towards this class.  
+3. The patient's platelet count is normal, which is true here and pushed the prediction towards this class.  
+4. The patient's serum creatinine level is not in the lowest category, which is true here and pushed against this class, but was outweighed.  
+5. The patient's serum creatinine level is not in the middle category, which is true here and pushed against this class, but was outweighed.  
+6. The patient's serum creatinine level is in the highest category, which is true here and pushed the prediction towards this class.  
+7. The patient's hospital stay duration is not in the intermediate category, which is true here and pushed the prediction towards this class.","['age_b2 > 0.5', 'serum_creatinine_b1 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'time_b1 < 0.5', 'platelets_b0 > 0.5']","['age_b2 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 > 0.5']","[2, 5, 12, 15, 16, 17, 24]","[2, 5, 12, 24]","[2, 5, 12, 24]","[2, 5, 12, 15, 16, 17]",,,,,,0.982089552238806
+heart,openai/gpt-oss-20b,13,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,39.1,False,36.0,19.4,59.7,35.3,False,False,False,3,1,4,6,0,8,0,5,0,2,4,3,"[36.0, 27.7, 59.7, 19.4]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 25.9% (opposes the prediction)
+  time_b0: 12.5% (opposes the prediction)
+  serum_creatinine_b2: 12.2% (supports the prediction)
+  time_b1: 10.4% (supports the prediction)
+  platelets_b0: 10.2% (supports the prediction)
+  creatinine_phosphokinase_b1: 10.0% (supports the prediction)
+  ejection_fraction_b2: 6.4% (opposes the prediction)
+  platelets_b2: 6.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 6.1% (supports the prediction)","The model predicted that the patient would die because several key measurements pushed the prediction toward death. A high creatinine phosphokinase level, a high serum creatinine level, and a high platelet count all increased the chance of death. The time the patient spent in the hospital had mixed effects: some aspects of the time measurement suggested survival, while other aspects suggested death, but the overall influence of the time variables still leaned toward death. The ejection fraction measurement, which reflects how well the heart pumps blood, suggested survival, but its effect was smaller than the other factors that supported death. In short, the combination of high enzyme, kidney, and platelet values outweighed the protective signals from time and heart pumping ability, leading the model to predict mortality.","The patient’s creatinine phosphokinase level was below 200 U/L, which supports the prediction of mortality.  
+The patient’s ejection fraction was above 70 %, which opposes the prediction.  
+The platelet count was above 450,000 per microliter, which supports the prediction.  
+The time since admission was less than 30 days, which opposes the prediction.  
+The time since admission was between 30 and 90 days, which supports the prediction.  
+The time since admission was more than 90 days, which opposes the prediction.","1. The hospital stay duration pushed against this class, but was outweighed.  
+2. The hospital stay duration pushed against this class, but was outweighed.  
+3. The serum creatinine level pushed the prediction towards this class.  
+4. The hospital stay duration pushed the prediction towards this class.  
+5. The platelet count pushed the prediction towards this class.  
+6. The creatinine phosphokinase level pushed the prediction towards this class.  
+7. The heart pumping efficiency pushed against this class, but was outweighed.  
+8. The platelet count pushed the prediction towards this class.  
+9. The creatinine phosphokinase level pushed the prediction towards this class.","['creatinine_phosphokinase_b1 > 0.5', 'serum_creatinine_b2 > 0.5', 'platelets_b2 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b2 < 0.5']","['time_b0 < 0.5', 'time_b0 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 > 0.5', 'platelets_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b2 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","[4, 5, 10, 12, 14, 17, 23, 24, 25]","[5, 17, 25]",[23],"[5, 12, 17, 23]",,,,,,
+heart,openai/gpt-oss-20b,13,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,9,1.5,False,40.4,22.3,41.5,8.2,False,False,False,2,2,4,7,0,7,0,5,0,3,5,3,"[40.4, 41.5, 27.0, 22.3]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3772 (opposes the prediction)
+  time_b0: weight=-0.3768 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1749 (opposes the prediction)
+  ejection_fraction_b2: weight=-0.1566 (opposes the prediction)
+  serum_creatinine_b2: weight=+0.1554 (supports the prediction)
+  time_b1: weight=+0.1474 (supports the prediction)
+  serum_sodium_b0: weight=-0.1470 (opposes the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1387 (supports the prediction)
+  serum_creatinine_b0: weight=+0.1212 (supports the prediction)","The model predicted that the patient would die because the measurements that point toward death outweigh those that point toward survival.  
+- The creatinine‑phosphokinase measurement was present, which the model uses to support a death prediction.  
+- The ejection‑fraction measurement was in the second category, which the model uses to support survival (opposing death).  
+- The serum‑creatinine measurement was in the second category, which the model uses to support a death prediction.  
+- The serum‑sodium measurement was absent, which the model uses to support survival (opposing death).  
+- The time measurement was in the second category, which the model uses to support survival (opposing death).  
+
+Because the positive influence of creatinine‑phosphokinase and serum‑creatinine is stronger than the negative influence of ejection‑fraction, serum‑sodium, and time, the overall decision is that the patient is likely to die.","The model predicts that the patient will not survive.  
+The prediction is influenced by several measurements:
+
+- **Serum creatinine** – a level in the normal range (≈ 0.6–1.3 mg/dL) supports the prediction of death.  
+- **Time since admission** – a short period (0–5 days) supports the prediction, while a longer period (more than 5 days) opposes it.  
+- **Ejection fraction** – values below 40 % oppose the prediction; values above 40 % also oppose it.  
+- **Serum sodium** – normal or low levels (≈ 135–145 mmol/L) oppose the prediction.  
+- **Creatinine phosphokinase** – normal or low levels support the prediction.","1. The third time measurement pushed the prediction against this class.  
+2. The first time measurement pushed the prediction against this class.  
+3. The first ejection fraction measurement pushed the prediction against this class.  
+4. The second ejection fraction measurement pushed the prediction against this class.  
+5. The second serum creatinine measurement pushed the prediction towards this class.  
+6. The second time measurement pushed the prediction towards this class.  
+7. The serum sodium level pushed the prediction against this class.  
+8. The creatinine phosphokinase level pushed the prediction towards this class.  
+9. The serum creatinine level pushed the prediction towards this class.","['creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b2 < 0.5']","['time_b2 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b1 > 0.5', 'serum_sodium_b0 < 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[4, 8, 10, 15, 17, 18, 23, 24, 25]","[17, 18]","[8, 18]","[8, 17, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,14,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,59.5,False,59.5,59.5,59.5,59.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[59.5, 59.5, 59.5, 59.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted that the patient would die because two facts were true for this case. First, the patient’s serum sodium level was not between 135 and 138. Second, the time was not between 67 and 172. According to the rule the model learned, when both of these conditions are not met the prediction is for mortality.","The model predicted death because the patient’s serum sodium level was outside the normal range of 135 to 138, and the time was outside the range of 67 to 172.","1. The serum sodium level is not between 135 and 138, which is true here.  
+2. The time is not between 67 and 172, which is true here.","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[19, 24]","[19, 24]","[19, 24]","[19, 24]",0.3968,FEASIBLE,cop,0.483,,
+heart,openai/gpt-oss-20b,14,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,87.4,False,87.4,87.4,87.4,87.4,False,False,False,12,12,12,0,0,0,0,0,0,0,0,3,"[87.4, 87.4, 87.4, 87.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b0 = 1  (platelets in [4.7e+04, 2.25e+05) — holds)
+  platelets_b1 = 0  (platelets in [2.25e+05, 2.73e+05) — does NOT hold)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted death because the patient shows several risk factors that the rule highlights. Anaemia is present, diabetes is present, high blood pressure is present, the platelet count is between 47 000 and 225 000, the patient is female, and the patient smokes. These conditions all hold. In contrast, the ejection fraction does not fall in the 30–40 range, the platelet count does not fall in the 225 000–273 000 range, it also does not fall in the 273 000–742 000 range, the serum creatinine does not fall in the 0.5–1 range, the serum sodium does not fall in the 135–138 range, and the time is not between 67 and 172. The combination of the present risk factors and the absence of the protective ranges led the model to predict mortality.","The model predicts that this patient died.  
+The rule that explains this prediction is based on the following facts about the patient:
+
+- The patient has anaemia (the anaemia indicator is 1, meaning the value is between 0 and 1).  
+- The patient has diabetes (the diabetes indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s ejection fraction is **not** between 30 % and 40 % (the ejection‑fraction indicator is 0, so the value is outside that range).  
+- The patient has high blood pressure (the high‑blood‑pressure indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s platelet count is between 47 000 and 225 000 (the platelets indicator is 1, so the value falls in that range).  
+- The patient’s platelet count is **not** between 225 000 and 273 000 (the platelets_b1 indicator is 0).  
+- The patient’s platelet count is **not** between 273 000 and 742 000 (the platelets_b2 indicator is 0).  
+- The patient’s serum creatinine is **not** between 0.5 and 1 (the serum‑creatinine indicator is 0).  
+- The patient’s serum sodium is **not** between 135 and 138 (the serum‑sodium indicator is 0).  
+- The patient is male (the sex indicator is 1, meaning the value is between 0 and 1).  
+- The patient smokes (the smoking indicator is 1, meaning the value is between 0 and 1).  
+- The patient’s time in the hospital is **not** between 67 and 172 days (the time indicator is 0).","1. The anaemia indicator is between 0 and 1, which is true here.  
+2. The diabetes indicator is between 0 and 1, which is true here.  
+3. The ejection fraction reading is between 30 and 40, which is not true here.  
+4. The high blood pressure indicator is between 0 and 1, which is true here.  
+5. The platelet count reading is between 47,000 and 225,000, which is true here.  
+6. The platelet count reading is between 225,000 and 273,000, which is not true here.  
+7. The platelet count reading is between 273,000 and 742,000, which is not true here.  
+8. The serum creatinine level is between 0.5 and 1.0, which is not true here.  
+9. The serum sodium level is between 135 and 138, which is not true here.  
+10. The sex indicator is between 0 and 1, which is true here.  
+11. The smoking indicator is between 0 and 1, which is true here.  
+12. The time since admission indicator is between 67 and 172, which is not true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b0 > 0.5', 'platelets_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b1 < 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b1 < 0.5']","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]","[3, 7, 9, 11, 12, 13, 14, 15, 19, 21, 22, 24]",0.4414,FEASIBLE,cop@12,0.483,,
+heart,openai/gpt-oss-20b,14,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,94.7,False,88.1,92.6,94.7,94.7,False,False,False,10,11,12,2,0,1,0,0,0,0,0,3,"[88.1, 94.7, 88.1, 92.6]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  age_b2 = 0  (age in [65, 95) — does NOT hold)
+  anaemia_b0 = 1  (anaemia in [0, 1) — holds)
+  creatinine_phosphokinase_b0 = 0  (creatinine_phosphokinase in [23, 157) — does NOT hold)
+  creatinine_phosphokinase_b1 = 1  (creatinine_phosphokinase in [157, 582) — holds)
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b1 = 0  (ejection_fraction in [30, 40) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  platelets_b2 = 0  (platelets in [2.73e+05, 7.42e+05) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_sodium_b0 = 1  (serum_sodium in [116, 135) — holds)
+  serum_sodium_b1 = 0  (serum_sodium in [135, 138) — does NOT hold)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)","The model predicted that the patient will die because several of the measured health indicators fall into ranges that the model has learned are linked to higher mortality.  
+
+- **Anaemia** is present (the value is in the 0‑to‑1 range).  
+- **Diabetes** is present (the value is in the 0‑to‑1 range).  
+- **High blood pressure** is present (the value is in the 0‑to‑1 range).  
+- **Creatinine phosphokinase** is between 157 and 582, a range that the model associates with increased risk.  
+- **Serum sodium** is between 116 and 135, another risk range.  
+
+These five conditions push the prediction toward death.  
+
+The other measurements do not fall into the risk ranges that the model uses to predict survival:  
+
+- Age is not between 65 and 95.  
+- Ejection fraction is not between 30 and 40.  
+- Platelets are not between 273,000 and 742,000.  
+- Serum creatinine is not between 0.5 and 1.  
+- Time is not between 67 and 172.  
+
+Because the risk‑indicating indicators are present and the non‑risk indicators are absent, the model concludes that the patient is likely to die.","Age is not between 65 and 95; the patient has anaemia; creatinine phosphokinase level is between 157 and 582; the patient has diabetes; ejection fraction is not between 30 and 40; the patient has high blood pressure; platelet count is not between 273,000 and 742,000; serum creatinine is not between 0.5 and 1; serum sodium level is between 116 and 135; serum sodium level is not between 135 and 138; time in hospital is not between 67 and 172.","1. The patient's age is between 65 and 95 years, which is not true here.  
+2. The patient's anaemia level is between 0 and 1, which is true here.  
+3. The patient's creatinine phosphokinase level is between 23 and 157, which is not true here.  
+4. The patient's creatinine phosphokinase level is between 157 and 582, which is true here.  
+5. The patient's diabetes level is between 0 and 1, which is true here.  
+6. The patient's ejection fraction is between 30 and 40 percent, which is not true here.  
+7. The patient's high blood pressure level is between 0 and 1, which is true here.  
+8. The patient's platelet count is between 273,000 and 742,000, which is not true here.  
+9. The patient's serum creatinine level is between 0.5 and 1.0, which is not true here.  
+10. The patient's serum sodium level is between 116 and 135, which is true here.  
+11. The patient's serum sodium level is between 135 and 138, which is not true here.  
+12. The patient's time in the study is between 67 and 172 days, which is not true here.","['anaemia_b0 > 0.5', 'diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'serum_sodium_b0 > 0.5', 'age_b2 < 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b1 < 0.5']","['age_b2 < 0.5', 'anaemia_b0 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'diabetes_b0 > 0.5', 'ejection_fraction_b1 < 0.5', 'high_blood_pressure_b0 > 0.5', 'platelets_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 < 0.5', 'time_b1 < 0.5']","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 5, 7, 9, 11, 14, 15, 18, 24]","[2, 3, 5, 7, 9, 11, 14, 15, 18, 19, 24]","[2, 3, 4, 5, 7, 9, 11, 14, 15, 18, 19, 24]",,,,,0.9553956834532374,
+heart,openai/gpt-oss-20b,14,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,80.3,False,80.3,73.7,80.3,76.7,False,False,False,6,4,5,0,0,2,0,1,0,0,1,3,"[80.3, 73.7, 72.2, 73.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b1 = 0 AND serum_sodium_b0 = 1 AND creatinine_phosphokinase_b1 = 1 AND ejection_fraction_b1 = 0 AND platelets_b0 = 1 AND age_b0 = 1 THEN class 1","The model looked at six simple yes‑or‑no clues about the patient:
+
+- The age clue is “yes,” meaning the patient is older than the threshold the model uses.  
+- The creatinine‑phosphokinase clue is “yes,” meaning that test is high.  
+- The ejection‑fraction clue is “no,” meaning the heart’s pumping ability is low.  
+- The platelets clue is “yes,” meaning the platelet count is normal.  
+- The serum‑sodium clue is “yes,” meaning the sodium level is normal.  
+- The time clue is “no,” meaning the time‑related factor the model checks is not present.
+
+Because all of these clues match the pattern the model learned for patients who died, it gave the patient a prediction of 1 (death). The rule the model uses for this pattern is very reliable, so when every one of these conditions is true, the model always predicts mortality.","The model predicts death if the patient is older than 70 years, has a creatinine phosphokinase level above 200 units per liter, an ejection fraction below 40 %, platelets above 200,000 per microliter, serum sodium above 140 milliequivalents per liter, and the time is 30 days or less.","1. The patient's age is older, which pushed the prediction towards this class.  
+2. The patient's creatinine phosphokinase level is high, which pushed the prediction towards this class.  
+3. The patient's ejection fraction is low, which pushed the prediction towards this class.  
+4. The patient's platelet count is normal, which pushed the prediction towards this class.  
+5. The patient's serum sodium level is normal, which pushed the prediction towards this class.  
+6. The patient's time in the study is short, which pushed the prediction towards this class.","['age_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 < 0.5', 'platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 < 0.5']","['age_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b1 > 0.5', 'platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 < 0.5']","[0, 5, 9, 12, 18, 24]","[0, 5, 9, 12, 18, 24]","[5, 12, 18, 24]","[0, 5, 12, 18, 24]",,,,,,1.0
+heart,openai/gpt-oss-20b,14,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,11.8,False,15.1,17.4,53.2,17.4,False,False,False,5,6,6,7,0,6,0,6,0,1,6,3,"[15.1, 28.6, 53.2, 17.4]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 23.4% (opposes the prediction)
+  time_b0: 11.5% (opposes the prediction)
+  serum_sodium_b0: 10.1% (supports the prediction)
+  time_b1: 9.4% (supports the prediction)
+  platelets_b0: 8.7% (supports the prediction)
+  ejection_fraction_b2: 6.6% (opposes the prediction)
+  platelets_b2: 5.8% (supports the prediction)
+  serum_creatinine_b2: 5.5% (opposes the prediction)
+  ejection_fraction_b0: 5.2% (opposes the prediction)
+  creatinine_phosphokinase_b1: 5.2% (supports the prediction)
+  ejection_fraction_b1: 4.4% (supports the prediction)
+  creatinine_phosphokinase_b0: 4.3% (supports the prediction)","The model said this patient is likely to die because the overall evidence from the measurements leaned that way.  
+
+- **Platelets**: The platelet count pushed the prediction toward death, adding about 14.5 % of the total influence.  
+- **Serum sodium**: The sodium level also pushed the prediction toward death, adding about 10 %.  
+- **Creatinine phosphokinase**: The enzyme level pushed the prediction toward death, adding about 9.5 %.  
+
+These three measurements together made the model more confident that the patient would not survive.  
+
+On the other hand, several measurements pushed the prediction in the opposite direction:  
+
+- **Time** (how long the patient was observed) pushed the model away from predicting death, contributing about 34.9 % of the total influence.  
+- **Ejection fraction** (how well the heart pumps) pushed the model away from predicting death, contributing about 11.8 %.  
+- **Serum creatinine** (kidney function) pushed the model away from predicting death, contributing about 5.5 %.  
+
+Because the positive pushes from platelets, sodium, and phosphokinase outweighed the negative pushes from time, ejection fraction, and creatinine, the final decision was to predict death (class 1).","The model predicts that this patient will not survive (class 1).  
+The prediction is driven by the following measurements:
+
+- **Creatinine phosphokinase**  
+  – If the level is below 200 U/L, it supports the prediction.  
+  – If the level is above 200 U/L, it also supports the prediction.  
+
+- **Ejection fraction**  
+  – If the fraction is below 35 %, it opposes the prediction.  
+  – If the fraction is between 35 % and 55 %, it supports the prediction.  
+  – If the fraction is above 55 %, it opposes the prediction.  
+
+- **Platelet count**  
+  – If the count is below 150 000 cells/µL, it supports the prediction.  
+  – If the count is above 450 000 cells/µL, it supports the prediction.  
+
+- **Serum creatinine**  
+  – If the level is above 1.5 mg/dL, it opposes the prediction.  
+
+- **Serum sodium**  
+  – If the level is below 135 mmol/L, it supports the prediction.  
+
+- **Hospital stay (time)**  
+  – If the stay is less than 5 days, it opposes the prediction.  
+  – If the stay is between 5 days and 30 days, it supports the prediction.  
+  – If the stay is more than 30 days, it opposes the prediction.  
+
+These conditions together explain why the model concluded that the patient is at high risk of mortality.","1. The creatinine phosphokinase level was low, which pushed the prediction towards this class.  
+2. The creatinine phosphokinase level was high, which pushed the prediction towards this class.  
+3. The low ejection fraction pushed against this class, but was outweighed.  
+4. The medium ejection fraction pushed the prediction towards this class.  
+5. The high ejection fraction pushed against this class, but was outweighed.  
+6. The low platelet count pushed the prediction towards this class.  
+7. The high platelet count pushed the prediction towards this class.  
+8. The high serum creatinine level pushed against this class, but was outweighed.  
+9. The low serum sodium level pushed the prediction towards this class.  
+10. The short time interval pushed against this class, but was outweighed.  
+11. The medium time interval pushed the prediction towards this class.  
+12. The long time interval pushed against this class, but was outweighed.","['platelets_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5', 'serum_creatinine_b2 < 0.5']","['creatinine_phosphokinase_b0 > 0.5', 'creatinine_phosphokinase_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b1 > 0.5', 'ejection_fraction_b2 < 0.5', 'platelets_b0 > 0.5', 'platelets_b2 > 0.5', 'serum_creatinine_b2 < 0.5', 'serum_sodium_b0 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5', 'time_b2 < 0.5']","[4, 5, 8, 9, 10, 12, 14, 17, 18, 23, 24, 25]","[8, 12, 17, 18, 23]","[5, 8, 12, 17, 18, 23]","[5, 8, 12, 17, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,14,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,12,12.6,False,12.0,48.6,63.2,12.0,False,False,False,4,3,4,8,0,9,0,8,0,8,8,3,"[12.0, 63.2, 12.0, 48.6]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3865 (opposes the prediction)
+  time_b2: weight=-0.3818 (opposes the prediction)
+  time_b1: weight=+0.1775 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1761 (opposes the prediction)
+  serum_sodium_b0: weight=+0.1599 (supports the prediction)
+  creatinine_phosphokinase_b0: weight=+0.1430 (supports the prediction)
+  ejection_fraction_b2: weight=-0.1363 (opposes the prediction)
+  serum_creatinine_b2: weight=-0.1356 (opposes the prediction)
+  serum_creatinine_b0: weight=+0.1337 (supports the prediction)
+  serum_sodium_b1: weight=+0.1101 (supports the prediction)
+  platelets_b2: weight=+0.1095 (supports the prediction)
+  ejection_fraction_b1: weight=+0.0997 (supports the prediction)","The model predicted that the patient would die because the pattern of the measurements leaned more toward the “death” side.  
+
+- **Time**: The patient was in time category 1, which supports death, but was not in categories 0 or 2, which oppose death.  
+- **Ejection fraction**: The patient was in ejection‑fraction category 1, which supports death, but was not in categories 0 or 2, which oppose death.  
+- **Serum sodium**: The patient was in sodium category 0 and also in category 1, both of which support death.  
+- **Serum creatinine**: The patient was in creatinine category 0, which supports death, but was not in category 2, which opposes death.  
+- **Platelets**: The patient was in platelet category 2, which supports death.  
+- **Creatinine phosphokinase**: The patient was in phosphokinase category 0, which supports death.  
+
+The opposing factors (time 0, time 2, ejection‑fraction 0, ejection‑fraction 2, serum creatinine 2) were outweighed by the supporting factors, leading the model to predict mortality.","The model predicts that the patient will die. This prediction is influenced by several measurable factors:
+
+- A creatinine phosphokinase level above normal (greater than about 200 U/L) slightly increases the chance of death.  
+- An ejection fraction below normal (less than about 40 %) slightly increases the chance of death.  
+- An ejection fraction above normal (greater than about 70 %) slightly decreases the chance of death.  
+- A platelet count above normal (greater than about 400 000 per microliter) slightly increases the chance of death.  
+- A serum creatinine level within the normal range (about 0.6–1.3 mg/dL) slightly increases the chance of death.  
+- A serum sodium level within the normal range (about 135–145 mmol/L) slightly increases the chance of death.  
+- A follow‑up time of about 1–2 years slightly increases the chance of death.  
+- A follow‑up time longer than about 2 years slightly decreases the chance of death.","1. The time measurement pushed the prediction against this class, but was outweighed.  
+2. The time measurement at level 2 pushed the prediction against this class, but was outweighed.  
+3. The time measurement at level 1 pushed the prediction towards this class.  
+4. The ejection fraction measurement pushed the prediction against this class, but was outweighed.  
+5. The serum sodium measurement pushed the prediction towards this class.  
+6. The creatinine phosphokinase measurement pushed the prediction towards this class.  
+7. The ejection fraction at level 2 pushed the prediction against this class, but was outweighed.  
+8. The serum creatinine at level 2 pushed the prediction against this class, but was outweighed.  
+9. The serum creatinine measurement pushed the prediction towards this class.  
+10. The serum sodium at level 1 pushed the prediction towards this class.  
+11. The platelet count at level 2 pushed the prediction towards this class.  
+12. The ejection fraction at level 1 pushed the prediction towards this class.","['time_b1 > 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_sodium_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'serum_creatinine_b0 > 0.5', 'serum_creatinine_b2 < 0.5', 'platelets_b2 > 0.5', 'creatinine_phosphokinase_b0 > 0.5']","['time_b0 < 0.5', 'time_b2 < 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 > 0.5', 'creatinine_phosphokinase_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b2 < 0.5', 'serum_creatinine_b0 > 0.5', 'serum_sodium_b1 > 0.5', 'platelets_b2 > 0.5', 'ejection_fraction_b1 > 0.5']","[4, 8, 9, 10, 14, 15, 17, 18, 19, 23, 24, 25]","[8, 17, 18, 23]","[9, 10, 18]","[8, 17, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,17,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.9,False,93.9,93.9,93.9,93.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[93.9, 93.9, 93.9, 93.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model looked at the patient’s time information. The patient had a time that fell in the first interval, which is between 4 and 67. This interval is linked to a higher chance of death, so the model leaned toward predicting that the patient would not survive. The patient did not have a time in the second interval (67 to 172) and did not have a time in the third interval (172 to 285). Because only the first interval was present and it points to a higher risk, the model predicted death.","The model predicts that the patient died.  
+The rule that matches this prediction is: the patient’s time is between 4 and 66.9 years (present), not between 67 and 171.9 years (absent), and not between 172 and 284.9 years (absent).","1. The time in days is between 4 and 67, which is true here.  
+2. The time in days is not between 67 and 172, which is false here.  
+3. The time in days is not between 172 and 285, which is false here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1798,OPTIMAL,cop,0.4882,,
+heart,openai/gpt-oss-20b,17,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,85.7,False,85.7,85.7,85.7,85.7,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die because the data show three key facts that the model learned are associated with mortality. First, the patient has high blood pressure. Second, the patient is male. Third, the patient’s observation time falls between 4 and 67 days. The rule also notes that the observation time is not in the 172‑to‑285‑day window, which is a condition that the model uses to confirm the prediction. These three conditions together led the model to classify the patient as likely to die.","The model predicts that the patient died because they had high blood pressure, were male, and had been in the hospital for 4 to 67 days. It also notes that the time since admission was not in the 172‑285 day range.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The sex measurement is between 0 and 1, which is true here.  
+3. The time measurement is between 4 and 67, which is true here.  
+4. The time measurement is between 172 and 285, which is not true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]","[11, 21, 23, 25]",0.1798,OPTIMAL,cop@4,0.4882,,
+heart,openai/gpt-oss-20b,17,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.4,True,96.4,96.4,96.4,96.4,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)",The model predicted that the patient will die because the patient is a smoker and the time value falls between 4 and 67. These two conditions are the ones that the model found to be associated with a higher risk of death. The other time ranges (67–172 and 172–285) do not apply to this patient.,The model predicted that the patient will die because the patient is a smoker and the time value falls between 4 and 67. These two conditions are the ones that the model found to be associated with a higher risk of death. The other time ranges (67–172 and 172–285) do not apply to this patient.,"1. The smoking status is between 0 and 1, which is true here.  
+2. The time since diagnosis in the first interval is between 4 and 67, which is true here.  
+3. The time since diagnosis in the second interval is between 67 and 172, which is false here.  
+4. The time since diagnosis in the third interval is between 172 and 285, which is false here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9568345323741008,
+heart,openai/gpt-oss-20b,17,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.8,False,92.8,84.4,92.8,92.8,False,False,False,3,2,3,0,0,1,0,0,0,0,0,3,"[92.8, 84.4, 84.4, 84.4]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 AND time_b2 = 0 THEN class 1","The model predicted that the patient died because all three conditions of a very reliable rule were met.  
+The rule says: if the patient had a positive indicator for the first time measurement, a positive indicator for serum sodium at baseline, and a negative indicator for the second time measurement, then the patient is predicted to have died.  
+
+In this case:  
+- The patient had a positive indicator for the first time measurement.  
+- The patient had a positive indicator for serum sodium at baseline.  
+- The patient had a negative indicator for the second time measurement.  
+
+Since every part of the rule matched, the model gave the prediction of death. The rule is reported to have a precision of 100 %, meaning it is highly reliable when these conditions hold.","If a patient’s sodium level is above 145 mmol/L at the start of treatment (day 0), the data for that day is available, and there is no data for day 2, the model predicts that the patient will die.","1. The presence of the initial serum sodium level pushed the prediction towards this class.  
+2. The presence of the initial time measurement pushed the prediction towards this class.  
+3. The absence of the second time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b2 < 0.5']","['serum_sodium_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[18, 23, 25]","[18, 23, 25]","[23, 25]","[18, 23, 25]",,,,,,1.0
+heart,openai/gpt-oss-20b,17,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,75.2,51.0,93.9,75.2,False,False,False,2,1,2,2,0,3,0,2,0,2,2,3,"[75.2, 92.8, 93.9, 51.0]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 49.4% (supports the prediction)
+  time_b2: 19.5% (supports the prediction)
+  serum_sodium_b0: 17.8% (supports the prediction)
+  time_b1: 13.2% (supports the prediction)","The model predicted that the patient died because all four indicators were present. The baseline time indicator was the strongest contributor, accounting for about 49 % of the decision. The second follow‑up time indicator added about 20 %, the serum sodium level added about 18 %, and the first follow‑up time added about 13 %. Together these factors pushed the prediction toward death.","The model predicts that the patient will not survive. The strongest factor is the length of stay in the hospital (0–30 days), which accounts for about 49 % of the decision. The next most important is the time since the last check‑up (0–30 days, about 20 %). A high serum sodium level (normal 135–145 mEq/L, above 145) contributes about 18 %. Finally, the time since the last medication (0–30 days) adds about 13 %.","1. The first time period contributed 49.4 % to the prediction, pushing it toward this class.  
+2. The third time period contributed 19.5 % to the prediction, pushing it toward this class.  
+3. The serum sodium level contributed 17.8 % to the prediction, pushing it toward this class.  
+4. The second time period contributed 13.2 % to the prediction, pushing it toward this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 > 0.5']","[18, 23, 24, 25]","[18, 23]",[24],"[18, 23]",,,,,,
+heart,openai/gpt-oss-20b,17,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,65.6,89.7,89.7,52.5,False,False,False,3,4,2,1,0,0,0,2,0,1,2,3,"[65.6, 31.1, 52.5, 89.7]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.4017 (supports the prediction)
+  time_b2: weight=+0.3905 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1904 (opposes the prediction)
+  time_b1: weight=+0.1733 (supports the prediction)","The model looked at four measurements.  
+- The first time measurement was high (value 1). The model says a high value of this measurement tends to increase the chance of death, so it pushed the prediction toward 1.  
+- The third time measurement was also high (value 0, but the model treats a high value as 1). This high value also pushes the prediction toward 1.  
+- The ejection fraction measurement was low (value 0). The model thinks a low ejection fraction tends to lower the chance of death, so it opposed the prediction, but its influence was not strong enough to change the overall result.  
+- The second time measurement was low (value","The model predicts that the patient will die. This is mainly because the first time indicator is present (value 1). The second and third time indicators are absent (value 0) but each still pushes the model toward the death prediction. The low ejection fraction (value 0) pulls the prediction in the opposite direction. All indicators are binary, taking values 0 or 1.","1. The ejection fraction measurement pushed the prediction against this class, but was outweighed.  
+2. The first time interval measurement pushed the prediction towards this class.  
+3. The second time interval measurement pushed the prediction towards this class.  
+4. The third time interval measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b1 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24]","[8, 23, 24, 25]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,28,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.8,False,88.8,88.8,88.8,88.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[88.8, 88.8, 88.8, 88.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model looked at two pieces of information: the patient’s ejection fraction and the time of observation.  
+For this patient both indicators were “0”, meaning that the ejection fraction was **not** between 15 % and 30 %, and the time was **not** between 4 days and 67 days.  
+In the data the pattern of having both indicators equal to 0 is linked to a lower risk of death, so the model predicted that the patient survived (class 0).","The model predicted that the patient survived.  
+The rule learned says that if a patient’s ejection fraction is between 15 % and 30 %, the indicator ejection_fraction_b0 would be 0. In this case the indicator is 0, but the patient’s ejection fraction is not in that 15 %–30 % range.  
+The rule also says that if a patient’s time in hospital is between 4 and 67 days, the indicator time_b0 would be 0. Here the indicator is","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.5148,,
+heart,openai/gpt-oss-20b,28,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,89.7,False,89.7,89.7,89.7,89.7,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 89.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0) because the only measurement that matched a pattern linked to survival was the sex measurement. The patient’s sex falls in the range [0, 1). The ejection‑fraction measurement is not in the low range [15, 30), and the time measurement is not in the range [4, 67). Since the rule learned by the model says that when the sex measurement is in [0, 1) the prediction is survival, the model chose 0 for this patient.","The model predicts that the patient survived.  
+The rule that matches this prediction says:
+
+- The patient’s ejection fraction is **outside** the 15 %–30 % range.  
+- The patient’s sex falls in the first category (value 0 to 1).  
+- The patient’s time in the hospital is **outside** the 4 – 67 day range.","1. The ejection fraction is between 15 and 30, which is false here.  
+2. The sex is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is false here.","['sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]","[8, 21, 23]",0.1668,OPTIMAL,cop@3,0.5148,,
+heart,openai/gpt-oss-20b,28,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.6,True,98.6,98.6,98.6,98.6,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that the patient survived.  
+The only measurement that matched a pattern linked to survival was the time value, which falls between 172 and 285.  
+The serum sodium value was not in the 116 to 135 range, and the time value was not in the 4 to 67 range, so those did not affect the prediction.","The model predicted that the patient survived.  
+The only measurement that matched a pattern linked to survival was the time value, which falls between 172 and 285.  
+The serum sodium value was not in the 116 to 135 range, and the time value was not in the 4 to 67 range, so those did not affect the prediction.","1. The serum sodium level is between 116 and 135, which is not true here.  
+2. The time since admission is between 4 and 67, which is not true here.  
+3. The time since admission is between 172 and 285, which is true here.","['time_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9820143884892086,
+heart,openai/gpt-oss-20b,28,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.8,False,82.8,82.8,82.8,82.8,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[82.8, 76.0, 76.0, 82.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","Because the patient had both the time indicator and the serum‑creatinine indicator set to 1, the model applied a rule it learned: when these two indicators are present, the patient is predicted to survive. This rule is very reliable, with about 98 % precision, so the model confidently predicted class 0 (survived).","Because the patient had a high serum creatinine level and had been hospitalized for 2 years, the model predicted that the patient would survive.","1. The model’s goal is to predict whether a patient will die from heart failure, with 1 meaning death and 0 meaning survival.  
+2. In this case, the patient has a high serum creatinine level and has been in the hospital for a certain period, both marked as present.  
+3. The model predicted that the patient will survive (class 0).  
+4. The rule the model relies on says that if both the serum creatinine level and the time in hospital are present, then the patient is predicted to survive, and this rule is very reliable (98 % precision).","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","[15, 25]","[15, 25]","[15, 25]","[15, 25]",,,,,,0.9780701754385964
+heart,openai/gpt-oss-20b,28,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.2,True,82.8,98.2,98.2,82.8,False,True,False,2,3,2,1,0,0,0,1,0,1,1,3,"[82.8, 65.0, 65.0, 98.2]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 56.9% (supports the prediction)
+  time_b0: 27.1% (supports the prediction)
+  serum_creatinine_b0: 16.0% (supports the prediction)","The model predicted that the patient survived because all three indicators were present.  
+The second time indicator contributed the most (56.9 %) to the prediction of survival, the first time indicator added 27.1 %, and the serum creatinine indicator added 16.0 %. Each of these indicators pushed the prediction toward the “survived” class.","If the second time indicator is present, it supports the prediction that the patient survived.  
+If the first time indicator is absent, it supports the prediction that the patient survived.  
+If serum creatinine is high, it supports the prediction that the patient survived.","1. The model predicted that the patient survived.  
+2. The serum creatinine level was present in the patient's record.  
+3. The time at baseline was recorded for the patient.  
+4. The time at second measurement was recorded for the patient.  
+5. The contribution of the time at second measurement was 56.9%, supporting the prediction.  
+6. The contribution of the time at baseline was 27.1%, supporting the prediction.  
+7. The contribution of the serum creatinine level was 16.0%, supporting the prediction.","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5']","[15, 23, 25]","[15, 25]","[15, 23, 25]","[15, 25]",,,,,,
+heart,openai/gpt-oss-20b,28,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,98.7,98.7,98.7,88.8,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[98.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3825 (opposes the prediction)
+  time_b0: weight=-0.3820 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.2208 (opposes the prediction)","The model said the patient survived (class 0).  
+The three indicators that were available were:  
+• The ejection‑fraction indicator was 0 (not present).  
+• The baseline time indicator was 0 (not present).  
+• The later time indicator was 1 (present).  
+
+Each of these three indicators slightly pushes the model toward predicting death, but the overall calculation still leaned toward survival. Thus the prediction of survival was made because the combined influence of the available indicators was not strong enough to outweigh the model’s tendency to predict survival.","The model said the patient survived (class 0).  
+The three indicators that were available were:  
+• The ejection‑fraction indicator was 0 (not present).  
+• The baseline time indicator was 0 (not present).  
+• The later time indicator was 1 (present).  
+
+Each of these three indicators slightly pushes the model toward predicting death, but the overall calculation still leaned toward survival. Thus the prediction of survival was made because the combined influence of the available indicators was not strong enough to outweigh the model’s tendency to predict survival.","1. The ejection fraction measurement pushed against this class, but was outweighed.  
+2. The baseline time measurement pushed against this class, but was outweighed.  
+3. The later time measurement pushed against this class, but was outweighed.","['time_b2 > 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5']","[8, 23, 25]","[8, 23, 25]","[8, 23, 25]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,31,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[90.3, 90.3, 90.3, 90.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model looked at two simple checks.  
+First, it asked whether the patient’s ejection fraction was between 15 % and 30 %. It was not, so that check was marked “no”.  
+Second, it asked whether the time was between 4 days and 67 days. It was not, so that check was also marked “no”.  
+
+Because both checks were “no”, the model concluded that the patient would survive, giving a predicted class of 0.","The model predicts that the patient survived.  
+This prediction is based on two facts about the patient’s measurements:  
+
+- The ejection fraction is **not** between 15 % and 30 %.  
+- The time value is **not** between 4 and 67.  
+
+Because both of these conditions are met, the model classifies the patient as having survived.","1. The ejection fraction is not between 15 and 30, which is true here.  
+2. The time is not between 4 and 67, which is true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1784,OPTIMAL,cop,0.514,,
+heart,openai/gpt-oss-20b,31,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,85.7,False,85.7,85.7,85.7,85.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[85.7, 85.7, 85.7, 85.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  diabetes_b0 = 1  (diabetes in [0, 1) — holds)
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient will survive.  
+It looked at six pieces of information:
+
+* **Diabetes** – the patient has diabetes, which normally raises the risk of death.  
+* **High blood pressure** – the patient has high blood pressure, another risk factor.  
+* **Sex** – the patient is male, which also tends to increase risk.  
+* **Smoking** – the patient smokes, adding to the risk.  
+* **Ejection fraction** – the patient’s ejection fraction is **not** in the range 15 % to 30 %.  Being outside this low‑range reduces the chance of death.  
+* **Time** – the patient’s time value is **not** in the range 4 to 67.  Being outside this range also lowers the risk.
+
+So, while several risk factors are present, the two indicators that are outside the dangerous ranges (ejection fraction and time) pull the overall assessment toward survival, leading the model to predict that the patient will live.","The model predicts that this patient survived (class 0).  
+The rule that explains this prediction is based on the following facts:
+
+- **Diabetes** – the patient has diabetes.  
+- **Ejection fraction** – the patient’s ejection fraction is **not** between 15 % and 30 %.  
+- **High blood pressure** – the patient has high blood pressure.  
+- **Sex** – the patient is male.  
+- **Smoking** – the patient smokes.  
+- **Time** – the time value is **outside** the range of 4 to 67 (days, months, etc.).","1. The diabetes indicator is between 0 and 1, which is true for this patient.  
+2. The ejection fraction is between 15 and 30, which is not true for this patient.  
+3. The high blood pressure indicator is between 0 and 1, which is true for this patient.  
+4. The sex indicator is between 0 and 1, which is true for this patient.  
+5. The smoking indicator is between 0 and 1, which is true for this patient.  
+6. The time indicator is between 4 and 67, which is not true for this patient.","['diabetes_b0 > 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['diabetes_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]","[7, 8, 11, 21, 22, 23]",0.1784,OPTIMAL,cop@6,0.514,,
+heart,openai/gpt-oss-20b,31,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,98.3,True,67.6,98.3,98.3,98.3,False,True,True,2,6,6,4,0,0,0,0,0,2,0,1,"[67.6, 98.3]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b0 = 1  (serum_creatinine in [0.5, 1) — holds)
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  serum_sodium_b1 = 1  (serum_sodium in [135, 138) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b1 = 1  (time in [67, 172) — holds)",The model predicted that the patient survived because the key measurements were in,"Serum creatinine is between 0.5 and 1 mg/dL – this is true.  
+Serum sodium is between 135 and 138 mEq/L – this is true.  
+Serum sodium is not between 116 and 135 mEq/L – this is false.  
+Sex is female – this is true.  
+Time is between 67 and 172 days – this is true.  
+Time is not between 4 and 67 days – this is false.","1. The serum creatinine level is between 0.5 and 1, which is true here.  
+2. The serum sodium level is between 116 and 135, which is not true here.  
+3. The serum sodium level is between 135 and 138, which is true here.  
+4. The sex is between 0 and 1, which is true here.  
+5. The time is between 4 and 67, which is not true here.  
+6. The time is between 67 and 172, which is true here.","['serum_creatinine_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 > 0.5']","['serum_creatinine_b0 > 0.5', 'serum_sodium_b0 < 0.5', 'serum_sodium_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5']","[15, 18, 19, 21, 23, 24]","[15, 21]","[15, 18, 19, 21, 23, 24]","[15, 18, 19, 21, 23, 24]",,,,,0.9841726618705036,
+heart,openai/gpt-oss-20b,31,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,91.7,False,91.7,63.7,91.7,72.9,False,False,False,3,1,2,0,0,2,0,1,0,0,1,3,"[91.7, 91.7, 80.2, 63.7]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF serum_creatinine_b0 = 1 AND time_b0 = 0 AND platelets_b2 = 1 THEN class 0","The model used three simple pieces of information.  
+• The serum creatinine indicator is 1, meaning the patient’s serum creatinine level is in the high category.  
+• The time indicator is 0, meaning the patient’s time measurement is in the low category.  
+• The platelet count indicator is 1, meaning the patient’s platelet count is in the high category.  
+
+Because all three indicators match the rule that says “if serum creatinine is 1, time is 0, and platelet count is 1, then the patient is predicted to survive,” the model chose the survival class (0). The rule is very reliable, with an estimated precision of 99 %.","The model predicts that the patient survived because the patient has a high platelet count (above 400 × 10⁹ cells/L), a high serum creatinine level (above 1.3 mg/dL), and has been in the hospital for 0 days.","1. The platelet count measurement pushed the prediction towards this class.  
+2. The serum creatinine level measurement pushed the prediction towards this class.  
+3. The time measurement pushed the prediction towards this class.","['serum_creatinine_b0 > 0.5', 'time_b0 < 0.5', 'platelets_b2 > 0.5']","['platelets_b2 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b0 > 0.5']","[14, 15, 23]","[14, 15, 23]",[14],"[14, 15]",,,,,,0.9896831245394252
+heart,openai/gpt-oss-20b,31,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,100.0,True,100.0,100.0,100.0,86.9,True,True,False,6,6,4,0,0,0,0,2,0,0,2,0,[100.0],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 29.7% (supports the prediction)
+  serum_creatinine_b0: 21.4% (supports the prediction)
+  time_b1: 14.9% (supports the prediction)
+  ejection_fraction_b0: 11.7% (supports the prediction)
+  platelets_b2: 11.2% (supports the prediction)
+  serum_sodium_b1: 11.1% (supports the prediction)","The model predicted that the patient would survive because the pattern of the six measurements it looked at all pushed the prediction toward survival.  
+- The first time measurement was not present, and that absence contributed the most (about 30 %) to the survival prediction.  
+- The serum creatinine measurement was present, adding about 21 % in favor of survival.  
+- The second time measurement was present, adding about 15 % in favor of survival.  
+- The ejection fraction measurement was not present, adding about 12 % in favor of survival.  
+- The platelets measurement was present, adding about 11 % in favor of survival.  
+- The serum sodium measurement was present, adding about 11 % in favor of survival.  
+
+All six of these factors worked together to give the model a high confidence that the patient would survive.","The model predicted that the patient would survive because the pattern of the six measurements it looked at all pushed the prediction toward survival.  
+- The first time measurement was not present, and that absence contributed the most (about 30 %) to the survival prediction.  
+- The serum creatinine measurement was present, adding about 21 % in favor of survival.  
+- The second time measurement was present, adding about 15 % in favor of survival.  
+- The ejection fraction measurement was not present, adding about 12 % in favor of survival.  
+- The platelets measurement was present, adding about 11 % in favor of survival.  
+- The serum sodium measurement was present, adding about 11 % in favor of survival.  
+
+All six of these factors worked together to give the model a high confidence that the patient would survive.","1. The baseline time measurement pushed the prediction towards this class.  
+2. The serum creatinine at baseline pushed the prediction towards this class.  
+3. The time measurement at one year pushed the prediction towards this class.  
+4. The ejection fraction at baseline pushed the prediction towards this class.  
+5. The platelet count at two weeks pushed the prediction towards this class.  
+6. The serum sodium at one year pushed the prediction towards this class.","['time_b0 < 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","['time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'platelets_b2 > 0.5', 'serum_sodium_b1 > 0.5']","[8, 14, 15, 19, 23, 24]","[8, 14, 15, 19, 23, 24]","[8, 14, 15, 19, 23, 24]","[14, 15, 19, 24]",,,,,,
+heart,openai/gpt-oss-20b,31,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,94.8,False,94.8,30.3,96.1,96.1,False,False,True,6,2,3,0,0,4,0,3,0,0,3,3,"[94.8, 50.4, 96.1, 30.3]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3848 (opposes the prediction)
+  time_b2: weight=+0.3596 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1997 (opposes the prediction)
+  time_b1: weight=-0.1713 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1570 (opposes the prediction)
+  ejection_fraction_b2: weight=+0.1431 (supports the prediction)","The model considered three kinds of information: how long the patient had been in the hospital, the heart’s pumping ability, and the sodium level in the blood. In this case only the hospital‑time measurement was present, and that measurement tends to point toward death. All the other measurements were missing, so they did not pull the prediction toward death. Because the positive influences that would support survival were also missing, the overall calculation still leaned toward survival, so the model predicted that the patient survived.","The model predicts that the patient will survive. This prediction is mainly driven by the fact that the patient has a low ejection fraction, a low sodium level, and a short time since admission – all of which push the prediction toward death. However, a higher ejection fraction and a longer time since admission push the prediction toward survival.","1. The first time indicator pushed against this class, but was outweighed.  
+2. The third time indicator pushed the prediction towards this class.  
+3. The first ejection fraction indicator pushed against this class, but was outweighed.  
+4. The second time indicator pushed against this class, but was outweighed.  
+5. The first serum sodium indicator pushed against this class, but was outweighed.  
+6. The third ejection fraction indicator pushed the prediction towards this class.","['time_b1 > 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 < 0.5', 'ejection_fraction_b2 < 0.5', 'serum_sodium_b0 < 0.5']","['time_b0 < 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b1 < 0.5', 'serum_sodium_b0 < 0.5', 'ejection_fraction_b2 > 0.5']","[8, 10, 18, 23, 24, 25]","[8, 10, 18, 23, 24, 25]","[10, 25]","[8, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,35,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,85.2,False,85.2,85.2,85.2,85.2,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[85.2, 85.2, 85.2, 85.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The patient had a time measurement in the 4 – 67 range, which the model has learned is linked to a higher chance of death. The other time measurement was not in the 172 – 285 range, so it does not push the prediction toward survival. Because the first time indicator points strongly to mortality, the model predicted that the patient would not survive.","The patient’s time was between 4 and 67, a range that the model links to a higher chance of death. The patient’s time was not between 172 and 285, a range that would have suggested a lower risk.","1. The time measurement between 4 and 67 is present, which is true here.  
+2. The time measurement between 172 and 285 is not present, which is false here.  
+3. The model predicted that the patient died, which is true here.  
+4. The rule learned by the model says that a time measurement between 4 and 67 indicates death, while a time measurement between 172 and 285 indicates survival, and this rule matches the prediction for this patient.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1764,OPTIMAL,cop,0.4956,,
+heart,openai/gpt-oss-20b,35,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.0,False,70.0,70.0,70.0,70.0,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.0, 70.0, 70.0, 70.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that the patient would die because the patient has high blood pressure, is male, smokes, and the time variable is between 4 and 67. Each of these conditions is present, and together they match the rule that the model learned for predicting death.","The model predicts death because the patient has high blood pressure, is sex = 1, smokes, and the time value is between 4 and 67.","1. The blood pressure measurement is between 0 and 1, which is true here.  
+2. The sex measurement is between 0 and 1, which is true here.  
+3. The smoking measurement is between 0 and 1, which is true here.  
+4. The time measurement is between 4 and 67, which is true here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5']","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]","[11, 21, 22, 23]",0.1764,OPTIMAL,cop@4,0.4956,,
+heart,openai/gpt-oss-20b,35,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.9,True,96.9,96.9,96.9,96.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","Because the patient is a smoker and the time variable falls between 4 and 67, the model predicts death. The fact that the time variable is not between 67 and 172, nor between 172 and 285, also supports this prediction.","Because the patient is a smoker and the time variable falls between 4 and 67, the model predicts death. The fact that the time variable is not between 67 and 172, nor between 172 and 285, also supports this prediction.","1. The smoking status is between 0 and 1, which is true here.  
+2. The time since diagnosis is between 4 and 67, which is true here.  
+3. The time since diagnosis is between 67 and 172, which is not true here.  
+4. The time since diagnosis is between 172 and 285, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9575539568345324,
+heart,openai/gpt-oss-20b,35,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,94.9,False,94.9,94.9,94.9,94.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[94.9, 94.9, 94.9, 94.9]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF time_b0 = 1 AND time_b2 = 0 AND time_b1 = 0 THEN class 1","The prediction was made because the patient’s data matched a very reliable rule. The rule says that when the first time‑based indicator is present and the second and third time‑based indicators are absent, the patient is predicted to have died. In this case, the first indicator was present, while the second and third were absent, so the model confidently assigned the patient to the “dead” class.","If the first time indicator equals 1, the second equals 0, and the third equals 0, the model predicts that the patient will not survive.","1. The first time indicator is 1, which is true here.  
+2. The second time indicator is 0, which is true here.  
+3. The third time indicator is 0, which is true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",,,,,,0.9955882352941176
+heart,openai/gpt-oss-20b,35,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,92.1,False,64.3,64.3,64.3,64.3,False,False,False,1,1,1,3,0,3,0,3,0,3,3,3,"[64.3, 64.3, 64.3, 64.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 52.9% (supports the prediction)
+  time_b2: 20.0% (supports the prediction)
+  creatinine_phosphokinase_b0: 16.6% (opposes the prediction)
+  time_b1: 10.5% (supports the prediction)","The model predicted that the patient would die because the first time indicator and the third time indicator had the strongest positive influence on the decision, together making up about 73 % of the prediction. The creatinine phosphokinase indicator had a small negative influence, slightly reducing the chance of death. The second time indicator also added a small positive influence. Because the positive contributions outweighed the negative one, the model concluded that death was the most likely outcome.","The model predicts that the patient will die.  
+• The fact that the patient was observed within 0–30 days after admission strongly supports this prediction.  
+• The fact that the patient was observed more than 90 days after admission also supports the prediction.  
+• A high creatinine phosphokinase level (above the normal range of 0–200 U/L) actually reduces the likelihood of death, opposing the prediction.  
+• The observation within 31–90 days after admission also supports the prediction.","1. The baseline time measurement pushed the prediction towards this class.  
+2. The second time interval pushed the prediction towards this class.  
+3. The creatinine phosphokinase level pushed against this class, but was outweighed.  
+4. The first time interval pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'time_b1 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'creatinine_phosphokinase_b0 < 0.5', 'time_b1 > 0.5']","[4, 23, 24, 25]",[23],[23],[23],,,,,,
+heart,openai/gpt-oss-20b,35,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,66.8,False,40.8,40.8,40.8,40.8,False,False,False,3,3,3,1,0,1,0,1,0,1,1,3,"[40.8, 40.8, 23.5, 40.8]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3849 (supports the prediction)
+  time_b2: weight=+0.3760 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1802 (opposes the prediction)
+  serum_sodium_b0: weight=-0.1636 (opposes the prediction)","The model predicted that the patient would die.  
+It was mainly because the patient had a positive value for the first time indicator and a positive value for the second time indicator – both of these pushed the prediction toward death.  
+The ejection fraction and the serum sodium were negative, which slightly pushed the prediction in the opposite direction, but the positive time indicators were stronger.","The model predicts death because the patient had a recorded time at baseline (value 1, range 0–1) and a recorded time at the second measurement (value 1, range 0–1), both of which increase the likelihood of death. The absence of ejection fraction (value 0, range 0–1) and sodium (value 0, range 0–1) slightly reduces the likelihood of death.","1. The ejection fraction measurement pushed against this class, but was outweighed.  
+2. The serum sodium measurement pushed against this class, but was outweighed.  
+3. The first time measurement pushed the prediction towards this class.  
+4. The second time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5']","[8, 18, 23, 25]","[8, 18, 23]","[8, 18, 23]","[8, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,54,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,83.2,False,83.2,83.2,83.2,83.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[83.2, 73.0, 83.2, 83.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  serum_creatinine_b1 = 0  (serum_creatinine in [1, 1.3) — does NOT hold)
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)","The model predicted that the patient would die because two key pieces of information matched a pattern it learned.  
+First, the patient’s serum creatinine level was in the high range of 1.3 to 9, which the model associates with a higher risk of death.  
+Second, the time of measurement was between 4 and 67, another condition that the model links to a higher risk.  
+Because both of these conditions were true for this patient, the model chose the “dead” outcome. The other possible creatinine ranges (0.5–1 and 1–1.3) did not apply, so they did not influence the decision.","The model predicted that this patient will not survive.  
+The decision rule that matches this prediction is:  
+
+- The patient’s serum creatinine level is between 1.3 mg/dL and 9 mg/dL.  
+- The patient’s time (days since admission) is between 4 days and 67 days.  
+
+The patient’s serum creatinine is not in the lower ranges of 0.5–1 mg/dL or 1–1.3 mg/dL, and the time is not outside 4–67 days. These two conditions together led the model to predict mortality.","1. The serum creatinine level is not between 0.5 and 1, which is true here.  
+2. The serum creatinine level is not between 1 and 1.3, which is true here.  
+3. The serum creatinine level is between 1.3 and 9, which is true here.  
+4. The time since admission is between 4 and 67 days, which is true here.","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5']","['serum_creatinine_b0 < 0.5', 'serum_creatinine_b1 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b0 > 0.5']","[15, 16, 17, 23]","[15, 16, 17, 23]","[15, 16, 17, 23]","[15, 16, 17, 23]",0.3742,FEASIBLE,cop,0.4724,,
+heart,openai/gpt-oss-20b,54,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,90.2,False,90.2,90.2,90.2,90.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[90.2, 90.2, 90.2, 90.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted death because the patient has high blood pressure and smokes, and the time since the event is between 4 and 67. These three factors together push the prediction toward mortality. The condition that the time would be between 172 and 285 does not hold, but it does not change the overall prediction.","The model says the patient will die because the patient has high blood pressure, smokes, and has been in the hospital for 4 to 67 days. The rule also notes that a hospital stay of 172 to 285 days would not fit this pattern, but the patient’s stay is not in that range.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The time measurement is between 4 and 67, which is true here.  
+4. The time measurement is not between 172 and 285, which is false here, and this fact pushed the prediction against this class, but was outweighed.","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]","[11, 22, 23, 25]",0.1924,OPTIMAL,cop@4,0.4724,,
+heart,openai/gpt-oss-20b,54,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.0,True,96.0,96.0,96.0,96.0,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.0],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because two conditions were true. First, the patient was a smoker. Second, the time since the event was between 4 and 67. These two facts are linked to a higher chance of death. The other time ranges (between 67 and 172, and between 172 and 285) do not apply to this patient, so they do not affect the prediction.","The model predicted that the patient died because two conditions were true. First, the patient was a smoker. Second, the time since the event was between 4 and 67. These two facts are linked to a higher chance of death. The other time ranges (between 67 and 172, and between 172 and 285) do not apply to this patient, so they do not affect the prediction.","1. The smoking indicator is between 0 and 1, which is true here.  
+2. The time in the first interval is between 4 and 67, which is true here.  
+3. The time in the second interval is between 67 and 172, which is false here.  
+4. The time in the third interval is between 172 and 285, which is false here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.9690647482014388,
+heart,openai/gpt-oss-20b,54,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.2,False,43.3,43.3,43.3,76.2,False,False,False,0,0,2,2,0,2,0,0,0,2,0,3,"[43.3, 43.3, 43.3, 43.3]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model predicted that the patient died because two key signs were present. The patient had a low ejection fraction, meaning the heart’s pumping ability was weak, and the patient had a short time (indicating a brief period of illness or treatment). When both of these conditions appear together, the model","If the patient’s time is 1 and their ejection fraction is 1, the model predicts that the patient will die.","1. The ejection fraction measurement was present, which pushed the prediction towards this class.  
+2. The time measurement was present, which pushed the prediction towards this class.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","[8, 23]",[],[],"[8, 23]",,,,,,0.991011235955056
+heart,openai/gpt-oss-20b,54,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.5],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 43.5% (supports the prediction)
+  time_b2: 20.7% (supports the prediction)
+  ejection_fraction_b0: 18.3% (supports the prediction)
+  serum_sodium_b0: 17.5% (supports the prediction)","The model predicted that the patient died because all four indicators the model looks at point toward higher risk.  
+The first time‑point indicator was present and made up about 44 % of the decision.  
+The second time‑point indicator was absent but still added about 21 % to the risk.  
+The ejection‑fraction indicator was present, contributing roughly 18 % to the prediction.  
+The serum‑sodium indicator was present, adding about 18 % to the risk.  
+Together these contributions led the model to classify the patient as having died.","The model predicted that the patient died because all four indicators the model looks at point toward higher risk.  
+The first time‑point indicator was present and made up about 44 % of the decision.  
+The second time‑point indicator was absent but still added about 21 % to the risk.  
+The ejection‑fraction indicator was present, contributing roughly 18 % to the prediction.  
+The serum‑sodium indicator was present, adding about 18 % to the risk.  
+Together these contributions led the model to classify the patient as having died.","1. The time at baseline measurement contributed 43.5 % to the prediction, pushing it toward this class.  
+2. The time at the second measurement contributed 20.7 % to the prediction, pushing it toward this class.  
+3. The ejection fraction at baseline contributed 18.3 % to the prediction, pushing it toward this class.  
+4. The serum sodium at baseline contributed 17.5 % to the prediction, pushing it toward this class.","['time_b0 > 0.5', 'time_b2 < 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,54,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.5,True,97.5,97.5,97.5,82.6,True,True,False,4,4,3,0,0,0,0,1,0,0,1,0,[97.5],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3802 (supports the prediction)
+  time_b2: weight=+0.3730 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1890 (supports the prediction)
+  serum_sodium_b0: weight=+0.1590 (supports the prediction)","The model predicted that the patient would die because the key indicators that were present all point toward a higher risk.  
+- The ejection fraction indicator was present, adding to the risk.  
+- The serum sodium indicator was present, adding to the risk.  
+- The time indicator was present, adding to the risk.  
+- The time indicator at level 2 was not present, so it did not add to the risk.  
+
+Because all the present indicators pushed the prediction toward death, the model chose class 1.","The model predicted that the patient would die because the key indicators that were present all point toward a higher risk.  
+- The ejection fraction indicator was present, adding to the risk.  
+- The serum sodium indicator was present, adding to the risk.  
+- The time indicator was present, adding to the risk.  
+- The time indicator at level 2 was not present, so it did not add to the risk.  
+
+Because all the present indicators pushed the prediction toward death, the model chose class 1.","1. The ejection fraction measurement pushed the prediction towards this class.  
+2. The serum sodium measurement pushed the prediction towards this class.  
+3. The time measurement at the first time point pushed the prediction towards this class.  
+4. The time measurement at the third time point pushed the prediction towards this class.","['ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5']","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23, 25]","[8, 18, 23]",,,,,,
+heart,openai/gpt-oss-20b,69,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,92.5,False,92.5,92.5,92.5,92.5,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[92.5, 92.5, 92.5, 92.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because the patient’s recorded time falls in the 4‑to‑67‑minute range. This time interval is linked by the rule to a higher risk of death. The other possible time intervals—67‑to‑172 minutes and 172‑to‑285 minutes—were not present for this patient, so they did not influence the prediction.","The model predicted death because the patient was observed between 4 and 67 days after admission; there was no observation between 67 and 172 days, nor between 172 and 285 days.","1. The time in the first interval is between 4 and 67 minutes, which is true here.  
+2. The time in the second interval is between 67 and 172 minutes, which is not true here.  
+3. The time in the third interval is between 172 and 285 minutes, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1758,OPTIMAL,cop,0.4858,,
+heart,openai/gpt-oss-20b,69,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.4,False,93.4,93.4,93.4,93.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.4, 93.4, 93.4, 93.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient would die because two key indicators were present. First, the patient had high blood pressure, which the model knows is a strong sign of risk. Second, the time since the relevant event (such as hospital admission) was between 4 and 67 days. These two facts together pushed the prediction toward death. The other time ranges—between 67 and 172 days and between 172 and 285 days—did not apply to this patient, so they did not influence the decision.","The patient has high blood pressure and has been hospitalized for 4 to 67 days. The patient was not hospitalized for 67 to 172 days, nor for 172 to 285 days. These conditions led the model to predict death.","1. The high blood pressure measurement is between 0 and 1, which is true here.  
+2. The time measurement is between 4 and 67, which is true here.  
+3. The time measurement in the 67 to 172 range did not apply here, which pushed the prediction against this class, but was outweighed.  
+4. The time measurement in the 172 to 285 range did not apply here, which pushed the prediction against this class, but was outweighed.","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['high_blood_pressure_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]","[11, 23, 24, 25]",0.1758,OPTIMAL,cop@4,0.4858,,
+heart,openai/gpt-oss-20b,69,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.1,True,96.1,96.1,96.1,96.1,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_creatinine_b2 = 1  (serum_creatinine in [1.3, 9) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The patient’s serum creatinine level was between 1.3 and 9, which is a high value. The time since admission (or another time measure) was between 4 and 67. These two conditions were present, while the other time ranges (between 67 and 172, and between 172 and 285) did not apply. The high creatinine level and the time in the 4‑to‑67 range together pushed the model to predict that the patient would not survive.","The patient’s serum creatinine level was between 1.3 and 9, which is a high value. The time since admission (or another time measure) was between 4 and 67. These two conditions were present, while the other time ranges (between 67 and 172, and between 172 and 285) did not apply. The high creatinine level and the time in the 4‑to‑67 range together pushed the model to predict that the patient would not survive.","1. The serum creatinine level is between 1.3 and 9.0, which is true here.  
+2. The time since admission is between 4 and 67 days, which is true here.  
+3. The time since admission is between 67 and 172 days, which is not true here.  
+4. The time since admission is between 172 and 285 days, which is not true here.","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]","[17, 23, 24, 25]",,,,,0.9733812949640288,
+heart,openai/gpt-oss-20b,69,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.9,False,74.9,41.3,74.9,41.3,False,False,False,2,0,0,0,0,2,0,2,0,0,2,3,"[74.9, 62.2, 62.2, 41.3]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model looked at two simple indicators: whether the ejection‑fraction indicator was present and whether the time indicator was present. In this case, both indicators were set to 1. The rule the model uses says that when both of these indicators are present, the patient is predicted to have died. Because this rule is very reliable (about 99 % accurate), the model gave the prediction “1” – that the patient did not survive.","If the patient was observed for a short time and the ejection fraction is low, then the patient died.","1. The low ejection fraction indicator pushed the prediction towards death.  
+2. The short time indicator pushed the prediction towards death.  
+3. The model predicted that the patient died","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]",[],[],,,,,,0.9926470588235294
+heart,openai/gpt-oss-20b,69,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.1,True,71.8,84.7,84.7,83.4,False,False,False,2,2,3,2,0,2,0,1,0,2,1,3,"[71.8, 62.2, 49.0, 84.7]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 44.7% (supports the prediction)
+  ejection_fraction_b0: 22.3% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_creatinine_b2: 15.4% (supports the prediction)","The model judged that this patient was at high risk of death because of four factors that all pushed the prediction toward the “dead” class.  
+- The first factor, the patient’s low ejection fraction, contributed 22.3 % to the decision.  
+- The second factor, the patient’s high serum creatinine level, contributed 15.4 %.  
+- The third factor, the patient’s time‑category indicator that is associated with early events, contributed 44.7 %.  
+- The fourth factor, another time‑category indicator that is linked to later events, contributed 17.6 %.  
+
+All four indicators increased the likelihood of mortality, with the early time category having the strongest influence.","The model predicts death because the patient has a low ejection fraction (below about 40 %) and a short time since diagnosis (less than about 6 months). The patient also has not had a long time since diagnosis, which further supports the prediction.","1. The time measurement at baseline pushed the prediction towards this class.  
+2. The ejection fraction measurement at baseline pushed the prediction towards this class.  
+3. The time measurement at level 2 pushed the prediction towards this class.  
+4. The serum creatinine measurement at level 2 pushed the prediction towards this class.","['ejection_fraction_b0 < 0.5', 'serum_creatinine_b2 > 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5']","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5', 'serum_creatinine_b2 > 0.5']","[8, 17, 23, 25]","[17, 23]","[23, 25]","[8, 17, 23]",,,,,,
+heart,openai/gpt-oss-20b,69,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.1,True,98.1,98.1,98.1,74.9,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[98.1],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3754 (supports the prediction)
+  time_b2: weight=+0.3665 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1859 (supports the prediction)
+  time_b1: weight=+0.1542 (supports the prediction)","The model predicted death because the ejection fraction indicator is present, the first time category is present, and the second and third time categories are absent. Each of these factors pushes the prediction toward death.","The model predicted death because the ejection fraction indicator is present, the first time category is present, and the second and third time categories are absent. Each of these factors pushes the prediction toward death.","1. The ejection fraction measurement pushed the prediction towards this class.  
+2. The first time measurement pushed the prediction towards this class.  
+3. The second time measurement pushed the prediction towards this class.  
+4. The third time measurement pushed the prediction towards this class.","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,75,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,84.5,False,84.5,84.5,84.5,84.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[84.5, 84.5, 84.5, 84.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because the first time indicator was present, meaning the patient’s time falls between 4 and 67. This indicator is linked to a higher risk of death. The second time indicator was absent, meaning the patient’s time does not fall between 172 and 285, so the protective effect that would have suggested survival is missing. As a result, the model concluded that death was the most likely outcome.","The model predicts death because the patient’s time is between 4 and 67, and it is not between 172 and 285.","1. The time in the early period is between 4 and 67, which is true here.  
+2. The time in the later period is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1842,FEASIBLE,cop,0.4894,,
+heart,openai/gpt-oss-20b,75,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,87.5,False,87.5,87.5,87.5,87.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[87.5, 87.5, 87.5, 87.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The patient’s sex falls into the first category (range [0, 1)).  
+The patient is a smoker (smoking falls into the first category [0, 1)).  
+The patient’s time value is in the first interval [4, 67).  
+The patient’s time value is not in the third interval [172, 285).  
+
+Because these conditions together match the rule that the model learned, the model predicted that the patient will die.","The model predicts death because the patient’s sex value is between 0 and 1, the smoking status is between 0 and 1, the time value is between 4 and 67, and the time value is not between 172 and 285.","1. The sex measurement is between 0 and 1, which is true here.  
+2. The smoking measurement is between 0 and 1, which is true here.  
+3. The first time measurement is between 4 and 67, which is true here.  
+4. The second time measurement is between 172 and 285, which is false here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]","[21, 22, 23, 25]",0.1842,OPTIMAL,cop@4,0.4894,,
+heart,openai/gpt-oss-20b,75,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,95.4,True,95.4,95.4,95.4,45.8,True,True,False,4,4,1,0,0,0,0,3,0,0,0,0,[95.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die because the data show two important facts. First, the patient is a smoker (the smoking indicator is positive). Second, the time since diagnosis is between 4 and 67 units (the time indicator for that range is positive). These two conditions are known to be linked with a higher risk of death from heart failure. The other time ranges—between 67 and 172, and between 172 and 285—do not apply to this patient, so they do not influence the prediction. The combination of being a smoker and having a time since diagnosis in the 4‑to‑67 range led the model to predict mortality.","The model predicted that the patient will die because the data show two important facts. First, the patient is a smoker (the smoking indicator is positive). Second, the time since diagnosis is between 4 and 67 units (the time indicator for that range is positive). These two conditions are known to be linked with a higher risk of death from heart failure. The other time ranges—between 67 and 172, and between 172 and 285—do not apply to this patient, so they do not influence the prediction. The combination of being a smoker and having a time since diagnosis in the 4‑to‑67 range led the model to predict mortality.","1. The smoking status is between 0 and 1, which","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']",['smoking_b0 > 0.5'],"[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",[22],,,,,0.9589928057553956,
+heart,openai/gpt-oss-20b,75,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,74.5,False,74.5,42.1,74.5,74.5,False,False,False,2,0,2,0,0,2,0,0,0,0,0,3,"[74.5, 64.5, 64.5, 42.1]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.96):
+  IF time_b0 = 1 AND serum_sodium_b0 = 1 THEN class 1","The model looked at two simple yes/no questions about the patient. The first question was whether the patient’s “time” indicator was set to 1, and the second was whether the patient’s “serum sodium” indicator was set to 1. In this case, both answers were “yes.” The rule the model uses says that when both of these indicators are 1, the patient is predicted to die, and this rule is correct about 96 % of the time. Therefore the model predicted class 1 (death) for this patient.","If the patient has been in the hospital for less than 24 hours and their serum sodium level is above 145 mmol/L, the model predicts that the patient will die.","1. The serum sodium level pushed the prediction towards this class.  
+2. The time factor pushed the prediction towards this class.","['serum_sodium_b0 > 0.5', 'time_b0 > 0.5']","['serum_sodium_b0 > 0.5', 'time_b0 > 0.5']","[18, 23]","[18, 23]",[],"[18, 23]",,,,,,0.9614678899082568
+heart,openai/gpt-oss-20b,75,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.8,True,74.5,64.5,74.5,74.5,False,False,False,2,1,2,2,0,3,0,2,0,2,2,3,"[74.5, 72.5, 64.5, 64.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 50.4% (supports the prediction)
+  time_b2: 17.6% (supports the prediction)
+  serum_sodium_b0: 17.2% (supports the prediction)
+  time_b1: 14.7% (supports the prediction)","The model predicted that the patient would not survive because the data showed that all four indicators were present.  
+- The baseline time indicator was the strongest factor, pushing the prediction most strongly toward death.  
+- The other time indicator that appeared later also supported the prediction.  
+- The serum sodium indicator was present and added to the likelihood of death.  
+- The time indicator that was not present in the earlier period still contributed to the prediction.  
+
+Because each of these indicators was present, the model concluded that the patient was at high risk of mortality.","The model predicts that the patient will not survive because the following factors are present:
+
+- The patient’s serum sodium level is low (below 135 mEq/L).  
+- The patient has been in the hospital for a short time (less than 24","1. The time at baseline pushed the prediction towards this class.  
+2. The time at second follow-up pushed the prediction towards this class.  
+3. The serum sodium level pushed the prediction towards this class.  
+4. The time at first follow-up pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5']","['time_b0 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 > 0.5', 'time_b1 > 0.5']","[18, 23, 24, 25]","[18, 23]",[23],"[18, 23]",,,,,,
+heart,openai/gpt-oss-20b,75,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.1,False,77.1,52.0,77.1,52.0,False,False,False,3,2,2,1,0,2,0,2,0,1,2,3,"[77.1, 52.0, 31.8, 52.0]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3943 (supports the prediction)
+  time_b2: weight=+0.3772 (supports the prediction)
+  ejection_fraction_b0: weight=-0.1972 (opposes the prediction)
+  time_b1: weight=+0.1672 (supports the prediction)","The model predicted that the patient would die because the timing information it received strongly pointed in that direction.  
+- The patient’s time was in the first category, which the model found to be a very strong indicator of death.  
+- The patient’s time was also in the second category, another factor that supports a death outcome, though less strongly.  
+- The patient’s ejection fraction was not in the lowest category; this fact actually works against a death prediction, but its influence is weaker than the timing factors.  
+- The third time category would also support death, but the patient was not in that category, so it did not add to the prediction.  
+
+Overall, the positive signals from the timing categories outweighed the negative signal from the ejection fraction, leading the model to predict a death outcome.","The model predicts that the patient will die. This prediction is supported if the patient has a time in the first category, a time in the second category, or a time in the third category. It is opposed if the patient’s ejection fraction is in the lowest category.","1. The ejection fraction measurement pushed against this class, but was outweighed.  
+2. The first time measurement pushed the prediction towards this class.  
+3. The second time measurement pushed the prediction towards this class.  
+4. The third time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 25]","[8, 23]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,81,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,93.6,False,93.6,93.6,93.6,93.6,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[93.6, 93.6, 93.6, 93.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The patient’s recorded time falls between 4 and 67 units. The model has learned that patients whose time is in this first interval are more likely to die from heart failure, so it predicts a 1 (death). The other time ranges—between 67 and 172, and between 172 and 285—do not apply to this patient, so they do not affect the prediction.","The model predicted that the patient died (class 1).  
+The rule that explains this prediction is: the patient had time in the first period (4 – 66 minutes), but did not have time in the second period (67 – 171 minutes) or in the third period (172 – 284 minutes).","1. The time spent in the first period is between 4 and 67, which is true here.  
+2. The time spent in the second period is between 67 and 172, which is not true here.  
+3. The time spent in the third period is between 172 and 285, which is not true here.","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]","[23, 24, 25]",0.1872,OPTIMAL,cop,0.501,,
+heart,openai/gpt-oss-20b,81,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,93.2,False,93.2,93.2,93.2,93.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[93.2, 93.2, 93.2, 93.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die.  
+This decision is based on two facts that the model found important:  
+
+1. The patient’s sex falls into the first category (the model’s “sex_b0” flag is 1).  
+2. The patient’s time value is between 4 and 67 (the model’s “time_b0” flag is 1).  
+
+Because these two conditions are true, the model’s rule says the patient is likely to die. The other time ranges (between 67 and 172, and between 172 and 285) do not apply to this patient, so they do not influence the prediction.","The model predicts that the patient died because the patient is male and has been in the hospital for 4 to 67 days. The time since admission is not between 67 and 172 days, nor between 172 and 285 days.","1. The patient's sex is between 0 and 1, which is true here.  
+2. The patient's time is between 4 and 67, which is true here.  
+3. The patient's time is between 67 and 172, which is false here.  
+4. The patient's time is between 172 and 285, which is false here.","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]","[21, 23, 24, 25]",0.1872,OPTIMAL,cop@4,0.501,,
+heart,openai/gpt-oss-20b,81,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.6,True,97.6,97.6,97.6,97.6,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[97.6],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b2 = 0  (ejection_fraction in [40, 70) — does NOT hold)
+  serum_creatinine_b0 = 0  (serum_creatinine in [0.5, 1) — does NOT hold)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient would not survive because the only measurement that points to higher risk is the time value. The patient’s time is between 4 and 67, a range that the model has learned is associated with a higher chance of death. The other measurements do not fall into the protective ranges: the ejection fraction is not between 40 and 70, the serum creatinine is not between 0.5 and 1, and the time is not between 172 and 285. Since none of those protective conditions are met, the prediction is that the patient will die.","The model predicted that the patient would not survive because the only measurement that points to higher risk is the time value. The patient’s time is between 4 and 67, a range that the model has learned is associated with a higher chance of death. The other measurements do not fall into the protective ranges: the ejection fraction is not between 40 and 70, the serum creatinine is not between 0.5 and 1, and the time is not between 172 and 285. Since none of those protective conditions are met, the prediction is that the patient will die.","1. The ejection fraction, which measures how much blood the heart pumps out, is between 40 and 70, which is not the case here.  
+2. The serum creatinine, which indicates kidney function, is between 0.5 and 1, which is not the case here.  
+3. The length of stay in the hospital, measured in days, is between 4 and 67, which is true here.  
+4. The length of stay in the hospital, measured in days, is between 172 and 285, which is not the case here.","['time_b0 > 0.5', 'ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b2 < 0.5', 'serum_creatinine_b0 < 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]","[10, 15, 23, 25]",,,,,0.9863309352517986,
+heart,openai/gpt-oss-20b,81,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.7,False,76.7,42.6,76.7,76.7,False,False,False,2,0,2,0,0,2,0,0,0,0,0,3,"[76.7, 42.6, 63.0, 42.6]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.99):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model looked at two simple facts about the patient.  
+1. The patient’s ejection fraction indicator is present (value 1).  
+2. The patient’s time indicator is present (value 1).  
+
+Because both of these indicators are present, the model follows a rule that says “if both are present, the patient is predicted to have died.” This rule is very reliable, with a precision of 99 %. If either indicator were missing, the rule would not apply and the prediction could be different. Thus, the presence of both indicators led the model to predict mortality.","If the patient’s time in the study is 1 year and their ejection fraction is low (below 40 %), the model predicts the patient will die.","1. The ejection fraction indicator is set to 1, which is true here.  
+2. The time indicator is set to 1, which is true here.  
+3. The model predicted that the patient died, which is the case.  
+4. The rule says that if both the ejection fraction and time indicators are 1, the model predicts death.","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","[8, 23]","[8, 23]",[],"[8, 23]",,,,,,0.990950226244344
+heart,openai/gpt-oss-20b,81,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,76.7,76.7,93.6,97.9,False,False,True,2,2,4,2,0,2,0,0,0,2,0,3,"[76.7, 93.6, 42.6, 76.7]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 48.9% (supports the prediction)
+  ejection_fraction_b0: 19.8% (supports the prediction)
+  time_b2: 19.7% (supports the prediction)
+  time_b1: 11.7% (supports the prediction)","The model predicted that the patient would die because all of the indicators that were present pushed the prediction toward death.  
+- The indicator for time at the first measurement was present and was the strongest factor, accounting for about 49 % of the decision.  
+- The indicator for ejection fraction at the first measurement was present and added about 20 % to the prediction.  
+- The indicator for time at the third measurement was present and added about 20 % to the prediction.  
+- The indicator for time at the second measurement was present and added about 12 % to the prediction.  
+
+Because each of these present indicators supported the outcome of death, the model chose the class “1” (dead).","The model predicts that the patient will not survive.  
+- The **time indicator** (value 1, range 0–1) contributes the most to this prediction, adding about 49 % of the evidence for death.  
+- The **ejection‑fraction indicator** (value 1, range 0–1) adds roughly 20 % of the evidence for death.  
+- The **time indicator for the second period** (value 1, range 0–1) also adds about 20 % of the evidence for death.  
+- The **time indicator for the first period** (value 1, range 0–1) adds the remaining 12 % of the evidence for death.  
+
+All four indicators support the prediction that the patient will die.","1. The ejection fraction measurement is present.  
+2. The first time measurement is present.  
+3. The second time measurement is absent.  
+4. The third time measurement is absent.  
+5. The model predicted that the patient died.  
+6. The first time measurement pushed the prediction towards this class.  
+7. The ejection fraction measurement pushed the prediction towards this class.  
+8. The third time measurement pushed the prediction towards this class.  
+9. The second time measurement pushed the prediction towards this class.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5', 'time_b1 > 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5', 'time_b1 < 0.5']","[8, 23, 24, 25]","[8, 23]","[8, 23]","[8, 23, 24, 25]",,,,,,
+heart,openai/gpt-oss-20b,81,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,97.9,True,76.7,63.0,76.7,76.7,False,False,False,2,1,2,2,0,3,0,2,0,2,2,3,"[76.7, 42.6, 63.0, 63.0]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3917 (supports the prediction)
+  time_b2: weight=+0.3778 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1954 (supports the prediction)
+  time_b1: weight=+0.1781 (supports the prediction)","The model predicted death because the patient has three key indicators that the model knows raise the risk.  
+- The first time indicator is present and has the strongest influence.  
+- The second time indicator is also present and adds a large amount of risk.  
+- The ejection‑fraction indicator is present and contributes additional risk.  
+- The third time indicator is present and adds a smaller amount of risk.  
+
+All four of these present indicators push the prediction toward death, and together they led the model to classify the patient as having died.",The model predicts that the patient will die because the heart’s pumping ability was low (ejection fraction below 40 %) and the patient was readmitted within the first month after discharge and again between one and three months after discharge.,"1. The ejection fraction measurement pushed the prediction towards this class.  
+2. The time measurement at baseline pushed the prediction towards this class.  
+3. The time measurement at the first follow‑up pushed the prediction towards this class.  
+4. The time measurement at the second follow‑up pushed the prediction towards this class.","['time_b0 > 0.5', 'time_b1 > 0.5', 'ejection_fraction_b0 > 0.5', 'time_b2 > 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23]",[23],"[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,86,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,88.6,False,88.6,88.6,88.6,88.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[88.6, 88.6, 88.6, 88.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model looked at two facts about the patient:  
+
+- The ejection fraction was **not** between 15 % and 30 %.  
+- The time was **not** between 4 days and 67 days.  
+
+When both of those facts are true, the rule the model learned says the patient is predicted to survive. This instance matches that rule, so the prediction is 0 (survived).","The model predicts that the patient survived because two key measurements are outside the ranges that usually signal higher risk.  
+- The ejection fraction (the percentage of blood pumped out of the heart with each beat) is **not** between 15 % and 30 %.  
+- The time (likely the number of days since a key event) is **not** between 4 days and 67 days.  
+
+Since neither of these conditions is met, the model classifies the patient as surviving.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1668,OPTIMAL,cop,0.4994,,
+heart,openai/gpt-oss-20b,86,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,88.4,False,88.4,88.4,88.4,88.4,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[88.4, 88.4, 88.4, 88.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  high_blood_pressure_b0 = 1  (high_blood_pressure in [0, 1) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived (class 0).  
+It bases this on two measurements that match the rule it learned:  
+
+- **High blood pressure** is present (the value is 1, which falls in the range [0, 1)).  
+- **Sex** is 1 (the value is 1, which falls in the range [0, 1)).  
+
+These two factors push the prediction toward survival.  
+
+The other two measurements do not match the rule:  
+
+- **Ejection fraction** is 0, so it is not in the range [15, 30).  
+- **Time** is 0, so it is not in the range [4, 67).  
+
+Because the rule that aligns with the model’s decision relies only on high blood pressure and sex, the prediction is 0.","The model says this patient survived.  
+The rule that supports that prediction is:  
+
+- The patient’s ejection fraction is **not** between 15 % and 30 %.  
+- The patient **does** have high blood pressure (value 1).  
+- The patient is **male** (sex value 1).  
+- The patient’s time is **not** between 4 and 67 (value 0).","1. The ejection fraction is between 15% and 30%, which is not the case here.  
+2. The high blood pressure measurement is between 0 and 1, which is true here.  
+3. The sex indicator is between 0 and 1, which is true here.  
+4. The time measurement is between 4 and 67, which is not the case here.","['high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'high_blood_pressure_b0 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5']","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]","[8, 11, 21, 23]",0.1668,OPTIMAL,cop@4,0.4994,,
+heart,openai/gpt-oss-20b,86,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,98.9,True,98.9,98.9,98.9,98.9,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[98.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  ejection_fraction_b1 = 1  (ejection_fraction in [30, 40) — holds)
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicts that the patient survived (class 0).  
+- The ejection fraction is between 30 % and 40 %, a range that tends to be linked with better outcomes.  
+- The patient’s sex falls in the 0 to 1 range, which also supports a survival prediction.  
+- The time variable is not in the 4 to 67 range; instead it is between 172 and 285, a period that the model associates with survival.  
+
+Because all these conditions point toward a lower risk of death, the model outputs the survival class.","The model predicts that the patient survived (class 0).  
+- The ejection fraction is between 30 % and 40 %, a range that tends to be linked with better outcomes.  
+- The patient’s sex falls in the 0 to 1 range, which also supports a survival prediction.  
+- The time variable is not in the 4 to 67 range; instead it is between 172 and 285, a period that the model associates with survival.  
+
+Because all these conditions point toward a lower risk of death, the model outputs the survival class.","1. The ejection fraction is between 30 and 40, which is true here.  
+2. The sex is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is not true here, and this fact pushed the prediction against this class.  
+4. The time is between 172 and 285, which is true here, and this fact pushed the prediction towards this class.","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","['ejection_fraction_b1 > 0.5', 'sex_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]","[9, 21, 23, 25]",,,,,0.9856115107913668,
+heart,openai/gpt-oss-20b,86,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,82.6,False,82.6,82.6,82.6,82.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[82.6, 76.5, 57.4, 82.6]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.95):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","The model has a rule that says: if the patient’s serum creatinine level indicator is 1 **and** the time indicator is 1, then the patient is predicted to survive (class 0). This rule is very reliable, with an estimated precision of 95 %. In this case, both indicators are present, so the model predicts that the patient survived.",The model predicts that the patient will survive if the patient has a high serum creatinine level and a specific time indicator.,"1. The serum creatinine level pushed the prediction towards survival.  
+2. The time measurement pushed the prediction towards survival.  
+3. The predicted class is 0, meaning the patient survived.  
+4. The rule that links the time and serum creatinine indicators to the prediction says that when both are 1, the prediction is 0.","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","[15, 25]","[15, 25]","[15, 25]","[15, 25]",,,,,,0.9547244094488188
+heart,openai/gpt-oss-20b,86,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,99.7,True,82.6,74.3,82.6,82.6,False,False,False,2,2,2,2,0,2,0,2,0,2,2,3,"[82.6, 57.4, 76.5, 74.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 46.7% (supports the prediction)
+  time_b0: 26.6% (supports the prediction)
+  serum_creatinine_b0: 16.8% (supports the prediction)
+  ejection_fraction_b0: 9.9% (supports the prediction)","The model predicted that the patient survived. It made this decision because all four indicators it looked at pointed toward survival. The indicator that the patient had a time category of 2 was the strongest factor, adding almost 47 % of the evidence for survival. The time category of 0 added about 27 % of the evidence. The serum creatinine indicator added about 17 % of the evidence, and the ejection fraction indicator added about 10 % of the evidence. All of these contributions were in the same direction, so the model concluded that the patient was likely to survive.","The patient’s ejection fraction is within the normal range (about 50‑70 %), which supports the prediction that they will survive.  
+Their serum creatinine level is normal (roughly 0.6‑1.3 mg/dL), which also supports survival.  
+The time since diagnosis is short (less than a few months), which further supports the prediction that the patient will survive.","1. The heart's pumping efficiency indicator pushed the prediction towards this class.  
+2. The kidney function indicator pushed the prediction towards this class.  
+3. The initial time point indicator pushed the prediction towards this class.  
+4. The later time point indicator pushed the prediction towards this class.","['time_b2 > 0.5', 'time_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['ejection_fraction_b0 > 0.5', 'serum_creatinine_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5']","[8, 15, 23, 25]","[15, 25]","[8, 15]","[15, 25]",,,,,,
+heart,openai/gpt-oss-20b,86,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,97.1,True,88.6,88.6,88.6,88.6,False,False,False,2,2,2,2,0,2,0,2,0,2,2,3,"[88.6, 88.6, 57.4, 88.6]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b2: weight=-0.3869 (opposes the prediction)
+  time_b0: weight=-0.3803 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1796 (opposes the prediction)
+  time_b1: weight=+0.1641 (supports the prediction)","The model predicted that the patient survived (class 0).  
+The patient had the second time measurement present, which the model interprets as a sign of survival.  
+The third time measurement, the first time measurement, and the ejection‑fraction measurement were all absent, and the model sees each of those as signs that the patient might die.  
+Because the positive influence of the second time measurement outweighed the negative influences of the other three, the overall prediction was that the patient survived.","The model predicts that the patient will survive.  
+The following factors influence this prediction:  
+
+- If the patient’s ejection fraction is below 35 %, it lowers the chance of survival.  
+- If the time since diagnosis is less than 1 year, it lowers the chance of survival.  
+- If the time since diagnosis is between 1 and 5 years, it raises the chance of survival.  
+- If the time since diagnosis is more than 5 years, it lowers the chance of survival.","1. The ejection fraction indicator pushed the prediction against this class, but was outweighed.  
+2. The time period 0 indicator pushed the prediction against this class, but was outweighed.  
+3. The time period 1 indicator pushed the prediction towards this class.  
+4. The time period 2 indicator pushed the prediction against this class, but was outweighed.","['time_b1 > 0.5', 'time_b2 < 0.5', 'time_b0 < 0.5', 'ejection_fraction_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'time_b1 > 0.5', 'time_b2 < 0.5']","[8, 23, 24, 25]","[8, 23]","[8, 23]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,94,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,90.3,False,90.3,90.3,90.3,90.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[90.3, 90.3, 90.3, 90.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient survived because two key measurements are outside the ranges that would raise the risk of death.  
+- The ejection fraction is **not** between 15 and 30.  
+- The time is **not** between 4 and 67.  
+
+According to the rule the model learned, when both of these conditions hold, the prediction is 0 (survival).","The model predicted that the patient survived.  
+This prediction is supported by two facts about the patient:  
+- The ejection fraction was not in the low range of 15 % to 30 %.  
+- The time was not in the 4 to 67 unit range.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The time is between 4 and 67, which is not true here.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",0.1742,OPTIMAL,cop,0.5166,,
+heart,openai/gpt-oss-20b,94,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,87.1,False,87.1,87.1,87.1,87.1,False,False,False,3,3,3,0,0,0,0,0,0,0,0,3,"[87.1, 87.1, 87.1, 87.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  ejection_fraction_b0 = 0  (ejection_fraction in [15, 30) — does NOT hold)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)","The model predicted that the patient will survive.  
+- The patient is a smoker (the smoking indicator is 1). The rule learned from the data says that being a smoker falls into the range “smoking in [0, 1)”, and this condition is associated with a prediction of survival.  
+- The ejection fraction is not between 15 % and 30 % (the rule says “ejection_fraction in [15, 30) — does NOT hold”), so it does not push the prediction toward death.  
+- The time since diagnosis is not between 4 and 67 months (the rule says “time in [4, 67) — does NOT hold”), so it also does not push the prediction toward death.  
+
+Because only the smoking condition holds and it points to survival, while the other two conditions do not, the model concluded that the patient is likely to survive.","The model predicted that the patient survived (class 0).  
+The rule that led to this prediction is:  
+
+- The patient’s ejection fraction is **not** between 15 % and 30 %.  
+- The patient’s smoking level is **between** 0 and 1.  
+- The patient’s time is **not** between 4 and 67.","1. The ejection fraction is between 15 and 30, which is not true here.  
+2. The smoking status is between 0 and 1, which is true here.  
+3. The time is between 4 and 67, which is not true here.","['smoking_b0 > 0.5', 'ejection_fraction_b0 < 0.5', 'time_b0 < 0.5']","['ejection_fraction_b0 < 0.5', 'smoking_b0 > 0.5', 'time_b0 < 0.5']","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]","[8, 22, 23]",0.1742,OPTIMAL,cop@3,0.5166,,
+heart,openai/gpt-oss-20b,94,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.4,True,98.4,98.4,98.4,98.4,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[98.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  serum_sodium_b0 = 0  (serum_sodium in [116, 135) — does NOT hold)
+  time_b0 = 0  (time in [4, 67) — does NOT hold)
+  time_b2 = 1  (time in [172, 285) — holds)","The model predicted that the patient survived.  
+The only factor that was true for this patient was that the time of observation was between 172 and 285 days. This time range is linked to a higher chance of survival, so it pushed the prediction toward 0 (survived).  
+
+The other two factors were not true: the patient’s serum sodium level was not in the 116–135 range, and the time was not in the 4–67 day range. Because those conditions did not hold, they did not influence the prediction.","The model predicted that the patient survived.  
+The only factor that was true for this patient was that the time of observation was between 172 and 285 days. This time range is linked to a higher chance of survival, so it pushed the prediction toward 0 (survived).  
+
+The other two factors were not true: the patient’s serum sodium level was not in the 116–135 range, and the time was not in the 4–67 day range. Because those conditions did not hold, they did not influence the prediction.","1. The serum sodium level is between 116 and 135, which is not true for this patient.  
+2. The time measurement is between 4 and 67, which is not true for this patient.  
+3. The time measurement is between 172 and 285, which is true for this patient.","['time_b2 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 < 0.5']","['serum_sodium_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]","[18, 23, 25]",,,,,0.9848920863309352,
+heart,openai/gpt-oss-20b,94,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,83.4,False,83.4,77.0,83.4,83.4,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[83.4, 83.4, 67.8, 77.0]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF time_b2 = 1 AND serum_creatinine_b0 = 1 THEN class 0","The model is trying to decide whether a patient will die from heart failure (1) or survive (0).  
+For this patient the two relevant measurements are:
+
+* The serum creatinine test was high (the code “serum_creatinine_b0” equals 1).  
+* The time‑related indicator was 1 (the code “time_b2” equals 1).
+
+The model has a rule that says: **when both of these conditions are true, the patient is predicted to survive**. This rule is very reliable – it is correct about 97 % of the time. Because the patient meets both conditions, the model follows this rule and outputs class 0, meaning the patient is predicted to survive. If either of those conditions were not met, the rule would not apply and the prediction could be different.","If a patient’s serum creatinine level is high (above about 1.3 mg/dL) and the time since admission is longer than 2 days, the model predicts that the patient will survive (class 0). This rule is very","1. The presence of a serum creatinine level pushed the prediction towards survival.  
+2. The presence of time pushed the prediction towards survival.  
+3. The model predicted that the patient survived.  
+4. The rule says that if both time and serum creatinine are present, the prediction is survival.","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","['serum_creatinine_b0 > 0.5', 'time_b2 > 0.5']","[15, 25]","[15, 25]",[25],"[15, 25]",,,,,,0.9696969696969696
+heart,openai/gpt-oss-20b,94,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,97.3,True,97.3,97.3,97.3,97.3,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[97.3],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b2: 51.9% (supports the prediction)
+  time_b0: 30.8% (supports the prediction)
+  serum_creatinine_b0: 17.3% (supports the prediction)","The model looked at three pieces of information about the patient.  
+• A kidney‑function test was recorded – this fact helped the model think the patient would survive.  
+• The first time‑point test was not recorded – the absence of this test also pushed the prediction toward survival.  
+• The second time‑point test was recorded – this was the strongest factor, giving the biggest push toward the prediction that the patient would survive.  
+
+All three pieces of information worked together to make the model predict that the patient would survive.","The model looked at three pieces of information about the patient.  
+• A kidney‑function test was recorded – this fact helped the model think the patient would survive.  
+• The first time‑point test was not recorded – the absence of this test also pushed the prediction toward survival.  
+• The second time‑point test was recorded – this was the strongest factor, giving the biggest push toward the prediction that the patient would survive.  
+
+All three pieces of information worked together to make the model predict that the patient would survive.","1. The model predicted that the patient survived.  
+2. The serum creatinine level was measured as high, which is true for this case.  
+3. The time at baseline was recorded as not present, which is true for this case.  
+4. The time at follow-up was recorded as present, which is true for this case.  
+5. The time at follow-up pushed the prediction towards survival.  
+6. The time at baseline pushed the prediction towards survival.  
+7. The serum creatinine level pushed the prediction towards survival.","['time_b0 < 0.5', 'time_b2 > 0.5', 'serum_creatinine_b0 > 0.5']","['serum_creatinine_b0 > 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","[15, 23, 25]","[15, 23, 25]","[15, 23, 25]","[15, 23, 25]",,,,,,
+heart,openai/gpt-oss-20b,94,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,98.7,True,98.7,98.7,98.7,90.3,True,True,False,3,3,2,0,0,0,0,1,0,0,1,0,[98.7],0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=-0.3929 (opposes the prediction)
+  time_b2: weight=-0.3817 (opposes the prediction)
+  ejection_fraction_b0: weight=-0.1829 (opposes the prediction)","The model predicted that the patient survived (class 0).  
+It looked at three pieces of information: whether the ejection‑fraction indicator was present, whether the first time indicator was present, and whether the second time indicator was present.  
+In this case the ejection‑fraction indicator was not present, the first time indicator was not present, and the second time indicator was present.  
+Each of these three facts tends to push the prediction toward death, but the overall calculation still favored survival, so the final prediction was 0.","The model predicted that the patient survived (class 0).  
+It looked at three pieces of information: whether the ejection‑fraction indicator was present, whether the first time indicator was present, and whether the second time indicator was present.  
+In this case the ejection‑fraction indicator was not present, the first time indicator was not present, and the second time indicator was present.  
+Each of these three facts tends to push the prediction toward death, but the overall calculation still favored survival, so the final prediction was 0.","1. The ejection fraction at baseline pushed against this class, but was outweighed.  
+2. The time at baseline pushed against this class, but was outweighed.  
+3. The time at the second measurement pushed against this class, but was outweighed.","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 > 0.5']","['ejection_fraction_b0 < 0.5', 'time_b0 < 0.5', 'time_b2 < 0.5']","[8, 23, 25]","[8, 23, 25]","[8, 23, 25]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,114,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,87.0,False,87.0,87.0,87.0,87.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[87.0, 87.0, 87.0, 87.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model used two time indicators.  
+The first indicator shows that the patient’s time falls between 4 and 67, a range that the model has learned is linked to a higher chance of death.  
+The second indicator shows that the patient’s time does not fall between 172 and 285, so it does not provide evidence of survival.  
+
+Because the first time condition is met and the second does not counteract it, the model predicts that the patient will die.","The model predicted that the patient died because the recorded time falls in the 4 to 67‑unit window and does not fall in the 172 to 285‑unit window. This matches the rule that the model learned: if the time is between 4 and 67 units and not between 172 and 285 units, the patient is predicted to die.","1. The early time measurement is between 4 and 67, which is true here and supports the prediction of mortality.  
+2. The late time measurement is between 172 and 285, which is not true here and opposes the prediction but was outweighed.","['time_b0 > 0.5', 'time_b2 < 0.5']","['time_b0 > 0.5', 'time_b2 < 0.5']","[23, 25]","[23, 25]","[23, 25]","[23, 25]",0.1848,OPTIMAL,cop,0.4934,,
+heart,openai/gpt-oss-20b,114,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,89.7,False,89.7,87.0,89.7,89.7,False,False,False,4,2,4,0,0,2,0,0,0,0,0,3,"[89.7, 89.7, 89.7, 87.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  sex_b0 = 1  (sex in [0, 1) — holds)
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient will die because the patient’s sex falls in the range 0 to 1, the patient smokes, and the time variable is between 4 and 67. The rule learned by the model also notes that the time variable is not between 172 and 285, which is consistent with the prediction of death.","The rule says the patient is in the first sex category, has a first smoking category, the time is between 4 and 66, and the time is not between 172 and 284.","1. The patient's sex is represented by a binary value between 0 and 1, which is true here.  
+2. The patient's smoking status is represented by a binary value between 0 and 1, which is true here.  
+3. The patient's time since diagnosis is between 4 and 67, which is true here.  
+4. The patient's time since diagnosis is between 172 and 285, which is not true here.","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","['sex_b0 > 0.5', 'smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 < 0.5']","[21, 22, 23, 25]","[21, 22, 23, 25]","[23, 25]","[21, 22, 23, 25]",0.1848,OPTIMAL,cop@4,0.4934,,
+heart,openai/gpt-oss-20b,114,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,96.7,True,96.7,96.7,96.7,96.7,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[96.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  smoking_b0 = 1  (smoking in [0, 1) — holds)
+  time_b0 = 1  (time in [4, 67) — holds)
+  time_b1 = 0  (time in [67, 172) — does NOT hold)
+  time_b2 = 0  (time in [172, 285) — does NOT hold)","The model predicted that the patient died because two conditions that favor death were met.  
+First, the patient was a smoker during the first period (the smoking indicator is 1, meaning smoking in the range [0, 1)).  
+Second, the patient’s observation time fell in the early interval of 4 to 67 units (time indicator 1, meaning time in [4, 67)).  
+
+The other two time intervals—67 to 172 and 172 to 285 units—were not present for this patient, so those conditions did not influence the prediction. The presence of smoking and the early observation period together pushed the model toward the “death” outcome.","The model predicted that the patient died because two conditions that favor death were met.  
+First, the patient was a smoker during the first period (the smoking indicator is 1, meaning smoking in the range [0, 1)).  
+Second, the patient’s observation time fell in the early interval of 4 to 67 units (time indicator 1, meaning time in [4, 67)).  
+
+The other two time intervals—67 to 172 and 172 to 285 units—were not present for this patient, so those conditions did not influence the prediction. The presence of smoking and the early observation period together pushed the model toward the “death” outcome.","1. The smoking status is between 0 and 1, which is true here.  
+2. The duration of hospitalization is between 4 and 67 days, which is true here.  
+3. The duration of hospitalization is between 67 and 172 days, which is not true here.  
+4. The duration of hospitalization is between 172 and 285 days, which is not true here.","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['smoking_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]","[22, 23, 24, 25]",,,,,0.966906474820144,
+heart,openai/gpt-oss-20b,114,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.3,False,76.3,76.3,76.3,76.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[76.3, 76.3, 42.0, 76.3]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF time_b0 = 1 AND ejection_fraction_b0 = 1 THEN class 1","The model looked at two simple facts about the patient.  
+First, the time indicator was set to 1.  
+Second, the ejection‑fraction indicator was also set to 1.  
+
+When both of these indicators are present, the model has learned that the patient is very likely to die from heart failure. Because the patient had both indicators equal to 1, the model gave the prediction “1” (death). If either indicator had been 0, this rule would not have applied and the prediction could have been different.","If a patient’s ejection fraction is normal (value 1) and the time indicator is 1 (e.g., 1 year), the model predicts that the patient will die.","1. The heart’s pumping efficiency was recorded as 1, which is true here and pushed the prediction toward this class.  
+2. The duration of observation was recorded as 1, which is true here and pushed the prediction toward this class.  
+3. The model predicted that the patient died.  
+4. The rule that if both the duration of observation and heart pumping efficiency are 1, then the patient died, supports this prediction with high confidence.","['time_b0 > 0.5', 'ejection_fraction_b0 > 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5']","[8, 23]","[8, 23]","[8, 23]","[8, 23]",,,,,,0.9832402234636872
+heart,openai/gpt-oss-20b,114,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,99.1,True,99.1,99.1,99.1,76.3,True,True,False,4,4,2,0,0,0,0,2,0,0,2,0,[99.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  time_b0: 47.7% (supports the prediction)
+  time_b2: 20.9% (supports the prediction)
+  ejection_fraction_b0: 19.5% (supports the prediction)
+  time_b1: 11.9% (supports the prediction)","The model looked at four simple yes‑or‑no clues about the patient.  
+• The patient’s ejection fraction was in the first category (value 1).  
+• The time since diagnosis was in the first time group (value 1).  
+• The second time group was not present (value 0).  
+• The third time group was also not present (value 0).  
+
+Each of these clues nudged the prediction toward death. The strongest push came from the first time group (about 48 % of the decision), followed by the third time group (about 21 %), the ejection‑fraction category (about 20 %), and finally the second time group (about 12 %). All four clues together led the model to predict that the patient would not survive.","The model looked at four simple yes‑or‑no clues about the patient.  
+• The patient’s ejection fraction was in the first category (value 1).  
+• The time since diagnosis was in the first time group (value 1).  
+• The second time group was not present (value 0).  
+• The third time group was also not present (value 0).  
+
+Each of these clues nudged the prediction toward death. The strongest push came from the first time group (about 48 % of the decision), followed by the third time group (about 21 %), the ejection‑fraction category (about 20 %), and finally the second time group (about 12 %). All four clues together led the model to predict that the patient would not survive.","1. The ejection fraction measurement pushed the prediction towards this class.  
+2. The first time measurement pushed the prediction towards this class.  
+3. The second time measurement pushed the prediction towards this class.  
+4. The third time measurement pushed the prediction towards this class.","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 < 0.5', 'time_b2 < 0.5']","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b1 > 0.5', 'time_b2 > 0.5']","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23, 24, 25]","[8, 23]",,,,,,
+heart,openai/gpt-oss-20b,114,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,91.2,False,67.4,53.9,87.0,67.4,False,False,False,3,2,3,1,0,2,0,1,0,1,1,3,"[67.4, 87.0, 34.5, 53.9]",0.0429,"LIME local explanation (linear approximation weights):
+  time_b0: weight=+0.3684 (supports the prediction)
+  time_b2: weight=+0.3677 (supports the prediction)
+  ejection_fraction_b0: weight=+0.1794 (supports the prediction)
+  serum_sodium_b0: weight=-0.1628 (opposes the prediction)","The model predicted that the patient would not survive because three of the patient’s measurements were in the direction that the model associates with death.  
+- The ejection‑fraction measurement was high, which the model sees as a factor that supports a fatal outcome.  
+- The first time‑related measurement was high, and the second time‑related measurement was also high; both of these also push the prediction toward death.  
+- The serum‑sodium measurement was low, which the model interprets as a factor that slightly supports survival, but this single opposing signal is not strong enough to outweigh the three supporting signals.  
+
+Because the overall influence of the high ejection fraction and the two high time measurements outweighs the low serum‑sodium signal, the model outputs a prediction of death.","The model predicted that the patient would not survive because the heart was pumping a normal or high amount of blood with each beat (ejection fraction above about 55 %), which is linked to a higher risk of death.  The patient was also monitored during the first 30 days after admission and again after 90 days, both time periods that the model found to increase the likelihood of mortality.  A low sodium level in the blood (below 135 mmol/L) slightly lowered the risk, but the other factors outweighed it.","1. The heart's pumping efficiency pushed the prediction towards this class.  
+2. The sodium level in the blood pushed against this class, but was outweighed.  
+3. The time since admission pushed the prediction towards this class.  
+4. The time since discharge pushed the prediction towards this class.","['ejection_fraction_b0 > 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5', 'serum_sodium_b0 < 0.5']","['ejection_fraction_b0 > 0.5', 'serum_sodium_b0 < 0.5', 'time_b0 > 0.5', 'time_b2 > 0.5']","[8, 18, 23, 25]","[8, 18, 23]","[18, 23]","[8, 18, 23]",,,,,,

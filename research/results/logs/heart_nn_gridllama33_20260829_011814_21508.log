@@ -1,0 +1,65 @@
+Full console log -> research/results/logs/heart_nn_gridllama33_20260829_011814_21508.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+resume: 8 instances already done (40 rows) -> 7 to go
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop] base=57.9% v4=57.9% v5=57.9% v6=57.9% (len 2, om_v5=0)
+  [lmpaxp] base=94.4% v4=89.6% v5=67.9% v6=94.4% (len 9, om_v5=5)
+  [anchors] base=79.5% v4=69.5% v5=61.7% v6=79.5% (len 7, om_v5=3)
+  [shap] base=39.1% v4=60.8% v5=26.6% v6=35.3% (len 9, om_v5=4)
+  [lime] base=1.5% v4=1.1% v5=0.4% v6=8.2% (len 9, om_v5=4)
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop] base=88.6% v4=88.6% v5=57.4% v6=88.6% (len 2, om_v5=2)
+  [lmpaxp] base=98.9% v4=98.9% v5=98.9% v6=98.9% (len 4, om_v5=0)
+  [anchors] base=82.6% v4=82.6% v5=82.6% v6=82.6% (len 2, om_v5=0)
+  [shap] base=99.7% v4=82.6% v5=82.6% v6=82.6% (len 4, om_v5=2)
+  [lime] base=97.1% v4=97.1% v5=97.1% v6=97.1% (len 4, om_v5=0)
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop] base=87.0% v4=87.0% v5=87.0% v6=87.0% (len 2, om_v5=0)
+  [lmpaxp] base=96.7% v4=96.7% v5=96.7% v6=96.7% (len 4, om_v5=0)
+  [anchors] base=76.3% v4=64.7% v5=64.7% v6=76.3% (len 2, om_v5=1)
+  [shap] base=99.1% v4=76.3% v5=73.8% v6=84.6% (len 4, om_v5=2)
+  [lime] base=91.2% v4=63.2% v5=67.4% v6=67.4% (len 4, om_v5=1)
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop] base=92.5% v4=92.5% v5=92.5% v6=92.5% (len 3, om_v5=0)
+  [lmpaxp] base=96.1% v4=96.1% v5=96.1% v6=96.1% (len 4, om_v5=0)
+  [anchors] base=74.9% v4=62.2% v5=41.3% v6=74.9% (len 2, om_v5=2)
+  [shap] base=97.1% v4=83.4% v5=97.1% v6=83.4% (len 4, om_v5=0)
+  [lime] base=98.1% v4=74.9% v5=98.1% v6=92.1% (len 4, om_v5=0)
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop] base=89.4% v4=89.4% v5=89.4% v6=89.4% (len 2, om_v5=0)
+  [lmpaxp] base=98.9% v4=98.9% v5=98.9% v6=98.9% (len 5, om_v5=0)
+  [anchors] base=86.2% v4=86.2% v5=86.2% v6=62.1% (len 3, om_v5=0)
+  [shap] base=99.4% v4=69.4% v5=73.1% v6=80.8% (len 5, om_v5=3)
+  [lime] base=96.7% v4=77.5% v5=96.7% v6=95.9% (len 5, om_v5=0)
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop] base=84.5% v4=84.5% v5=84.5% v6=84.5% (len 2, om_v5=0)
+  [lmpaxp] base=95.4% v4=95.4% v5=95.4% v6=95.4% (len 4, om_v5=0)
+  [anchors] base=74.5% v4=74.5% v5=64.5% v6=74.5% (len 2, om_v5=1)
+  [shap] base=98.8% v4=72.5% v5=86.2% v6=81.8% (len 4, om_v5=1)
+  [lime] base=89.1% v4=31.8% v5=31.8% v6=52.0% (len 4, om_v5=3)
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop] base=66.0% v4=66.0% v5=64.7% v6=66.0% (len 2, om_v5=1)
+  [lmpaxp] base=96.0% v4=96.0% v5=96.0% v6=96.0% (len 4, om_v5=0)
+  [anchors] base=76.2% v4=64.7% v5=64.7% v6=76.2% (len 2, om_v5=1)
+  [shap] base=97.5% v4=82.6% v5=64.7% v6=82.6% (len 4, om_v5=3)
+  [lime] base=97.5% v4=97.5% v5=97.5% v6=82.6% (len 4, om_v5=0)
+
+saved -> research/results/heart_nn_comparison_gridllama33.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       2.93               82.57     76.08     72.31          78.83     78.33
+cop           2.20               83.77     83.77     81.61          83.77     83.77
+lime          4.93               81.43     66.67     71.13          79.36     73.65
+lmpaxp        4.93               97.10     95.10     95.33          96.78     97.10
+shap          4.93               88.27     75.45     77.37          87.43     72.14
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.40
+lmpaxp                 0.87          0.87
+shap                   0.80          0.33

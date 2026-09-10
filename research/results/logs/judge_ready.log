@@ -1,0 +1,38 @@
+############ judge / gpt56  05:09:43 ############
+lmpaxp    56.47  55.27  27.13
+shap      46.25  47.36  30.95
+
+test-retest on 1347 repeated judgements, mean |pass1-pass2|:
+  faithfulness   8.71
+  coherence      6.90
+  completeness   6.64
+  halluc_risk    13.17
+############ judge / grok420  06:31:54 ############
+lmpaxp    48.80  48.17  25.20
+shap      47.50  44.27  29.35
+
+test-retest on 1347 repeated judgements, mean |pass1-pass2|:
+  faithfulness   8.35
+  coherence      7.04
+  completeness   6.89
+  halluc_risk    14.18
+=== waiting for sonnet5 / glm52 grids  07:53:10 ===
+############ judge / sonnet5  07:53:10 ############
+lmpaxp    64.47  65.06  38.38
+shap      56.32  53.23  30.98
+
+test-retest on 1201 repeated judgements, mean |pass1-pass2|:
+  faithfulness   10.07
+  coherence      6.16
+  completeness   7.67
+  halluc_risk    11.79
+############ judge / glm52  18:59:09 ############
+arm           
+cop       60.0
+
+test-retest on 1 repeated judgements, mean |pass1-pass2|:
+  faithfulness   10.00
+  coherence      0.00
+  completeness   5.00
+  halluc_risk    0.00
+=== all judging complete  18:59:30 ===

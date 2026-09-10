@@ -1,0 +1,159 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+compas,grok-4.20-0309-non-reasoning,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,67.1,False,67.1,71.1,71.1,67.1,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[67.1, 42.8, 67.1, 71.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the number of prior offenses is not between 3 and 36, and the score factor is between 0 and 1. Both of these measurements pushed the prediction toward not guilty.","**Explanation:**
+
+You were not predicted to be guilty. This is because you have no prior offenses in the range of 3 to 36, and your risk score falls in the lowest category (between 0 and 1). 
+
+These two simple facts were enough for the model to classify you as not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]",[2],"[2, 3]",0.0,OPTIMAL,cop@2,0.6646
+compas,grok-4.20-0309-non-reasoning,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.1,False,64.1,64.1,64.1,64.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[64.1, 64.1, 64.1, 64.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This is because the number of prior offenses is not between 3 and 36, and the score factor falls between 0 and 1. Both of these measurements pointed toward a prediction of not guilty.","**Explanation:**
+
+This person was predicted as **not guilty**.
+
+The model decided this mainly because the person has **no prior offenses** — their number of previous cases is between 0 and 3 (it is not in the 3 to 36 range).  
+
+In addition, their risk score is **low**, falling between 0 and 1.
+
+These two simple facts together led the model to predict that the individual is not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.6682
+compas,grok-4.20-0309-non-reasoning,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,70.7,False,66.3,70.7,74.0,70.7,False,False,False,4,5,5,1,0,0,0,0,0,1,0,3,"[66.3, 66.3, 74.0, 70.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is not above forty-five, the person is below twenty-five, and the person is African American. All of these measurements pushed the prediction toward not guilty.",The person has no prior offenses in the range of 3 to 36. Their COMPAS score is between 0 and 1. They are over 45 years old. They are under 25 years old. They are African American.,"1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6732
+compas,grok-4.20-0309-non-reasoning,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,74.0,False,48.0,43.7,48.0,74.0,False,False,False,4,3,5,1,0,2,0,0,0,1,0,3,"[48.0, 47.8, 47.8, 43.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b0 = 0  (number_of_priors in [0, 1) — does NOT hold)
+  number_of_priors_b1 = 0  (number_of_priors in [1, 3) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)","The model predicted that this person is guilty because they have no prior offenses in the lowest range and their score factor is in the lowest range. However, they are not in the middle range for number of priors either. In addition, they are over 45 years old and under 25 years old.",The person has no prior offenses. Their risk score is low. They are over 45 years old. They are also under 25 years old. These factors lead the model to predict they are guilty.,"1. The number of prior offenses is between 0 and 1, which is not true here.  
+2. The number of prior offenses is between 1 and 3, which is not true here.  
+3. The score factor is between 0 and 1, which is true here.  
+4. The age being above forty-five is between 0 and 1, which is true here.  
+5. The age being below twenty-five is between 0 and 1, which is true here.","['number_of_priors_b0 > 0.5', 'score_factor_b0 > 0.5', 'number_of_priors_b1 < 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5']","['number_of_priors_b0 < 0.5', 'number_of_priors_b1 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5']","[0, 1, 3, 4, 5]","[1, 3, 4, 5]","[3, 4, 5]","[0, 1, 3, 4, 5]",0.0,OPTIMAL,cop@5,0.3302
+compas,grok-4.20-0309-non-reasoning,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.5,False,67.8,67.8,74.3,72.5,False,False,False,4,4,5,1,0,1,0,0,0,1,0,3,"[67.8, 74.3, 68.6, 67.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is not above forty-five, the person is below twenty-five, and the person is African American. All of these measurements pointed toward a prediction of not guilty.","The person is not considered guilty mainly because they have no prior offenses in the range of 3 to 36. Their score factor falls between 0 and 1, they are under twenty-five years old, and they are African American.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 5, 6]","[2, 3, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646
+compas,grok-4.20-0309-non-reasoning,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.4,False,69.4,68.3,69.4,72.4,False,False,False,3,4,5,2,0,1,0,0,0,2,0,3,"[69.4, 68.3, 68.3, 68.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is over forty-five, the person is not under twenty-five, and the person is not African American. All of these measurements pointed toward a prediction of not guilty.","The person is not considered guilty mainly because they have no prior offenses in the range of 3 to 36, their risk score falls between 0 and 1, they are under twenty-five years old, and they are African American. In addition, they are not above forty-five years old.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 < 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4]","[2, 3, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6684
+compas,grok-4.20-0309-non-reasoning,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,64.6,False,64.6,69.8,69.8,64.6,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[64.6, 69.8, 69.8, 69.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This is because the number of prior offenses is not in the range of 3 to 36, and the score factor is between 0 and 1. Both of these measurements pointed toward a prediction of not guilty.","The person has no prior offenses in the range of 3 to 36, which is why the model considers them not guilty. In addition, their risk score falls in the low range of 0 to 1.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]",[2],"[2, 3]",0.0,OPTIMAL,cop@2,0.6662
+compas,grok-4.20-0309-non-reasoning,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.1,False,66.1,71.0,71.0,66.1,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[66.1, 71.0, 66.1, 71.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This is because the number of prior offenses is not in the range of 3 to 36, and the score factor is between 0 and 1. Both of these measurements pointed toward a prediction of not guilty.","**Refined explanation:**
+
+This person was predicted not to be guilty. 
+
+The model decided this mainly because the person has no prior offenses at all. Having a number of prior offenses between 3 and 36 would have pushed the prediction toward guilty, but that is not the case here.
+
+In addition, the person received a low risk score from the assessment. A score in the range of 0 to 1 is considered low and supports the prediction that they are not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]",[2],"[2, 3]",0.0,OPTIMAL,cop@2,0.6752
+compas,grok-4.20-0309-non-reasoning,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,75.7,False,75.7,70.9,75.7,75.7,False,False,False,5,4,5,0,0,1,0,0,0,0,0,3,"[75.7, 70.3, 70.9, 70.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is over 45, the person is under 25, and the person is African American. All of these measurements pushed the prediction toward not guilty.","The person has no prior offenses in the range of 3 to 36, which points toward not being guilty. Their score factor falls between 0 and 1, also supporting a not-guilty prediction. They are under twenty-five years old, which further supports not being guilty. They are African American, which aligns with the not-guilty prediction as well. Finally, they are not above forty-five years old, which also supports the prediction that they are not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]","[2, 3, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6624
+compas,grok-4.20-0309-non-reasoning,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,72.1,False,66.3,66.3,66.3,72.1,False,False,False,4,4,5,1,0,1,0,0,0,1,0,3,"[66.3, 66.3, 66.3, 66.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is not above forty-five, the person is below twenty-five, and the person is African American. All of these measurements pushed the prediction toward not guilty.","The person is not predicted to be guilty. This is because they have no prior offenses in the range of 3 to 36, their risk score is between 0 and 1, they are under twenty-five years old, and they are African American. In addition, they are not above forty-five years old.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 5, 6]","[2, 3, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6646
+compas,grok-4.20-0309-non-reasoning,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,68.2,False,68.2,72.8,72.8,68.2,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[68.2, 72.8, 72.8, 72.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the number of prior offenses is not in the range of 3 to 36, and the score factor is between 0 and 1. Both of these measurements pointed toward a not-guilty decision.","The person has no prior offenses in the range of 3 to 36, which points toward not being guilty. In addition, their risk score falls in the lowest range from 0 to 1, which also supports the prediction that they are not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]",[2],"[2, 3]",0.0,OPTIMAL,cop@2,0.6584
+compas,grok-4.20-0309-non-reasoning,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,65.6,False,65.6,65.6,65.6,65.6,False,False,False,2,2,2,0,0,0,0,0,0,0,0,3,"[65.6, 65.6, 65.6, 65.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person does not have a high number of prior offenses (their number of priors is not between 3 and 36). The other measurement, the score factor, was in the low range (between 0 and 1), but because the first condition did not hold, the model decided on not guilty.","The model decided this person is not guilty. 
+
+This is because they had no prior offenses in the range of 3 to 36, and their risk score was between 0 and 1. Both of these facts together led the model to predict they are not guilty.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]","[2, 3]","[2, 3]",0.0,OPTIMAL,cop@2,0.658
+compas,grok-4.20-0309-non-reasoning,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,73.2,False,67.8,73.2,73.2,73.2,False,False,False,3,5,5,2,0,0,0,0,0,2,0,3,"[67.8, 68.2, 68.2, 73.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This is because the person has no prior offenses in the high range of 3 to 36, the score factor is in the low range of 0 to 1, the person is over 45, the person is not under 25, and the person is African American. All of these measurements pointed toward a prediction of not guilty.","The person is not predicted to be guilty. This is because they have no prior offenses in the range of 3 to 36, their risk score is between 0 and 1, they are under twenty-five years old, and they are African American. They are also above forty-five years old.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 < 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 < 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 4, 6]","[2, 3, 4, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.658
+compas,grok-4.20-0309-non-reasoning,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,71.8,False,67.7,73.5,73.5,71.8,False,False,False,4,3,5,1,0,2,0,0,0,1,0,3,"[67.7, 67.7, 73.5, 73.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)
+  age_above_fourtyfive_b0 = 1  (age_above_fourtyfive in [0, 1) — holds)
+  age_below_twentyfive_b0 = 1  (age_below_twentyfive in [0, 1) — holds)
+  african_american_b0 = 1  (african_american in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This happened because the person has no prior offenses in the range of 3 to 36, the score factor is between 0 and 1, the person is not above forty-five, the person is below twenty-five, and the person is African American. All of these measurements pointed toward a prediction of not guilty.","The person is not considered guilty mainly because they have no prior offenses in the range of 3 to 36.  
+
+They also have a low COMPAS score in the range of 0 to 1, they are not over forty-five years old, they are under twenty-five years old, and they are African American.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.  
+3. The age above forty-five is between 0 and 1, which is true here.  
+4. The age below twenty-five is between 0 and 1, which is true here.  
+5. The African American indicator is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 < 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5', 'age_above_fourtyfive_b0 > 0.5', 'age_below_twentyfive_b0 > 0.5', 'african_american_b0 > 0.5']","[2, 3, 4, 5, 6]","[2, 3, 5, 6]","[2, 5, 6]","[2, 3, 4, 5, 6]",0.0,OPTIMAL,cop@5,0.6592
+compas,grok-4.20-0309-non-reasoning,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,66.0,False,66.0,70.8,70.8,66.0,False,False,False,2,1,2,0,0,1,0,0,0,0,0,3,"[66.0, 66.0, 40.9, 70.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  number_of_priors_b2 = 0  (number_of_priors in [3, 36) — does NOT hold)
+  score_factor_b0 = 1  (score_factor in [0, 1) — holds)","The model predicted that this person is not guilty. 
+
+This is because the number of prior offenses is not in the range of 3 to 36, and the score factor is between 0 and 1. Both of these measurements pushed the prediction toward not guilty.","The model decided this person is not guilty. This is because they had no prior offenses in the range of 3 to 36, and their risk score fell in the lowest range from 0 to 1.","1. The number of prior offenses is between 3 and 36, which is not true here.  
+2. The score factor is between 0 and 1, which is true here.","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","['number_of_priors_b2 < 0.5', 'score_factor_b0 > 0.5']","[2, 3]","[2, 3]",[2],"[2, 3]",0.0,OPTIMAL,cop@2,0.66

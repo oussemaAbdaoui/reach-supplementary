@@ -1,0 +1,72 @@
+=== gpt56 (gpt-5.6-terra via openai) order: heart diabetes cancer compas employee  start 01:05:01 ===
+--- gpt56/heart main  01:05:01 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.47
+lmpaxp                 0.87          0.87
+shap                   0.80          0.47
+--- gpt56/heart cop_k  01:34:49 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  heart/gpt56: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_heart_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/diabetes main  01:45:30 ---
+arm                                      
+anchors                0.20          0.20
+cop                    0.00          0.00
+lime                   0.13          0.13
+lmpaxp                 0.93          0.87
+shap                   0.47          0.40
+--- gpt56/diabetes cop_k  02:22:25 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53
+  diabetes/gpt56: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_diabetes_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/cancer main  02:41:45 ---
+arm                                      
+anchors                0.00          0.00
+cop                    0.07          0.07
+lime                   0.13          0.00
+lmpaxp                 0.87          0.67
+shap                   0.80          0.40
+--- gpt56/cancer cop_k  03:31:03 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.13          0.13
+  cancer/gpt56: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_cancer_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/compas main  03:52:58 ---
+arm                                      
+anchors                0.20          0.20
+cop                    0.07          0.07
+lime                   0.53          0.53
+lmpaxp                 1.00          0.87
+shap                   0.53          0.47
+--- gpt56/compas cop_k  04:17:00 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0
+  compas/gpt56: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_compas_nn_comparison_gpt56_Ufitcop_k.csv
+--- gpt56/employee main  04:25:59 ---
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.20
+lmpaxp                 0.87          0.80
+shap                   0.33          0.27
+--- gpt56/employee cop_k  04:49:32 ---
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07
+  employee/gpt56: replaced 0 cop_k rows with 15
+    superseded copy -> research\results\_superseded_employee_nn_comparison_gpt56_Ufitcop_k.csv
+=== gpt56 complete  04:55:03 ===

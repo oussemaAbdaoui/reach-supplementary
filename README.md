@@ -1,7 +1,8 @@
-# LastMile — supplementary material
+# REACH — supplementary material
 
-Code and extended results for *LastMile: A Query-Access Framework for Measuring
-and Repairing Guarantee Erosion in LLM-Mediated Explanation*.
+Code and extended results for *REACH: Democratized, Not Delivered: A
+Query-Access Framework for Measuring and Repairing Guarantee Erosion in
+LLM-Mediated Explanation*.
 
 Everything the paper reports is reproducible from this tree. It also contains
 the runs the paper only points at: the full judge sweep, the COP length sweeps,
@@ -13,6 +14,8 @@ explanations.
 ## What is here
 
 ```
+appendix.pdf             the extended appendix, sections A–G
+video_figure.mp4         the video figure, 4 min 36 s
 *.py                     the framework — generation, parsing, both scoring axes
 datasets/                the five datasets, exactly as used
 datasets_config.yaml     per-dataset paths, targets, few-shot examples
@@ -32,11 +35,15 @@ METHODS_NOTES.md         engineering decisions and near-misses behind the protoc
 EXPERIMENTS.md           the runs behind the paper's later sections, per file
 ```
 
-**The extended write-up is the appendix of the paper itself**, not a file here.
-Appendices A–F cover the extended background, the full notation, the framework
-as implemented, a step-by-step trace of one real instance through every stage,
-the complete result tables, and three deployment scenarios. This repository
-holds what the appendix cannot: the code, the data, and every stored run.
+**The extended write-up is `appendix.pdf`**, a document separate from the paper
+and included here in full. Sections A–G cover the extended background, the full
+notation, the framework as implemented, a step-by-step trace of one real
+instance through every stage, the complete result tables, three deployment
+scenarios, and the disclosure of LLM use in writing. This repository holds what
+the appendix cannot: the code, the data, and every stored run.
+
+`video_figure.mp4` introduces the problem and the result for a reader meeting
+the work for the first time.
 
 The layout is flat and mirrors the working repository on purpose: the scripts
 resolve their imports and data paths relative to this root, so **run everything

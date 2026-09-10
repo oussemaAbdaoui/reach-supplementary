@@ -1,0 +1,4 @@
+Full console log -> research/results/logs/employee_nn_gptoss20b_20260831_190118_4412.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [empty content, finish=length] raising max_tokens to 4096

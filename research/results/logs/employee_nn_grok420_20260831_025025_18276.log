@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/employee_nn_grok420_20260831_025025_18276.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop_k] base=91.0% v4=91.0% v5=61.5% v6=91.0% (len 6, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 5 calls, 3,106 in / 441 out | Llama-3.3-70B-Instruct-Turbo: 5 calls, 1,978 in / 325 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop_k] base=70.7% v4=78.1% v5=63.0% v6=70.7% (len 5, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 10 calls, 6,016 in / 843 out | Llama-3.3-70B-Instruct-Turbo: 10 calls, 3,831 in / 575 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop_k] base=65.9% v4=65.9% v5=53.9% v6=65.9% (len 3, om_v5=1)
+  [spend] grok-4.20-0309-non-reasoning: 15 calls, 8,601 in / 1,115 out | Llama-3.3-70B-Instruct-Turbo: 15 calls, 5,374 in / 710 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop_k] base=64.5% v4=64.5% v5=68.2% v6=64.5% (len 4, om_v5=1)
+  [spend] grok-4.20-0309-non-reasoning: 20 calls, 11,390 in / 1,425 out | Llama-3.3-70B-Instruct-Turbo: 20 calls, 7,091 in / 945 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop_k] base=84.0% v4=89.6% v5=71.5% v6=84.0% (len 6, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 25 calls, 14,440 in / 1,820 out | Llama-3.3-70B-Instruct-Turbo: 25 calls, 9,002 in / 1,245 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop_k] base=70.2% v4=70.2% v5=66.1% v6=70.2% (len 4, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 30 calls, 17,186 in / 2,128 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 10,666 in / 1,430 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop_k] base=77.3% v4=81.3% v5=68.7% v6=77.3% (len 7, om_v5=4)
+  [spend] grok-4.20-0309-non-reasoning: 35 calls, 20,400 in / 2,560 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 12,679 in / 1,770 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop_k] base=81.9% v4=87.4% v5=70.1% v6=81.9% (len 6, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 40 calls, 23,445 in / 2,966 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 14,601 in / 2,070 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop_k] base=89.1% v4=74.7% v5=85.4% v6=89.1% (len 7, om_v5=1)
+  [spend] grok-4.20-0309-non-reasoning: 45 calls, 26,711 in / 3,484 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 16,730 in / 2,435 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop_k] base=67.8% v4=60.3% v5=44.4% v6=67.8% (len 4, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 50 calls, 29,515 in / 3,795 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 18,447 in / 2,670 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop_k] base=87.9% v4=87.8% v5=60.2% v6=87.9% (len 7, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 55 calls, 32,756 in / 4,280 out | Llama-3.3-70B-Instruct-Turbo: 55 calls, 20,535 in / 3,034 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop_k] base=88.6% v4=89.8% v5=76.4% v6=88.6% (len 8, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 60 calls, 36,200 in / 4,815 out | Llama-3.3-70B-Instruct-Turbo: 60 calls, 22,766 in / 3,420 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop_k] base=91.0% v4=71.0% v5=68.2% v6=91.0% (len 7, om_v5=2)
+  [spend] grok-4.20-0309-non-reasoning: 65 calls, 39,474 in / 5,264 out | Llama-3.3-70B-Instruct-Turbo: 65 calls, 24,826 in / 3,762 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop_k] base=81.4% v4=79.2% v5=60.0% v6=81.4% (len 8, om_v5=4)
+  [spend] grok-4.20-0309-non-reasoning: 70 calls, 42,888 in / 5,749 out | Llama-3.3-70B-Instruct-Turbo: 70 calls, 26,987 in / 4,141 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop_k] base=98.8% v4=99.6% v5=67.9% v6=98.8% (len 7, om_v5=3)
+  [spend] grok-4.20-0309-non-reasoning: 75 calls, 46,172 in / 6,210 out | Llama-3.3-70B-Instruct-Turbo: 75 calls, 29,089 in / 4,492 out
+
+saved -> research/results/employee_nn_comparison_cop_k_grok420.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       5.93               80.67     79.36      65.7          80.96     80.67
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07           0.0

@@ -1,0 +1,63 @@
+Full console log -> research/results/logs/diabetes_nn_gptoss120b_20260831_021203_19132.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] base=99.2% v4=99.2% v5=99.2% v6=73.1% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 2 calls, 1,027 in / 137 out | gpt-oss-120b: 2 calls, 1,391 in / 1,462 out
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] base=88.2% v4=88.2% v5=88.2% v6=88.2% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 7 calls, 3,138 in / 457 out | gpt-oss-120b: 7 calls, 3,876 in / 4,364 out
+[003/15] instance 140 (pred=0, k_ref=7)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=98.5% v4=98.5% v5=98.5% v6=98.5% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 9 calls, 4,097 in / 611 out | gpt-oss-120b: 10 calls, 5,796 in / 6,611 out
+[004/15] instance 125 (pred=1, k_ref=7)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=92.1% v4=92.1% v5=92.1% v6=92.1% (len 7, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 14 calls, 6,492 in / 965 out | gpt-oss-120b: 16 calls, 9,489 in / 11,226 out
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] base=89.5% v4=89.5% v5=89.5% v6=89.5% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 19 calls, 8,712 in / 1,285 out | gpt-oss-120b: 21 calls, 12,086 in / 14,796 out
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] base=92.9% v4=70.2% v5=92.9% v6=68.8% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 24 calls, 11,342 in / 1,652 out | gpt-oss-120b: 26 calls, 15,446 in / 19,257 out
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] base=99.6% v4=99.6% v5=99.6% v6=99.6% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 26 calls, 12,535 in / 1,854 out | gpt-oss-120b: 28 calls, 16,859 in / 20,651 out
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] base=97.4% v4=97.4% v5=97.4% v6=97.4% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 28 calls, 13,630 in / 2,018 out | gpt-oss-120b: 30 calls, 18,140 in / 21,923 out
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] base=95.7% v4=95.7% v5=95.7% v6=95.7% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 14,901 in / 2,230 out | gpt-oss-120b: 32 calls, 19,567 in / 23,344 out
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] base=92.3% v4=92.9% v5=92.9% v6=92.3% (len 8, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 35 calls, 17,597 in / 2,646 out | gpt-oss-120b: 37 calls, 22,529 in / 27,841 out
+[011/15] instance 16 (pred=0, k_ref=11)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=86.9% v4=86.9% v5=75.4% v6=66.1% (len 11, om_v5=5)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 20,667 in / 3,123 out | gpt-oss-120b: 43 calls, 26,862 in / 33,563 out
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] base=99.5% v4=99.5% v5=99.5% v6=89.6% (len 9, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 42 calls, 21,658 in / 3,289 out | gpt-oss-120b: 45 calls, 28,253 in / 34,868 out
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] base=97.1% v4=97.1% v5=97.1% v6=97.1% (len 7, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 44 calls, 22,659 in / 3,443 out | gpt-oss-120b: 47 calls, 29,490 in / 36,224 out
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] base=88.2% v4=86.8% v5=88.2% v6=88.2% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 49 calls, 24,868 in / 3,723 out | gpt-oss-120b: 52 calls, 32,131 in / 39,707 out
+[015/15] instance 119 (pred=1, k_ref=6)
+  [empty content, finish=length] raising max_tokens to 4096
+  [cop_k] base=97.7% v4=97.7% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 51 calls, 25,801 in / 3,857 out | gpt-oss-120b: 55 calls, 33,981 in / 41,669 out
+
+saved -> research/results/diabetes_nn_comparison_cop_k_gptoss120b.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k        7.6               94.32     92.75     93.59          94.36     88.93
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.53          0.53

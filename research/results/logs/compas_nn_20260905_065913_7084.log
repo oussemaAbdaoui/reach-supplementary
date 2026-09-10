@@ -1,0 +1,40 @@
+Full console log -> research/results/logs/compas_nn_20260905_065913_7084.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+  [keys] 3 available, starting at index 0
+[compas/gptoss120b] 90 rows, 90 to redo, model=openai/gpt-oss-120b provider=groq
+  inst   51 cop      v5= 63.60 (was 68.7) om=0 rounds=0
+  inst   51 cop_k    v5= 70.70 (was 70.7) om=0 rounds=0
+  inst   51 lmpaxp   v5= 97.80 (was 97.8) om=0 rounds=0
+  inst   51 anchors  v5= 64.10 (was 64.1) om=0 rounds=0
+  inst   51 shap     v5= 47.70 (was 47.4) om=0 rounds=0
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  inst   51 lime     v5= 69.30 (was 21.5) om=2 rounds=3
+  inst  178 cop      v5= 66.10 (was 70.8) om=0 rounds=0
+  inst  178 cop_k    v5= 66.00 (was 66.0) om=0 rounds=0
+  inst  178 lmpaxp   v5= 98.50 (was 98.5) om=0 rounds=0
+  inst  178 anchors  v5= 59.80 (was 59.8) om=0 rounds=0
+  inst  178 shap     v5= 98.50 (was 98.5) om=0 rounds=0
+  inst  178 lime     v5= 98.50 (was 98.5) om=0 rounds=0
+  inst  209 cop      v5= 64.10 (was 58.8) om=0 rounds=0
+  inst  209 cop_k    v5= 72.10 (was 79.3) om=0 rounds=0
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 180s
+  [rate-limit] waiting 210s
+  [rate-limit] waiting 240s
+  [rate-limit] waiting 270s
+  [rate-limit] waiting 300s
+  [rate-limit] waiting 330s
+  [rate-limit] waiting 360s
+  [rate-limit] waiting 390s
+  [rate-limit] waiting 420s

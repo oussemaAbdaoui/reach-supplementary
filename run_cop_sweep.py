@@ -39,6 +39,12 @@ from cop_explainer import fit_cop_rule, theorem1_m
 from lmpaxp_explainer import fit_lmpaxp
 from run_calibration_nn import load_dataset, binarize
 
+# The V estimator comes from the script that produced the paper's V columns, so
+# a precision_V here is directly comparable with one there rather than being a
+# second implementation of the same idea.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'research'))
+from check_nn_feasible_sampling import precision_valid  # noqa: E402
+
 DATASET_NAME = sys.argv[1] if len(sys.argv) > 1 else 'diabetes'
 N_INSTANCES  = int(os.getenv('XAI_N_INSTANCES', '15'))
 K_MAX        = int(os.getenv('XAI_KMAX', '9'))
@@ -106,11 +112,27 @@ for it, pos in enumerate(positions):
     zl = predict(Z)
 
     def add(method, k_req, S, extra=None):
+        # TWO ESTIMATORS, BOTH STORED. The rules are FITTED on one-hot-valid
+        # oracle samples, but `precision` scores them under Uniform({0,1}^d) --
+        # the sampler §5.5 rejects, whose invalid points produce the entire
+        # below-chance tail. Selecting a length on that curve and then reporting
+        # the winner under V would optimise one metric and report another, so
+        # the valid-sampler estimate is stored alongside it and is what
+        # _cop_best_k selects on. `precision` is kept unchanged so every stored
+        # sweep stays comparable with the ones written before this column.
         est = precision_hat(predict, x, S, n=N_EVAL, seed=RANDOM_SEED + 31 * pos)
+        pv = precision_valid(predict, x, S, _ONEHOT_GROUPS, N_EVAL,
+                             RANDOM_SEED + 31 * pos)
         rows.append({'dataset': DATASET_NAME, 'instance': pos, 'method': method,
                      'k_requested': k_req, 'len_S': len(S),
                      'precision': round(est.precision * 100, 2),
-                     'weak_paxp': est.precision >= T, **(extra or {})})
+                     'precision_V': round(pv, 2),
+                     'weak_paxp': est.precision >= T,
+                     'weak_paxp_V': pv >= 100 * T,
+                     # S itself: without it a stored sweep cannot be re-scored
+                     # under a different distribution without re-running the
+                     # solver (4h35m for cancer at k=18).
+                     'S': str(list(S)), **(extra or {})})
         return est
 
     lmp = fit_lmpaxp(predict, x, T=T, seed=seed)
@@ -137,7 +159,9 @@ for it, pos in enumerate(positions):
                 rows.append({'dataset': DATASET_NAME, 'instance': pos,
                              'method': 'cop@k', 'k_requested': k,
                              'len_S': None, 'precision': None,
-                             'weak_paxp': None, 'cop_status': 'UNKNOWN'})
+                             'precision_V': None, 'weak_paxp': None,
+                             'weak_paxp_V': None, 'S': None,
+                             'cop_status': 'UNKNOWN'})
                 continue
         add('cop@k', k, r.S, {'cop_loss': round(r.empirical_loss, 4),
                               'cop_status': r.status})

@@ -1,0 +1,54 @@
+Full console log -> research/results/logs/diabetes_nn_20260905_060947_26652.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[diabetes/gridllama33] 105 rows, 105 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together
+  inst   12 cop      v5= 63.60 (was 63.6) om=0.0 rounds=0
+  inst   12 cop_k    v5= 88.20 (was 88.2) om=0.0 rounds=0
+  inst   12 lmpaxp   v5= 96.00 (was 96.0) om=0.0 rounds=0
+  inst   12 anchors  v5= 67.70 (was 67.7) om=1.0 rounds=3
+  inst   12 shap     v5= 63.70 (was 30.7) om=0.0 rounds=2
+  inst   12 lime     v5= 58.00 (was 50.7) om=4.0 rounds=3
+  inst   12 cop_best v5= 95.40 (was 95.4) om=0.0 rounds=1
+  inst   15 cop      v5= 92.90 (was 83.4) om=0.0 rounds=0
+  inst   15 cop_k    v5= 99.70 (was 99.7) om=0.0 rounds=0
+  inst   15 lmpaxp   v5=100.00 (was 100.0) om=0.0 rounds=0
+  inst   15 anchors  v5= 84.20 (was 84.2) om=0.0 rounds=0
+  inst   15 shap     v5= 99.90 (was 100.0) om=1.0 rounds=3
+  inst   15 lime     v5= 99.00 (was 98.4) om=0.0 rounds=1
+  inst   15 cop_best v5= 99.90 (was 99.9) om=0.0 rounds=0
+  inst   16 cop      v5= 70.00 (was 70.0) om=0.0 rounds=0
+  inst   16 cop_k    v5= 86.90 (was 76.9) om=0.0 rounds=1
+  inst   16 lmpaxp   v5= 95.50 (was 95.5) om=0.0 rounds=1
+  inst   16 anchors  v5= 71.50 (was 62.5) om=0.0 rounds=1
+  inst   16 shap     v5=  8.70 (was 33.2) om=2.0 rounds=3
+  inst   16 lime     v5= 58.10 (was 63.7) om=2.0 rounds=3
+  inst   16 cop_best v5= 97.60 (was 97.6) om=0.0 rounds=1
+  inst   44 cop      v5= 50.60 (was 50.6) om=0.0 rounds=0
+  inst   44 cop_k    v5= 95.70 (was 95.7) om=0.0 rounds=1
+  inst   44 lmpaxp   v5= 94.50 (was 74.7) om=0.0 rounds=1
+  inst   44 anchors  v5= 70.10 (was 73.5) om=1.0 rounds=3
+  inst   44 shap     v5= 76.60 (was 24.9) om=4.0 rounds=3
+  inst   44 lime     v5= 46.40 (was 39.5) om=4.0 rounds=3
+  inst   44 cop_best v5= 98.60 (was 98.6) om=0.0 rounds=1
+  inst   47 cop      v5= 85.50 (was 85.5) om=1.0 rounds=3
+  inst   47 cop_k    v5= 97.10 (was 97.1) om=0.0 rounds=0
+  inst   47 lmpaxp   v5= 95.20 (was 95.2) om=0.0 rounds=0
+  inst   47 anchors  v5= 97.00 (was 97.0) om=0.0 rounds=1
+  inst   47 shap     v5= 82.40 (was 54.2) om=3.0 rounds=3
+  inst   47 lime     v5= 75.30 (was 73.7) om=1.0 rounds=3
+  inst   47 cop_best v5= 99.60 (was 99.6) om=0.0 rounds=0
+  inst   52 cop      v5= 63.90 (was 63.9) om=0.0 rounds=0
+  inst   52 cop_k    v5= 99.60 (was 98.7) om=0.0 rounds=1
+  inst   52 lmpaxp   v5= 96.30 (was 96.3) om=0.0 rounds=0
+  inst   52 anchors  v5= 79.30 (was 64.0) om=0.0 rounds=2
+  inst   52 shap     v5= 97.00 (was 91.7) om=1.0 rounds=3
+  inst   52 lime     v5= 91.30 (was 88.0) om=2.0 rounds=3
+  inst   52 cop_best v5= 99.60 (was 99.6) om=0.0 rounds=1
+  inst   57 cop      v5= 77.90 (was 77.9) om=0.0 rounds=0
+  inst   57 cop_k    v5= 99.20 (was 99.2) om=0.0 rounds=0
+  inst   57 lmpaxp   v5= 97.60 (was 97.6) om=0.0 rounds=0
+  inst   57 anchors  v5= 83.40 (was 83.4) om=0.0 rounds=0
+  inst   57 shap     v5= 99.90 (was 97.3) om=1.0 rounds=3
+  inst   57 lime     v5= 78.00 (was 78.0) om=4.0 rounds=3
+  inst   57 cop_best v5= 99.20 (was 99.2) om=0.0 rounds=0
+  inst   71 cop      v5= 63.70 (was 44.6) om=0.0 rounds=0
+  inst   71 cop_k    v5= 92.90 (was 59.0) om=0.0 rounds=0

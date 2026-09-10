@@ -1,0 +1,36 @@
+Full console log -> research/results/logs/diabetes_nn_gridllama33_20260829_025008_18760.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=23 binarized features | test acc 0.7767
+[001/15] instance 57 (pred=1, k_ref=9)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5KNNC-fdNmn-a32791354f6363dd', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[002/15] instance 12 (pred=0, k_ref=6)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5KhEV-4YNCb4-a32792c1ded7c4f0', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[003/15] instance 140 (pred=0, k_ref=7)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5L1wq-fdNmn-a327944ccb85fc4d', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[004/15] instance 125 (pred=1, k_ref=7)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5LLxB-fdNmn-a32795dc589b63dd', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[005/15] instance 114 (pred=1, k_ref=5)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5Lfh1-fdNmn-a32797666b00002f', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[006/15] instance 71 (pred=0, k_ref=9)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5LzXP-fdNmn-a32798f24ce493fc', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[007/15] instance 52 (pred=0, k_ref=9)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5MKNd-4YNCb4-a3279a7d1e5493fc', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[008/15] instance 279 (pred=0, k_ref=7)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5MeNQ-4YNCb4-a3279c0cc88e9b16', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[009/15] instance 44 (pred=0, k_ref=9)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5MyD4-4YNCb4-a3279d98ad5d0030', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[010/15] instance 216 (pred=1, k_ref=8)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5NHqA-4YNCb4-a3279f2029d19b16', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[011/15] instance 16 (pred=0, k_ref=11)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5NcY2-4YNCb4-a327a0a90ebcb874', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[012/15] instance 15 (pred=1, k_ref=9)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5Nvif-fdNmn-a327a2294ce4438f', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[013/15] instance 47 (pred=1, k_ref=7)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5PEzH-4YNCb4-a327a3a7d8727773', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+[014/15] instance 111 (pred=1, k_ref=5)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5PZMZ-fdNmn-a327a52a4b3a540e', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'param
+[015/15] instance 119 (pred=1, k_ref=6)
+  [cop_k] ERROR Error code: 402 - {'id': 'oy5Psyx-4YNCb4-a327a6b19be163d7', 'error': {'message': "Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment, please wait up to 5 minutes for balances to update and try again.", 'type': 'credit_limit', 'para
+
+saved -> research/results/diabetes_nn_comparison_cop_k_gridllama33.csv
+
+=== per-arm means ===

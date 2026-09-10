@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/employee_nn_gpt56_20260831_044935_15868.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop_k] base=91.0% v4=91.0% v5=91.0% v6=91.0% (len 6, om_v5=0)
+  [spend] gpt-5.6-terra: 5 calls, 2,242 in / 596 out | Llama-3.3-70B-Instruct-Turbo: 5 calls, 2,179 in / 314 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop_k] base=70.7% v4=70.7% v5=54.9% v6=70.7% (len 5, om_v5=1)
+  [spend] gpt-5.6-terra: 10 calls, 4,303 in / 1,122 out | Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,185 in / 574 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop_k] base=65.9% v4=65.9% v5=53.9% v6=65.9% (len 3, om_v5=1)
+  [spend] gpt-5.6-terra: 15 calls, 6,009 in / 1,467 out | Llama-3.3-70B-Instruct-Turbo: 15 calls, 5,822 in / 709 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop_k] base=64.5% v4=64.5% v5=65.6% v6=64.5% (len 4, om_v5=1)
+  [spend] gpt-5.6-terra: 20 calls, 7,951 in / 1,859 out | Llama-3.3-70B-Instruct-Turbo: 20 calls, 7,640 in / 944 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop_k] base=84.0% v4=84.0% v5=84.0% v6=84.0% (len 6, om_v5=0)
+  [spend] gpt-5.6-terra: 25 calls, 10,152 in / 2,423 out | Llama-3.3-70B-Instruct-Turbo: 25 calls, 9,748 in / 1,264 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop_k] base=70.2% v4=70.2% v5=70.2% v6=70.2% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 30 calls, 12,028 in / 2,823 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 11,529 in / 1,469 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop_k] base=77.3% v4=77.3% v5=77.3% v6=77.3% (len 7, om_v5=0)
+  [spend] gpt-5.6-terra: 35 calls, 14,379 in / 3,405 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 13,728 in / 1,819 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop_k] base=81.9% v4=81.9% v5=64.1% v6=81.9% (len 6, om_v5=1)
+  [spend] gpt-5.6-terra: 40 calls, 16,580 in / 3,956 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 15,827 in / 2,129 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop_k] base=89.1% v4=89.1% v5=89.1% v6=89.1% (len 7, om_v5=0)
+  [spend] gpt-5.6-terra: 45 calls, 18,976 in / 4,649 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 18,184 in / 2,514 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop_k] base=67.8% v4=67.8% v5=67.8% v6=67.8% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 50 calls, 20,927 in / 5,101 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 20,086 in / 2,749 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop_k] base=87.9% v4=87.9% v5=61.5% v6=87.9% (len 7, om_v5=2)
+  [spend] gpt-5.6-terra: 55 calls, 23,308 in / 5,733 out | Llama-3.3-70B-Instruct-Turbo: 55 calls, 22,370 in / 3,113 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop_k] base=88.6% v4=88.6% v5=58.3% v6=88.6% (len 8, om_v5=4)
+  [spend] gpt-5.6-terra: 60 calls, 25,882 in / 6,495 out | Llama-3.3-70B-Instruct-Turbo: 60 calls, 24,882 in / 3,529 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop_k] base=91.0% v4=91.0% v5=64.4% v6=91.0% (len 7, om_v5=2)
+  [spend] gpt-5.6-terra: 65 calls, 28,273 in / 7,105 out | Llama-3.3-70B-Instruct-Turbo: 65 calls, 27,144 in / 3,881 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop_k] base=81.4% v4=81.4% v5=81.4% v6=81.4% (len 8, om_v5=0)
+  [spend] gpt-5.6-terra: 70 calls, 30,832 in / 7,737 out | Llama-3.3-70B-Instruct-Turbo: 70 calls, 29,482 in / 4,293 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop_k] base=98.8% v4=98.8% v5=98.8% v6=98.8% (len 7, om_v5=0)
+  [spend] gpt-5.6-terra: 72 calls, 31,973 in / 8,026 out | Llama-3.3-70B-Instruct-Turbo: 72 calls, 30,436 in / 4,451 out
+
+saved -> research/results/employee_nn_comparison_cop_k_gpt56.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       5.93               80.67     80.67     72.15          81.13     80.67
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                0.07          0.07

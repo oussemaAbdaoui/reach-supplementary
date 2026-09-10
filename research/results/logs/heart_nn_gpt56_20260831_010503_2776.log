@@ -1,0 +1,127 @@
+Full console log -> research/results/logs/heart_nn_gpt56_20260831_010503_2776.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [cop] base=93.6% v4=93.6% v5=93.6% v6=93.6% (len 3, om_v5=0)
+  [lmpaxp] base=97.6% v4=97.6% v5=97.6% v6=97.6% (len 4, om_v5=0)
+  [anchors] base=76.7% v4=76.7% v5=76.7% v6=63.0% (len 2, om_v5=0)
+  [shap] base=97.9% v4=97.9% v5=97.9% v6=76.7% (len 4, om_v5=0)
+  [lime] base=97.9% v4=72.5% v5=97.9% v6=76.7% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 17 calls, 6,360 in / 1,144 out | Llama-3.3-70B-Instruct-Turbo: 17 calls, 5,647 in / 559 out
+[002/15] instance 14 (pred=1, k_ref=12)
+  [cop] base=59.5% v4=59.5% v5=59.5% v6=59.5% (len 2, om_v5=0)
+  [lmpaxp] base=94.7% v4=93.1% v5=87.1% v6=93.1% (len 12, om_v5=5)
+  [anchors] base=80.3% v4=64.8% v5=46.5% v6=64.8% (len 6, om_v5=5)
+  [shap] base=11.8% v4=15.1% v5=27.0% v6=34.6% (len 12, om_v5=6)
+  [lime] base=12.6% v4=67.9% v5=65.3% v6=47.2% (len 12, om_v5=5)
+  [spend] gpt-5.6-terra: 42 calls, 19,830 in / 4,509 out | Llama-3.3-70B-Instruct-Turbo: 42 calls, 18,905 in / 2,777 out
+[003/15] instance 3 (pred=0, k_ref=4)
+  [cop] base=89.1% v4=89.1% v5=89.1% v6=89.1% (len 2, om_v5=0)
+  [lmpaxp] base=99.2% v4=99.2% v5=99.2% v6=99.2% (len 4, om_v5=0)
+  [anchors] base=85.7% v4=64.4% v5=80.7% v6=85.7% (len 3, om_v5=1)
+  [shap] base=97.3% v4=91.7% v5=71.9% v6=82.1% (len 4, om_v5=2)
+  [lime] base=91.0% v4=91.0% v5=76.5% v6=63.9% (len 4, om_v5=2)
+  [spend] gpt-5.6-terra: 64 calls, 27,746 in / 6,155 out | Llama-3.3-70B-Instruct-Turbo: 64 calls, 26,598 in / 3,557 out
+[004/15] instance 94 (pred=0, k_ref=3)
+  [cop] base=90.3% v4=90.3% v5=90.3% v6=90.3% (len 2, om_v5=0)
+  [lmpaxp] base=98.4% v4=98.4% v5=98.4% v6=98.4% (len 3, om_v5=0)
+  [anchors] base=83.4% v4=83.4% v5=83.4% v6=83.4% (len 2, om_v5=0)
+  [shap] base=97.3% v4=97.3% v5=97.3% v6=83.4% (len 3, om_v5=0)
+  [lime] base=98.7% v4=98.7% v5=98.7% v6=90.3% (len 3, om_v5=0)
+  [spend] gpt-5.6-terra: 80 calls, 33,533 in / 7,192 out | Llama-3.3-70B-Instruct-Turbo: 80 calls, 31,735 in / 4,001 out
+[005/15] instance 35 (pred=1, k_ref=4)
+  [cop] base=85.2% v4=85.2% v5=85.2% v6=64.3% (len 2, om_v5=0)
+  [lmpaxp] base=96.9% v4=96.9% v5=96.9% v6=96.9% (len 4, om_v5=0)
+  [anchors] base=94.9% v4=94.9% v5=94.9% v6=94.9% (len 3, om_v5=0)
+  [shap] base=92.1% v4=64.3% v5=92.1% v6=64.3% (len 4, om_v5=0)
+  [lime] base=66.8% v4=66.8% v5=23.5% v6=61.1% (len 4, om_v5=2)
+  [spend] gpt-5.6-terra: 102 calls, 41,365 in / 8,742 out | Llama-3.3-70B-Instruct-Turbo: 102 calls, 39,269 in / 4,780 out
+[006/15] instance 31 (pred=0, k_ref=6)
+  [cop] base=90.3% v4=90.3% v5=90.3% v6=90.3% (len 2, om_v5=0)
+  [lmpaxp] base=98.3% v4=98.3% v5=98.3% v6=98.3% (len 6, om_v5=0)
+  [anchors] base=91.7% v4=58.3% v5=91.7% v6=72.9% (len 3, om_v5=0)
+  [shap] base=100.0% v4=86.9% v5=78.1% v6=86.9% (len 6, om_v5=3)
+  [lime] base=94.8% v4=97.1% v5=86.8% v6=96.1% (len 6, om_v5=3)
+  [spend] gpt-5.6-terra: 124 calls, 49,973 in / 10,748 out | Llama-3.3-70B-Instruct-Turbo: 124 calls, 47,833 in / 5,806 out
+[007/15] instance 28 (pred=0, k_ref=3)
+  [cop] base=88.8% v4=88.8% v5=88.8% v6=88.8% (len 2, om_v5=0)
+  [lmpaxp] base=98.6% v4=98.6% v5=98.6% v6=98.6% (len 3, om_v5=0)
+  [anchors] base=82.8% v4=82.8% v5=82.8% v6=82.8% (len 2, om_v5=0)
+  [shap] base=98.2% v4=85.1% v5=98.2% v6=82.8% (len 3, om_v5=0)
+  [lime] base=98.7% v4=98.7% v5=98.7% v6=67.1% (len 3, om_v5=0)
+  [spend] gpt-5.6-terra: 141 calls, 56,035 in / 11,877 out | Llama-3.3-70B-Instruct-Turbo: 141 calls, 53,356 in / 6,275 out
+[008/15] instance 17 (pred=1, k_ref=4)
+  [cop] base=93.9% v4=93.9% v5=93.9% v6=93.9% (len 3, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 4, om_v5=0)
+  [anchors] base=92.8% v4=75.2% v5=92.8% v6=92.8% (len 3, om_v5=0)
+  [shap] base=98.8% v4=50.8% v5=98.8% v6=75.2% (len 4, om_v5=0)
+  [lime] base=89.7% v4=89.7% v5=89.7% v6=41.2% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 161 calls, 63,352 in / 13,403 out | Llama-3.3-70B-Instruct-Turbo: 161 calls, 60,318 in / 7,001 out
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop] base=57.9% v4=57.9% v5=57.9% v6=57.9% (len 2, om_v5=0)
+  [lmpaxp] base=94.4% v4=94.4% v5=94.4% v6=94.4% (len 9, om_v5=0)
+  [anchors] base=79.5% v4=79.5% v5=61.7% v6=79.5% (len 7, om_v5=3)
+  [shap] base=39.1% v4=44.8% v5=59.7% v6=67.9% (len 9, om_v5=6)
+  [lime] base=1.5% v4=18.0% v5=4.1% v6=32.8% (len 9, om_v5=2)
+  [spend] gpt-5.6-terra: 186 calls, 75,530 in / 16,569 out | Llama-3.3-70B-Instruct-Turbo: 186 calls, 72,773 in / 9,035 out
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop] base=88.6% v4=88.6% v5=88.6% v6=88.6% (len 2, om_v5=0)
+  [lmpaxp] base=98.9% v4=98.9% v5=98.9% v6=98.9% (len 4, om_v5=0)
+  [anchors] base=82.6% v4=82.6% v5=76.5% v6=82.6% (len 2, om_v5=1)
+  [shap] base=99.7% v4=74.3% v5=98.2% v6=82.6% (len 4, om_v5=1)
+  [lime] base=97.1% v4=97.1% v5=97.1% v6=58.3% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 205 calls, 82,386 in / 17,996 out | Llama-3.3-70B-Instruct-Turbo: 205 calls, 79,278 in / 9,672 out
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop] base=87.0% v4=87.0% v5=87.0% v6=64.7% (len 2, om_v5=0)
+  [lmpaxp] base=96.7% v4=96.7% v5=96.7% v6=96.7% (len 4, om_v5=0)
+  [anchors] base=76.3% v4=76.3% v5=76.3% v6=64.7% (len 2, om_v5=0)
+  [shap] base=99.1% v4=84.6% v5=76.3% v6=76.3% (len 4, om_v5=2)
+  [lime] base=91.2% v4=67.4% v5=67.4% v6=64.7% (len 4, om_v5=1)
+  [spend] gpt-5.6-terra: 227 calls, 90,080 in / 19,566 out | Llama-3.3-70B-Instruct-Turbo: 227 calls, 86,745 in / 10,371 out
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop] base=92.5% v4=92.5% v5=92.5% v6=92.5% (len 3, om_v5=0)
+  [lmpaxp] base=96.1% v4=96.1% v5=96.1% v6=96.1% (len 4, om_v5=0)
+  [anchors] base=74.9% v4=74.9% v5=74.9% v6=74.9% (len 2, om_v5=0)
+  [shap] base=97.1% v4=97.1% v5=97.1% v6=83.4% (len 4, om_v5=0)
+  [lime] base=98.1% v4=98.1% v5=98.1% v6=74.9% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 243 calls, 96,132 in / 20,688 out | Llama-3.3-70B-Instruct-Turbo: 243 calls, 92,104 in / 10,891 out
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop] base=89.4% v4=89.4% v5=89.4% v6=89.4% (len 2, om_v5=0)
+  [lmpaxp] base=98.9% v4=98.9% v5=98.9% v6=98.9% (len 5, om_v5=0)
+  [anchors] base=86.2% v4=62.1% v5=86.2% v6=62.1% (len 3, om_v5=0)
+  [shap] base=99.4% v4=69.4% v5=80.8% v6=80.8% (len 5, om_v5=2)
+  [lime] base=96.7% v4=96.7% v5=96.7% v6=99.0% (len 5, om_v5=0)
+  [spend] gpt-5.6-terra: 262 calls, 103,449 in / 22,333 out | Llama-3.3-70B-Instruct-Turbo: 262 calls, 99,127 in / 11,727 out
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop] base=84.5% v4=84.5% v5=84.5% v6=84.5% (len 2, om_v5=0)
+  [lmpaxp] base=95.4% v4=95.4% v5=95.4% v6=95.4% (len 4, om_v5=0)
+  [anchors] base=74.5% v4=74.5% v5=74.5% v6=74.5% (len 2, om_v5=0)
+  [shap] base=98.8% v4=62.5% v5=74.5% v6=74.5% (len 4, om_v5=2)
+  [lime] base=89.1% v4=89.1% v5=52.0% v6=52.0% (len 4, om_v5=2)
+  [spend] gpt-5.6-terra: 284 calls, 111,133 in / 23,917 out | Llama-3.3-70B-Instruct-Turbo: 284 calls, 106,624 in / 12,441 out
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop] base=64.7% v4=64.7% v5=64.7% v6=64.7% (len 1, om_v5=0)
+  [lmpaxp] base=96.0% v4=96.0% v5=96.0% v6=96.0% (len 4, om_v5=0)
+  [anchors] base=76.2% v4=76.2% v5=76.2% v6=76.2% (len 2, om_v5=0)
+  [shap] base=97.5% v4=97.5% v5=97.5% v6=82.6% (len 4, om_v5=0)
+  [lime] base=97.5% v4=97.5% v5=97.5% v6=82.6% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 300 calls, 116,871 in / 24,940 out | Llama-3.3-70B-Instruct-Turbo: 300 calls, 111,733 in / 12,879 out
+
+saved -> research/results/heart_nn_comparison_gpt56.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       2.93               82.57     75.11     78.39          82.57     76.99
+cop           2.13               83.69     83.69     83.69          83.69     80.81
+lime          4.93               81.43     83.09     76.67          86.08     67.19
+lmpaxp        4.93               97.10     96.99     96.59          96.99     96.99
+shap          4.93               88.27     74.62     83.03          88.85     75.61
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.00          0.00
+cop                    0.00          0.00
+lime                   0.47          0.47
+lmpaxp                 0.87          0.87
+shap                   0.80          0.47

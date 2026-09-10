@@ -1,0 +1,127 @@
+Full console log -> research/results/logs/employee_nn_glm52_20260831_035825_23904.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=15 binarized features | test acc 0.6114
+[001/15] instance 1309 (pred=0, k_ref=6)
+  [cop] base=77.7% v4=77.7% v5=77.7% v6=77.7% (len 2, om_v5=0)
+  [lmpaxp] base=97.7% v4=95.6% v5=97.7% v6=97.7% (len 6, om_v5=0)
+  [anchors] base=77.1% v4=77.1% v5=77.1% v6=77.1% (len 2, om_v5=0)
+  [shap] base=96.2% v4=36.1% v5=41.4% v6=46.0% (len 6, om_v5=3)
+  [lime] base=97.0% v4=86.0% v5=77.7% v6=77.7% (len 6, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 25 calls, 9,537 in / 1,134 out | GLM-5.2: 25 calls, 9,609 in / 2,346 out
+[002/15] instance 228 (pred=1, k_ref=5)
+  [cop] base=64.6% v4=64.6% v5=64.6% v6=64.6% (len 1, om_v5=0)
+  [lmpaxp] base=97.9% v4=88.4% v5=97.9% v6=97.9% (len 5, om_v5=0)
+  [anchors] base=84.1% v4=67.0% v5=84.1% v6=84.1% (len 4, om_v5=0)
+  [shap] base=99.5% v4=90.2% v5=63.2% v6=74.1% (len 5, om_v5=4)
+  [lime] base=92.8% v4=92.8% v5=92.8% v6=53.5% (len 5, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 48 calls, 17,692 in / 2,070 out | GLM-5.2: 48 calls, 17,865 in / 4,167 out
+[003/15] instance 51 (pred=1, k_ref=3)
+  [cop] base=64.1% v4=64.1% v5=64.1% v6=64.1% (len 1, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 3, om_v5=0)
+  [anchors] base=84.8% v4=77.6% v5=77.6% v6=84.8% (len 3, om_v5=1)
+  [shap] base=91.2% v4=91.2% v5=95.5% v6=67.0% (len 3, om_v5=1)
+  [lime] base=96.2% v4=95.5% v5=96.2% v6=75.3% (len 3, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 69 calls, 24,756 in / 2,663 out | GLM-5.2: 69 calls, 24,790 in / 5,847 out
+[004/15] instance 1518 (pred=1, k_ref=4)
+  [cop] base=73.0% v4=73.0% v5=73.0% v6=73.0% (len 1, om_v5=0)
+  [lmpaxp] base=98.3% v4=98.3% v5=98.3% v6=98.3% (len 4, om_v5=0)
+  [anchors] base=99.9% v4=99.9% v5=99.9% v6=99.9% (len 5, om_v5=0)
+  [shap] base=98.4% v4=98.4% v5=98.4% v6=62.3% (len 4, om_v5=0)
+  [lime] base=98.0% v4=98.0% v5=98.0% v6=73.0% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 82 calls, 29,158 in / 3,101 out | GLM-5.2: 82 calls, 29,847 in / 6,818 out
+[005/15] instance 563 (pred=1, k_ref=6)
+  [cop] base=82.0% v4=82.0% v5=67.5% v6=82.0% (len 2, om_v5=1)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 6, om_v5=0)
+  [anchors] base=74.8% v4=74.8% v5=74.8% v6=74.8% (len 3, om_v5=0)
+  [shap] base=91.6% v4=63.1% v5=63.1% v6=63.1% (len 6, om_v5=3)
+  [lime] base=95.2% v4=94.9% v5=79.6% v6=79.6% (len 6, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 104 calls, 37,701 in / 4,120 out | GLM-5.2: 104 calls, 38,252 in / 9,073 out
+[006/15] instance 501 (pred=1, k_ref=4)
+  [cop] base=64.8% v4=64.8% v5=64.8% v6=64.8% (len 1, om_v5=0)
+  [lmpaxp] base=99.6% v4=99.6% v5=99.6% v6=99.6% (len 4, om_v5=0)
+  [anchors] base=73.1% v4=73.1% v5=73.1% v6=73.1% (len 3, om_v5=0)
+  [shap] base=95.7% v4=95.7% v5=95.7% v6=64.8% (len 4, om_v5=0)
+  [lime] base=64.1% v4=64.1% v5=64.1% v6=38.9% (len 4, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 123 calls, 44,107 in / 4,710 out | GLM-5.2: 123 calls, 44,847 in / 10,548 out
+[007/15] instance 457 (pred=1, k_ref=7)
+  [cop] base=61.8% v4=61.8% v5=61.8% v6=61.8% (len 1, om_v5=0)
+  [lmpaxp] base=98.6% v4=98.6% v5=98.6% v6=98.6% (len 7, om_v5=0)
+  [anchors] base=86.4% v4=86.4% v5=86.4% v6=86.4% (len 4, om_v5=0)
+  [shap] base=91.1% v4=66.5% v5=45.0% v6=66.5% (len 7, om_v5=2)
+  [lime] base=91.6% v4=81.3% v5=62.6% v6=62.6% (len 7, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 145 calls, 52,824 in / 5,883 out | GLM-5.2: 145 calls, 53,549 in / 12,790 out
+[008/15] instance 285 (pred=1, k_ref=6)
+  [cop] base=77.1% v4=77.1% v5=77.1% v6=77.1% (len 2, om_v5=0)
+  [lmpaxp] base=94.7% v4=94.7% v5=61.7% v6=94.7% (len 6, om_v5=3)
+  [anchors] base=71.3% v4=71.3% v5=71.3% v6=71.3% (len 3, om_v5=0)
+  [shap] base=92.0% v4=86.4% v5=60.9% v6=60.9% (len 6, om_v5=3)
+  [lime] base=90.7% v4=76.0% v5=67.3% v6=67.3% (len 6, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 170 calls, 62,510 in / 7,071 out | GLM-5.2: 170 calls, 63,121 in / 15,285 out
+[009/15] instance 1508 (pred=1, k_ref=7)
+  [cop] base=78.7% v4=78.7% v5=78.7% v6=78.7% (len 2, om_v5=0)
+  [lmpaxp] base=96.6% v4=95.2% v5=95.2% v6=96.6% (len 7, om_v5=1)
+  [anchors] base=61.9% v4=61.9% v5=47.2% v6=61.9% (len 4, om_v5=1)
+  [shap] base=63.6% v4=41.8% v5=55.3% v6=43.0% (len 7, om_v5=5)
+  [lime] base=63.6% v4=51.3% v5=43.0% v6=43.0% (len 7, om_v5=4)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 195 calls, 72,931 in / 8,495 out | GLM-5.2: 195 calls, 73,262 in / 18,120 out
+[010/15] instance 209 (pred=0, k_ref=4)
+  [cop] base=61.2% v4=61.2% v5=61.2% v6=61.2% (len 1, om_v5=0)
+  [lmpaxp] base=95.0% v4=95.0% v5=95.0% v6=95.0% (len 4, om_v5=0)
+  [anchors] base=82.3% v4=82.3% v5=82.3% v6=82.3% (len 5, om_v5=0)
+  [shap] base=79.3% v4=79.3% v5=66.8% v6=66.8% (len 4, om_v5=1)
+  [lime] base=43.8% v4=47.9% v5=47.9% v6=47.9% (len 4, om_v5=2)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 217 calls, 81,066 in / 9,391 out | GLM-5.2: 217 calls, 81,064 in / 20,168 out
+[011/15] instance 1385 (pred=0, k_ref=7)
+  [cop] base=81.5% v4=81.5% v5=81.5% v6=81.5% (len 3, om_v5=0)
+  [lmpaxp] base=98.5% v4=98.5% v5=98.5% v6=98.5% (len 7, om_v5=0)
+  [anchors] base=71.5% v4=71.5% v5=71.5% v6=71.5% (len 2, om_v5=0)
+  [shap] base=98.3% v4=98.3% v5=98.3% v6=41.5% (len 7, om_v5=0)
+  [lime] base=85.4% v4=79.1% v5=72.9% v6=79.1% (len 7, om_v5=5)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 236 calls, 88,322 in / 10,322 out | GLM-5.2: 236 calls, 88,776 in / 21,940 out
+[012/15] instance 1516 (pred=1, k_ref=8)
+  [cop] base=61.9% v4=61.9% v5=61.9% v6=61.9% (len 1, om_v5=0)
+  [lmpaxp] base=95.1% v4=95.1% v5=95.1% v6=95.1% (len 8, om_v5=0)
+  [anchors] base=81.7% v4=81.7% v5=81.7% v6=81.7% (len 5, om_v5=0)
+  [shap] base=41.0% v4=72.6% v5=66.2% v6=45.5% (len 8, om_v5=3)
+  [lime] base=41.0% v4=66.2% v5=42.1% v6=45.5% (len 8, om_v5=5)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 258 calls, 97,257 in / 11,605 out | GLM-5.2: 258 calls, 97,886 in / 24,165 out
+[013/15] instance 1827 (pred=1, k_ref=7)
+  [cop] base=76.3% v4=76.3% v5=63.4% v6=76.3% (len 2, om_v5=1)
+  [lmpaxp] base=93.8% v4=93.8% v5=93.8% v6=93.8% (len 7, om_v5=0)
+  [anchors] base=61.4% v4=76.2% v5=61.4% v6=76.2% (len 4, om_v5=0)
+  [shap] base=63.0% v4=57.2% v5=31.6% v6=41.6% (len 7, om_v5=5)
+  [lime] base=63.0% v4=16.9% v5=63.2% v6=41.6% (len 7, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 283 calls, 107,506 in / 12,996 out | GLM-5.2: 283 calls, 108,044 in / 26,854 out
+[014/15] instance 1116 (pred=0, k_ref=8)
+  [cop] base=52.7% v4=52.7% v5=52.7% v6=52.7% (len 1, om_v5=0)
+  [lmpaxp] base=96.4% v4=96.4% v5=96.4% v6=96.4% (len 8, om_v5=0)
+  [anchors] base=70.4% v4=65.1% v5=70.4% v6=70.4% (len 4, om_v5=0)
+  [shap] base=6.1% v4=32.5% v5=41.8% v6=32.5% (len 8, om_v5=5)
+  [lime] base=8.9% v4=60.3% v5=30.8% v6=42.6% (len 8, om_v5=6)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 305 calls, 116,368 in / 14,173 out | GLM-5.2: 305 calls, 117,122 in / 29,035 out
+[015/15] instance 178 (pred=1, k_ref=7)
+  [cop] base=77.0% v4=77.0% v5=62.7% v6=77.0% (len 2, om_v5=1)
+  [lmpaxp] base=95.4% v4=95.4% v5=95.4% v6=95.4% (len 7, om_v5=0)
+  [anchors] base=81.2% v4=74.0% v5=69.0% v6=81.2% (len 3, om_v5=2)
+  [shap] base=94.0% v4=67.2% v5=94.0% v6=73.0% (len 7, om_v5=0)
+  [lime] base=90.6% v4=89.1% v5=89.1% v6=65.0% (len 7, om_v5=3)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 327 calls, 124,833 in / 15,294 out | GLM-5.2: 327 calls, 125,905 in / 31,021 out
+
+saved -> research/results/employee_nn_comparison_glm52.csv
+
+=== per-arm means ===
+         len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                
+anchors       3.60               77.46     75.99     75.19          79.04     78.45
+cop           1.53               70.29     70.29     67.51          70.29     70.29
+lime          5.93               74.79     73.29     68.49          76.94     59.51
+lmpaxp        5.93               96.69     95.83     94.40          96.60     96.69
+shap          5.93               80.07     71.77     67.81          80.58     56.57
+
+WeakPAXp pass rates (baseline / v5):
+         baseline_weak_paxp  weak_paxp_v5
+arm                                      
+anchors                0.07          0.07
+cop                    0.00          0.00
+lime                   0.27          0.13
+lmpaxp                 0.87          0.87
+shap                   0.33          0.27

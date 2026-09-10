@@ -1,0 +1,229 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same
+employee,gpt-5.6-terra,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,91.0,False,91.0,91.0,91.0,91.0,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[91.0, 65.7, 91.0, 91.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé restera dans l’entreprise.
+
+Cette décision correspond surtout au fait que la ville est dans la plage de valeurs 0 à 1, que le niveau de rémunération est entre 1 et 3, que le genre est dans la plage 0 à 1, et que l’employé a déjà été mis en disponibilité dans la plage 0 à 1.
+
+En revanche, la condition sur l’année d’arrivée entre 2017 et 2018 ne tient pas, et la condition sur la ville entre 1 et 2 ne tient pas.","La prédiction est que l’employé restera dans l’entreprise. Cette conclusion est cohérente avec les conditions suivantes : l’année d’arrivée est en dehors de l’intervalle 2017 à 2018, la ville est dans la catégorie allant de 0 à 1, la ville n’est pas dans la catégorie allant de 1 à 2, le niveau de rémunération est compris entre 1 et 3, le genre est dans la catégorie allant de 0 à 1, et l’employé a déjà été mis en disponibilité.","1. The joining year is between 2017 and 2018, which is not true for this case.  
+2. The city code is between 0 and 1, which is true for this case.  
+3. The city code is between 1 and 2, which is not true for this case.  
+4. The payment tier is between 1 and 3, which is true for this case.  
+5. The gender code is between 0 and 1, which is true for this case.  
+6. The employee has previously been benched, coded between 0 and 1, which is true for this case.","['city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]",0.0938,OPTIMAL,cop@6,0.4182
+employee,gpt-5.6-terra,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,70.7,False,70.7,54.9,70.7,70.7,False,False,False,5,4,5,0,0,1,0,0,0,0,0,3,"[70.7, 54.9, 70.7, 54.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé quittera l’entreprise. Cette décision est surtout cohérente avec les informations suivantes : la ville est codée dans l’intervalle [1, 2), le niveau de rémunération est dans l’intervalle [1, 3), le genre est dans l’intervalle [0, 1) et le statut « a déjà été mis sur le banc » est dans l’intervalle [0, 1).
+
+Une autre condition liée à la ville, qui aurait demandé une valeur dans l’intervalle [0, 1), ne s’applique pas ici.","L’employé est prédit comme susceptible de quitter l’entreprise, car il se trouve dans la deuxième catégorie de ville (valeur comprise entre 1 et 2), a un niveau de paiement compris entre 1 et 3, est dans la catégorie de genre codée entre 0 et 1, et a une valeur d’historique de mise en disponibilité comprise entre 0 et 1.","1. The city value is between 0 and 1, which is not true for this case.  
+2. The city value is between 1 and 2, which is true for this case.  
+3. The payment tier is between 1 and 3, which is true for this case.  
+4. The employee’s gender value is between 0 and 1, which is true for this case.  
+5. The employee’s ever-benched status value is between 0 and 1, which is true for this case.","['city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[4, 5, 6, 10, 11]","[4, 5, 6, 10, 11]","[5, 6, 10, 11]","[4, 5, 6, 10, 11]",0.23,OPTIMAL,cop@5,0.5768
+employee,gpt-5.6-terra,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,65.9,False,65.9,53.9,65.9,65.9,False,False,False,3,2,3,0,0,1,0,0,0,0,0,3,"[65.9, 53.9, 65.9, 53.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","La prédiction indique que l’employé est susceptible de quitter l’entreprise. La condition liée à la ville, avec une valeur comprise entre 1 et 2, est satisfaite. La condition liée au genre, avec une valeur comprise entre 0 et 1, est également satisfaite. En revanche, la condition correspondant à une ville avec une valeur comprise entre 0 et 1 n’est pas satisfaite.",La prédiction indique que cet employé est susceptible de quitter l’entreprise. Cela correspond à une personne dont la ville est codée dans la plage de 1 à moins de 2 et dont le genre est codé dans la plage de 0 à moins de 1.,"1. The city is between 0 and 1, which is not true for this case.  
+2. The city is between 1 and 2, which is true for this case.  
+3. The gender value is between 0 and 1, which is true for this case.","['city_b1 > 0.5', 'gender_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'gender_b0 > 0.5']","[4, 5, 10]","[4, 5, 10]","[5, 10]","[4, 5, 10]",0.23,OPTIMAL,cop@3,0.5676
+employee,gpt-5.6-terra,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,64.5,False,64.5,65.6,71.3,64.5,False,False,False,4,3,4,0,0,1,0,0,0,0,0,3,"[64.5, 71.3, 65.6, 65.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","La prédiction indique que l’employé est susceptible de quitter l’entreprise. Cette décision est cohérente avec les informations suivantes : l’année d’arrivée est comprise entre 2017 et 2018, le niveau de rémunération est compris entre 1 et 3, le genre est codé entre 0 et 1, et l’indicateur indiquant si l’employé a déjà été sans affectation est codé entre 0 et 1.","La prédiction de départ est surtout associée au fait d’avoir rejoint l’entreprise entre 2017 et 2018, d’être dans une catégorie de rémunération comprise entre 1 et 3, d’avoir un genre codé entre 0 et 1, et de ne jamais avoir été mis en disponibilité (valeur comprise entre 0 et 1).","1. The employee’s joining year is between 2017 and 2018, which is true here.  
+2. The employee’s payment tier is between 1 and 3, which is true here.  
+3. The employee’s gender value is between 0 and 1, which is true here.  
+4. The employee’s history of being benched is between 0 and 1, which is true here.","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10]","[3, 6, 10, 11]",0.3108,OPTIMAL,cop@4,0.573
+employee,gpt-5.6-terra,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,84.0,False,84.0,84.0,84.0,84.0,False,False,False,6,6,6,0,0,0,0,0,0,0,0,3,"[84.0, 65.1, 84.0, 84.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé quittera l’entreprise. Cette décision correspond surtout au profil suivant : le niveau d’éducation est entre 0 et 2, la ville est dans la catégorie entre 1 et 2, le niveau de paiement est entre 1 et 3, le genre est dans la catégorie entre 0 et 1, et l’employé a déjà été mis en disponibilité entre 0 et 1.
+
+Une condition de la règle n’est pas satisfaite : la ville n’est pas dans la catégorie entre 0 et 1.","Le modèle prédit que l’employé quittera l’entreprise. Cette prédiction est associée au fait que son niveau d’études est compris entre 0 et 2, que sa ville est comprise entre 1 et 2, que son niveau de rémunération est compris entre 1 et 3, que son genre est codé entre 0 et 1, et qu’il a déjà été mis en disponibilité (valeur comprise entre 0 et 1). La condition selon laquelle la ville serait comprise entre 0 et 1 ne s’applique pas à cet employé.","1. The education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is not true here.  
+3. The city category is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender category is between 0 and 1, which is true here.  
+6. The employee has previously been without an assigned project, with a value between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]",0.2186,OPTIMAL,cop@6,0.583
+employee,gpt-5.6-terra,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.2,False,70.2,70.2,70.2,70.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[70.2, 55.1, 70.2, 70.2]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","La prédiction est que l’employé quittera l’entreprise. Elle est cohérente avec les éléments suivants : la ville correspond à la catégorie comprise entre 1 et 2, le niveau de paiement est compris entre 1 et 3, et le genre est compris entre 0 et 1. En revanche, la condition selon laquelle la ville serait comprise entre 0 et 1 n’est pas satisfaite.","La prédiction indique que l’employé est susceptible de quitter l’entreprise. Cela est cohérent avec le fait que sa ville est codée entre 1 et 2, son niveau de rémunération est compris entre 1 et 3, et son genre est codé entre 0 et 1. La condition selon laquelle la ville serait comprise entre 0 et 1 n’est pas satisfaite.","1. The city value is between 0 and 1, which is not true for this case.  
+2. The city value is between 1 and 2, which is true for this case.  
+3. The payment tier is between 1 and 3, which is true for this case.  
+4. The gender value is between 0 and 1, which is true for this case.","['city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]",0.2218,OPTIMAL,cop@4,0.5692
+employee,gpt-5.6-terra,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,77.3,False,77.3,77.3,77.3,77.3,False,False,False,7,7,7,0,0,0,0,0,0,0,0,3,"[77.3, 60.6, 56.5, 77.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé quittera l’entreprise. Cette décision est cohérente avec plusieurs conditions observées : le niveau d’éducation est entre 0 et 2, la ville correspond à la tranche entre 1 et 2, le niveau de rémunération est entre 1 et 3, le genre est entre 0 et 1, et l’employé a déjà été mis en disponibilité entre 0 et 1.
+
+Deux conditions de la règle ne sont pas satisfaites : la ville n’est pas dans la tranche entre 0 et 1, et l’âge n’est pas entre 27 et 30 ans. Malgré cela, la règle reste cohérente avec la prédiction de départ.","La prédiction indique que l’employé est susceptible de quitter l’entreprise, notamment parce que son niveau d’éducation est compris entre 0 et 2, sa ville n’est pas comprise entre 0 et 1 mais est comprise entre 1 et 2, son niveau de rémunération est compris entre 1 et 3, son âge n’est pas compris entre 27 et 30, son genre est compris entre 0 et 1, et il a déjà été mis en disponibilité.","1. Education level is between 0 and 2, which is true here.  
+2. City category is between 0 and 1, which is not true here.  
+3. City category is between 1 and 2, which is true here.  
+4. Payment tier is between 1 and 3, which is true here.  
+5. Age is between 27 and 30, which is not true here.  
+6. Gender category is between 0 and 1, which is true here.  
+7. Having previously been without an assignment is between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5', 'age_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]",0.3034,OPTIMAL,cop@7,0.5646
+employee,gpt-5.6-terra,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,81.9,False,81.9,64.1,81.9,81.9,False,False,False,6,5,6,0,0,1,0,0,0,0,0,3,"[81.9, 64.1, 81.9, 64.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé quittera l’entreprise. Cette décision est surtout cohérente avec les éléments suivants : le niveau d’éducation est entre 0 et 2, la ville est dans la catégorie numérique entre 1 et 2, le niveau de paiement est entre 1 et 3, le genre est dans la catégorie numérique entre 0 et 1, et l’employé a déjà été mis en disponibilité, avec une valeur entre 0 et 1.
+
+Une condition de la règle ne correspond pas à cet employé : la ville n’est pas dans la catégorie numérique entre 0 et 1. Malgré cela, les autres conditions de la règle correspondent et conduisent à la prédiction de départ.","Le modèle prédit que l’employé quittera l’entreprise. Cette prédiction est associée à une éducation comprise entre 0 et 2, une ville comprise entre 1 et 2, un niveau de paiement compris entre 1 et 3, un genre compris entre 0 et 1, et le fait d’avoir déjà été sans mission, compris entre 0 et 1.","1. The education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is not true here.  
+3. The city category is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender category is between 0 and 1, which is true here.  
+6. The employee has previously been on the bench, represented by a value between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]","[0, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]",0.2176,OPTIMAL,cop@6,0.5676
+employee,gpt-5.6-terra,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,89.1,False,89.1,89.1,89.1,89.1,False,False,False,7,7,7,0,0,0,0,0,0,0,0,3,"[89.1, 89.1, 68.5, 89.1]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","La prédiction indique que l’employé est susceptible de quitter l’entreprise.
+
+Les éléments qui correspondent à la règle sont :
+- le niveau d’éducation est compris entre 0 et 2 ;
+- la ville correspond à la catégorie comprise entre 1 et 2 ;
+- le niveau de rémunération est compris entre 1 et 3 ;
+- le genre correspond à la catégorie comprise entre 0 et 1 ;
+- l’employé a déjà été mis en disponibilité, dans la catégorie comprise entre 0 et 1.
+
+Deux conditions de la règle ne sont pas satisfaites : la ville n’est pas dans la catégorie comprise entre 0 et 1, et l’expérience dans le domaine actuel n’est pas comprise entre 4 et 7. Malgré cela, la règle reste cohérente avec la prédiction de départ : départ probable.","La prédiction indique que l’employé est susceptible de quitter l’entreprise. Cela correspond à une formation comprise entre 0 et 2, une ville comprise entre 1 et 2, un niveau de rémunération compris entre 1 et 3, un genre compris entre 0 et 1 et le fait d’avoir déjà été mis en disponibilité, compris entre 0 et 1. La condition sur la ville comprise entre 0 et 1 n’est pas satisfaite, et l’expérience dans le domaine actuel n’est pas comprise entre 4 et 7.","1. The education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is not true here.  
+3. The city category is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender category is between 0 and 1, which is true here.  
+6. The employee has previously been without an assignment, with the value between 0 and 1, which is true here.  
+7. The experience in the current work domain is between 4 and 7 years, which is not true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]",0.3238,OPTIMAL,cop@7,0.5834
+employee,gpt-5.6-terra,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,67.8,False,67.8,67.8,67.8,67.8,False,False,False,4,4,4,0,0,0,0,0,0,0,0,3,"[67.8, 67.8, 67.8, 67.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","La prédiction est que l’employé restera dans l’entreprise.
+
+Les éléments qui correspondent à la règle sont : un niveau de paiement entre 1 et 3, un genre codé entre 0 et 1, et le fait d’avoir été en période sans affectation, codé entre 0 et 1. En revanche, la condition sur l’année d’arrivée — être arrivé entre 2017 et 2018 — ne correspond pas à cet employé.","La prédiction indique que l’employé restera dans l’entreprise. Cela correspond au fait que son niveau de paiement est compris entre 1 et 3, que son genre est codé entre 0 et 1, et qu’il a déjà été mis en disponibilité entre 0 et 1. La condition sur l’année d’arrivée entre 2017 et 2018 ne s’applique pas à cet employé.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The payment tier is between 1 and 3, which is true here.  
+3. The employee’s gender value is between 0 and 1, which is true here.  
+4. Whether the employee has ever been without an assigned project is between 0 and 1, which is true here.","['payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'joining_year_b2 < 0.5']","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10, 11]",0.3156,OPTIMAL,cop@4,0.4214
+employee,gpt-5.6-terra,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,87.9,False,87.9,61.5,87.9,87.9,False,False,False,7,5,7,0,0,2,0,0,0,0,0,3,"[87.9, 87.9, 87.9, 61.5]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","Le modèle prédit que l’employé restera dans l’entreprise (classe 0). Cette décision est cohérente avec plusieurs éléments : le niveau d’études est entre 0 et 2, la ville est entre 0 et 1, le niveau de rémunération est entre 1 et 3, le genre est entre 0 et 1, et l’employé a déjà été mis en disponibilité, avec une valeur entre 0 et 1.
+
+Deux conditions de la règle ne sont pas respectées : l’année d’arrivée n’est pas entre 2017 et 2018, et la ville n’est pas dans la catégorie codée entre 1 et 2. Malgré ces écarts, l’ensemble de la règle est compatible avec la prédiction selon laquelle l’employé restera.","Le modèle prédit que cet employé restera dans l’entreprise. Cette prédiction est associée à un niveau d’études compris entre 0 et 2, une ville comprise entre 0 et 1, un niveau de rémunération compris entre 1 et 3, un genre compris entre 0 et 1, et un historique de mise en disponibilité compris entre 0 et 1.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2017 and 2018, which is not true here.  
+3. The city category is between 0 and 1, which is true here.  
+4. The city category is between 1 and 2, which is not true here.  
+5. The payment tier is between 1 and 3, which is true here.  
+6. The gender category is between 0 and 1, which is true here.  
+7. The employee has previously been without an assigned project, represented by a value between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 3, 4, 5, 6, 10, 11]","[0, 3, 4, 5, 6, 10, 11]","[0, 4, 6, 10, 11]","[0, 3, 4, 5, 6, 10, 11]",0.0978,OPTIMAL,cop@7,0.4238
+employee,gpt-5.6-terra,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,88.6,False,88.6,58.3,88.6,88.6,False,False,False,8,4,8,0,0,4,0,0,0,0,0,3,"[88.6, 88.6, 84.6, 58.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","Le modèle prédit que l’employé quittera l’entreprise.
+
+Cette décision s’appuie sur les informations suivantes :
+- le niveau d’éducation est compris entre 0 et 2 ;
+- l’année d’arrivée n’est pas comprise entre 2014 et 2017 ;
+- la ville n’est pas comprise entre 0 et 1, mais elle est comprise entre 1 et 2 ;
+- le niveau de rémunération est compris entre 1 et 3 ;
+- le genre est compris entre 0 et 1 ;
+- l’employé n’a jamais été mis en disponibilité, avec une valeur comprise entre 0 et 1 ;
+- l’expérience dans le domaine actuel n’est pas comprise entre 2 et 4.
+
+La règle associée à la prédiction correspond globalement à ce profil, même si certaines de ses conditions ne sont pas satisfaites.","La prédiction indique que cet employé est susceptible de quitter l’entreprise. Les éléments allant dans ce sens sont notamment : un niveau d’éducation compris entre 0 et 2, une ville codée entre 1 et 2, un niveau de rémunération compris entre 1 et 3, un genre codé entre 0 et 1, et le fait de n’avoir jamais été mis en disponibilité (valeur comprise entre 0 et 1).","1. The education level is between 0 and 2, which is true for this case.  
+2. The year the employee joined is between 2014 and 2017, which is not true for this case.  
+3. The city category is between 0 and 1, which is not true for this case.  
+4. The city category is between 1 and 2, which is true for this case.  
+5. The payment tier is between 1 and 3, which is true for this case.  
+6. The gender category is between 0 and 1, which is true for this case.  
+7. The employee has previously been without an assigned project, with the value between 0 and 1, which is true for this case.  
+8. The years of experience in the current work domain are between 2 and 4, which is not true for this case.","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 5, 6, 10]","[0, 2, 4, 5, 6, 10, 11, 13]",0.4232,OPTIMAL,cop@8,0.564
+employee,gpt-5.6-terra,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.0,False,91.0,64.4,91.0,91.0,False,False,False,7,5,7,0,0,2,0,0,0,0,0,3,"[91.0, 72.2, 73.8, 64.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","Le modèle prédit que l’employé quittera l’entreprise. Cette décision est surtout cohérente avec les éléments suivants : le niveau d’éducation est entre 0 et 2, la ville correspond à la catégorie entre 1 et 2, le niveau de rémunération est entre 1 et 3, le genre correspond à la catégorie entre 0 et 1, et l’employé a déjà été mis en disponibilité (« bench »), dans la catégorie entre 0 et 1.
+
+Deux conditions de la règle ne sont pas remplies : la ville n’est pas dans la catégorie entre 0 et 1, et l’expérience dans le domaine actuel n’est pas dans la plage de 4 à 7. Malgré cela, l’ensemble des autres conditions correspond à une situation que le modèle associe à un départ.","La prédiction indique que l’employé est susceptible de quitter l’entreprise. Cela est associé à un niveau d’éducation compris entre 0 et 2, à une ville comprise entre 1 et 2, à un niveau de paiement compris entre 1 et 3, au genre codé entre 0 et 1, et au fait d’avoir déjà été en période d’inactivité.","1. The education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is not true here.  
+3. The city category is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender category is between 0 and 1, which is true here.  
+6. The employee has previously been without an assigned project, with the value between 0 and 1, which is true here.  
+7. The years of experience in the current professional domain are between 4 and 7, which is not true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]","[0, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11, 14]",0.3254,OPTIMAL,cop@7,0.576
+employee,gpt-5.6-terra,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,81.4,False,81.4,81.4,81.4,81.4,False,False,False,8,8,8,0,0,0,0,0,0,0,0,3,"[81.4, 60.8, 81.4, 81.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","Le modèle prévoit que l’employé restera dans l’entreprise.
+
+Cette prédiction est cohérente avec plusieurs éléments observés : le niveau d’éducation est entre 0 et 2, la ville est entre 0 et 1, le niveau de rémunération est entre 1 et 3, le genre est entre 0 et 1, et l’employé a déjà été mis en disponibilité entre 0 et 1.
+
+Certaines conditions de la règle ne sont pas remplies : la ville n’est pas entre 1 et 2, l’âge n’est pas entre 27 et 30 ans, et l’expérience dans le domaine actuel n’est pas entre 2 et 4 ans.","La prédiction est que l’employé restera dans l’entreprise. Cette conclusion correspond au profil suivant : niveau d’études entre 0 et 2, ville entre 0 et 1, niveau de rémunération entre 1 et 3, genre codé entre 0 et 1, et indicateur « a déjà été en intercontrat » entre 0 et 1. Dans ce cas, la ville n’est pas entre 1 et 2, l’âge n’est pas entre 27 et 30 ans, et l’expérience dans le domaine actuel n’est pas entre 2 et 4 ans.","1. The education level is between 0 and 2, which is true here.  
+2. The city category is between 0 and 1, which is true here.  
+3. The city category is between 1 and 2, which is not true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The age is between 27 and 30, which is not true here.  
+6. The gender category is between 0 and 1, which is true here.  
+7. The employee has previously been without an assigned project, which is between 0 and 1, and this is true here.  
+8. The years of experience in the current domain are between 2 and 4, which is not true here.","['education_b0 > 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b1 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]",0.312,OPTIMAL,cop@8,0.4204
+employee,gpt-5.6-terra,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,98.8,True,98.8,98.8,98.8,98.8,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[98.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","La prédiction est que l’employé quittera l’entreprise.
+
+Cette décision correspond au profil suivant : le niveau d’éducation est entre 0 et 2, l’année d’entrée dans l’entreprise est entre 2017 et 2018, le niveau de rémunération est entre 1 et 3, le genre est codé entre 0 et 1, et l’employé a déjà été mis en disponibilité, avec une valeur entre 0 et 1.
+
+En revanche, l’employé n’est pas entré entre 2012 et 2014, ni entre 2014 et 2017.","La prédiction est que l’employé quittera l’entreprise.
+
+Cette décision correspond au profil suivant : le niveau d’éducation est entre 0 et 2, l’année d’entrée dans l’entreprise est entre 2017 et 2018, le niveau de rémunération est entre 1 et 3, le genre est codé entre 0 et 1, et l’employé a déjà été mis en disponibilité, avec une valeur entre 0 et 1.
+
+En revanche, l’employé n’est pas entré entre 2012 et 2014, ni entre 2014 et 2017.","1. The education level is between 0 and 2, which is true here.  
+2. The year the employee joined is between 2012 and 2014, which is not true here.  
+3. The year the employee joined is between 2014 and 2017, which is not true here.  
+4. The year the employee joined is between 2017 and 2018, which is true here.  
+5. The payment tier is between 1 and 3, which is true here.  
+6. The gender value is between 0 and 1, which is true here.  
+7. The employee has not previously been benched, represented by a value between 0 and 1, which is true here.","['education_b0 > 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]",0.3156,OPTIMAL,cop@7,0.5804

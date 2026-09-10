@@ -1,6 +1,6 @@
 """Measure the real per-request token cost of one NN arm-run, from stored runs.
 
-Written for the model-grid budget question, which needs a cost-per-
+Written for the CHI 2027 budget question: the supervisor asked for a cost-per-
 request figure for each provider BEFORE any paid run is launched, so the number
 of instances can be calibrated to a fixed envelope.
 
@@ -161,7 +161,7 @@ def main():
     print(f'  output tokens  mean {m.out_tok.mean():,.0f}')
     print(f'  total tokens   mean {(m.in_tok + m.out_tok).mean():,.0f}\n')
 
-    print('=== per SINGLE REQUEST ===')
+    print('=== per SINGLE REQUEST (what the supervisor asked for) ===')
     per_call_in = m.in_tok.sum() / m.calls.sum()
     per_call_out = m.out_tok.sum() / m.calls.sum()
     print(f'  input  {per_call_in:,.0f} tok/request')

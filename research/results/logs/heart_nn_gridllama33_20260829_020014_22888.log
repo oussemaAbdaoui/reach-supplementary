@@ -1,0 +1,60 @@
+Full console log -> research/results/logs/heart_nn_gridllama33_20260829_020014_22888.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [cop_best] sweep heart_cop_sweep_V.csv (k up to 12, selecting on precision_V)
+  [cop_best] inst 81: k*=12 (selection precision 100.0, re-certified below)
+  [cop_best] base=99.2% v4=97.0% v5=76.6% v6=99.2% (len 12, om_v5=4)
+[002/15] instance 14 (pred=1, k_ref=12)
+  [cop_best] inst 14: k*=12 (selection precision 84.8, re-certified below)
+  [cop_best] base=87.4% v4=81.3% v5=80.3% v6=87.4% (len 12, om_v5=3)
+[003/15] instance 3 (pred=0, k_ref=4)
+  [cop_best] inst 3: k*=9 (selection precision 98.5, re-certified below)
+  [cop_best] base=93.0% v4=93.0% v5=52.6% v6=93.0% (len 9, om_v5=4)
+[004/15] instance 94 (pred=0, k_ref=3)
+  [cop_best] inst 94: k*=10 (selection precision 99.3, re-certified below)
+  [cop_best] base=96.4% v4=91.6% v5=96.4% v6=96.4% (len 10, om_v5=0)
+[005/15] instance 35 (pred=1, k_ref=4)
+  [cop_best] inst 35: k*=10 (selection precision 98.5, re-certified below)
+  [cop_best] base=99.3% v4=80.4% v5=99.3% v6=99.3% (len 10, om_v5=1)
+[006/15] instance 31 (pred=0, k_ref=6)
+  [cop_best] inst 31: k*=10 (selection precision 99.5, re-certified below)
+  [cop_best] base=95.1% v4=94.6% v5=95.1% v6=95.1% (len 10, om_v5=0)
+[007/15] instance 28 (pred=0, k_ref=3)
+  [cop_best] inst 28: k*=12 (selection precision 98.8, re-certified below)
+  [cop_best] base=97.5% v4=97.3% v5=95.2% v6=97.5% (len 12, om_v5=2)
+[008/15] instance 17 (pred=1, k_ref=4)
+  [cop_best] inst 17: k*=11 (selection precision 100.0, re-certified below)
+  [cop_best] base=100.0% v4=100.0% v5=100.0% v6=100.0% (len 11, om_v5=0)
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop_best] inst 13: k*=12 (selection precision 85.2, re-certified below)
+  [cop_best] base=84.8% v4=75.9% v5=79.3% v6=84.8% (len 12, om_v5=1)
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop_best] inst 86: k*=12 (selection precision 100.0, re-certified below)
+  [cop_best] base=100.0% v4=100.0% v5=100.0% v6=97.8% (len 12, om_v5=0)
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop_best] inst 114: k*=11 (selection precision 100.0, re-certified below)
+  [cop_best] base=100.0% v4=100.0% v5=100.0% v6=100.0% (len 11, om_v5=0)
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop_best] inst 69: k*=11 (selection precision 100.0, re-certified below)
+  [cop_best] base=100.0% v4=100.0% v5=79.4% v6=100.0% (len 11, om_v5=4)
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop_best] inst 11: k*=12 (selection precision 100.0, re-certified below)
+  [cop_best] base=99.2% v4=99.2% v5=99.2% v6=99.2% (len 12, om_v5=0)
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop_best] inst 75: k*=10 (selection precision 99.4, re-certified below)
+  [cop_best] base=98.7% v4=98.7% v5=98.7% v6=98.7% (len 10, om_v5=0)
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop_best] inst 54: k*=11 (selection precision 99.6, re-certified below)
+  [cop_best] base=99.8% v4=99.8% v5=99.8% v6=99.8% (len 11, om_v5=0)
+
+saved -> research/results/heart_nn_comparison_cop_best_gridllama33.csv
+
+=== per-arm means ===
+          len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                 
+cop_best       11.0               96.69     93.92     90.13          95.76     96.55
+
+WeakPAXp pass rates (baseline / v5):
+          baseline_weak_paxp  weak_paxp_v5
+arm                                       
+cop_best                 0.8          0.67

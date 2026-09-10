@@ -1,0 +1,12 @@
+Full console log -> research/results/logs/cancer_nn_20260905_060432_21124.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=90 binarized features | test acc 0.9581
+[cancer/grok420] 90 rows, 90 to redo, model=grok-4.20-0309-non-reasoning provider=xai
+  inst    6 cop      v5= 50.10 (was 50.1) om=0 rounds=3
+  inst    6 cop_k    v5= 83.90 (was 75.6) om=0 rounds=3
+  inst    6 lmpaxp   v5= 95.80 (was 95.8) om=0 rounds=0
+  inst    6 anchors  v5= 43.80 (was 37.0) om=0 rounds=3
+  inst    6 shap     v5= 60.30 (was 37.6) om=9 rounds=3
+  inst    6 lime     v5= 13.60 (was 42.9) om=8 rounds=3
+  inst   22 cop      v5= 82.70 (was 78.1) om=0 rounds=3
+  inst   22 cop_k    v5= 76.70 (was 70.0) om=0 rounds=3
+  inst   22 lmpaxp   v5= 95.40 (was 95.4) om=0 rounds=0

@@ -1,0 +1,186 @@
+judge = openai/gpt-oss-120b via together
+[cancer] judging stored explanations ...
+  generator gpt-5.6-terra | judge openai/gpt-oss-120b
+  resuming: 538 already judged
+  810 judgements over 3 pass(es) (272 to run, 538 already done)
+    10/272 judged
+    20/272 judged
+    30/272 judged
+    40/272 judged
+    50/272 judged
+    60/272 judged
+    70/272 judged
+    80/272 judged
+    90/272 judged
+    100/272 judged
+    110/272 judged
+    120/272 judged
+    130/272 judged
+    140/272 judged
+    150/272 judged
+    160/272 judged
+    170/272 judged
+    180/272 judged
+    190/272 judged
+    200/272 judged
+    210/272 judged
+    220/272 judged
+    230/272 judged
+    240/272 judged
+    250/272 judged
+    260/272 judged
+    270/272 judged
+  wrote research\results\cancer_nn_judge_gpt56.csv (+272 rows)
+[compas] judging stored explanations ...
+  generator gpt-5.6-terra | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\compas_nn_judge_gpt56.csv (+270 rows)
+[diabetes] judging stored explanations ...
+  generator gpt-5.6-terra | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\diabetes_nn_judge_gpt56.csv (+270 rows)
+[employee] judging stored explanations ...
+  generator gpt-5.6-terra | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\employee_nn_judge_gpt56.csv (+270 rows)
+[heart] judging stored explanations ...
+  generator gpt-5.6-terra | judge openai/gpt-oss-120b
+  resuming: 540 already judged
+  810 judgements over 3 pass(es) (270 to run, 540 already done)
+    10/270 judged
+    20/270 judged
+    30/270 judged
+    40/270 judged
+    50/270 judged
+    60/270 judged
+    70/270 judged
+    80/270 judged
+    90/270 judged
+    100/270 judged
+    110/270 judged
+    120/270 judged
+    130/270 judged
+    140/270 judged
+    150/270 judged
+    160/270 judged
+    170/270 judged
+    180/270 judged
+    190/270 judged
+    200/270 judged
+    210/270 judged
+    220/270 judged
+    230/270 judged
+    240/270 judged
+    250/270 judged
+    260/270 judged
+    270/270 judged
+  wrote research\results\heart_nn_judge_gpt56.csv (+270 rows)
+
+=== judge = openai/gpt-oss-120b | 1350 judgements, parse ok 98.4% ===
+
+mean score by strategy:
+          faithfulness  coherence  completeness  halluc_risk
+strategy                                                    
+v4               43.34      76.70         39.66        38.11
+v5               44.13      75.78         39.62        36.85
+v6               27.10      66.29         25.80        33.90
+
+mean score by arm x strategy (faithfulness):
+strategy     v4     v5     v6
+arm                          
+anchors   26.76  26.08  34.87
+cop       37.30  39.18  17.60
+cop_k     53.42  54.61  24.93
+lime      39.93  40.83  27.20
+lmpaxp    56.47  55.28  27.13
+shap      46.25  49.44  30.95
+
+test-retest on 1350 repeated judgements, mean |pass1-pass2|:
+  faithfulness   8.72
+  coherence      7.63
+  completeness   6.74
+  halluc_risk    14.06

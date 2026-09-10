@@ -5,7 +5,7 @@
 #
 # Waits for the machine to go idle first: CP-SAT and the LLM runs contend, and
 # anchors alone needs ~700 MB.
-cd "$(dirname "$0")/.." || exit 1
+cd "$(dirname "$0")/.." || exit 1   # project root, wherever this is checked out
 
 while tasklist 2>/dev/null | grep -qi python; do sleep 30; done
 echo "=== machine idle; COP arm re-runs start $(date +%H:%M:%S) ==="

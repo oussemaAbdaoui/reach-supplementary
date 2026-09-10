@@ -1,0 +1,75 @@
+Full console log -> research/results/logs/compas_nn_gridllama33_20260830_182252_25528.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=13 binarized features | test acc 0.6135
+[001/15] instance 1309 (pred=0, k_ref=2)
+  [cop_best] sweep compas_cop_sweep_V.csv (k up to 5, selecting on precision_V)
+  [cop_best] inst 1309: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=71.1% v4=71.1% v5=71.1% v6=71.1% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 10 calls, 3,306 in / 586 out
+[002/15] instance 228 (pred=0, k_ref=2)
+  [cop_best] inst 228: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=69.7% v4=69.7% v5=69.7% v6=69.7% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 20 calls, 6,656 in / 1,216 out
+[003/15] instance 51 (pred=0, k_ref=5)
+  [cop_best] inst 51: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=68.7% v4=68.7% v5=68.7% v6=68.7% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 30 calls, 10,039 in / 1,879 out
+[004/15] instance 1518 (pred=1, k_ref=5)
+  [cop_best] inst 1518: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=81.1% v4=81.1% v5=52.8% v6=52.8% (len 1, om_v5=1)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 40 calls, 13,199 in / 2,331 out
+[005/15] instance 563 (pred=0, k_ref=5)
+  [cop_best] inst 563: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=71.5% v4=71.5% v5=71.5% v6=71.5% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 50 calls, 16,561 in / 2,973 out
+[006/15] instance 501 (pred=0, k_ref=5)
+  [cop_best] inst 501: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=70.3% v4=70.3% v5=70.3% v6=70.3% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 60 calls, 19,893 in / 3,585 out
+[007/15] instance 457 (pred=0, k_ref=2)
+  [cop_best] inst 457: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=69.8% v4=69.8% v5=69.8% v6=69.8% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 70 calls, 23,241 in / 4,213 out
+[008/15] instance 285 (pred=0, k_ref=2)
+  [cop_best] inst 285: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=71.0% v4=71.0% v5=71.0% v6=71.0% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 80 calls, 26,607 in / 4,859 out
+[009/15] instance 1508 (pred=0, k_ref=5)
+  [cop_best] inst 1508: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=71.9% v4=71.9% v5=71.9% v6=71.9% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 90 calls, 29,956 in / 5,488 out
+[010/15] instance 209 (pred=0, k_ref=5)
+  [cop_best] inst 209: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=68.0% v4=68.0% v5=68.0% v6=68.0% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 100 calls, 33,280 in / 6,092 out
+[011/15] instance 1385 (pred=0, k_ref=2)
+  [cop_best] inst 1385: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=72.8% v4=72.8% v5=72.8% v6=72.8% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 110 calls, 36,624 in / 6,716 out
+[012/15] instance 1516 (pred=0, k_ref=2)
+  [cop_best] inst 1516: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=70.2% v4=70.2% v5=70.2% v6=70.2% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 120 calls, 39,956 in / 7,328 out
+[013/15] instance 1827 (pred=0, k_ref=5)
+  [cop_best] inst 1827: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=70.8% v4=70.8% v5=70.8% v6=70.8% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 130 calls, 43,302 in / 7,967 out
+[014/15] instance 1116 (pred=0, k_ref=5)
+  [cop_best] inst 1116: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=70.2% v4=70.2% v5=70.2% v6=70.2% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 140 calls, 46,627 in / 8,572 out
+[015/15] instance 178 (pred=0, k_ref=2)
+  [cop_best] inst 178: k*=1 (selection precision 100.0, re-certified below)
+  [cop_best] base=70.8% v4=70.8% v5=70.8% v6=70.8% (len 1, om_v5=0)
+  [spend] Llama-3.3-70B-Instruct-Turbo: 150 calls, 49,952 in / 9,177 out
+
+saved -> research/results/compas_nn_comparison_cop_best_gridllama33.csv
+
+=== per-arm means ===
+          len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                                 
+cop_best        1.0               71.19     71.19     69.31          71.19     69.31
+
+WeakPAXp pass rates (baseline / v5):
+          baseline_weak_paxp  weak_paxp_v5
+arm                                       
+cop_best                 0.0           0.0

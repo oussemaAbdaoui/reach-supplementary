@@ -1,0 +1,59 @@
+Full console log -> research/results/logs/heart_nn_gpt56_20260831_013451_24188.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+[001/15] instance 81 (pred=1, k_ref=4)
+  [cop_k] base=93.2% v4=93.2% v5=93.2% v6=93.2% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 5 calls, 1,926 in / 388 out | Llama-3.3-70B-Instruct-Turbo: 5 calls, 1,744 in / 205 out
+[002/15] instance 14 (pred=1, k_ref=12)
+  [cop_k] base=86.2% v4=86.2% v5=76.9% v6=86.2% (len 12, om_v5=2)
+  [spend] gpt-5.6-terra: 10 calls, 5,540 in / 1,281 out | Llama-3.3-70B-Instruct-Turbo: 10 calls, 4,909 in / 831 out
+[003/15] instance 3 (pred=0, k_ref=4)
+  [cop_k] base=88.3% v4=88.3% v5=88.3% v6=88.3% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 15 calls, 7,541 in / 1,759 out | Llama-3.3-70B-Instruct-Turbo: 15 calls, 6,806 in / 1,061 out
+[004/15] instance 94 (pred=0, k_ref=3)
+  [cop_k] base=87.1% v4=87.1% v5=87.1% v6=87.1% (len 3, om_v5=0)
+  [spend] gpt-5.6-terra: 20 calls, 9,367 in / 2,140 out | Llama-3.3-70B-Instruct-Turbo: 20 calls, 8,490 in / 1,231 out
+[005/15] instance 35 (pred=1, k_ref=4)
+  [cop_k] base=70.0% v4=66.9% v5=70.0% v6=70.0% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 25 calls, 11,324 in / 2,456 out | Llama-3.3-70B-Instruct-Turbo: 25 calls, 10,204 in / 1,456 out
+[006/15] instance 31 (pred=0, k_ref=6)
+  [cop_k] base=85.7% v4=85.7% v5=85.7% v6=85.7% (len 6, om_v5=0)
+  [spend] gpt-5.6-terra: 30 calls, 13,642 in / 2,917 out | Llama-3.3-70B-Instruct-Turbo: 30 calls, 12,211 in / 1,786 out
+[007/15] instance 28 (pred=0, k_ref=3)
+  [cop_k] base=89.7% v4=89.7% v5=89.7% v6=89.7% (len 3, om_v5=0)
+  [spend] gpt-5.6-terra: 35 calls, 15,458 in / 3,305 out | Llama-3.3-70B-Instruct-Turbo: 35 calls, 13,901 in / 1,951 out
+[008/15] instance 17 (pred=1, k_ref=4)
+  [cop_k] base=85.7% v4=85.7% v5=86.2% v6=85.7% (len 4, om_v5=1)
+  [spend] gpt-5.6-terra: 40 calls, 17,414 in / 3,693 out | Llama-3.3-70B-Instruct-Turbo: 40 calls, 15,689 in / 2,171 out
+[009/15] instance 13 (pred=1, k_ref=9)
+  [cop_k] base=71.0% v4=71.0% v5=50.4% v6=71.0% (len 9, om_v5=5)
+  [spend] gpt-5.6-terra: 45 calls, 20,429 in / 4,342 out | Llama-3.3-70B-Instruct-Turbo: 45 calls, 18,269 in / 2,647 out
+[010/15] instance 86 (pred=0, k_ref=4)
+  [cop_k] base=88.4% v4=88.4% v5=88.4% v6=88.4% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 50 calls, 22,430 in / 4,789 out | Llama-3.3-70B-Instruct-Turbo: 50 calls, 20,134 in / 2,877 out
+[011/15] instance 114 (pred=1, k_ref=4)
+  [cop_k] base=89.7% v4=90.8% v5=89.7% v6=89.7% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 55 calls, 24,351 in / 5,154 out | Llama-3.3-70B-Instruct-Turbo: 55 calls, 21,861 in / 3,087 out
+[012/15] instance 69 (pred=1, k_ref=4)
+  [cop_k] base=93.4% v4=93.4% v5=92.5% v6=93.4% (len 4, om_v5=1)
+  [spend] gpt-5.6-terra: 60 calls, 26,322 in / 5,524 out | Llama-3.3-70B-Instruct-Turbo: 60 calls, 23,627 in / 3,307 out
+[013/15] instance 11 (pred=0, k_ref=5)
+  [cop_k] base=88.1% v4=88.1% v5=52.8% v6=88.1% (len 5, om_v5=3)
+  [spend] gpt-5.6-terra: 65 calls, 28,473 in / 6,041 out | Llama-3.3-70B-Instruct-Turbo: 65 calls, 25,638 in / 3,592 out
+[014/15] instance 75 (pred=1, k_ref=4)
+  [cop_k] base=87.5% v4=87.5% v5=87.5% v6=87.5% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 70 calls, 30,389 in / 6,400 out | Llama-3.3-70B-Instruct-Turbo: 70 calls, 27,358 in / 3,792 out
+[015/15] instance 54 (pred=1, k_ref=4)
+  [cop_k] base=90.2% v4=90.2% v5=90.2% v6=90.2% (len 4, om_v5=0)
+  [spend] gpt-5.6-terra: 75 calls, 32,360 in / 6,746 out | Llama-3.3-70B-Instruct-Turbo: 75 calls, 29,096 in / 4,017 out
+
+saved -> research/results/heart_nn_comparison_cop_k_gpt56.csv
+
+=== per-arm means ===
+       len_S_arm  baseline_precision  score_v4  score_v5  score_v5_best  score_v6
+arm                                                                              
+cop_k       4.93               86.28     86.15     81.91          86.91     86.28
+
+WeakPAXp pass rates (baseline / v5):
+       baseline_weak_paxp  weak_paxp_v5
+arm                                    
+cop_k                 0.0           0.0

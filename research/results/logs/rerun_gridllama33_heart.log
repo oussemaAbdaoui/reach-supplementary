@@ -1,0 +1,7 @@
+Full console log -> research/results/logs/heart_nn_20260905_062829_9836.log
+black-box MLP (sklearn defaults, [K §4.1]) on d=26 binarized features | test acc 0.8361
+  [keys] 3 available, starting at index 0
+[heart/gridllama33] 105 rows, 0 to redo, model=meta-llama/Llama-3.3-70B-Instruct-Turbo provider=together
+
+[heart/gridllama33] wrote 0 rows -> research/results/heart_nn_comparison_gridllama33.csv
+  spend: no billable calls

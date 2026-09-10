@@ -1,0 +1,57 @@
+judge = openai/gpt-oss-120b via groq
+[cancer] judging stored explanations ...
+  generator zai-org/GLM-5.2 | judge openai/gpt-oss-120b
+  resuming: 810 already judged
+  810 judgements over 3 pass(es) (0 to run, 810 already done)
+  wrote research\results\cancer_nn_judge_glm52.csv (+0 rows)
+[compas] judging stored explanations ...
+  generator zai-org/GLM-5.2 | judge openai/gpt-oss-120b
+  resuming: 810 already judged
+  810 judgements over 3 pass(es) (0 to run, 810 already done)
+  wrote research\results\compas_nn_judge_glm52.csv (+0 rows)
+[diabetes] judging stored explanations ...
+  generator zai-org/GLM-5.2 | judge openai/gpt-oss-120b
+  resuming: 318 already judged
+  810 judgements over 3 pass(es) (492 to run, 318 already done)
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 180s
+  [rate-limit] waiting 180s
+  [rate-limit] waiting 180s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 5s
+  [rate-limit] waiting 90s
+  [rate-limit] waiting 210s
+  [rate-limit] waiting 210s
+  [rate-limit] waiting 210s
+  [rate-limit] waiting 120s
+  [rate-limit] waiting 150s
+  [rate-limit] waiting 240s
+  [rate-limit] waiting 240s
+  [rate-limit] waiting 240s
+  [rate-limit] waiting 5s

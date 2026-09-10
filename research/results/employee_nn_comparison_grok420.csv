@@ -1,0 +1,1263 @@
+dataset,llm,instance,arm,extractor,pred,len_S_arm,baseline_precision,baseline_weak_paxp,score_v4,score_v5,score_v5_best,score_v6,weak_paxp_v4,weak_paxp_v5,weak_paxp_v6,len_v4,len_v5,len_v6,om_v4,cm_v4,om_v5,cm_v5,om_v6,cm_v6,contradictions_v4,contradictions_v6,v5_rounds,v5_scores,half_width,ctx,explanation_v4,explanation_v5,explanation_v6,rules_v4,rules_v6,S_arm,S_v4,S_v5,S_v6,cop_loss,cop_status,cop_variant,base_rate_same,lmp_precision_cert,anchor_prec,v5_rerun
+employee,grok-4.20-0309-non-reasoning,51,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,64.1,False,64.1,64.1,64.1,64.1,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[64.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 1  (city in [1, 2) — holds)",The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,"1. The city measurement is between 1 and 2, which is true here.",['city_b1 > 0.5'],['city_b1 > 0.5'],[5],[5],[5],[5],0.23,OPTIMAL,cop,0.5676,,,1
+employee,grok-4.20-0309-non-reasoning,51,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,65.9,False,65.9,65.9,65.9,65.9,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[65.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model predicted that this employee will leave the company.
+
+This happened because the person is in the second city group (city between 1 and 2), which points toward leaving. Being male (gender between 0 and 1) also pushed the prediction toward leaving. The first city group (city between 0 and 1) does not apply here.","The model predicted that this employee will leave the company.
+
+This happened because the person is in the second city group (city between 1 and 2), which points toward leaving. Being male (gender between 0 and 1) also pushed the prediction toward leaving. The first city group (city between 0 and 1) does not apply here.","1. The city measurement for the first bracket is between 0 and 1, which is not true here.  
+2. The city measurement for the second bracket is between 1 and 2, which is true here.  
+3. The gender measurement for the first bracket is between 0 and 1, which is true here.","['city_b1 > 0.5', 'gender_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'gender_b0 > 0.5']","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]","[4, 5, 10]",0.23,OPTIMAL,cop@3,0.5676,,,1
+employee,grok-4.20-0309-non-reasoning,51,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,96.4,True,96.4,96.4,96.4,96.4,True,True,True,3,3,3,0,0,0,0,0,0,0,0,0,[96.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. This is because they joined the company between 2017 and 2018, and they work in a city whose measure falls between 1 and 2. The fact that they did not join between 2012 and 2014 also contributed to the prediction.","The model predicted that this employee will leave the company. This is because they joined the company between 2017 and 2018, and they work in a city whose measure falls between 1 and 2. The fact that they did not join between 2012 and 2014 also contributed to the prediction.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The joining year is between 2017 and 2018, which is true here.  
+3. The city is between 1 and 2, which is true here.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'joining_year_b0 < 0.5']","['joining_year_b0 < 0.5', 'joining_year_b2 > 0.5', 'city_b1 > 0.5']","[1, 3, 5]","[1, 3, 5]","[1, 3, 5]","[1, 3, 5]",,,,,0.96328125,,1
+employee,grok-4.20-0309-non-reasoning,51,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,84.8,False,77.6,84.8,84.8,77.6,False,False,False,2,3,2,1,0,0,0,1,0,1,1,1,"[77.6, 84.8]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF joining_year_b2 = 1 AND city_b1 = 1 AND experience_in_current_domain_b0 = 1 THEN class 1","The model predicted that this employee will leave the company. This is because three specific measurements all pointed in that direction at the same time: the person joined the company in the later period, they work in the main city office, and they have the lowest level of experience in their current role. When these three things are true together, the model is certain the employee will leave.","The model predicted that this employee will leave the company. This is because three specific measurements all pointed in that direction at the same time: the person joined the company in the later period, they work in the main city office, and they have the lowest level of experience in their current role. When these three things are true together, the model is certain the employee will leave.","1. The joining year indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+2. The city indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+3. The experience in current domain indicator is at its low value, which pushed the prediction towards the employee leaving the company.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 < 0.5']","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 < 0.5']","[3, 5, 12]","[3, 5]","[3, 5, 12]","[3, 5]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,51,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,91.2,False,91.2,91.2,91.2,67.0,False,False,False,3,3,2,0,0,0,0,1,0,0,1,0,[91.2],0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b2: 43.4% (supports the prediction)
+  age_b0: 32.1% (opposes the prediction)
+  joining_year_b0: 24.5% (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the later period (joining year group 2), which strongly pushed the prediction toward leaving. The fact that the person is not in the youngest age group also pushed the prediction toward leaving, though in the opposite direction. Finally, not being in the earliest joining year group provided some additional support for the prediction of leaving.","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the later period (joining year group 2), which strongly pushed the prediction toward leaving. The fact that the person is not in the youngest age group also pushed the prediction toward leaving, though in the opposite direction. Finally, not being in the earliest joining year group provided some additional support for the prediction of leaving.","1. The joining year indicator for 2015 or later pushed the prediction towards the employee leaving the company.  
+2. The age indicator for under 30 opposed the prediction but was outweighed.  
+3. The joining year indicator for before 2015 pushed the prediction towards the employee leaving the company.","['joining_year_b2 > 0.5', 'age_b0 < 0.5', 'joining_year_b0 < 0.5']","['joining_year_b2 > 0.5', 'age_b0 < 0.5', 'joining_year_b0 > 0.5']","[1, 3, 7]","[1, 3, 7]","[1, 3, 7]","[3, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,51,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,96.2,True,85.7,96.2,96.2,75.3,False,True,False,2,3,1,1,0,0,0,2,0,1,2,1,"[85.7, 96.2]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1028 (supports the prediction)
+  city_b0: weight=+0.0880 (supports the prediction)
+  joining_year_b2: weight=+0.0812 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened because the person joined the company in a year that was not the earliest group, the city they work in was not the main one, and they were not in the middle joining year group. All three of these factors pushed the model toward predicting that the employee would leave.","The model predicted that this employee will leave the company.
+
+This happened because the person joined the company in a year that was not the earliest group, they joined in one of the later years rather than the middle group, and the city they work in was not the main one. All three of these factors pushed the model toward predicting that the employee would leave.","1. The joining year indicator for the earliest period pushed the prediction towards the employee leaving the company.  
+2. The city indicator for the main location pushed the prediction towards the employee leaving the company.  
+3. The joining year indicator for the later period pushed the prediction towards the employee leaving the company.","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b2 > 0.5']","[1, 3, 4]","[1, 4]","[1, 3, 4]",[3],,,,,,,1
+employee,grok-4.20-0309-non-reasoning,178,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,77.0,False,77.0,77.0,77.0,77.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[77.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that condition pushed the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that condition pushed the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","1. The city measurement is between 0 and 1, which is not true here.  
+2. The city measurement is between 1 and 2, which is true here.","['city_b1 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5']","[4, 5]","[4, 5]","[4, 5]","[4, 5]",0.2254,OPTIMAL,cop,0.5804,,,1
+employee,grok-4.20-0309-non-reasoning,178,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,98.8,True,99.6,98.8,99.6,98.8,True,True,True,6,7,7,1,0,0,0,0,0,1,0,1,"[99.6, 98.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company. 
+
+This is because their education level is between 0 and 2, they joined the company in 2017 or 2018, they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point. 
+
+The fact that they did not join between 2012 and 2014, and did not join between 2014 and 2017, also contributed to the prediction.","The model predicted that this employee will leave the company.
+
+This is because their education level is between 0 and 2, they joined the company in 2017 or 2018, they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point.
+
+The fact that they did not join between 2012 and 2014, and did not join between 2014 and 2017, also contributed to the prediction.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2012 and 2014, which is not true here.  
+3. The joining year is between 2014 and 2017, which is not true here.  
+4. The joining year is between 2017 and 2018, which is true here.  
+5. The payment tier is between 1 and 3, which is true here.  
+6. The gender is between 0 and 1, which is true here.  
+7. The ever benched status is between 0 and 1, which is true here.","['education_b0 > 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 11]","[0, 1, 2, 3, 6, 10, 11]","[0, 1, 2, 3, 6, 10, 11]",0.3156,OPTIMAL,cop@7,0.5804,,,1
+employee,grok-4.20-0309-non-reasoning,178,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,95.4,True,95.4,95.4,95.4,95.4,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[95.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b2 = 1  (age in [30, 41) — holds)
+  experience_in_current_domain_b0 = 1  (experience_in_current_domain in [0, 2) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This decision was made because:
+
+- the joining year is between 2017 and 2018  
+- the person lives in the second city category  
+- the payment tier is between 1 and 3  
+- the age is between 30 and 41  
+- the experience in their current domain is between 0 and 2 years  
+
+The two other measurements (city in the first category, and experience of 4 years or more) do not hold for this person.","The model predicted that this employee will leave the company. This decision was made because:
+
+- the joining year is between 2017 and 2018  
+- the person lives in the second city category  
+- the payment tier is between 1 and 3  
+- the age is between 30 and 41  
+- the experience in their current domain is between 0 and 2 years  
+
+The two other measurements (city in the first category, and experience of 4 years or more) do not hold for this person.","1. The joining year is between 2017 and 2018, which is true here.  
+2. The city is between 0 and 1, which is not true here.  
+3. The city is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The age is between 30 and 41, which is true here.  
+6. The experience in current domain is between 0 and 2, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['joining_year_b2 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[3, 4, 5, 6, 9, 12, 14]","[3, 4, 5, 6, 9, 12, 14]","[3, 4, 5, 6, 9, 12, 14]","[3, 4, 5, 6, 9, 12, 14]",,,,,0.95703125,,1
+employee,grok-4.20-0309-non-reasoning,178,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,81.2,False,74.0,81.2,81.2,74.0,False,False,False,2,3,2,1,0,0,0,1,0,1,1,1,"[74.0, 81.2]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF joining_year_b2 = 1 AND city_b1 = 1 AND experience_in_current_domain_b0 = 1 THEN class 1","The model predicted that this employee will leave the company. 
+
+This is because the person joined the company in the later period, works in the main city office, and has the lowest level of experience in their current role. All three of these factors together led the model to decide the employee is likely to leave.","The model predicted that this employee will leave the company.
+
+This is because the person joined the company in the later period, works in the main city office, and has the lowest level of experience in their current role. All three of these factors together led the model to decide the employee is likely to leave.","1. The joining year indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+2. The city indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+3. The experience in current domain indicator is at its low value, which pushed the prediction towards the employee leaving the company.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 < 0.5']","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 < 0.5']","[3, 5, 12]","[3, 5]","[3, 5, 12]","[3, 5]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,178,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,94.0,False,93.3,97.5,97.5,73.0,False,True,False,2,5,4,5,0,2,0,3,0,5,3,3,"[93.3, 97.5, 97.5, 97.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b2: 20.4% (supports the prediction)
+  joining_year_b0: 15.5% (supports the prediction)
+  age_b0: 15.4% (opposes the prediction)
+  experience_in_current_domain_b0: 15.2% (supports the prediction)
+  city_b0: 12.6% (supports the prediction)
+  experience_in_current_domain_b2: 10.6% (supports the prediction)
+  city_b1: 10.3% (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reasons are that they joined the company in the later period and did not join in the earliest period. These two factors strongly pushed the prediction toward leaving. 
+
+The person's age also made leaving more likely, as did having a medium amount of experience in their current role. The fact that they work in one specific city further supported the prediction of leaving, while not working in the other city pushed slightly in the same direction.","This employee is predicted to leave the company. 
+
+The main reasons are that they joined the company in the later period and did not join in the earliest period. These two factors strongly pushed the prediction toward leaving. 
+
+The person's young age also made leaving more likely, as did having little experience in their current role. Having a medium amount of experience in their current role pushed slightly in the same direction. The fact that they do not work in the first city supported the prediction of leaving, while working in the second city pushed slightly in the same direction.","1. The joining year indicator for the later period pushed the prediction towards this class.  
+2. The joining year indicator for the earliest period pushed the prediction towards this class.  
+3. The age indicator for the younger group pushed against this class, but was outweighed.  
+4. The experience in current domain indicator for the lower range pushed the prediction towards this class.  
+5. The city indicator for the first group pushed the prediction towards this class.  
+6. The experience in current domain indicator for the higher range pushed the prediction towards this class.  
+7. The city indicator for the second group pushed the prediction towards this class.","['joining_year_b2 > 0.5', 'joining_year_b0 < 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'experience_in_current_domain_b0 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5']","['joining_year_b2 > 0.5', 'joining_year_b0 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b0 > 0.5', 'city_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'city_b1 > 0.5']","[1, 3, 4, 5, 7, 12, 14]","[1, 3]","[1, 3, 4, 5, 12]","[3, 5, 7, 12]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,178,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,90.6,False,53.6,92.5,92.5,65.0,False,False,False,2,6,3,5,0,1,0,4,0,2,4,3,"[53.6, 73.8, 73.8, 92.5]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1116 (supports the prediction)
+  city_b0: weight=+0.0850 (supports the prediction)
+  joining_year_b2: weight=+0.0838 (supports the prediction)
+  joining_year_b1: weight=+0.0683 (supports the prediction)
+  city_b1: weight=+0.0594 (supports the prediction)
+  age_b0: weight=-0.0550 (opposes the prediction)
+  experience_in_current_domain_b2: weight=+0.0451 (supports the prediction)","This employee is predicted to leave the company. 
+
+The model made this decision mainly because the person joined the company in the middle time period, works in the second type of city, and has a joining year that falls into the earliest group. These three measurements all pushed the prediction toward leaving. 
+
+The employee's age measurement also pushed slightly against leaving, but not enough to change the outcome.","This employee is predicted to leave the company.
+
+The model made this decision mainly because the person joined the company in the middle time period, works in the second type of city, and has a joining year that falls into the earliest group. These three measurements all pushed the prediction toward leaving. The employee also joined in the latest time period, has low experience in their current domain, and joined before 2015, all of which pushed the prediction toward leaving. The employee's age measurement also pushed slightly against leaving, but not enough to change the outcome. The fact that the person did not join in the earliest time period and does not work in the first type of city further supported the prediction of leaving.","1. The joining year indicator pushed the prediction towards this class.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed the prediction towards this class.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed the prediction towards this class.  
+6. The age indicator pushed against this class, but was outweighed.  
+7. The experience in current domain indicator pushed the prediction towards this class.","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'joining_year_b0 > 0.5', 'age_b0 < 0.5']","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'joining_year_b2 > 0.5', 'joining_year_b0 > 0.5', 'city_b0 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[5, 7]","[1, 3, 4, 5, 7, 14]","[3, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,209,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,1,61.2,False,61.2,61.2,61.2,61.2,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[61.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018.","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018.","1. The joining year is between 2017 and 2018, which is not true here.
+
+2. The fact that the joining year is not between 2017 and 2018 pushed the prediction towards the employee staying with the company.",['joining_year_b2 < 0.5'],['joining_year_b2 < 0.5'],[3],[3],[3],[3],0.3156,OPTIMAL,cop,0.4214,,,1
+employee,grok-4.20-0309-non-reasoning,209,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,67.8,False,60.3,67.8,67.8,67.8,False,False,False,3,4,4,1,0,0,0,0,0,1,0,1,"[60.3, 67.8]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018, the payment tier is between 1 and 3, the person is male, and the employee has been benched at some point. All of these measurements pointed toward the employee staying.","The model predicted that this employee will stay with the company.
+
+This is because the joining year is not in the range 2017 to 2018, the payment tier is between 1 and 3, the person is male, and the employee has been benched at some point. All of these measurements pointed toward the employee staying.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The payment tier is between 1 and 3, which is true here.  
+3. The gender is between 0 and 1, which is true here.  
+4. The ever benched status is between 0 and 1, which is true here.","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5']","['joining_year_b2 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 11]","[3, 6, 10, 11]","[3, 6, 10, 11]",0.3156,OPTIMAL,cop@4,0.4214,,,1
+employee,grok-4.20-0309-non-reasoning,209,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,95.0,True,95.0,95.0,95.0,95.0,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[95.0],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 1  (joining_year in [2012, 2014) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  experience_in_current_domain_b0 = 0  (experience_in_current_domain in [0, 2) — does NOT hold)
+  experience_in_current_domain_b2 = 1  (experience_in_current_domain in [4, 7) — holds)","The model predicted that this employee will stay with the company. 
+
+This is because the person joined the company between 2012 and 2014, and their experience in their current role is between 4 and 7 years. These two factors were enough for the model to make this prediction. 
+
+The employee's age and their other experience measures did not match the patterns the model looks for when predicting someone will leave, so they did not influence the decision in that direction.","The model predicted that this employee will stay with the company. 
+
+This is because the person joined the company between 2012 and 2014, and their experience in their current role is between 4 and 7 years. These two factors were enough for the model to make this prediction. 
+
+The employee's age and their other experience measures did not match the patterns the model looks for when predicting someone will leave, so they did not influence the decision in that direction.","1. The joining year is between 2012 and 2014, which is true here.  
+2. The age is between 27 and 30, which is not true here.  
+3. The experience in current domain is between 0 and 2 years, which is not true here.  
+4. The experience in current domain is between 4 and 7 years, which is true here.","['joining_year_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b0 < 0.5']","['joining_year_b0 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 8, 12, 14]","[1, 8, 12, 14]","[1, 8, 12, 14]","[1, 8, 12, 14]",,,,,0.93671875,,1
+employee,grok-4.20-0309-non-reasoning,209,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,5,82.3,False,63.9,82.3,82.3,82.3,False,False,False,3,5,5,2,0,0,0,0,0,1,0,1,"[63.9, 82.3]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF joining_year_b0 = 1 AND joining_year_b2 = 0 AND experience_in_current_domain_b1 = 0 AND age_b0 = 1 AND experience_in_current_domain_b0 = 0 THEN class 0","The model predicted that this employee will stay with the company.  
+
+This happened because the person joined the company in the earliest period, is in the youngest age group, and has none of the experience levels that would indicate higher risk of leaving. All of these factors together made the model certain the employee will remain.","The model predicted that this employee will stay with the company.
+
+This happened because the person joined the company in the earliest period, did not join in the latest period, is in the youngest age group, and has no experience in the lowest or middle experience ranges. All of these factors together made the model certain the employee will remain.","1. The joining year indicator for the earliest period is present, which pushed the prediction towards this employee staying with the company.  
+2. The joining year indicator for the latest period is absent, which pushed the prediction towards this employee staying with the company.  
+3. The age indicator for the youngest group is present, which pushed the prediction towards this employee staying with the company.  
+4. The experience in current domain indicator for the lowest level is absent, which pushed the prediction towards this employee staying with the company.  
+5. The experience in current domain indicator for the middle level is absent, which pushed the prediction towards this employee staying with the company.","['joining_year_b0 > 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['joining_year_b0 > 0.5', 'joining_year_b2 < 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b0 < 0.5', 'experience_in_current_domain_b1 < 0.5']","[1, 3, 7, 12, 13]","[1, 7, 13]","[1, 3, 7, 12, 13]","[1, 3, 7, 12, 13]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,209,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,79.3,False,79.3,79.3,79.3,66.8,False,False,False,4,4,3,0,0,0,0,1,0,0,1,0,[79.3],0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 42.9% (supports the prediction)
+  city_b0: 22.2% (opposes the prediction)
+  experience_in_current_domain_b2: 20.6% (supports the prediction)
+  joining_year_b2: 14.3% (supports the prediction)","The model predicted that this employee will stay with the company. 
+
+This decision was driven mainly by the fact that the person joined the company in the first group of years, which strongly supported the prediction that they would stay. The amount of experience they have in their current role also pushed toward staying, as did the fact that they did not join in the later group of years. 
+
+The only thing pulling against the prediction was that the employee is not from the main city, but this effect was not strong enough to change the outcome.","The model predicted that this employee will stay with the company. 
+
+This decision was driven mainly by the fact that the person joined the company in the first group of years, which strongly supported the prediction that they would stay. The amount of experience they have in their current role also pushed toward staying, as did the fact that they did not join in the later group of years. 
+
+The only thing pulling against the prediction was that the employee is not from the main city, but this effect was not strong enough to change the outcome.","1. The joining year indicator pushed the prediction towards this class.  
+2. The city indicator pushed against this class, but was outweighed.  
+3. The experience in current domain indicator pushed the prediction towards this class.  
+4. The other joining year indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5']","['joining_year_b0 > 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b2 > 0.5']","[1, 3, 4, 14]","[1, 3, 4, 14]","[1, 3, 4, 14]","[1, 4, 14]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,209,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,43.8,False,78.4,43.8,78.4,47.9,False,False,False,2,4,2,2,0,0,0,2,0,1,2,2,"[78.4, 67.3, 43.8]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1101 (opposes the prediction)
+  city_b0: weight=+0.0937 (supports the prediction)
+  joining_year_b2: weight=-0.0772 (opposes the prediction)
+  city_b1: weight=+0.0648 (supports the prediction)","The model predicted that this employee would stay with the company. 
+
+This happened mainly because the person joined the company in a year that strongly pushed the prediction toward staying, and because they work in a city that also supported staying. The fact that they did not join in one of the other specific years slightly pushed against this prediction, but not enough to change the outcome.","The model predicted that this employee would stay with the company.
+
+This happened mainly because the person joined the company in a year that strongly pushed the prediction toward staying, and because they work in a city that also supported staying. The fact that they did not join in one of the other specific years slightly pushed against this prediction. Working in the other main city also supported the prediction of staying, but not enough to change the outcome. The employee is not based in the first main city, which further supported the prediction of staying.","1. The joining year indicator pushed against this class but was outweighed.  
+2. The second joining year indicator pushed against this class but was outweighed.  
+3. The first city indicator pushed the prediction towards this class.  
+4. The second city indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 < 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5']","[1, 3, 4, 5]","[1, 3]","[1, 3, 4, 5]","[3, 5]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,228,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,64.6,False,64.6,64.6,64.6,64.6,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[64.6],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 1  (city in [1, 2) — holds)",The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,"1. The city measurement is between 1 and 2, which is true here.",['city_b1 > 0.5'],['city_b1 > 0.5'],[5],[5],[5],[5],0.23,OPTIMAL,cop,0.5768,,,1
+employee,grok-4.20-0309-non-reasoning,228,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,70.7,False,78.1,70.7,78.1,70.7,False,False,False,4,5,5,1,0,0,0,0,0,1,0,1,"[78.1, 70.7]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company.
+
+This happened because the person works in the second type of city (the reading falls between 1 and 2). In addition, their payment tier is between 1 and 3, they are male, and they have been benched at some point. All of these factors pushed the prediction toward leaving.
+
+The first type of city reading (between 0 and 1) does not hold.","The model predicted that this employee will leave the company.
+
+This happened because the person works in the second type of city (the reading falls between 1 and 2). In addition, their payment tier is between 1 and 3, they are male, and they have been benched at some point. All of these factors pushed the prediction toward leaving.
+
+The first type of city reading (between 0 and 1) does not hold.","1. The city indicator for the first bin is between 0 and 1, which is not true here.  
+2. The city indicator for the second bin is between 1 and 2, which is true here.  
+3. The payment tier indicator is between 1 and 3, which is true here.  
+4. The gender indicator is between 0 and 1, which is true here.  
+5. The ever benched indicator is between 0 and 1, which is true here.","['city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[4, 5, 6, 10, 11]","[4, 5, 6, 11]","[4, 5, 6, 10, 11]","[4, 5, 6, 10, 11]",0.23,OPTIMAL,cop@5,0.5768,,,1
+employee,grok-4.20-0309-non-reasoning,228,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,97.9,True,97.9,97.9,97.9,97.9,True,True,True,5,5,5,0,0,0,0,0,0,0,0,0,[97.9],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This is because the joining year is not in the range 2012 to 2014, the person does not live in the first city group, their age is not between 27 and 30, and their experience in their current field is not between 4 and 7 years. The only condition that holds is that they live in the second city group, which also contributed to the prediction that they will leave.","The model predicted that this employee will leave the company. This is because the joining year is not in the range 2012 to 2014, the person does not live in the first city group, their age is not between 27 and 30, and their experience in their current field is not between 4 and 7 years. The only condition that holds is that they live in the second city group, which also contributed to the prediction that they will leave.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The city indicator is between 1 and 2, which is true here.  
+4. The age is between 27 and 30, which is not true here.  
+5. The experience in current domain is between 4 and 7, which is not true here.","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5', 'city_b1 > 0.5']","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5']","[1, 4, 5, 8, 14]","[1, 4, 5, 8, 14]","[1, 4, 5, 8, 14]","[1, 4, 5, 8, 14]",,,,,0.98359375,,1
+employee,grok-4.20-0309-non-reasoning,228,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,84.1,False,84.1,84.1,84.1,76.5,False,False,False,4,4,3,0,0,0,0,1,0,0,1,0,[84.1],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 0 AND city_b1 = 1 AND joining_year_b1 = 1 AND age_b0 = 1 THEN class 1","The model predicted that this employee will leave the company. 
+
+This is because the person joined the company in the later period, lives in the second city, is in the younger age group, and does not live in the first city. These four measurements together led to the prediction with very high confidence.","The model predicted that this employee will leave the company. 
+
+This is because the person joined the company in the later period, lives in the second city, is in the younger age group, and does not live in the first city. These four measurements together led to the prediction with very high confidence.","1. The joining year indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+2. The first city indicator is at its low value, which pushed the prediction towards the employee leaving the company.  
+3. The second city indicator is at its high value, which pushed the prediction towards the employee leaving the company.  
+4. The age indicator is at its low value, which pushed the prediction towards the employee leaving the company.","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'city_b0 < 0.5', 'age_b0 > 0.5']","['joining_year_b1 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'age_b0 < 0.5']","[2, 4, 5, 7]","[2, 4, 5, 7]","[2, 4, 5, 7]","[2, 4, 5]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,228,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,99.5,True,67.0,67.0,67.0,67.0,False,False,False,3,3,3,2,0,2,0,2,0,0,0,3,"[67.0, 67.0, 67.0, 67.0]",0.0429,"SHAP feature importance (contribution to this prediction):
+  city_b0: 26.0% (supports the prediction)
+  city_b1: 23.2% (supports the prediction)
+  joining_year_b1: 21.0% (opposes the prediction)
+  age_b0: 16.9% (supports the prediction)
+  joining_year_b0: 12.9% (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in a later year, and because they work in the city that most strongly pushes toward leaving. The fact that they are in the younger age group also supported the prediction that they would leave, though to a smaller degree.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in a later year, and because they work in the city that most strongly pushes toward leaving. The fact that they joined in an earlier year also supported the prediction that they would leave, as did being in the younger age group and living in the other main city, though to a smaller degree.","1. The joining year indicator pushed the prediction towards this employee leaving the company.
+2. The city indicator pushed the prediction towards this employee leaving the company.
+3. The age indicator pushed the prediction towards this employee leaving the company.","['city_b1 > 0.5', 'joining_year_b1 > 0.5', 'age_b0 > 0.5']","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5']","[1, 2, 4, 5, 7]","[2, 5, 7]","[2, 5, 7]","[2, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,228,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,92.8,False,92.8,92.8,92.8,53.5,False,False,False,5,5,2,0,0,0,0,3,0,0,3,0,[92.8],0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1029 (supports the prediction)
+  city_b0: weight=+0.0947 (supports the prediction)
+  joining_year_b2: weight=-0.0754 (opposes the prediction)
+  joining_year_b1: weight=-0.0741 (opposes the prediction)
+  city_b1: weight=+0.0636 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in a year that falls in the middle range of joining years, and because they work in the second type of city. Both of these measurements pushed the prediction toward leaving. 
+
+The other joining-year measurements and the first type of city worked in the opposite direction and pushed toward staying, but they were not strong enough to change the final prediction.","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in a year that falls in the middle range of joining years, and because they work in the second type of city. Both of these measurements pushed the prediction toward leaving. 
+
+The other joining-year measurements and the first type of city worked in the opposite direction and pushed toward staying, but they were not strong enough to change the final prediction.","1. The joining year indicator for the first bucket pushed the prediction towards this class.  
+2. The joining year indicator for the second bucket pushed against this class, but was outweighed.  
+3. The joining year indicator for the third bucket pushed against this class, but was outweighed.  
+4. The city indicator for the first bucket pushed the prediction towards this class.  
+5. The city indicator for the second bucket pushed the prediction towards this class.","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 > 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5']","[1, 2, 3, 4, 5]","[1, 2, 3, 4, 5]","[1, 2, 3, 4, 5]","[3, 5]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,285,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,77.1,False,77.1,77.1,77.1,77.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[77.1],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. 
+
+This is because the city measurement fell into the range 1 to 2, and that condition strongly pointed toward leaving. The other city measurement (the range 0 to 1) did not apply here.","The model predicted that this employee will leave the company. 
+
+This is because the city measurement fell into the range 1 to 2, and that condition strongly pointed toward leaving. The other city measurement (the range 0 to 1) did not apply here.","1. The city measurement for the first range is between 0 and 1, which is not true here.  
+2. The city measurement for the second range is between 1 and 2, which is true here.","['city_b1 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5']","[4, 5]","[4, 5]","[4, 5]","[4, 5]",0.2176,OPTIMAL,cop,0.5676,,,1
+employee,grok-4.20-0309-non-reasoning,285,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,81.9,False,87.4,81.9,87.4,81.9,False,False,False,5,6,6,1,0,0,0,0,0,1,0,1,"[87.4, 81.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point. Although the first city indicator does not hold, the overall combination of these factors led to the prediction that they will leave.","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point. Although the first city indicator does not hold, the overall combination of these factors led to the prediction that they will leave.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The city indicator is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender indicator is between 0 and 1, which is true here.  
+6. The ever benched indicator is between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 11]","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]",0.2176,OPTIMAL,cop@6,0.5676,,,1
+employee,grok-4.20-0309-non-reasoning,285,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,94.7,False,94.7,94.7,94.7,94.7,False,False,False,6,6,6,0,0,0,0,0,0,0,0,0,[94.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b2 = 1  (age in [30, 41) — holds)
+  experience_in_current_domain_b1 = 1  (experience_in_current_domain in [2, 4) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This is because three important measurements all pointed in that direction: the payment tier is between 1 and 3, the person's age is between 30 and 41, and their experience in their current role is between 2 and 4 years.
+
+The other three measurements (joining year, city, and very high experience of 4 years or more) do not hold for this person, so they did not affect the prediction.","The model predicted that this employee will leave the company. This is because three important measurements all pointed in that direction: the payment tier is between 1 and 3, the person's age is between 30 and 41, and their experience in their current role is between 2 and 4 years.
+
+The other three measurements (joining year, city, and very high experience of 4 years or more) do not hold for this person, so they did not affect the prediction.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The payment tier is between 1 and 3, which is true here.  
+4. The age is between 30 and 41, which is true here.  
+5. The experience in current domain is between 2 and 4, which is true here.  
+6. The experience in current domain is between 4 and 7, which is not true here.","['payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]",,,,,0.959375,,1
+employee,grok-4.20-0309-non-reasoning,285,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,71.3,False,71.3,71.3,71.3,71.3,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[71.3],0.0429,"Anchor rule (IF-THEN, estimated precision 0.98):
+  IF joining_year_b2 = 1 AND city_b1 = 1 AND age_b1 = 0 THEN class 1","The model predicted that this employee will leave the company. This is because they joined the company in the later period, they work in the main city office, and they are not in the younger age group. All three of these factors together made the model very confident the person would leave.","The model predicted that this employee will leave the company. This is because they joined the company in the later period, they work in the main city office, and they are not in the younger age group. All three of these factors together made the model very confident the person would leave.","1. The joining year indicator is at its high value, which is true here and pushed the prediction towards the employee leaving.
+2. The city indicator is at its high value, which is true here and pushed the prediction towards the employee leaving.
+3. The age indicator is at its low value, which is true here and pushed the prediction towards the employee leaving.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5']","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5']","[3, 5, 8]","[3, 5, 8]","[3, 5, 8]","[3, 5, 8]",,,,,,0.9782608695652174,1
+employee,grok-4.20-0309-non-reasoning,285,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,92.0,False,45.9,88.5,88.5,60.9,False,False,False,2,3,3,4,0,3,0,3,0,4,3,3,"[45.9, 88.5, 88.5, 88.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  age_b0: 21.4% (opposes the prediction)
+  joining_year_b0: 19.7% (supports the prediction)
+  joining_year_b2: 18.8% (supports the prediction)
+  experience_in_current_domain_b2: 16.8% (supports the prediction)
+  age_b2: 12.2% (supports the prediction)
+  city_b0: 11.1% (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reason is that the person is not in the youngest age group. This single factor pushed the prediction toward leaving more than any other. 
+
+Supporting this were the facts that the employee joined in the middle year group, has a high level of experience in their current role, is not in the youngest age group for a second measurement, and works in a city that also pointed toward leaving. The only factor pulling against the prediction was that the employee is not in the oldest age group.","This employee is predicted to leave the company. 
+
+The main reason is that the person is not in the youngest age group. This single factor pushed the prediction toward leaving more than any other. 
+
+Supporting this were the facts that the employee did not join in the earliest year group, did join in the middle year group, has a high level of experience in their current role, works in a city that pointed toward leaving, is not in the youngest age group for a second measurement, and is not in the oldest age group. The only factor pulling against the prediction was that the employee is not in the oldest age group.","1. The age indicator for the lower bin pushed against this class but was outweighed.  
+2. The joining year indicator for the earliest bin pushed the prediction towards this class.  
+3. The joining year indicator for the latest bin pushed the prediction towards this class.  
+4. The experience in current domain indicator for the higher bin pushed the prediction towards this class.  
+5. The age indicator for the higher bin pushed the prediction towards this class.  
+6. The city indicator for the main bin pushed the prediction towards this class.","['age_b0 < 0.5', 'joining_year_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b2 > 0.5', 'city_b0 > 0.5', 'age_b2 < 0.5']","['age_b0 < 0.5', 'joining_year_b0 > 0.5', 'joining_year_b2 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b2 > 0.5', 'city_b0 > 0.5']","[1, 3, 4, 7, 9, 14]","[7, 9]","[1, 3, 7]","[3, 7, 9]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,285,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,90.7,False,75.4,87.6,87.6,67.3,False,False,False,3,4,3,3,0,2,0,3,0,2,3,3,"[75.4, 87.6, 87.6, 87.6]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1040 (supports the prediction)
+  city_b0: weight=+0.0855 (supports the prediction)
+  joining_year_b2: weight=+0.0762 (supports the prediction)
+  joining_year_b1: weight=+0.0677 (supports the prediction)
+  city_b1: weight=+0.0640 (supports the prediction)
+  age_b0: weight=-0.0545 (opposes the prediction)","This employee is predicted to leave the company. 
+
+The model made this prediction mainly because the person joined the company in the middle time period, they work in the second city, and they did not join in the earliest or latest periods. These factors all pushed the prediction toward leaving. 
+
+The fact that the employee is not in the younger age group pushed slightly against the prediction, but not enough to change it.","This employee is predicted to leave the company. 
+
+The model made this prediction mainly because the person joined the company in the middle time period, they work in the second city, they did not join in the earliest or latest periods, they are not in the first city group, they are not in the earliest joining period, and they joined in the second time period. These factors all pushed the prediction toward leaving. 
+
+The fact that the employee is not in the younger age group pushed slightly against the prediction, but not enough to change it.","1. The joining year indicator pushed the prediction towards this class.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed the prediction towards this class.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed the prediction towards this class.  
+6. The age indicator pushed against this class, but was outweighed.","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b2 < 0.5', 'age_b0 < 0.5']","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b1 > 0.5', 'joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b0 < 0.5']","[1, 2, 3, 4, 5, 7]","[1, 5, 7]","[1, 4, 5, 7]","[3, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,457,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,61.8,False,61.8,61.8,61.8,61.8,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[61.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 1  (city in [1, 2) — holds)",The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points to leaving.,The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points to leaving.,"1. The city measurement is between 1 and 2, which is true here.",['city_b1 > 0.5'],['city_b1 > 0.5'],[5],[5],[5],[5],0.2232,OPTIMAL,cop,0.5646,,,1
+employee,grok-4.20-0309-non-reasoning,457,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,77.3,False,81.3,77.3,81.3,77.3,False,False,False,6,7,7,1,0,0,0,0,0,1,0,1,"[81.3, 77.3]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company. 
+
+This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have been benched before. 
+
+The rule also notes that their age is not between 27 and 30, and they are not in the first city category.","The model predicted that this employee will leave the company.
+
+This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, they have been benched before, their age is not between 27 and 30, and they are not in the first city category.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The city indicator is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The age is between 27 and 30, which is not true here.  
+6. The gender indicator is between 0 and 1, which is true here.  
+7. The ever benched indicator is between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5', 'age_b1 < 0.5', 'city_b0 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 11]","[0, 4, 5, 6, 8, 10, 11]","[0, 4, 5, 6, 8, 10, 11]",0.3034,OPTIMAL,cop@7,0.5646,,,1
+employee,grok-4.20-0309-non-reasoning,457,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,98.6,True,52.9,93.2,94.5,98.6,False,False,True,2,6,7,5,0,1,0,0,0,2,0,3,"[52.9, 94.5, 94.5, 93.2]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b0 = 1  (experience_in_current_domain in [0, 2) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. It made this prediction because the person joined the company between 2014 and 2017, is not in the youngest age group, has not been benched, and has between 0 and 2 years of experience in their current role. These four measurements together were enough for the model to confidently predict that the employee will leave.","The model predicted that this employee will leave the company. It made this prediction because the person did not join the company between 2014 and 2017, is not from the first city group, is from the second city group, has not been benched, has between 0 and 2 years of experience in their current role, and does not have between 4 and 7 years of experience in their current role. These measurements together were enough for the model to confidently predict that the employee will leave.","1. The joining year is between 2014 and 2017, which is not true here.  
+2. The city indicator for the first range is between 0 and 1, which is not true here.  
+3. The city indicator for the second range is between 1 and 2, which is true here.  
+4. The age is between 27 and 30, which is not true here.  
+5. The ever benched indicator is between 0 and 1, which is true here.  
+6. The experience in current domain is between 0 and 2, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['joining_year_b1 > 0.5', 'age_b1 < 0.5', 'ever_benched_b0 < 0.5', 'experience_in_current_domain_b0 > 0.5']","['joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[2, 4, 5, 8, 11, 12, 14]","[8, 12]","[2, 4, 5, 11, 12, 14]","[2, 4, 5, 8, 11, 12, 14]",,,,,0.98671875,,1
+employee,grok-4.20-0309-non-reasoning,457,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,86.4,False,86.4,86.4,86.4,68.3,False,False,False,4,4,3,0,0,0,0,1,0,0,1,0,[86.4],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 0 AND city_b1 = 1 AND age_b1 = 0 AND experience_in_current_domain_b2 = 0 THEN class 1","The model predicted that this employee will leave the company. 
+
+This is because the person is not from city group 0, is from city group 1, is not in the age group 1, and does not have the highest level of experience in their current domain. All of these conditions together led to the prediction that the employee will quit.","The model predicted that this employee will leave the company. 
+
+This is because the person is not from city group 0, is from city group 1, is not in the age group 1, and does not have the highest level of experience in their current domain. All of these conditions together led to the prediction that the employee will quit.","1. The city indicator for the first group is 0, which is true here.  
+2. The city indicator for the second group is 1, which is true here.  
+3. The age indicator for the middle group is 0, which is true here.  
+4. The experience in current domain indicator for the higher group is 0, which is true here.","['city_b0 < 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['city_b0 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5']","[4, 5, 8, 14]","[4, 5, 8, 14]","[4, 5, 8, 14]","[5, 8, 14]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,457,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.1,False,91.1,91.1,91.1,66.5,False,False,False,7,7,4,0,0,0,0,3,0,0,3,0,[91.1],0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 25.5% (opposes the prediction)
+  city_b0: 17.8% (supports the prediction)
+  city_b1: 14.2% (supports the prediction)
+  experience_in_current_domain_b0: 11.6% (supports the prediction)
+  age_b0: 10.9% (supports the prediction)
+  joining_year_b2: 10.7% (opposes the prediction)
+  experience_in_current_domain_b2: 9.4% (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reason is that they joined the company in the earliest period (joining year group 0). This factor pushed against the prediction but was not strong enough to overcome the other influences.
+
+Supporting the prediction that they will leave were the facts that they work in the second city (city group 1), they do not work in the first city (city group 0), they have the lowest level of experience in their current domain (experience group 0), they are in the younger age group (age group 0), and they are not in the highest experience group (experience group 2). The fact that they are not in the latest joining period (joining year group 2) also pushed slightly toward leaving.","This employee is predicted to leave the company. 
+
+The main reason is that they joined the company in the earliest period (joining year group 0). This factor pushed against the prediction but was not strong enough to overcome the other influences.
+
+Supporting the prediction that they will leave were the facts that they work in the second city (city group 1), they do not work in the first city (city group 0), they have the lowest level of experience in their current domain (experience group 0), they are in the younger age group (age group 0), and they are not in the highest experience group (experience group 2). The fact that they are not in the latest joining period (joining year group 2) also pushed slightly toward leaving.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The city indicator pushed the prediction towards this class.  
+4. The experience in current domain indicator pushed the prediction towards this class.  
+5. The age indicator pushed the prediction towards this class.  
+6. The joining year indicator pushed against this class, but was outweighed.  
+7. The experience in current domain indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5', 'age_b0 > 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'age_b0 > 0.5', 'joining_year_b2 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 3, 4, 5, 7, 12, 14]","[1, 3, 4, 5, 7, 12, 14]","[1, 3, 4, 5, 7, 12, 14]","[3, 5, 7, 12]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,457,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.6,False,69.0,91.6,91.6,80.2,False,False,False,6,7,3,1,0,0,0,4,0,0,4,1,"[69.0, 91.6]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1136 (opposes the prediction)
+  city_b0: weight=+0.0968 (supports the prediction)
+  joining_year_b2: weight=-0.0809 (opposes the prediction)
+  joining_year_b1: weight=+0.0694 (supports the prediction)
+  city_b1: weight=+0.0627 (supports the prediction)
+  experience_in_current_domain_b2: weight=+0.0517 (supports the prediction)
+  age_b0: weight=+0.0453 (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reason is that he joined the company in the earliest period (joining year group 0). This factor pushed most strongly toward predicting he would leave.
+
+Three other measurements also supported the prediction that he would leave: he works in the second type of city, he has the lowest level of experience in his current domain, and he falls into the younger age group.
+
+Two factors pushed in the opposite direction and made the model think he might stay: he did not join in the latest period (joining year group 2) and he did not join in the middle period (joining year group 1). However, these were not strong enough to change the overall prediction.","This employee is predicted to leave the company. 
+
+The main reason is that he joined the company in the earliest period. This factor pushed most strongly toward predicting he would leave.
+
+Three other measurements also supported the prediction that he would leave: he works in the second type of city, he has the lowest level of experience in his current domain, and he falls into the younger age group. The fact that he is not in the first type of city further supported the prediction that he would leave.
+
+Two factors pushed in the opposite direction and made the model think he might stay: he did not join in the latest period and he did not join in the middle period. However, these were not strong enough to change the overall prediction.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed against this class, but was outweighed.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed the prediction towards this class.  
+6. The experience in current domain indicator pushed the prediction towards this class.  
+7. The age indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5', 'age_b0 > 0.5', 'joining_year_b2 < 0.5', 'joining_year_b1 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b0 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[1, 2, 3, 5, 7, 14]","[1, 2, 3, 4, 5, 7, 14]","[2, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,501,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,64.8,False,64.8,64.8,64.8,64.8,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[64.8],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 1  (city in [1, 2) — holds)",The model predicted that this employee will leave the company. This is because the city indicator shows the person is in the group where the city value falls between 1 and 2.,The model predicted that this employee will leave the company. This is because the city indicator shows the person is in the group where the city value falls between 1 and 2.,"1. The city measurement is between 1 and 2, which is true here.",['city_b1 > 0.5'],['city_b1 > 0.5'],[5],[5],[5],[5],0.2218,OPTIMAL,cop,0.5692,,,1
+employee,grok-4.20-0309-non-reasoning,501,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,70.2,False,70.2,70.2,70.2,70.2,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[70.2],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)","The model predicted that this employee will leave the company.
+
+This happened because the person works in the second type of city (the city value falls between 1 and 2). In addition, their payment tier is between 1 and 3, and they are in the first gender group (gender value between 0 and 1). These three measurements all pointed toward the employee leaving. The other city indicator does not apply here.","The model predicted that this employee will leave the company.
+
+This happened because the person works in the second type of city (the city value falls between 1 and 2). In addition, their payment tier is between 1 and 3, and they are in the first gender group (gender value between 0 and 1). These three measurements all pointed toward the employee leaving. The other city indicator does not apply here.","1. The city measurement is between 0 and 1, which is not true here.  
+2. The city measurement is between 1 and 2, which is true here.  
+3. The payment tier measurement is between 1 and 3, which is true here.  
+4. The gender measurement is between 0 and 1, which is true here.","['city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5']","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]","[4, 5, 6, 10]",0.2218,OPTIMAL,cop@4,0.5692,,,1
+employee,grok-4.20-0309-non-reasoning,501,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,99.6,True,88.6,88.6,88.6,99.6,False,False,True,3,3,4,1,0,1,0,0,0,1,0,3,"[88.6, 88.6, 88.6, 88.6]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  age_b0 = 1  (age in [22, 27) — holds)","The model predicted that this employee will leave the company. 
+
+This is because the person joined the company between 2012 and 2014, does not work in the first city category, works in the second city category, and is between 22 and 27 years old. These four measurements together are enough for the model to confidently predict that the employee will leave.","The model predicted that this employee will leave the company.
+
+This is because the person joined the company between 2012 and 2014, does not work in the first city category, works in the second city category, and is between 22 and 27 years old. These four measurements together are enough for the model to confidently predict that the employee will leave.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The city indicator for the first range is between 0 and 1, which is not true here.  
+3. The city indicator for the second range is between 1 and 2, which is true here.  
+4. The age is between 22 and 27, which is true here.","['joining_year_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5']","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5']","[1, 4, 5, 7]","[4, 5, 7]","[4, 5, 7]","[1, 4, 5, 7]",,,,,0.99609375,,1
+employee,grok-4.20-0309-non-reasoning,501,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,73.1,False,77.7,73.1,77.7,58.1,False,False,False,2,3,2,1,0,0,0,1,0,1,1,3,"[77.7, 58.2, 58.1, 73.1]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.95):
+  IF city_b0 = 0 AND city_b1 = 1 AND age_b1 = 0 THEN class 1",The model predicted that this employee will leave the company. This is because the person is from the second city (the indicator for the first city is not met) and their age falls into the group that strongly points toward leaving. These two factors together make the model very confident the employee will quit.,"The model predicted that this employee will leave the company. This is because the person is not from the first city, is from the second city, and is not in the youngest age group. These three factors together make the model very confident the employee will quit.","1. The city indicator for the first group is 0, which is true here.  
+2. The city indicator for the second group is 1, which is true here.  
+3. The age indicator for the first group is 0, which is true here.","['city_b0 < 0.5', 'city_b1 > 0.5', 'age_b1 > 0.5']","['city_b0 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5']","[4, 5, 8]","[4, 5]","[4, 5, 8]","[5, 8]",,,,,,0.9517426273458444,1
+employee,grok-4.20-0309-non-reasoning,501,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,95.7,True,82.1,82.1,82.1,82.1,False,False,False,3,3,3,1,0,1,0,1,0,0,1,3,"[82.1, 82.1, 82.1, 82.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  city_b0: 34.3% (supports the prediction)
+  city_b1: 25.1% (supports the prediction)
+  joining_year_b1: 25.1% (opposes the prediction)
+  joining_year_b0: 15.5% (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person works in the city that strongly pushes toward leaving, and because they joined the company in the later time period. These two factors together outweighed the fact that the earlier joining period slightly pushed the prediction in the other direction.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person works in the city that strongly pushes toward leaving, joined the company in the later joining period, and is not in the earlier joining period. These factors together outweighed the opposing pull from the earlier joining period. The employee also works in the other part of the city that further supports leaving.","1. The joining year indicator pushed the prediction towards the employee leaving the company.  
+2. The city indicator pushed the prediction towards the employee leaving the company.  
+3. The joining year indicator pushed against this class, but was outweighed.  
+4. The city indicator pushed the prediction towards the employee leaving the company.","['city_b1 > 0.5', 'joining_year_b1 > 0.5', 'joining_year_b0 < 0.5']","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 > 0.5']","[1, 2, 4, 5]","[1, 2, 5]","[1, 2, 5]","[1, 2, 5]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,501,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,64.1,False,38.9,55.7,55.7,38.9,False,False,False,1,2,1,3,0,2,0,3,0,3,3,3,"[38.9, 38.9, 55.7, 55.7]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1109 (supports the prediction)
+  city_b0: weight=+0.0888 (supports the prediction)
+  joining_year_b2: weight=-0.0784 (opposes the prediction)
+  joining_year_b1: weight=-0.0645 (opposes the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in a year that falls into the range shown by joining_year_b0, which strongly pushed the prediction toward leaving. The fact that they work in the city shown by city_b0 also increased the chance of leaving. 
+
+Two other details about the joining year worked against the prediction and pulled slightly toward staying, but they were not strong enough to change the overall result.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in a year that falls into the first range of joining years, which strongly pushed the prediction toward leaving. The fact that they work in the first listed city also increased the chance of leaving. 
+
+Two other details about the joining year — falling into the middle range and the last range — worked against the prediction and pulled slightly toward staying, but they were not strong enough to change the overall result. The employee not being in the earliest joining-year range also supported the prediction of leaving.","1. The joining year indicator pushed the prediction towards this class.  
+2. The city indicator pushed the prediction towards this class.  
+3. The later joining year indicator pushed against this class, but was outweighed.  
+4. The middle joining year indicator pushed against this class, but was outweighed.","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b2 < 0.5', 'joining_year_b1 < 0.5']","[1, 2, 3, 4]",[3],"[1, 3]",[3],,,,,,,1
+employee,grok-4.20-0309-non-reasoning,563,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,82.0,False,82.0,82.0,82.0,82.0,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[82.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that specific range pushes the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that specific range pushes the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","1. The city measurement for the first range is between 0 and 1, which is not true here.  
+2. The city measurement for the second range is between 1 and 2, which is true here.","['city_b1 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5']","[4, 5]","[4, 5]","[4, 5]","[4, 5]",0.2186,OPTIMAL,cop,0.583,,,1
+employee,grok-4.20-0309-non-reasoning,563,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,84.0,False,89.6,84.0,89.6,84.0,False,False,False,5,6,6,1,0,0,0,0,0,1,0,1,"[89.6, 84.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point. The only condition that did not hold was that they are not in the first city category (between 0 and 1).","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have been benched at some point. The only condition that did not hold was that they are not in the first city category (between 0 and 1).","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator for the first group is between 0 and 1, which is not true here.  
+3. The city indicator for the second group is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender indicator is between 0 and 1, which is true here.  
+6. The ever benched indicator is between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 > 0.5', 'city_b0 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 11]","[0, 4, 5, 6, 10, 11]","[0, 4, 5, 6, 10, 11]",0.2186,OPTIMAL,cop@6,0.583,,,1
+employee,grok-4.20-0309-non-reasoning,563,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,96.4,True,96.4,96.4,96.4,96.4,True,True,True,6,6,6,0,0,0,0,0,0,0,0,0,[96.4],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b2 = 1  (age in [30, 41) — holds)
+  experience_in_current_domain_b1 = 1  (experience_in_current_domain in [2, 4) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. It made this decision for the following reasons:
+
+- Their payment tier is between 1 and 3.
+- Their age is between 30 and 41.
+- Their experience in their current role is between 2 and 4 years.
+
+The other measurements did not support the prediction: their joining year is not in the 2012–2014 range, they are not in city group 0, and their experience is not in the 4–7 year range.","The model predicted that this employee will leave the company. It made this decision for the following reasons:
+
+- Their payment tier is between 1 and 3.
+- Their age is between 30 and 41.
+- Their experience in their current role is between 2 and 4 years.
+
+The other measurements did not support the prediction: their joining year is not in the 2012–2014 range, they are not in city group 0, and their experience is not in the 4–7 year range.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The payment tier is between 1 and 3, which is true here.  
+4. The age is between 30 and 41, which is true here.  
+5. The experience in current domain is between 2 and 4, which is true here.  
+6. The experience in current domain is between 4 and 7, which is not true here.","['payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'payment_tier_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]","[1, 4, 6, 9, 13, 14]",,,,,0.95703125,,1
+employee,grok-4.20-0309-non-reasoning,563,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,3,74.8,False,74.8,74.8,74.8,74.8,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[74.8],0.0429,"Anchor rule (IF-THEN, estimated precision 0.97):
+  IF joining_year_b2 = 1 AND city_b1 = 1 AND age_b1 = 0 THEN class 1","The model predicted that this employee will leave the company. This is because the person joined the company in the later period, works in the main city office, and is not in the younger age group. These three factors together lead to a very confident prediction that the employee will leave.","The model predicted that this employee will leave the company. This is because the person joined the company in the later period, works in the main city office, and is not in the younger age group. These three factors together lead to a very confident prediction that the employee will leave.","1. The joining year indicator is at its high value, which is true here and pushed the prediction towards the employee leaving.  
+2. The city indicator is at its high value, which is true here and pushed the prediction towards the employee leaving.  
+3. The age indicator is at its low value, which is true here and pushed the prediction towards the employee leaving.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5']","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5']","[3, 5, 8]","[3, 5, 8]","[3, 5, 8]","[3, 5, 8]",,,,,,0.9726027397260274,1
+employee,grok-4.20-0309-non-reasoning,563,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,91.6,False,68.1,68.1,68.1,63.1,False,False,False,2,2,3,4,0,4,0,3,0,2,3,3,"[68.1, 50.9, 50.9, 68.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  age_b0: 21.4% (opposes the prediction)
+  joining_year_b0: 19.7% (supports the prediction)
+  joining_year_b2: 18.8% (supports the prediction)
+  experience_in_current_domain_b2: 16.8% (supports the prediction)
+  age_b2: 12.2% (supports the prediction)
+  city_b0: 11.1% (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person is not in the youngest age group, which pushed strongly against leaving. However, this was outweighed by several other factors that supported the prediction of leaving: the employee joined in a later year, is in the higher experience group for their current role, and is from a city that increases the chance of leaving. These reasons together led the model to predict the employee will quit.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person is not in the youngest age group, which pushed strongly against leaving. However, this was outweighed by several other factors that supported the prediction of leaving: the employee joined the company before 2016, joined after 2017, is not in the middle age group, has more than 4 years of experience in their current role, and comes from a city that increases the chance of leaving. These reasons together led the model to predict the employee will quit.","1. The age reading for the low bin pushed against this class, but was outweighed.  
+2. The joining year reading for the low bin pushed the prediction towards this class.  
+3. The joining year reading for the high bin pushed the prediction towards this class.  
+4. The city reading for the low bin pushed the prediction towards this class.  
+5. The age reading for the high bin pushed the prediction towards this class.  
+6. The experience in current domain reading for the high bin pushed the prediction towards this class.","['age_b0 < 0.5', 'joining_year_b2 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'city_b0 > 0.5']","['age_b0 < 0.5', 'joining_year_b0 > 0.5', 'joining_year_b2 > 0.5', 'city_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 3, 4, 7, 9, 14]","[3, 7]","[3, 7]","[3, 7, 9]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,563,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,6,95.2,True,74.7,95.2,95.2,79.6,False,True,False,2,6,2,4,0,0,0,4,0,1,4,1,"[74.7, 95.2]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1148 (supports the prediction)
+  joining_year_b2: weight=+0.0870 (supports the prediction)
+  city_b0: weight=+0.0861 (supports the prediction)
+  joining_year_b1: weight=+0.0726 (supports the prediction)
+  city_b1: weight=+0.0580 (supports the prediction)
+  experience_in_current_domain_b2: weight=+0.0497 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the middle period (joining year group 2), they work in the second type of city (city group 1), and they have a lower amount of experience in their current role. All of these factors pushed the prediction toward the employee leaving.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the middle period (joining year group 2), they work in the second type of city (city group 1), and they have a lower amount of experience in their current role. All of these factors pushed the prediction toward the employee leaving. The prediction was also supported by the employee not joining in the earliest period (joining year group 0) and not joining in the latest period (joining year group 1), along with not working in the first type of city (city group 0).","1. The joining year indicator pushed the prediction towards the employee leaving the company.  
+2. The second joining year indicator pushed the prediction towards the employee leaving the company.  
+3. The first city indicator pushed the prediction towards the employee leaving the company.  
+4. The middle joining year indicator pushed the prediction towards the employee leaving the company.  
+5. The second city indicator pushed the prediction towards the employee leaving the company.  
+6. The experience in current domain indicator pushed the prediction towards the employee leaving the company.","['joining_year_b1 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5']","['joining_year_b0 > 0.5', 'joining_year_b2 > 0.5', 'city_b0 > 0.5', 'joining_year_b1 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 2, 3, 4, 5, 14]","[5, 14]","[1, 2, 3, 4, 5, 14]","[3, 5]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1116,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,1,52.7,False,52.7,52.7,52.7,52.7,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[52.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 0  (city in [1, 2) — does NOT hold)",The model predicted that this employee will stay with the company. This is because the city measurement is not in the range that would have pushed the prediction toward leaving.,The model predicted that this employee will stay with the company. This is because the city measurement is not in the range that would have pushed the prediction toward leaving.,"1. The city measurement is between 1 and 2, which is not true here.",['city_b1 < 0.5'],['city_b1 < 0.5'],[5],[5],[5],[5],0.2306,OPTIMAL,cop,0.4204,,,1
+employee,grok-4.20-0309-non-reasoning,1116,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,81.4,False,79.2,81.4,81.4,81.4,False,False,False,7,8,8,1,0,0,0,0,0,1,0,1,"[79.2, 81.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","The model predicted that this employee will stay with the company. 
+
+This decision was made because their education level is between 0 and 2, they are in the first city group, their payment tier is between 1 and 3, they are male, and they have never been benched. 
+
+The other listed measurements (city group 2, age between 27 and 30, and experience between 2 and 4 years) do not hold for this person, so they did not affect the prediction.","The model predicted that this employee will stay with the company.
+
+This decision was made because their education level is between 0 and 2, they are in the first city group, their payment tier is between 1 and 3, they are male, they have never been benched, and their experience in the current domain is not between 2 and 4 years.
+
+The other listed measurements (city group 2 and age between 27 and 30) do not hold for this person, so they did not affect the prediction.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator is between 0 and 1, which is true here.  
+3. The city indicator is between 1 and 2, which is not true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The age is between 27 and 30, which is not true here.  
+6. The gender indicator is between 0 and 1, which is true here.  
+7. The ever benched indicator is between 0 and 1, which is true here.  
+8. The experience in current domain is between 2 and 4, which is not true here.","['education_b0 > 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5', 'city_b1 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'age_b1 < 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 13]","[0, 4, 5, 6, 8, 10, 11, 13]","[0, 4, 5, 6, 8, 10, 11, 13]",0.312,OPTIMAL,cop@8,0.4204,,,1
+employee,grok-4.20-0309-non-reasoning,1116,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,96.4,True,90.2,96.4,96.4,96.4,False,True,True,7,8,8,1,0,0,0,0,0,1,0,1,"[90.2, 96.4]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  city_b0 = 1  (city in [0, 1) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b0 = 0  (age in [22, 27) — does NOT hold)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  age_b2 = 1  (age in [30, 41) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  experience_in_current_domain_b0 = 0  (experience_in_current_domain in [0, 2) — does NOT hold)
+  experience_in_current_domain_b2 = 1  (experience_in_current_domain in [4, 7) — holds)","The model predicted that this employee will stay with the company. 
+
+This decision was made because the person lives in the city covered by the first group, is in the middle payment level (between 1 and 3), is a man, and falls in the 30 to 41 age group. In addition, their experience in their current role is between 4 and 7 years. 
+
+The conditions about the youngest two age groups and the lowest experience group do not hold for this person.","The model predicted that this employee will stay with the company.
+
+This decision was made because the person lives in the city covered by the first group, is in the middle payment level (between 1 and 3), is a man, falls in the 30 to 41 age group, and has between 4 and 7 years of experience in their current role.
+
+The conditions about the youngest two age groups and the lowest experience group do not hold for this person.","1. The city indicator is between 0 and 1, which is true here.  
+2. The payment tier indicator is between 1 and 3, which is true here.  
+3. The age indicator for the youngest group is between 22 and 27, which is not true here.  
+4. The age indicator for the middle-young group is between 27 and 30, which is not true here.  
+5. The age indicator for the middle group is between 30 and 41, which is true here.  
+6. The gender indicator is between 0 and 1, which is true here.  
+7. The experience indicator for the lowest group is between 0 and 2, which is not true here.  
+8. The experience indicator for the highest group is between 4 and 7, which is true here.","['city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b0 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b0 < 0.5']","['city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'age_b0 < 0.5', 'age_b1 < 0.5', 'age_b2 > 0.5', 'gender_b0 > 0.5', 'experience_in_current_domain_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[4, 6, 7, 8, 9, 10, 12, 14]","[4, 6, 7, 8, 9, 12, 14]","[4, 6, 7, 8, 9, 10, 12, 14]","[4, 6, 7, 8, 9, 10, 12, 14]",,,,,0.96015625,,1
+employee,grok-4.20-0309-non-reasoning,1116,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,4,70.4,False,58.6,65.1,65.1,65.1,False,False,False,3,3,3,1,0,1,0,1,0,1,1,3,"[58.6, 65.1, 65.1, 65.1]",0.0429,"Anchor rule (IF-THEN, estimated precision 0.96):
+  IF city_b0 = 1 AND experience_in_current_domain_b1 = 0 AND experience_in_current_domain_b2 = 1 AND age_b2 = 1 THEN class 0","The model predicted that this employee will stay with the company. 
+
+This is because the person lives in the city shown by city_b0, is in the age group shown by age_b2, has a medium amount of experience in their current domain, and does not have a low amount of experience in their current domain. All of these together make it very likely the employee will stay.","The model predicted that this employee will stay with the company.
+
+This is because the person lives in the city shown by city_b0, is in the age group shown by age_b2, has a medium amount of experience in their current domain (between 3 and 6 years), does not have a low amount of experience in their current domain (less than 3 years), and all of these together make it very likely the employee will stay.","1. The employee is from the main city, which is true here.  
+2. The employee's age falls into the middle age group, which is true here.  
+3. The employee's experience in their current domain is not in the lowest group, which is true here.  
+4. The employee's experience in their current domain falls into the middle experience group, which is true here.","['city_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b1 < 0.5']","['city_b0 > 0.5', 'age_b2 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5']","[4, 9, 13, 14]","[4, 9, 13]","[4, 9, 14]","[4, 9, 14]",,,,,,0.9636963696369636,1
+employee,grok-4.20-0309-non-reasoning,1116,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,6.1,False,30.2,50.1,50.1,32.5,False,False,False,2,4,4,6,0,4,0,4,0,5,4,3,"[30.2, 50.1, 50.1, 50.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b2: 28.4% (opposes the prediction)
+  experience_in_current_domain_b2: 17.0% (supports the prediction)
+  joining_year_b0: 13.1% (opposes the prediction)
+  city_b0: 10.4% (supports the prediction)
+  joining_year_b1: 9.6% (opposes the prediction)
+  age_b0: 8.7% (supports the prediction)
+  experience_in_current_domain_b1: 6.5% (supports the prediction)
+  city_b1: 6.3% (supports the prediction)","The model predicted that this employee will stay with the company. 
+
+This happened mainly because the person joined the company in the middle period (joining year group 2), which pushed strongly against leaving. The employee also has a high level of experience in their current role, which further supported the decision to stay. Living in the main city added some support for staying, as did the person's age and the fact that they do not have a low level of experience in their current domain.
+
+The factors that worked against this prediction (pushing toward leaving) were that the employee did not join in the earliest period and did not join in the latest period.","The model predicted that this employee will stay with the company.
+
+This happened mainly because the person joined the company in the middle period (joining year group 2), which pushed strongly against leaving. The employee also has a high level of experience in their current role, which further supported the decision to stay. Living in the main city added some support for staying, as did the person's younger age, the fact that they do not have a low level of experience in their current domain, and that they are not from the second city.
+
+The factors that worked against this prediction (pushing toward leaving) were that the employee did not join in the earliest period and did not join in the latest period.","1. The joining year in the middle period pushed against this class, but was outweighed.  
+2. The experience in the current domain in the highest bracket pushed the prediction towards this class.  
+3. The joining year in the earliest period pushed against this class, but was outweighed.  
+4. The city in the first group pushed the prediction towards this class.  
+5. The joining year in the latest period pushed against this class, but was outweighed.  
+6. The age in the lower bracket pushed the prediction towards this class.  
+7. The experience in the current domain in the middle bracket pushed the prediction towards this class.  
+8. The city in the second group pushed the prediction towards this class.","['joining_year_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b1 < 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 > 0.5', 'joining_year_b2 < 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'city_b1 > 0.5']","[1, 2, 3, 4, 5, 7, 13, 14]","[1, 14]","[1, 4, 5, 14]","[1, 2, 4, 14]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1116,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,8,8.9,False,51.0,70.1,70.1,42.6,False,False,False,4,6,4,4,0,2,0,4,0,1,4,3,"[51.0, 5.0, 70.1, 70.1]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1044 (supports the prediction)
+  city_b0: weight=-0.0905 (opposes the prediction)
+  joining_year_b2: weight=+0.0815 (supports the prediction)
+  joining_year_b1: weight=+0.0656 (supports the prediction)
+  city_b1: weight=-0.0641 (opposes the prediction)
+  age_b0: weight=-0.0533 (opposes the prediction)
+  experience_in_current_domain_b2: weight=-0.0467 (opposes the prediction)
+  age_b1: weight=-0.0273 (opposes the prediction)","The model predicted that this employee would stay with the company. 
+
+This happened mainly because the person joined the company in the middle period (joining year group 2) and because the joining year was not in the earliest group. These two facts pushed strongly toward the prediction that the employee would stay.
+
+The prediction was made a bit weaker by the fact that the employee works in the first type of city (city group 0), is not in the oldest age group, and has a high level of experience in their current domain. These factors pushed against the prediction but not enough to change it.","The model predicted that this employee would stay with the company.
+
+This happened mainly because the person joined the company in the middle period, the joining year was not in the earliest group, the joining year was also not in the latest group, and the joining year fell into the second group. These four facts pushed strongly toward the prediction that the employee would stay.
+
+The prediction was made a bit weaker by the fact that the employee works in the first type of city, does not work in the second type of city, is not in the oldest age group, is not in the youngest age group, and has a high level of experience in their current domain. These factors pushed against the prediction but not enough to change it.","1. The joining year indicator for the earliest period pushed the prediction towards this employee staying with the company.  
+2. The city indicator for the first location pushed against this employee staying with the company, but was outweighed.  
+3. The joining year indicator for the latest period pushed the prediction towards this employee staying with the company.  
+4. The joining year indicator for the middle period pushed the prediction towards this employee staying with the company.  
+5. The city indicator for the second location pushed against this employee staying with the company, but was outweighed.  
+6. The age indicator for the youngest group pushed against this employee staying with the company, but was outweighed.  
+7. The experience in current domain indicator for the highest level pushed against this employee staying with the company, but was outweighed.  
+8. The age indicator for the middle group pushed against this employee staying with the company, but was outweighed.","['joining_year_b1 > 0.5', 'joining_year_b0 < 0.5', 'city_b0 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b2 > 0.5']","['joining_year_b0 > 0.5', 'city_b0 < 0.5', 'joining_year_b2 > 0.5', 'joining_year_b1 > 0.5', 'city_b1 < 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5', 'age_b1 < 0.5']","[1, 2, 3, 4, 5, 7, 8, 14]","[1, 4, 8, 14]","[1, 4, 5, 7, 8, 14]","[3, 5, 7, 8]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1309,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,77.7,False,77.7,77.7,77.7,77.7,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[77.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018, and the city is not in the range 1 to 2. Both of these conditions pushed the prediction toward the employee staying.","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018, and the city is not in the range 1 to 2. Both of these conditions pushed the prediction toward the employee staying.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The city is between 1 and 2, which is not true here.","['joining_year_b2 < 0.5', 'city_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b1 < 0.5']","[3, 5]","[3, 5]","[3, 5]","[3, 5]",0.0938,OPTIMAL,cop,0.4182,,,1
+employee,grok-4.20-0309-non-reasoning,1309,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,91.0,False,91.0,91.0,91.0,91.0,False,False,False,6,6,6,0,0,0,0,0,0,0,0,0,[91.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will stay with the company. 
+
+This happened because the joining year is not in 2017–2018, the person works in a city whose value falls between 0 and 1, their payment tier falls between 1 and 3, they are in the first gender category, and they have been benched at some point. The city value is not between 1 and 2. All of these facts together led to the prediction that the employee will stay.","The model predicted that this employee will stay with the company. 
+
+This happened because the joining year is not in 2017–2018, the person works in a city whose value falls between 0 and 1, their payment tier falls between 1 and 3, they are in the first gender category, and they have been benched at some point. The city value is not between 1 and 2. All of these facts together led to the prediction that the employee will stay.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The city is between 0 and 1, which is true here.  
+3. The city is between 1 and 2, which is not true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender is between 0 and 1, which is true here.  
+6. The ever benched status is between 0 and 1, which is true here.","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'city_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]","[3, 4, 5, 6, 10, 11]",0.0938,OPTIMAL,cop@6,0.4182,,,1
+employee,grok-4.20-0309-non-reasoning,1309,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,97.7,True,97.7,97.7,97.7,97.7,True,True,True,6,6,6,0,0,0,0,0,0,0,0,0,[97.7],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  age_b1 = 0  (age in [27, 30) — does NOT hold)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)
+  experience_in_current_domain_b2 = 1  (experience_in_current_domain in [4, 7) — holds)","The model predicted that this employee will stay with the company. This is because two measurements pointed that way: the person has been benched (this condition holds), and their experience in their current domain is between 4 and 7 years (this also holds). The other four measurements — joining year, city, age, and the middle range of experience — do not hold and therefore did not influence the prediction.","The model predicted that this employee will stay with the company. This is because two measurements pointed that way: the person has been benched (this condition holds), and their experience in their current domain is between 4 and 7 years (this also holds). The other four measurements — joining year, city, age, and the middle range of experience — do not hold and therefore did not influence the prediction.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The city indicator is between 1 and 2, which is not true here.  
+3. The age is between 27 and 30, which is not true here.  
+4. The employee has been benched, which is true here.  
+5. The experience in current domain is between 2 and 4, which is not true here.  
+6. The experience in current domain is between 4 and 7, which is true here.","['ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b1 < 0.5', 'age_b1 < 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[3, 5, 8, 11, 13, 14]","[3, 5, 8, 11, 13, 14]","[3, 5, 8, 11, 13, 14]","[3, 5, 8, 11, 13, 14]",,,,,0.97109375,,1
+employee,grok-4.20-0309-non-reasoning,1309,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,77.1,False,77.1,77.1,77.1,77.1,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[77.1],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 1 AND joining_year_b2 = 0 THEN class 0","The model predicted that this employee will stay with the company. This is because the person joined the company in a year that was not in the later group, and they work in the city that strongly points to staying. Together these two factors made the model certain the employee would not leave.","The model predicted that this employee will stay with the company. This is because the person joined the company in a year that was not in the later group, and they work in the city that strongly points to staying. Together these two factors made the model certain the employee would not leave.","1. The city indicator is set to its high value, which pushed the prediction towards the employee staying with the company.  
+2. The joining year indicator is set to its low value, which pushed the prediction towards the employee staying with the company.","['joining_year_b2 < 0.5', 'city_b0 > 0.5']","['city_b0 > 0.5', 'joining_year_b2 < 0.5']","[3, 4]","[3, 4]","[3, 4]","[3, 4]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1309,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,96.2,True,96.9,96.9,96.9,46.0,True,True,False,5,5,3,1,0,1,0,3,0,1,3,3,"[96.9, 96.9, 96.9, 96.9]",0.0429,"SHAP feature importance (contribution to this prediction):
+  city_b0: 21.3% (supports the prediction)
+  joining_year_b1: 20.9% (supports the prediction)
+  joining_year_b2: 19.1% (supports the prediction)
+  city_b1: 17.3% (supports the prediction)
+  joining_year_b0: 12.2% (opposes the prediction)
+  age_b0: 9.3% (opposes the prediction)","The model predicted that this employee will stay with the company.
+
+This decision was driven mainly by three measurements that all supported the prediction: the person joined the company in the middle year range, they work in the main city office, and they are not in the most recent joining year group. A smaller factor that also supported staying was that they are not in the second city category.
+
+Two other measurements pushed slightly against this prediction (towards leaving): their age fell into the higher age group, and they were not in the earliest joining year. Overall these opposing effects were smaller, so the model concluded the employee is more likely to stay.","The model predicted that this employee will stay with the company.
+
+This decision was driven mainly by three measurements that all supported the prediction: the person joined the company in the middle year range, they work in the main city office, and they are not in the most recent joining year group. A smaller factor that also supported staying was that they are not in the second city category.
+
+Two other measurements pushed slightly against this prediction (towards leaving): their age fell into the higher age group, and they were not in the earliest joining year. Overall these opposing effects were smaller, so the model concluded the employee is more likely to stay.","1. The joining year indicator for the middle period pushed the prediction towards this employee staying with the company.  
+2. The city indicator for the first location pushed the prediction towards this employee staying with the company.  
+3. The age indicator for the younger group pushed against this class but was outweighed.  
+4. The joining year indicator for the earliest period pushed against this class but was outweighed.  
+5. The joining year indicator for the latest period pushed the prediction towards this employee staying with the company.  
+6. The city indicator for the second location pushed the prediction towards this employee staying with the company.","['city_b0 > 0.5', 'joining_year_b1 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5', 'age_b0 < 0.5', 'joining_year_b0 < 0.5']","['joining_year_b1 > 0.5', 'city_b0 > 0.5', 'age_b0 < 0.5', 'joining_year_b0 < 0.5', 'joining_year_b2 > 0.5', 'city_b1 > 0.5']","[1, 2, 3, 4, 5, 7]","[1, 2, 3, 4, 5]","[1, 2, 3, 4, 5]","[1, 2, 4]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1309,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,6,97.0,True,59.9,97.0,97.0,77.7,False,True,False,4,6,2,2,0,0,0,4,0,1,4,2,"[59.9, 91.3, 97.0]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1135 (supports the prediction)
+  joining_year_b2: weight=-0.0931 (opposes the prediction)
+  city_b0: weight=-0.0921 (opposes the prediction)
+  joining_year_b1: weight=-0.0753 (opposes the prediction)
+  city_b1: weight=-0.0637 (opposes the prediction)
+  experience_in_current_domain_b2: weight=-0.0515 (opposes the prediction)","The model predicted that this employee will stay with the company. 
+
+This happened mainly because the person joined the company in a year that strongly supports staying. The fact that they did not join in the other two possible year groups pushed the prediction the other way, but not enough to change it. 
+
+Living in the first type of city also pushed against staying, as did having the highest level of experience in their current domain. These factors made the prediction less certain but were not strong enough to overcome the effect of the joining year.","The model predicted that this employee will stay with the company.
+
+This happened mainly because the person joined the company in a year that strongly supports staying. The fact that they did not join in the earliest or the latest year groups pushed the prediction the other way, but not enough to change it.
+
+Living in the first type of city pushed against staying, while not living in the second type of city also pushed against staying. Having the highest level of experience in their current domain made the prediction less certain but these factors were not strong enough to overcome the effect of the joining year.","1. The joining year indicator for the earliest period pushed the prediction towards this class.  
+2. The joining year indicator for the latest period pushed against this class, but was outweighed.  
+3. The city indicator for the first location pushed against this class, but was outweighed.  
+4. The joining year indicator for the middle period pushed against this class, but was outweighed.  
+5. The city indicator for the second location pushed against this class, but was outweighed.  
+6. The experience in current domain indicator for the highest level pushed against this class, but was outweighed.","['joining_year_b1 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","['joining_year_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5', 'joining_year_b1 < 0.5', 'city_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5']","[1, 2, 3, 4, 5, 14]","[1, 2, 3, 14]","[1, 2, 3, 4, 5, 14]","[3, 5]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1385,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,3,81.5,False,81.5,81.5,81.5,81.5,False,False,False,3,3,3,0,0,0,0,0,0,0,0,0,[81.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018, the city is in the range 0 to 1, and the city is not in the range 1 to 2.","The model predicted that this employee will stay with the company. 
+
+This is because the joining year is not in the range 2017 to 2018, the city is in the range 0 to 1, and the city is not in the range 1 to 2.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The city is between 0 and 1, which is true here.  
+3. The city is between 1 and 2, which is not true here.","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5']","[3, 4, 5]","[3, 4, 5]","[3, 4, 5]","[3, 4, 5]",0.0978,OPTIMAL,cop,0.4238,,,1
+employee,grok-4.20-0309-non-reasoning,1385,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,87.9,False,87.8,87.9,87.9,87.9,False,False,False,6,7,7,1,0,0,0,0,0,1,0,1,"[87.8, 87.9]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 1  (city in [0, 1) — holds)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will stay with the company. 
+
+This is because their education level is between 0 and 2, they work in a city between 0 and 1, their payment tier is between 1 and 3, they are male, and they have never been benched. 
+
+The rule also notes that they did not join the company between 2017 and 2018, and their city is not between 1 and 2.","The model predicted that this employee will stay with the company.
+
+This is because their education level is between 0 and 2, they work in a city between 0 and 1, their payment tier is between 1 and 3, they are male, they have never been benched, they did not join the company between 2017 and 2018, and their city is not between 1 and 2.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2017 and 2018, which is not true here.  
+3. The city indicator is between 0 and 1, which is true here.  
+4. The city indicator is between 1 and 2, which is not true here.  
+5. The payment tier is between 1 and 3, which is true here.  
+6. The gender indicator is between 0 and 1, which is true here.  
+7. The ever benched indicator is between 0 and 1, which is true here.","['education_b0 > 0.5', 'city_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'city_b1 < 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[0, 3, 4, 5, 6, 10, 11]","[0, 3, 4, 5, 6, 10]","[0, 3, 4, 5, 6, 10, 11]","[0, 3, 4, 5, 6, 10, 11]",0.0978,OPTIMAL,cop@7,0.4238,,,1
+employee,grok-4.20-0309-non-reasoning,1385,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,98.5,True,98.5,98.5,98.5,98.5,True,True,True,7,7,7,0,0,0,0,0,0,0,0,0,[98.5],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b1 = 0  (city in [1, 2) — does NOT hold)
+  age_b0 = 0  (age in [22, 27) — does NOT hold)
+  age_b2 = 0  (age in [30, 41) — does NOT hold)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  experience_in_current_domain_b0 = 1  (experience_in_current_domain in [0, 2) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","The model predicted that this employee will stay with the company. 
+
+This is because the person is male and has between 0 and 2 years of experience in their current domain. These two measurements pushed the prediction toward the employee staying.
+
+The other measurements did not hold: the joining year was not between 2017 and 2018, the city was not between 1 and 2, the age was neither between 22 and 27 nor between 30 and 41, and the experience in their current domain was not between 2 and 4 years.","The model predicted that this employee will stay with the company. 
+
+This is because the person is male and has between 0 and 2 years of experience in their current domain. These two measurements pushed the prediction toward the employee staying.
+
+The other measurements did not hold: the joining year was not between 2017 and 2018, the city was not between 1 and 2, the age was neither between 22 and 27 nor between 30 and 41, and the experience in their current domain was not between 2 and 4 years.","1. The joining year is between 2017 and 2018, which is not true here.  
+2. The city indicator is between 1 and 2, which is not true here.  
+3. The age is between 22 and 27, which is not true here.  
+4. The age is between 30 and 41, which is not true here.  
+5. The gender is between 0 and 1, which is true here.  
+6. The experience in current domain is between 0 and 2, which is true here.  
+7. The experience in current domain is between 2 and 4, which is not true here.","['gender_b0 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 < 0.5', 'age_b0 < 0.5', 'age_b2 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['joining_year_b2 < 0.5', 'city_b1 < 0.5', 'age_b0 < 0.5', 'age_b2 < 0.5', 'gender_b0 > 0.5', 'experience_in_current_domain_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[3, 5, 7, 9, 10, 12, 13]","[3, 5, 7, 9, 10, 12, 13]","[3, 5, 7, 9, 10, 12, 13]","[3, 5, 7, 9, 10, 12, 13]",,,,,0.98359375,,1
+employee,grok-4.20-0309-non-reasoning,1385,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,2,71.5,False,71.5,71.5,71.5,71.5,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[71.5],0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 1 AND joining_year_b0 = 1 THEN class 0","The model predicted that this employee will stay with the company. This is because the person joined in the year covered by joining_year_b0 and works in the city covered by city_b0. Both of these conditions were met, and together they are enough for the model to be completely confident the employee will not leave.","The model predicted that this employee will stay with the company. This is because the person joined in the year covered by joining_year_b0 and works in the city covered by city_b0. Both of these conditions were met, and together they are enough for the model to be completely confident the employee will not leave.","1. The city indicator is set to its first value, which pushed the prediction towards the employee staying with the company.  
+2. The joining year indicator is set to its first value, which pushed the prediction towards the employee staying with the company.","['joining_year_b0 > 0.5', 'city_b0 > 0.5']","['city_b0 > 0.5', 'joining_year_b0 > 0.5']","[1, 4]","[1, 4]","[1, 4]","[1, 4]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1385,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,98.3,True,91.8,98.3,98.3,41.5,False,True,False,3,7,4,4,0,0,0,3,0,1,3,1,"[91.8, 98.3]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 25.4% (supports the prediction)
+  joining_year_b2: 21.1% (supports the prediction)
+  city_b0: 14.9% (supports the prediction)
+  city_b1: 12.5% (supports the prediction)
+  joining_year_b1: 11.5% (opposes the prediction)
+  experience_in_current_domain_b2: 7.6% (opposes the prediction)
+  experience_in_current_domain_b1: 7.0% (supports the prediction)","The model predicted that this employee will stay with the company. 
+
+This decision was driven mainly by the fact that the employee joined in the earliest group of years, which strongly supported staying. The fact that they did not join in the latest group of years also supported staying, as did working in the main city. 
+
+The employee’s medium level of experience in their current role pushed slightly against staying, but this effect was smaller. Overall the factors pointing toward staying were stronger.","The model predicted that this employee will stay with the company.
+
+This decision was driven mainly by the fact that the employee joined in the earliest group of years, which strongly supported staying. The fact that they did not join in the latest group of years also supported staying, as did working in the main city. Not joining in the middle group of years pushed slightly against staying. Working in the second city also pushed slightly against staying. The employee’s low level of experience in their current role supported staying a little, while their medium level of experience pushed slightly against staying. Overall the factors pointing toward staying were stronger.","1. The joining year indicator pushed the prediction towards the employee staying with the company.  
+2. The later joining year indicator pushed the prediction towards the employee staying with the company.  
+3. The city indicator pushed the prediction towards the employee staying with the company.  
+4. The other city indicator pushed the prediction towards the employee staying with the company.  
+5. The middle joining year indicator pushed against this class, but was outweighed.  
+6. The higher experience in current domain indicator pushed against this class, but was outweighed.  
+7. The medium experience in current domain indicator pushed the prediction towards the employee staying with the company.","['joining_year_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 > 0.5', 'experience_in_current_domain_b1 > 0.5']","['joining_year_b0 > 0.5', 'joining_year_b2 > 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5', 'joining_year_b1 < 0.5', 'experience_in_current_domain_b2 < 0.5', 'experience_in_current_domain_b1 > 0.5']","[1, 2, 3, 4, 5, 13, 14]","[1, 3, 4]","[1, 2, 3, 4, 5, 13, 14]","[1, 2, 4, 14]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1385,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,0,7,85.4,False,90.0,85.4,90.0,42.8,False,False,False,5,7,3,2,0,0,0,4,0,1,4,1,"[90.0, 85.4]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1125 (opposes the prediction)
+  city_b0: weight=-0.0914 (opposes the prediction)
+  joining_year_b2: weight=-0.0873 (opposes the prediction)
+  joining_year_b1: weight=+0.0720 (supports the prediction)
+  city_b1: weight=-0.0641 (opposes the prediction)
+  age_b0: weight=-0.0491 (opposes the prediction)
+  experience_in_current_domain_b2: weight=+0.0472 (supports the prediction)","This employee is predicted to stay with the company. 
+
+The main reasons are that the person joined the company in the earliest period and lives in the main city. Both of these measurements pushed the model toward predicting that the employee will stay. 
+
+The fact that the employee is not in the latest joining period and is not in the middle joining period also supported the prediction of staying, though more weakly. The person's experience level gave a small additional push toward staying. 
+
+The only measurement that pushed against this prediction was the person's age.","This employee is predicted to stay with the company.
+
+The main reasons are that the person joined the company in the earliest period and lives in the main city. Both of these measurements pushed the model toward predicting that the employee will stay.
+
+The fact that the employee is not in the latest joining period and is not in the middle joining period also supported the prediction of staying, though more weakly. The person's experience level, which is not in the highest range, gave a small additional push toward staying. The fact that the person does not live in the secondary city also supported the prediction of staying.
+
+The only measurement that pushed against this prediction was the person's age.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed against this class, but was outweighed.  
+3. The joining year indicator pushed against this class, but was outweighed.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed against this class, but was outweighed.  
+6. The age indicator pushed against this class, but was outweighed.  
+7. The experience in current domain indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'joining_year_b2 < 0.5', 'joining_year_b1 < 0.5', 'experience_in_current_domain_b2 > 0.5', 'age_b0 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'city_b1 < 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[1, 2, 3, 4, 7]","[1, 2, 3, 4, 5, 7, 14]","[2, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1508,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,78.7,False,78.7,78.7,78.7,78.7,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[78.7],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that condition strongly points toward leaving. The city measurement did not fall into the range 0 to 1.","The model predicted that this employee will leave the company. This is because the city measurement fell into the range 1 to 2, and that condition strongly points toward leaving. The city measurement did not fall into the range 0 to 1.","1. The city measurement for the first range is between 0 and 1, which is not true here.  
+2. The city measurement for the second range is between 1 and 2, which is true here.","['city_b1 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5']","[4, 5]","[4, 5]","[4, 5]","[4, 5]",0.2326,OPTIMAL,cop,0.5834,,,1
+employee,grok-4.20-0309-non-reasoning,1508,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,89.1,False,74.7,85.4,85.4,89.1,False,False,False,4,6,7,3,0,1,0,0,0,2,0,3,"[74.7, 65.9, 85.4, 85.4]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, and they have never been benched. Although their experience in the current role is not in the highest range and their first city indicator does not match the rule, the overall combination of these factors led to the prediction that they will leave.","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are not in the first city category (between 0 and 1), they are in the second city category (between 1 and 2), they are in the lower payment tier (between 1 and 3), they are male, they have never been benched, and their experience in the current role is not in the highest range (between 4 and 7). Although one city indicator does not match the rule, the overall combination of these factors led to the prediction that they will leave.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The city indicator is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender indicator is between 0 and 1, which is true here.  
+6. The ever benched indicator is between 0 and 1, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 < 0.5', 'ever_benched_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 5, 6, 14]","[0, 4, 5, 6, 10, 14]","[0, 4, 5, 6, 10, 11, 14]",0.3238,OPTIMAL,cop@7,0.5834,,,1
+employee,grok-4.20-0309-non-reasoning,1508,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,96.6,True,71.7,96.6,96.6,96.6,False,True,True,2,7,7,5,0,0,0,0,0,1,0,1,"[71.7, 96.6]",0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 1  (experience_in_current_domain in [2, 4) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicts that this employee will leave the company. This is because:
+
+- their education level is between 0 and 2, 
+- they work in a city between 1 and 2, and 
+- they have never been benched. 
+
+These three measurements were enough for the model to make this prediction with high confidence. The other listed measurements (joining year and experience in current role) did not support the prediction in this case.","The model predicts that this employee will leave the company. This is because their education level is between 0 and 2, they work in a city between 1 and 2, they have never been benched, their joining year is not between 2017 and 2018, their city is not between 0 and 1, their experience in the current role is between 2 and 4, and their experience in the current role is not between 4 and 7. These measurements were enough for the model to make this prediction with high confidence.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2017 and 2018, which is not true here.  
+3. The city indicator for the first range is between 0 and 1, which is not true here.  
+4. The city indicator for the second range is between 1 and 2, which is true here.  
+5. The ever benched status is between 0 and 1, which is true here.  
+6. The experience in current domain is between 2 and 4, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'ever_benched_b0 < 0.5']","['education_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 3, 4, 5, 11, 13, 14]","[0, 5]","[0, 3, 4, 5, 11, 13, 14]","[0, 3, 4, 5, 11, 13, 14]",,,,,0.96640625,,1
+employee,grok-4.20-0309-non-reasoning,1508,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,61.9,False,47.2,47.2,47.2,47.2,False,False,False,3,3,3,1,0,1,0,1,0,0,1,3,"[47.2, 47.2, 47.2, 47.2]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 0 AND city_b1 = 1 AND experience_in_current_domain_b1 = 1 AND joining_year_b0 = 1 THEN class 1","The model predicted that this employee will leave the company. It made this decision because the person joined the company in the earlier period, works in the second city, and has more experience in their current field. All of these factors together pointed strongly toward the employee leaving.","The model predicted that this employee will leave the company. It made this decision because the person joined the company in the earlier period, works in the second city rather than the first one, and has more experience in their current field. All of these factors together pointed strongly toward the employee leaving.","1. The joining year indicator is set to its first value, which pushed the prediction towards the employee leaving the company.  
+2. The first city indicator is set to its second value, which pushed the prediction towards the employee leaving the company.  
+3. The second city indicator is set to its first value, which pushed the prediction towards the employee leaving the company.  
+4. The experience in current domain indicator is set to its first value, which pushed the prediction towards the employee leaving the company.","['joining_year_b0 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b1 > 0.5']","['joining_year_b0 > 0.5', 'city_b1 > 0.5', 'city_b0 > 0.5', 'experience_in_current_domain_b1 > 0.5']","[1, 4, 5, 13]","[1, 5, 13]","[1, 5, 13]","[1, 5, 13]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1508,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,63.6,False,43.6,26.1,43.6,59.0,False,False,False,2,4,3,5,0,3,0,4,0,2,4,3,"[43.6, 32.3, 26.1, 26.1]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 30.6% (opposes the prediction)
+  city_b0: 26.2% (supports the prediction)
+  age_b0: 12.8% (opposes the prediction)
+  experience_in_current_domain_b2: 9.5% (supports the prediction)
+  joining_year_b2: 8.4% (opposes the prediction)
+  city_b1: 8.3% (supports the prediction)
+  joining_year_b1: 4.2% (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reason is that they joined the company in the earliest group of years, which strongly pushes against leaving. This was partly offset by the fact that they work in the second type of city, which pushes toward leaving. 
+
+A lower age reading also pushed against leaving, while having experience in the highest range of the current domain pushed toward leaving. The other factors had smaller effects in their respective directions.","This employee is predicted to leave the company. 
+
+The main reason is that they joined the company in the earliest group of years, which strongly pushes against leaving. This was partly offset by the fact that they work in the second type of city, which pushes toward leaving. 
+
+A lower age reading also pushed against leaving, while having experience in the highest range of the current domain pushed toward leaving. Joining in the latest group of years gave a push against leaving. Being in the first type of city gave a strong push toward leaving. Joining in the middle group of years gave a small push toward leaving. The remaining factors had smaller effects in their respective directions.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The age indicator pushed against this class, but was outweighed.  
+4. The experience in current domain pushed the prediction towards this class.  
+5. The joining year indicator pushed against this class, but was outweighed.  
+6. The city indicator pushed the prediction towards this class.  
+7. The joining year indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b1 < 0.5', 'city_b1 > 0.5', 'joining_year_b2 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[1, 5]","[1, 3, 5, 7]","[2, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1508,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,63.6,False,33.7,46.7,46.7,57.4,False,False,False,1,5,2,6,0,2,0,5,0,3,4,3,"[33.7, 31.0, 46.7, 46.7]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1129 (opposes the prediction)
+  city_b0: weight=+0.0881 (supports the prediction)
+  joining_year_b2: weight=-0.0775 (opposes the prediction)
+  city_b1: weight=+0.0612 (supports the prediction)
+  joining_year_b1: weight=+0.0603 (supports the prediction)
+  age_b0: weight=-0.0596 (opposes the prediction)
+  experience_in_current_domain_b2: weight=+0.0540 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the earliest period (joining year in the lowest range), which pushed strongly against staying. The fact that they are not from the main city also worked against staying. 
+
+Working in the employee's favor were their age (they are not in the youngest group) and having a moderate amount of experience in their current role. These positive factors were not strong enough to change the overall prediction.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the earliest period (joining year in the lowest range), which pushed strongly against staying. The fact that they are not from the main city also worked against staying.
+
+Working in the employee's favor were their age (they are not in the youngest group), having a moderate amount of experience in their current role, joining in the middle time period, and being from the second-largest city. These positive factors were not strong enough to change the overall prediction. The employee also did not join in the most recent period, which slightly pushed against staying.","1. The joining year indicator pushed against this class but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed against this class but was outweighed.  
+4. The city indicator pushed the prediction towards this class.  
+5. The joining year indicator pushed the prediction towards this class.  
+6. The age indicator pushed against this class but was outweighed.  
+7. The experience in current domain indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'age_b0 > 0.5', 'experience_in_current_domain_b2 > 0.5']","['joining_year_b1 < 0.5', 'city_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 > 0.5', 'joining_year_b2 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 2, 3, 4, 5, 7, 14]",[1],"[1, 3, 4, 5, 7]","[2, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1516,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,61.9,False,61.9,61.9,61.9,61.9,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[61.9],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b1 = 1  (city in [1, 2) — holds)",The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,The model predicted that this employee will leave the company. This is because the city measurement falls in the range that strongly points toward leaving.,"1. The city measurement is between 1 and 2, which is true here.",['city_b1 > 0.5'],['city_b1 > 0.5'],[5],[5],[5],[5],0.233,OPTIMAL,cop,0.564,,,1
+employee,grok-4.20-0309-non-reasoning,1516,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,88.6,False,89.8,88.6,89.8,88.6,False,False,False,6,8,8,2,0,0,0,0,0,1,0,2,"[89.8, 59.1, 88.6]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)","The model predicted that this employee will leave the company. This is because:
+
+- their education level is between 0 and 2,
+- they work in a city between 1 and 2,
+- their payment tier is between 1 and 3,
+- and they have never been benched.
+
+Even though their joining year is not in the 2014-2017 range, their city is not in the 0-1 range, and their experience in the current role is not between 2 and 4 years, the combination of the four conditions above was enough for the model to predict they will leave.","The model predicted that this employee will leave the company. This is because:
+
+their education level is between 0 and 2, they joined the company outside the 2014-2017 range, they do not work in a city between 0 and 1, they work in a city between 1 and 2, their payment tier is between 1 and 3, they are male, they have never been benched, and their experience in the current role is not between 2 and 4 years.
+
+Even though some conditions point in different directions, the overall combination led the model to predict they will leave.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2014 and 2017, which is not true here.  
+3. The city indicator is between 0 and 1, which is not true here.  
+4. The city indicator is between 1 and 2, which is true here.  
+5. The payment tier is between 1 and 3, which is true here.  
+6. The gender indicator is between 0 and 1, which is true here.  
+7. The ever benched indicator is between 0 and 1, which is true here.  
+8. The experience in current domain is between 2 and 4, which is not true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'ever_benched_b0 < 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'joining_year_b1 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 13]","[0, 2, 4, 5, 6, 10, 11, 13]","[0, 2, 4, 5, 6, 10, 11, 13]",0.4232,OPTIMAL,cop@8,0.564,,,1
+employee,grok-4.20-0309-non-reasoning,1516,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,95.1,True,95.1,95.1,95.1,95.1,True,True,True,8,8,8,0,0,0,0,0,0,0,0,0,[95.1],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  age_b1 = 1  (age in [27, 30) — holds)
+  age_b2 = 0  (age in [30, 41) — does NOT hold)
+  experience_in_current_domain_b1 = 0  (experience_in_current_domain in [2, 4) — does NOT hold)
+  experience_in_current_domain_b2 = 1  (experience_in_current_domain in [4, 7) — holds)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they live in a city between 1 and 2, their payment tier is between 1 and 3, their age is between 27 and 30, and their experience in their current domain is between 4 and 7. The other listed measurements did not hold and were not reasons for the prediction.","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they live in a city between 1 and 2, their payment tier is between 1 and 3, their age is between 27 and 30, and their experience in their current domain is between 4 and 7. The other listed measurements did not hold and were not reasons for the prediction.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator for the first range is between 0 and 1, which is not true here.  
+3. The city indicator for the second range is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The age is between 27 and 30, which is true here.  
+6. The age is between 30 and 41, which is not true here.  
+7. The experience in current domain is between 2 and 4, which is not true here.  
+8. The experience in current domain is between 4 and 7, which is true here.","['education_b0 > 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'city_b0 < 0.5', 'age_b2 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'age_b1 > 0.5', 'age_b2 < 0.5', 'experience_in_current_domain_b1 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[0, 4, 5, 6, 8, 9, 13, 14]","[0, 4, 5, 6, 8, 9, 13, 14]","[0, 4, 5, 6, 8, 9, 13, 14]","[0, 4, 5, 6, 8, 9, 13, 14]",,,,,0.95703125,,1
+employee,grok-4.20-0309-non-reasoning,1516,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,81.7,False,74.4,78.1,78.1,67.2,False,False,False,2,3,2,3,0,2,0,3,0,3,3,3,"[74.4, 78.1, 78.1, 78.1]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 0 AND city_b1 = 1 AND experience_in_current_domain_b0 = 0 AND joining_year_b2 = 0 AND age_b1 = 1 THEN class 1","The model predicted that this employee will leave the company. This decision was based on five measurements that were all true for this person:
+
+- They joined the company in the later joining period.
+- They work in the second type of city.
+- They are in the younger age group.
+- They have lower experience in their current domain.
+- They do not work in the first type of city.
+
+Because all of these conditions were met, the model was completely confident the employee would leave.","The model predicted that this employee will leave the company. This decision was based on five measurements that were all true for this person:
+
+- They joined the company in the later joining period.
+- They work in the second type of city.
+- They are in the younger age group.
+- They have lower experience in their current domain.
+- They do not work in the first type of city.
+
+Because all of these conditions were met, the model was completely confident the employee would leave.","1. The joining year indicator for the second period is at its low value, which is true here and supports the prediction that the employee will leave.
+2. The first city indicator is at its low value, which is true here and supports the prediction that the employee will leave.
+3. The second city indicator is at its high value, which is true here and supports the prediction that the employee will leave.
+4. The age indicator for the middle group is at its high value, which is true here and supports the prediction that the employee will leave.
+5. The experience in current domain indicator for the low group is at its low value, which is true here and supports the prediction that the employee will leave.","['joining_year_b2 > 0.5', 'city_b1 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b0 > 0.5', 'city_b0 < 0.5']","['joining_year_b2 > 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5', 'age_b1 > 0.5', 'experience_in_current_domain_b0 > 0.5']","[3, 4, 5, 8, 12]","[4, 5]","[4, 5, 8]","[5, 8]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1516,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,41.0,False,41.0,41.0,41.0,35.3,False,False,False,8,8,6,0,0,0,0,2,0,0,2,0,[41.0],0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 26.8% (opposes the prediction)
+  age_b1: 19.0% (supports the prediction)
+  city_b0: 18.7% (supports the prediction)
+  city_b1: 10.0% (supports the prediction)
+  experience_in_current_domain_b2: 9.1% (opposes the prediction)
+  joining_year_b2: 8.9% (opposes the prediction)
+  age_b0: 4.6% (opposes the prediction)
+  joining_year_b1: 2.8% (supports the prediction)","This employee is predicted to leave the company. 
+
+The strongest reason is that the person joined the company in the earliest period, which pushed against the prediction of leaving. This was partly offset by their age falling in the higher range, which supported the prediction of leaving. 
+
+The fact that they are not in the main city also supported leaving, as did being in the second city category. Their experience being in the highest range opposed the prediction of leaving. 
+
+The remaining factors – when they joined in the middle period, their age being in the lower range, and joining in the latest period – had smaller effects in the directions shown.","This employee is predicted to leave the company. 
+
+The strongest reason is that the person joined the company in the earliest period, which pushed against the prediction of leaving. This was partly offset by their age falling in the higher range, which supported the prediction of leaving. 
+
+The fact that they are not in the main city also supported leaving, as did being in the second city category. Their experience being in the highest range opposed the prediction of leaving. 
+
+The remaining factors – when they joined in the middle period, their age being in the lower range, and joining in the latest period – had smaller effects in the directions shown.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The age indicator pushed the prediction towards this class.  
+3. The city indicator pushed the prediction towards this class.  
+4. The city indicator pushed the prediction towards this class.  
+5. The experience in current domain indicator pushed against this class, but was outweighed.  
+6. The joining year indicator pushed against this class, but was outweighed.  
+7. The age indicator pushed against this class, but was outweighed.  
+8. The joining year indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'age_b1 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b1 < 0.5', 'age_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b1 < 0.5', 'age_b1 > 0.5', 'city_b0 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5', 'joining_year_b2 < 0.5', 'age_b0 < 0.5', 'joining_year_b0 > 0.5']","[1, 2, 3, 4, 5, 7, 8, 14]","[1, 2, 3, 4, 5, 7, 8, 14]","[1, 2, 3, 4, 5, 7, 8, 14]","[1, 2, 3, 5, 7, 8]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1516,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,8,41.0,False,53.4,41.0,53.4,57.8,False,False,False,5,8,3,3,0,0,0,5,0,0,5,1,"[53.4, 41.0]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1085 (opposes the prediction)
+  city_b0: weight=+0.0920 (supports the prediction)
+  joining_year_b2: weight=-0.0817 (opposes the prediction)
+  joining_year_b1: weight=+0.0657 (supports the prediction)
+  city_b1: weight=+0.0605 (supports the prediction)
+  age_b0: weight=-0.0523 (opposes the prediction)
+  experience_in_current_domain_b2: weight=-0.0470 (opposes the prediction)
+  age_b1: weight=+0.0259 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the earliest period (joining year in the lowest range), which pushed strongly against staying. The fact that they are not in the middle joining year range also worked against staying. 
+
+The prediction was also supported by the employee being in the middle age range and living in the second city, both of which pushed toward leaving. Their experience level in their current area also pushed slightly toward leaving. 
+
+The other measurements either had little effect or pushed in the opposite direction but not enough to change the outcome.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the earliest period (joining year in the lowest range), which pushed strongly against staying. The fact that they are not in the middle joining year range and not in the latest joining year range also worked against staying.
+
+The prediction was also supported by the employee living in the second city, not living in the first city, being in the middle age range, and not being in the youngest age range, all of which pushed toward leaving. Their experience level in their current area also pushed slightly toward leaving.
+
+The other measurements either had little effect or pushed in the opposite direction but not enough to change the outcome.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed against this class, but was outweighed.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed the prediction towards this class.  
+6. The age indicator pushed against this class, but was outweighed.  
+7. The experience in current domain indicator pushed against this class, but was outweighed.  
+8. The age indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'joining_year_b1 < 0.5', 'age_b1 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b2 > 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 > 0.5', 'city_b1 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5', 'age_b1 > 0.5']","[1, 2, 3, 4, 5, 7, 8, 14]","[1, 2, 5, 8, 14]","[1, 2, 3, 4, 5, 7, 8, 14]","[5, 7, 8]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1518,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,1,73.0,False,73.0,73.0,73.0,73.0,False,False,False,1,1,1,0,0,0,0,0,0,0,0,0,[73.0],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)",The model predicted that this employee will leave the company. This is because the person joined the company in 2017 or 2018.,The model predicted that this employee will leave the company. This is because the person joined the company in 2017 or 2018.,"1. The joining year is between 2017 and 2018, which is true here.",['joining_year_b2 > 0.5'],['joining_year_b2 > 0.5'],[3],[3],[3],[3],0.3108,OPTIMAL,cop,0.573,,,1
+employee,grok-4.20-0309-non-reasoning,1518,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,64.5,False,64.5,64.5,64.5,64.5,False,False,False,4,4,4,0,0,0,0,0,0,0,0,0,[64.5],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)","The model predicted that this employee will leave the company. This is because four measurements all pointed in that direction:
+
+- The person joined the company in 2017 or 2018.
+- Their payment tier is between 1 and 3.
+- Their gender falls in the group associated with leaving.
+- They have been benched at some point.
+
+All four of these conditions were true for this employee, which is why the model expects them to leave.","The model predicted that this employee will leave the company. This is because four measurements all pointed in that direction:
+
+- The person joined the company in 2017 or 2018.
+- Their payment tier is between 1 and 3.
+- Their gender falls in the group associated with leaving.
+- They have been benched at some point.
+
+All four of these conditions were true for this employee, which is why the model expects them to leave.","1. The joining year is between 2017 and 2018, which is true here.  
+2. The payment tier is between 1 and 3, which is true here.  
+3. The gender is between 0 and 1, which is true here.  
+4. The ever benched status is between 0 and 1, which is true here.","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","['joining_year_b2 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5']","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10, 11]","[3, 6, 10, 11]",0.3108,OPTIMAL,cop@4,0.573,,,1
+employee,grok-4.20-0309-non-reasoning,1518,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.3,True,98.3,98.3,98.3,98.3,True,True,True,4,4,4,0,0,0,0,0,0,0,0,0,[98.3],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  joining_year_b0 = 0  (joining_year in [2012, 2014) — does NOT hold)
+  joining_year_b1 = 0  (joining_year in [2014, 2017) — does NOT hold)
+  joining_year_b2 = 1  (joining_year in [2017, 2018) — holds)
+  age_b2 = 0  (age in [30, 41) — does NOT hold)","The model predicted that this employee will leave the company. 
+
+This is because their joining year is between 2017 and 2018, and the other three measurements do not hold: their joining year is not in [2012, 2014), it is not in [2014, 2017), and their age is not between 30 and 41.","The model predicted that this employee will leave the company. 
+
+This is because their joining year is between 2017 and 2018, and the other three measurements do not hold: their joining year is not in [2012, 2014), it is not in [2014, 2017), and their age is not between 30 and 41.","1. The joining year is between 2012 and 2014, which is not true here.  
+2. The joining year is between 2014 and 2017, which is not true here.  
+3. The joining year is between 2017 and 2018, which is true here.  
+4. The age is between 30 and 41, which is not true here.","['joining_year_b2 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'age_b2 < 0.5']","['joining_year_b0 < 0.5', 'joining_year_b1 < 0.5', 'joining_year_b2 > 0.5', 'age_b2 < 0.5']","[1, 2, 3, 9]","[1, 2, 3, 9]","[1, 2, 3, 9]","[1, 2, 3, 9]",,,,,0.9796875,,1
+employee,grok-4.20-0309-non-reasoning,1518,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,5,99.9,True,69.5,99.9,99.9,99.9,False,True,True,2,5,5,3,0,0,0,0,0,1,0,1,"[69.5, 99.9]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF joining_year_b2 = 1 AND joining_year_b1 = 0 AND joining_year_b0 = 0 AND experience_in_current_domain_b1 = 0 AND age_b1 = 1 THEN class 1","The model predicted that this employee will leave the company. 
+
+This is because the person joined the company in the most recent period (joining year fell in the highest range), they are in the younger age group, and they have lower experience in their current domain. These three factors together led to the prediction that they will leave.","The model predicted that this employee will leave the company.
+
+This is because the person joined the company in the most recent period (joining year fell in the highest range), they are not in the earliest or middle joining periods, they are in the younger age group, and they have lower experience in their current domain. These factors together led to the prediction that they will leave.","1. The joining year falls in the most recent group, which is true here.  
+2. The joining year does not fall in the middle group, which is true here.  
+3. The joining year does not fall in the earliest group, which is true here.  
+4. The person's age falls in the younger group, which is true here.  
+5. The experience in current domain does not fall in the higher group, which is true here.","['joining_year_b2 > 0.5', 'age_b1 < 0.5', 'experience_in_current_domain_b1 < 0.5']","['joining_year_b2 > 0.5', 'joining_year_b1 < 0.5', 'joining_year_b0 < 0.5', 'age_b1 > 0.5', 'experience_in_current_domain_b1 < 0.5']","[1, 2, 3, 8, 13]","[3, 13]","[1, 2, 3, 8, 13]","[1, 2, 3, 8, 13]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1518,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.4,True,80.6,80.6,80.6,78.0,False,False,False,2,2,2,2,0,2,0,2,0,2,2,3,"[80.6, 80.6, 80.6, 80.6]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b2: 44.1% (supports the prediction)
+  age_b1: 22.6% (supports the prediction)
+  joining_year_b0: 17.7% (supports the prediction)
+  joining_year_b1: 15.6% (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the middle period (the one labeled as joining year group 2), which strongly pushed the prediction toward leaving. The fact that they are in the younger age group also supported the decision to predict they will leave. The other joining year indicators had smaller effects in the same direction.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the middle period (joining years 2016-2017), which strongly pushed the prediction toward leaving. The fact that they are in the younger age group (under 30) also supported the decision to predict they will leave. The indicators showing they did not join in the earliest period (before 2015) and did not join in the latest period (2018 or later) had smaller effects in the same direction.","1. The joining year in the highest bin pushed the prediction towards this class.  
+2. The age in the middle bin pushed the prediction towards this class.  
+3. The joining year in the lowest bin pushed the prediction towards this class.  
+4. The joining year in the second bin pushed the prediction towards this class.","['joining_year_b1 > 0.5', 'age_b1 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b2 > 0.5', 'age_b1 > 0.5', 'joining_year_b0 > 0.5', 'joining_year_b1 > 0.5']","[1, 2, 3, 8]","[1, 8]","[1, 8]","[3, 8]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1518,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,98.0,True,73.0,94.9,94.9,73.0,False,False,False,1,2,1,3,0,2,0,3,0,3,3,3,"[73.0, 94.9, 94.9, 94.9]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=+0.1117 (supports the prediction)
+  joining_year_b2: weight=+0.0852 (supports the prediction)
+  city_b0: weight=-0.0850 (opposes the prediction)
+  joining_year_b1: weight=+0.0626 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the period that most strongly pushes toward leaving. The next most important factor was that their joining year also fell into a second period that further increased the chance of leaving. A third joining-year period gave a smaller push in the same direction. 
+
+The only thing pulling against the prediction was that the employee is in the city that makes leaving less likely.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the period that most strongly pushes toward leaving. The next most important factor was that their joining year also fell into a second period that further increased the chance of leaving. A third joining-year period gave a smaller push in the same direction.
+
+The only thing pulling against the prediction was that the employee is in the city that makes leaving less likely. The fact that they did not join in the earliest period also slightly increased the chance they would leave.","1. The joining year indicator for the earliest period pushed the prediction towards this class.  
+2. The joining year indicator for the middle period pushed the prediction towards this class.  
+3. The joining year indicator for the most recent period pushed the prediction towards this class.  
+4. The city indicator for the main location pushed against this class, but was outweighed.","['joining_year_b0 > 0.5', 'joining_year_b1 > 0.5', 'joining_year_b2 > 0.5', 'city_b0 < 0.5']","['joining_year_b0 > 0.5', 'joining_year_b1 > 0.5', 'joining_year_b2 > 0.5', 'city_b0 < 0.5']","[1, 2, 3, 4]",[3],"[1, 3]",[3],,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1827,cop,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,2,76.3,False,76.3,76.3,76.3,76.3,False,False,False,2,2,2,0,0,0,0,0,0,0,0,0,[76.3],0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)","The model predicted that this employee will leave the company. 
+
+This is because the city measurement fell into the range 1 to 2, and that specific range pushes the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","The model predicted that this employee will leave the company. 
+
+This is because the city measurement fell into the range 1 to 2, and that specific range pushes the prediction toward leaving. The city measurement did not fall into the range 0 to 1.","1. The city measurement for the first range is between 0 and 1, which is not true here.  
+2. The city measurement for the second range is between 1 and 2, which is true here.","['city_b1 > 0.5', 'city_b0 < 0.5']","['city_b0 < 0.5', 'city_b1 > 0.5']","[4, 5]","[4, 5]","[4, 5]","[4, 5]",0.2282,OPTIMAL,cop,0.576,,,1
+employee,grok-4.20-0309-non-reasoning,1827,cop_k,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,91.0,False,71.0,91.0,91.0,91.0,False,False,False,5,7,7,2,0,0,0,0,0,1,0,2,"[71.0, 72.2, 91.0]",0.0429,"Rule learned by constraint optimization (agrees with the model on this instance; PAC guarantee in expectation):
+  education_b0 = 1  (education in [0, 2) — holds)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  payment_tier_b0 = 1  (payment_tier in [1, 3) — holds)
+  gender_b0 = 1  (gender in [0, 1) — holds)
+  ever_benched_b0 = 1  (ever_benched in [0, 1) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in payment tier 1 to 3, they are male, and they have never been benched. These four measurements all pointed toward the employee leaving.
+
+The prediction was not driven by their city or their years of experience in their current domain, because those conditions in the rule were not met.","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they are in a city between 1 and 2, their payment tier is between 1 and 3, they are male, and they have never been benched. These five measurements all pointed toward the employee leaving. Their city is not between 0 and 1.
+
+The prediction was not driven by their years of experience in their current domain, because that condition in the rule was not met.","1. The education level is between 0 and 2, which is true here.  
+2. The city indicator is between 0 and 1, which is not true here.  
+3. The city indicator is between 1 and 2, which is true here.  
+4. The payment tier is between 1 and 3, which is true here.  
+5. The gender indicator is between 0 and 1, which is true here.  
+6. The ever benched indicator is between 0 and 1, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['education_b0 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'payment_tier_b0 > 0.5', 'gender_b0 > 0.5', 'ever_benched_b0 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 6, 10, 14]","[0, 4, 5, 6, 10, 11, 14]","[0, 4, 5, 6, 10, 11, 14]",0.3254,OPTIMAL,cop@7,0.576,,,1
+employee,grok-4.20-0309-non-reasoning,1827,lmpaxp,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,93.8,False,93.8,93.8,93.8,93.8,False,False,False,7,7,7,0,0,0,0,0,0,0,0,0,[93.8],0.0429,"Probabilistic sufficient explanation (verified precision >= 95% for this instance):
+  education_b0 = 1  (education in [0, 2) — holds)
+  joining_year_b0 = 1  (joining_year in [2012, 2014) — holds)
+  joining_year_b2 = 0  (joining_year in [2017, 2018) — does NOT hold)
+  city_b0 = 0  (city in [0, 1) — does NOT hold)
+  city_b1 = 1  (city in [1, 2) — holds)
+  experience_in_current_domain_b1 = 1  (experience_in_current_domain in [2, 4) — holds)
+  experience_in_current_domain_b2 = 0  (experience_in_current_domain in [4, 7) — does NOT hold)","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they joined the company between 2012 and 2014, they work in a city between 1 and 2, and their experience in their current role is between 2 and 4 years. The fact that they did not join between 2017 and 2018, are not in a city between 0 and 1, and do not have experience between 4 and 7 years also contributed to this prediction.","The model predicted that this employee will leave the company. This is because their education level is between 0 and 2, they joined the company between 2012 and 2014, they work in a city between 1 and 2, and their experience in their current role is between 2 and 4 years. The fact that they did not join between 2017 and 2018, are not in a city between 0 and 1, and do not have experience between 4 and 7 years also contributed to this prediction.","1. The education level is between 0 and 2, which is true here.  
+2. The joining year is between 2012 and 2014, which is true here.  
+3. The joining year is between 2017 and 2018, which is not true here.  
+4. The city indicator is between 0 and 1, which is not true here.  
+5. The city indicator is between 1 and 2, which is true here.  
+6. The experience in current domain is between 2 and 4, which is true here.  
+7. The experience in current domain is between 4 and 7, which is not true here.","['education_b0 > 0.5', 'joining_year_b0 > 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5', 'experience_in_current_domain_b2 < 0.5']","['education_b0 > 0.5', 'joining_year_b0 > 0.5', 'joining_year_b2 < 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b1 > 0.5', 'experience_in_current_domain_b2 < 0.5']","[0, 1, 3, 4, 5, 13, 14]","[0, 1, 3, 4, 5, 13, 14]","[0, 1, 3, 4, 5, 13, 14]","[0, 1, 3, 4, 5, 13, 14]",,,,,0.934375,,1
+employee,grok-4.20-0309-non-reasoning,1827,anchors,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,4,61.4,False,64.2,61.4,64.2,61.4,False,False,False,2,4,4,2,0,0,0,0,0,1,0,1,"[64.2, 61.4]",0.0429,"Anchor rule (IF-THEN, estimated precision 1.00):
+  IF city_b0 = 0 AND city_b1 = 1 AND experience_in_current_domain_b1 = 1 AND joining_year_b0 = 1 THEN class 1","The model predicted that this employee will leave the company. 
+
+This is because the person joined in the earlier period, works in the second city, and has higher experience in their current domain. All of these factors together made the model certain the employee would leave.","The model predicted that this employee will leave the company.
+
+This is because the person joined in the earlier period, works in the second city rather than the first one, and has higher experience in their current domain. All of these factors together made the model certain the employee would leave.","1. The joining year indicator is set to its first value, which pushed the prediction towards the employee leaving the company.  
+2. The first city indicator is set to its second value, which pushed the prediction towards the employee leaving the company.  
+3. The second city indicator is set to its first value, which pushed the prediction towards the employee leaving the company.  
+4. The experience in current domain indicator is set to its first value, which pushed the prediction towards the employee leaving the company.","['joining_year_b0 < 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b1 > 0.5']","['joining_year_b0 > 0.5', 'city_b0 < 0.5', 'city_b1 > 0.5', 'experience_in_current_domain_b1 > 0.5']","[1, 4, 5, 13]","[5, 13]","[1, 4, 5, 13]","[1, 4, 5, 13]",,,,,,1.0,1
+employee,grok-4.20-0309-non-reasoning,1827,shap,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,63.0,False,77.5,77.5,77.5,41.6,False,False,False,5,5,3,2,0,2,0,4,0,2,4,3,"[77.5, 77.5, 77.5, 77.5]",0.0429,"SHAP feature importance (contribution to this prediction):
+  joining_year_b0: 30.6% (opposes the prediction)
+  city_b0: 26.2% (supports the prediction)
+  age_b0: 12.8% (opposes the prediction)
+  experience_in_current_domain_b2: 9.5% (supports the prediction)
+  joining_year_b2: 8.4% (opposes the prediction)
+  city_b1: 8.3% (supports the prediction)
+  joining_year_b1: 4.2% (supports the prediction)","This employee is predicted to leave the company. 
+
+The main reason is that he joined the company in the earliest period (the joining year indicator that most strongly pushes against staying). This effect was partly offset by the fact that he works in the second city (the city indicator that most strongly supports leaving). 
+
+Smaller pushes toward leaving came from his age falling in the lower group and from joining in the latest period. These were slightly counterbalanced by his experience level in the current role and by the other two city and joining-year indicators.","This employee is predicted to leave the company. 
+
+The main reason is that he joined the company in the earliest period. This effect was partly offset by the fact that he works in the second city. 
+
+Smaller pushes toward leaving came from his age being in the younger group and from joining in the latest period. These were slightly counterbalanced by his experience level in the current role and by the other two city and joining-year indicators.","1. The joining year indicator pushed against this class, but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The age indicator pushed against this class, but was outweighed.  
+4. The experience in current domain indicator pushed the prediction towards this class.  
+5. The later joining year indicator pushed against this class, but was outweighed.  
+6. The other city indicator pushed the prediction towards this class.  
+7. The middle joining year indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b1 > 0.5', 'age_b0 > 0.5', 'joining_year_b2 > 0.5', 'experience_in_current_domain_b2 < 0.5', 'city_b0 < 0.5', 'joining_year_b1 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5', 'joining_year_b2 < 0.5', 'city_b1 > 0.5', 'joining_year_b1 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[1, 2, 4, 5, 14]","[1, 2, 4, 5, 14]","[3, 5, 7]",,,,,,,1
+employee,grok-4.20-0309-non-reasoning,1827,lime,meta-llama/Llama-3.3-70B-Instruct-Turbo,1,7,63.0,False,16.9,46.1,46.1,53.4,False,False,False,3,6,2,4,0,1,0,5,0,1,5,3,"[16.9, 46.1, 46.1, 46.1]",0.0429,"LIME local explanation (linear approximation weights):
+  joining_year_b0: weight=-0.1112 (opposes the prediction)
+  city_b0: weight=+0.0843 (supports the prediction)
+  joining_year_b2: weight=-0.0794 (opposes the prediction)
+  joining_year_b1: weight=+0.0636 (supports the prediction)
+  city_b1: weight=+0.0567 (supports the prediction)
+  age_b0: weight=-0.0499 (opposes the prediction)
+  experience_in_current_domain_b2: weight=+0.0416 (supports the prediction)","The model predicted that this employee will leave the company. 
+
+This happened mainly because the person joined the company in the earliest period (joining year in the first group), which pushed the prediction toward leaving. The fact that they are not from the main city also supported the prediction of leaving. 
+
+The prediction was opposed somewhat because their age is not in the youngest group, and because they did not join in the latest period. The other measurements had smaller effects in their respective directions.","The model predicted that this employee will leave the company.
+
+This happened mainly because the person joined the company in the earliest period, which pushed the prediction toward leaving. The fact that they are not from the main city also supported the prediction of leaving. Being from the second-largest city further supported the prediction of leaving, as did having a moderate amount of experience in their current domain.
+
+The prediction was opposed somewhat because their age is not in the youngest group, because they did not join in the latest period, and because they did not join in the middle period. The other measurements had smaller effects in their respective directions.","1. The joining year indicator pushed against this class but was outweighed.  
+2. The city indicator pushed the prediction towards this class.  
+3. The joining year indicator pushed against this class but was outweighed.  
+4. The joining year indicator pushed the prediction towards this class.  
+5. The city indicator pushed the prediction towards this class.  
+6. The age indicator pushed against this class but was outweighed.  
+7. The experience in current domain indicator pushed the prediction towards this class.","['joining_year_b0 > 0.5', 'city_b0 > 0.5', 'age_b0 < 0.5', 'joining_year_b2 < 0.5']","['joining_year_b0 < 0.5', 'city_b0 > 0.5', 'joining_year_b0 < 0.5', 'joining_year_b1 > 0.5', 'city_b1 > 0.5', 'age_b0 < 0.5', 'experience_in_current_domain_b2 > 0.5']","[1, 2, 3, 4, 5, 7, 14]","[1, 3, 7]","[1, 2, 3, 4, 5, 7]","[5, 7]",,,,,,,1
